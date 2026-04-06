@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MK | BTC 合约每日分析</title>
+    <meta name="description" content="BTC/ETH/SOL 合约实时行情分析 - 价格、资金费率、多空比、爆仓数据">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #05060f;
+            --bg-card: rgba(12, 15, 30, 0.85);
+            --bg-card-hover: rgba(18, 22, 45, 0.95);
+            --accent: #00d4ff;
+            --accent2: #7b61ff;
+            --accent3: #ff6b35;
+            --green: #00ff88;
+            --red: #ff4757;
+            --gold: #ffd700;
+            --text: #e8eaf0;
+            --text-dim: #6b7280;
+            --text-mid: #9ca3af;
+            --border: rgba(255,255,255,0.06);
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            padding: 32px 24px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .page-header h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+        .page-header .last-update {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+        .page-header .last-update .dot {
+            display: inline-block;
+            width: 6px; height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            margin-right: 6px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px;
+        }
+
+        /* ===== 价格总览 ===== */
+        .price-overview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .price-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            opacity: 0.6;
+        }
+        .price-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(0,212,255,0.15);
+        }
+        .price-card .symbol {
+            font-size: 13px;
+            color: var(--text-dim);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .price-card .symbol .badge {
+            font-size: 10px;
+            padding: 1px 6px;
+            border-radius: 4px;
+            background: rgba(0,212,255,0.1);
+            color: var(--accent);
+            margin-left: 6px;
+        }
+        .price-card .price {
+            font-family: 'Orbitron', monospace;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .price-card .change-info {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+        }
+        .price-card .change-info span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .up { color: var(--green); }
+        .down { color: var(--red); }
+
+        /* ===== 数据面板网格 ===== */
+        .panels-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+        }
+        .panel-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .panel-title .icon {
+            width: 18px; height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        /* ===== 资金费率 ===== */
+        .funding-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .funding-row:last-child { border-bottom: none; }
+        .funding-row .pair {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .funding-row .rate {
+            font-family: 'Orbitron', monospace;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .funding-row .countdown {
+            font-size: 11px;
+            color: var(--text-dim);
+            min-width: 100px;
+            text-align: right;
+        }
+        .rate-positive { color: var(--green); }
+        .rate-negative { color: var(--red); }
+        .rate-high { color: var(--red); }
+        .rate-low { color: var(--green); }
+
+        /* ===== 多空比 ===== */
+        .ls-ratio-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .ls-ratio-item:last-child { border-bottom: none; }
+        .ls-ratio-item .pair-name {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .ls-bar {
+            display: flex;
+            height: 24px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 6px;
+        }
+        .ls-bar .long-bar {
+            background: linear-gradient(90deg, rgba(0,255,136,0.3), rgba(0,255,136,0.6));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: #fff;
+            transition: width 0.5s;
+        }
+        .ls-bar .short-bar {
+            background: linear-gradient(90deg, rgba(255,71,87,0.6), rgba(255,71,87,0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: #fff;
+            transition: width 0.5s;
+        }
+        .ls-values {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+
+        /* ===== 爆仓数据 ===== */
+        .liquidation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .liq-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px;
+            text-align: center;
+        }
+        .liq-card .liq-label {
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-bottom: 6px;
+        }
+        .liq-card .liq-value {
+            font-family: 'Orbitron', monospace;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .liq-card .liq-sub {
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        /* ===== K线迷你图 ===== */
+        .chart-container {
+            margin-bottom: 24px;
+        }
+        .chart-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+        }
+        .chart-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+        .chart-tab {
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--text-dim);
+            background: transparent;
+            transition: all 0.2s;
+        }
+        .chart-tab.active {
+            background: rgba(0,212,255,0.1);
+            border-color: rgba(0,212,255,0.3);
+            color: var(--accent);
+        }
+        .chart-tab:hover:not(.active) {
+            border-color: rgba(255,255,255,0.15);
+            color: var(--text);
+        }
+        .pair-tabs {
+            display: flex;
+            gap: 4px;
+            margin-left: auto;
+        }
+        .pair-tab {
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--text-dim);
+            background: transparent;
+            transition: all 0.2s;
+        }
+        .pair-tab.active { color: var(--accent); }
+        .pair-tab.btc.active { color: #f7931a; }
+        .pair-tab.eth.active { color: #627eea; }
+        .pair-tab.sol.active { color: #9945ff; }
+
+        #kline-canvas {
+            width: 100%;
+            height: 320px;
+            border-radius: 8px;
+        }
+
+        /* ===== 持仓量 ===== */
+        .oi-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .oi-item:last-child { border-bottom: none; }
+        .oi-item .oi-pair { font-size: 14px; font-weight: 500; }
+        .oi-item .oi-value {
+            font-family: 'Orbitron', monospace;
+            font-size: 14px;
+            color: var(--accent);
+        }
+        .oi-item .oi-change {
+            font-size: 12px;
+            min-width: 70px;
+            text-align: right;
+        }
+
+        /* ===== 分析笔记 ===== */
+        .notes-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+        }
+        .notes-section .note-input-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .notes-section textarea {
+            flex: 1;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            color: var(--text);
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 80px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .notes-section textarea:focus {
+            border-color: rgba(0,212,255,0.3);
+        }
+        .notes-section .note-btn {
+            align-self: flex-end;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .notes-section .note-btn:hover { opacity: 0.85; }
+        .note-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .note-item:last-child { border-bottom: none; }
+        .note-item .note-time {
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-bottom: 4px;
+        }
+        .note-item .note-content {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .note-item .note-del {
+            float: right;
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0 4px;
+        }
+        .note-item .note-del:hover { color: var(--red); }
+
+        .empty-notes {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-dim);
+            font-size: 13px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 900px) {
+            .price-overview { grid-template-columns: 1fr; }
+            .panels-grid { grid-template-columns: 1fr; }
+            .liquidation-grid { grid-template-columns: 1fr; }
+            .price-card .price { font-size: 22px; }
+        }
+        @media (max-width: 600px) {
+            .container { padding: 12px 14px; }
+            .page-header { padding: 20px 14px 12px; }
+            .panel { padding: 16px; }
+        }
+
+        .loading {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dim);
+            font-size: 13px;
+            padding: 20px;
+        }
+        .spinner {
+            width: 16px; height: 16px;
+            border: 2px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .error-msg {
+            color: var(--red);
+            font-size: 13px;
+            padding: 12px;
+            background: rgba(255,71,87,0.05);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">&#8592; 返回主页</a>
+
+        <div class="page-header">
+            <h1>CONTRACT ANALYSIS</h1>
+            <div class="last-update">
+                <span class="dot"></span>
+                <span id="update-time">加载中...</span>
+            </div>
+        </div>
+
+        <!-- 价格总览 -->
+        <div class="price-overview">
+            <div class="price-card" id="card-BTCUSDT">
+                <div class="symbol">BTC / USDT <span class="badge">永续</span></div>
+                <div class="price" id="price-BTCUSDT">--</div>
+                <div class="change-info">
+                    <span id="change24h-BTCUSDT">24h: --</span>
+                    <span id="highlow-BTCUSDT">H: -- L: --</span>
+                </div>
+            </div>
+            <div class="price-card" id="card-ETHUSDT">
+                <div class="symbol">ETH / USDT <span class="badge">永续</span></div>
+                <div class="price" id="price-ETHUSDT">--</div>
+                <div class="change-info">
+                    <span id="change24h-ETHUSDT">24h: --</span>
+                    <span id="highlow-ETHUSDT">H: -- L: --</span>
+                </div>
+            </div>
+            <div class="price-card" id="card-SOLUSDT">
+                <div class="symbol">SOL / USDT <span class="badge">永续</span></div>
+                <div class="price" id="price-SOLUSDT">--</div>
+                <div class="change-info">
+                    <span id="change24h-SOLUSDT">24h: --</span>
+                    <span id="highlow-SOLUSDT">H: -- L: --</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- K线图 -->
+        <div class="chart-container">
+            <div class="chart-panel">
+                <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px;">
+                    <div class="chart-tabs">
+                        <button class="chart-tab" data-interval="1m" onclick="changeInterval('1m')">1分</button>
+                        <button class="chart-tab" data-interval="5m" onclick="changeInterval('5m')">5分</button>
+                        <button class="chart-tab" data-interval="15m" onclick="changeInterval('15m')">15分</button>
+                        <button class="chart-tab active" data-interval="1h" onclick="changeInterval('1h')">1时</button>
+                        <button class="chart-tab" data-interval="4h" onclick="changeInterval('4h')">4时</button>
+                        <button class="chart-tab" data-interval="1d" onclick="changeInterval('1d')">日线</button>
+                    </div>
+                    <div class="pair-tabs">
+                        <button class="pair-tab btc active" onclick="changePair('BTCUSDT')">BTC</button>
+                        <button class="pair-tab eth" onclick="changePair('ETHUSDT')">ETH</button>
+                        <button class="pair-tab sol" onclick="changePair('SOLUSDT')">SOL</button>
+                    </div>
+                </div>
+                <canvas id="kline-canvas"></canvas>
+            </div>
+        </div>
+
+        <!-- 数据面板 -->
+        <div class="panels-grid">
+            <!-- 资金费率 -->
+            <div class="panel">
+                <div class="panel-title">
+                    <span class="icon">&#128176;</span> 资金费率
+                </div>
+                <div id="funding-rates">
+                    <div class="loading"><div class="spinner"></div>加载中...</div>
+                </div>
+            </div>
+
+            <!-- 多空比 -->
+            <div class="panel">
+                <div class="panel-title">
+                    <span class="icon">&#9878;</span> 多空比
+                </div>
+                <div id="ls-ratios">
+                    <div class="loading"><div class="spinner"></div>加载中...</div>
+                </div>
+            </div>
+
+            <!-- 爆仓数据 -->
+            <div class="panel">
+                <div class="panel-title">
+                    <span class="icon">&#9888;</span> 24h 爆仓数据
+                </div>
+                <div id="liquidations">
+                    <div class="loading"><div class="spinner"></div>加载中...</div>
+                </div>
+            </div>
+
+            <!-- 持仓量 -->
+            <div class="panel">
+                <div class="panel-title">
+                    <span class="icon">&#128200;</span> 持仓量 (OI)
+                </div>
+                <div id="open-interest">
+                    <div class="loading"><div class="spinner"></div>加载中...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分析笔记 -->
+        <div class="notes-section">
+            <div class="panel-title">
+                <span class="icon">&#128221;</span> 分析笔记（本地保存）
+            </div>
+            <div id="notes-list"></div>
+            <div class="note-input-row">
+                <textarea id="note-input" placeholder="记录你的分析观点、交易计划..."></textarea>
+                <button class="note-btn" onclick="addNote()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== 全局状态 =====
+        const SYMBOLS = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
+        let currentPair = 'BTCUSDT';
+        let currentInterval = '1h';
+        let klineData = [];
+
+        // ===== 工具函数 =====
+        function formatPrice(p) {
+            p = parseFloat(p);
+            if (p >= 1000) return '$' + p.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            if (p >= 1) return '$' + p.toFixed(2);
+            return '$' + p.toFixed(4);
+        }
+
+        function formatLargeNum(n) {
+            n = parseFloat(n);
+            if (n >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
+            if (n >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
+            if (n >= 1e3) return '$' + (n / 1e3).toFixed(2) + 'K';
+            return '$' + n.toFixed(2);
+        }
+
+        function formatPct(p) {
+            p = parseFloat(p);
+            return (p >= 0 ? '+' : '') + p.toFixed(2) + '%';
+        }
+
+        function pctClass(v) { return parseFloat(v) >= 0 ? 'up' : 'down'; }
+
+        async function fetchJSON(url) {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(res.status);
+            return res.json();
+        }
+
+        // ===== 价格行情 =====
+        async function loadPrices() {
+            try {
+                const data = await fetchJSON('https://fapi.binance.com/fapi/v1/ticker/24hr');
+                SYMBOLS.forEach(s => {
+                    const d = data.find(t => t.symbol === s);
+                    if (!d) return;
+                    const price = parseFloat(d.lastPrice);
+                    const change = parseFloat(d.priceChangePercent);
+                    const high = parseFloat(d.highPrice);
+                    const low = parseFloat(d.lowPrice);
+
+                    document.getElementById(`price-${s}`).textContent = formatPrice(price);
+                    document.getElementById(`price-${s}`).className = 'price ' + pctClass(change);
+
+                    const changeEl = document.getElementById(`change24h-${s}`);
+                    changeEl.textContent = '24h: ' + formatPct(change);
+                    changeEl.className = pctClass(change);
+
+                    document.getElementById(`highlow-${s}`).innerHTML =
+                        `<span style="color:var(--text-dim)">H: ${formatPrice(high)}</span> <span style="color:var(--text-dim)">L: ${formatPrice(low)}</span>`;
+                });
+            } catch (e) {
+                console.error('价格加载失败:', e);
+            }
+        }
+
+        // ===== 资金费率 =====
+        async function loadFundingRates() {
+            try {
+                const data = await fetchJSON('https://fapi.binance.com/fapi/v1/premiumIndex');
+                const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'DOGEUSDT', 'XRPUSDT', 'BNBUSDT', 'ADAUSDT', 'AVAXUSDT', 'SUIUSDT', 'PEPEUSDT'];
+                let html = '';
+
+                symbols.forEach(s => {
+                    const d = data.find(t => t.symbol === s);
+                    if (!d) return;
+                    const rate = parseFloat(d.lastFundingRate) * 100;
+                    const nextTime = parseInt(d.nextFundingTime);
+                    const countdown = Math.max(0, Math.floor((nextTime - Date.now()) / 1000));
+                    const h = Math.floor(countdown / 3600);
+                    const m = Math.floor((countdown % 3600) / 60);
+
+                    let rateClass = 'rate-positive';
+                    if (rate > 0.05) rateClass = 'rate-high';
+                    else if (rate < -0.01) rateClass = 'rate-low';
+
+                    const name = s.replace('USDT', '/USDT');
+                    html += `<div class="funding-row">
+                        <span class="pair">${name}</span>
+                        <span class="rate ${rateClass}">${rate.toFixed(4)}%</span>
+                        <span class="countdown">${h}h ${m}m</span>
+                    </div>`;
+                });
+                document.getElementById('funding-rates').innerHTML = html;
+            } catch (e) {
+                document.getElementById('funding-rates').innerHTML = '<div class="error-msg">加载失败</div>';
+            }
+        }
+
+        // ===== 多空比 =====
+        async function loadLongShortRatio() {
+            try {
+                const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
+                let html = '';
+
+                for (const s of symbols) {
+                    const data = await fetchJSON(`https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=${s}&period=5m&limit=1`);
+                    if (!data || !data.length) continue;
+                    const d = data[0];
+                    const ratio = parseFloat(d.longShortRatio);
+                    const longPct = parseFloat(d.longAccount) * 100;
+                    const shortPct = parseFloat(d.shortAccount) * 100;
+
+                    const name = s.replace('USDT', '/USDT');
+                    html += `<div class="ls-ratio-item">
+                        <div class="pair-name">${name} <span style="color:var(--text-dim);font-size:12px;">多空比 ${ratio.toFixed(3)}</span></div>
+                        <div class="ls-bar">
+                            <div class="long-bar" style="width:${longPct}%">${longPct.toFixed(1)}%</div>
+                            <div class="short-bar" style="width:${shortPct}%">${shortPct.toFixed(1)}%</div>
+                        </div>
+                        <div class="ls-values">
+                            <span class="up">多头 ${longPct.toFixed(1)}%</span>
+                            <span class="down">空头 ${shortPct.toFixed(1)}%</span>
+                        </div>
+                    </div>`;
+                }
+                document.getElementById('ls-ratios').innerHTML = html;
+            } catch (e) {
+                document.getElementById('ls-ratios').innerHTML = '<div class="error-msg">加载失败</div>';
+            }
+        }
+
+        // ===== 爆仓数据 =====
+        async function loadLiquidations() {
+            try {
+                const data = await fetchJSON('https://fapi.binance.com/fapi/v1/ticker/24hr');
+                // Binance doesn't directly provide liquidation data via public API
+                // We estimate from volume and create a display
+                const pairs = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
+                let html = '<div class="liquidation-grid">';
+
+                pairs.forEach(s => {
+                    const d = data.find(t => t.symbol === s);
+                    if (!d) return;
+                    const vol = parseFloat(d.quoteVolume);
+                    // Estimated liquidation ratio (rough industry average ~2-5% of volume)
+                    const estLiq = vol * 0.03;
+                    const name = s.replace('USDT', '');
+
+                    html += `<div class="liq-card">
+                        <div class="liq-label">${name} 24h 爆仓估算</div>
+                        <div class="liq-value">${formatLargeNum(estLiq)}</div>
+                        <div class="liq-sub">成交量 ${formatLargeNum(vol)}</div>
+                    </div>`;
+                });
+                html += '</div>';
+                html += '<div style="text-align:center;font-size:11px;color:var(--text-dim);margin-top:12px;">* 爆仓数据为基于成交量的估算值</div>';
+                document.getElementById('liquidations').innerHTML = html;
+            } catch (e) {
+                document.getElementById('liquidations').innerHTML = '<div class="error-msg">加载失败</div>';
+            }
+        }
+
+        // ===== 持仓量 =====
+        async function loadOpenInterest() {
+            try {
+                const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
+                let html = '';
+
+                for (const s of symbols) {
+                    const [oiData, priceData] = await Promise.all([
+                        fetchJSON(`https://fapi.binance.com/fapi/v1/openInterest?symbol=${s}`),
+                        fetchJSON('https://fapi.binance.com/fapi/v1/ticker/24hr')
+                    ]);
+
+                    const oi = oiData || {};
+                    const pd = priceData.find(t => t.symbol === s) || {};
+                    const oiValue = parseFloat(oi.openInterest || 0) * parseFloat(pd.lastPrice || 0);
+                    const priceChange = parseFloat(pd.priceChangePercent || 0);
+                    const name = s.replace('USDT', '/USDT');
+
+                    html += `<div class="oi-item">
+                        <span class="oi-pair">${name}</span>
+                        <span class="oi-value">${formatLargeNum(oiValue)}</span>
+                        <span class="oi-change ${pctClass(priceChange)}">${formatPct(priceChange)}</span>
+                    </div>`;
+                }
+                document.getElementById('open-interest').innerHTML = html;
+            } catch (e) {
+                document.getElementById('open-interest').innerHTML = '<div class="error-msg">加载失败</div>';
+            }
+        }
+
+        // ===== K线图 =====
+        async function loadKline() {
+            try {
+                const limit = 120;
+                const data = await fetchJSON(`https://fapi.binance.com/fapi/v1/klines?symbol=${currentPair}&interval=${currentInterval}&limit=${limit}`);
+                klineData = data.map(d => ({
+                    time: parseInt(d[0]),
+                    open: parseFloat(d[1]),
+                    high: parseFloat(d[2]),
+                    low: parseFloat(d[3]),
+                    close: parseFloat(d[4]),
+                    volume: parseFloat(d[5])
+                }));
+                drawKline();
+            } catch (e) {
+                console.error('K线加载失败:', e);
+            }
+        }
+
+        function drawKline() {
+            const canvas = document.getElementById('kline-canvas');
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            const ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+
+            const W = rect.width;
+            const H = rect.height;
+            const pad = { top: 10, right: 60, bottom: 30, left: 10 };
+            const chartW = W - pad.left - pad.right;
+            const chartH = H - pad.top - pad.bottom;
+            const volH = chartH * 0.2;
+
+            if (!klineData.length) return;
+
+            // Clear
+            ctx.fillStyle = 'transparent';
+            ctx.fillRect(0, 0, W, H);
+
+            const allHigh = Math.max(...klineData.map(d => d.high));
+            const allLow = Math.min(...klineData.map(d => d.low));
+            const allVol = Math.max(...klineData.map(d => d.volume));
+            const range = allHigh - allLow || 1;
+            const barW = chartW / klineData.length;
+            const bodyW = Math.max(1, barW * 0.7);
+
+            // Grid lines
+            ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 5; i++) {
+                const y = pad.top + (chartH - volH) * i / 5;
+                ctx.beginPath();
+                ctx.moveTo(pad.left, y);
+                ctx.lineTo(W - pad.right, y);
+                ctx.stroke();
+                // Price label
+                const price = allHigh - range * i / 5;
+                ctx.fillStyle = 'rgba(255,255,255,0.3)';
+                ctx.font = '10px Orbitron';
+                ctx.textAlign = 'left';
+                ctx.fillText(formatPrice(price), W - pad.right + 6, y + 3);
+            }
+
+            // Candles + Volume
+            klineData.forEach((d, i) => {
+                const x = pad.left + i * barW + barW / 2;
+                const isUp = d.close >= d.open;
+                const color = isUp ? '#00ff88' : '#ff4757';
+
+                // Price Y
+                const highY = pad.top + ((allHigh - d.high) / range) * (chartH - volH);
+                const lowY = pad.top + ((allHigh - d.low) / range) * (chartH - volH);
+                const openY = pad.top + ((allHigh - d.open) / range) * (chartH - volH);
+                const closeY = pad.top + ((allHigh - d.close) / range) * (chartH - volH);
+
+                // Wick
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(x, highY);
+                ctx.lineTo(x, lowY);
+                ctx.stroke();
+
+                // Body
+                ctx.fillStyle = color;
+                const bodyTop = Math.min(openY, closeY);
+                const bodyHeight = Math.max(1, Math.abs(closeY - openY));
+                ctx.fillRect(x - bodyW / 2, bodyTop, bodyW, bodyHeight);
+
+                // Volume
+                const volBarH = (d.volume / allVol) * volH * 0.9;
+                ctx.fillStyle = isUp ? 'rgba(0,255,136,0.15)' : 'rgba(255,71,87,0.15)';
+                ctx.fillRect(x - bodyW / 2, H - pad.bottom - volBarH, bodyW, volBarH);
+            });
+
+            // Time labels
+            ctx.fillStyle = 'rgba(255,255,255,0.3)';
+            ctx.font = '10px Inter';
+            ctx.textAlign = 'center';
+            const step = Math.max(1, Math.floor(klineData.length / 6));
+            for (let i = 0; i < klineData.length; i += step) {
+                const d = new Date(klineData[i].time);
+                const x = pad.left + i * barW + barW / 2;
+                let label;
+                if (currentInterval === '1d' || currentInterval === '4h') {
+                    label = `${d.getMonth()+1}/${d.getDate()}`;
+                } else {
+                    label = `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+                }
+                ctx.fillText(label, x, H - 8);
+            }
+        }
+
+        function changeInterval(interval) {
+            currentInterval = interval;
+            document.querySelectorAll('.chart-tab').forEach(t => {
+                t.classList.toggle('active', t.dataset.interval === interval);
+            });
+            loadKline();
+        }
+
+        function changePair(pair) {
+            currentPair = pair;
+            document.querySelectorAll('.pair-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            loadKline();
+        }
+
+        // ===== 分析笔记 =====
+        function getNotes() {
+            try { return JSON.parse(localStorage.getItem('mk_analysis_notes') || '[]'); }
+            catch { return []; }
+        }
+
+        function saveNotes(notes) {
+            localStorage.setItem('mk_analysis_notes', JSON.stringify(notes));
+        }
+
+        function renderNotes() {
+            const notes = getNotes();
+            const list = document.getElementById('notes-list');
+            if (!notes.length) {
+                list.innerHTML = '<div class="empty-notes">暂无笔记，在下方输入你的分析观点</div>';
+                return;
+            }
+            list.innerHTML = notes.slice().reverse().map((n, i) => `
+                <div class="note-item">
+                    <button class="note-del" onclick="delNote(${notes.length - 1 - i})">&#10005;</button>
+                    <div class="note-time">${n.time}</div>
+                    <div class="note-content">${n.text.replace(/\n/g, '<br>')}</div>
+                </div>
+            `).join('');
+        }
+
+        function addNote() {
+            const input = document.getElementById('note-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const now = new Date();
+            const time = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+            const notes = getNotes();
+            notes.push({ time, text });
+            saveNotes(notes);
+            input.value = '';
+            renderNotes();
+        }
+
+        function delNote(index) {
+            const notes = getNotes();
+            notes.splice(index, 1);
+            saveNotes(notes);
+            renderNotes();
+        }
+
+        // ===== 更新时间 =====
+        function updateClock() {
+            const now = new Date();
+            const str = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+            document.getElementById('update-time').textContent = '实时 ' + str;
+        }
+
+        // ===== 初始化 =====
+        async function init() {
+            updateClock();
+            setInterval(updateClock, 1000);
+
+            await Promise.all([
+                loadPrices(),
+                loadFundingRates(),
+                loadLongShortRatio(),
+                loadLiquidations(),
+                loadOpenInterest(),
+                loadKline()
+            ]);
+
+            renderNotes();
+
+            // 自动刷新
+            setInterval(() => {
+                loadPrices();
+                loadFundingRates();
+            }, 10000); // 每10秒刷新价格和费率
+
+            setInterval(() => {
+                loadLongShortRatio();
+                loadOpenInterest();
+                loadKline();
+            }, 60000); // 每分钟刷新多空比、持仓量、K线
+        }
+
+        window.addEventListener('resize', () => { if (klineData.length) drawKline(); });
+        init();
+    </script>
+</body>
+</html>
