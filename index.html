@@ -656,38 +656,6 @@
             margin: 0;
         }
 
-        /* ===== 实时行情条 ===== */
-        .ticker-bar {
-            position: relative; z-index: 1;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-            overflow: hidden;
-            background: rgba(5,6,15,0.8);
-        }
-        .ticker-track {
-            display: flex; gap: 48px;
-            animation: ticker 30s linear infinite;
-            width: max-content;
-        }
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .ticker-item {
-            display: flex; align-items: center; gap: 12px;
-            white-space: nowrap;
-            font-size: 13px;
-        }
-        .ticker-item .symbol {
-            font-weight: 600; color: var(--text);
-        }
-        .ticker-item .price {
-            font-family: 'Orbitron', monospace;
-            font-size: 12px;
-        }
-        .ticker-item .change { font-size: 12px; font-weight: 600; }
-        .ticker-item .change.up { color: var(--green); }
-        .ticker-item .change.down { color: var(--red); }
 
         /* ===== 响应式 ===== */
         @media (max-width: 900px) {
@@ -762,25 +730,6 @@
     </div>
 </nav>
 
-<!-- 实时行情条 -->
-<div class="ticker-bar">
-    <div class="ticker-track">
-        <div class="ticker-item"><span class="symbol">BTC/USDT</span><span class="price">$86,420</span><span class="change up">+2.34%</span></div>
-        <div class="ticker-item"><span class="symbol">ETH/USDT</span><span class="price">$1,682</span><span class="change up">+3.12%</span></div>
-        <div class="ticker-item"><span class="symbol">SOL/USDT</span><span class="price">$148.5</span><span class="change down">-1.08%</span></div>
-        <div class="ticker-item"><span class="symbol">BTC资金费率</span><span class="price">0.0100%</span><span class="change accent">正常</span></div>
-        <div class="ticker-item"><span class="symbol">ETH资金费率</span><span class="price">0.0082%</span><span class="change accent">正常</span></div>
-        <div class="ticker-item"><span class="symbol">BTC多空比</span><span class="price">1.85</span><span class="change up">偏多</span></div>
-        <div class="ticker-item"><span class="symbol">24h BTC爆仓</span><span class="price">$128M</span><span class="change up">多头</span></div>
-        <div class="ticker-item"><span class="symbol">BTC/USDT</span><span class="price">$86,420</span><span class="change up">+2.34%</span></div>
-        <div class="ticker-item"><span class="symbol">ETH/USDT</span><span class="price">$1,682</span><span class="change up">+3.12%</span></div>
-        <div class="ticker-item"><span class="symbol">SOL/USDT</span><span class="price">$148.5</span><span class="change down">-1.08%</span></div>
-        <div class="ticker-item"><span class="symbol">BTC资金费率</span><span class="price">0.0100%</span><span class="change accent">正常</span></div>
-        <div class="ticker-item"><span class="symbol">ETH资金费率</span><span class="price">0.0082%</span><span class="change accent">正常</span></div>
-        <div class="ticker-item"><span class="symbol">BTC多空比</span><span class="price">1.85</span><span class="change up">偏多</span></div>
-        <div class="ticker-item"><span class="symbol">24h BTC爆仓</span><span class="price">$128M</span><span class="change up">多头</span></div>
-    </div>
-</div>
 
 <!-- ===== Hero ===== -->
 <section class="hero" id="hero">
