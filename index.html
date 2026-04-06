@@ -612,6 +612,24 @@
         footer p {
             font-size: 13px; color: var(--text-dim);
         }
+        footer .footer-tools {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+        footer .footer-tools a {
+            font-size: 11px;
+            color: var(--text-dim);
+            text-decoration: none;
+            opacity: 0.4;
+            transition: opacity 0.3s, color 0.3s;
+            letter-spacing: 0.5px;
+        }
+        footer .footer-tools a:hover {
+            opacity: 0.8;
+            color: var(--accent);
+        }
         footer .footer-logo {
             font-family: 'Orbitron', monospace;
             font-size: 16px; font-weight: 700;
@@ -1082,6 +1100,10 @@
         <div class="footer-logo">MK</div>
         <p>合约交易 · 数据驱动 · 纪律优先</p>
         <p style="margin-top:8px;opacity:0.5">&copy; 2026 MK Trading. All rights reserved.</p>
+        <div class="footer-tools">
+            <a href="account_overview.html" target="_blank">账户总览</a>
+            <a href="profit_calculator.html" target="_blank">利润计算器</a>
+        </div>
     </div>
 </footer>
 

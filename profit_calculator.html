@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>利润率计算器</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d0d;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', 'PingFang SC', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 640px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+      color: #f0c040;
+      letter-spacing: 2px;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 14px;
+      padding: 28px 30px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+    label {
+      display: block;
+      font-size: 0.82rem;
+      color: #aaa;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+    .input-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    input[type="number"] {
+      flex: 1;
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1.05rem;
+      padding: 10px 14px;
+      outline: none;
+      transition: border 0.2s;
+    }
+    input[type="number"]:focus {
+      border-color: #f0c040;
+    }
+    select {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: #f0c040;
+      font-size: 0.9rem;
+      padding: 10px 12px;
+      outline: none;
+      cursor: pointer;
+    }
+    select:focus { border-color: #f0c040; }
+
+    .toggle-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .toggle-btn {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background: #111;
+      color: #888;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .toggle-btn.active {
+      background: #f0c040;
+      color: #111;
+      border-color: #f0c040;
+      font-weight: 700;
+    }
+
+    .calc-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #f0c040, #e88c00);
+      color: #111;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: opacity 0.2s;
+    }
+    .calc-btn:hover { opacity: 0.88; }
+
+    /* 结果区域 */
+    .result-card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 14px;
+      padding: 24px 30px;
+      display: none;
+    }
+    .result-card.show { display: block; }
+
+    .result-title {
+      font-size: 0.82rem;
+      color: #888;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .result-main {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .result-amount {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #f0c040;
+    }
+    .result-unit {
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .result-item {
+      background: #111;
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .result-item .label {
+      font-size: 0.75rem;
+      color: #888;
+      margin-bottom: 4px;
+    }
+    .result-item .value {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #e0e0e0;
+    }
+    .result-item .value.green { color: #26c970; }
+    .result-item .value.red { color: #ff4d4d; }
+
+    /* 月度明细表 */
+    .detail-title {
+      font-size: 0.82rem;
+      color: #888;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+    .table-wrap {
+      max-height: 260px;
+      overflow-y: auto;
+      border-radius: 8px;
+      border: 1px solid #2a2a2a;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    thead th {
+      background: #222;
+      color: #888;
+      padding: 8px 12px;
+      text-align: right;
+      position: sticky;
+      top: 0;
+    }
+    thead th:first-child { text-align: left; }
+    tbody tr { border-top: 1px solid #1e1e1e; }
+    tbody tr:hover { background: #1f1f1f; }
+    tbody td {
+      padding: 8px 12px;
+      text-align: right;
+      color: #ccc;
+    }
+    tbody td:first-child { text-align: left; color: #888; }
+    tbody td.profit { color: #26c970; }
+
+    /* 滚动条 */
+    .table-wrap::-webkit-scrollbar { width: 4px; }
+    .table-wrap::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>⚡ 利润率计算器</h1>
+  <p class="subtitle">输入本金 · 利率 · 时间 → 精确推算收益</p>
+
+  <div class="card">
+    <!-- 本金 -->
+    <div class="form-group">
+      <label>本金（$）</label>
+      <input type="number" id="principal" value="1000" min="0" step="any" placeholder="输入本金金额"/>
+    </div>
+
+    <!-- 利率 -->
+    <div class="form-group">
+      <label>利率（%）</label>
+      <div class="input-row">
+        <input type="number" id="rate" value="10" min="0" step="any" placeholder="利率"/>
+        <select id="rateType">
+          <option value="monthly">月利率</option>
+          <option value="annual">年利率</option>
+          <option value="daily">日利率</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 时间 -->
+    <div class="form-group">
+      <label>时间</label>
+      <div class="input-row">
+        <input type="number" id="period" value="12" min="1" step="1" placeholder="时间长度"/>
+        <select id="periodType">
+          <option value="months">月</option>
+          <option value="years">年</option>
+          <option value="days">天</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 计算方式 -->
+    <div class="form-group">
+      <label>计算方式</label>
+      <div class="toggle-row">
+        <button class="toggle-btn active" id="btn-compound" onclick="setMode('compound')">复利（滚仓）</button>
+        <button class="toggle-btn" id="btn-simple" onclick="setMode('simple')">单利（固定收益）</button>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">立即计算</button>
+  </div>
+
+  <!-- 结果 -->
+  <div class="result-card" id="resultCard">
+    <div class="result-title">最终资产总额</div>
+    <div class="result-main">
+      <span class="result-amount" id="resTotal">—</span>
+      <span class="result-unit">美元</span>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <div class="label">本金</div>
+        <div class="value" id="resPrincipal">—</div>
+      </div>
+      <div class="result-item">
+        <div class="label">总利润</div>
+        <div class="value green" id="resProfit">—</div>
+      </div>
+      <div class="result-item">
+        <div class="label">利润率（总）</div>
+        <div class="value green" id="resProfitRate">—</div>
+      </div>
+      <div class="result-item">
+        <div class="label">年化收益率（等效）</div>
+        <div class="value" id="resAnnual">—</div>
+      </div>
+    </div>
+
+    <div class="detail-title">📊 逐期明细</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>周期</th>
+            <th>本期利润</th>
+            <th>累计本金</th>
+            <th>累计利润</th>
+            <th>总资产</th>
+          </tr>
+        </thead>
+        <tbody id="detailBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  let mode = 'compound';
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('btn-compound').classList.toggle('active', m === 'compound');
+    document.getElementById('btn-simple').classList.toggle('active', m === 'simple');
+  }
+
+  function fmt(n) {
+    return n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function calculate() {
+    const principal = parseFloat(document.getElementById('principal').value) || 0;
+    const rate = parseFloat(document.getElementById('rate').value) || 0;
+    const rateType = document.getElementById('rateType').value;
+    const period = parseInt(document.getElementById('period').value) || 1;
+    const periodType = document.getElementById('periodType').value;
+
+    // 统一换算为"月利率"和"月数"
+    let monthlyRate;
+    if (rateType === 'annual') {
+      monthlyRate = rate / 100 / 12;
+    } else if (rateType === 'daily') {
+      monthlyRate = Math.pow(1 + rate / 100, 30) - 1;
+    } else {
+      monthlyRate = rate / 100;
+    }
+
+    let totalMonths;
+    if (periodType === 'years') {
+      totalMonths = period * 12;
+    } else if (periodType === 'days') {
+      totalMonths = period / 30;
+    } else {
+      totalMonths = period;
+    }
+
+    // 对天/日处理：如果是天，按天计算
+    let rows = [];
+    let total = 0;
+    let totalProfit = 0;
+
+    if (periodType === 'days') {
+      const dailyRate = rateType === 'annual' ? rate / 100 / 365
+                      : rateType === 'monthly' ? Math.pow(1 + rate / 100, 1/30) - 1
+                      : rate / 100;
+      let balance = principal;
+      let cumProfit = 0;
+      const step = period <= 30 ? 1 : period <= 180 ? 7 : 30;
+      const label = step === 1 ? '天' : step === 7 ? '周' : '月';
+      for (let d = step; d <= period; d += step) {
+        let periodProfit;
+        if (mode === 'compound') {
+          const newBalance = principal * Math.pow(1 + dailyRate, d);
+          periodProfit = newBalance - (d === step ? principal : principal * Math.pow(1 + dailyRate, d - step));
+          balance = newBalance;
+        } else {
+          periodProfit = principal * dailyRate * step;
+          balance = principal + principal * dailyRate * d;
+        }
+        cumProfit = balance - principal;
+        rows.push({ label: `第${d}${label}`, periodProfit, balance, cumProfit });
+      }
+      total = balance;
+      totalProfit = total - principal;
+    } else {
+      let balance = principal;
+      let cumProfit = 0;
+      const step = totalMonths <= 24 ? 1 : totalMonths <= 120 ? 3 : 12;
+      const stepLabel = step === 1 ? '月' : step === 3 ? '季' : '年';
+      for (let m = step; m <= totalMonths; m += step) {
+        let periodProfit;
+        if (mode === 'compound') {
+          const newBalance = principal * Math.pow(1 + monthlyRate, m);
+          periodProfit = newBalance - (m === step ? principal : principal * Math.pow(1 + monthlyRate, m - step));
+          balance = newBalance;
+        } else {
+          periodProfit = principal * monthlyRate * step;
+          balance = principal + principal * monthlyRate * m;
+        }
+        cumProfit = balance - principal;
+        const periodLabel = step === 12 ? `第${m/12}年` : step === 3 ? `第${m}月(第${m/3}季)` : `第${m}月`;
+        rows.push({ label: periodLabel, periodProfit, balance, cumProfit });
+      }
+      total = balance;
+      totalProfit = total - principal;
+    }
+
+    // 年化等效（以月为基准）
+    const years = periodType === 'days' ? period / 365 : periodType === 'years' ? period : period / 12;
+    const annualRate = years > 0 ? (Math.pow(total / principal, 1 / years) - 1) * 100 : 0;
+
+    // 渲染
+    document.getElementById('resTotal').textContent = '$' + fmt(total);
+    document.getElementById('resPrincipal').textContent = '$' + fmt(principal);
+    document.getElementById('resProfit').textContent = '+$' + fmt(totalProfit);
+    document.getElementById('resProfitRate').textContent = '+' + fmt(totalProfit / principal * 100) + '%';
+    document.getElementById('resAnnual').textContent = fmt(annualRate) + '%';
+
+    const tbody = document.getElementById('detailBody');
+    tbody.innerHTML = '';
+    rows.forEach(r => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${r.label}</td>
+        <td class="profit">+$${fmt(r.periodProfit)}</td>
+        <td>$${fmt(r.balance - r.cumProfit)}</td>
+        <td class="profit">+$${fmt(r.cumProfit)}</td>
+        <td>$${fmt(r.balance)}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    document.getElementById('resultCard').classList.add('show');
+    document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
