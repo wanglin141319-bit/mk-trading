@@ -658,25 +658,106 @@
 
 
         /* ===== 响应式 ===== */
-        @media (max-width: 900px) {
-            nav { padding: 16px 24px; }
-            nav.scrolled { padding: 12px 24px; }
+        @media (max-width: 1024px) {
+            .container { padding: 0 24px; }
+            section { padding: 90px 0; }
+            .strategies-grid { grid-template-columns: repeat(2, 1fr); }
+            .matrix-grid { grid-template-columns: repeat(2, 1fr); }
+            .referral-grid { grid-template-columns: repeat(2, 1fr); }
+            .perf-metrics { grid-template-columns: repeat(2, 1fr); }
+            .about-image .about-avatar { font-size: 90px; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 14px 20px; }
+            nav.scrolled { padding: 10px 20px; }
             .nav-links { display: none; }
             .nav-hamburger { display: flex; }
-            .container { padding: 0 20px; }
-            section { padding: 80px 0; }
-            .hero h1 { font-size: 36px; }
-            .hero-stats { gap: 24px; }
-            .hero-stat .num { font-size: 24px; }
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
-            .strategies-grid { grid-template-columns: 1fr; }
-            .perf-metrics { grid-template-columns: repeat(2, 1fr); }
-            .matrix-grid { grid-template-columns: 1fr; }
+            .container { padding: 0 16px; }
+            section { padding: 70px 0; }
+            .section-title { font-size: 28px; }
+            .section-desc { font-size: 14px; margin-bottom: 36px; }
+            .hero h1 { font-size: clamp(28px, 8vw, 42px); }
+            .hero-badge { font-size: 10px; padding: 6px 16px; margin-bottom: 24px; }
+            .hero p { font-size: 15px; margin-bottom: 32px; }
+            .hero-stats { gap: 20px; }
+            .hero-stat .num { font-size: 22px; }
+            .hero-stat .label { font-size: 11px; }
+            .hero-scroll { bottom: 20px; }
+            .hero-scroll .line { height: 24px; }
+
+            .about-grid { grid-template-columns: 1fr; gap: 32px; }
+            .about-image { max-width: 280px; margin: 0 auto; }
+            .about-image .about-avatar { font-size: 80px; }
+            .about-text h3 { font-size: 18px; }
+
+            .strategies-grid { grid-template-columns: 1fr; gap: 16px; }
+            .strategy-card { padding: 24px; }
+            .strategy-card h3 { font-size: 16px; }
+
+            .perf-metrics { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .perf-card { padding: 20px; }
+            .perf-card .value { font-size: 22px; }
+            .chart-container { padding: 20px; }
+            .equity-curve { height: 220px; }
+
+            .matrix-grid { grid-template-columns: 1fr; gap: 16px; }
+            .matrix-card { padding: 24px; }
+            .matrix-icon { width: 52px; height: 52px; font-size: 24px; }
+            .matrix-card h3 { font-size: 16px; }
+
+            .referral-grid { grid-template-columns: 1fr; gap: 16px; }
+            .referral-card { padding: 24px; }
+
+            .contact-links { gap: 12px; }
+            .contact-btn { padding: 12px 20px; font-size: 13px; }
+            .disclaimer { margin-top: 40px; padding: 16px; }
+
+            footer { padding: 30px 0; }
         }
-        @media (max-width: 600px) {
-            .hero-stats { flex-direction: column; gap: 16px; }
-            .perf-metrics { grid-template-columns: 1fr; }
-            .hero-cta { flex-direction: column; align-items: center; }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 14px; }
+            section { padding: 56px 0; }
+            .section-title { font-size: 24px; }
+            .section-label { font-size: 11px; letter-spacing: 3px; }
+
+            .hero h1 { font-size: clamp(24px, 9vw, 36px); margin-bottom: 20px; }
+            .hero-badge { font-size: 9px; padding: 5px 14px; letter-spacing: 3px; }
+            .hero p { font-size: 14px; margin-bottom: 28px; line-height: 1.7; }
+            .hero-stats { flex-direction: column; gap: 16px; margin-bottom: 32px; }
+            .hero-stat .num { font-size: 20px; }
+            .hero-cta { flex-direction: column; align-items: stretch; }
+            .btn-primary, .btn-outline { justify-content: center; padding: 12px 24px; font-size: 13px; }
+
+            .about-image { max-width: 220px; }
+            .about-image .about-avatar { font-size: 60px; }
+            .about-tags { gap: 8px; }
+            .about-tag { font-size: 11px; padding: 4px 12px; }
+            .about-philosophy { margin-top: 24px; padding: 16px; }
+
+            .perf-metrics { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .perf-card { padding: 16px; }
+            .perf-card .value { font-size: 20px; }
+            .perf-card .desc { font-size: 11px; }
+            .chart-container { padding: 16px; margin-bottom: 28px; }
+            .chart-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+            .equity-curve { height: 180px; }
+
+            .referral-grid { grid-template-columns: 1fr; gap: 12px; }
+            .referral-card { padding: 20px; }
+            .referral-logo { width: 48px; height: 48px; font-size: 20px; }
+            .referral-card h3 { font-size: 15px; }
+            .referral-btn { padding: 10px 20px; font-size: 12px; }
+
+            .contact-links { flex-direction: column; gap: 10px; }
+            .contact-btn { justify-content: center; width: 100%; }
+
+            .disclaimer { padding: 14px; margin-top: 32px; }
+            .disclaimer h4 { font-size: 13px; }
+            .disclaimer p { font-size: 11px; }
+
+            footer .footer-tools { gap: 16px; }
         }
 
         /* ===== 移动端菜单 ===== */
