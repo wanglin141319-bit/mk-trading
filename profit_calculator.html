@@ -221,6 +221,60 @@
     /* 滚动条 */
     .table-wrap::-webkit-scrollbar { width: 4px; }
     .table-wrap::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 768px) {
+      body { padding: 16px; }
+      h1 { font-size: 1.35rem; margin-bottom: 4px; }
+      .subtitle { font-size: 0.8rem; margin-bottom: 22px; }
+      .card { padding: 22px 20px; margin-bottom: 16px; }
+      .form-group { margin-bottom: 14px; }
+      label { font-size: 0.78rem; }
+      input[type="number"] { font-size: 1rem; padding: 10px 12px; }
+      select { font-size: 0.85rem; padding: 10px 10px; }
+      .toggle-row { gap: 8px; margin-bottom: 16px; }
+      .toggle-btn { padding: 9px 8px; font-size: 0.84rem; }
+      .calc-btn { padding: 13px; font-size: 1rem; }
+
+      .result-card { padding: 20px; }
+      .result-amount { font-size: 2rem; }
+      .result-grid { gap: 10px; }
+      .result-item { padding: 12px; }
+      .result-item .value { font-size: 1.05rem; }
+      .table-wrap { max-height: 220px; }
+      table { font-size: 0.78rem; }
+      thead th, tbody td { padding: 7px 8px; }
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 12px; align-items: flex-start; padding-top: 24px; }
+      h1 { font-size: 1.2rem; letter-spacing: 1px; }
+      .subtitle { font-size: 0.75rem; margin-bottom: 18px; }
+      .card { padding: 18px 16px; margin-bottom: 14px; border-radius: 12px; }
+      .form-group { margin-bottom: 12px; }
+      label { font-size: 0.76rem; margin-bottom: 5px; }
+      input[type="number"] { font-size: 0.95rem; padding: 9px 10px; border-radius: 7px; }
+      select { font-size: 0.82rem; padding: 9px 8px; border-radius: 7px; }
+      .input-row { gap: 6px; }
+      .toggle-row { gap: 6px; margin-bottom: 14px; }
+      .toggle-btn { padding: 8px 6px; font-size: 0.8rem; border-radius: 7px; }
+      .calc-btn { padding: 12px; font-size: 0.95rem; border-radius: 9px; }
+
+      .result-card { padding: 16px 14px; border-radius: 12px; }
+      .result-title, .detail-title { font-size: 0.78rem; margin-bottom: 10px; }
+      .result-main { gap: 8px; margin-bottom: 16px; }
+      .result-amount { font-size: 1.6rem; }
+      .result-unit { font-size: 0.82rem; }
+      .result-grid { grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+      .result-item { padding: 10px; border-radius: 8px; }
+      .result-item .label { font-size: 0.7rem; margin-bottom: 3px; }
+      .result-item .value { font-size: 0.95rem; }
+
+      .table-wrap { max-height: 200px; border-radius: 7px; margin-top: 8px; }
+      table { font-size: 0.72rem; }
+      thead th, tbody td { padding: 6px 6px; }
+      thead th:first-child, tbody td:first-child { min-width: 56px; }
+    }
   </style>
 </head>
 <body>
