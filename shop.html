@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>MK 知识&好物</title>
+  <style>
+    /* ===== 全局重置 ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+    }
+
+    /* ===== 顶部导航 ===== */
+    header {
+      background: #fff;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 0 rgba(0,0,0,.08);
+    }
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-icons { display: flex; gap: 18px; }
+    .nav-icons span { font-size: 22px; cursor: pointer; }
+    .cart-badge {
+      position: relative;
+    }
+    .cart-badge::after {
+      content: attr(data-count);
+      position: absolute;
+      top: -6px; right: -8px;
+      background: #ff3b30;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      min-width: 16px;
+      height: 16px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3px;
+    }
+
+    /* ===== 分类 Tab ===== */
+    .tabs {
+      background: #fff;
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 0 12px;
+      margin-top: 1px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab-item {
+      flex-shrink: 0;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: #666;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: all .2s;
+    }
+    .tab-item.active {
+      color: #ff6b35;
+      border-bottom-color: #ff6b35;
+      font-weight: 600;
+    }
+
+    /* ===== Banner 轮播区 ===== */
+    .banner-wrap {
+      margin: 12px 12px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    .banner-img {
+      width: 100%;
+      aspect-ratio: 2.35 / 1;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+    }
+    /* 真实图片替换时用这个 */
+    .banner-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .banner-placeholder {
+      text-align: center;
+    }
+    .banner-placeholder .tag {
+      background: rgba(255,107,53,.85);
+      color: #fff;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    .banner-placeholder h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .banner-placeholder p { font-size: 12px; opacity: .75; }
+    .banner-dots {
+      position: absolute;
+      bottom: 8px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 5px;
+    }
+    .banner-dots span {
+      width: 6px; height: 6px;
+      border-radius: 3px;
+      background: rgba(255,255,255,.5);
+    }
+    .banner-dots span.active {
+      width: 16px;
+      background: #fff;
+    }
+
+    /* ===== 快捷入口 ===== */
+    .quick-entry {
+      background: #fff;
+      margin: 12px 12px 0;
+      border-radius: 12px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 16px 0 12px;
+    }
+    .entry-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .entry-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+    .entry-icon.orange { background: #fff3ee; }
+    .entry-icon.blue   { background: #eef3ff; }
+    .entry-icon.green  { background: #eefff3; }
+    .entry-icon.purple { background: #f5eeff; }
+    .entry-item span:last-child { font-size: 12px; color: #444; }
+
+    /* ===== 区块标题 ===== */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 16px 10px;
+    }
+    .section-header h3 {
+      font-size: 16px;
+      font-weight: 700;
+      position: relative;
+    }
+    .section-header h3::before {
+      content: '';
+      position: absolute;
+      left: -8px; top: 50%;
+      transform: translateY(-50%);
+      width: 3px; height: 16px;
+      background: linear-gradient(180deg, #ff6b35, #f7931e);
+      border-radius: 2px;
+    }
+    .section-header a { font-size: 12px; color: #999; text-decoration: none; }
+
+    /* ===== 知识专栏卡片（横向滚动） ===== */
+    .course-scroll {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 10px;
+      padding: 0 12px 12px;
+    }
+    .course-scroll::-webkit-scrollbar { display: none; }
+    .course-card {
+      flex-shrink: 0;
+      width: 150px;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      cursor: pointer;
+    }
+    .course-cover {
+      width: 100%;
+      aspect-ratio: 150/100;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      position: relative;
+    }
+    .course-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .course-cover .cover-placeholder { font-size: 28px; }
+    .course-cover.c1 { background: linear-gradient(135deg, #667eea, #764ba2); }
+    .course-cover.c2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+    .course-cover.c3 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+    .course-cover.c4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+    .course-tag {
+      position: absolute;
+      top: 6px; left: 6px;
+      background: rgba(0,0,0,.45);
+      color: #fff;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      backdrop-filter: blur(4px);
+    }
+    .course-info { padding: 8px 10px 10px; }
+    .course-info h4 { font-size: 13px; font-weight: 600; line-height: 1.4; margin-bottom: 4px; }
+    .course-info .sub { font-size: 11px; color: #999; margin-bottom: 6px; }
+    .course-info .price-row { display: flex; align-items: center; justify-content: space-between; }
+    .price-now { color: #ff3b30; font-size: 15px; font-weight: 700; }
+    .price-now::before { content: '¥'; font-size: 11px; }
+    .price-old { color: #bbb; font-size: 11px; text-decoration: line-through; }
+    .btn-buy-sm {
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 11px;
+      padding: 4px 10px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    /* ===== 好物商品网格 ===== */
+    .goods-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 0 12px 12px;
+    }
+    .goods-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      cursor: pointer;
+    }
+    .goods-cover {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #f0f0f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      position: relative;
+    }
+    .goods-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .goods-label {
+      position: absolute;
+      top: 6px; left: 6px;
+      background: #ff3b30;
+      color: #fff;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .goods-info { padding: 8px 10px 10px; }
+    .goods-info h4 { font-size: 13px; font-weight: 600; line-height: 1.4; margin-bottom: 2px; }
+    .goods-info .desc { font-size: 11px; color: #999; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .goods-bottom { display: flex; align-items: center; justify-content: space-between; }
+    .goods-price { color: #ff3b30; font-size: 16px; font-weight: 700; }
+    .goods-price::before { content: '¥'; font-size: 11px; }
+    .btn-cart {
+      width: 28px; height: 28px;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      border: none;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* ===== 底部导航 ===== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      background: #fff;
+      border-top: 1px solid #e8e8e8;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 6px 0 calc(6px + env(safe-area-inset-bottom));
+      z-index: 100;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      font-size: 11px;
+      color: #999;
+      cursor: pointer;
+      padding: 4px 0;
+    }
+    .nav-item .icon { font-size: 22px; }
+    .nav-item.active { color: #ff6b35; }
+    .page-padding { padding-bottom: 80px; }
+
+    /* ===== 弹出购物车 ===== */
+    .cart-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 200;
+      align-items: flex-end;
+    }
+    .cart-overlay.show { display: flex; }
+    .cart-sheet {
+      background: #fff;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      border-radius: 16px 16px 0 0;
+      max-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      animation: slideUp .25s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to   { transform: translateY(0); }
+    }
+    .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .cart-header h3 { font-size: 16px; font-weight: 700; }
+    .cart-close { font-size: 22px; cursor: pointer; color: #999; }
+    .cart-body {
+      overflow-y: auto;
+      flex: 1;
+      padding: 12px 16px;
+    }
+    .cart-empty {
+      text-align: center;
+      color: #bbb;
+      font-size: 14px;
+      padding: 40px 0;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    .cart-item-cover {
+      width: 52px; height: 52px;
+      border-radius: 8px;
+      background: #f0f0f5;
+      font-size: 24px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .cart-item-cover img { width: 100%; height: 100%; object-fit: cover; }
+    .cart-item-info { flex: 1; }
+    .cart-item-info h4 { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+    .cart-item-info .price { color: #ff3b30; font-size: 14px; font-weight: 700; }
+    .qty-ctrl { display: flex; align-items: center; gap: 8px; }
+    .qty-btn {
+      width: 24px; height: 24px;
+      border: 1px solid #ddd;
+      background: #fff;
+      border-radius: 50%;
+      font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+    .qty-btn.minus { color: #ff3b30; border-color: #ff3b30; }
+    .qty-num { font-size: 14px; font-weight: 600; min-width: 20px; text-align: center; }
+    .cart-footer {
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      border-top: 1px solid #f0f0f0;
+    }
+    .cart-total { font-size: 13px; color: #666; margin-bottom: 10px; }
+    .cart-total strong { color: #ff3b30; font-size: 18px; }
+    .btn-checkout {
+      width: 100%;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ===== 弹出商品详情 ===== */
+    .detail-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 200;
+      align-items: flex-end;
+    }
+    .detail-overlay.show { display: flex; }
+    .detail-sheet {
+      background: #fff;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      border-radius: 16px 16px 0 0;
+      max-height: 88vh;
+      overflow-y: auto;
+      animation: slideUp .25s ease;
+      padding-bottom: calc(90px + env(safe-area-inset-bottom));
+    }
+    .detail-close-bar {
+      position: sticky; top: 0;
+      background: #fff;
+      display: flex;
+      justify-content: flex-end;
+      padding: 12px 16px 0;
+      z-index: 1;
+    }
+    .detail-close { font-size: 24px; cursor: pointer; color: #999; }
+    .detail-cover {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #f0f0f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+    }
+    .detail-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .detail-body { padding: 16px; }
+    .detail-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .detail-sub { font-size: 13px; color: #888; margin-bottom: 12px; line-height: 1.6; }
+    .detail-price-row { display: flex; align-items: flex-end; gap: 8px; margin-bottom: 16px; }
+    .detail-price-now { color: #ff3b30; font-size: 26px; font-weight: 700; }
+    .detail-price-now::before { content: '¥'; font-size: 14px; font-weight: 400; }
+    .detail-price-old { color: #bbb; font-size: 14px; text-decoration: line-through; margin-bottom: 3px; }
+    .detail-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+    .detail-tag {
+      background: #fff3ee;
+      color: #ff6b35;
+      border: 1px solid #ffe0d0;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .detail-section-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #333; }
+    .detail-features { list-style: none; margin-bottom: 16px; }
+    .detail-features li {
+      font-size: 13px;
+      color: #555;
+      padding: 5px 0;
+      border-bottom: 1px solid #f5f5f5;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .detail-features li::before { content: '✓'; color: #34c759; font-weight: 700; }
+    .detail-action {
+      position: fixed;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      background: #fff;
+      border-top: 1px solid #f0f0f0;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+    .btn-add-cart {
+      flex: 1;
+      border: 2px solid #ff6b35;
+      background: #fff;
+      color: #ff6b35;
+      border-radius: 24px;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-buy-now {
+      flex: 1;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ===== 下单弹窗 ===== */
+    .order-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 300;
+      align-items: center;
+      justify-content: center;
+    }
+    .order-overlay.show { display: flex; }
+    .order-modal {
+      background: #fff;
+      border-radius: 16px;
+      width: calc(100% - 40px);
+      max-width: 400px;
+      padding: 24px 20px;
+      animation: fadeIn .2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(.95); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .order-modal h3 { font-size: 17px; font-weight: 700; margin-bottom: 16px; text-align: center; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { font-size: 13px; color: #666; margin-bottom: 5px; display: block; }
+    .form-group input, .form-group select {
+      width: 100%;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: #ff6b35; }
+    .order-summary {
+      background: #fff8f5;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: #555;
+    }
+    .order-summary .total { font-size: 16px; font-weight: 700; color: #ff3b30; margin-top: 6px; }
+    .order-btns { display: flex; gap: 10px; }
+    .btn-cancel {
+      flex: 1;
+      border: 1px solid #ddd;
+      background: #fff;
+      color: #666;
+      border-radius: 24px;
+      padding: 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .btn-confirm {
+      flex: 2;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ===== 成功提示 ===== */
+    .toast {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,.78);
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      text-align: center;
+      z-index: 500;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .toast.show { opacity: 1; }
+
+    /* ===== 支付方式弹窗 ===== */
+    .pay-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 300;
+      align-items: flex-end;
+    }
+    .pay-overlay.show { display: flex; }
+    .pay-modal {
+      background: #fff;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      border-radius: 16px 16px 0 0;
+      max-height: 85vh;
+      overflow-y: auto;
+      animation: slideUp2 .25s ease;
+      padding-bottom: calc(20px + env(safe-area-inset-bottom));
+    }
+    @keyframes slideUp2 {
+      from { transform: translateY(100%); }
+      to   { transform: translateY(0); }
+    }
+    .pay-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid #f0f0f0;
+      position: sticky; top: 0; background: #fff; z-index: 1;
+      border-radius: 16px 16px 0 0;
+    }
+    .pay-header h3 { font-size: 16px; font-weight: 700; }
+    .pay-close { font-size: 22px; cursor: pointer; color: #999; }
+    .pay-item-list { padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; }
+    .pay-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      border: 2px solid #e8e8e8;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .pay-option.selected { border-color: #ff6b35; background: #fff8f5; }
+    .pay-option .pay-icon { font-size: 26px; }
+    .pay-option .pay-info { flex: 1; }
+    .pay-option .pay-info .name { font-size: 14px; font-weight: 600; }
+    .pay-option .pay-info .sub { font-size: 11px; color: #999; }
+    .pay-option .pay-radio {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .pay-option.selected .pay-radio {
+      border-color: #ff6b35;
+      background: #ff6b35;
+    }
+    .pay-option.selected .pay-radio::after {
+      content: '\2713';
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    /* QR码区 */
+    .qr-section {
+      padding: 14px 16px 0;
+      border-top: 1px solid #f0f0f0;
+      margin-top: 4px;
+    }
+    .qr-label { font-size: 13px; font-weight: 600; margin-bottom: 10px; color: #333; }
+    .qr-box {
+      width: 180px; height: 180px;
+      margin: 0 auto;
+      background: #f8f8f8;
+      border-radius: 12px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      border: 1px dashed #ccc;
+      overflow: hidden;
+    }
+    .qr-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .qr-placeholder { text-align: center; }
+    .qr-placeholder p { font-size: 12px; color: #888; margin-top: 4px; }
+    .qr-tip { font-size: 12px; color: #999; text-align: center; margin-top: 10px; }
+    /* BSC地址 */
+    .bsc-address-box { background: #fffbf0; border-radius: 10px; padding: 12px; margin-top: 10px; }
+    .bsc-address-label { font-size: 11px; color: #888; margin-bottom: 6px; }
+    .bsc-address-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    }
+    .bsc-address-row span { font-size: 12px; word-break: break-all; font-family: monospace; }
+    .bsc-copy-btn {
+      flex-shrink: 0;
+      background: #f7931a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 5px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .pay-footer-note { font-size: 12px; color: #f7931a; text-align: center; padding: 10px 16px 4px; }
+    .pay-confirm-btn {
+      width: calc(100% - 32px);
+      margin: 12px 16px 0;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    /* BSC确认区 */
+    .bsc-confirm-section {
+      padding: 12px 16px 0;
+      border-top: 1px solid #f0f0f0;
+      margin-top: 8px;
+    }
+    .bsc-confirm-label { font-size: 12px; color: #666; margin-bottom: 8px; }
+    .bsc-confirm-row { display: flex; gap: 8px; align-items: center; }
+    .bsc-confirm-row input {
+      flex: 1;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 13px;
+      outline: none;
+    }
+    .bsc-confirm-row input:focus { border-color: #f7931a; }
+    .bsc-tx-input {
+      width: 100%;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 13px;
+      outline: none;
+      margin-bottom: 8px;
+      font-family: monospace;
+    }
+    .bsc-tx-input:focus { border-color: #f7931a; }
+
+    /* =============================================
+       ============ 响应式：平板 768px+ ============
+       ============================================= */
+    @media (min-width: 768px) {
+      body { max-width: 100%; }
+
+      /* 桌面主容器，居中限宽 */
+      .desktop-wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* 顶部导航加宽 */
+      header {
+        padding: 16px 20px;
+      }
+      header .desktop-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      /* 桌面顶部横向导航 */
+      .top-nav-desktop {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        display: block;
+      }
+      .top-nav-desktop a {
+        color: #555;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color .2s;
+      }
+      .top-nav-desktop a:hover { color: #ff6b35; }
+
+      /* Banner */
+      .banner-wrap { margin: 20px 0 0; border-radius: 16px; }
+
+      /* 快捷入口加大 */
+      .quick-entry { margin: 16px 0 0; border-radius: 16px; padding: 20px 0 16px; }
+      .entry-icon { width: 56px; height: 56px; font-size: 26px; border-radius: 16px; }
+      .entry-item span:last-child { font-size: 13px; }
+
+      /* 区块 */
+      .section-header { padding: 20px 0 12px; }
+
+      /* 课程横滑卡宽一点 */
+      .course-card { width: 180px; }
+      .course-scroll { padding: 0 0 16px; }
+
+      /* 好物 3 列 */
+      .goods-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        padding: 0 0 16px;
+      }
+      .goods-info { padding: 10px 12px 12px; }
+      .goods-info h4 { font-size: 14px; }
+      .goods-price { font-size: 18px; }
+      .btn-cart { width: 32px; height: 32px; font-size: 18px; }
+
+      /* 底部导航隐藏（桌面用顶部导航） */
+      .bottom-nav { display: none !important; }
+      .page-padding { padding-bottom: 20px; }
+
+      /* 弹窗居中，加大尺寸 */
+      .cart-overlay { align-items: center; }
+      .cart-sheet { max-width: 520px; border-radius: 16px; max-height: 80vh; }
+      .detail-overlay { align-items: center; }
+      .detail-sheet { max-width: 580px; border-radius: 16px; max-height: 90vh; }
+      .pay-overlay { align-items: center; }
+      .pay-modal { max-width: 520px; border-radius: 16px; max-height: 85vh; }
+
+      /* 商品详情：横向布局 */
+      .detail-sheet {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+      .detail-sheet > .detail-close-bar {
+        grid-row: 1;
+      }
+      .detail-cover {
+        aspect-ratio: 16/9;
+        max-height: 280px;
+        border-radius: 0;
+      }
+      .detail-action {
+        position: static;
+        transform: none;
+        width: 100%;
+        border-radius: 0 0 16px 16px;
+      }
+
+      /* 微信/支付宝/BSC弹窗内部 */
+      .pay-item-list { flex-direction: row; flex-wrap: wrap; }
+      .pay-option { flex: 1 1 calc(50% - 4px); min-width: 140px; }
+      .qr-box { width: 220px; height: 220px; }
+    }
+
+    /* =============================================
+       ============ 响应式：桌面 1024px+ ===========
+       ============================================= */
+    @media (min-width: 1024px) {
+      header { padding: 18px 0; }
+
+      /* 好物 4 列 */
+      .goods-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+      /* 弹窗再大一点 */
+      .cart-sheet { max-width: 600px; }
+      .detail-sheet { max-width: 700px; }
+      .pay-modal { max-width: 600px; }
+      .qr-box { width: 260px; height: 260px; }
+
+      /* 课程横滑显示更多 */
+      .course-card { width: 200px; }
+      .course-info h4 { font-size: 14px; }
+      .price-now { font-size: 17px; }
+    }
+
+    /* =============================================
+       ============ 响应式：手机强制样式 ===========
+       ============================================= */
+    @media (max-width: 767px) {
+      /* 桌面导航默认隐藏 */
+      .top-nav-desktop { display: none; }
+      .desktop-wrap { padding: 0; }
+      /* Banner占满宽度 */
+      .banner-wrap { margin: 12px 12px 0; border-radius: 12px; }
+      .quick-entry { margin: 12px 12px 0; }
+      .section-header { padding: 16px 16px 10px; }
+      .goods-grid { padding: 0 12px 12px; }
+      .course-scroll { padding: 0 12px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== 顶部导航 ===== -->
+<header>
+  <div style="width:100%;">
+    <div style="display:flex;align-items:center;justify-content:space-between;max-width:960px;margin:0 auto;padding:0 20px;">
+      <!-- Logo -->
+      <div class="logo">⚡ MK 精选</div>
+      <!-- 桌面横向导航 -->
+      <div class="top-nav-desktop">
+        <a href="#">🏠 首页</a>
+        <a href="#knowledge">📚 知识付费</a>
+        <a href="#goods">🎁 好物精选</a>
+        <a href="#vip">👑 VIP会员</a>
+        <a href="#contact">📞 联系我</a>
+      </div>
+      <!-- 图标区 -->
+      <div class="nav-icons">
+        <span>🔍</span>
+        <span class="cart-badge" data-count="0" id="cartIcon" onclick="openCart()">🛒</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 分类 Tab ===== -->
+<div class="tabs">
+  <div class="tab-item active" onclick="switchTab(this,'all')">全部</div>
+  <div class="tab-item" onclick="switchTab(this,'knowledge')">知识付费</div>
+  <div class="tab-item" onclick="switchTab(this,'goods')">好物精选</div>
+  <div class="tab-item" onclick="switchTab(this,'tools')">交易工具</div>
+  <div class="tab-item" onclick="switchTab(this,'vip')">VIP 会员</div>
+</div>
+
+<div class="page-padding">
+<div class="desktop-wrap">
+
+  <!-- ===== Banner ===== -->
+  <div class="banner-wrap">
+    <!-- 替换时：删除 .banner-placeholder，改为 <img src="your-banner.jpg"> -->
+    <div class="banner-img">
+      <div class="banner-placeholder">
+        <div class="tag">限时特惠</div>
+        <h2>合约交易实战课</h2>
+        <p>职业交易员亲授 · 从入门到稳定盈利</p>
+      </div>
+    </div>
+    <div class="banner-dots">
+      <span class="active"></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ===== 快捷入口 ===== -->
+  <div class="quick-entry">
+    <div class="entry-item">
+      <div class="entry-icon orange">📚</div>
+      <span>课程</span>
+    </div>
+    <div class="entry-item">
+      <div class="entry-icon blue">🛠</div>
+      <span>工具</span>
+    </div>
+    <div class="entry-item">
+      <div class="entry-icon green">🎁</div>
+      <span>好物</span>
+    </div>
+    <div class="entry-item">
+      <div class="entry-icon purple">👑</div>
+      <span>会员</span>
+    </div>
+  </div>
+
+  <!-- ===== 知识专栏 ===== -->
+  <div class="section-header" style="margin-left:8px">
+    <h3 style="padding-left:12px">知识专栏</h3>
+    <a href="#">查看全部 ›</a>
+  </div>
+  <div class="course-scroll" id="courseList">
+    <!-- JS 渲染 -->
+  </div>
+
+    <!-- ===== 好物精选 ===== -->
+    <div class="section-header" style="margin-left:8px">
+      <h3 style="padding-left:12px">好物精选</h3>
+      <a href="#">查看全部 ›</a>
+    </div>
+    <div class="goods-grid" id="goodsList">
+      <!-- JS 渲染 -->
+    </div>
+
+</div><!-- end .desktop-wrap -->
+</div><!-- end .page-padding -->
+
+<!-- ===== 底部导航（手机专用） ===== -->
+<div class="bottom-nav">
+  <div class="nav-item active"><span class="icon">🏠</span>首页</div>
+  <div class="nav-item"><span class="icon">📚</span>课程</div>
+  <div class="nav-item"><span class="icon">🛍</span>好物</div>
+  <div class="nav-item"><span class="icon">👤</span>我的</div>
+</div>
+
+<!-- ===== 购物车弹层 ===== -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCartOnBg(event)">
+  <div class="cart-sheet">
+    <div class="cart-header">
+      <h3>购物车 <span id="cartCount" style="font-size:13px;font-weight:400;color:#999"></span></h3>
+      <span class="cart-close" onclick="closeCart()">✕</span>
+    </div>
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-footer">
+      <div class="cart-total">合计：<strong id="cartTotal">¥0</strong></div>
+      <button class="btn-checkout" onclick="checkout()">立即下单</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 商品/课程详情弹层 ===== -->
+<div class="detail-overlay" id="detailOverlay" onclick="closeDetailOnBg(event)">
+  <div class="detail-sheet" id="detailSheet">
+    <div class="detail-close-bar">
+      <span class="detail-close" onclick="closeDetail()">✕</span>
+    </div>
+    <div id="detailContent"></div>
+    <div class="detail-action" id="detailAction"></div>
+  </div>
+</div>
+
+<!-- ===== 支付方式弹窗 ===== -->
+<div class="pay-overlay" id="payOverlay" onclick="closePayOnBg(event)">
+  <div class="pay-modal">
+    <div class="pay-header">
+      <h3>选择支付方式</h3>
+      <span class="pay-close" onclick="closePay()">✕</span>
+    </div>
+
+    <!-- 待支付商品摘要 -->
+    <div id="paySummary" style="padding:10px 16px 0;font-size:13px;color:#666;"></div>
+
+    <!-- 三种支付方式 -->
+    <div class="pay-item-list">
+      <!-- 微信 -->
+      <div class="pay-option" id="opt-wechat" onclick="selectPay('wechat')">
+        <span class="pay-icon">💚</span>
+        <div class="pay-info">
+          <div class="name">微信支付</div>
+          <div class="sub">扫码转账，安全便捷</div>
+        </div>
+        <div class="pay-radio"></div>
+      </div>
+      <!-- 支付宝 -->
+      <div class="pay-option" id="opt-alipay" onclick="selectPay('alipay')">
+        <span class="pay-icon">🔵</span>
+        <div class="pay-info">
+          <div class="name">支付宝</div>
+          <div class="sub">扫码转账，安全便捷</div>
+        </div>
+        <div class="pay-radio"></div>
+      </div>
+      <!-- BSC链USDT -->
+      <div class="pay-option" id="opt-bsc" onclick="selectPay('bsc')">
+        <span class="pay-icon">🟡</span>
+        <div class="pay-info">
+          <div class="name">BSC 链 USDT (BEP20)</div>
+          <div class="sub">链上转账，无需手续费由你承担</div>
+        </div>
+        <div class="pay-radio"></div>
+      </div>
+    </div>
+
+    <!-- 微信收款码 -->
+    <div class="qr-section" id="qrWechat" style="display:none">
+      <div class="qr-label">💚 微信扫码支付 &nbsp;<span id="wechatAmount" style="color:#ff3b30;font-weight:700"></span></div>
+      <div class="qr-box">
+        <!-- 【待替换】微信收款码图片，建议 180×180px -->
+        <img id="wechatQR" src="" alt="微信收款码" style="display:none" />
+        <div class="qr-placeholder" id="wechatPlaceholder">
+          <span style="font-size:40px">💚</span>
+          <p>微信收款码</p>
+          <p style="font-size:10px;color:#bbb">待上传图片</p>
+        </div>
+      </div>
+      <div class="qr-tip">截屏保存 → 打开微信扫一扫 → 转账</div>
+    </div>
+
+    <!-- 支付宝收款码 -->
+    <div class="qr-section" id="qrAlipay" style="display:none">
+      <div class="qr-label">🔵 支付宝扫码支付 &nbsp;<span id="alipayAmount" style="color:#ff3b30;font-weight:700"></span></div>
+      <div class="qr-box">
+        <!-- 【待替换】支付宝收款码图片，建议 180×180px -->
+        <img id="alipayQR" src="" alt="支付宝收款码" style="display:none" />
+        <div class="qr-placeholder" id="alipayPlaceholder">
+          <span style="font-size:40px">🔵</span>
+          <p>支付宝收款码</p>
+          <p style="font-size:10px;color:#bbb">待上传图片</p>
+        </div>
+      </div>
+      <div class="qr-tip">截屏保存 → 打开支付宝扫一扫 → 转账</div>
+    </div>
+
+    <!-- BSC链USDT -->
+    <div class="qr-section" id="qrBSC" style="display:none">
+      <div class="qr-label">🟡 BSC 链 USDT (BEP20) &nbsp;<span id="bscAmount" style="color:#ff3b30;font-weight:700"></span></div>
+      <div class="qr-box">
+        <!-- 【待替换】BSC钱包二维码，建议 180×180px -->
+        <img id="bscQR" src="" alt="BSC钱包二维码" style="display:none" />
+        <div class="qr-placeholder" id="bscPlaceholder">
+          <span style="font-size:40px">🟡</span>
+          <p>BSC 钱包二维码</p>
+          <p style="font-size:10px;color:#bbb">待上传图片</p>
+        </div>
+      </div>
+      <!-- 收款地址 -->
+      <div class="bsc-address-box">
+        <div class="bsc-address-label">USDT 收款地址（BEP20）</div>
+        <div class="bsc-address-row">
+          <!-- 【待替换】填入你的BSC USDT地址 -->
+          <span id="bscAddressText" style="color:#bbb;font-size:12px;">待提供 BSC 地址</span>
+          <button class="bsc-copy-btn" id="bscCopyBtn" onclick="copyBSC()">复制</button>
+        </div>
+      </div>
+      <!-- 填写转账TX哈希 -->
+      <div class="bsc-confirm-section">
+        <div class="bsc-confirm-label">链上转账后，填入交易哈希（TX Hash）确认：</div>
+        <input type="text" class="bsc-tx-input" id="bscTxHash" placeholder="输入 TX Hash，例如 0x..." />
+      </div>
+    </div>
+
+    <div class="pay-footer-note" id="payFooterNote">⚠️ 转账后请截图保存，联系 TG 或邮箱确认发货</div>
+    <button class="pay-confirm-btn" onclick="confirmPay()">我已转账，通知发货</button>
+  </div>
+</div>
+
+<!-- ===== Toast ===== -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== 商品数据 =====
+const courses = [
+  {
+    id: 'c1',
+    type: 'course',
+    cover: 'c1',
+    emoji: '📈',
+    tag: '热销',
+    title: '合约交易实战系统课',
+    sub: '职业交易员 MK 亲授',
+    price: 299,
+    oldPrice: 599,
+    tags: ['视频课程', '永久观看', '社群答疑'],
+    features: ['行情结构分析框架', '资金费率套利策略', '止损止盈纪律体系', '真实复盘案例讲解', '专属学员交流群'],
+    desc: '15年职业交易经验浓缩精华，从0到1建立完整的合约交易系统。包含行情分析、仓位管理、心理控制三大模块，永久更新。'
+  },
+  {
+    id: 'c2',
+    type: 'course',
+    cover: 'c2',
+    emoji: '🔮',
+    tag: '新品',
+    title: 'Polymarket 预测市场套利',
+    sub: '加密+预测市场双收益',
+    price: 199,
+    oldPrice: 399,
+    tags: ['文档+视频', '工具模板', '实操案例'],
+    features: ['Polymarket 平台深度解析', '套利策略完整框架', '自动化扫描工具使用', 'BTC/ETH 联动预测方法', '10U~200U 资金规划'],
+    desc: '结合BTC/ETH合约判断优势，在Polymarket寻找低风险套利机会。含完整工具链和实操案例，适合已有加密经验的交易者。'
+  },
+  {
+    id: 'c3',
+    type: 'course',
+    cover: 'c3',
+    emoji: '📱',
+    tag: '爆款',
+    title: '交易员自媒体变现课',
+    sub: '内容×流量×产品闭环',
+    price: 159,
+    oldPrice: 328,
+    tags: ['文档课程', '模板素材', '持续更新'],
+    features: ['交易内容选题方法论', 'Twitter/TG 增粉策略', '知识付费产品设计', '私域变现完整路径', '真实收益数据复盘'],
+    desc: '专为加密交易员设计的自媒体变现系统，从内容生产到粉丝增长到产品变现，三个月内建立持续收益的内容矩阵。'
+  },
+  {
+    id: 'c4',
+    type: 'course',
+    cover: 'c4',
+    emoji: '🧠',
+    tag: '精品',
+    title: '生财12思维实战手册',
+    sub: '直接可落地的赚钱思维',
+    price: 99,
+    oldPrice: 199,
+    tags: ['电子书', '配套模板', '案例库'],
+    features: ['MVP验证方法论', '第一桶金突破思路', '流量获取核心策略', '产品迭代飞轮模型', 'MK适配执行方案'],
+    desc: '生财有术12个核心思维框架，结合交易员+自媒体场景深度改编，每个思维都有具体执行方案，拿来即用。'
+  }
+];
+
+const goods = [
+  {
+    id: 'g1',
+    type: 'goods',
+    emoji: '⌨️',
+    label: '热销',
+    title: '机械键盘推荐款',
+    desc: '程序员/交易员必备神器',
+    price: 459,
+    oldPrice: 699,
+    tags: ['实物商品', '顺丰包邮', '7天退换'],
+    features: ['Cherry红轴超顺手感', 'RGB全键无冲', '铝合金外壳耐用', '87键紧凑布局', '附赠腕托+键帽'],
+    detail: '精选百元级最具性价比机械键盘，长时间盯盘/写作不累手。实测20小时无疲劳，已是MK工作台标配之一。'
+  },
+  {
+    id: 'g2',
+    type: 'goods',
+    emoji: '💡',
+    label: '新品',
+    title: '护眼台灯旗舰款',
+    desc: '盯盘必备，防蓝光',
+    price: 289,
+    oldPrice: 498,
+    tags: ['实物商品', '全国包邮', '30天质保'],
+    features: ['无频闪认证光源', '色温/亮度无极调节', 'USB-C快充口', '触控操作面板', '学生/交易员双场景'],
+    detail: '每天盯盘6小时以上必备装备。经过反复测试筛选，这款兼顾色准、护眼和颜值，非常适合深夜交易环境。'
+  },
+  {
+    id: 'g3',
+    type: 'goods',
+    emoji: '☕',
+    label: '爆款',
+    title: '冷萃咖啡精品装',
+    desc: '保持专注，不翻车',
+    price: 128,
+    oldPrice: 198,
+    tags: ['食品', '冷链发货', '6颗装'],
+    features: ['精选埃塞/哥伦比亚豆', '氮气冷萃工艺', '低糖款可选', '开盖即饮', '交易长坐续命神器'],
+    detail: '交易员的续命水。精品冷萃，不过分苦涩，维持4~6小时专注状态。MK盘前1小时必备，已复购多次。'
+  },
+  {
+    id: 'g4',
+    type: 'goods',
+    emoji: '📓',
+    label: '精品',
+    title: '交易复盘专用本',
+    desc: '手写复盘，减少情绪化',
+    price: 58,
+    oldPrice: 98,
+    tags: ['实物文具', '全国包邮', '买二送一'],
+    features: ['专属复盘表格设计', '每日情绪记录模块', '月度绩效汇总页', '硬壳防水封面', 'A5便携尺寸'],
+    detail: '专为合约交易员设计的复盘笔记本，内置MK定制的复盘模板：入场逻辑→执行情况→情绪打分→改进要点，帮你建立复盘习惯。'
+  }
+];
+
+// ===== 购物车状态 =====
+let cart = [];
+
+// ===== 渲染课程 =====
+function renderCourses() {
+  const el = document.getElementById('courseList');
+  el.innerHTML = courses.map(c => `
+    <div class="course-card" onclick="openDetail('${c.id}')">
+      <div class="course-cover ${c.cover}">
+        <!-- 图片替换：<img src="covers/${c.id}.jpg"> -->
+        <span class="cover-placeholder">${c.emoji}</span>
+        <span class="course-tag">${c.tag}</span>
+      </div>
+      <div class="course-info">
+        <h4>${c.title}</h4>
+        <div class="sub">${c.sub}</div>
+        <div class="price-row">
+          <span class="price-now">${c.price}</span>
+          <button class="btn-buy-sm" onclick="event.stopPropagation();addToCart('${c.id}')">购买</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===== 渲染好物 =====
+function renderGoods() {
+  const el = document.getElementById('goodsList');
+  el.innerHTML = goods.map(g => `
+    <div class="goods-card" onclick="openDetail('${g.id}')">
+      <div class="goods-cover">
+        <!-- 图片替换：<img src="products/${g.id}.jpg"> -->
+        <span>${g.emoji}</span>
+        <span class="goods-label">${g.label}</span>
+      </div>
+      <div class="goods-info">
+        <h4>${g.title}</h4>
+        <div class="desc">${g.desc}</div>
+        <div class="goods-bottom">
+          <span class="goods-price">${g.price}</span>
+          <button class="btn-cart" onclick="event.stopPropagation();addToCart('${g.id}')">+</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===== 查找商品 =====
+function findItem(id) {
+  return [...courses, ...goods].find(x => x.id === id);
+}
+
+// ===== 加入购物车 =====
+function addToCart(id) {
+  const item = findItem(id);
+  if (!item) return;
+  const existing = cart.find(x => x.id === id);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ ...item, qty: 1 });
+  }
+  updateCartBadge();
+  showToast(`已加入购物车 ✓`);
+}
+
+// ===== 更新角标 =====
+function updateCartBadge() {
+  const total = cart.reduce((s, x) => s + x.qty, 0);
+  const icon = document.getElementById('cartIcon');
+  icon.setAttribute('data-count', total > 0 ? total : '');
+  if (total === 0) icon.removeAttribute('data-count');
+}
+
+// ===== 打开/关闭购物车 =====
+function openCart() {
+  renderCart();
+  document.getElementById('cartOverlay').classList.add('show');
+}
+function closeCart() {
+  document.getElementById('cartOverlay').classList.remove('show');
+}
+function closeCartOnBg(e) {
+  if (e.target === document.getElementById('cartOverlay')) closeCart();
+}
+
+function renderCart() {
+  const body = document.getElementById('cartBody');
+  const count = document.getElementById('cartCount');
+  const total = document.getElementById('cartTotal');
+  if (cart.length === 0) {
+    body.innerHTML = '<div class="cart-empty">🛒 购物车空空如也</div>';
+    count.textContent = '';
+    total.textContent = '¥0';
+    return;
+  }
+  count.textContent = `(${cart.reduce((s,x)=>s+x.qty,0)} 件)`;
+  body.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-cover">${item.emoji}</div>
+      <div class="cart-item-info">
+        <h4>${item.title}</h4>
+        <div class="price">¥${item.price}</div>
+      </div>
+      <div class="qty-ctrl">
+        <button class="qty-btn minus" onclick="changeQty('${item.id}',-1)">−</button>
+        <span class="qty-num">${item.qty}</span>
+        <button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button>
+      </div>
+    </div>
+  `).join('');
+  const sum = cart.reduce((s,x) => s + x.price * x.qty, 0);
+  total.textContent = '¥' + sum.toFixed(0);
+}
+
+function changeQty(id, delta) {
+  const idx = cart.findIndex(x => x.id === id);
+  if (idx === -1) return;
+  cart[idx].qty += delta;
+  if (cart[idx].qty <= 0) cart.splice(idx, 1);
+  updateCartBadge();
+  renderCart();
+}
+
+// ===== 打开商品详情 =====
+function openDetail(id) {
+  const item = findItem(id);
+  if (!item) return;
+  const content = document.getElementById('detailContent');
+  content.innerHTML = `
+    <div class="detail-cover">
+      <!-- 图片替换：<img src="${item.type === 'course' ? 'covers' : 'products'}/${item.id}.jpg"> -->
+      <span>${item.emoji}</span>
+    </div>
+    <div class="detail-body">
+      <h2 class="detail-title">${item.title}</h2>
+      <p class="detail-sub">${item.detail || item.desc}</p>
+      <div class="detail-price-row">
+        <span class="detail-price-now">${item.price}</span>
+        <span class="detail-price-old">¥${item.oldPrice}</span>
+      </div>
+      <div class="detail-tags">
+        ${(item.tags||[]).map(t=>`<span class="detail-tag">${t}</span>`).join('')}
+      </div>
+      <div class="detail-section-title">包含内容</div>
+      <ul class="detail-features">
+        ${(item.features||[]).map(f=>`<li>${f}</li>`).join('')}
+      </ul>
+    </div>
+  `;
+  document.getElementById('detailAction').innerHTML = `
+    <button class="btn-add-cart" onclick="addToCart('${id}');showToast('已加入购物车 ✓')">加入购物车</button>
+    <button class="btn-buy-now" onclick="closeDetail();openPay('${id}')">立即购买</button>
+  `;
+  document.getElementById('detailOverlay').classList.add('show');
+}
+function closeDetail() {
+  document.getElementById('detailOverlay').classList.remove('show');
+}
+function closeDetailOnBg(e) {
+  if (e.target === document.getElementById('detailOverlay')) closeDetail();
+}
+
+// ===== 支付流程状态 =====
+let currentPayId = null;     // 当前购买商品的ID（null=购物车）
+let currentPayAmount = 0;    // 当前支付金额
+let currentPayName = '';     // 商品名称
+let selectedPayMethod = null; // 当前选中的支付方式
+
+// ===== 打开支付弹窗 =====
+function openPay(id) {
+  currentPayId = id;
+  selectedPayMethod = null;
+
+  // 计算金额和商品名称
+  if (id) {
+    const item = findItem(id);
+    currentPayAmount = item ? item.price : 0;
+    currentPayName = item ? item.title : '';
+  } else {
+    currentPayAmount = cart.reduce((s,x)=>s+x.price*x.qty,0);
+    currentPayName = cart.map(x=>x.title+'×'+x.qty).join('、');
+  }
+
+  // 渲染摘要
+  document.getElementById('paySummary').innerHTML =
+    `<div style="margin-bottom:4px;font-weight:600;color:#333;">${currentPayName}</div>
+     <div style="color:#ff3b30;font-size:16px;font-weight:700;">¥${currentPayAmount.toFixed(0)}</div>`;
+
+  // 更新金额标签
+  ['wechat','alipay','bsc'].forEach(m => {
+    const el = document.getElementById(m+'Amount');
+    if (el) el.textContent = '¥'+currentPayAmount.toFixed(0);
+  });
+
+  // 隐藏所有QR区，重置选项
+  ['wechat','alipay','bsc'].forEach(m => {
+    const opt = document.getElementById('opt-'+m);
+    const qr  = document.getElementById('qr'+capitalize(m));
+    if (opt) opt.classList.remove('selected');
+    if (qr)  qr.style.display = 'none';
+  });
+
+  document.getElementById('bscTxHash').value = '';
+  document.getElementById('payOverlay').classList.add('show');
+}
+
+// ===== 选择支付方式 =====
+function selectPay(method) {
+  selectedPayMethod = method;
+  ['wechat','alipay','bsc'].forEach(m => {
+    const opt = document.getElementById('opt-'+m);
+    const qr  = document.getElementById('qr'+capitalize(m));
+    if (opt) opt.classList.remove('selected');
+    if (qr)  qr.style.display = 'none';
+  });
+  document.getElementById('opt-'+method).classList.add('selected');
+  document.getElementById('qr'+capitalize(method)).style.display = 'block';
+}
+function capitalize(s) { return s.charAt(0).toUpperCase()+s.slice(1); }
+
+// ===== 关闭支付弹窗 =====
+function closePay() {
+  document.getElementById('payOverlay').classList.remove('show');
+}
+function closePayOnBg(e) {
+  if (e.target === document.getElementById('payOverlay')) closePay();
+}
+
+// ===== 确认支付 =====
+function confirmPay() {
+  if (!selectedPayMethod) {
+    showToast('请先选择支付方式');
+    return;
+  }
+  if (selectedPayMethod === 'bsc') {
+    const txHash = document.getElementById('bscTxHash').value.trim();
+    if (!txHash || !txHash.startsWith('0x')) {
+      showToast('请填写正确的 TX Hash（以0x开头）');
+      return;
+    }
+  }
+  const methodName = { wechat:'微信', alipay:'支付宝', bsc:'BSC链USDT' }[selectedPayMethod];
+  closePay();
+  showToast(`已记录${methodName}转账信息，请等待发货确认 ✓`);
+  cart = [];
+  updateCartBadge();
+}
+
+// ===== 复制BSC地址 =====
+function copyBSC() {
+  const addr = document.getElementById('bscAddressText').textContent;
+  if (addr && !addr.includes('待提供')) {
+    navigator.clipboard.writeText(addr).then(() => {
+      showToast('BSC地址已复制 ✓');
+    }).catch(() => {
+      showToast('复制失败，请手动复制');
+    });
+  } else {
+    showToast('请先填入BSC收款地址');
+  }
+}
+
+// ===== 结算（购物车→支付弹窗）=====
+function checkout() {
+  if (cart.length === 0) { showToast('购物车是空的'); return; }
+  closeCart();
+  openPay(null);
+}
+
+// ===== Tab 切换 =====
+function switchTab(el, tab) {
+  document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ===== Toast =====
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+// ===== 初始化 =====
+renderCourses();
+renderGoods();
+</script>
+
+</body>
+</html>
