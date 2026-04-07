@@ -1078,7 +1078,7 @@
         <span class="pay-icon">🟡</span>
         <div class="pay-info">
           <div class="name">BSC 链 USDT (BEP20)</div>
-          <div class="sub">链上转账，无需手续费由你承担</div>
+          <div class="sub" style="font-family:monospace;font-size:10px;color:#999;margin-top:2px">0xc791...4246</div>
         </div>
         <div class="pay-radio"></div>
       </div>
@@ -1119,18 +1119,18 @@
       <div class="qr-label">🟡 BSC 链 USDT (BEP20) &nbsp;<span id="bscAmount" style="color:#ff3b30;font-weight:700"></span></div>
       <div class="qr-box">
         <!-- 【待替换】BSC钱包二维码，建议 180×180px -->
-        <img id="bscQR" src="" alt="BSC钱包二维码" style="display:none" />
-        <div class="qr-placeholder" id="bscPlaceholder">
+        <img id="bscQR" src="images/bsc-qr.png" alt="BSC钱包二维码" />
+        <div class="qr-placeholder" id="bscPlaceholder" style="display:none">
           <span style="font-size:40px">🟡</span>
           <p>BSC 钱包二维码</p>
           <p style="font-size:10px;color:#bbb">待上传图片</p>
         </div>
       </div>
+      <div class="qr-tip">截屏保存 → 打开钱包扫码 → 转账 USDT</div>
       <!-- 收款地址 -->
       <div class="bsc-address-box">
         <div class="bsc-address-label">USDT 收款地址（BEP20）</div>
         <div class="bsc-address-row">
-          <!-- 【待替换】填入你的BSC USDT地址 -->
           <span id="bscAddressText">0xc7914A8CFc4E24E8388A3038Ae8840647CA74246</span>
           <button class="bsc-copy-btn" id="bscCopyBtn" onclick="copyBSC()">复制</button>
         </div>
