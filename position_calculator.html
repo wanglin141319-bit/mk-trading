@@ -50,20 +50,6 @@
   .input-row .input-group{flex:1;min-width:0}
 
   /* 快速输入 */
-  .quick-input{margin-bottom:20px}
-  .quick-input textarea{
-    width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;
-    padding:12px;color:var(--text);font-size:14px;resize:vertical;min-height:48px;
-    outline:none;font-family:inherit;transition:border-color .2s;
-  }
-  .quick-input textarea:focus{border-color:var(--accent)}
-  .quick-input textarea::placeholder{color:var(--text3)}
-  .quick-examples{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-  .quick-examples button{
-    background:var(--card2);border:1px solid var(--border);border-radius:6px;
-    padding:4px 10px;color:var(--text2);font-size:12px;cursor:pointer;transition:all .2s;
-  }
-  .quick-examples button:hover{border-color:var(--accent);color:var(--accent)}
 
   /* 按钮 */
   .btn-calc{
@@ -184,24 +170,9 @@
     <p>输入交易参数，自动计算仓位大小、盈亏比、风险检查</p>
   </div>
 
-  <!-- 快速输入 -->
+  <!-- 参数输入 -->
   <div class="card">
-    <div class="card-title"><span class="emoji">💬</span> 快速输入</div>
-    <div class="quick-input">
-      <textarea id="quickInput" placeholder="例如：btc 开27050 损26000 盈35000 本金10000 杠杆10 deepcoin"></textarea>
-      <div class="quick-examples">
-        <button onclick="fillExample(0)">BTC Deepcoin</button>
-        <button onclick="fillExample(1)">ETH 多单</button>
-        <button onclick="fillExample(2)">SOL 做空</button>
-        <button onclick="fillExample(3)">BTC 现货</button>
-      </div>
-    </div>
-    <button class="btn-calc" onclick="calculate()">⚡ 立即计算</button>
-  </div>
-
-  <!-- 详细输入 -->
-  <div class="card">
-    <div class="card-title"><span class="emoji">⚙️</span> 详细参数 <span style="font-size:11px;color:var(--text3);font-weight:400;margin-left:auto">也可通过上方快速输入</span></div>
+    <div class="card-title"><span class="emoji">⚙️</span> 交易参数</div>
     <div class="input-grid">
       <div class="input-group">
         <label>交易所</label>
@@ -369,118 +340,21 @@ const MK_LINKS={
   bitget:{url:'https://partner.dhxrcw.cn/bg/TL8U9Q',code:'8r2e',discount:'50%'},
   bybit:{url:'https://partner.bybit.com/b/136368',code:'136368',discount:'40%'}
 };
-const EXAMPLES=[
-  {text:'BTC 开27050 损26000 盈35000 本金10000 杠杆10 deepcoin',fields:{exchange:'deepcoin',symbol:'BTC',balance:10000,entry:27050,sl:26000,tp:35000,lev:10,risk:1}},
-  {text:'ETH 入场1800 损1720 盈2200 本金5000 okx 5x',fields:{exchange:'okx',symbol:'ETH',balance:5000,entry:1800,sl:1720,tp:2200,lev:5,risk:1}},
-  {text:'SOL 做空 开150 损158 盈120 本金3000 bybit 5x',fields:{exchange:'bybit',symbol:'SOL',balance:3000,entry:150,sl:158,tp:120,lev:5,risk:1.5}},
-  {text:'BTC 现货 开90000 损85000 盈120000 本金5000',fields:{exchange:'binance',symbol:'BTC',balance:5000,entry:90000,sl:85000,tp:120000,lev:1,risk:2}}
-];
-
-// ═══════════════════════════════════
-// 快速输入解析
-// ═══════════════════════════════════
-function fillExample(i){
-  document.getElementById('quickInput').value=EXAMPLES[i].text;
-}
-function parseQuickInput(text){
-  const t=text.toLowerCase().trim();
-  let ex='binance',sym='BTC',bal=10000,entry=null,sl=null,tp=null,lev=1,risk=1;
-  // 交易所
-  if(/deepcoin|深度/.test(t))ex='deepcoin';
-  else if(/binance|币安/.test(t))ex='binance';
-  else if(/okx|欧易/.test(t))ex='okx';
-  else if(/bitget/.test(t))ex='bitget';
-  else if(/bybit/.test(t))ex='bybit';
-  else if(/hyperliquid|hl/.test(t))ex='hyperliquid';
-  // 币种
-  const coinMatch=t.match(/\b(btc|eth|sol|bnb|doge|pepe|ada|avax|matic|link|dot|arb|op|sui|apt|xrp|ada)\b/);
-  if(coinMatch)sym=coinMatch[1].toUpperCase();
-  // 数字解析
-  const nums=[...t.matchAll(/[\d]+\.?\d*/g)].map(m=>parseFloat(m[0]));
-  // 本金
-  const balMatch=t.match(/本金\s*([\d.]+)/);
-  if(balMatch)bal=parseFloat(balMatch[1]);
-  else if(/balance/.test(t)){const i=t.indexOf('balance');if(i>=0&&nums.length){const idx=nums.findIndex((n,j)=>t.indexOf(n.toString())>i);if(idx>=0)bal=nums[idx];}}
-  // 杠杆
-  if(/现货/.test(t))lev=1;
-  else{const levMatch=t.match(/(\d+)\s*[x×倍杠杆]?/);if(/x|倍|杠杆/.test(t)&&levMatch)lev=parseInt(levMatch[1]);}
-  // 风险%
-  const riskMatch=t.match(/risk\s*([\d.]+)\s*%/);
-  if(riskMatch)risk=parseFloat(riskMatch[1]);
-  // 价格解析 - 用关键词定位
-  function findPrice(keyword){
-    const patterns=[/开[仓价]?\s*([\d.]+)/,/入场\s*([\d.]+)/,/entry\s*([\d.]+)/,/开\s*([\d.]+)/];
-    for(const p of patterns){const m=t.match(p);if(m)return parseFloat(m[1]);}
-    return null;
-  }
-  function findSL(){
-    const patterns=[/[损止损sl]\s*([\d.]+)/,/stop\s*([\d.]+)/];
-    for(const p of patterns){const m=t.match(p);if(m)return parseFloat(m[1]);}
-    return null;
-  }
-  function findTP(){
-    const patterns=[/[盈止盈tp]\s*([\d.]+)/,/target\s*([\d.]+)/,/take\s*([\d.]+)/];
-    for(const p of patterns){const m=t.match(p);if(m)return parseFloat(m[1]);}
-    return null;
-  }
-  entry=findPrice(t);sl=findSL();tp=findTP();
-  // 如果没匹配到，尝试用顺序
-  if(entry===null||sl===null||tp===null){
-    // 尝试另一种模式
-    const longMatch=t.match(/(long|做多|多单)/);
-    const shortMatch=t.match(/(short|做空|空单)/);
-    // 收集所有数字（排除已识别的bal/lev/risk）
-    const usedNums=new Set();
-    if(bal)usedNums.add(bal);
-    if(lev>1)usedNums.add(lev);
-    const remaining=nums.filter(n=>!usedNums.has(n)||nums.filter(x=>x===n).length>usedNums.get?false:true);
-    // 简化：直接从文本中用更宽松的匹配
-    if(entry===null){
-      const m=t.match(/(?:开|入场|entry|at|@)\s*([\d.]+)/);
-      if(m)entry=parseFloat(m[1]);
-    }
-    if(sl===null){
-      const m=t.match(/(?:损|止损|sl|stop)\s*([\d.]+)/);
-      if(m)sl=parseFloat(m[1]);
-    }
-    if(tp===null){
-      const m=t.match(/(?:盈|止盈|tp|target|take)\s*([\d.]+)/);
-      if(m)tp=parseFloat(m[1]);
-    }
-  }
-  return{exchange:ex,symbol:sym,balance:bal,entry,sl,tp,leverage:lev,risk};
-}
-
 // ═══════════════════════════════════
 // 核心计算
 // ═══════════════════════════════════
 function calculate(){
   // 获取参数
-  const quickText=document.getElementById('quickInput').value.trim();
-  let params;
-  if(quickText){
-    params=parseQuickInput(quickText);
-    // 同步到详细输入
-    document.getElementById('exchange').value=params.exchange;
-    document.getElementById('symbol').value=params.symbol;
-    document.getElementById('balance').value=params.balance;
-    if(params.entry)document.getElementById('entryPrice').value=params.entry;
-    if(params.sl)document.getElementById('slPrice').value=params.sl;
-    if(params.tp)document.getElementById('tpPrice').value=params.tp;
-    document.getElementById('leverage').value=params.leverage;
-    document.getElementById('riskPct').value=params.risk;
-  }else{
-    params={
-      exchange:document.getElementById('exchange').value,
-      symbol:document.getElementById('symbol').value.toUpperCase(),
-      balance:parseFloat(document.getElementById('balance').value),
-      entry:parseFloat(document.getElementById('entryPrice').value),
-      sl:parseFloat(document.getElementById('slPrice').value),
-      tp:parseFloat(document.getElementById('tpPrice').value),
-      leverage:parseFloat(document.getElementById('leverage').value)||1,
-      risk:parseFloat(document.getElementById('riskPct').value)||1
-    };
-  }
+  const params={
+    exchange:document.getElementById('exchange').value,
+    symbol:document.getElementById('symbol').value.toUpperCase(),
+    balance:parseFloat(document.getElementById('balance').value),
+    entry:parseFloat(document.getElementById('entryPrice').value),
+    sl:parseFloat(document.getElementById('slPrice').value),
+    tp:parseFloat(document.getElementById('tpPrice').value),
+    leverage:parseFloat(document.getElementById('leverage').value)||1,
+    risk:parseFloat(document.getElementById('riskPct').value)||1
+  };
   
   // 验证
   if(!params.entry||!params.sl||!params.tp||!params.balance){
@@ -639,11 +513,6 @@ function showToast(msg){
   const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),2500);
 }
-
-// 回车触发计算
-document.getElementById('quickInput').addEventListener('keydown',e=>{
-  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();calculate();}
-});
 </script>
 </body>
 </html>
