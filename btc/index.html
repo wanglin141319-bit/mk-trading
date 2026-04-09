@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>比特币行情分析机 | MK Trading</title>
-    <meta name="description" content="MK每日BTC/ETH/SOL合约市场数据分析，包含资金费率、OI、爆仓数据、恐惧贪婪指数及操作策略。">
+    <title>Bitcoin Market Analysis | MK Trading</title>
+    <meta name="description" content="MK daily BTC/ETH/SOL contract market data analysis — funding rate, OI, liquidations, Fear & Greed index, and actionable trading strategies.">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap');
 
@@ -161,7 +161,7 @@
             color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
         }
         .section-title {
-            font-family: 'Noto Sans SC', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 32px; font-weight: 700; margin-bottom: 8px;
         }
         .section-desc { color: var(--text-mid); font-size: 15px; max-width: 600px; margin-bottom: 36px; }
@@ -210,14 +210,33 @@
         /* ===== Footer ===== */
         footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 40px 0; text-align: center; }
         footer p { font-size: 13px; color: var(--text-dim); }
-        footer a { color: var(--accent); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
 
         .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), rgba(247,147,26,0.08), var(--border), transparent); }
+
+        /* ===== Lang Toggle ===== */
+        .lang-toggle-wrap {
+            margin-top: 20px;
+            display: flex; justify-content: center; gap: 8px; align-items: center;
+        }
+        .lang-btn {
+            padding: 8px 20px; font-size: 13px; font-weight: 600;
+            border-radius: 8px; cursor: pointer; border: 1px solid var(--border);
+            background: transparent; color: var(--text-dim);
+            transition: all 0.3s; font-family: 'Inter', sans-serif;
+        }
+        .lang-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .lang-btn.active {
+            background: rgba(247,147,26,0.12);
+            border-color: var(--accent); color: var(--accent);
+        }
 
         /* ===== Fade ===== */
         .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===== ZH Content (hidden by default when EN active) ===== */
+        body.zh-mode .en-content { display: none; }
+        body:not(.zh-mode) .zh-content { display: none; }
 
         @media (max-width: 1024px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -243,9 +262,8 @@
 <nav>
     <div class="nav-logo">MK</div>
     <ul class="nav-links">
-        <li><a href="../" class="nav-home">&#8592; 返回主站</a></li>
-        <li><a href="#reports">每日报告</a></li>
-        <li><a href="#features">数据维度</a></li>
+        <li><a href="#reports">Daily Reports</a></li>
+        <li><a href="#features">Data Dimensions</a></li>
     </ul>
 </nav>
 
@@ -254,8 +272,14 @@
     <div class="container">
         <div class="hero-content">
             <div class="hero-badge fade-in">BITCOIN MARKET ANALYSIS</div>
-            <h1 class="fade-in"><span class="gradient-text">比特币</span><br>行情分析机</h1>
-            <p class="fade-in">每日自动抓取Binance/Bybit等主流交易所合约数据，涵盖资金费率、未平仓合约、爆仓分布、恐惧贪婪指数，结合技术面与资金面综合分析，输出可执行的合约操作策略。</p>
+
+            <!-- English -->
+            <h1 class="fade-in en-content"><span class="gradient-text">Bitcoin</span><br>Market Analysis</h1>
+            <p class="fade-in en-content">Daily automated data from Binance & Bybit perpetual contracts — funding rates, open interest, liquidations, Fear & Greed index, and actionable trading strategies.</p>
+
+            <!-- Chinese -->
+            <h1 class="fade-in zh-content"><span class="gradient-text">比特币</span><br>行情分析机</h1>
+            <p class="fade-in zh-content">每日自动抓取Binance/Bybit等主流交易所合约数据，涵盖资金费率、未平仓合约、爆仓分布、恐惧贪婪指数，结合技术面与资金面综合分析，输出可执行的合约操作策略。</p>
         </div>
     </div>
 </section>
@@ -267,70 +291,113 @@
     <!-- Quick Stats -->
     <div class="stats-grid fade-in">
         <div class="stat-card">
-            <div class="label">数据来源</div>
+            <div class="label">Data Source</div>
             <div class="value" style="font-size:16px; color:var(--text-mid)">Binance / Bybit</div>
-            <div class="sub">BTCUSDT 永续合约</div>
+            <div class="sub">BTCUSDT Perpetual</div>
         </div>
         <div class="stat-card">
-            <div class="label">核心指标</div>
-            <div class="value" style="font-size:16px; color:var(--text-mid)">资金费率 + OI</div>
-            <div class="sub">爆仓数据 + F&G指数</div>
+            <div class="label">Core Metrics</div>
+            <div class="value" style="font-size:16px; color:var(--text-mid)">Funding Rate + OI</div>
+            <div class="sub">Liquidations + F&G Index</div>
         </div>
         <div class="stat-card">
-            <div class="label">策略输出</div>
-            <div class="value" style="font-size:16px; color:var(--text-mid)">方向 + 进场区间</div>
-            <div class="sub">止损位 + 目标位</div>
+            <div class="label">Strategy Output</div>
+            <div class="value" style="font-size:16px; color:var(--text-mid)">Direction + Entry Zone</div>
+            <div class="sub">Stop-Loss + Targets</div>
         </div>
         <div class="stat-card">
-            <div class="label">更新频率</div>
-            <div class="value" style="font-size:16px; color:var(--text-mid)">每日一次</div>
-            <div class="sub">UTC+8 早上更新</div>
+            <div class="label">Update Frequency</div>
+            <div class="value" style="font-size:16px; color:var(--text-mid)">Once Daily</div>
+            <div class="sub">UTC+8 Morning</div>
         </div>
     </div>
 
     <!-- Today's Report CTA -->
     <div class="latest-cta fade-in" id="latest-report">
         <div class="latest-cta-left">
-            <h2>今日行情报告</h2>
-            <p>实时价格 | 资金费率 | OI变化 | 爆仓分布 | RSI信号 | 操作策略</p>
+            <!-- EN -->
+            <h2 class="en-content">Today's Market Report</h2>
+            <p class="en-content">Price | Funding Rate | OI | Liquidations | RSI | Strategy</p>
+            <!-- ZH -->
+            <h2 class="zh-content">今日行情报告</h2>
+            <p class="zh-content">实时价格 | 资金费率 | OI变化 | 爆仓分布 | RSI信号 | 操作策略</p>
         </div>
         <a href="reports/BTC_daily_report_20260409.html" class="btn-report">
-            查看今日分析 &#8594;
+            View Today's Analysis &#8594;
         </a>
     </div>
 
     <!-- Features -->
     <div class="section-label fade-in" id="features">DATA DIMENSIONS</div>
-    <h2 class="section-title fade-in">分析维度</h2>
-    <p class="section-desc fade-in">多维度交叉验证，从数据中发现市场真相。</p>
+
+    <!-- EN -->
+    <h2 class="section-title fade-in en-content">Analysis Dimensions</h2>
+    <p class="section-desc fade-in en-content">Multi-dimensional cross-validation to uncover market truth from raw data.</p>
+
+    <!-- ZH -->
+    <h2 class="section-title fade-in zh-content">分析维度</h2>
+    <p class="section-desc fade-in zh-content">多维度交叉验证，从数据中发现市场真相。</p>
 
     <div class="features-grid">
-        <div class="feature-card fade-in">
+        <!-- EN cards -->
+        <div class="feature-card fade-in en-content">
+            <div class="feature-icon">&#128176;</div>
+            <h3>Funding Rate Analysis</h3>
+            <p>Real-time monitoring of BTC/ETH perpetual funding rates to identify long/short imbalance signals. Extreme rates are a barometer of market sentiment.</p>
+        </div>
+        <div class="feature-card fade-in en-content">
+            <div class="feature-icon">&#128200;</div>
+            <h3>Open Interest (OI)</h3>
+            <p>Track changes in total open interest across the market — distinguish passive position-building from active liquidation, predict trend sustainability and liquidation risk.</p>
+        </div>
+        <div class="feature-card fade-in en-content">
+            <div class="feature-icon">&#128163;</div>
+            <h3>Liquidation Data</h3>
+            <p>24h total long/short liquidations and distribution ratios — identify whose liquidity is being harvested to confirm directional bias.</p>
+        </div>
+        <div class="feature-card fade-in en-content">
+            <div class="feature-icon">&#128555;</div>
+            <h3>Fear & Greed Index</h3>
+            <p>Alternative.me Fear & Greed Index. Extreme readings are often the best contrarian entry points.</p>
+        </div>
+        <div class="feature-card fade-in en-content">
+            <div class="feature-icon">&#128200;</div>
+            <h3>Technical Analysis</h3>
+            <p>MA7/20/30, RSI, Bollinger Bands, key support/resistance levels — multi-timeframe comprehensive analysis.</p>
+        </div>
+        <div class="feature-card fade-in en-content">
+            <div class="feature-icon">&#9889;</div>
+            <h3>Trading Strategy</h3>
+            <p>Combined funding + technical analysis. Clear direction, entry zone, stop-loss, and price targets — ready to execute.</p>
+        </div>
+
+        <!-- ZH cards -->
+        <div class="feature-card fade-in zh-content">
             <div class="feature-icon">&#128176;</div>
             <h3>资金费率分析</h3>
             <p>实时监控BTC/ETH永续合约资金费率，识别多空失衡信号。极端费率是市场情绪的晴雨表。</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in zh-content">
             <div class="feature-icon">&#128200;</div>
             <h3>OI 未平仓合约</h3>
             <p>追踪全网OI变化，区分被动建仓与主动平仓，预判行情持续性与潜在的爆仓风险。</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in zh-content">
             <div class="feature-icon">&#128163;</div>
             <h3>爆仓数据</h3>
             <p>24h多空爆仓总量与分布比例，判断当前是哪一方的流动性被收割，辅助验证方向。</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in zh-content">
             <div class="feature-icon">&#128555;</div>
             <h3>恐惧与贪婪</h3>
             <p>Alternative.me恐惧贪婪指数，极端值区域往往是反向布局的好时机。</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in zh-content">
             <div class="feature-icon">&#128200;</div>
             <h3>技术面分析</h3>
             <p>MA7/20/30均线、RSI、布林带、关键支撑阻力位，多时间框架综合研判。</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in zh-content">
             <div class="feature-icon">&#9889;</div>
             <h3>操作策略</h3>
             <p>综合资金面+技术面，给出明确方向判断、进场区间、止损位、目标位，直接可执行。</p>
@@ -339,33 +406,43 @@
 
     <!-- Reports Archive -->
     <div class="section-label fade-in" id="reports">DAILY REPORTS</div>
-    <h2 class="section-title fade-in">报告存档</h2>
-    <p class="section-desc fade-in">点击查看历史每日报告，包含当日完整数据与策略。</p>
+
+    <!-- EN -->
+    <h2 class="section-title fade-in en-content">Report Archive</h2>
+    <p class="section-desc fade-in en-content">Click to view historical daily reports with complete data and strategies.</p>
+
+    <!-- ZH -->
+    <h2 class="section-title fade-in zh-content">报告存档</h2>
+    <p class="section-desc fade-in zh-content">点击查看历史每日报告，包含当日完整数据与策略。</p>
 
     <div class="reports-grid">
         <a href="reports/BTC_daily_report_20260409.html" class="report-card fade-in">
             <div class="report-date">2026-04-09</div>
-            <div class="report-title">BTC 合约日报 · 第25期</div>
-            <div class="report-summary">价格$71,008(-0.62%)，MA多头排列延续，4H RSI从73降温至59，回踩做多主策略。</div>
-            <div><span class="report-tag bull">做多</span></div>
+            <div class="report-title">BTC Daily Report · #25</div>
+            <div class="report-summary en-content">Price $71,008 (-0.62%). MA bull alignment continues. 4H RSI cooled from 73 to 59. Main strategy: pullback long.</div>
+            <div class="report-summary zh-content">价格$71,008(-0.62%)，MA多头排列延续，4H RSI从73降温至59，回踩做多主策略。</div>
+            <div><span class="report-tag bull">LONG</span></div>
         </a>
         <a href="reports/BTC_daily_report_20260408.html" class="report-card fade-in">
             <div class="report-date">2026-04-08</div>
-            <div class="report-title">BTC 合约日报 · 第24期</div>
-            <div class="report-summary">价格$67,732(+4.21%)，大涨突破三均线，均线多头排列第1日确认，主策略做多。</div>
-            <div><span class="report-tag bull">做多</span></div>
+            <div class="report-title">BTC Daily Report · #24</div>
+            <div class="report-summary en-content">Price $67,732 (+4.21%). Strong breakout above all MAs. MA bull alignment confirmed Day 1. Main strategy: long.</div>
+            <div class="report-summary zh-content">价格$67,732(+4.21%)，大涨突破三均线，均线多头排列第1日确认，主策略做多。</div>
+            <div><span class="report-tag bull">LONG</span></div>
         </a>
         <a href="reports/BTC_daily_report_20260407.html" class="report-card fade-in">
             <div class="report-date">2026-04-07</div>
-            <div class="report-title">BTC 合约日报 · 第23期</div>
-            <div class="report-summary">价格$65,000(-0.78%)，RSI超卖区域，均线收敛，等待方向确认，震荡整理。</div>
-            <div><span class="report-tag neutral">震荡</span></div>
+            <div class="report-title">BTC Daily Report · #23</div>
+            <div class="report-summary en-content">Price $65,000 (-0.78%). RSI in oversold zone. MAs converging — awaiting directional confirmation. Consolidating.</div>
+            <div class="report-summary zh-content">价格$65,000(-0.78%)，RSI超卖区域，均线收敛，等待方向确认，震荡整理。</div>
+            <div><span class="report-tag neutral">RANGE</span></div>
         </a>
         <a href="reports/BTC_daily_report_20260406.html" class="report-card fade-in">
             <div class="report-date">2026-04-06</div>
-            <div class="report-title">BTC 合约日报 · 第22期</div>
-            <div class="report-summary">价格$65,520(-1.12%)，OI下降量能萎缩，方向不明，谨慎观望，MA30构成压制。</div>
-            <div><span class="report-tag bear">做空</span></div>
+            <div class="report-title">BTC Daily Report · #22</div>
+            <div class="report-summary en-content">Price $65,520 (-1.12%). OI declining, volume shrinking. Direction unclear — stay cautious. MA30 acting as resistance.</div>
+            <div class="report-summary zh-content">价格$65,520(-1.12%)，OI下降量能萎缩，方向不明，谨慎观望，MA30构成压制。</div>
+            <div><span class="report-tag bear">SHORT</span></div>
         </a>
     </div>
 </div>
@@ -374,18 +451,20 @@
 
 <footer>
     <div class="container">
-        <p>
-            比特币行情分析机 &copy; 2026 MK Trading &nbsp;|&nbsp;
-            <a href="../">返回主站</a> &nbsp;|&nbsp;
-            <a href="https://github.com/wanglin141319-bit/mk-trading" target="_blank">GitHub</a>
-        </p>
+        <p>Bitcoin Market Analysis &copy; 2026 MK Trading</p>
         <p style="margin-top:8px; opacity:0.4; font-size:11px;">
-            数据来源：Binance / Alternative.me &nbsp;|&nbsp; 本页内容不构成投资建议
+            Data: Binance / Alternative.me &nbsp;|&nbsp; Not financial advice
         </p>
+        <!-- Language Toggle -->
+        <div class="lang-toggle-wrap">
+            <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" id="btn-zh" onclick="setLang('zh')">中文</button>
+        </div>
     </div>
 </footer>
 
 <script>
+/* Stars Canvas */
 const canvas = document.getElementById('stars-canvas');
 const ctx = canvas.getContext('2d');
 let W, H;
@@ -411,8 +490,24 @@ function animate() {
 }
 animate();
 
+/* Fade-in Observer */
 const observer = new IntersectionObserver(e => e.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); }), { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+/* Language Toggle */
+function setLang(lang) {
+    if (lang === 'zh') {
+        document.body.classList.add('zh-mode');
+        document.getElementById('btn-en').classList.remove('active');
+        document.getElementById('btn-zh').classList.add('active');
+        document.documentElement.lang = 'zh-CN';
+    } else {
+        document.body.classList.remove('zh-mode');
+        document.getElementById('btn-en').classList.add('active');
+        document.getElementById('btn-zh').classList.remove('active');
+        document.documentElement.lang = 'en';
+    }
+}
 </script>
 
 </body>
