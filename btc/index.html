@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比特币行情分析机 | MK Trading</title>
+    <meta name="description" content="MK每日BTC/ETH/SOL合约市场数据分析，包含资金费率、OI、爆仓数据、恐惧贪婪指数及操作策略。">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #05060f;
+            --bg-card: rgba(12, 15, 30, 0.85);
+            --bg-card-hover: rgba(18, 22, 45, 0.95);
+            --accent: #f7931a;
+            --accent2: #7b61ff;
+            --accent3: #ff6b35;
+            --green: #00ff88;
+            --red: #ff4757;
+            --gold: #ffd700;
+            --text: #e8eaf0;
+            --text-dim: #6b7280;
+            --text-mid: #9ca3af;
+            --border: rgba(255,255,255,0.06);
+            --glow: 0 0 40px rgba(247,147,26,0.12);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        #stars-canvas {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0; pointer-events: none;
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 18px 60px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5,6,15,0.92);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 24px; font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), #ff9500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 3px;
+        }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a {
+            color: var(--text-dim); text-decoration: none;
+            font-size: 13px; font-weight: 500; letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-home { color: var(--accent) !important; font-weight: 600; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
+
+        /* ===== Hero ===== */
+        .hero {
+            min-height: 55vh;
+            display: flex; align-items: center;
+            padding-top: 100px;
+        }
+        .hero-content { max-width: 900px; }
+        .hero-badge {
+            display: inline-block;
+            font-family: 'Orbitron', monospace;
+            font-size: 11px; letter-spacing: 4px;
+            color: var(--accent);
+            border: 1px solid rgba(247,147,26,0.3);
+            padding: 8px 24px; border-radius: 30px;
+            margin-bottom: 28px; background: rgba(247,147,26,0.05);
+        }
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(32px, 5vw, 60px);
+            font-weight: 900; line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--accent) 0%, #ff9500 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 17px; color: var(--text-mid);
+            max-width: 600px; margin-bottom: 36px;
+        }
+
+        /* ===== Stats Grid ===== */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 16px; margin-bottom: 48px;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: 14px;
+            padding: 24px 20px; text-align: center;
+            transition: all 0.3s; position: relative; overflow: hidden;
+        }
+        .stat-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--accent), #ff9500);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .stat-card:hover { border-color: rgba(247,147,26,0.2); box-shadow: var(--glow); }
+        .stat-card:hover::before { opacity: 1; }
+        .stat-card .label {
+            font-size: 11px; color: var(--text-dim);
+            letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase;
+        }
+        .stat-card .value {
+            font-family: 'Orbitron', monospace;
+            font-size: 20px; font-weight: 700; color: var(--accent);
+        }
+        .stat-card .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+
+        /* ===== Latest Report CTA ===== */
+        .latest-cta {
+            background: linear-gradient(135deg, rgba(247,147,26,0.08), rgba(255,149,0,0.04));
+            border: 1px solid rgba(247,147,26,0.2);
+            border-radius: 20px; padding: 40px;
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 56px; gap: 24px; flex-wrap: wrap;
+        }
+        .latest-cta-left h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 24px; margin-bottom: 10px; color: var(--gold);
+        }
+        .latest-cta-left p { font-size: 14px; color: var(--text-mid); }
+        .btn-report {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 40px; font-size: 15px; font-weight: 700; letter-spacing: 1px;
+            color: #000; background: linear-gradient(135deg, var(--accent), #ff9500);
+            border: none; border-radius: 12px; cursor: pointer; text-decoration: none;
+            box-shadow: 0 4px 28px rgba(247,147,26,0.3);
+            transition: all 0.3s; font-family: 'Noto Sans SC', sans-serif;
+        }
+        .btn-report:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(247,147,26,0.45); }
+
+        /* ===== Section Labels ===== */
+        .section-label {
+            font-family: 'Orbitron', monospace;
+            font-size: 12px; letter-spacing: 4px;
+            color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 32px; font-weight: 700; margin-bottom: 8px;
+        }
+        .section-desc { color: var(--text-mid); font-size: 15px; max-width: 600px; margin-bottom: 36px; }
+
+        /* ===== Features ===== */
+        .features-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 56px;
+        }
+        .feature-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 32px 24px; transition: all 0.3s;
+        }
+        .feature-card:hover { border-color: rgba(247,147,26,0.15); box-shadow: var(--glow); }
+        .feature-icon { font-size: 36px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 16px; margin-bottom: 10px; }
+        .feature-card p { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+        /* ===== Reports Grid ===== */
+        .reports-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px; margin-bottom: 56px;
+        }
+        .report-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 24px;
+            transition: all 0.3s; text-decoration: none; display: block; color: inherit;
+        }
+        .report-card:hover {
+            background: var(--bg-card-hover); border-color: rgba(247,147,26,0.2);
+            transform: translateY(-3px); box-shadow: var(--glow);
+        }
+        .report-date {
+            font-family: 'Orbitron', monospace; font-size: 13px;
+            color: var(--accent); margin-bottom: 8px; letter-spacing: 1px;
+        }
+        .report-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+        .report-summary { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+        .report-tag {
+            display: inline-block; margin-top: 10px; padding: 3px 10px;
+            font-size: 11px; border-radius: 4px; font-weight: 600;
+        }
+        .report-tag.bull { color: var(--green); background: rgba(0,255,136,0.1); }
+        .report-tag.bear { color: var(--red); background: rgba(255,71,87,0.1); }
+        .report-tag.neutral { color: var(--gold); background: rgba(255,215,0,0.1); }
+
+        /* ===== Footer ===== */
+        footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 40px 0; text-align: center; }
+        footer p { font-size: 13px; color: var(--text-dim); }
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), rgba(247,147,26,0.08), var(--border), transparent); }
+
+        /* ===== Fade ===== */
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 14px 20px; }
+            .nav-links { display: none; }
+            .container { padding: 0 20px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .latest-cta { flex-direction: column; text-align: center; padding: 28px 20px; }
+            .btn-report { width: 100%; justify-content: center; }
+            .features-grid { grid-template-columns: 1fr; }
+            .reports-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="stars-canvas"></canvas>
+
+<nav>
+    <div class="nav-logo">MK</div>
+    <ul class="nav-links">
+        <li><a href="../" class="nav-home">&#8592; 返回主站</a></li>
+        <li><a href="#reports">每日报告</a></li>
+        <li><a href="#features">数据维度</a></li>
+    </ul>
+</nav>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge fade-in">BITCOIN MARKET ANALYSIS</div>
+            <h1 class="fade-in"><span class="gradient-text">比特币</span><br>行情分析机</h1>
+            <p class="fade-in">每日自动抓取Binance/Bybit等主流交易所合约数据，涵盖资金费率、未平仓合约、爆仓分布、恐惧贪婪指数，结合技术面与资金面综合分析，输出可执行的合约操作策略。</p>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="container" style="padding-top: 60px; padding-bottom: 60px;">
+
+    <!-- Quick Stats -->
+    <div class="stats-grid fade-in">
+        <div class="stat-card">
+            <div class="label">数据来源</div>
+            <div class="value" style="font-size:16px; color:var(--text-mid)">Binance / Bybit</div>
+            <div class="sub">BTCUSDT 永续合约</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">核心指标</div>
+            <div class="value" style="font-size:16px; color:var(--text-mid)">资金费率 + OI</div>
+            <div class="sub">爆仓数据 + F&G指数</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">策略输出</div>
+            <div class="value" style="font-size:16px; color:var(--text-mid)">方向 + 进场区间</div>
+            <div class="sub">止损位 + 目标位</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">更新频率</div>
+            <div class="value" style="font-size:16px; color:var(--text-mid)">每日一次</div>
+            <div class="sub">UTC+8 早上更新</div>
+        </div>
+    </div>
+
+    <!-- Today's Report CTA -->
+    <div class="latest-cta fade-in" id="latest-report">
+        <div class="latest-cta-left">
+            <h2>今日行情报告</h2>
+            <p>实时价格 | 资金费率 | OI变化 | 爆仓分布 | RSI信号 | 操作策略</p>
+        </div>
+        <a href="reports/BTC_daily_report_20260409.html" class="btn-report">
+            查看今日分析 &#8594;
+        </a>
+    </div>
+
+    <!-- Features -->
+    <div class="section-label fade-in" id="features">DATA DIMENSIONS</div>
+    <h2 class="section-title fade-in">分析维度</h2>
+    <p class="section-desc fade-in">多维度交叉验证，从数据中发现市场真相。</p>
+
+    <div class="features-grid">
+        <div class="feature-card fade-in">
+            <div class="feature-icon">&#128176;</div>
+            <h3>资金费率分析</h3>
+            <p>实时监控BTC/ETH永续合约资金费率，识别多空失衡信号。极端费率是市场情绪的晴雨表。</p>
+        </div>
+        <div class="feature-card fade-in">
+            <div class="feature-icon">&#128200;</div>
+            <h3>OI 未平仓合约</h3>
+            <p>追踪全网OI变化，区分被动建仓与主动平仓，预判行情持续性与潜在的爆仓风险。</p>
+        </div>
+        <div class="feature-card fade-in">
+            <div class="feature-icon">&#128163;</div>
+            <h3>爆仓数据</h3>
+            <p>24h多空爆仓总量与分布比例，判断当前是哪一方的流动性被收割，辅助验证方向。</p>
+        </div>
+        <div class="feature-card fade-in">
+            <div class="feature-icon">&#128555;</div>
+            <h3>恐惧与贪婪</h3>
+            <p>Alternative.me恐惧贪婪指数，极端值区域往往是反向布局的好时机。</p>
+        </div>
+        <div class="feature-card fade-in">
+            <div class="feature-icon">&#128200;</div>
+            <h3>技术面分析</h3>
+            <p>MA7/20/30均线、RSI、布林带、关键支撑阻力位，多时间框架综合研判。</p>
+        </div>
+        <div class="feature-card fade-in">
+            <div class="feature-icon">&#9889;</div>
+            <h3>操作策略</h3>
+            <p>综合资金面+技术面，给出明确方向判断、进场区间、止损位、目标位，直接可执行。</p>
+        </div>
+    </div>
+
+    <!-- Reports Archive -->
+    <div class="section-label fade-in" id="reports">DAILY REPORTS</div>
+    <h2 class="section-title fade-in">报告存档</h2>
+    <p class="section-desc fade-in">点击查看历史每日报告，包含当日完整数据与策略。</p>
+
+    <div class="reports-grid">
+        <a href="reports/BTC_daily_report_20260409.html" class="report-card fade-in">
+            <div class="report-date">2026-04-09</div>
+            <div class="report-title">BTC 合约日报 · 第25期</div>
+            <div class="report-summary">价格$71,008(-0.62%)，MA多头排列延续，4H RSI从73降温至59，回踩做多主策略。</div>
+            <div><span class="report-tag bull">做多</span></div>
+        </a>
+        <a href="reports/BTC_daily_report_20260408.html" class="report-card fade-in">
+            <div class="report-date">2026-04-08</div>
+            <div class="report-title">BTC 合约日报 · 第24期</div>
+            <div class="report-summary">价格$67,732(+4.21%)，大涨突破三均线，均线多头排列第1日确认，主策略做多。</div>
+            <div><span class="report-tag bull">做多</span></div>
+        </a>
+        <a href="reports/BTC_daily_report_20260407.html" class="report-card fade-in">
+            <div class="report-date">2026-04-07</div>
+            <div class="report-title">BTC 合约日报 · 第23期</div>
+            <div class="report-summary">价格$65,000(-0.78%)，RSI超卖区域，均线收敛，等待方向确认，震荡整理。</div>
+            <div><span class="report-tag neutral">震荡</span></div>
+        </a>
+        <a href="reports/BTC_daily_report_20260406.html" class="report-card fade-in">
+            <div class="report-date">2026-04-06</div>
+            <div class="report-title">BTC 合约日报 · 第22期</div>
+            <div class="report-summary">价格$65,520(-1.12%)，OI下降量能萎缩，方向不明，谨慎观望，MA30构成压制。</div>
+            <div><span class="report-tag bear">做空</span></div>
+        </a>
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<footer>
+    <div class="container">
+        <p>
+            比特币行情分析机 &copy; 2026 MK Trading &nbsp;|&nbsp;
+            <a href="../">返回主站</a> &nbsp;|&nbsp;
+            <a href="https://github.com/wanglin141319-bit/mk-trading" target="_blank">GitHub</a>
+        </p>
+        <p style="margin-top:8px; opacity:0.4; font-size:11px;">
+            数据来源：Binance / Alternative.me &nbsp;|&nbsp; 本页内容不构成投资建议
+        </p>
+    </div>
+</footer>
+
+<script>
+const canvas = document.getElementById('stars-canvas');
+const ctx = canvas.getContext('2d');
+let W, H;
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+const stars = [];
+for (let i = 0; i < 200; i++) {
+    stars.push({ x: Math.random() * 3000, y: Math.random() * 3000, r: Math.random() * 1.2 + 0.2, o: Math.random() * 0.4 + 0.05 });
+}
+let t = 0;
+function animate() {
+    t++;
+    ctx.clearRect(0, 0, W, H);
+    stars.forEach(s => {
+        const op = s.o * (0.5 + 0.5 * Math.sin(t * 0.015 + s.x * 0.01));
+        ctx.beginPath();
+        ctx.arc(s.x % W, s.y % H, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(247,147,26,' + op + ')';
+        ctx.fill();
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+
+const observer = new IntersectionObserver(e => e.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); }), { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTC 合约日报 | 2026-04-09</title>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --card: #141720;
+    --card2: #1a1e2b;
+    --border: #252a3a;
+    --accent: #f7931a;
+    --accent2: #e8c94c;
+    --red: #f44336;
+    --green: #26c97f;
+    --blue: #4a9eff;
+    --purple: #a78bfa;
+    --text: #e2e8f0;
+    --muted: #7a8299;
+    --muted2: #9ba3bc;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'SF Pro Display', -apple-system, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #1a1e2b 0%, #141720 60%, #1c1424 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .header-left .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .logo-text { font-size: 18px; font-weight: 700; color: #fff; }
+  .logo-sub { font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+  .header-right { text-align: right; }
+  .report-date { font-size: 22px; font-weight: 700; color: #fff; }
+  .report-time { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .report-num {
+    display: inline-block;
+    background: rgba(247,147,26,0.15);
+    border: 1px solid rgba(247,147,26,0.3);
+    color: var(--accent);
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-top: 6px;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 1280px; margin: 0 auto; padding: 28px 40px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px; }
+  .full { margin-bottom: 16px; }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .card-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-title .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* PRICE HERO */
+  .price-hero {
+    background: linear-gradient(135deg, #1a1e2b 0%, #141720 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .price-main { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .price-symbol { font-size: 13px; font-weight: 600; color: var(--muted); margin-right: 4px; }
+  .price-num {
+    font-size: 52px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -2px;
+  }
+  .price-change {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 8px;
+  }
+  .price-change.neg { background: rgba(244,67,54,0.15); color: var(--red); }
+  .price-change.pos { background: rgba(38,201,127,0.15); color: var(--green); }
+  .price-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+  }
+  .price-row { display: flex; gap: 20px; }
+  .price-stat { text-align: center; }
+  .price-stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .price-stat-val { font-size: 16px; font-weight: 700; color: #fff; }
+  .price-stat-val.high { color: var(--red); }
+  .price-stat-val.low { color: var(--green); }
+
+  /* METRIC */
+  .metric { display: flex; flex-direction: column; gap: 4px; }
+  .metric-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .metric-val { font-size: 24px; font-weight: 700; color: #fff; }
+  .metric-val.red { color: var(--red); }
+  .metric-val.green { color: var(--green); }
+  .metric-val.orange { color: var(--accent); }
+  .metric-val.blue { color: var(--blue); }
+  .metric-sub { font-size: 12px; color: var(--muted2); }
+  .metric-sub .badge {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+  .badge-red { background: rgba(244,67,54,0.15); color: var(--red); }
+  .badge-green { background: rgba(38,201,127,0.15); color: var(--green); }
+  .badge-orange { background: rgba(247,147,26,0.15); color: var(--accent); }
+  .badge-blue { background: rgba(74,158,255,0.15); color: var(--blue); }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 8px 0 16px; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* FUNDING RATE ROW */
+  .fr-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .fr-row:last-child { border-bottom: none; }
+  .fr-label { font-size: 13px; color: var(--muted2); }
+  .fr-val { font-size: 14px; font-weight: 600; }
+  .fr-val.pos { color: var(--red); }
+  .fr-val.neg { color: var(--green); }
+  .fr-note { font-size: 11px; color: var(--muted); }
+
+  /* PROGRESS BAR */
+  .bar-wrap { margin-top: 8px; }
+  .bar-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+  .bar-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+  .bar-long { background: linear-gradient(90deg, #f44336, #e57373); }
+  .bar-short { background: linear-gradient(90deg, #26c97f, #4caf50); }
+
+  /* STRATEGY BLOCK */
+  .strategy-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .strategy-header {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #1a2035 0%, #141720 100%);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .strategy-direction {
+    font-size: 18px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .strategy-direction.long { color: var(--red); }
+  .strategy-direction.short { color: var(--green); }
+  .strategy-direction.neutral { color: var(--accent2); }
+  .strategy-body { padding: 20px; }
+  .strat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .strat-item { }
+  .strat-item-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .strat-item-val { font-size: 16px; font-weight: 700; }
+  .strat-item-val.entry { color: var(--accent); }
+  .strat-item-val.sl { color: var(--red); }
+  .strat-item-val.tp { color: var(--green); }
+  .strat-note { font-size: 12px; color: var(--muted2); line-height: 1.7; padding: 12px; background: var(--card2); border-radius: 8px; }
+
+  /* ALT STRATEGY */
+  .alt-strategies { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .alt-card {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .alt-title { font-size: 12px; font-weight: 700; color: var(--muted2); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .alt-detail { font-size: 12px; color: var(--muted2); line-height: 1.8; }
+  .alt-detail span { font-weight: 600; }
+  .alt-detail .a-entry { color: var(--accent); }
+  .alt-detail .a-sl { color: var(--red); }
+  .alt-detail .a-tp { color: var(--green); }
+
+  /* TECH ANALYSIS */
+  .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+  .tech-item {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .tech-item-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .tech-item-val { font-size: 18px; font-weight: 700; margin: 4px 0; }
+  .tech-item-desc { font-size: 11px; color: var(--muted); }
+  .neutral { color: var(--accent2); }
+  .bullish { color: var(--red); }
+  .bearish { color: var(--green); }
+  .overbought { color: var(--red); }
+  .oversold { color: var(--green); }
+
+  /* SR LEVELS */
+  .sr-table { width: 100%; border-collapse: collapse; }
+  .sr-table th {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: left;
+    padding: 8px 12px;
+    background: var(--card2);
+    border-bottom: 1px solid var(--border);
+  }
+  .sr-table td { padding: 10px 12px; border-bottom: 1px solid rgba(37,42,58,0.5); font-size: 13px; }
+  .sr-table tr:last-child td { border-bottom: none; }
+  .sr-res { color: var(--red); font-weight: 700; }
+  .sr-sup { color: var(--green); font-weight: 700; }
+  .sr-curr { background: rgba(247,147,26,0.05); }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .tag-res { background: rgba(244,67,54,0.15); color: var(--red); }
+  .tag-sup { background: rgba(38,201,127,0.15); color: var(--green); }
+  .tag-key { background: rgba(247,147,26,0.15); color: var(--accent); }
+
+  /* FNG GAUGE */
+  .fng-wrap { text-align: center; padding: 10px 0; }
+  .fng-num {
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, #f44336, #ff7043);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .fng-label { font-size: 14px; font-weight: 700; color: var(--red); margin: 4px 0; }
+  .fng-bar { margin: 12px auto; max-width: 220px; }
+  .fng-track { height: 8px; border-radius: 4px; background: linear-gradient(90deg, #26c97f 0%, #e8c94c 40%, #f7931a 70%, #f44336 100%); position: relative; }
+  .fng-marker {
+    position: absolute;
+    top: -4px;
+    width: 16px; height: 16px;
+    background: #fff;
+    border: 2px solid var(--red);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    left: 14%;
+  }
+  .fng-desc { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* OI HISTORY */
+  .oi-change { display: flex; align-items: center; gap: 8px; }
+  .oi-arrow { font-size: 18px; }
+
+  /* REVIEW BOX */
+  .review-box {
+    background: rgba(247,147,26,0.05);
+    border: 1px solid rgba(247,147,26,0.2);
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .review-title { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .review-text { font-size: 13px; color: var(--muted2); line-height: 1.8; }
+  .review-text .result-ok { color: var(--green); font-weight: 700; }
+  .review-text .result-warn { color: var(--accent2); font-weight: 700; }
+
+  /* TWITTER BOX */
+  .twitter-box {
+    background: var(--card2);
+    border: 1px solid #1d9bf0;
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .twitter-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .twitter-icon { font-size: 20px; }
+  .twitter-title { font-size: 14px; font-weight: 700; color: #1d9bf0; }
+  .twitter-content {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.9;
+    white-space: pre-wrap;
+    font-family: monospace;
+  }
+  .twitter-copy-btn {
+    margin-top: 12px;
+    padding: 8px 18px;
+    background: #1d9bf0;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .twitter-copy-btn:hover { background: #1a8cd8; }
+
+  /* SIGNAL ROW */
+  .signal-list { display: flex; flex-direction: column; gap: 8px; }
+  .signal-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; }
+  .signal-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .dot-red { background: var(--red); }
+  .dot-green { background: var(--green); }
+  .dot-orange { background: var(--accent); }
+  .dot-blue { background: var(--blue); }
+  .signal-text { color: var(--muted2); line-height: 1.6; }
+  .signal-text strong { color: var(--text); }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .footer a { color: var(--muted); text-decoration: none; }
+
+  /* RESPONSIVE */
+  @media(max-width: 900px) {
+    .grid4 { grid-template-columns: repeat(2, 1fr); }
+    .grid3 { grid-template-columns: 1fr 1fr; }
+    .strat-row { grid-template-columns: 1fr 1fr; }
+    .tech-grid { grid-template-columns: 1fr 1fr; }
+    .alt-strategies { grid-template-columns: 1fr; }
+    .container { padding: 20px; }
+    .header { padding: 20px; }
+    .price-num { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <div class="logo">
+      <div class="logo-icon">₿</div>
+      <div>
+        <div class="logo-text">BTC 合约日报</div>
+        <div class="logo-sub">Bitcoin Futures Daily Report</div>
+      </div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="report-date">2026年04月09日 · 周四</div>
+    <div class="report-time">数据时间: 10:30 CST | 第 25 次执行</div>
+    <div class="report-num">AUTO · #BTC</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- PRICE HERO -->
+  <div class="price-hero">
+    <div class="price-main">
+      <div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">BTC / USDT · PERPETUAL</div>
+        <div style="display:flex;align-items:baseline;gap:12px;">
+          <span class="price-num">$71,008</span>
+          <span class="price-change neg">−0.62%</span>
+        </div>
+        <div style="font-size:13px;color:var(--muted);margin-top:6px;">标记价格: $71,013 &nbsp;|&nbsp; 指数价格: $71,037</div>
+      </div>
+    </div>
+    <div class="price-meta">
+      <div class="price-row">
+        <div class="price-stat">
+          <div class="price-stat-label">24H 最高</div>
+          <div class="price-stat-val high">$72,858</div>
+        </div>
+        <div class="price-stat">
+          <div class="price-stat-label">24H 最低</div>
+          <div class="price-stat-val low">$70,428</div>
+        </div>
+        <div class="price-stat">
+          <div class="price-stat-label">24H 振幅</div>
+          <div class="price-stat-val" style="color:var(--accent2);">3.45%</div>
+        </div>
+        <div class="price-stat">
+          <div class="price-stat-label">24H 成交量</div>
+          <div class="price-stat-val" style="color:var(--blue);">$127.7亿</div>
+        </div>
+      </div>
+      <div class="price-row">
+        <div class="price-stat">
+          <div class="price-stat-label">MA7</div>
+          <div class="price-stat-val" style="color:var(--accent);font-size:13px;">$69,424</div>
+        </div>
+        <div class="price-stat">
+          <div class="price-stat-label">MA20</div>
+          <div class="price-stat-val" style="color:var(--accent);font-size:13px;">$68,640</div>
+        </div>
+        <div class="price-stat">
+          <div class="price-stat-label">MA30</div>
+          <div class="price-stat-val" style="color:var(--muted2);font-size:13px;">$69,619</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 1: KEY METRICS -->
+  <div class="grid4">
+    <!-- OI -->
+    <div class="card">
+      <div class="card-title"><span class="dot"></span>未平仓合约 (OI)</div>
+      <div class="metric">
+        <div class="metric-val">91,472 <span style="font-size:16px;color:var(--muted)">BTC</span></div>
+        <div class="metric-sub" style="font-size:13px;color:var(--blue);">≈ $64.85 亿</div>
+        <div class="metric-sub" style="margin-top:4px;">
+          较昨日(91,340 BTC)
+          <span class="badge badge-green">+132 BTC ▲</span>
+        </div>
+        <div class="metric-sub" style="margin-top:4px;font-size:11px;color:var(--muted);">
+          价格微跌 OI 微增 → 空头小幅加仓
+        </div>
+      </div>
+    </div>
+
+    <!-- FNG -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--red)"></span>恐惧与贪婪指数</div>
+      <div class="fng-wrap">
+        <div class="fng-num">14</div>
+        <div class="fng-label">⚠ 极度恐惧</div>
+        <div class="fng-bar">
+          <div class="fng-track">
+            <div class="fng-marker" style="left:14%"></div>
+          </div>
+        </div>
+        <div class="fng-desc">昨日: 17 → 今日: 14 ▼3 &nbsp;|&nbsp; 连续第24日 ≤ 20</div>
+      </div>
+    </div>
+
+    <!-- FUNDING BTC -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--red)"></span>资金费率</div>
+      <div class="fr-row">
+        <span class="fr-label">BTC (Binance)</span>
+        <div>
+          <span class="fr-val pos">+0.00471%</span>
+          <span class="fr-note" style="margin-left:6px;">多头付费</span>
+        </div>
+      </div>
+      <div class="fr-row">
+        <span class="fr-label">ETH (Binance)</span>
+        <div>
+          <span class="fr-val pos">+0.00244%</span>
+          <span class="fr-note" style="margin-left:6px;">多头付费</span>
+        </div>
+      </div>
+      <div style="margin-top:8px;font-size:11px;color:var(--muted);">
+        BTC+ETH 同向正 ✦ 费率低位，无过热<br>
+        8h结算间隔 | 下次结算: 16:00 CST
+      </div>
+    </div>
+
+    <!-- L/S RATIO -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--purple)"></span>多空比</div>
+      <div class="fr-row">
+        <span class="fr-label">散户多空比</span>
+        <span class="fr-val" style="color:var(--accent2);">0.9956</span>
+      </div>
+      <div class="fr-row">
+        <span class="fr-label">大户仓位比</span>
+        <span class="fr-val" style="color:var(--red);">1.0491</span>
+      </div>
+      <div class="fr-row">
+        <span class="fr-label">Taker 买卖比</span>
+        <span class="fr-val" style="color:var(--red);">1.5476 ↑</span>
+      </div>
+      <div style="margin-top:6px;font-size:11px;color:var(--muted);">
+        散户接近均衡偏空 | 大户轻微偏多<br>Taker 主动买盘较强
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 2: LONG/SHORT BAR + LIQUIDATION + ETH -->
+  <div class="grid3">
+    <!-- MULTI SIGNAL -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--blue)"></span>多空持仓分布</div>
+      <div style="margin-bottom:12px;">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:6px;">散户全球多空账户比</div>
+        <div class="bar-wrap">
+          <div class="bar-label"><span style="color:var(--red);">做多 49.89%</span><span style="color:var(--green);">做空 50.11%</span></div>
+          <div class="bar-track" style="display:flex;">
+            <div class="bar-fill bar-long" style="width:49.89%"></div>
+            <div class="bar-fill bar-short" style="width:50.11%"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:6px;">大户持仓多空比</div>
+        <div class="bar-wrap">
+          <div class="bar-label"><span style="color:var(--red);">做多 51.20%</span><span style="color:var(--green);">做空 48.80%</span></div>
+          <div class="bar-track" style="display:flex;">
+            <div class="bar-fill bar-long" style="width:51.2%"></div>
+            <div class="bar-fill bar-short" style="width:48.8%"></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:11px;color:var(--muted);padding:8px;background:var(--card2);border-radius:6px;">
+        ⚡ 散户与大户方向罕见接近均衡，市场方向分歧加大，区间震荡特征明显
+      </div>
+    </div>
+
+    <!-- LIQUIDATION -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--red)"></span>24H 爆仓估算</div>
+      <div style="text-align:center;padding:8px 0 4px;">
+        <div style="font-size:30px;font-weight:800;color:var(--accent2);">~$3,200万</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;">24h 合约成交量 $127.7亿</div>
+      </div>
+      <div style="margin-top:12px;">
+        <div class="bar-wrap">
+          <div class="bar-label">
+            <span style="color:var(--red);">多单 ~52%</span>
+            <span style="color:var(--green);">空单 ~48%</span>
+          </div>
+          <div class="bar-track" style="display:flex;">
+            <div class="bar-fill bar-long" style="width:52%"></div>
+            <div class="bar-fill bar-short" style="width:48%"></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:11px;color:var(--muted);">
+        爆仓量较昨日明显下降，振幅3.45%低于前日<br>
+        多空爆仓接近均衡，无方向性清洗
+      </div>
+    </div>
+
+    <!-- ETH CONTEXT -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--purple)"></span>ETH 市场参考</div>
+      <div class="fr-row">
+        <span class="fr-label">ETH/USDT 现价</span>
+        <span class="fr-val" style="color:#a78bfa;">$2,182</span>
+      </div>
+      <div class="fr-row">
+        <span class="fr-label">24H 涨跌</span>
+        <span class="fr-val" style="color:var(--green);">−2.31%</span>
+      </div>
+      <div class="fr-row">
+        <span class="fr-label">资金费率</span>
+        <span class="fr-val pos">+0.00244%</span>
+      </div>
+      <div class="fr-row">
+        <span class="fr-label">BTC/ETH 费率方向</span>
+        <span class="fr-val" style="color:var(--red);">同向正</span>
+      </div>
+      <div style="margin-top:8px;font-size:11px;color:var(--muted);">
+        ETH 跌幅(-2.31%) > BTC(-0.62%)<br>
+        山寨相对偏弱，BTC 表现更强 ✦
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 3: TECHNICAL ANALYSIS -->
+  <div class="full">
+    <div class="section-title">📊 技术面分析</div>
+    <div class="card">
+      <div class="tech-grid">
+        <div class="tech-item">
+          <div class="tech-item-label">日线 RSI14</div>
+          <div class="tech-item-val neutral">58.81</div>
+          <div class="tech-item-desc">中性偏强，上行空间充足</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">4H RSI14</div>
+          <div class="tech-item-val neutral">59.45</div>
+          <div class="tech-item-desc">中性，较昨日73.36大幅降温</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">均线结构</div>
+          <div class="tech-item-val bullish">多头排列</div>
+          <div class="tech-item-desc">价格 $71,008 > MA7/MA20/MA30</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">BB 上轨</div>
+          <div class="tech-item-val" style="color:var(--red);">$72,327</div>
+          <div class="tech-item-desc">当前价格逼近布林上轨</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">BB 中轨</div>
+          <div class="tech-item-val neutral">$68,640</div>
+          <div class="tech-item-desc">布林中轨=回踩关键支撑</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">BB 带宽</div>
+          <div class="tech-item-val" style="color:var(--accent2);">10.74%</div>
+          <div class="tech-item-desc">布林带展开中，波动率上升</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;background:var(--card2);border-radius:8px;padding:14px;">
+        <div style="font-size:12px;font-weight:700;color:var(--muted2);margin-bottom:8px;">🔎 技术面综合解读</div>
+        <div class="signal-list">
+          <div class="signal-item">
+            <div class="signal-dot dot-red"></div>
+            <div class="signal-text"><strong>日K均线全面多头排列：</strong>价格$71,008 > MA7($69,424) > MA20($68,640)，且已站稳MA30($69,619)上方，结构性多头延续第2日确认</div>
+          </div>
+          <div class="signal-item">
+            <div class="signal-dot dot-green"></div>
+            <div class="signal-text"><strong>4H RSI 从73→59 明显降温：</strong>昨日超买压力基本释放，当前4H处于中性区间，回踩后重新买入性价比上升</div>
+          </div>
+          <div class="signal-item">
+            <div class="signal-dot dot-orange"></div>
+            <div class="signal-text"><strong>价格靠近布林上轨($72,327)：</strong>24H高点$72,858短暂刺穿布林上轨后回落，上方阻力明显，短线回踩概率上升</div>
+          </div>
+          <div class="signal-item">
+            <div class="signal-dot dot-blue"></div>
+            <div class="signal-text"><strong>日K振幅收窄至3.45%：</strong>相比昨日+4.21%大涨日，今日为休整消化日，量能$127.7亿较昨日回落，属正常回调</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 4: SR LEVELS -->
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--red)"></span>关键支撑 / 阻力位</div>
+      <table class="sr-table">
+        <thead>
+          <tr>
+            <th>价格区间</th>
+            <th>类型</th>
+            <th>依据</th>
+            <th>重要性</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sr-res">$73,000 – $74,000</td>
+            <td><span class="tag tag-res">阻力</span></td>
+            <td>前期高点 / 整数关口</td>
+            <td>⭐⭐</td>
+          </tr>
+          <tr>
+            <td class="sr-res">$72,327 – $72,858</td>
+            <td><span class="tag tag-res">阻力</span></td>
+            <td>布林上轨 / 昨日高点</td>
+            <td>⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td class="sr-res">$71,800 – $72,000</td>
+            <td><span class="tag tag-res">阻力</span></td>
+            <td>近期震荡高点密集区</td>
+            <td>⭐⭐⭐</td>
+          </tr>
+          <tr class="sr-curr">
+            <td style="color:var(--accent);font-weight:700;">━ $71,008 ←当前</td>
+            <td><span class="tag tag-key">现价</span></td>
+            <td>介于阻力与支撑之间</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="sr-sup">$70,428 – $70,700</td>
+            <td><span class="tag tag-sup">支撑</span></td>
+            <td>今日低点 / 整数关口</td>
+            <td>⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td class="sr-sup">$69,619 – $70,000</td>
+            <td><span class="tag tag-sup">支撑</span></td>
+            <td>MA30 / 整数关口</td>
+            <td>⭐⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td class="sr-sup">$68,640 – $69,200</td>
+            <td><span class="tag tag-sup">支撑</span></td>
+            <td>MA7 / MA20 强支撑带</td>
+            <td>⭐⭐⭐⭐⭐</td>
+          </tr>
+          <tr>
+            <td class="sr-sup">$67,700 – $68,200</td>
+            <td><span class="tag tag-sup">支撑</span></td>
+            <td>前期突破平台 / 结构支撑</td>
+            <td>⭐⭐⭐</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SIGNAL SUMMARY -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--green)"></span>资金面综合信号</div>
+      <div class="signal-list" style="margin-bottom:14px;">
+        <div class="signal-item">
+          <div class="signal-dot dot-red"></div>
+          <div class="signal-text"><strong>OI 微增(+132 BTC)：</strong>价格微跌 + OI 微增，空头小幅试探性加仓，但规模极小，方向性信号较弱</div>
+        </div>
+        <div class="signal-item">
+          <div class="signal-dot dot-red"></div>
+          <div class="signal-text"><strong>Taker 买卖比 1.55 偏买：</strong>主动买盘仍占优势，市场短期买方力量存在，下方支撑基础较好</div>
+        </div>
+        <div class="signal-item">
+          <div class="signal-dot dot-orange"></div>
+          <div class="signal-text"><strong>资金费率双正低位：</strong>BTC+ETH 同向正，但绝对值极低(0.0047%/0.0024%)，无杠杆过热，上涨空间未被透支</div>
+        </div>
+        <div class="signal-item">
+          <div class="signal-dot dot-green"></div>
+          <div class="signal-text"><strong>散户接近空头(50.11%)：</strong>散户情绪罕见转向均衡偏空，历史上散户偏空叠加大户偏多时往往是价格上涨的信号</div>
+        </div>
+        <div class="signal-item">
+          <div class="signal-dot dot-red"></div>
+          <div class="signal-text"><strong>恐惧指数14(极度恐惧)：</strong>连续第24日≤20，情绪底部特征持续。今日从17→14边际下降，情绪尚未转暖</div>
+        </div>
+        <div class="signal-item">
+          <div class="signal-dot dot-orange"></div>
+          <div class="signal-text"><strong>ETH相对弱(-2.31% vs -0.62%)：</strong>BTC主导地位明显，山寨未同步强，资金仍聚集BTC主线</div>
+        </div>
+      </div>
+      <div style="padding:10px 14px;background:rgba(247,147,26,0.07);border:1px solid rgba(247,147,26,0.2);border-radius:8px;">
+        <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:4px;">📌 综合研判</div>
+        <div style="font-size:12px;color:var(--muted2);line-height:1.8;">价格结构性多头延续，均线全面多头排列，但短线正处于昨日大涨后的回调消化期。布林上轨压制+4H RSI降温，$72,000以上短线阻力明显。<strong style="color:var(--accent);">核心策略：不追高，等待$70,000–$70,500区间回踩做多机会。</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 5: STRATEGY -->
+  <div class="full">
+    <div class="section-title">🎯 今日合约操作策略</div>
+    <div class="strategy-card">
+      <div class="strategy-header">
+        <div>
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">主策略方向</div>
+          <div class="strategy-direction long">🟢 回踩做多 · 等待确认</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">推荐杠杆</div>
+          <div style="font-size:20px;font-weight:800;color:var(--accent);">3 – 5x</div>
+          <div style="font-size:11px;color:var(--muted);">仓位 ≤ 12%</div>
+        </div>
+      </div>
+      <div class="strategy-body">
+
+        <!-- 多单 A -->
+        <div style="margin-bottom:20px;">
+          <div style="font-size:12px;font-weight:700;color:var(--muted2);margin-bottom:10px;">📍 多单进场 A（优先）— 回踩整数关口</div>
+          <div class="strat-row">
+            <div class="strat-item">
+              <div class="strat-item-label">进场区间</div>
+              <div class="strat-item-val entry">$70,000 – $70,500</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">整数关口+今日低点附近</div>
+            </div>
+            <div class="strat-item">
+              <div class="strat-item-label">止损位</div>
+              <div class="strat-item-val sl">$69,300</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">有效跌破MA30止损</div>
+            </div>
+            <div class="strat-item">
+              <div class="strat-item-label">目标位 T1 / T2</div>
+              <div class="strat-item-val tp">$71,800 / $72,500</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">风报比约 1:2.0</div>
+            </div>
+          </div>
+          <div class="strat-note">⚡ 进场条件：等待价格回踩$70,000–$70,500区间，需4H K线出现阳线或针底确认后入场，不盲目挂单。仓位≤12%，杠杆3–5x。T1到达后移止损至成本价。</div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- 多单 B -->
+        <div style="margin-bottom:20px;">
+          <div style="font-size:12px;font-weight:700;color:var(--muted2);margin-bottom:10px;">📍 多单进场 B（深度回踩备选）— 均线支撑带</div>
+          <div class="strat-row">
+            <div class="strat-item">
+              <div class="strat-item-label">进场区间</div>
+              <div class="strat-item-val entry">$69,000 – $69,600</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">MA7+MA30支撑带</div>
+            </div>
+            <div class="strat-item">
+              <div class="strat-item-label">止损位</div>
+              <div class="strat-item-val sl">$68,300</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">有效跌破MA20止损</div>
+            </div>
+            <div class="strat-item">
+              <div class="strat-item-label">目标位 T1 / T2</div>
+              <div class="strat-item-val tp">$71,500 / $73,000</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">风报比约 1:3.0</div>
+            </div>
+          </div>
+          <div class="strat-note">⚡ 深度回踩机会，仓位可加至15%，杠杆3x。需满足：MA7/MA30区域阳线收盘确认，量能不低于前一日50%。</div>
+        </div>
+
+        <!-- ALT STRATEGIES -->
+        <hr class="divider">
+        <div style="font-size:12px;font-weight:700;color:var(--muted2);margin-bottom:10px;">⚡ 备选策略</div>
+        <div class="alt-strategies">
+          <div class="alt-card">
+            <div class="alt-title" style="color:var(--green);">🔴 备选A: 受阻试空（轻仓）</div>
+            <div class="alt-detail">
+              进场: <span class="a-entry">$72,200 – $72,800</span>（布林上轨 / 近期高点区域受阻）<br>
+              止损: <span class="a-sl">$73,500</span><br>
+              目标: <span class="a-tp">$71,200 / $70,500</span><br>
+              仓位: ≤ 8%，杠杆 3x<br>
+              条件: 需要4H明确顶背离信号确认
+            </div>
+          </div>
+          <div class="alt-card">
+            <div class="alt-title" style="color:var(--red);">🟢 备选B: 放量突破追多</div>
+            <div class="alt-detail">
+              触发: <span class="a-entry">4H 收盘有效突破 $72,858</span>（放量站稳前高）<br>
+              止损: <span class="a-sl">$72,000</span><br>
+              目标: <span class="a-tp">$74,000 / $75,500</span><br>
+              仓位: ≤ 10%，杠杆 3–5x<br>
+              条件: 需成交量较均值放大 ≥ 150%
+            </div>
+          </div>
+        </div>
+
+        <!-- RISK NOTICE -->
+        <div style="margin-top:16px;padding:12px 16px;background:rgba(244,67,54,0.06);border:1px solid rgba(244,67,54,0.2);border-radius:8px;">
+          <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:6px;">⚠ 风险提示</div>
+          <div style="font-size:12px;color:var(--muted2);line-height:1.8;">
+            ① 当前价格处于$70,428–$72,858大振幅区间整理，上下均有套牢盘，方向尚未明确<br>
+            ② 布林上轨($72,327)有效压制，若无增量资金入场，短线反弹空间有限<br>
+            ③ FNG=14极度恐惧，情绪不稳定，注意大波动风险<br>
+            ④ 单笔亏损控制在总资金1–2%以内，严格止损，不扛单
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 6: REVIEW + TWITTER -->
+  <div class="grid2">
+    <!-- YESTERDAY REVIEW -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--accent2)"></span>昨日策略复盘 (04/08)</div>
+      <div class="review-box">
+        <div class="review-title">📋 昨日策略回顾</div>
+        <div class="review-text">
+          昨日(04/08)主策略：<strong>回踩做多</strong><br>
+          进场A: $70,000–$70,500 / 止损 $69,200 / 目标 $72,000–$72,500<br><br>
+
+          今日执行结果：<br>
+          → BTC 24H高点 <strong>$72,858</strong>，最低 $70,428<br>
+          → 进场区间 $70,000–$70,500 <span class="result-ok">✅ 有效触及</span><br>
+          → T1目标 $72,000 <span class="result-ok">✅ 已达成</span><br>
+          → T2目标 $72,500 <span class="result-ok">✅ 已达成（高点$72,858）</span><br><br>
+
+          <strong>方向判断正确，多单全部达标。</strong> 均线多头排列延续，策略体系持续有效。<br>
+          今日收盘$71,008（回吐部分涨幅），属于正常高位消化。
+        </div>
+      </div>
+    </div>
+
+    <!-- TWITTER -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:#1d9bf0"></span>X / Twitter 自媒体文稿</div>
+      <div class="twitter-box">
+        <div class="twitter-header">
+          <span class="twitter-icon">𝕏</span>
+          <span class="twitter-title">English Version · Ready to Post</span>
+        </div>
+        <div class="twitter-content" id="twitter-text">🔶 #BTC Daily Futures Report | Apr 9, 2026
+
+📍 Price: $71,008 (-0.62%)
+📊 24H Range: $70,428 – $72,858 (3.45%)
+
+⚡ Key Data:
+• Funding Rate (BTC): +0.00471% [longs pay]
+• Open Interest: 91,472 BTC (~$648M) ▲+0.14%
+• Fear & Greed: 14 😨 Extreme Fear (Day 24)
+• L/S Ratio: Retail 0.996 | Whale 1.049
+• Taker Buy/Sell: 1.55 (buyers dominant)
+
+📐 Technical:
+• Daily RSI14: 58.81 (neutral-bullish)
+• 4H RSI14: 59.45 (cooled from 73 overbought)
+• MA7/20/30: All below price → Bull structure
+• Bollinger Upper: $72,327 (resistance zone)
+
+🎯 Strategy: Wait for dip, BUY the pullback
+• Entry A: $70,000–$70,500 (4H candle confirm)
+• Stop Loss: $69,300
+• Target: $71,800 / $72,500
+• Entry B (deep): $69,000–$69,600
+• Target: $71,500 / $73,000
+
+⚠️ Risk: BTC rejected from BB upper band $72,858.
+Short-term consolidation likely before next leg up.
+
+🔴 NOT financial advice. DYOR. Manage risk.
+
+#Bitcoin #CryptoTrading #BTC #Futures</div>
+        <button class="twitter-copy-btn" onclick="copyTwitter()">📋 复制文稿</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- OI CONTEXT -->
+  <div class="card full" style="margin-bottom:16px;">
+    <div class="card-title"><span class="dot" style="background:var(--blue)"></span>OI 近期变化 &amp; 市场背景</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+      <div style="background:var(--card2);border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">OI当前</div>
+        <div style="font-size:22px;font-weight:700;color:var(--blue);margin:4px 0;">91,472</div>
+        <div style="font-size:11px;color:var(--muted);">BTC · $64.85亿</div>
+      </div>
+      <div style="background:var(--card2);border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">较昨日变化</div>
+        <div style="font-size:22px;font-weight:700;color:var(--green);margin:4px 0;">+132</div>
+        <div style="font-size:11px;color:var(--muted);">BTC · +0.14%</div>
+      </div>
+      <div style="background:var(--card2);border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">近7日OI均值</div>
+        <div style="font-size:22px;font-weight:700;color:var(--accent2);margin:4px 0;">~91,000</div>
+        <div style="font-size:11px;color:var(--muted);">BTC · 平台期</div>
+      </div>
+      <div style="background:var(--card2);border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">OI 信号</div>
+        <div style="font-size:16px;font-weight:700;color:var(--accent);margin:4px 0;">横盘整理</div>
+        <div style="font-size:11px;color:var(--muted);">无增量资金 / 震荡消化</div>
+      </div>
+    </div>
+    <div style="margin-top:14px;padding:12px 16px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--muted2);line-height:1.8;">
+      📌 <strong style="color:var(--text);">OI近7日维持90,000–91,500 BTC平台区间</strong>，无明显增量资金流入。昨日大涨(+4.21%)驱动方式为空头回补，今日OI微增132 BTC，价格微跌，说明有新增空头小幅试探但规模不大。当前OI平台期特征表明市场处于方向选择前的等待阶段，需要增量资金（新多）介入才能推动下一波上涨。
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <strong style="color:var(--accent);">BTC 合约日报</strong> &nbsp;|&nbsp; 自动生成 @10:30 CST &nbsp;|&nbsp; 数据来源: Binance Futures / CoinGecko / Alternative.me
+  </div>
+  <div>
+    ⚠️ 本报告仅供参考，不构成投资建议 &nbsp;|&nbsp; 合约交易风险极高，请严格控制仓位
+  </div>
+</div>
+
+<script>
+function copyTwitter() {
+  const text = document.getElementById('twitter-text').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.twitter-copy-btn');
+    btn.textContent = '✅ 已复制！';
+    setTimeout(() => { btn.textContent = '📋 复制文稿'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>
