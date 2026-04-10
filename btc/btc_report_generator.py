@@ -7,6 +7,11 @@ import requests
 import json
 import os
 import sys
+
+# 修复 Windows 终端编码
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 from datetime import datetime, timezone, timedelta
 
 # ====== 配置 ======
@@ -1086,12 +1091,12 @@ def git_push():
     os.chdir(WORKSPACE)
     date_str = datetime.now().strftime("%Y%m%d")
     try:
-        subprocess.run(["git", "add", "."], check=True, capture_output=True, text=True)
-        subprocess.run(["git", "commit", "-m", f"feat: 自动更新BTC日报 {date_str}"], check=True, capture_output=True, text=True)
-        subprocess.run(["git", "push", "origin", "main"], check=True, capture_output=True, text=True)
-        print("  [OK] Git push 成功")
+        subprocess.run(["git", "add", "."], check=True, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        result = subprocess.run(["git", "commit", "-m", f"feat: Auto BTC daily {date_str}"], check=True, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        subprocess.run(["git", "push", "origin", "main"], check=True, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        print("  [OK] Git push done")
     except subprocess.CalledProcessError as e:
-        print(f"  [WARN] Git 操作: {e.stderr}")
+        print(f"  [WARN] Git error: {e.stderr}")
 
 def main():
     print(f"\n{'='*50}")
