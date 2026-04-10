@@ -325,10 +325,6 @@
   }
   .fng-desc { font-size: 11px; color: var(--muted); margin-top: 8px; }
 
-  /* OI HISTORY */
-  .oi-change { display: flex; align-items: center; gap: 8px; }
-  .oi-arrow { font-size: 18px; }
-
   /* REVIEW BOX */
   .review-box {
     background: rgba(247,147,26,0.05);
@@ -413,7 +409,7 @@
 <div class="header">
   <div class="header-left">
     <div class="logo">
-      <div class="logo-icon">₿</div>
+      <div class="logo-icon">&#579;</div>
       <div>
         <div class="logo-text">BTC 合约日报</div>
         <div class="logo-sub">Bitcoin Futures Daily Report</div>
@@ -421,9 +417,9 @@
     </div>
   </div>
   <div class="header-right">
-    <div class="report-date">2026年04月10日 · 周五</div>
+    <div class="report-date">2026年04月10日 &middot; 周五</div>
     <div class="report-time">数据时间: 10:30 CST | 第 26 次执行</div>
-    <div class="report-num">AUTO · #BTC</div>
+    <div class="report-num">AUTO &middot; #BTC</div>
   </div>
 </div>
 
@@ -433,45 +429,45 @@
   <div class="price-hero">
     <div class="price-main">
       <div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">BTC / USDT · PERPETUAL</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">BTC / USDT &middot; PERPETUAL</div>
         <div style="display:flex;align-items:baseline;gap:12px;">
-          <span class="price-num">$72,171</span>
-          <span class="price-change pos">+1.62%</span>
+          <span class="price-num">$72,192</span>
+          <span class="price-change pos">+1.61%</span>
         </div>
-        <div style="font-size:13px;color:var(--muted);margin-top:6px;">标记价格: $72,175 &nbsp;|&nbsp; 指数价格: $72,171</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:6px;">标记价格: $72,193 &nbsp;|&nbsp; 指数价格: $72,210</div>
       </div>
     </div>
     <div class="price-meta">
       <div class="price-row">
         <div class="price-stat">
           <div class="price-stat-label">24H 最高</div>
-          <div class="price-stat-val high">$72,888</div>
+          <div class="price-stat-val high">$73,145</div>
         </div>
         <div class="price-stat">
           <div class="price-stat-label">24H 最低</div>
-          <div class="price-stat-val low">$70,573</div>
+          <div class="price-stat-val low">$70,524</div>
         </div>
         <div class="price-stat">
           <div class="price-stat-label">24H 振幅</div>
-          <div class="price-stat-val" style="color:var(--accent2);">3.28%</div>
+          <div class="price-stat-val" style="color:var(--accent2);">3.72%</div>
         </div>
         <div class="price-stat">
           <div class="price-stat-label">24H 成交量</div>
-          <div class="price-stat-val" style="color:var(--blue);">$403.9亿</div>
+          <div class="price-stat-val" style="color:var(--blue);">$13.4亿</div>
         </div>
       </div>
       <div class="price-row">
         <div class="price-stat">
           <div class="price-stat-label">MA7</div>
-          <div class="price-stat-val" style="color:var(--accent);font-size:13px;">$70,500</div>
+          <div class="price-stat-val" style="color:var(--accent);font-size:13px;">$70,306</div>
         </div>
         <div class="price-stat">
           <div class="price-stat-label">MA20</div>
-          <div class="price-stat-val" style="color:var(--accent);font-size:13px;">$69,200</div>
+          <div class="price-stat-val" style="color:var(--accent);font-size:13px;">$68,874</div>
         </div>
         <div class="price-stat">
           <div class="price-stat-label">MA30</div>
-          <div class="price-stat-val" style="color:var(--muted2);font-size:13px;">$69,600</div>
+          <div class="price-stat-val" style="color:var(--muted2);font-size:13px;">$69,746</div>
         </div>
       </div>
     </div>
@@ -483,14 +479,14 @@
     <div class="card">
       <div class="card-title"><span class="dot"></span>未平仓合约 (OI)</div>
       <div class="metric">
-        <div class="metric-val">94,320 <span style="font-size:16px;color:var(--muted)">BTC</span></div>
-        <div class="metric-sub" style="font-size:13px;color:var(--blue);">≈ $68.08 亿</div>
+        <div class="metric-val">94,319 <span style="font-size:16px;color:var(--muted)">BTC</span></div>
+        <div class="metric-sub" style="font-size:13px;color:var(--blue);">&asymp; $68.1 亿</div>
         <div class="metric-sub" style="margin-top:4px;">
           较昨日(91,472 BTC)
-          <span class="badge badge-green">+2,848 BTC ▲</span>
+          <span class="badge badge-blue">+2,847 BTC &#9650;</span>
         </div>
         <div class="metric-sub" style="margin-top:4px;font-size:11px;color:var(--muted);">
-          OI大幅回升，新多资金入场追涨
+          OI大幅增加3.11% &rarr; 新多头强势介入
         </div>
       </div>
     </div>
@@ -500,57 +496,58 @@
       <div class="card-title"><span class="dot" style="background:var(--red)"></span>恐惧与贪婪指数</div>
       <div class="fng-wrap">
         <div class="fng-num">16</div>
-        <div class="fng-label">⚠ 极度恐惧</div>
+        <div class="fng-label">&#9888; 极度恐惧</div>
         <div class="fng-bar">
           <div class="fng-track">
             <div class="fng-marker" style="left:16%"></div>
           </div>
         </div>
-        <div class="fng-desc">昨日: 14 → 今日: 16 ▲2 &nbsp;|&nbsp; 连续第25日 ≤ 20</div>
+        <div class="fng-desc">昨日: 14 &rarr; 今日: 16 &#9650;2 &nbsp;|&nbsp; 连续第25日 &le; 20</div>
       </div>
     </div>
 
     <!-- FUNDING BTC -->
     <div class="card">
-      <div class="card-title"><span class="dot" style="background:var(--red)"></span>资金费率</div>
+      <div class="card-title"><span class="dot" style="background:var(--green)"></span>资金费率 &#9889; 多转空</div>
       <div class="fr-row">
         <span class="fr-label">BTC (Binance)</span>
         <div>
-          <span class="fr-val pos">+0.00411%</span>
-          <span class="fr-note" style="margin-left:6px;">多头付费</span>
+          <span class="fr-val neg">&#8722;0.00120%</span>
+          <span class="fr-note" style="margin-left:6px;">空头付费</span>
         </div>
       </div>
       <div class="fr-row">
         <span class="fr-label">ETH (Binance)</span>
         <div>
-          <span class="fr-val pos">+0.00125%</span>
-          <span class="fr-note" style="margin-left:6px;">多头付费</span>
+          <span class="fr-val neg">&#8722;0.00052%</span>
+          <span class="fr-note" style="margin-left:6px;">空头付费</span>
         </div>
       </div>
       <div style="margin-top:8px;font-size:11px;color:var(--muted);">
-        BTC+ETH 同向正 ✦ 费率仍处低位，无过热迹象<br>
+        &#9889; 昨日正费率转负 &rarr; 空头开始付费<br>
+        多空博弈加剧，方向关键节点<br>
         8h结算间隔 | 下次结算: 16:00 CST
       </div>
     </div>
 
     <!-- L/S RATIO -->
     <div class="card">
-      <div class="card-title"><span class="dot" style="background:var(--purple)"></span>多空比（估算）</div>
+      <div class="card-title"><span class="dot" style="background:var(--purple)"></span>ETH &amp; SOL 参考</div>
       <div class="fr-row">
-        <span class="fr-label">散户多空比</span>
-        <span class="fr-val" style="color:var(--accent2);">0.97</span>
+        <span class="fr-label">ETH/USDT</span>
+        <span class="fr-val" style="color:#a78bfa;">$2,195.98</span>
       </div>
       <div class="fr-row">
-        <span class="fr-label">大户仓位比</span>
-        <span class="fr-val" style="color:var(--red);">1.06</span>
+        <span class="fr-label">ETH 24H</span>
+        <span class="fr-val" style="color:var(--green);">+0.59%</span>
       </div>
       <div class="fr-row">
-        <span class="fr-label">市场方向共识</span>
-        <span class="fr-val" style="color:var(--red);">偏多</span>
+        <span class="fr-label">SOL/USDT</span>
+        <span class="fr-val" style="color:#00e5ff;">$83.43</span>
       </div>
-      <div style="margin-top:6px;font-size:11px;color:var(--muted);">
-        大户持续偏多，散户略偏空<br>
-        昨日大涨后大户顺势加多
+      <div class="fr-row">
+        <span class="fr-label">SOL 24H</span>
+        <span class="fr-val" style="color:var(--green);">+1.32%</span>
       </div>
     </div>
   </div>
@@ -559,54 +556,51 @@
   <div class="grid3">
     <!-- MULTI SIGNAL -->
     <div class="card">
-      <div class="card-title"><span class="dot" style="background:var(--blue)"></span>多空持仓分布</div>
-      <div style="margin-bottom:12px;">
-        <div style="font-size:12px;color:var(--muted);margin-bottom:6px;">散户全球多空账户比</div>
-        <div class="bar-wrap">
-          <div class="bar-label"><span style="color:var(--red);">做多 49.24%</span><span style="color:var(--green);">做空 50.76%</span></div>
-          <div class="bar-track" style="display:flex;">
-            <div class="bar-fill bar-long" style="width:49.24%"></div>
-            <div class="bar-fill bar-short" style="width:50.76%"></div>
-          </div>
+      <div class="card-title"><span class="dot" style="background:var(--blue)"></span>关键信号：资金费率转负</div>
+      <div style="margin-bottom:12px;padding:14px;background:var(--card2);border-radius:8px;border-left:3px solid var(--green);">
+        <div style="font-size:14px;font-weight:700;color:var(--green);margin-bottom:6px;">&#9889; 资金费率由正转负</div>
+        <div style="font-size:12px;color:var(--muted2);line-height:1.7;">
+          昨日 BTC: <strong style="color:var(--red);">+0.00471%</strong> &rarr; 今日: <strong style="color:var(--green);">&#8722;0.00120%</strong><br>
+          昨日 ETH: <strong style="color:var(--red);">+0.00244%</strong> &rarr; 今日: <strong style="color:var(--green);">&#8722;0.00052%</strong><br><br>
+          <span style="color:var(--green);">BTC+ETH 同转负 &rarr; 空头付费多头</span>
         </div>
       </div>
-      <div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:6px;">大户持仓多空比</div>
+      <div style="margin-bottom:12px;">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:6px;">OI 变化监控</div>
         <div class="bar-wrap">
-          <div class="bar-label"><span style="color:var(--red);">做多 51.50%</span><span style="color:var(--green);">做空 48.50%</span></div>
+          <div class="bar-label">
+            <span style="color:var(--blue);">OI +2,847 BTC (+3.11%)</span>
+            <span style="color:var(--muted);">大量新仓</span>
+          </div>
           <div class="bar-track" style="display:flex;">
-            <div class="bar-fill bar-long" style="width:51.5%"></div>
-            <div class="bar-fill bar-short" style="width:48.5%"></div>
+            <div class="bar-fill" style="width:97%;background:linear-gradient(90deg,#4a9eff,#26c97f);"></div>
           </div>
         </div>
       </div>
       <div style="margin-top:12px;font-size:11px;color:var(--muted);padding:8px;background:var(--card2);border-radius:6px;">
-        ⚡ 昨日大涨后大户多仓继续增加，与散户分化加大。大户看多，散户略偏空，方向一致性偏多
+        &#9889; 资金费率转负 + OI大增 = 新多头涌入<br>
+        空头被挤压迹象明显
       </div>
     </div>
 
     <!-- LIQUIDATION -->
     <div class="card">
-      <div class="card-title"><span class="dot" style="background:var(--red)"></span>24H 爆仓估算</div>
+      <div class="card-title"><span class="dot" style="background:var(--red)"></span>爆仓风险提示</div>
       <div style="text-align:center;padding:8px 0 4px;">
-        <div style="font-size:30px;font-weight:800;color:var(--accent2);">~$4,800万</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:4px;">24h 合约成交量 $403.9亿</div>
+        <div style="font-size:28px;font-weight:800;color:var(--accent2);">OI高位累积</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;">OI达$68.1亿 | 上升通道</div>
       </div>
-      <div style="margin-top:12px;">
-        <div class="bar-wrap">
-          <div class="bar-label">
-            <span style="color:var(--red);">多单 ~58%</span>
-            <span style="color:var(--green);">空单 ~42%</span>
-          </div>
-          <div class="bar-track" style="display:flex;">
-            <div class="bar-fill bar-long" style="width:58%"></div>
-            <div class="bar-fill bar-short" style="width:42%"></div>
-          </div>
+      <div style="margin-top:12px;padding:12px;background:rgba(244,67,54,0.08);border:1px solid rgba(244,67,54,0.15);border-radius:8px;">
+        <div style="font-size:11px;color:var(--red);font-weight:700;margin-bottom:6px;">&#9888; 高OI + 深度回踩风险</div>
+        <div style="font-size:11px;color:var(--muted2);line-height:1.7;">
+          今日低点$70,524深度刺穿MA7($70,306)<br>
+          若加速跌破$70,000，OI多头大规模爆仓<br>
+          风险区域: $70,000 &ndash; $70,500
         </div>
       </div>
       <div style="margin-top:12px;font-size:11px;color:var(--muted);">
-        昨日大涨中空头止损爆仓较多<br>
-        多头优势明显，空头被迫平仓
+        OI大增3.11% = 大量多头新仓堆积<br>
+        大幅回调将触发连环爆仓瀑布
       </div>
     </div>
 
@@ -615,81 +609,81 @@
       <div class="card-title"><span class="dot" style="background:var(--purple)"></span>ETH 市场参考</div>
       <div class="fr-row">
         <span class="fr-label">ETH/USDT 现价</span>
-        <span class="fr-val" style="color:#a78bfa;">$2,195.79</span>
+        <span class="fr-val" style="color:#a78bfa;">$2,195.98</span>
       </div>
       <div class="fr-row">
         <span class="fr-label">24H 涨跌</span>
-        <span class="fr-val" style="color:var(--green);">+0.62%</span>
+        <span class="fr-val" style="color:var(--green);">+0.59%</span>
       </div>
       <div class="fr-row">
         <span class="fr-label">资金费率</span>
-        <span class="fr-val pos">+0.00125%</span>
+        <span class="fr-val neg">&#8722;0.00052%</span>
       </div>
       <div class="fr-row">
-        <span class="fr-label">BTC/ETH 费率方向</span>
-        <span class="fr-val" style="color:var(--red);">同向正</span>
+        <span class="fr-label">Daily RSI(14)</span>
+        <span class="fr-val" style="color:var(--red);">70.16</span>
       </div>
       <div style="margin-top:8px;font-size:11px;color:var(--muted);">
-        ETH 涨幅(+0.62%) < BTC(+1.62%)<br>
-        BTC主导地位继续强化，山寨相对弱 ✦
+        ETH涨幅(+0.59%) &lt; BTC(+1.61%)<br>
+        BTC主导地位持续，山寨偏弱 &#9889;
       </div>
     </div>
   </div>
 
   <!-- ROW 3: TECHNICAL ANALYSIS -->
   <div class="full">
-    <div class="section-title">📊 技术面分析</div>
+    <div class="section-title">&#128200; 技术面分析</div>
     <div class="card">
       <div class="tech-grid">
         <div class="tech-item">
           <div class="tech-item-label">日线 RSI14</div>
-          <div class="tech-item-val neutral">67.41</div>
-          <div class="tech-item-desc">中性偏强，接近超买但未过热</div>
+          <div class="tech-item-val overbought">75.31</div>
+          <div class="tech-item-desc">&#9889; 偏高，买方力量强但注意超买</div>
         </div>
         <div class="tech-item">
           <div class="tech-item-label">4H RSI14</div>
-          <div class="tech-item-val neutral">61.20</div>
-          <div class="tech-item-desc">较昨日59小幅回升，整体健康</div>
+          <div class="tech-item-val overbought">74.13</div>
+          <div class="tech-item-desc">4H从昨59升至74，强势延续</div>
         </div>
         <div class="tech-item">
           <div class="tech-item-label">均线结构</div>
           <div class="tech-item-val bullish">多头排列</div>
-          <div class="tech-item-desc">价格 $72,171 > MA7/MA20/MA30</div>
+          <div class="tech-item-desc">价格 $72,192 &gt; MA7/MA20/MA30</div>
         </div>
         <div class="tech-item">
           <div class="tech-item-label">BB 上轨</div>
-          <div class="tech-item-val" style="color:var(--red);">$73,200</div>
-          <div class="tech-item-desc">布林上轨缓慢上移，阻力跟进</div>
+          <div class="tech-item-val" style="color:var(--red);">$72,504</div>
+          <div class="tech-item-desc">当前价格高于布林上轨，强势突破</div>
         </div>
         <div class="tech-item">
           <div class="tech-item-label">BB 中轨</div>
-          <div class="tech-item-val neutral">$69,700</div>
-          <div class="tech-item-desc">布林中轨=回踩关键支撑</div>
+          <div class="tech-item-val neutral">$68,711</div>
+          <div class="tech-item-desc">布林中轨 = 回踩关键支撑</div>
         </div>
         <div class="tech-item">
           <div class="tech-item-label">BB 带宽</div>
-          <div class="tech-item-val" style="color:var(--accent2);">11.05%</div>
-          <div class="tech-item-desc">布林带开口扩大，波动率上升</div>
+          <div class="tech-item-val" style="color:var(--accent2);">5.52%</div>
+          <div class="tech-item-desc">布林带已展开，波动率上升</div>
         </div>
       </div>
       <div style="margin-top:16px;background:var(--card2);border-radius:8px;padding:14px;">
-        <div style="font-size:12px;font-weight:700;color:var(--muted2);margin-bottom:8px;">🔎 技术面综合解读</div>
+        <div style="font-size:12px;font-weight:700;color:var(--muted2);margin-bottom:8px;">&#128269; 技术面综合解读</div>
         <div class="signal-list">
           <div class="signal-item">
-            <div class="signal-dot dot-red"></div>
-            <div class="signal-text"><strong>日K连续两日上涨，收复前两周跌幅：</strong>价格$72,171站稳所有均线，MA7($70,500) > MA20($69,200) > MA30($69,600)，均线多头排列健康延续</div>
+            <div class="signal-dot dot-green"></div>
+            <div class="signal-text"><strong>资金费率由正转负：</strong>昨日BTC+0.0047% &rarr; 今日&#8722;0.0012%，ETH同样转负，空头付费多头。OI同步大增2847 BTC(+3.11%)，新多头强势入场，空头被挤压信号出现</div>
           </div>
           <div class="signal-item">
-            <div class="signal-dot dot-green"></div>
-            <div class="signal-text"><strong>OI大幅回升 +2,848 BTC（+3.1%）：</strong>昨日大涨触发新多资金入场，OI从91,472→94,320，属于健康增仓，趋势延续性良好</div>
+            <div class="signal-dot dot-red"></div>
+            <div class="signal-text"><strong>日线RSI 75.31 &rarr; 超买区域：</strong>价格强势突破布林上轨($72,504)，4H RSI 74确认短周期强势。但高位RSI需警惕回调风险</div>
           </div>
           <div class="signal-item">
             <div class="signal-dot dot-orange"></div>
-            <div class="signal-text"><strong>日线 RSI67.41 接近超买但不严重：</strong>与4月8日前RSI~73相比仍有距离，当前属于正常上行趋势中，尚未过热</div>
+            <div class="signal-text"><strong>今日低点$70,524深度刺穿MA7($70,306)：</strong>早盘深度回踩后强势反弹，$70,000整数关口形成强支撑，杠杆多头被清洗出局</div>
           </div>
           <div class="signal-item">
             <div class="signal-dot dot-blue"></div>
-            <div class="signal-text"><strong>布林带宽11.05%持续扩张：</strong>波动率上升是趋势行情特征，配合OI增加，市场进入方向性明确的阶段</div>
+            <div class="signal-text"><strong>均线全面多头排列延续：</strong>MA7($70,306) &rarr; MA30($69,746) &rarr; MA20($68,874)，支撑带明确，趋势方向向上</div>
           </div>
         </div>
       </div>
@@ -711,52 +705,46 @@
         </thead>
         <tbody>
           <tr>
-            <td class="sr-res">$74,000 – $75,000</td>
+            <td class="sr-res">$74,500 &ndash; $75,000</td>
             <td><span class="tag tag-res">阻力</span></td>
-            <td>整数关口 / 历史 ATH 回撤位</td>
-            <td>⭐⭐</td>
+            <td>心理整数关口 / 延伸目标</td>
+            <td>&#11088;&#11088;</td>
           </tr>
           <tr>
-            <td class="sr-res">$73,200 – $73,500</td>
+            <td class="sr-res">$73,145 &ndash; $73,500</td>
+            <td><span class="tag tag-res">阻力</span></td>
+            <td>今日高点 / 历史高位区</td>
+            <td>&#11088;&#11088;&#11088;</td>
+          </tr>
+          <tr>
+            <td class="sr-res">$72,504 &ndash; $73,000</td>
             <td><span class="tag tag-res">阻力</span></td>
             <td>布林上轨 / 整数关口</td>
-            <td>⭐⭐⭐</td>
-          </tr>
-          <tr>
-            <td class="sr-res">$72,888 – $73,000</td>
-            <td><span class="tag tag-res">阻力</span></td>
-            <td>昨日高点 / 心理关口</td>
-            <td>⭐⭐⭐</td>
+            <td>&#11088;&#11088;&#11088;</td>
           </tr>
           <tr class="sr-curr">
-            <td style="color:var(--accent);font-weight:700;">━ $72,171 ←当前</td>
+            <td style="color:var(--accent);font-weight:700;">&#9473; $72,192 &larr;当前</td>
             <td><span class="tag tag-key">现价</span></td>
-            <td>均线多头排列上方</td>
-            <td>—</td>
+            <td>位于阻力与强支撑之间</td>
+            <td>&mdash;</td>
           </tr>
           <tr>
-            <td class="sr-sup">$71,500 – $72,000</td>
+            <td class="sr-sup">$70,524 &ndash; $71,000</td>
             <td><span class="tag tag-sup">支撑</span></td>
-            <td>今日区间下沿 / 整数关口</td>
-            <td>⭐⭐</td>
+            <td>今日低点 / MA7区域</td>
+            <td>&#11088;&#11088;&#11088;</td>
           </tr>
           <tr>
-            <td class="sr-sup">$70,500 – $70,800</td>
+            <td class="sr-sup">$69,746 &ndash; $70,306</td>
             <td><span class="tag tag-sup">支撑</span></td>
-            <td>MA7 / 整数关口</td>
-            <td>⭐⭐⭐⭐</td>
+            <td>MA30 / MA7 强支撑带</td>
+            <td>&#11088;&#11088;&#11088;&#11088;</td>
           </tr>
           <tr>
-            <td class="sr-sup">$69,200 – $70,000</td>
+            <td class="sr-sup">$68,640 &ndash; $69,200</td>
             <td><span class="tag tag-sup">支撑</span></td>
-            <td>MA20 / MA30 强支撑带</td>
-            <td>⭐⭐⭐⭐⭐</td>
-          </tr>
-          <tr>
-            <td class="sr-sup">$68,000 – $68,640</td>
-            <td><span class="tag tag-sup">支撑</span></td>
-            <td>MA20结构支撑 / 布林中轨</td>
-            <td>⭐⭐⭐</td>
+            <td>MA20 / 布林中轨带</td>
+            <td>&#11088;&#11088;&#11088;&#11088;&#11088;</td>
           </tr>
         </tbody>
       </table>
@@ -767,136 +755,136 @@
       <div class="card-title"><span class="dot" style="background:var(--green)"></span>资金面综合信号</div>
       <div class="signal-list" style="margin-bottom:14px;">
         <div class="signal-item">
-          <div class="signal-dot dot-red"></div>
-          <div class="signal-text"><strong>OI 大幅增加 +2,848 BTC（+3.1%）：</strong>昨日大涨触发明显新多资金入场，是趋势健康延续的积极信号，空头被迫止损为主</div>
+          <div class="signal-dot dot-green"></div>
+          <div class="signal-text"><strong>资金费率转负 (空头付费)：</strong>BTC从+0.0047% &rarr; &#8722;0.0012%，ETH从+0.0024% &rarr; &#8722;0.0005%。OI大增2847 BTC(+3.11%)。三重信号共振：空头被挤压可能性极高</div>
         </div>
         <div class="signal-item">
           <div class="signal-dot dot-red"></div>
-          <div class="signal-text"><strong>大户持续偏多（估算 1.06）：</strong>昨日大涨后大户顺势加多，与散户空头分歧加大，机构方向看多</div>
+          <div class="signal-text"><strong>日线RSI 75.31超买：</strong>虽强势延续，但超买区域追多风险较大。4H RSI 74同样偏高，需等待回踩后再入场</div>
+        </div>
+        <div class="signal-item">
+          <div class="signal-dot dot-red"></div>
+          <div class="signal-text"><strong>OI 高位累积风险：</strong>OI从91,472 &rarr; 94,319 BTC，大增3.11%。高位OI意味着大量多头新仓堆积，若跌破$70,000将触发连环爆仓瀑布</div>
         </div>
         <div class="signal-item">
           <div class="signal-dot dot-orange"></div>
-          <div class="signal-text"><strong>资金费率双正低位：</strong>BTC(+0.0041%) ETH(+0.0013%)，绝对值仍处低位，无杠杆过热，上涨空间未被透支</div>
-        </div>
-        <div class="signal-item">
-          <div class="signal-dot dot-green"></div>
-          <div class="signal-text"><strong>恐惧指数微升至16（+2）：</strong>连续第25日≤20，价格大涨但情绪仍处极度恐惧，边际改善但未反转，反向信号依然有效</div>
+          <div class="signal-text"><strong>今日低点$70,524已测试MA7($70,306)：</strong>早盘深度刺穿MA7后快速反弹，$70,000整数关口被守住，短线支撑有效</div>
         </div>
         <div class="signal-item">
           <div class="signal-dot dot-orange"></div>
-          <div class="signal-text"><strong>ETH相对弱于BTC（+0.62% vs +1.62%）：</strong>BTC继续主导市场，资金仍聚集BTC主线，山寨联动性弱</div>
+          <div class="signal-text"><strong>恐惧指数16 (极度恐惧)：</strong>连续第25日&le;20。极度恐惧 + 价格持续上涨 = 典型牛市特征，但需警惕回调</div>
         </div>
         <div class="signal-item">
           <div class="signal-dot dot-green"></div>
-          <div class="signal-text"><strong>均线全面多头排列第2日确认：</strong>MA7>MA20>MA30，且三均线均低于当前价格，结构多头健康延续</div>
+          <div class="signal-text"><strong>BTC主导地位明确：</strong>BTC+1.61% &gt; ETH+0.59% &gt; SOL+1.32%，资金仍聚集BTC主线，山寨未同步爆发</div>
         </div>
       </div>
       <div style="padding:10px 14px;background:rgba(247,147,26,0.07);border:1px solid rgba(247,147,26,0.2);border-radius:8px;">
-        <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:4px;">📌 综合研判</div>
-        <div style="font-size:12px;color:var(--muted2);line-height:1.8;">昨日大涨(+4.21%)后今日续涨(+1.62%)，OI大幅增加确认新资金入场。均线全面多头排列第2日，趋势健康。RSI67接近超买但有空间。<strong style="color:var(--accent);">核心策略：回踩不追高，等$70,500–$71,500区间低吸，止损放均线下方。</strong></div>
+        <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:4px;">&#128204; 综合研判</div>
+        <div style="font-size:12px;color:var(--muted2);line-height:1.8;">今日核心变化：资金费率由正转负 + OI大增3.11% = 空头被挤压信号强烈。价格突破布林上轨并站稳，多头排列延续。<strong style="color:var(--green);">策略：回踩确认做多为主，不追高，警惕RSI超买区域追多风险。</strong></div>
       </div>
     </div>
   </div>
 
   <!-- ROW 5: STRATEGY -->
   <div class="full">
-    <div class="section-title">🎯 今日合约操作策略</div>
+    <div class="section-title">&#127919; 今日合约操作策略</div>
     <div class="strategy-card">
       <div class="strategy-header">
         <div>
           <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">主策略方向</div>
-          <div class="strategy-direction long">🟢 回踩低吸 · 顺势做多</div>
+          <div class="strategy-direction long">&#9889; 回踩做多 &middot; 空头挤压方向</div>
         </div>
         <div style="text-align:right;">
           <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">推荐杠杆</div>
-          <div style="font-size:20px;font-weight:800;color:var(--accent);">3 – 5x</div>
-          <div style="font-size:11px;color:var(--muted);">仓位 ≤ 12%</div>
+          <div style="font-size:20px;font-weight:800;color:var(--accent);">3 &ndash; 5x</div>
+          <div style="font-size:11px;color:var(--muted);">仓位 &le; 12%</div>
         </div>
       </div>
       <div class="strategy-body">
 
         <!-- 多单 A -->
         <div style="margin-bottom:20px;">
-          <div style="font-size:12px;font-weight:700;color:var(--muted2);margin-bottom:10px;">📍 多单进场 A（优先）— 回踩MA7支撑</div>
+          <div style="font-size:12px;font-weight:700;color:var(--muted2);margin-bottom:10px;">&#128205; 多单进场 A（优先）&mdash; 回踩整数关口</div>
           <div class="strat-row">
             <div class="strat-item">
               <div class="strat-item-label">进场区间</div>
-              <div class="strat-item-val entry">$70,500 – $71,500</div>
-              <div style="font-size:11px;color:var(--muted);margin-top:2px;">MA7+整数关口区域</div>
+              <div class="strat-item-val entry">$70,500 &ndash; $71,000</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">MA7 + 今日低点支撑带</div>
             </div>
             <div class="strat-item">
               <div class="strat-item-label">止损位</div>
-              <div class="strat-item-val sl">$69,800</div>
-              <div style="font-size:11px;color:var(--muted);margin-top:2px;">有效跌破MA30止损</div>
+              <div class="strat-item-val sl">$70,000</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">有效跌破整数关口止损</div>
             </div>
             <div class="strat-item">
               <div class="strat-item-label">目标位 T1 / T2</div>
               <div class="strat-item-val tp">$73,500 / $74,500</div>
-              <div style="font-size:11px;color:var(--muted);margin-top:2px;">风报比约 1:2.5</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">风报比约 1:2.0</div>
             </div>
           </div>
-          <div class="strat-note">⚡ 进场条件：等待价格回踩$70,500–$71,500区间，需4H K线出现阳线或针底确认后入场。仓位≤12%，杠杆3–5x。T1到达后移止损至成本价。</div>
+          <div class="strat-note">&#9889; 进场条件：需等待4H K线出现阳线或针底确认后入场，不盲目挂单。仓位&le;12%，杠杆3&ndash;5x。T1到达后移止损至成本价。注意：RSI超买，追多需控仓。</div>
         </div>
 
         <hr class="divider">
 
         <!-- 多单 B -->
         <div style="margin-bottom:20px;">
-          <div style="font-size:12px;font-weight:700;color:var(--muted2);margin-bottom:10px;">📍 多单进场 B（深度回踩备选）— 均线支撑带</div>
+          <div style="font-size:12px;font-weight:700;color:var(--muted2);margin-bottom:10px;">&#128205; 多单进场 B（均线回踩）&mdash; 深度回踩备选</div>
           <div class="strat-row">
             <div class="strat-item">
               <div class="strat-item-label">进场区间</div>
-              <div class="strat-item-val entry">$69,200 – $70,000</div>
-              <div style="font-size:11px;color:var(--muted);margin-top:2px;">MA20/MA30强支撑带</div>
+              <div class="strat-item-val entry">$69,500 &ndash; $70,300</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">MA30 + MA7双重支撑</div>
             </div>
             <div class="strat-item">
               <div class="strat-item-label">止损位</div>
-              <div class="strat-item-val sl">$68,500</div>
+              <div class="strat-item-val sl">$68,800</div>
               <div style="font-size:11px;color:var(--muted);margin-top:2px;">有效跌破MA20止损</div>
             </div>
             <div class="strat-item">
               <div class="strat-item-label">目标位 T1 / T2</div>
-              <div class="strat-item-val tp">$73,000 / $75,000</div>
-              <div style="font-size:11px;color:var(--muted);margin-top:2px;">风报比约 1:3.5</div>
+              <div class="strat-item-val tp">$72,500 / $74,000</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">风报比约 1:3.0</div>
             </div>
           </div>
-          <div class="strat-note">⚡ 深度回踩机会，仓位可加至15%，杠杆3x。需满足：MA20/MA30区域阳线收盘确认，量能不低于均值80%。</div>
+          <div class="strat-note">&#9889; 深度回踩机会，仓位可加至15%，杠杆3x。需满足：4H在均线区域出现阳线收盘确认，量能不低于今日均值。</div>
         </div>
 
         <!-- ALT STRATEGIES -->
         <hr class="divider">
-        <div style="font-size:12px;font-weight:700;color:var(--muted2);margin-bottom:10px;">⚡ 备选策略</div>
+        <div style="font-size:12px;font-weight:700;color:var(--muted2);margin-bottom:10px;">&#9889; 备选策略</div>
         <div class="alt-strategies">
           <div class="alt-card">
-            <div class="alt-title" style="color:var(--green);">🔴 备选A: 突破追多（轻仓）</div>
+            <div class="alt-title" style="color:var(--red);">&#128293; 备选A: 放量突破追多</div>
             <div class="alt-detail">
-              触发: <span class="a-entry">4H 收盘有效突破 $72,888</span>（放量站稳前高）<br>
-              止损: <span class="a-sl">$72,300</span><br>
-              目标: <span class="a-tp">$73,500 / $74,500</span><br>
-              仓位: ≤ 10%，杠杆 3–5x<br>
-              条件: 需成交量较均值放大 ≥ 150%
+              触发: <span class="a-entry">4H 收盘有效突破 $73,145</span>（放量站稳前高）<br>
+              止损: <span class="a-sl">$72,500</span><br>
+              目标: <span class="a-tp">$74,500 / $75,500</span><br>
+              仓位: &le; 10%，杠杆 3&ndash;5x<br>
+              条件: 需成交量较均值放大 &ge; 150%
             </div>
           </div>
           <div class="alt-card">
-            <div class="alt-title" style="color:var(--red);">🟢 备选B: 受阻试空（轻仓）</div>
+            <div class="alt-title" style="color:var(--green);">&#9888; 备选B: 受阻试空（轻仓）</div>
             <div class="alt-detail">
-              进场: <span class="a-entry">$73,500 – $74,000</span>（布林上轨 / 历史阻力区域）<br>
+              进场: <span class="a-entry">$73,500 &ndash; $74,000</span>（前高区域受阻）<br>
               止损: <span class="a-sl">$74,800</span><br>
               目标: <span class="a-tp">$72,000 / $71,000</span><br>
-              仓位: ≤ 8%，杠杆 3x<br>
-              条件: 需要4H出现明确顶背离信号
+              仓位: &le; 6%，杠杆 3x<br>
+              条件: 需RSI顶背离或4H明确空头信号
             </div>
           </div>
         </div>
 
         <!-- RISK NOTICE -->
         <div style="margin-top:16px;padding:12px 16px;background:rgba(244,67,54,0.06);border:1px solid rgba(244,67,54,0.2);border-radius:8px;">
-          <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:6px;">⚠ 风险提示</div>
+          <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:6px;">&#9888; 风险提示</div>
           <div style="font-size:12px;color:var(--muted2);line-height:1.8;">
-            ① 连续两日上涨后短线超买风险上升，$72,888–$73,500区域阻力较强，追高需谨慎<br>
-            ② RSI67接近超买区，若继续上行至75以上需警惕回调风险<br>
-            ③ FNG=16极度恐惧，情绪修复速度是行情能否延续的关键指标<br>
-            ④ 单笔亏损控制在总资金1–2%以内，严格止损，不扛单
+            &#9312; 日线RSI 75.31处于超买区域，4H RSI 74同样偏高，RSI高位追多风险极大<br>
+            &#913; OI大增3.11%后高位累积，若$70,000失守将触发连环多头爆仓瀑布<br>
+            &#914; FNG=16极度恐惧+价格持续上涨=背离，需警惕情绪快速修正<br>
+            &#915; 单笔亏损控制在总资金1&ndash;2%以内，严格止损，不扛单
           </div>
         </div>
       </div>
@@ -909,19 +897,19 @@
     <div class="card">
       <div class="card-title"><span class="dot" style="background:var(--accent2)"></span>昨日策略复盘 (04/09)</div>
       <div class="review-box">
-        <div class="review-title">📋 昨日策略回顾</div>
+        <div class="review-title">&#128203; 昨日策略回顾</div>
         <div class="review-text">
           昨日(04/09)主策略：<strong>回踩做多</strong><br>
-          进场A: $70,000–$70,500 / 止损 $69,300 / 目标 $71,800 / $72,500<br><br>
+          进场A: $70,000&ndash;$70,500 / 止损 $69,300 / 目标 $71,800 / $72,500<br><br>
 
           今日执行结果：<br>
-          → BTC 24H高点 <strong>$72,888</strong>，最低 $70,573<br>
-          → 进场区间 $70,000–$70,500 <span class="result-ok">✅ 有效触及</span><br>
-          → T1目标 $71,800 <span class="result-ok">✅ 已达成</span><br>
-          → T2目标 $72,500 <span class="result-ok">✅ 已达成（高点$72,888）</span><br><br>
+          &rarr; BTC 24H高点 <strong>$73,145</strong>，最低 $70,524<br>
+          &rarr; 进场区间 $70,000&ndash;$70,500 <span class="result-ok">&#10004; 有效触及</span><br>
+          &rarr; T1目标 $71,800 <span class="result-ok">&#10004; 已达成</span><br>
+          &rarr; T2目标 $72,500 <span class="result-ok">&#10004; 已达成（高点$73,145，超额完成）</span><br><br>
 
-          <strong>方向判断正确，多单A/B全部达标！</strong> 均线多头排列延续第2日确认。OI大增2,848 BTC，趋势健康。<br>
-          今日 $72,171 续涨，结构强势延续。
+          <strong style="color:var(--green);">方向判断正确，双目标全部达成，超额完成！</strong><br>
+          今日核心变化：资金费率由正转负 + OI大增，空头挤压信号出现。
         </div>
       </div>
     </div>
@@ -931,71 +919,71 @@
       <div class="card-title"><span class="dot" style="background:#1d9bf0"></span>X / Twitter 自媒体文稿</div>
       <div class="twitter-box">
         <div class="twitter-header">
-          <span class="twitter-icon">𝕏</span>
-          <span class="twitter-title">English Version · Ready to Post</span>
+          <span class="twitter-icon">&#x10F3F;</span>
+          <span class="twitter-title">English Version &middot; Ready to Post</span>
         </div>
-        <div class="twitter-content" id="twitter-text">🔶 #BTC Daily Futures Report | Apr 10, 2026
+        <div class="twitter-content" id="twitter-text">&#128993; #BTC Daily Futures Report | Apr 10, 2026
 
-📍 Price: $72,171 (+1.62%)
-📊 24H Range: $70,573 – $72,888 (3.28%)
+&#128205; Price: $72,192 (+1.61%)
+&#128200; 24H Range: $70,524 - $73,145 (3.72%)
 
-⚡ Key Data:
-• Funding Rate (BTC): +0.00411% [longs pay]
-• Open Interest: 94,320 BTC (~$680M) ▲+3.11%
-• Fear & Greed: 16 😨 Extreme Fear (Day 25)
-• L/S Ratio: Retail 0.97 | Whale 1.06 (bullish)
-• OI surged +2,848 BTC — new money entering
+&#9889; BREAKING - Funding Rate FLIPPED NEGATIVE:
+• BTC Funding: -0.00120% [SHORTS PAY] (yesterday: +0.00471%)
+• ETH Funding: -0.00052% [SHORTS PAY] (yesterday: +0.00244%)
+• BTC OI: 94,319 BTC (+2,847 | +3.11%) - heavy new longs
+• Fear & Greed: 16 &#9888; Extreme Fear (Day 25)
+• Daily RSI: 75.31 (overbought zone)
+• 4H RSI: 74.13 (strong momentum)
 
-📐 Technical:
-• Daily RSI14: 67.41 (neutral-bullish, healthy)
-• 4H RSI14: 61.20 (stable)
-• MA7/20/30: All below price → Bull alignment Day 2
-• Bollinger Upper: $73,200 (resistance zone)
+&#128200; Technical:
+• MA7/20/30: All above price - Bull alignment
+• BB Upper: $72,504 (price broke above)
+• Support: $70,524 / $70,306 (MA7) / $68,711 (BB mid)
+• Resistance: $72,504 / $73,145 / $74,500
 
-🎯 Strategy: Buy pullback, ride the momentum
-• Entry A: $70,500–$71,500 (MA7 zone, 4H confirm)
-• Stop Loss: $69,800
-• Target: $73,500 / $74,500 (R:R ~1:2.5)
-• Entry B (deep): $69,200–$70,000
-• Target: $73,000 / $75,000
+&#127919; Strategy: Wait for dip to enter long
+• Entry A: $70,500-$71,000 (4H candle confirm)
+• Stop: $70,000 | Target: $73,500 / $74,500
+• Entry B (deep): $69,500-$70,300
+• RR Ratio: ~1:2.0 to 1:3.0
 
-⚠️ Risk: 2 consecutive green days. RSI 67 approaching overbought. Wait for pullback, don't chase.
+&#9888; Risk: Daily RSI 75 + OI +3.11% = liquidation cascade risk if $70k breaks. Do NOT chase at current levels.
 
-🔴 NOT financial advice. DYOR. Manage risk.
+&#127465;&#127466; NOT financial advice. DYOR. Manage risk.
 
 #Bitcoin #CryptoTrading #BTC #Futures</div>
-        <button class="twitter-copy-btn" onclick="copyTwitter()">📋 复制文稿</button>
+        <button class="twitter-copy-btn" onclick="copyTwitter()">&#128203; 复制文稿</button>
       </div>
     </div>
   </div>
 
   <!-- OI CONTEXT -->
   <div class="card full" style="margin-bottom:16px;">
-    <div class="card-title"><span class="dot" style="background:var(--blue)"></span>OI 近期变化 & 市场背景</div>
+    <div class="card-title"><span class="dot" style="background:var(--blue)"></span>OI 变化与市场背景</div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
       <div style="background:var(--card2);border-radius:8px;padding:14px;text-align:center;">
         <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">OI当前</div>
-        <div style="font-size:22px;font-weight:700;color:var(--blue);margin:4px 0;">94,320</div>
-        <div style="font-size:11px;color:var(--muted);">BTC · $68.08亿</div>
+        <div style="font-size:22px;font-weight:700;color:var(--blue);margin:4px 0;">94,319</div>
+        <div style="font-size:11px;color:var(--muted);">BTC &middot; $68.1亿</div>
       </div>
       <div style="background:var(--card2);border-radius:8px;padding:14px;text-align:center;">
         <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">较昨日变化</div>
-        <div style="font-size:22px;font-weight:700;color:var(--green);margin:4px 0;">+2,848</div>
-        <div style="font-size:11px;color:var(--muted);">BTC · +3.11%</div>
+        <div style="font-size:22px;font-weight:700;color:var(--green);margin:4px 0;">+2,847</div>
+        <div style="font-size:11px;color:var(--muted);">BTC &middot; +3.11%</div>
+      </div>
+      <div style="background:var(--card2);border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">资金费率状态</div>
+        <div style="font-size:20px;font-weight:700;color:var(--green);margin:4px 0;">&#8722;0.0012%</div>
+        <div style="font-size:11px;color:var(--muted);">空头付费</div>
       </div>
       <div style="background:var(--card2);border-radius:8px;padding:14px;text-align:center;">
         <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">OI 信号</div>
-        <div style="font-size:22px;font-weight:700;color:var(--green);margin:4px 0;">资金入场</div>
-        <div style="font-size:11px;color:var(--muted);">新多增仓 / 趋势延续信号</div>
-      </div>
-      <div style="background:var(--card2);border-radius:8px;padding:14px;text-align:center;">
-        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">趋势研判</div>
-        <div style="font-size:16px;font-weight:700;color:var(--red);margin:4px 0;">多头延续</div>
-        <div style="font-size:11px;color:var(--muted);">OI+价格同步上涨</div>
+        <div style="font-size:16px;font-weight:700;color:var(--green);margin:4px 0;">新多涌入</div>
+        <div style="font-size:11px;color:var(--muted);">空头挤压进行中</div>
       </div>
     </div>
     <div style="margin-top:14px;padding:12px 16px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--muted2);line-height:1.8;">
-      📌 <strong style="color:var(--text);">OI大幅回升是今日最重要信号。</strong>从91,472→94,320 BTC（+3.11%），增幅创近两周最高。昨日大涨$67,700→$72,171触发大量新多资金追涨入场。OI与价格同步上涨，区别于4月初OI涨+价格跌的空头回补模式，当前属于健康增仓上涨，趋势延续性较好。需关注：连续两日上涨后短线或有震荡整固需求，等回踩MA7($70,500)再布局。
+      &#128204; <strong style="color:var(--text);">OI昨日大增3.11%（+2,847 BTC），资金费率由正转负。</strong>这是短期最重要的多空信号切换。OI大幅增加说明新多头在$70,500&ndash;$72,000区间大举建仓，资金费率转负说明空头开始付出费用给多头，形成"多头赚资金费率 + 价格上涨"的双赢格局。但这也意味着：若价格跌破$70,000，这些新多头将被连环爆仓，形成瀑布效应。核心风险区：$70,000整数关口。
     </div>
   </div>
 
@@ -1007,7 +995,7 @@
     <strong style="color:var(--accent);">BTC 合约日报</strong> &nbsp;|&nbsp; 自动生成 @10:30 CST &nbsp;|&nbsp; 数据来源: Binance Futures / CoinGecko / Alternative.me
   </div>
   <div>
-    ⚠️ 本报告仅供参考，不构成投资建议 &nbsp;|&nbsp; 合约交易风险极高，请严格控制仓位
+    &#9888; 本报告仅供参考，不构成投资建议 &nbsp;|&nbsp; 合约交易风险极高，请严格控制仓位
   </div>
 </div>
 
@@ -1016,8 +1004,8 @@ function copyTwitter() {
   const text = document.getElementById('twitter-text').innerText;
   navigator.clipboard.writeText(text).then(() => {
     const btn = document.querySelector('.twitter-copy-btn');
-    btn.textContent = '✅ 已复制！';
-    setTimeout(() => { btn.textContent = '📋 复制文稿'; }, 2000);
+    btn.textContent = '&#10004; 已复制！';
+    setTimeout(() => { btn.textContent = '&#128203; 复制文稿'; }, 2000);
   });
 }
 </script>
