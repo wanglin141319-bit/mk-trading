@@ -20,7 +20,7 @@ REPORTS_DIR = os.path.join(WORKSPACE, "btc", "reports")
 INDEX_PATH = os.path.join(WORKSPACE, "btc", "index.html")
 TODAY_STR = datetime.now().strftime("%Y%m%d")
 REPORT_PATH = os.path.join(REPORTS_DIR, f"BTC_daily_report_{TODAY_STR}.html")
-EXEC_NUM = 25  # 每日递增
+EXEC_NUM = 27  # 每日递增
 
 CST = timezone(timedelta(hours=8))
 cst_now = datetime.now(CST)
@@ -1066,7 +1066,7 @@ def update_index(report_date_str, report_summary, direction_tag):
     # 找到 reports-grid div
     target = '        <a href="reports/BTC_daily_report_20260409.html" class="report-card fade-in">'
 
-    report_num = 26  # 递增
+    report_num = 27  # 递增
 
     new_entry = f'''        <a href="reports/BTC_daily_report_{report_date_str}.html" class="report-card fade-in">
             <div class="report-date">{report_date_str[:4]}-{report_date_str[4:6]}-{report_date_str[6:8]}</div>
