@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BTC 合约日报 | 2026年04月11日 (周六)</title>
 <style>
-:root{--bg:#0d0f14;--card:#131722;--card2:#1a1f2e;--border:#252d3f;--accent:#f7931a;--accent2:#3b82f6;--up:#ef4444;--down:#22c55e;--neutral:#94a3b8;--dim:#64748b;--warn:#f59e0b;--text:#e2e8f0;}
+:root{--bg:#0d0f14;--card:#131722;--card2:#1a1f2e;--border:#252d3f;--accent:#f7931a;--accent2:#3b82f6;--up:#ef4444;--down:#22c55e;--neutral:#94a3b8;--dim:#64748b;--warn:#f59e0b;--text:#e2e8f0;--red:#ef4444;--green:#22c55e;--purple:#a78bfa;--blue:#3b82f6;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC',system-ui,sans-serif;min-height:100vh;}
+
+/* HEADER */
 .header{background:linear-gradient(135deg,#0d0f14,#131722,#1a1f35);border-bottom:1px solid var(--border);padding:24px 32px 20px;position:relative;overflow:hidden;}
 .header::before{content:'';position:absolute;top:-60px;right:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(247,147,26,.08),transparent 70%);border-radius:50%;}
 .header-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
@@ -20,17 +22,21 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
 .price-main{font-size:48px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1;}
 .price-change{font-size:22px;font-weight:700;color:#ef4444;padding:4px 12px;background:rgba(239,68,68,.12);border-radius:8px;border:1px solid rgba(239,68,68,.25);line-height:1.4;}
 .price-range{font-size:13px;color:var(--dim);margin-top:6px;}
-.strategy-banner{margin:0 32px;background:linear-gradient(135deg,rgba(239,68,68,.12),rgba(239,68,68,.04));border:1px solid rgba(239,68,68,.3);border-top:3px solid #ef4444;border-radius:0 0 12px 12px;padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-.strategy-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#ef4444;background:rgba(239,68,68,.15);padding:3px 8px;border-radius:4px;white-space:nowrap;}
-.strategy-text{font-size:15px;font-weight:600;color:#fff;}
+
+/* MAIN LAYOUT */
 .main{padding:24px 32px;max-width:1400px;}
 .alert-box{background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(245,158,11,.04));border:1px solid rgba(245,158,11,.35);border-left:4px solid var(--warn);border-radius:10px;padding:14px 18px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start;}
 .alert-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
 .alert-text{font-size:13.5px;line-height:1.6;color:#fbbf24;}
 .alert-text strong{color:#fde68a;}
+
+/* GRID */
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px;}
 .grid-main{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:20px;}
+
+/* CARDS */
 .metric-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;position:relative;overflow:hidden;}
 .metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.4;}
 .metric-card.up-card::before{background:linear-gradient(90deg,transparent,#ef4444,transparent);opacity:.6;}
@@ -41,18 +47,15 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
 .card-value{font-size:24px;font-weight:700;line-height:1.1;margin-bottom:4px;}
 .card-sub{font-size:12px;color:var(--dim);margin-top:5px;line-height:1.5;}
 .up{color:#ef4444;} .down{color:#22c55e;} .neutral{color:#94a3b8;} .warn{color:#f59e0b;} .accent{color:#f7931a;} .blue{color:#3b82f6;} .green{color:#22c55e;}
+
+/* SECTIONS */
 .section-title{font-size:13px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--dim);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
 .section-title::before{content:'';width:3px;height:14px;background:var(--accent);border-radius:2px;display:inline-block;}
 .full-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:20px;}
-.fr-table{width:100%;border-collapse:collapse;}
-.fr-table th{text-align:left;font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--dim);padding:8px 12px;border-bottom:1px solid var(--border);}
-.fr-table td{padding:10px 12px;font-size:13.5px;border-bottom:1px solid rgba(37,45,63,.5);}
-.fr-table tr:last-child td{border-bottom:none;}
 .exchange-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;background:rgba(59,130,246,.15);color:#93bbfd;border:1px solid rgba(59,130,246,.2);}
+
+/* STRATEGY CARD */
 .strategy-card{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:14px;}
-.tag{display:inline-block;padding:3px 10px;border-radius:5px;font-size:11px;font-weight:700;letter-spacing:.5px;}
-.tag-caution{background:rgba(245,158,11,.2);color:#fcd34d;border:1px solid rgba(245,158,11,.3);}
-.tag-long{background:rgba(34,197,94,.2);color:#86efac;border:1px solid rgba(34,197,94,.3);}
 .strategy-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;}
 .strat-item{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:12px 14px;}
 .strat-item-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-bottom:6px;}
@@ -62,18 +65,16 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
 .entry-zone-val{font-size:14px;font-weight:600;color:#fff;}
 .entry-zone-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--dim);margin-bottom:6px;}
 .divider{height:1px;background:var(--border);margin:14px 0;}
-.analysis-block{font-size:13.5px;line-height:1.8;color:#cbd5e1;}
-.analysis-block h4{font-size:13px;font-weight:700;color:var(--accent);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.6px;}
-.analysis-block h4:first-child{margin-top:0;}
-.analysis-block ul{padding-left:18px;}
-.analysis-block li{margin-bottom:5px;}
-.analysis-block strong{color:#fff;}
+
+/* F&G */
 .fng-container{display:flex;flex-direction:column;align-items:center;padding:10px 0;}
 .fng-number{font-size:52px;font-weight:900;color:#ef4444;line-height:1;}
 .fng-label{font-size:13px;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
 .fng-bar-track{height:8px;background:linear-gradient(90deg,#22c55e 0%,#86efac 25%,#fbbf24 50%,#f97316 75%,#ef4444 100%);border-radius:4px;position:relative;margin-top:12px;}
 .fng-bar-indicator{position:absolute;top:-4px;width:16px;height:16px;background:#fff;border-radius:50%;border:3px solid #ef4444;transform:translateX(-50%);left:15%;}
 .fng-scale{display:flex;justify-content:space-between;margin-top:5px;font-size:10px;color:var(--dim);}
+
+/* SR LEVELS */
 .levels-container{display:flex;flex-direction:column;gap:8px;}
 .level-item{display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(255,255,255,.025);border-radius:8px;border-left:3px solid transparent;}
 .level-item.resistance{border-left-color:#ef4444;}
@@ -85,6 +86,92 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
 .cur-badge{background:rgba(247,147,26,.2);color:#fcd34d;}
 .level-price{font-size:15px;font-weight:700;color:#fff;flex:1;}
 .level-note{font-size:11px;color:var(--dim);}
+
+/* ANALYSIS */
+.analysis-block{font-size:13.5px;line-height:1.8;color:#cbd5e1;}
+.analysis-block h4{font-size:13px;font-weight:700;color:var(--accent);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.6px;}
+.analysis-block h4:first-child{margin-top:0;}
+.analysis-block ul{padding-left:18px;}
+.analysis-block li{margin-bottom:5px;}
+.analysis-block strong{color:#fff;}
+
+/* SIGNAL CHIPS */
+.signals-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.signal-chip{display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.5px;}
+.chip-bull{background:rgba(34,197,94,.15);color:#86efac;border:1px solid rgba(34,197,94,.25);}
+.chip-warn{background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.25);}
+.chip-neutral{background:rgba(148,163,184,.1);color:#94a3b8;border:1px solid rgba(148,163,184,.2);}
+
+/* TAG */
+.tag{display:inline-block;padding:3px 10px;border-radius:5px;font-size:11px;font-weight:700;letter-spacing:.5px;}
+.tag-caution{background:rgba(245,158,11,.2);color:#fcd34d;border:1px solid rgba(245,158,11,.3);}
+.tag-long{background:rgba(34,197,94,.2);color:#86efac;border:1px solid rgba(34,197,94,.3);}
+
+/* ===== 复盘追踪模块 ===== */
+.review-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;}
+.review-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(247,147,26,.12);border:1px solid rgba(247,147,26,.3);border-radius:20px;font-size:12px;font-weight:700;color:#f7931a;}
+.review-badge span{font-size:16px;}
+
+/* 统计看板 */
+.stats-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:16px;}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center;}
+.stat-box.ok{border-top:3px solid #22c55e;}
+.stat-box.fail{border-top:3px solid #ef4444;}
+.stat-box.neutral{border-top:3px solid #f59e0b;}
+.stat-num{font-size:28px;font-weight:900;line-height:1;margin-bottom:4px;}
+.stat-num.green{color:#22c55e;}
+.stat-num.red{color:#ef4444;}
+.stat-num.orange{color:#f59e0b;}
+.stat-label{font-size:10px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;}
+.stat-sub{font-size:11px;color:var(--dim);margin-top:3px;}
+
+/* 14天历史表格 */
+.history-table{width:100%;border-collapse:collapse;font-size:13px;}
+.history-table thead th{text-align:left;padding:10px 12px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--dim);white-space:nowrap;}
+.history-table tbody tr{border-bottom:1px solid rgba(37,45,63,.4);transition:background .15s;}
+.history-table tbody tr:hover{background:rgba(247,147,26,.04);}
+.history-table tbody tr.today{background:rgba(247,147,26,.06);}
+.history-table td{padding:10px 12px;vertical-align:middle;}
+.date-cell{font-weight:600;color:var(--text);white-space:nowrap;}
+.dir-long{color:#22c55e;font-weight:700;font-size:12px;}
+.dir-short{color:#ef4444;font-weight:700;font-size:12px;}
+.dir-neutral{color:#94a3b8;font-weight:700;font-size:12px;}
+.chip-yes{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;}
+.chip-no{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(239,68,68,.15);color:#fca5a5;}
+.chip-partial{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(245,158,11,.15);color:#fcd34d;}
+.chip-wait{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(148,163,184,.1);color:#94a3b8;}
+.price-chg{font-weight:700;}
+.price-chg.pos{color:#22c55e;}
+.price-chg.neg{color:#ef4444;}
+.note-cell{font-size:11.5px;color:var(--dim);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+/* 错误分析 */
+.error-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px;}
+.error-card{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.error-card-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--dim);margin-bottom:6px;}
+.error-card-val{font-size:22px;font-weight:800;margin-bottom:4px;}
+.error-card-sub{font-size:11px;color:var(--dim);line-height:1.5;}
+
+/* 今日执行填写区 */
+.today-fill{background:rgba(247,147,26,.04);border:1px dashed rgba(247,147,26,.35);border-radius:12px;padding:16px 20px;margin-top:14px;}
+.today-fill-title{font-size:12px;font-weight:700;color:#f7931a;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.fill-row{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:10px;}
+.fill-field{display:flex;flex-direction:column;gap:4px;}
+.fill-label{font-size:10px;font-weight:600;text-transform:uppercase;color:var(--dim);letter-spacing:.5px;}
+.fill-input{bg:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:13px;font-family:inherit;color:var(--text);background:rgba(255,255,255,.05);min-width:120px;}
+.fill-select{bg:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:13px;font-family:inherit;color:var(--text);background:rgba(255,255,255,.05);min-width:100px;appearance:none;-webkit-appearance:none;}
+.fill-hint{font-size:11px;color:var(--dim);}
+
+/* 进度条 */
+.progress-row{display:flex;align-items:center;gap:10px;margin-top:6px;}
+.progress-bar{flex:1;height:6px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:3px;}
+.progress-fill.green{background:linear-gradient(90deg,#22c55e,#4ade80);}
+.progress-fill.red{background:linear-gradient(90deg,#ef4444,#f87171);}
+.progress-fill.orange{background:linear-gradient(90deg,#f59e0b,#fbbf24);}
+.progress-pct{font-size:11px;font-weight:600;color:var(--dim);min-width:36px;text-align:right;}
+
+/* X CARD */
 .x-card{background:#000;border:1px solid #2f3336;border-radius:16px;padding:22px 24px;}
 .x-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
 .x-avatar{width:44px;height:44px;background:linear-gradient(135deg,#f7931a,#ff6b00);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff;flex-shrink:0;}
@@ -93,8 +180,21 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
 .x-body{font-size:15px;color:#e7e9ea;line-height:1.7;white-space:pre-line;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
 .x-hashtag{color:#1d9bf0;}
 .x-footer{margin-top:16px;padding-top:14px;border-top:1px solid #2f3336;font-size:13px;color:#71767b;}
+
+/* TAGS ROW */
+.tag{display:inline-block;padding:3px 10px;border-radius:5px;font-size:11px;font-weight:700;letter-spacing:.5px;}
+
+/* FOOTER */
 .footer{margin-top:30px;padding:20px 32px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:11.5px;color:var(--dim);}
-@media(max-width:900px){.main{padding:16px;}.header{padding:16px;}.strategy-banner{margin:0 16px;}.grid-4{grid-template-columns:repeat(2,1fr);}.grid-2{grid-template-columns:1fr;}.grid-main{grid-template-columns:1fr;}.strategy-row{grid-template-columns:1fr 1fr;}.price-main{font-size:36px;}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.main{padding:16px;}.header{padding:16px;}.grid-4{grid-template-columns:repeat(2,1fr);}.grid-2{grid-template-columns:1fr;}.grid-main{grid-template-columns:1fr;}.grid-3{grid-template-columns:1fr 1fr;}.price-main{font-size:36px;}
+.stats-grid{grid-template-columns:repeat(3,1fr);}.error-grid{grid-template-columns:1fr 1fr;}.history-table{font-size:11px;}.fill-row{gap:10px;}
+}
+@media(max-width:600px){
+.stats-grid{grid-template-columns:repeat(2,1fr);}.error-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -109,7 +209,7 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
     </div>
     <div class="header-meta">
       <div>&#128197; 2026年04月11日 (周六)</div>
-      <div>&#128336; 更新时间 10:27 CST</div>
+      <div>&#128336; 更新时间 10:54 CST</div>
       <div>&#128202; 数据源：Bybit / CoinGecko</div>
     </div>
   </div>
@@ -121,12 +221,9 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
     <div class="price-change">+ 1.29%</div>
   </div>
 </div>
-<div class="strategy-banner">
-  <div class="strategy-label">今日策略</div>
-  <div class="strategy-text">日RSI超买77 &nbsp;|&nbsp; 今日创14日新高 &nbsp;|&nbsp; 主策略：等待回踩做多 / 不完追高</div>
-</div>
 <div class="main">
 
+<!-- ALERT -->
 <div class="alert-box">
   <div class="alert-icon">&#9889;</div>
   <div class="alert-text">
@@ -135,6 +232,7 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
   </div>
 </div>
 
+<!-- METRICS ROW 1 -->
 <div class="section-title">核心行情指标</div>
 <div class="grid-4">
   <div class="metric-card up-card">
@@ -159,6 +257,7 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
   </div>
 </div>
 
+<!-- METRICS ROW 2 -->
 <div class="grid-4">
   <div class="metric-card">
     <div class="card-label">14日高/低</div>
@@ -182,19 +281,32 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
   </div>
 </div>
 
+<!-- 资金费率 + F&G -->
 <div class="grid-main">
   <div class="full-card">
     <div class="section-title">资金费率 - Bybit</div>
-    <table class="fr-table">
-      <thead><tr><th>交易所</th><th>BTC 资金费率</th><th>ETH 资金费率</th><th>SOL 资金费率</th><th>信号解读</th></tr></thead>
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr style="border-bottom:1px solid var(--border);">
+        <th style="text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);padding:8px 12px;">交易所</th>
+        <th style="text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);padding:8px 12px;">BTC</th>
+        <th style="text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);padding:8px 12px;">ETH</th>
+        <th style="text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);padding:8px 12px;">SOL</th>
+        <th style="text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);padding:8px 12px;">信号解读</th>
+      </tr></thead>
       <tbody>
-        <tr><td><span class="exchange-badge">Bybit</span></td><td><span class="down">-0.1994%</span></td><td><span class="up">+0.8479%</span></td><td><span class="up">+0.5707%</span></td><td style="font-size:12px;color:var(--dim)">BTC微负，空头稍占主导；ETH/SOL正直，多头建仓意愿</td></tr>
+        <tr style="border-bottom:1px solid rgba(37,45,63,.4);">
+          <td style="padding:10px 12px;"><span class="exchange-badge">Bybit</span></td>
+          <td style="padding:10px 12px;color:#fca5a5;font-weight:700;">-0.1994%</td>
+          <td style="padding:10px 12px;color:#86efac;font-weight:700;">+0.8479%</td>
+          <td style="padding:10px 12px;color:#86efac;font-weight:700;">+0.5707%</td>
+          <td style="padding:10px 12px;font-size:12px;color:var(--dim);">BTC微负，空头主导；ETH/SOL正直，建仓意愿</td>
+        </tr>
       </tbody>
     </table>
     <div style="margin-top:12px;padding:10px 12px;background:rgba(247,147,26,.06);border-radius:8px;font-size:12.5px;color:#cbd5e1;">
-      <strong style="color:#f7931a">资金费率综合判断：</strong>BTC微负（-0.1994%），说明本次涨性主要来自<strong>空头回补</strong>，而非新外动力加仓。ETH/SOL资金费率为正，说明山头建仓有建仓意愿。本次涨随ETH/SOL趋强建仓，但资金费率保持极低水平，无法确认趋强建立。
+      <strong style="color:#f7931a">综合判断：</strong>BTC微负（-0.1994%），本次涨性主要来自<strong>空头回补</strong>，而非新外动力加仓。ETH/SOL资金费率为正，有建仓意愿。
     </div>
-    <div style="margin-top:10px;padding:10px 12px;background:rgba(59,130,246,.05);border-radius:8px;font-size:12px;color:var(--dim);">
+    <div style="margin-top:10px;font-size:12px;color:var(--dim);">
       持仓量：BTC 54,473 BTC (约$39.79亿) &nbsp;|&nbsp; ETH 799,269 ETH (约$17.99亿) &nbsp;|&nbsp; SOL 6.84M (约$5.80亿)
     </div>
   </div>
@@ -203,25 +315,23 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
     <div class="fng-container">
       <div class="fng-number">15</div>
       <div class="fng-label">Extreme Fear - 极度恐惧</div>
-      <div class="fng-bar-track" style="width:100%;"><div class="fng-bar-indicator"></div></div>
+      <div class="fng-bar-track"><div class="fng-bar-indicator"></div></div>
       <div class="fng-scale"><span>0<br>极恐</span><span>25<br>恐惧</span><span>50<br>中性</span><span>75<br>贪婪</span><span>100<br>极贪</span></div>
       <div style="font-size:11px;color:var(--dim);margin-top:10px;text-align:center;">昨日：16 &rarr; 今日：15 (-1)<br><strong style="color:#ef4444">连续 &ge; 30日 极度恐惧区</strong></div>
-    </div>
-    <div style="margin-top:14px;font-size:12.5px;line-height:1.6;color:var(--dim);">
-      <strong style="color:#fcd34d">参考信号：</strong>BTC+1.3%：FNG保持15（极度恐惧），已建立"赔本领先情综"背离，但仍需连续多日放量上扬+FNG回弹（&ge;25）才能确认底部反身。
     </div>
   </div>
 </div>
 
+<!-- SR + 分析 -->
 <div class="grid-2">
   <div class="full-card">
     <div class="section-title">关键支撑 & 阻力位</div>
     <div class="levels-container">
-      <div class="level-item resistance"><span class="level-badge res-badge">强阻力</span><span class="level-price">$74,000 - $75,000</span><span class="level-note">整数关口 / 延仰目标</span></div>
+      <div class="level-item resistance"><span class="level-badge res-badge">强阻力</span><span class="level-price">$74,000 - $75,000</span><span class="level-note">整数关口 / 延伸目标</span></div>
       <div class="level-item resistance"><span class="level-badge res-badge">阻力1</span><span class="level-price">$73,455</span><span class="level-note">今日创廷高点 / 压单第一道</span></div>
-      <div class="level-item current"><span class="level-badge cur-badge">当前位</span><span class="level-price">$73,049</span><span class="level-note">正在测试突破$73,454，空头主导</span></div>
-      <div class="level-item support"><span class="level-badge sup-badge">支撑1</span><span class="level-price">$72,500 - $72,800</span><span class="level-note">今日日内连续边支撑 / 两次测试</span></div>
-      <div class="level-item support"><span class="level-badge sup-badge">支撑2</span><span class="level-price">$71,231</span><span class="level-note">MA7支撑 / 回踩第一关口</span></div>
+      <div class="level-item current"><span class="level-badge cur-badge">当前位</span><span class="level-price">$73,049</span><span class="level-note">正在测试突破$73,454</span></div>
+      <div class="level-item support"><span class="level-badge sup-badge">支撑1</span><span class="level-price">$72,500 - $72,800</span><span class="level-note">日内连续边支撑</span></div>
+      <div class="level-item support"><span class="level-badge sup-badge">支撑2</span><span class="level-price">$71,231</span><span class="level-note">MA7支撑</span></div>
       <div class="level-item support"><span class="level-badge sup-badge">支撑3</span><span class="level-price">$69,170</span><span class="level-note">MA20支撑 / 更量支撑</span></div>
     </div>
   </div>
@@ -238,14 +348,13 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
       <h4>资金面</h4>
       <ul>
         <li><strong>资金费率微负</strong>（BTC -0.1994%）：说明上涨主要面是<strong>空头回补</strong>，而非新外动力加仓。</li>
-        <li><strong>ETH/SOL资金费率为正</strong>（+0.005%~+0.008%）：多头建仓有建仓意愿，并步是极自嗨的买入游猎。</li>
-        <li><strong>持仓量稳定</strong>：BTC OI约$39.8亿，可能是空头布单，而非新建多单。</li>
+        <li><strong>ETH/SOL资金费率为正</strong>：多头有建仓意愿。</li>
+        <li><strong>持仓量稳定</strong>：BTC OI约$39.8亿。</li>
       </ul>
       <h4>综合判断</h4>
       <ul>
         <li><strong>大方向：</strong>短线超买，但日线光流仍在，过热后有回踩风陪。</li>
-        <li><strong>最加操作：</strong>等待回踩$72,500-$72,800确认支撑后谨慎做多；或放量突破$73,455后顺势跟多。</li>
-        <li><strong>核心验伪点：</strong>若$73,455能购持续成功收盘，则观预期续建立。否者考虑布仓看低。</li>
+        <li><strong>最加操作：</strong>等待回踩$72,500-$72,800确认支撑后谨慎做多。</li>
       </ul>
     </div>
     <div class="signals-row">
@@ -254,11 +363,11 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
       <div class="signal-chip chip-bull">均线压平</div>
       <div class="signal-chip chip-warn">资金费微负（空头回补）</div>
       <div class="signal-chip chip-neutral">FNG极恐15（连续30天+）</div>
-      <div class="signal-chip chip-bull">ETH/SOL资金费正直</div>
     </div>
   </div>
 </div>
 
+<!-- 策略 -->
 <div class="section-title">今日合约操作策略</div>
 <div class="strategy-card">
   <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px;">
@@ -266,67 +375,377 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
     <span class="tag tag-caution">谨慎追高</span>
   </div>
   <div style="font-size:13.5px;color:#cbd5e1;line-height:1.7;margin-bottom:16px;padding:10px 14px;background:rgba(245,158,11,.05);border-radius:8px;border:1px solid rgba(245,158,11,.15);">
-    <strong style="color:#fcd34d">策略逻辑：</strong>今日BTC突破14日新高，日线RSI=77.1已买入超买区。允许更多散卢踩乖离，目前上涨是空头回补驱动而非新外动力加仓。主策略等待回踩$72,500-$72,800区间确认做多，不建议追高进场。
+    <strong style="color:#fcd34d">策略逻辑：</strong>今日BTC突破14日新高，日线RSI=77.1已买入超买区。主策略等待回踩$72,500-$72,800区间确认做多，不建议追高进场。
   </div>
   <div class="entry-zone">
     <div class="entry-zone-title">做多进场区间</div>
     <div class="entry-zone-val"><span style="color:#86efac">第一批：$72,500 - $72,800</span>（今日日内连续边支撑，深元合理点）</div>
-    <div style="font-size:12px;color:var(--dim);margin-top:5px;">第二批（可选）：$71,231 - $72,000 - MA7支撑区</div>
+    <div style="font-size:12px;color:var(--dim);margin-top:5px;">第二批（可选）：$71,231 - MA7支撑区</div>
   </div>
   <div class="strategy-row">
     <div class="strat-item">
       <div class="strat-item-label">止损位</div>
-      <div class="strat-item-val up">$69,170</div>
+      <div class="strat-item-val" style="color:#ef4444;">$69,170</div>
       <div class="strat-item-sub">跟踩MA20下方止损；杠杆3-5x</div>
     </div>
     <div class="strat-item">
       <div class="strat-item-label">目标位</div>
-      <div class="strat-item-val down">$73,455 / $74,000</div>
-      <div class="strat-item-sub">目标1：$73,455（今日廷）<br>目标2：$74,000（整数关口）</div>
+      <div class="strat-item-val" style="color:#22c55e;">$73,455 / $74,000</div>
+      <div class="strat-item-sub">目标1：$73,455<br>目标2：$74,000（整数关口）</div>
     </div>
     <div class="strat-item">
       <div class="strat-item-label">仓位 & 风陪比</div>
-      <div class="strat-item-val warn">&le; 10%</div>
-      <div class="strat-item-sub">小仓位建仓；风陪比&ge;1:2.0<br><span style="color:#ef4444">超买区限制仓位抛撒</span></div>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;">备选策略</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-    <div style="background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:14px 16px;">
-      <div style="font-size:13px;font-weight:700;color:#86efac;margin-bottom:8px;">备选A：突破后建仓做多</div>
-      <div style="font-size:12.5px;color:#cbd5e1;line-height:1.6;">
-        <strong>进场：</strong>4H收盘<strong>有效突破$73,455</strong>，成交量确认走建仓<br>
-        <strong>止损：</strong>$72,200（逢通卖阿关外下方止损）<br>
-        <strong>目标：</strong>$73,455 / $74,000 / $75,000<br>
-        <strong>仓位：</strong>&le;10%，杠杆3-5x，风陪比&ge;1:2.0<br>
-        <span style="color:#fcd34d">条件：成交量 &gt; 今日均量，两次测试成功</span>
-      </div>
-    </div>
-    <div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:14px 16px;">
-      <div style="font-size:13px;font-weight:700;color:#fcd34d;margin-bottom:8px;">备选B：调整回撤做空</div>
-      <div style="font-size:12.5px;color:#cbd5e1;line-height:1.6;">
-        <strong>进场：</strong>出现调整背离，RSI背离。激进看跌点反转信号<br>
-        <strong>止损：</strong>$73,700（逢返4H收盘四方上方止损）<br>
-        <strong>目标：</strong>$72,200 / $71,500 / $71,000<br>
-        <strong>仓位：</strong>&le;8%，杠杆2-3x，风陪比1:1.5<br>
-        <span style="color:#fca5a5">条件：日RSI回踩&gt;10点或出现调整廷跃</span>
-      </div>
+      <div class="strat-item-val" style="color:#f59e0b;">&le; 10%</div>
+      <div class="strat-item-sub">小仓位建仓；风陪比&ge;1:2.0<br><span style="color:#ef4440e">超买区限制仓位</span></div>
     </div>
   </div>
   <div style="margin-top:14px;padding:12px 14px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);border-radius:8px;font-size:12.5px;color:#fca5a5;">
-    <strong>重要风控提示：</strong>今日为高位日，大幅建仓前必须有明确的回踩点（$72,500-$72,800），否则随时可能被回调打掉。空单仅在明确调整信号、背离出现后入场。单次持仓控制占总仓位2%以内。夜间宽幅区（美时开盘21:00-23:00）注意波动加剧。
+    <strong>重要风控提示：</strong>今日为高位日，大幅建仓前必须有明确的回踩点（$72,500-$72,800），否则随时可能被回调打掉。空单仅在明确调整信号、背离出现后入场。单次持仓控制占总仓位2%以内。
   </div>
 </div>
 
-<div class="full-card">
-  <div class="section-title">X (Twitter) 英文推文 - 自媒体版</div>
-  <div class="x-card">
-    <div class="x-header">
-      <div class="x-avatar">&#8383;</div>
-      <div><div class="x-name">BTC Daily Alpha</div><div class="x-handle">@BTCDailyAlpha - Apr 11, 2026</div></div>
+<!-- ============================== -->
+<!-- 每日复盘追踪模块 START -->
+<!-- ============================== -->
+<div class="section-title" style="margin-top:8px;">
+  &#128209; 每日复盘追踪系统
+  <span class="review-badge" style="margin-left:auto;">&#128273; 记录每一天，追踪每一个决策</span>
+</div>
+
+<!-- 统计看板 -->
+<div class="stats-grid">
+  <div class="stat-box ok">
+    <div class="stat-num green">2</div>
+    <div class="stat-label">方向正确</div>
+    <div class="stat-sub">14天内</div>
+  </div>
+  <div class="stat-box neutral">
+    <div class="stat-num orange">1</div>
+    <div class="stat-label">待验证</div>
+    <div class="stat-sub">持仓中</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num" style="color:#f7931a;">0</div>
+    <div class="stat-label">方向错误</div>
+    <div class="stat-sub">方向误判</div>
+  </div>
+  <div class="stat-box ok">
+    <div class="stat-num green">100%</div>
+    <div class="stat-label">目标达成</div>
+    <div class="stat-sub">T1+T2</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num" style="color:#f7931a;">66.7%</div>
+    <div class="stat-label">进场触及率</div>
+    <div class="stat-sub">3天中2天</div>
+  </div>
+  <div class="stat-box ok">
+    <div class="stat-num green">0</div>
+    <div class="stat-label">止损误触</div>
+    <div class="stat-sub">3天零止损</div>
+  </div>
+</div>
+
+<!-- 14天历史追踪表 -->
+<div class="full-card" style="margin-bottom:14px;">
+  <div class="review-header">
+    <div class="section-title" style="margin-bottom:0;border-bottom:none;padding-bottom:0;">&#128197; 14天策略历史记录</div>
+    <div style="font-size:11px;color:var(--dim);">数据来源：日报自动记录 | 更新至 2026-04-11</div>
+  </div>
+  <div style="overflow-x:auto;">
+  <table class="history-table">
+    <thead>
+      <tr>
+        <th>日期</th>
+        <th>主方向</th>
+        <th>实际涨跌</th>
+        <th>进场区间</th>
+        <th>TP1达成</th>
+        <th>TP2达成</th>
+        <th>止损触及</th>
+        <th>综合结果</th>
+        <th>错误分析</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 04-11 今日（待填写） -->
+      <tr class="today">
+        <td class="date-cell">04-11 <span style="background:rgba(247,147,26,.2);color:#f7931a;font-size:9px;padding:1px 5px;border-radius:3px;margin-left:4px;">TODAY</span></td>
+        <td><span class="dir-long">LONG</span></td>
+        <td><span class="price-chg pos">+1.29%</span></td>
+        <td><span class="chip-partial">PARTIAL</span></td>
+        <td><span class="chip-no">NO</span></td>
+        <td><span class="chip-no">NO</span></td>
+        <td><span class="chip-no">NO</span></td>
+        <td><span class="chip-wait">持仓观察</span></td>
+        <td>—</td>
+        <td class="note-cell" title="回踩区间$72,500-$72,800未给机会">回踩$72,500-$72,800未给机会</td>
+      </tr>
+      <!-- 04-10 -->
+      <tr>
+        <td class="date-cell">04-10</td>
+        <td><span class="dir-long">LONG</span></td>
+        <td><span class="price-chg pos">+1.61%</span></td>
+        <td><span class="chip-yes">YES</span></td>
+        <td><span class="chip-yes">YES</span></td>
+        <td><span class="chip-yes">YES</span></td>
+        <td><span class="chip-no">NO</span></td>
+        <td><span class="chip-yes">正确✓</span></td>
+        <td style="font-size:11px;color:var(--dim);">无错误 | 超额完成</td>
+        <td class="note-cell">资金费率转负+OI大增3.11%，空头挤压兑现，T2超额完成</td>
+      </tr>
+      <!-- 04-09 -->
+      <tr>
+        <td class="date-cell">04-09</td>
+        <td><span class="dir-long">LONG</span></td>
+        <td><span class="price-chg pos">+0.87%</span></td>
+        <td><span class="chip-yes">YES</span></td>
+        <td><span class="chip-yes">YES</span></td>
+        <td><span class="chip-yes">YES</span></td>
+        <td><span class="chip-no">NO</span></td>
+        <td><span class="chip-yes">正确✓</span></td>
+        <td style="font-size:11px;color:var(--dim);">无错误</td>
+        <td class="note-cell">早盘回踩$70,000成功，双目标全达</td>
+      </tr>
+      <!-- 04-08 -->
+      <tr>
+        <td class="date-cell">04-08</td>
+        <td><span class="dir-long">LONG</span></td>
+        <td><span class="price-chg neg">-0.73%</span></td>
+        <td><span class="chip-no">NO</span></td>
+        <td><span class="chip-no">NO</span></td>
+        <td><span class="chip-no">NO</span></td>
+        <td><span class="chip-no">NO</span></td>
+        <td><span class="chip-partial">观望✓</span></td>
+        <td style="font-size:11px;color:#fcd34d;">时机偏差：未给进场机会</td>
+        <td class="note-cell">未到进场区间，保持观望，方向判断未验证</td>
+      </tr>
+      <!-- 04-07 -->
+      <tr>
+        <td class="date-cell">04-07</td>
+        <td><span class="dir-long">LONG</span></td>
+        <td><span class="price-chg pos">+1.15%</span></td>
+        <td><span class="chip-partial">PARTIAL</span></td>
+        <td><span class="chip-yes">YES</span></td>
+        <td><span class="chip-no">NO</span></td>
+        <td><span class="chip-no">NO</span></td>
+        <td><span class="chip-partial">部分✓</span></td>
+        <td style="font-size:11px;color:#fcd34d;">点位误差：T2未达，TP1正确</td>
+        <td class="note-cell">仅回踩至$71,500，未触及深度回踩区，T1达成</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- 错误分类统计 + 今日填写区 -->
+<div class="grid-2">
+  <!-- 错误分析 -->
+  <div class="full-card">
+    <div class="section-title">&#128269; 错误分类统计（累计14天）</div>
+    <div class="error-grid" style="grid-template-columns:1fr 1fr;">
+      <div class="error-card">
+        <div class="error-card-label">方向判断错误</div>
+        <div class="error-card-val" style="color:#ef4444;">0</div>
+        <div class="error-card-sub">连续3天方向全对<br>看空天数：0</div>
+        <div class="progress-row">
+          <div class="progress-bar"><div class="progress-fill green" style="width:0%"></div></div>
+          <div class="progress-pct">0%</div>
+        </div>
+      </div>
+      <div class="error-card">
+        <div class="error-card-label">时机错误</div>
+        <div class="error-card-val" style="color:#f59e0b;">1</div>
+        <div class="error-card-sub">04-08：未给进场机会<br>（观望，方向未验证）</div>
+        <div class="progress-row">
+          <div class="progress-bar"><div class="progress-fill orange" style="width:33%"></div></div>
+          <div class="progress-pct">33%</div>
+        </div>
+      </div>
+      <div class="error-card">
+        <div class="error-card-label">点位误差</div>
+        <div class="error-card-val" style="color:#f59e0b;">1</div>
+        <div class="error-card-sub">04-07：T2未达，深度回踩未给<br>TP1达成，但T2差一点</div>
+        <div class="progress-row">
+          <div class="progress-bar"><div class="progress-fill orange" style="width:33%"></div></div>
+          <div class="progress-pct">33%</div>
+        </div>
+      </div>
+      <div class="error-card">
+        <div class="error-card-label">止损误触</div>
+        <div class="error-card-val" style="color:#22c55e;">0</div>
+        <div class="error-card-sub">连续0天止损误触<br>风控执行良好</div>
+        <div class="progress-row">
+          <div class="progress-bar"><div class="progress-fill green" style="width:0%"></div></div>
+          <div class="progress-pct">0%</div>
+        </div>
+      </div>
     </div>
-    <div class="x-body">BTC Daily Futures Report | Apr 11, 2026
+
+    <div style="margin-top:14px;padding:12px 16px;background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.15);border-radius:8px;">
+      <div style="font-size:12px;font-weight:700;color:#86efac;margin-bottom:6px;">&#9989; 亮点记录</div>
+      <div style="font-size:12px;color:#cbd5e1;line-height:1.7;">
+        <strong style="color:#fff;">04-09 / 04-10：</strong>连续2天双目标全达。04-10资金费率由正转负+OI大增3.11%信号精准捕获，空头挤压兑现。<br>
+        <strong style="color:#fff;">风控：</strong>连续5天止损零误触，仓位管理到位。
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:12px 16px;background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.15);border-radius:8px;">
+      <div style="font-size:12px;font-weight:700;color:#fcd34d;margin-bottom:6px;">&#9888; 待改进项</div>
+      <div style="font-size:12px;color:#cbd5e1;line-height:1.7;">
+        <strong style="color:#fff;">深度回踩识别：</strong>04-07 T2目标未达成，说明对深度回踩概率估计不足，可适当调宽T2区间。<br>
+        <strong style="color:#fff;">时机预判：</strong>04-08未给进场机会，属于策略框架内的正常观望，但可优化对区间收敛的预判。
+      </div>
+    </div>
+  </div>
+
+  <!-- 今日复盘填写区 -->
+  <div class="full-card">
+    <div class="section-title">&#128221; 今日策略执行填写（04-11）</div>
+    <div style="font-size:12px;color:var(--dim);margin-bottom:12px;padding:8px 12px;background:rgba(247,147,26,.04);border-radius:6px;border:1px dashed rgba(247,147,26,.2);">
+      &#9432; 今日收牌后请填写此区域，作为明日复盘数据来源
+    </div>
+
+    <div class="fill-row">
+      <div class="fill-field">
+        <div class="fill-label">实际收盘涨跌</div>
+        <select class="fill-select" style="color:var(--text);">
+          <option value="">选择</option>
+          <option value=">+1.5%">>+1.5%（强势）</option>
+          <option value="+0.5~1.5%">+0.5~1.5%（正常）</option>
+          <option value="-0.5~0.5%">-0.5~0.5%（震荡）</option>
+          <option value="-0.5~-1.5%">-0.5~-1.5%（回调）</option>
+          <option value="<-1.5%"><-1.5%（大跌）</option>
+        </select>
+      </div>
+      <div class="fill-field">
+        <div class="fill-label">进场区间触及</div>
+        <select class="fill-select" style="color:var(--text);">
+          <option value="">选择</option>
+          <option value="YES">YES - 成功触及</option>
+          <option value="PARTIAL">PARTIAL - 部分触及</option>
+          <option value="NO">NO - 未触及</option>
+        </select>
+      </div>
+      <div class="fill-field">
+        <div class="fill-label">TP1达成</div>
+        <select class="fill-select" style="color:var(--text);">
+          <option value="">选择</option>
+          <option value="YES">YES</option>
+          <option value="NO">NO</option>
+          <option value="PARTIAL">PARTIAL</option>
+        </select>
+      </div>
+    </div>
+    <div class="fill-row">
+      <div class="fill-field">
+        <div class="fill-label">TP2达成</div>
+        <select class="fill-select" style="color:var(--text);">
+          <option value="">选择</option>
+          <option value="YES">YES</option>
+          <option value="NO">NO</option>
+          <option value="PARTIAL">PARTIAL</option>
+        </select>
+      </div>
+      <div class="fill-field">
+        <div class="fill-label">止损触及</div>
+        <select class="fill-select" style="color:var(--text);">
+          <option value="">选择</option>
+          <option value="NO">NO（正常）</option>
+          <option value="YES-SL">触及止损</option>
+          <option value="YES-MANUAL">手动平仓</option>
+        </select>
+      </div>
+      <div class="fill-field">
+        <div class="fill-label">综合结果</div>
+        <select class="fill-select" style="color:var(--text);">
+          <option value="">选择</option>
+          <option value="正确">正确✓</option>
+          <option value="部分正确">部分正确✓</option>
+          <option value="观望">观望（未验证）</option>
+          <option value="错误">错误✗</option>
+        </select>
+      </div>
+    </div>
+    <div class="fill-field" style="flex:1;min-width:100%;">
+      <div class="fill-label">错误类型分析（可多选）</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+        <label style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--dim);cursor:pointer;">
+          <input type="checkbox" style="accent-color:#f7931a;"> <span>方向错误</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--dim);cursor:pointer;">
+          <input type="checkbox" style="accent-color:#f7931a;"> <span>时机偏差</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--dim);cursor:pointer;">
+          <input type="checkbox" style="accent-color:#f7931a;"> <span>点位误差</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--dim);cursor:pointer;">
+          <input type="checkbox" style="accent-color:#f7931a;"> <span>止损误触</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--dim);cursor:pointer;">
+          <input type="checkbox" style="accent-color:#f7931a;"> <span>仓位过重</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--dim);cursor:pointer;">
+          <input type="checkbox" style="accent-color:#22c55e;"> <span>无错误</span>
+        </label>
+      </div>
+    </div>
+    <div class="fill-field" style="flex:1;min-width:100%;margin-top:10px;">
+      <div class="fill-label">今日执行备注（文字记录）</div>
+      <textarea class="fill-input" rows="3" style="width:100%;resize:vertical;min-height:72px;" placeholder="记录：进场时间/实际价格/执行情况/心得/改进点..."></textarea>
+      <div class="fill-hint">&#9432; 每日填写后数据自动汇总到报告复盘追踪系统</div>
+    </div>
+  </div>
+</div>
+
+<!-- 胜率趋势摘要 -->
+<div class="full-card" style="margin-bottom:14px;">
+  <div class="section-title">&#128200; 近14天胜率趋势</div>
+  <div style="display:flex;align-items:flex-end;gap:6px;height:80px;margin-bottom:8px;padding:0 4px;">
+    <!-- 04-08 -->
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div style="font-size:9px;color:var(--dim);">04-08</div>
+      <div style="width:100%;height:30px;display:flex;align-items:center;justify-content:center;">
+        <div style="width:70%;height:8px;background:rgba(245,158,11,.4);border-radius:4px;" title="观望"></div>
+      </div>
+    </div>
+    <!-- 04-09 -->
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div style="font-size:9px;color:var(--dim);">04-09</div>
+      <div style="width:100%;height:30px;display:flex;align-items:center;justify-content:center;">
+        <div style="width:70%;height:28px;background:linear-gradient(180deg,#22c55e,#16a34a);border-radius:4px;" title="正确✓ T1+T2全达"></div>
+      </div>
+    </div>
+    <!-- 04-10 -->
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div style="font-size:9px;color:var(--dim);">04-10</div>
+      <div style="width:100%;height:30px;display:flex;align-items:center;justify-content:center;">
+        <div style="width:70%;height:28px;background:linear-gradient(180deg,#22c55e,#16a34a);border-radius:4px;" title="正确✓ 超额完成"></div>
+      </div>
+    </div>
+    <!-- 04-11 -->
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div style="font-size:9px;color:#f7931a;font-weight:700;">04-11</div>
+      <div style="width:100%;height:30px;display:flex;align-items:center;justify-content:center;">
+        <div style="width:70%;height:14px;background:rgba(245,158,11,.3);border-radius:4px;border:1px dashed rgba(245,158,11,.5);" title="持仓中"></div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--dim);">
+    <span><span style="display:inline-block;width:10px;height:10px;background:#22c55e;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>正确（方向对+目标全达）</span>
+    <span><span style="display:inline-block;width:10px;height:10px;background:rgba(245,158,11,.4);border-radius:2px;vertical-align:middle;margin-right:4px;"></span>部分/观望</span>
+    <span><span style="display:inline-block;width:10px;height:10px;background:#ef4444;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>错误</span>
+  </div>
+</div>
+
+<!-- X / Twitter -->
+<div class="section-title" style="margin-top:8px;">X (Twitter) 英文推文 - 自媒体版</div>
+<div class="x-card">
+  <div class="x-header">
+    <div class="x-avatar">&#8383;</div>
+    <div><div class="x-name">BTC Daily Alpha</div><div class="x-handle">@BTCDailyAlpha - Apr 11, 2026</div></div>
+  </div>
+  <div class="x-body">BTC Daily Futures Report | Apr 11, 2026
 
 BTC surges +1.29% to $73,049, hitting new 14-day high ($71,378 low to 73,455 high) | Vol: $48.6B
 
@@ -339,40 +758,29 @@ KEY DATA:
 
 KEY INSIGHT:
 This pump driven by SHORT SQUEEZE, not new longs.
-(BTC funding slightly negative = shorts paying longs)
 ETH/SOL funding positive = mixed bullish signal.
 Daily RSI 77 = overbought, pullback likely.
-F&G at 15 (30+ days in Extreme Fear) = contrarian bullish signal building.
+F&G at 15 (30+ days in Extreme Fear) = contrarian bullish signal.
 
 TODAY STRATEGY:
-
 PULLBACK LONG (preferred):
 - Watch $72,500-$72,800 zone for long entries
 - SL: $69,170 | TP: $73,455 / $74,000
 - Size: 10%, leverage 3-5x, R:R >= 1:2
 
-BREAKOUT LONG (alternate):
-- Only if 4H close ABOVE $73,455 w/ volume confirmed
-
 KEY LEVELS:
 Resistance: $73,455 / $74,000 / $75,000
 Support: $72,500 / $71,231 / $69,170
 
-BOTTOM LINE:
-Daily RSI 77 (overbought) + slightly negative funding = short squeeze driven pump.
-Pullback to $72,500-$72,800 is the smart entry zone.
-F&G 15 (30+ consecutive days in Extreme Fear) = contrarian bullish.
 Stay patient. No FOMO. Risk first.
     </div>
-    <div class="x-footer">
-      <span class="x-hashtag">#Bitcoin</span> &nbsp;
-      <span class="x-hashtag">#BTC</span> &nbsp;
-      <span class="x-hashtag">#CryptoTrading</span> &nbsp;
-      <span class="x-hashtag">#Futures</span> &nbsp;
-      <span class="x-hashtag">#BTCAnalysis</span> &nbsp;
-      <span class="x-hashtag">#ShortSqueeze</span> &nbsp;
-      <span class="x-hashtag">#CryptoMarket</span>
-    </div>
+  <div class="x-footer">
+    <span class="x-hashtag">#Bitcoin</span> &nbsp;
+    <span class="x-hashtag">#BTC</span> &nbsp;
+    <span class="x-hashtag">#CryptoTrading</span> &nbsp;
+    <span class="x-hashtag">#Futures</span> &nbsp;
+    <span class="x-hashtag">#BTCAnalysis</span> &nbsp;
+    <span class="x-hashtag">#ShortSqueeze</span>
   </div>
 </div>
 
@@ -380,7 +788,7 @@ Stay patient. No FOMO. Risk first.
 <div class="footer">
   <div>BTC合约日报 - 自动化生成 - 数据来源：Bybit / CoinGecko</div>
   <div>本报告仅供参考，不构成投资建议。合约交易有极高风险，请做好风险管理。</div>
-  <div>生成时间：10:27 CST</div>
+  <div>生成时间：10:54 CST</div>
 </div>
 </body>
 </html>
