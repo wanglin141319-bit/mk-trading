@@ -738,6 +738,234 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI','PingFang SC'
   </div>
 </div>
 
+<!-- 月回顾 + 14天胜率详细统计 -->
+<div class="full-card" style="margin-bottom:14px;">
+  <div class="section-title">&#128197; 月回顾统计 &nbsp;|&nbsp; <span style="font-weight:400;font-size:11px;color:var(--dim);">2026年04月</span></div>
+  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:14px;">
+
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;">
+      <div style="font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;">总天数</div>
+      <div style="font-size:28px;font-weight:900;color:#fff;line-height:1;">4</div>
+      <div style="font-size:10px;color:var(--dim);margin-top:2px;">已记录</div>
+    </div>
+
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;">
+      <div style="font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;">正确</div>
+      <div style="font-size:28px;font-weight:900;color:#22c55e;line-height:1;">2</div>
+      <div style="font-size:10px;color:#22c55e;margin-top:2px;">50.0%</div>
+    </div>
+
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;">
+      <div style="font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;">观望</div>
+      <div style="font-size:28px;font-weight:900;color:#f59e0b;line-height:1;">1</div>
+      <div style="font-size:10px;color:#f59e0b;margin-top:2px;">25.0%</div>
+    </div>
+
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;">
+      <div style="font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;">错误</div>
+      <div style="font-size:28px;font-weight:900;color:#ef4444;line-height:1;">0</div>
+      <div style="font-size:10px;color:#ef4444;margin-top:2px;">0.0%</div>
+    </div>
+
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;">
+      <div style="font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;">目标全达</div>
+      <div style="font-size:28px;font-weight:900;color:#22c55e;line-height:1;">2</div>
+      <div style="font-size:10px;color:var(--dim);margin-top:2px;">T1+T2</div>
+    </div>
+
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;">
+      <div style="font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;">进场触及</div>
+      <div style="font-size:28px;font-weight:900;color:#f7931a;line-height:1;">2</div>
+      <div style="font-size:10px;color:var(--dim);margin-top:2px;">部分+完全</div>
+    </div>
+
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;">
+      <div style="font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;">止损误触</div>
+      <div style="font-size:28px;font-weight:900;color:#22c55e;line-height:1;">0</div>
+      <div style="font-size:10px;color:#22c55e;margin-top:2px;">零误触</div>
+    </div>
+  </div>
+
+  <!-- 月度进度条 -->
+  <div style="margin-bottom:14px;">
+    <div style="font-size:11px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;">月胜率进度</div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <div style="flex:1;height:12px;background:rgba(255,255,255,.05);border-radius:6px;overflow:hidden;display:flex;">
+        <div style="width:50%;background:linear-gradient(90deg,#22c55e,#4ade80);border-radius:6px 0 0 6px;" title="正确 50%"></div>
+        <div style="width:25%;background:rgba(245,158,11,.5);" title="观望 25%"></div>
+        <div style="width:25%;background:rgba(34,197,94,.1);" title="待验证 25%"></div>
+      </div>
+      <div style="font-size:13px;font-weight:800;color:#22c55e;min-width:50px;text-align:right;">50%</div>
+    </div>
+    <div style="display:flex;gap:12px;margin-top:6px;flex-wrap:wrap;">
+      <span style="font-size:11px;color:var(--dim);"><span style="display:inline-block;width:8px;height:8px;background:#22c55e;border-radius:2px;margin-right:4px;vertical-align:middle;"></span>正确 2天</span>
+      <span style="font-size:11px;color:var(--dim);"><span style="display:inline-block;width:8px;height:8px;background:rgba(245,158,11,.5);border-radius:2px;margin-right:4px;vertical-align:middle;"></span>观望 1天</span>
+      <span style="font-size:11px;color:var(--dim);"><span style="display:inline-block;width:8px;height:8px;background:rgba(34,197,94,.1);border-radius:2px;margin-right:4px;vertical-align:middle;"></span>待验证 1天</span>
+    </div>
+  </div>
+
+  <!-- 14天胜率详细统计 -->
+  <div style="font-size:11px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;">&#128200; 14天胜率详细统计</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;">
+
+    <!-- 综合胜率 -->
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;">
+      <div style="font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;">综合胜率</div>
+      <div style="position:relative;width:80px;height:80px;margin:0 auto 8px;">
+        <svg viewBox="0 0 36 36" style="width:80px;height:80px;transform:rotate(-90deg);">
+          <circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="3"/>
+          <circle cx="18" cy="18" r="15.5" fill="none" stroke="#22c55e" stroke-width="3"
+            stroke-dasharray="97.4 97.4" stroke-dashoffset="48.7"
+            stroke-linecap="round"/>
+        </svg>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;">
+          <div style="font-size:18px;font-weight:900;color:#22c55e;line-height:1;">50%</div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:var(--dim);">方向正确 / 总天</div>
+    </div>
+
+    <!-- 目标达成率 -->
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;">
+      <div style="font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;">T1+T2全达</div>
+      <div style="position:relative;width:80px;height:80px;margin:0 auto 8px;">
+        <svg viewBox="0 0 36 36" style="width:80px;height:80px;transform:rotate(-90deg);">
+          <circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="3"/>
+          <circle cx="18" cy="18" r="15.5" fill="none" stroke="#f7931a" stroke-width="3"
+            stroke-dasharray="97.4 97.4" stroke-dashoffset="0"
+            stroke-linecap="round"/>
+        </svg>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;">
+          <div style="font-size:18px;font-weight:900;color:#f7931a;line-height:1;">100%</div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:var(--dim);">已验证日全达</div>
+    </div>
+
+    <!-- 进场触及率 -->
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;">
+      <div style="font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;">进场触及率</div>
+      <div style="position:relative;width:80px;height:80px;margin:0 auto 8px;">
+        <svg viewBox="0 0 36 36" style="width:80px;height:80px;transform:rotate(-90deg);">
+          <circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="3"/>
+          <circle cx="18" cy="18" r="15.5" fill="none" stroke="#3b82f6" stroke-width="3"
+            stroke-dasharray="97.4 97.4" stroke-dashoffset="32.5"
+            stroke-linecap="round"/>
+        </svg>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;">
+          <div style="font-size:18px;font-weight:900;color:#3b82f6;line-height:1;">67%</div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:var(--dim);">区间触及率</div>
+    </div>
+  </div>
+
+  <!-- 14天详细记录条 -->
+  <div style="font-size:11px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;">&#128197; 14天每日记录</div>
+  <div style="overflow-x:auto;">
+  <table style="width:100%;border-collapse:collapse;font-size:12px;min-width:600px;">
+    <thead>
+      <tr style="border-bottom:1px solid var(--border);">
+        <th style="text-align:left;padding:7px 10px;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);white-space:nowrap;">日期</th>
+        <th style="text-align:center;padding:7px 10px;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);">方向</th>
+        <th style="text-align:center;padding:7px 10px;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);">涨跌</th>
+        <th style="text-align:center;padding:7px 10px;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);">进场</th>
+        <th style="text-align:center;padding:7px 10px;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);">TP1</th>
+        <th style="text-align:center;padding:7px 10px;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);">TP2</th>
+        <th style="text-align:center;padding:7px 10px;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);">止损</th>
+        <th style="text-align:center;padding:7px 10px;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);">结果</th>
+        <th style="text-align:left;padding:7px 10px;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);">错误类型</th>
+        <th style="text-align:left;padding:7px 10px;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--dim);">总结</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid rgba(37,45,63,.3);background:rgba(247,147,26,.05);">
+        <td style="padding:8px 10px;font-weight:700;color:#f7931a;white-space:nowrap;">04-11 <span style="font-size:9px;background:rgba(247,147,26,.2);color:#f7931a;padding:1px 5px;border-radius:3px;margin-left:4px;">TODAY</span></td>
+        <td style="padding:8px 10px;text-align:center;color:#22c55e;font-weight:700;">多</td>
+        <td style="padding:8px 10px;text-align:center;color:#22c55e;font-weight:700;">+1.29%</td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(245,158,11,.15);color:#fcd34d;">部分</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(239,68,68,.15);color:#fca5a5;">未达</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(239,68,68,.15);color:#fca5a5;">未达</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">否</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(148,163,184,.1);color:#94a3b8;">待验证</span></td>
+        <td style="padding:8px 10px;font-size:11px;color:var(--dim);">—</td>
+        <td style="padding:8px 10px;font-size:11px;color:var(--dim);">回踩$72,500未给机会</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(37,45,63,.3);">
+        <td style="padding:8px 10px;font-weight:700;color:var(--text);white-space:nowrap;">04-10</td>
+        <td style="padding:8px 10px;text-align:center;color:#22c55e;font-weight:700;">多</td>
+        <td style="padding:8px 10px;text-align:center;color:#22c55e;font-weight:700;">+1.61%</td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">触及</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">达成</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">达成</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">否</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">正确</span></td>
+        <td style="padding:8px 10px;font-size:11px;color:#22c55e;">无</td>
+        <td style="padding:8px 10px;font-size:11px;color:var(--dim);">资金费率转负+OI大增，空头挤压兑现</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(37,45,63,.3);">
+        <td style="padding:8px 10px;font-weight:700;color:var(--text);white-space:nowrap;">04-09</td>
+        <td style="padding:8px 10px;text-align:center;color:#22c55e;font-weight:700;">多</td>
+        <td style="padding:8px 10px;text-align:center;color:#22c55e;font-weight:700;">+0.87%</td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">触及</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">达成</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">达成</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">否</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">正确</span></td>
+        <td style="padding:8px 10px;font-size:11px;color:#22c55e;">无</td>
+        <td style="padding:8px 10px;font-size:11px;color:var(--dim);">回踩$70,000成功，双目标全达</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(37,45,63,.3);">
+        <td style="padding:8px 10px;font-weight:700;color:var(--text);white-space:nowrap;">04-08</td>
+        <td style="padding:8px 10px;text-align:center;color:#22c55e;font-weight:700;">多</td>
+        <td style="padding:8px 10px;text-align:center;color:#ef4444;font-weight:700;">-0.73%</td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(239,68,68,.15);color:#fca5a5;">未及</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(239,68,68,.15);color:#fca5a5;">—</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(239,68,68,.15);color:#fca5a5;">—</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">否</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(245,158,11,.15);color:#fcd34d;">观望</span></td>
+        <td style="padding:8px 10px;font-size:11px;color:#f59e0b;">时机偏差</td>
+        <td style="padding:8px 10px;font-size:11px;color:var(--dim);">未给进场机会，保持观望</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(37,45,63,.3);">
+        <td style="padding:8px 10px;font-weight:700;color:var(--text);white-space:nowrap;">04-07</td>
+        <td style="padding:8px 10px;text-align:center;color:#22c55e;font-weight:700;">多</td>
+        <td style="padding:8px 10px;text-align:center;color:#22c55e;font-weight:700;">+1.15%</td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(245,158,11,.15);color:#fcd34d;">部分</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">达成</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(239,68,68,.15);color:#fca5a5;">未达</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(34,197,94,.15);color:#86efac;">否</span></td>
+        <td style="padding:8px 10px;text-align:center;"><span style="padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(245,158,11,.15);color:#fcd34d;">部分</span></td>
+        <td style="padding:8px 10px;font-size:11px;color:#f59e0b;">点位误差</td>
+        <td style="padding:8px 10px;font-size:11px;color:var(--dim);">T1达成，T2差一点</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- 本月总结 -->
+  <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div style="background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:14px 16px;">
+      <div style="font-size:12px;font-weight:700;color:#86efac;margin-bottom:8px;">&#9989; 本月亮点</div>
+      <ul style="font-size:12px;color:#cbd5e1;line-height:1.9;padding-left:16px;">
+        <li>04-09/10：连续2天双目标全达</li>
+        <li>资金费率转负信号精准捕获（04-10空头挤压）</li>
+        <li>止损零误触：连续5天风控到位</li>
+        <li>方向判断：0错误，多头方向持续正确</li>
+      </ul>
+    </div>
+    <div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:14px 16px;">
+      <div style="font-size:12px;font-weight:700;color:#fcd34d;margin-bottom:8px;">&#9888; 待改进</div>
+      <ul style="font-size:12px;color:#cbd5e1;line-height:1.9;padding-left:16px;">
+        <li>深度回踩识别：04-07 T2未达，应调宽T2区间</li>
+        <li>时机预判：04-08未给机会，可优化区间收敛判断</li>
+        <li>目标精度：部分交易T2差一点，可分批止盈优化</li>
+        <li>建议：引入日内动态调整目标机制</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <!-- X / Twitter -->
 <div class="section-title" style="margin-top:8px;">X (Twitter) 英文推文 - 自媒体版</div>
 <div class="x-card">
