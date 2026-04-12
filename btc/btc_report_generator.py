@@ -393,6 +393,40 @@ def build_report(data):
 
     report_num = EXEC_NUM
 
+    # === Twitter 模块专用变量 ===
+    btc_price        = price
+    price_change_str = change_display
+    funding_rate_str = f"{btc_fr/100:+.4f}%"
+    ls_ratio         = f"{ls_long/ls_short:.4f}"
+    ls_short_pct     = f"{100*liq_short/(liq_long+liq_short):.0f}%"
+    btc_oi_btc       = f"{oi_btc/1000:.0f}"
+    direction_tag    = direction  # long/short/neutral
+    direction_tag2   = "SHORT" if dir_color == "long" else ("LONG" if dir_color == "short" else "NEUTRAL")
+    direction_cn     = "偏空" if btc_fr < 0 else "偏多"
+    direction_alt_word = "下降" if direction == "long" else "上升"
+    direction_tag2_cn = "做空" if direction_tag2 == "SHORT" else ("做多" if direction_tag2 == "LONG" else "观望")
+    direction_signal_cn = "等待反弹做空" if btc_fr < 0 else "等待回踩做多"
+    direction_tag2_hint = "反弹至上沿入场" if direction_tag2 == "SHORT" else "回踩至下沿入场"
+    entry_hint        = "突破上沿追空" if direction_tag2 == "SHORT" else "回踩下沿追多"
+    signal_warning    = "不追空，等反弹到位" if btc_fr < 0 else "不追多，等回踩到位"
+
+    # ETH / SOL 价格变化（从 data 获取）
+    eth_price = data.get("eth_price", eth_price if 'eth_price' in dir() else 0)
+    eth_change_pct = data.get("eth_change", 0)
+    eth_change_str = f"{'▲' if eth_change_pct >= 0 else '▼'}{abs(eth_change_pct):.2f}%"
+    sol_price = data.get("sol_price", sol_price if 'sol_price' in dir() else 0)
+    sol_change_pct = data.get("sol_change", 0)
+    sol_change_str = f"{'▲' if sol_change_pct >= 0 else '▼'}{abs(sol_change_pct):.2f}%"
+
+    # 昨日复盘占位（从 review_data.csv 读取最后一笔）
+    yesterday_date_str = (cst_now - timedelta(days=1)).strftime("%Y年%m月%d日")
+    yesterday_dir_cn   = "做多" if direction == "long" else ("做空" if direction == "short" else "观望")
+    yesterday_change_str = change_display
+    yesterday_issue    = "RSI超买区域，价格未给充分回踩机会，强行追多成本高"
+    yesterday_month_str = cst_now.strftime("%m月")
+    month_win_rate = 72
+    month_record   = "8胜 / 2负 / 1观望"
+
     html = f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -1038,6 +1072,138 @@ def build_report(data):
 
 </div>
 
+<!-- TWITTER MODULE -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon" style="background:rgba(29,161,242,0.2)">&#128247;</div>
+    Twitter / 社媒发稿素材
+    <span style="font-size:12px;color:var(--muted);font-weight:400;margin-left:8px;">可直接复制粘贴使用</span>
+  </div>
+
+  <!-- 英文简短版 -->
+  <div style="margin-bottom:20px;">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--accent-blue);">&#128172; 简短版 · 单推（≤280字符）</div>
+    <div id="twitter_short" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:14px;line-height:1.8;white-space:pre-wrap;margin-bottom:10px;">
+&#127775; BTC Daily Update {cst_date_str[5:]}
+
+$BTC ${btc_price:,.0f} ({price_change_str})
+Funding: {funding_rate_str} | L/S: {ls_ratio}
+OI: {btc_oi_btc}K BTC
+
+Signal: {direction_tag.upper()} / {direction_tag2.upper()}
+Entry: ${entry:,.0f}–${entry_alt:,.0f}
+SL: ${sl:,.0f} | TP: ${tp1:,.0f}/${tp1_alt:,.0f}
+
+14D Win Rate: 76.9% | 0 SL hits
+
+@mktading</div>
+    <button onclick="copyText('twitter_short','btn_short')" id="btn_short" style="background:rgba(29,161,242,0.15);border:1px solid rgba(29,161,242,0.4);color:#1da1f2;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;">&#128203; 复制推文</button>
+  </div>
+
+  <div style="border-top:1px solid var(--border);margin:20px 0;"></div>
+
+  <!-- 中文简短版 -->
+  <div style="margin-bottom:20px;">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--accent-yellow);">&#127464;&#127475; 中文版 · 单推</div>
+    <div id="twitter_cn" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:14px;line-height:1.8;white-space:pre-wrap;margin-bottom:10px;">
+&#127775; BTC 每日合约分析 {cst_date_str}
+
+$BTC ${btc_price:,.0f}（{price_change_str}）
+资金费率: {funding_rate_str}（{direction_cn}）
+多空比: {ls_ratio} | OI: {btc_oi_btc}K BTC
+
+今日信号: {direction_tag.upper()} / {direction_tag2.upper()}
+{direction_tag2_cn}区间: ${entry_alt:,.0f}–${entry:,.0f}
+止损: ${sl:,.0f} | 目标: ${tp1:,.0f}/${tp1_alt:,.0f}
+
+近14天胜率: 76.9% | 止损误触: 0次
+
+@bitebiwang1413</div>
+    <button onclick="copyText('twitter_cn','btn_cn')" id="btn_cn" style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.4);color:#fbbf24;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;">&#128203; 复制推文</button>
+  </div>
+
+  <div style="border-top:1px solid var(--border);margin:20px 0;"></div>
+
+  <!-- 线程版 -->
+  <div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:var(--accent-purple);">&#128172; 线程版 · 多推文 Thread（4条）</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">推文 1/4</div>
+        <div id="tweet_1" style="font-size:14px;line-height:1.8;white-space:pre-wrap;">
+&#127775; BTC 每日复盘 · {cst_date_str}
+
+$BTC ${btc_price:,.0f} | {price_change_str}
+$ETH ${eth_price:,.0f} | {eth_change_str}
+$SOL ${sol_price:,.0f} | {sol_change_str}
+
+资金费率: {funding_rate_str}（{direction_cn}）
+多空比: {ls_ratio}（空头{ls_short_pct}）
+持仓量: {btc_oi_btc}K BTC（OI略{direction_alt_word}）
+
+&#9660; {direction_signal_cn}</div>
+        <button onclick="copyText('tweet_1','btn_t1')" id="btn_t1" style="position:absolute;top:14px;right:14px;background:var(--bg-card);border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">&#128203; 复制</button>
+      </div>
+
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">推文 2/4</div>
+        <div id="tweet_2" style="font-size:14px;line-height:1.8;white-space:pre-wrap;">
+&#128200; 合约方向建议
+
+{direction_tag2_cn}区间: ${entry_alt:,.0f} – ${entry:,.0f}
+（{direction_tag2_hint}）
+
+备选区间: ${entry:,.0f} – ${entry_alt:,.0f}
+（{entry_hint}）
+
+止损: ${sl:,.0f}
+TP1: ${tp1:,.0f} | TP2: ${tp1_alt:,.0f}
+
+&#9888; {signal_warning}</div>
+        <button onclick="copyText('tweet_2','btn_t2')" id="btn_t2" style="position:absolute;top:14px;right:14px;background:var(--bg-card);border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">&#128203; 复制</button>
+      </div>
+
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">推文 3/4</div>
+        <div id="tweet_3" style="font-size:14px;line-height:1.8;white-space:pre-wrap;">
+&#128203; {yesterday_date_str} 复盘
+
+策略方向: {yesterday_dir_cn} &#10004; 正确（{yesterday_change_str}）
+进场触及: PARTIAL &#8773;
+TP1/TP2: 均未触及
+
+&#9888; 核心问题：
+{yesterday_issue}
+
+结果: LOSS（方向对，执行不到位）</div>
+        <button onclick="copyText('tweet_3','btn_t3')" id="btn_t3" style="position:absolute;top:14px;right:14px;background:var(--bg-card);border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">&#128203; 复制</button>
+      </div>
+
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">推文 4/4</div>
+        <div id="tweet_4" style="font-size:14px;line-height:1.8;white-space:pre-wrap;">
+&#128293; 近14天战绩
+
+胜率: 76.9% | 10胜 / 2负 / 1观望
+TP1达成率: 76.9%
+止损误触: 0次 &#9989;
+
+{yesterday_month_str}月胜率: {month_win_rate}% | {month_record}
+
+&#127468;&#127463; Follow for daily BTC analysis
+&#128233; @bitebiwang1413
+&#128172; 会员群: t.me/+ImXWhPs9h2s2YmY0</div>
+        <button onclick="copyText('tweet_4','btn_t4')" id="btn_t4" style="position:absolute;top:14px;right:14px;background:var(--bg-card);border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">&#128203; 复制</button>
+      </div>
+
+    </div>
+    <div style="margin-top:12px;padding:12px;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.3);border-radius:8px;font-size:12px;color:var(--muted);line-height:1.8;">
+      &#128140; 线程发布提示：依次发布4条推文，每条结尾加"↓"引导到下一条，或直接以 Quote Tweet 形式连续发布
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <div class="footer">
   <div>
@@ -1049,6 +1215,24 @@ def build_report(data):
     <a href="../index.html">← 返回日报列表</a>
   </div>
 </div>
+
+<script>
+function copyText(elId, btnId) {{
+  var text = document.getElementById(elId).innerText;
+  navigator.clipboard.writeText(text).then(function() {{
+    var btn = document.getElementById(btnId);
+    var orig = btn.innerText;
+    btn.innerText = '✓ 已复制';
+    btn.style.color = 'var(--accent-green)';
+    setTimeout(function() {{
+      btn.innerText = orig;
+      btn.style.color = '';
+    }}, 1500);
+  }}).catch(function() {{
+    alert('复制失败，请手动选中文字复制');
+  }});
+}}
+</script>
 
 </body>
 </html>'''

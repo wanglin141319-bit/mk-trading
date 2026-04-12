@@ -810,6 +810,141 @@ textarea { resize: vertical; min-height: 60px; }
   </div>
 </div>
 
+<!-- ========== 模块7：Twitter/社媒发稿素材 ========== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon" style="background:rgba(29,161,242,0.2)">&#128247;</div>
+    Twitter / 社媒发稿素材
+    <span style="font-size:12px;color:var(--text-muted);font-weight:400;margin-left:8px;">可直接复制粘贴使用</span>
+  </div>
+
+  <!-- 简短版（单推，≤280字符） -->
+  <div style="margin-bottom:20px;">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--accent-blue);">&#128172; 简短版 · 单推（≤280字符）</div>
+    <div id="twitter_short" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:14px;line-height:1.8;color:var(--text-primary);white-space:pre-wrap;margin-bottom:10px;position:relative;">
+&#127775; BTC Daily Update 04/12
+
+$BTC $71,826 (-1.57%)
+Funding: -0.0089% (Bearish)
+Long/Short: 0.9195 | OI: 96.2K
+
+Signal: SHORT / NEUTRAL
+Entry: $72,300–$72,800
+SL: $73,500 | TP: $71,200/$70,500
+
+14D Win Rate: 76.9% | 0 SL hits
+
+@mktading</div>
+    <button onclick="copyText('twitter_short','btn_short')" id="btn_short" style="background:rgba(29,161,242,0.15);border:1px solid rgba(29,161,242,0.4);color:#1da1f2;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;">&#128203; 复制推文</button>
+    <span id="msg_short" style="font-size:12px;color:var(--accent-green);margin-left:10px;display:none;">&#10003; 已复制！</span>
+  </div>
+
+  <div style="border-top:1px solid var(--border);margin:20px 0;"></div>
+
+  <!-- 中文版（单推） -->
+  <div style="margin-bottom:20px;">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--accent-yellow);">&#127464;&#127475; 中文版 · 单推</div>
+    <div id="twitter_cn" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:14px;line-height:1.8;color:var(--text-primary);white-space:pre-wrap;margin-bottom:10px;">
+&#127775; BTC 每日合约分析 04/12
+
+$BTC $71,826（-1.57%）
+资金费率: -0.0099%（偏空）
+多空比: 0.9195 | OI: 96.2K
+
+今日信号: SHORT / NEUTRAL
+做空区间: $72,300–$72,800
+止损: $73,500 | 目标: $71,200/$70,500
+
+近14天胜率: 76.9% | 止损误触: 0次
+
+@bitebiwang1413</div>
+    <button onclick="copyText('twitter_cn','btn_cn')" id="btn_cn" style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.4);color:#fbbf24;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;">&#128203; 复制推文</button>
+    <span id="msg_cn" style="font-size:12px;color:var(--accent-green);margin-left:10px;display:none;">&#10003; 已复制！</span>
+  </div>
+
+  <div style="border-top:1px solid var(--border);margin:20px 0;"></div>
+
+  <!-- 线程版（多推） -->
+  <div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:var(--accent-purple);">&#128172; 线程版 · 多推文Thread（含4条推文）</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+
+      <!-- Thread Tweet 1 -->
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">推文 1 / 4</div>
+        <div id="tweet_1" style="font-size:14px;line-height:1.8;color:var(--text-primary);white-space:pre-wrap;">&#127775; BTC 每日复盘 · 04/12
+
+$BTC $71,826 | -1.57%
+$ETH $2,226 | -0.99%
+$SOL $82.71 | -2.40%
+
+资金费率: -0.0089%（BTC偏空）
+多空比: 0.9195（空头52.1%）
+持仓量: 96,250 BTC（OI略降）
+
+&#9660; 偏空信号，继续等待反弹做空机会</div>
+        <button onclick="copyText('tweet_1','btn_t1')" id="btn_t1" style="position:absolute;top:14px;right:14px;background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">&#128203; 复制</button>
+      </div>
+
+      <!-- Thread Tweet 2 -->
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">推文 2 / 4</div>
+        <div id="tweet_2" style="font-size:14px;line-height:1.8;color:var(--text-primary);white-space:pre-wrap;">&#128200; 合约方向建议
+
+做空区间: $72,300 – $72,800
+（反弹至上沿入场）
+
+做多区间: $70,800 – $71,200
+（深度回踩轻仓试多）
+
+止损: $73,500
+TP1: $71,200 | TP2: $70,500
+
+&#9888; 不追空，等反弹到位再空</div>
+        <button onclick="copyText('tweet_2','btn_t2')" id="btn_t2" style="position:absolute;top:14px;right:14px;background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">&#128203; 复制</button>
+      </div>
+
+      <!-- Thread Tweet 3 -->
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">推文 3 / 4</div>
+        <div id="tweet_3" style="font-size:14px;line-height:1.8;color:var(--text-primary);white-space:pre-wrap;">&#128203; 04/11 复盘
+
+策略方向: LONG &#10004; 正确（+1.29%）
+进场触及: PARTIAL &#8773;
+TP1/TP2: 均未触及
+
+&#9888; 核心问题：
+RSI超买77，价格未给充分回踩机会
+强行追多成本高，冷静观望保住本金
+
+结果: LOSS（方向对，执行不到位）</div>
+        <button onclick="copyText('tweet_3','btn_t3')" id="btn_t3" style="position:absolute;top:14px;right:14px;background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">&#128203; 复制</button>
+      </div>
+
+      <!-- Thread Tweet 4 -->
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">推文 4 / 4</div>
+        <div id="tweet_4" style="font-size:14px;line-height:1.8;color:var(--text-primary);white-space:pre-wrap;">&#128293; 近14天战绩
+
+胜率: 76.9% | 10胜 / 2负 / 1观望
+TP1达成率: 76.9%
+止损误触: 0次 &#9989;
+
+04月胜率: 72.7% | 8胜 / 2负 / 1观望
+
+&#127468;&#127463; Follow for daily BTC analysis
+&#128233; @bitebiwang1413
+&#128172; 会员群: t.me/+ImXWhPs9h2s2YmY0</div>
+        <button onclick="copyText('tweet_4','btn_t4')" id="btn_t4" style="position:absolute;top:14px;right:14px;background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">&#128203; 复制</button>
+      </div>
+
+    </div>
+    <div style="margin-top:12px;padding:12px;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.3);border-radius:8px;font-size:12px;color:var(--text-secondary);line-height:1.8;">
+      &#128140; 线程发布提示：依次发布4条推文，每条结尾加"↓"引导到下一条，或直接以Quote Tweet形式连续发布
+    </div>
+  </div>
+</div>
+
 <!-- Footer -->
 <div class="footer">
   <p>&#9888; 本报告仅供参考，不构成投资建议。加密货币合约交易风险极高。</p>
@@ -834,7 +969,21 @@ r14data.forEach(function(d) {
   barChart.appendChild(div);
 });
 
-function saveToday() {
+function copyText(elId, btnId) {
+  var text = document.getElementById(elId).innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById(btnId);
+    var orig = btn.innerText;
+    btn.innerText = '✓ 已复制';
+    btn.style.color = 'var(--accent-green)';
+    setTimeout(function() {
+      btn.innerText = orig;
+      btn.style.color = '';
+    }, 1500);
+  });
+}
+
+
   var data = {
     date: '2026-04-12',
     direction: document.getElementById('today_dir').value,
