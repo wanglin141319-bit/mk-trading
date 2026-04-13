@@ -20,7 +20,7 @@ REPORTS_DIR = os.path.join(WORKSPACE, "btc", "reports")
 INDEX_PATH = os.path.join(WORKSPACE, "btc", "index.html")
 TODAY_STR = datetime.now().strftime("%Y%m%d")
 REPORT_PATH = os.path.join(REPORTS_DIR, f"BTC_daily_report_{TODAY_STR}.html")
-EXEC_NUM = 27  # 每日递增
+EXEC_NUM = 29  # 每日递增（04-09=#25, 04-10=#26, 04-11=#27, 04-12=#28, 04-13=#29）
 
 CST = timezone(timedelta(hours=8))
 cst_now = datetime.now(CST)
@@ -155,6 +155,22 @@ def fetch_eth_price():
     return {
         "price": data["ethereum"]["usd"],
         "change_24h": data["ethereum"].get("usd_24h_change", 0),
+    }
+
+def fetch_sol_price():
+    """SOL 价格"""
+    url = "https://api.coingecko.com/api/v3/simple/price"
+    params = {
+        "ids": "solana",
+        "vs_currencies": "usd",
+        "include_24hr_change": "true",
+    }
+    data = safe_get(url, params)
+    if not data or "solana" not in data:
+        return None
+    return {
+        "price": data["solana"]["usd"],
+        "change_24h": data["solana"].get("usd_24h_change", 0),
     }
 
 # ====== 技术分析辅助 ======
@@ -393,14 +409,26 @@ def build_report(data):
 
     report_num = EXEC_NUM
 
+    # === 多空比 & OI 辅助变量 ===
+    ls_long = liq_long
+    ls_short = liq_short
+    oi_btc = btc_oi  # openInterest 数值（BTC数量）
+
+    # === BTC 价格（Twitter 模板使用 btc_price）===
+    btc_price = price  # 别名，供 Twitter 模块使用
+
+    # === SOL 价格（从 data 获取，无则占位）===
+    _sol_raw = data.get("sol_price", {})
+    sol_price = (_sol_raw.get("price") or 150) if isinstance(_sol_raw, dict) else 150
+    sol_change_pct = (_sol_raw.get("change_24h") or 0) if isinstance(_sol_raw, dict) else 0
+
     # === Twitter 模块专用变量 ===
-    btc_price        = price
     price_change_str = change_display
     funding_rate_str = f"{btc_fr/100:+.4f}%"
-    ls_ratio         = f"{ls_long/ls_short:.4f}"
-    ls_short_pct     = f"{100*liq_short/(liq_long+liq_short):.0f}%"
-    btc_oi_btc       = f"{oi_btc/1000:.0f}"
-    direction_tag    = direction  # long/short/neutral
+    ls_ratio = f"{ls_long/ls_short:.4f}"
+    ls_short_pct = f"{100*liq_short/(liq_long+liq_short):.0f}%"
+    btc_oi_btc = f"{oi_btc/1000:.0f}"
+    direction_tag = direction  # long/short/neutral
     direction_tag2   = "SHORT" if dir_color == "long" else ("LONG" if dir_color == "short" else "NEUTRAL")
     direction_cn     = "偏空" if btc_fr < 0 else "偏多"
     direction_alt_word = "下降" if direction == "long" else "上升"
@@ -410,12 +438,17 @@ def build_report(data):
     entry_hint        = "突破上沿追空" if direction_tag2 == "SHORT" else "回踩下沿追多"
     signal_warning    = "不追空，等反弹到位" if btc_fr < 0 else "不追多，等回踩到位"
 
-    # ETH / SOL 价格变化（从 data 获取）
-    eth_price = data.get("eth_price", eth_price if 'eth_price' in dir() else 0)
-    eth_change_pct = data.get("eth_change", 0)
+    # ETH / SOL 价格变化
+    eth_change_pct = eth_price_data.get("change_24h", 0) if isinstance(eth_price_data, dict) else 0
     eth_change_str = f"{'▲' if eth_change_pct >= 0 else '▼'}{abs(eth_change_pct):.2f}%"
-    sol_price = data.get("sol_price", sol_price if 'sol_price' in dir() else 0)
-    sol_change_pct = data.get("sol_change", 0)
+
+    sol_data = data.get("sol_price", {})
+    if isinstance(sol_data, dict) and sol_data.get("price"):
+        sol_price = sol_data["price"]
+        sol_change_pct = sol_data.get("usd_24h_change", 0)
+    else:
+        sol_price = 150
+        sol_change_pct = 0
     sol_change_str = f"{'▲' if sol_change_pct >= 0 else '▼'}{abs(sol_change_pct):.2f}%"
 
     # 昨日复盘占位（从 review_data.csv 读取最后一笔）
@@ -1086,7 +1119,7 @@ def build_report(data):
     <div id="twitter_short" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:14px;line-height:1.8;white-space:pre-wrap;margin-bottom:10px;">
 &#127775; BTC Daily Update {cst_date_str[5:]}
 
-$BTC ${btc_price:,.0f} ({price_change_str})
+$BTC ${btc_price_val:,.0f} ({price_change_str})
 Funding: {funding_rate_str} | L/S: {ls_ratio}
 OI: {btc_oi_btc}K BTC
 
@@ -1108,7 +1141,7 @@ SL: ${sl:,.0f} | TP: ${tp1:,.0f}/${tp1_alt:,.0f}
     <div id="twitter_cn" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:14px;line-height:1.8;white-space:pre-wrap;margin-bottom:10px;">
 &#127775; BTC 每日合约分析 {cst_date_str}
 
-$BTC ${btc_price:,.0f}（{price_change_str}）
+$BTC ${btc_price_val:,.0f}（{price_change_str}）
 资金费率: {funding_rate_str}（{direction_cn}）
 多空比: {ls_ratio} | OI: {btc_oi_btc}K BTC
 
@@ -1134,7 +1167,7 @@ $BTC ${btc_price:,.0f}（{price_change_str}）
         <div id="tweet_1" style="font-size:14px;line-height:1.8;white-space:pre-wrap;">
 &#127775; BTC 每日复盘 · {cst_date_str}
 
-$BTC ${btc_price:,.0f} | {price_change_str}
+$BTC ${btc_price_val:,.0f} | {price_change_str}
 $ETH ${eth_price:,.0f} | {eth_change_str}
 $SOL ${sol_price:,.0f} | {sol_change_str}
 
@@ -1247,13 +1280,24 @@ def update_index(report_date_str, report_summary, direction_tag):
     with open(INDEX_PATH, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # 找到 reports-grid div
-    target = '        <a href="reports/BTC_daily_report_20260409.html" class="report-card fade-in">'
+    if f"BTC_daily_report_{report_date_str}.html" in content:
+        print(f"  [SKIP] index.html 已包含今日报告链接")
+        return
 
-    report_num = 27  # 递增
+    report_num = EXEC_NUM
 
+    # 动态找到第一个 report-card 链接作为插入锚点
+    import re
+    anchor_pattern = r'(<a href="reports/BTC_daily_report_\d{8}\.html" class="report-card fade-in">)'
+    anchor_match = re.search(anchor_pattern, content)
+    if not anchor_match:
+        print(f"  [WARN] 未找到现有报告卡片，跳过index更新")
+        return
+    target = anchor_match.group(1)
+
+    report_display_date = f"{report_date_str[:4]}-{report_date_str[4:6]}-{report_date_str[6:8]}"
     new_entry = f'''        <a href="reports/BTC_daily_report_{report_date_str}.html" class="report-card fade-in">
-            <div class="report-date">{report_date_str[:4]}-{report_date_str[4:6]}-{report_date_str[6:8]}</div>
+            <div class="report-date">{report_display_date}</div>
             <div class="report-title">BTC Daily Report · #{report_num}</div>
             <div class="report-summary en-content">{report_summary}</div>
             <div class="report-summary zh-content">{report_summary}</div>
@@ -1261,13 +1305,15 @@ def update_index(report_date_str, report_summary, direction_tag):
         </a>
 {target}'''
 
-    if f"BTC_daily_report_{report_date_str}.html" not in content:
-        content = content.replace(target, new_entry)
-        with open(INDEX_PATH, "w", encoding="utf-8") as f:
-            f.write(content)
-        print(f"  [OK] index.html 已更新")
-    else:
-        print(f"  [SKIP] index.html 已包含今日报告链接")
+    content = content.replace(target, new_entry, 1)
+
+    # 同时更新顶部 CTA 按钮链接
+    cta_pattern = r'(href=")reports/BTC_daily_report_\d{8}\.html(" class="btn-report")'
+    content = re.sub(cta_pattern, rf'\1reports/BTC_daily_report_{report_date_str}.html\2', content, count=1)
+
+    with open(INDEX_PATH, "w", encoding="utf-8") as f:
+        f.write(content)
+    print(f"  [OK] index.html 已更新")
 
 def git_push():
     """Git add + commit + push"""
@@ -1311,8 +1357,9 @@ def main():
     fear_greed = fetch_fear_greed() or {}
     print(f"      F&G: {fear_greed.get('value', 'N/A')} ({fear_greed.get('label', 'N/A')})")
 
-    print("[5/6] 抓取 ETH 价格...")
+    print("[5/6] 抓取 ETH + SOL 价格...")
     eth_price = fetch_eth_price() or {}
+    sol_price = fetch_sol_price() or {}
 
     liquidation = fetch_liquidation_stats()
 
@@ -1324,6 +1371,7 @@ def main():
         "eth_funding": eth_funding,
         "fear_greed": fear_greed,
         "eth_price": eth_price,
+        "sol_price": sol_price,
         "liquidation": liquidation,
     }
 
