@@ -441,14 +441,6 @@ def build_report(data):
     # ETH / SOL 价格变化
     eth_change_pct = eth_price_data.get("change_24h", 0) if isinstance(eth_price_data, dict) else 0
     eth_change_str = f"{'▲' if eth_change_pct >= 0 else '▼'}{abs(eth_change_pct):.2f}%"
-
-    sol_data = data.get("sol_price", {})
-    if isinstance(sol_data, dict) and sol_data.get("price"):
-        sol_price = sol_data["price"]
-        sol_change_pct = sol_data.get("usd_24h_change", 0)
-    else:
-        sol_price = 150
-        sol_change_pct = 0
     sol_change_str = f"{'▲' if sol_change_pct >= 0 else '▼'}{abs(sol_change_pct):.2f}%"
 
     # 昨日复盘占位（从 review_data.csv 读取最后一笔）
