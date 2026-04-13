@@ -7,6 +7,7 @@ import requests
 import json
 import os
 import sys
+import csv
 
 # 修复 Windows 终端编码
 if sys.platform == "win32":
@@ -18,9 +19,12 @@ from datetime import datetime, timezone, timedelta
 WORKSPACE = r"c:\Users\asus\mk-trading"
 REPORTS_DIR = os.path.join(WORKSPACE, "btc", "reports")
 INDEX_PATH = os.path.join(WORKSPACE, "btc", "index.html")
+REVIEW_CSV = os.path.join(REPORTS_DIR, "review_data.csv")
+LOCAL_OUT_DIR = r"c:\Users\asus\WorkBuddy"
 TODAY_STR = datetime.now().strftime("%Y%m%d")
 REPORT_PATH = os.path.join(REPORTS_DIR, f"BTC_daily_report_{TODAY_STR}.html")
-EXEC_NUM = 29  # 每日递增（04-09=#25, 04-10=#26, 04-11=#27, 04-12=#28, 04-13=#29）
+LOCAL_REPORT_PATH = os.path.join(LOCAL_OUT_DIR, f"BTC_daily_report_{TODAY_STR}.html")
+EXEC_NUM = 30  # 每日递增（04-09=#25, 04-10=#26, 04-11=#27, 04-12=#28, 04-13=#29, 04-14=#30）
 
 CST = timezone(timedelta(hours=8))
 cst_now = datetime.now(CST)
@@ -33,6 +37,147 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
     "Accept": "application/json",
 }
+
+# ====== 历史复盘数据读取 ======
+def load_review_data():
+    """读取 review_data.csv，返回最近14条记录"""
+    records = []
+    if not os.path.exists(REVIEW_CSV):
+        print(f"  [WARN] review_data.csv 不存在，将使用空数据")
+        return records
+    try:
+        with open(REVIEW_CSV, "r", encoding="utf-8") as f:
+            reader = csv.reader(f)
+            next(reader, None)
+            next(reader, None)
+            for row in reader:
+                if len(row) >= 9 and row[0].strip() and row[0].strip()[0].isdigit():
+                    chg_str = row[2].strip().replace("%", "").replace("+", "")
+                    records.append({
+                        "date": row[0].strip(),
+                        "direction": row[1].strip(),
+                        "change_pct": float(chg_str) if chg_str else 0.0,
+                        "entry_hit": row[3].strip(),
+                        "tp1_hit": row[4].strip(),
+                        "tp2_hit": row[5].strip(),
+                        "sl_hit": row[6].strip(),
+                        "result": row[7].strip(),
+                        "error": row[8].strip(),
+                    })
+    except Exception as e:
+        print(f"  [WARN] 读取 review_data.csv 失败: {e}")
+    return records[-14:]
+
+def calc_review_stats(records):
+    """计算近14天复盘统计数据"""
+    if not records:
+        return dict(total=0, wins=0, losses=0, look=0, win_rate=0.0,
+                    tp1_rate=0.0, sl_hit_count=0,
+                    dir_error=0, timing_error=0, point_error=0, sl_error=0)
+    total = len(records)
+    wins = sum(1 for r in records if "WIN" in r["result"].upper() or "胜" in r["result"])
+    losses = sum(1 for r in records if "LOSS" in r["result"].upper() or "负" in r["result"])
+    look = total - wins - losses
+    win_rate = wins / total * 100
+    tp1_rate = sum(1 for r in records if r["tp1_hit"].upper() in ("YES", "WIN", "达成")) / total * 100
+    sl_hit_count = sum(1 for r in records if r["sl_hit"].upper() == "YES")
+    dir_error = sum(1 for r in records if "方向" in r["error"] or "dir" in r["error"].lower())
+    timing_error = sum(1 for r in records if "时机" in r["error"] or "timing" in r["error"].lower())
+    point_error = sum(1 for r in records if "点位" in r["error"] or "point" in r["error"].lower())
+    sl_error = sum(1 for r in records if "止损" in r["error"] or "sl" in r["error"].lower())
+    return dict(total=total, wins=wins, losses=losses, look=look,
+                win_rate=win_rate, tp1_rate=tp1_rate, sl_hit_count=sl_hit_count,
+                dir_error=dir_error, timing_error=timing_error,
+                point_error=point_error, sl_error=sl_error)
+
+# ====== HTML模块函数 ======
+def mod2_tracking_table(records, today_str):
+    rows = ""
+    for r in records:
+        is_today = (r["date"] == today_str)
+        tag = ' <span style="background:#f7931a;color:#000;font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">TODAY</span>' if is_today else ""
+        bg = "background:rgba(247,147,26,0.07);" if is_today else ""
+        d = r["direction"].upper()
+        dir_c = '<span style="color:#f44336;font-weight:700;">做多</span>' if "LONG" in d else ('<span style="color:#26c97f;font-weight:700;">做空</span>' if "SHORT" in d else '<span style="color:#e8c94c;font-weight:700;">观望</span>')
+        chg = r["change_pct"]
+        chg_c = f'<span style="color:{"#26c97f" if chg>=0 else "#f44336"};">{"▲" if chg>=0 else "▼"}{abs(chg):.2f}%</span>'
+        res = r["result"].upper()
+        res_c = '<span style="color:#26c97f;font-weight:700;">✓ 胜</span>' if "WIN" in res or "胜" in r["result"] else ('<span style="color:#e8c94c;font-weight:700;">— 平</span>' if "LOOK" in res or "观" in r["result"] else '<span style="color:#f44336;font-weight:700;">✗ 负</span>')
+        err_short = (r["error"][:28] + "…") if len(r["error"]) > 28 else r["error"]
+        rows += f'<tr style="{bg}"><td style="color:#9ba3bc;font-size:12px;white-space:nowrap;">{r["date"][5:]}{tag}</td><td>{dir_c}</td><td>{chg_c}</td><td style="color:#f7931a;font-size:12px;">{r["entry_hit"]}</td><td style="font-size:12px;">{r["tp1_hit"]}</td><td style="font-size:12px;">{r["tp2_hit"]}</td><td style="font-size:12px;">{r["sl_hit"]}</td><td>{res_c}</td><td style="color:#7a8299;font-size:11px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="{r["error"]}">{err_short}</td></tr>'
+    return f'<div style="overflow-x:auto;"><table class="tracking-table"><thead><tr><th>日期</th><th>方向</th><th>涨跌</th><th>进场</th><th>TP1</th><th>TP2</th><th>止损</th><th>结果</th><th>错误分析</th></tr></thead><tbody>{rows}</tbody></table></div>'
+
+def mod3_error_stats(stats):
+    items = [
+        ("方向错误", stats["dir_error"], "#f44336"),
+        ("时机偏差", stats["timing_error"], "#ff9800"),
+        ("点位误差", stats["point_error"], "#e8c94c"),
+        ("止损误触", stats["sl_error"], "#26c97f"),
+    ]
+    total = max(1, sum(v for _, v, _ in items))
+    segs = "".join(f'<div style="width:{v/total*100:.1f}%;height:8px;display:inline-block;" bg="{c}"></div>' for _, v, c in items)
+    bars = ""
+    for name, cnt, color in items:
+        pct = cnt / total * 100
+        bars += f'<div style="margin-bottom:8px;"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;"><span style="color:#9ba3bc;">{name}</span><span style="color:#e2e8f0;font-weight:700;">{cnt}次 <span style="color:#7a8299;">({pct:.0f}%)</span></span></div><div style="height:5px;background:#252a3a;border-radius:3px;overflow:hidden;"><div style="height:100%;width:{max(2,pct)}%;background:{color};border-radius:3px;transition:width 0.5s;"></div></div></div>'
+    summary = f'<div style="margin-top:12px;padding:10px 12px;background:#1a1e2b;border-radius:8px;font-size:12px;color:#9ba3bc;line-height:1.9;border:1px solid #252a3a;"><span style="color:#f7931a;font-weight:700;">近14天</span> {stats["total"]}笔 | <span style="color:#26c97f;font-weight:700;">胜{stats["wins"]}笔</span> | <span style="color:#f44336;font-weight:700;">负{stats["losses"]}笔</span> | <span style="color:#e8c94c;font-weight:700;">平{stats["look"]}笔</span><br>胜率 <span style="color:#26c97f;font-weight:700;">{stats["win_rate"]:.0f}%</span> | TP1达成 <span style="color:#f7931a;font-weight:700;">{stats["tp1_rate"]:.0f}%</span> | 止损误触 <span style="color:#26c97f;font-weight:700;">{stats["sl_hit_count"]}次</span></div>'
+    return f'<div style="margin-bottom:10px;height:8px;border-radius:4px;overflow:hidden;display:flex;">{"".join(f"<div style=\'width:{v/total*100:.1f}%;background:{c};display:inline-block;\'></div>" for _,v,c in items)}</div>{bars}{summary}'
+
+def mod4_exec_form():
+    return '''<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
+  <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;">今日方向</label><select id="f_dir" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:8px 12px;font-size:13px;"><option value="">-- 选择 --</option><option>做多 LONG</option><option>做空 SHORT</option><option>观望 WAIT</option></select></div>
+  <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;">进场触及</label><select id="f_entry" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:8px 12px;font-size:13px;"><option value="">-- 选择 --</option><option>YES - 成功进场</option><option>PARTIAL - 部分触及</option><option>NO - 未触及</option></select></div>
+  <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;">TP1 结果</label><select id="f_tp1" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:8px 12px;font-size:13px;"><option value="">-- 选择 --</option><option>YES - 达成</option><option>NO - 未达成</option></select></div>
+  <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;">TP2 结果</label><select id="f_tp2" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:8px 12px;font-size:13px;"><option value="">-- 选择 --</option><option>YES - 达成</option><option>NO - 未达成</option></select></div>
+  <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;">止损是否触发</label><select id="f_sl" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:8px 12px;font-size:13px;"><option value="">-- 选择 --</option><option>YES - 止损触发</option><option>NO - 未触发</option></select></div>
+  <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;">最终结果</label><select id="f_result" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:8px 12px;font-size:13px;"><option value="">-- 选择 --</option><option>WIN - 止盈</option><option>LOSS - 止损</option><option>LOOK - 观望</option></select></div>
+</div>
+<div style="margin-bottom:12px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">错误类型（可多选）</label><div style="display:flex;flex-wrap:wrap;gap:8px;">''' + "".join(f'<label style="display:flex;align-items:center;gap:5px;background:#1a1e2b;border:1px solid #252a3a;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;"><input type="checkbox" id="e_{k}" style="accent-color:#f7931a;"> {n}</label>' for k,n in [("dir","方向错误"),("timing","时机偏差"),("point","点位误差"),("sl","止损误触"),("ok","无错误")]) + '''</div></div>
+<div style="margin-bottom:14px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">执行备注</label><textarea id="f_note" placeholder="记录执行问题、仓位管理、情绪等…" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:10px 12px;font-size:13px;width:100%;min-height:70px;resize:vertical;font-family:inherit;"></textarea></div>
+<button onclick="saveExec()" style="background:linear-gradient(135deg,#f7931a,#e8830a);border:none;color:#fff;font-weight:700;font-size:13px;padding:10px 28px;border-radius:8px;cursor:pointer;">💾 保存今日复盘</button>
+<script>function saveExec(){var d=document.getElementById("f_dir").value,e=document.getElementById("f_entry").value,t1=document.getElementById("f_tp1").value,t2=document.getElementById("f_tp2").value,sl=document.getElementById("f_sl").value,r=document.getElementById("f_result").value,n=document.getElementById("f_note").value,errs=[];["dir","timing","point","sl","ok"].forEach(function(x){if(document.getElementById("e_"+x).checked)errs.push(x)});var txt="=== BTC 日报复盘记录 ===\\n日期:"+new Date().toLocaleDateString("zh-CN")+"\\n方向:"+d+"\\n进场:"+e+"\\nTP1:"+t1+"\\nTP2:"+t2+"\\n止损:"+sl+"\\n结果:"+r+"\\n错误:"+errs.join(",")+"\\n备注:"+n+"\\n请将以上数据手动录入 review_data.csv";var b=new Blob([txt],{type:"text/plain;charset=utf-8"});var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="btc_review_"+new Date().toISOString().slice(0,10)+".txt";a.click();alert("复盘已生成，请在 review_data.csv 中手动录入今日数据！")}</script>'''
+
+def mod5_winrate_chart(records, stats):
+    chart = list(reversed(records[-14:]))
+    while len(chart) < 14:
+        chart.insert(0, dict(date="", result="LOOK", change_pct=0))
+    bw = 22; bg = 7; total_w = 14 * (bw + bg) + 40
+    bars = ""
+    for i, r in enumerate(chart):
+        x = 30 + i * (bw + bg)
+        res = r["result"].upper()
+        color = "#26c97f" if ("WIN" in res or "胜" in r["result"]) else ("#e8c94c" if ("LOOK" in res or "观" in r["result"]) else "#f44336")
+        bars += f'<rect x="{x}" y="{68-46}" width="{bw}" height="46" rx="3" fill="{color}" opacity="0.85"><title>{r["date"][5:] if r["date"] else ""}: {r["result"]}</title></rect>'
+        if i % 2 == 0:
+            bars += f'<text x="{x+bw//2}" y="80" text-anchor="middle" fill="#7a8299" font-size="8">{r["date"][5:7] if r["date"] else ""}/{r["date"][8:10] if r["date"] else ""}</text>'
+    wins = sum(1 for r in chart if "WIN" in r["result"].upper() or "胜" in r["result"])
+    looks = sum(1 for r in chart if "LOOK" in r["result"].upper() or "观" in r["result"])
+    losses = len(chart) - wins - looks
+    legend = f'<div style="display:flex;gap:14px;margin-bottom:10px;font-size:11px;align-items:center;"><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;background:#26c97f;border-radius:2px;"></span>胜 {wins}天</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;background:#e8c94c;border-radius:2px;"></span>平 {looks}天</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;background:#f44336;border-radius:2px;"></span>负 {losses}天</span><span style="color:#f7931a;font-weight:700;margin-left:8px;">胜率 {stats["win_rate"]:.0f}%</span></div>'
+    return f'{legend}<svg width="{total_w}" height="92" style="display:block;overflow:visible;">{bars}</svg>'
+
+def mod6_month_review(stats):
+    import math
+    wr = stats["win_rate"]; wins = stats["wins"]; losses = stats["losses"]; looks = stats["look"]
+    total = max(1, stats["total"]); tp1_rate = stats["tp1_rate"]; sl_count = stats["sl_hit_count"]
+    circ_r = 36; circ_cx = 60; circ_cy = 48
+    def arc(frac):
+        ang = frac * 360 - 90; rad = math.radians(ang)
+        return circ_cx + circ_r * math.cos(rad), circ_cy + circ_r * math.sin(rad)
+    wp = wins/total*100; lp = losses/total*100; lkp = looks/total*100
+    circ1 = f'<circle cx="{circ_cx}" cy="{circ_cy}" r="{circ_r}" fill="none" stroke="#26c97f" stroke-width="14" stroke-dasharray="{wp/100*2*math.pi*circ_r:.0f} {2*math.pi*circ_r:.0f}"/><circle cx="{circ_cx}" cy="{circ_cy}" r="{circ_r}" fill="none" stroke="#f44336" stroke-width="14" stroke-dasharray="{lp/100*2*math.pi*circ_r:.0f} {2*math.pi*circ_r:.0f}" stroke-dashoffset="{-wp/100*2*math.pi*circ_r:.0f}"/><circle cx="{circ_cx}" cy="{circ_cy}" r="{circ_r}" fill="none" stroke="#e8c94c" stroke-width="14" stroke-dasharray="{lkp/100*2*math.pi*circ_r:.0f} {2*math.pi*circ_r:.0f}" stroke-dashoffset="{-wp/100*2*math.pi*circ_r-lp/100*2*math.pi*circ_r:.0f}"/><text x="{circ_cx}" y="{circ_cy-5}" text-anchor="middle" fill="#fff" font-size="14" font-weight="800">{wins}</text><text x="{circ_cx}" y="{circ_cy+11}" text-anchor="middle" fill="#7a8299" font-size="9">胜/共{total}</text>'
+    month_str = cst_now.strftime("%Y年%m月")
+    highlights = [
+        f"月胜率{stats['win_rate']:.0f}%，高于市场平均水平",
+        "止损零误触，风控执行到位" if sl_count == 0 else f"止损触发{sl_count}次，需加强风控",
+    ]
+    improvements = []
+    if stats["timing_error"] >= stats["dir_error"]: improvements.append("时机把握是主要短板，建议等待充分回踩再入场")
+    if stats["dir_error"] > 0: improvements.append(f"方向判断错误{stats['dir_error']}次，需结合宏观信号优化")
+    if not improvements: improvements = ["保持当前执行节奏，重点提升时机判断"]
+    stat_cards = f'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;">' + "".join(f'<div style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;padding:12px;text-align:center;"><div style="font-size:24px;font-weight:800;color:#fff;">{v}</div><div style="font-size:10px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;margin-top:3px;">{l}</div></div>' for v,l in [(f"<span style='color:#26c97f'>{wins}</span>","盈利笔"),(f"<span style='color:#f44336'>{losses}</span>","亏损笔"),(f"<span style='color:#f7931a'>{wr:.0f}%</span>","月胜率"),(f"<span style='color:#26c97f'>{tp1_rate:.0f}%</span>","TP1达成")]) + '</div>'
+    donut = f'<div style="display:flex;gap:16px;align-items:center;"><svg width="120" height="96">{circ1}</svg><div style="font-size:12px;display:flex;flex-direction:column;gap:7px;">' + "".join(f'<div style="display:flex;align-items:center;gap:7px;"><span style="width:10px;height:10px;border-radius:2px;display:inline-block;background:{c};"></span><span style="color:#9ba3bc;">{n}</span><span style="color:#e2e8f0;font-weight:700;margin-left:auto;">{v}笔 ({p:.0f}%)</span></div>' for v,n,c,p in [(wins,"胜","#26c97f",wp),(losses,"负","#f44336",lp),(looks,"平","#e8c94c",lkp)]) + f'<div style="border-top:1px solid #252a3a;padding-top:7px;color:#7a8299;">止损误触: <span style="color:#26c97f;font-weight:700;">{sl_count}次</span></div></div></div>'
+    return f'<div style="margin-bottom:14px;">{stat_cards}</div><div style="margin-bottom:14px;">{donut}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"><div style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;padding:12px;"><div style="font-size:10px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">&#9733; 本月亮点</div>' + "".join(f'<div style="font-size:12px;color:#26c97f;margin-bottom:5px;">&#10003; {h}</div>' for h in highlights) + '</div><div style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;padding:12px;"><div style="font-size:10px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">&#9998; 待改进</div>' + "".join(f'<div style="font-size:12px;color:#e8c94c;margin-bottom:5px;">&#9655; {i}</div>' for i in improvements) + '</div></div>'
 
 # ====== 工具函数 ======
 def safe_get(url, params=None, timeout=10):
@@ -287,8 +432,8 @@ def generate_sr_levels(price):
     ]
 
 # ====== HTML 生成 ======
-def build_report(data):
-    """生成完整 HTML 报告"""
+def build_report(data, records, stats):
+    """生成完整 HTML 报告（包含全部7个模块）"""
 
     price_data = data.get("price", {})
     funding_data = data.get("funding", {})
@@ -443,14 +588,27 @@ def build_report(data):
     eth_change_str = f"{'▲' if eth_change_pct >= 0 else '▼'}{abs(eth_change_pct):.2f}%"
     sol_change_str = f"{'▲' if sol_change_pct >= 0 else '▼'}{abs(sol_change_pct):.2f}%"
 
-    # 昨日复盘占位（从 review_data.csv 读取最后一笔）
+    # 历史复盘数据（模块2-6用）
     yesterday_date_str = (cst_now - timedelta(days=1)).strftime("%Y年%m月%d日")
     yesterday_dir_cn   = "做多" if direction == "long" else ("做空" if direction == "short" else "观望")
     yesterday_change_str = change_display
-    yesterday_issue    = "RSI超买区域，价格未给充分回踩机会，强行追多成本高"
+    last_r = records[-1] if records else {}
+    yesterday_issue = last_r.get("error", "RSI超买区域，价格未给充分回踩机会，强行追多成本高")
+    yesterday_result = last_r.get("result", "—")
+    yesterday_entry  = last_r.get("entry_hit", "NO")
+    yesterday_tp1    = last_r.get("tp1_hit", "NO")
+    yesterday_tp2    = last_r.get("tp2_hit", "NO")
     yesterday_month_str = cst_now.strftime("%m月")
-    month_win_rate = 72
-    month_record   = "8胜 / 2负 / 1观望"
+    month_win_rate = int(stats["win_rate"])
+    month_record   = f"{stats['wins']}胜 / {stats['losses']}负 / {stats['look']}观望"
+
+    # === 预生成各模块 HTML ===
+    today_str_full = cst_now.strftime("%Y-%m-%d")
+    mod2_html = mod2_tracking_table(records, today_str_full)
+    mod3_html = mod3_error_stats(stats)
+    mod4_html = mod4_exec_form()
+    mod5_html = mod5_winrate_chart(records, stats)
+    mod6_html = mod6_month_review(stats)
 
     html = f'''<!DOCTYPE html>
 <html lang="zh-CN">
@@ -524,6 +682,7 @@ def build_report(data):
   /* LAYOUT */
   .container {{ max-width: 1280px; margin: 0 auto; padding: 28px 40px; }}
   .grid2 {{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }}
+  .grid-2 {{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }}
   .grid3 {{ display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }}
   .grid4 {{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px; }}
   .full {{ margin-bottom: 16px; }}
@@ -1094,13 +1253,69 @@ def build_report(data):
       </div>
     </div>
   </div>
+</div>
 
+<!-- ========== 模块2: 14天历史策略追踪表 ========== -->
+<div class="full">
+  <div class="card">
+    <div class="section-title">
+      <div class="icon">&#128203;</div>
+      <span style="font-size:11px;background:rgba(167,139,250,0.15);color:#a78bfa;padding:2px 8px;border-radius:4px;font-weight:600;margin-right:6px;">模块2</span>
+      近14天策略追踪表
+    </div>
+    {mod2_html}
+  </div>
+</div>
+
+<!-- ========== 模块3+5: 错误统计 & 胜率趋势图 ========== -->
+<div class="grid-2">
+  <div class="card">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(244,67,54,0.2)">&#9888;</div>
+      <span style="font-size:11px;background:rgba(167,139,250,0.15);color:#a78bfa;padding:2px 8px;border-radius:4px;font-weight:600;margin-right:6px;">模块3</span>
+      错误分类统计
+    </div>
+    {mod3_html}
+  </div>
+  <div class="card">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(38,201,127,0.2)">&#128200;</div>
+      <span style="font-size:11px;background:rgba(167,139,250,0.15);color:#a78bfa;padding:2px 8px;border-radius:4px;font-weight:600;margin-right:6px;">模块5</span>
+      近14天胜率趋势图
+    </div>
+    {mod5_html}
+  </div>
+</div>
+
+<!-- ========== 模块6: 月回顾统计 ========== -->
+<div class="full">
+  <div class="card">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(247,147,26,0.2)">&#128176;</div>
+      <span style="font-size:11px;background:rgba(167,139,250,0.15);color:#a78bfa;padding:2px 8px;border-radius:4px;font-weight:600;margin-right:6px;">模块6</span>
+      {cst_now.strftime("%Y年%m月")} 月回顾统计
+    </div>
+    {mod6_html}
+  </div>
+</div>
+
+<!-- ========== 模块4: 今日策略执行填写区 ========== -->
+<div class="full">
+  <div class="card">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(247,147,26,0.2)">&#9998;</div>
+      <span style="font-size:11px;background:rgba(167,139,250,0.15);color:#a78bfa;padding:2px 8px;border-radius:4px;font-weight:600;margin-right:6px;">模块4</span>
+      今日策略执行填写区
+    </div>
+    {mod4_html}
+  </div>
 </div>
 
 <!-- TWITTER MODULE -->
 <div class="section">
   <div class="section-title">
     <div class="icon" style="background:rgba(29,161,242,0.2)">&#128247;</div>
+    <span style="font-size:11px;background:rgba(167,139,250,0.15);color:#a78bfa;padding:2px 8px;border-radius:4px;font-weight:600;margin-right:6px;">模块7</span>
     Twitter / 社媒发稿素材
     <span style="font-size:12px;color:var(--muted);font-weight:400;margin-left:8px;">可直接复制粘贴使用</span>
   </div>
@@ -1111,7 +1326,7 @@ def build_report(data):
     <div id="twitter_short" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:14px;line-height:1.8;white-space:pre-wrap;margin-bottom:10px;">
 &#127775; BTC Daily Update {cst_date_str[5:]}
 
-$BTC ${btc_price_val:,.0f} ({price_change_str})
+$BTC ${btc_price:,.0f} ({price_change_str})
 Funding: {funding_rate_str} | L/S: {ls_ratio}
 OI: {btc_oi_btc}K BTC
 
@@ -1133,7 +1348,7 @@ SL: ${sl:,.0f} | TP: ${tp1:,.0f}/${tp1_alt:,.0f}
     <div id="twitter_cn" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:14px;line-height:1.8;white-space:pre-wrap;margin-bottom:10px;">
 &#127775; BTC 每日合约分析 {cst_date_str}
 
-$BTC ${btc_price_val:,.0f}（{price_change_str}）
+$BTC ${btc_price:,.0f}（{price_change_str}）
 资金费率: {funding_rate_str}（{direction_cn}）
 多空比: {ls_ratio} | OI: {btc_oi_btc}K BTC
 
@@ -1159,7 +1374,7 @@ $BTC ${btc_price_val:,.0f}（{price_change_str}）
         <div id="tweet_1" style="font-size:14px;line-height:1.8;white-space:pre-wrap;">
 &#127775; BTC 每日复盘 · {cst_date_str}
 
-$BTC ${btc_price_val:,.0f} | {price_change_str}
+$BTC ${btc_price:,.0f} | {price_change_str}
 $ETH ${eth_price:,.0f} | {eth_change_str}
 $SOL ${sol_price:,.0f} | {sol_change_str}
 
@@ -1194,14 +1409,14 @@ TP1: ${tp1:,.0f} | TP2: ${tp1_alt:,.0f}
         <div id="tweet_3" style="font-size:14px;line-height:1.8;white-space:pre-wrap;">
 &#128203; {yesterday_date_str} 复盘
 
-策略方向: {yesterday_dir_cn} &#10004; 正确（{yesterday_change_str}）
-进场触及: PARTIAL &#8773;
-TP1/TP2: 均未触及
+策略方向: {yesterday_dir_cn} {("✓" if ("WIN" in yesterday_result.upper() or "胜" in yesterday_result) else ("—" if ("LOOK" in yesterday_result.upper() or "观" in yesterday_result) else "✗"))} ({yesterday_change_str})
+进场触及: {yesterday_entry} &#8773;
+TP1/TP2: {yesterday_tp1}/{yesterday_tp2}
 
 &#9888; 核心问题：
 {yesterday_issue}
 
-结果: LOSS（方向对，执行不到位）</div>
+结果: {yesterday_result}</div>
         <button onclick="copyText('tweet_3','btn_t3')" id="btn_t3" style="position:absolute;top:14px;right:14px;background:var(--bg-card);border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">&#128203; 复制</button>
       </div>
 
@@ -1210,9 +1425,9 @@ TP1/TP2: 均未触及
         <div id="tweet_4" style="font-size:14px;line-height:1.8;white-space:pre-wrap;">
 &#128293; 近14天战绩
 
-胜率: 76.9% | 10胜 / 2负 / 1观望
-TP1达成率: 76.9%
-止损误触: 0次 &#9989;
+胜率: {stats["win_rate"]:.0f}% | {month_record}
+TP1达成率: {stats["tp1_rate"]:.0f}%
+止损误触: {stats["sl_hit_count"]}次 {("&#9989;" if stats["sl_hit_count"]==0 else "")}
 
 {yesterday_month_str}月胜率: {month_win_rate}% | {month_record}
 
@@ -1367,14 +1582,26 @@ def main():
         "liquidation": liquidation,
     }
 
+    # 加载历史复盘数据（模块2-6用）
+    print(f"  [INFO] 加载历史复盘数据...")
+    records = load_review_data()
+    stats   = calc_review_stats(records)
+    print(f"      近14天: 胜{stats['wins']} / 负{stats['losses']} / 平{stats['look']} | 胜率{stats['win_rate']:.0f}%")
+
     # 6. 生成报告
     print(f"\n[6/6] 生成 HTML 报告...")
-    html = build_report(data)
+    html = build_report(data, records, stats)
 
     os.makedirs(REPORTS_DIR, exist_ok=True)
     with open(REPORT_PATH, "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"  [OK] 报告已保存: {os.path.basename(REPORT_PATH)}")
+    print(f"  [OK] GitHub报告已保存: {os.path.basename(REPORT_PATH)}")
+
+    # 同步保存到本地 WorkBuddy 目录
+    os.makedirs(LOCAL_OUT_DIR, exist_ok=True)
+    with open(LOCAL_REPORT_PATH, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"  [OK] 本地报告已保存: BTC_daily_report_{TODAY_STR}.html")
 
     # 更新 index
     price = price_data.get("price", 0) or 70000

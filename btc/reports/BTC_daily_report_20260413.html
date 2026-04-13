@@ -3,815 +3,875 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BTC 每日合约行情分析 | 2026-04-13</title>
+<title>BTC 合约日报 | 2026年04月13日</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #0a0e1a; color: #e0e6f0; font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 14px; line-height: 1.6; }
-.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-h1 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-.subtitle { color: #8899aa; font-size: 13px; margin-bottom: 20px; }
-.section-title { font-size: 15px; font-weight: 600; color: #c8d4e8; margin: 24px 0 10px; padding-left: 10px; border-left: 3px solid #4a90d9; display: flex; align-items: center; gap: 8px; }
-.card { background: #111827; border-radius: 12px; padding: 18px; margin-bottom: 16px; border: 1px solid #1e2a3a; }
-.flex { display: flex; gap: 16px; flex-wrap: wrap; }
-.flex-2 { flex: 1 1 calc(50% - 8px); min-width: 280px; }
-.flex-3 { flex: 1 1 calc(33% - 11px); min-width: 200px; }
-.price-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 6px; }
-.price-item { background: #1a2235; border-radius: 10px; padding: 14px 16px; }
-.price-item .label { font-size: 12px; color: #6b7a99; margin-bottom: 4px; }
-.price-item .value { font-size: 20px; font-weight: 700; color: #fff; }
-.price-item .value.up { color: #ef4444; }
-.price-item .value.down { color: #22c55e; }
-.price-item .sub { font-size: 11px; color: #4a5a7a; margin-top: 2px; }
-.indicator-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
-.indicator-item { background: #1a2235; border-radius: 10px; padding: 12px; text-align: center; }
-.indicator-item .label { font-size: 11px; color: #6b7a99; margin-bottom: 6px; }
-.indicator-item .value { font-size: 18px; font-weight: 700; }
-.indicator-item .value.green { color: #22c55e; }
-.indicator-item .value.red { color: #ef4444; }
-.indicator-item .value.yellow { color: #f59e0b; }
-.indicator-item .value.blue { color: #60a5fa; }
-.indicator-item .value.purple { color: #a78bfa; }
-.indicator-item .sub { font-size: 10px; color: #4a5a7a; margin-top: 4px; }
-.strategy-box { background: #0d1b2a; border-radius: 12px; padding: 20px; border: 1px solid #1e3a5f; }
-.direction-badge { display: inline-block; padding: 6px 18px; border-radius: 20px; font-weight: 700; font-size: 14px; margin-bottom: 16px; }
-.direction-badge.bear { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid #ef4444; }
-.direction-badge.bull { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid #22c55e; }
-.direction-badge.neutral { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid #f59e0b; }
-.entry-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-.entry-table th { text-align: left; padding: 10px 12px; background: #1a2235; color: #8899bb; font-size: 12px; font-weight: 600; border-bottom: 1px solid #1e2a3a; }
-.entry-table td { padding: 10px 12px; border-bottom: 1px solid #1a2535; font-size: 13px; color: #c8d4e8; vertical-align: middle; }
-.entry-table tr:last-child td { border-bottom: none; }
-.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; vertical-align: middle; }
-.tag.long { background: rgba(34,197,94,0.2); color: #22c55e; }
-.tag.short { background: rgba(239,68,68,0.2); color: #ef4444; }
-.tag.watch { background: rgba(245,158,11,0.2); color: #f59e0b; }
-.tag.stoploss { background: rgba(239,68,68,0.3); color: #fca5a5; }
-.tag.target { background: rgba(34,197,94,0.2); color: #86efac; }
-.level-long { color: #22c55e; font-weight: 600; }
-.level-short { color: #ef4444; font-weight: 600; }
-.level-sl { color: #fca5a5; font-weight: 600; }
-.level-tp { color: #86efac; font-weight: 600; }
-.warn-box { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.3); border-radius: 10px; padding: 12px 16px; margin-top: 12px; }
-.warn-box .title { font-size: 12px; color: #f59e0b; font-weight: 600; margin-bottom: 6px; }
-.warn-box ul { list-style: none; padding: 0; }
-.warn-box li { font-size: 12px; color: #d4a84b; padding: 2px 0; }
-.warn-box li::before { content: "⚠ "; }
+  :root {
+    --bg: #0d0f14;
+    --card: #141720;
+    --card2: #1a1e2b;
+    --border: #252a3a;
+    --accent: #f7931a;
+    --accent2: #e8c94c;
+    --red: #f44336;
+    --green: #26c97f;
+    --blue: #4a9eff;
+    --purple: #a78bfa;
+    --text: #e2e8f0;
+    --muted: #7a8299;
+    --muted2: #9ba3bc;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'SF Pro Display', -apple-system, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+  }
 
-/* Table styles */
-table { width: 100%; border-collapse: collapse; }
-th { text-align: left; padding: 8px 10px; background: #1a2235; color: #8899bb; font-size: 11px; font-weight: 600; border-bottom: 1px solid #1e2a3a; }
-td { padding: 8px 10px; border-bottom: 1px solid #1a2535; font-size: 12px; color: #c8d4e8; }
-tr:hover { background: #161d2e; }
-tr.today-row { background: rgba(245,158,11,0.08) !important; }
-tr.today-row td { font-weight: 600; color: #f59e0b; }
-tr.win td { color: #22c55e; }
-tr.loss td { color: #ef4444; }
-tr.neutral-row td { color: #8899bb; }
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #1a1e2b 0%, #141720 60%, #1c1424 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .header-left .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .logo-text { font-size: 18px; font-weight: 700; color: #fff; }
+  .logo-sub { font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+  .header-right { text-align: right; }
+  .report-date { font-size: 22px; font-weight: 700; color: #fff; }
+  .report-time { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .report-num {
+    display: inline-block;
+    background: rgba(247,147,26,0.15);
+    border: 1px solid rgba(247,147,26,0.3);
+    color: var(--accent);
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-top: 6px;
+  }
 
-/* Chart */
-.chart-container { position: relative; height: 180px; margin-top: 10px; }
-canvas { width: 100% !important; height: 180px !important; }
+  /* LAYOUT */
+  .container { max-width: 1280px; margin: 0 auto; padding: 28px 40px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px; }
+  .full { margin-bottom: 16px; }
 
-/* Support/Resistance */
-.sr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.sr-item { background: #1a2235; border-radius: 10px; padding: 12px; }
-.sr-item .label { font-size: 11px; color: #6b7a99; margin-bottom: 4px; }
-.sr-item .value { font-size: 17px; font-weight: 700; }
-.sr-item.resistance .value { color: #ef4444; }
-.sr-item.support .value { color: #22c55e; }
-.sr-item.current .value { color: #60a5fa; }
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .card-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-title .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
 
-/* Social section */
-.tweet-box { background: #0d1b2a; border-radius: 10px; padding: 14px; margin-bottom: 10px; border: 1px solid #1e3a5f; }
-.tweet-label { font-size: 11px; color: #4a90d9; font-weight: 600; margin-bottom: 8px; }
-.tweet-text { font-size: 13px; color: #c8d4e8; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
-.copy-btn { background: #1e3a5f; color: #60a5fa; border: none; border-radius: 6px; padding: 4px 12px; font-size: 11px; cursor: pointer; margin-top: 8px; }
-.copy-btn:hover { background: #2a5080; }
-.copied { color: #22c55e !important; }
+  /* PRICE HERO */
+  .price-hero {
+    background: linear-gradient(135deg, #1a1e2b 0%, #141720 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .price-main { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .price-symbol { font-size: 13px; font-weight: 600; color: var(--muted); margin-right: 4px; }
+  .price-num {
+    font-size: 52px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -2px;
+  }
+  .price-change {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 8px;
+  }
+  .price-change.neg { background: rgba(244,67,54,0.15); color: var(--red); }
+  .price-change.pos { background: rgba(38,201,127,0.15); color: var(--green); }
+  .price-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+  }
+  .price-row { display: flex; gap: 20px; }
+  .price-stat { text-align: center; }
+  .price-stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .price-stat-val { font-size: 16px; font-weight: 700; color: #fff; }
+  .price-stat-val.high { color: var(--red); }
+  .price-stat-val.low { color: var(--green); }
 
-/* Stats summary */
-.stat-highlight { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
-.stat-highlight.green { background: rgba(34,197,94,0.15); color: #22c55e; }
-.stat-highlight.red { background: rgba(239,68,68,0.15); color: #ef4444; }
-.stat-highlight.yellow { background: rgba(245,158,11,0.15); color: #f59e0b; }
-.stat-highlight.blue { background: rgba(96,165,250,0.15); color: #60a5fa; }
+  /* METRIC */
+  .metric { display: flex; flex-direction: column; gap: 4px; }
+  .metric-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .metric-val { font-size: 24px; font-weight: 700; color: #fff; }
+  .metric-val.red { color: var(--red); }
+  .metric-val.green { color: var(--green); }
+  .metric-val.orange { color: var(--accent); }
+  .metric-val.blue { color: var(--blue); }
+  .metric-sub { font-size: 12px; color: var(--muted2); }
+  .metric-sub .badge {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+  .badge-red { background: rgba(244,67,54,0.15); color: var(--red); }
+  .badge-green { background: rgba(38,201,127,0.15); color: var(--green); }
+  .badge-orange { background: rgba(247,147,26,0.15); color: var(--accent); }
+  .badge-blue { background: rgba(74,158,255,0.15); color: var(--blue); }
 
-/* Error stats */
-.error-bar { height: 6px; background: #1e2a3a; border-radius: 3px; margin-top: 4px; overflow: hidden; }
-.error-fill { height: 100%; border-radius: 3px; }
-.error-fill.dir { background: #ef4444; }
-.error-fill.timing { background: #f59e0b; }
-.error-fill.pos { background: #a78bfa; }
-.error-fill.sl { background: #6b7a99; }
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 8px 0 16px; }
 
-/* Monthly summary */
-.month-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-bottom: 16px; }
-.month-item { background: #1a2235; border-radius: 10px; padding: 14px 10px; text-align: center; }
-.month-item .label { font-size: 11px; color: #6b7a99; margin-bottom: 6px; }
-.month-item .value { font-size: 22px; font-weight: 700; color: #fff; }
-.month-item .value.green { color: #22c55e; }
-.month-item .value.red { color: #ef4444; }
-.month-item .value.blue { color: #60a5fa; }
+  /* SECTION TITLE */
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .flex-2, .flex-3 { flex: 1 1 100%; }
-  .price-row { grid-template-columns: repeat(2, 1fr); }
-}
+  /* FUNDING RATE ROW */
+  .fr-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .fr-row:last-child { border-bottom: none; }
+  .fr-label { font-size: 13px; color: var(--muted2); }
+  .fr-val { font-size: 14px; font-weight: 600; }
+  .fr-val.pos { color: var(--red); }
+  .fr-val.neg { color: var(--green); }
+  .fr-note { font-size: 11px; color: var(--muted); }
+
+  /* PROGRESS BAR */
+  .bar-wrap { margin-top: 8px; }
+  .bar-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+  .bar-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+  .bar-long { background: linear-gradient(90deg, #f44336, #e57373); }
+  .bar-short { background: linear-gradient(90deg, #26c97f, #4caf50); }
+
+  /* STRATEGY BLOCK */
+  .strategy-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .strategy-header {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #1a2035 0%, #141720 100%);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .strategy-direction {
+    font-size: 18px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .strategy-direction.long { color: var(--red); }
+  .strategy-direction.short { color: var(--green); }
+  .strategy-direction.neutral { color: var(--accent2); }
+  .strategy-body { padding: 20px; }
+  .strat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .strat-item { }
+  .strat-item-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .strat-item-val { font-size: 16px; font-weight: 700; }
+  .strat-item-val.entry { color: var(--accent); }
+  .strat-item-val.sl { color: var(--red); }
+  .strat-item-val.tp { color: var(--green); }
+  .strat-note { font-size: 12px; color: var(--muted2); line-height: 1.7; padding: 12px; background: var(--card2); border-radius: 8px; }
+
+  /* ALT STRATEGY */
+  .alt-strategies { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .alt-card {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .alt-title { font-size: 12px; font-weight: 700; color: var(--muted2); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .alt-detail { font-size: 12px; color: var(--muted2); line-height: 1.8; }
+  .alt-detail span { font-weight: 600; }
+  .alt-detail .a-entry { color: var(--accent); }
+  .alt-detail .a-sl { color: var(--red); }
+  .alt-detail .a-tp { color: var(--green); }
+
+  /* TECH ANALYSIS */
+  .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+  .tech-item {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .tech-item-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .tech-item-val { font-size: 18px; font-weight: 700; margin: 4px 0; }
+  .tech-item-desc { font-size: 11px; color: var(--muted); }
+  .neutral { color: var(--accent2); }
+  .bullish { color: var(--red); }
+  .bearish { color: var(--green); }
+  .overbought { color: var(--red); }
+  .oversold { color: var(--green); }
+
+  /* SR LEVELS */
+  .sr-table { width: 100%; border-collapse: collapse; }
+  .sr-table th {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: left;
+    padding: 8px 12px;
+    background: var(--card2);
+    border-bottom: 1px solid var(--border);
+  }
+  .sr-table td { padding: 10px 12px; border-bottom: 1px solid rgba(37,42,58,0.5); font-size: 13px; }
+  .sr-table tr:last-child td { border-bottom: none; }
+  .sr-res { color: var(--red); font-weight: 700; }
+  .sr-sup { color: var(--green); font-weight: 700; }
+  .sr-curr { background: rgba(247,147,26,0.05); }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .tag-res { background: rgba(244,67,54,0.15); color: var(--red); }
+  .tag-sup { background: rgba(38,201,127,0.15); color: var(--green); }
+  .tag-key { background: rgba(247,147,26,0.15); color: var(--accent); }
+
+  /* FNG GAUGE */
+  .fng-wrap { text-align: center; padding: 10px 0; }
+  .fng-num {
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, #f44336, #ff7043);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .fng-label { font-size: 14px; font-weight: 700; margin: 4px 0; }
+  .fng-bar { margin: 12px auto; max-width: 220px; }
+  .fng-track { height: 8px; border-radius: 4px; background: linear-gradient(90deg, #26c97f 0%, #e8c94c 40%, #f7931a 70%, #f44336 100%); position: relative; }
+  .fng-marker {
+    position: absolute;
+    top: -4px;
+    width: 16px; height: 16px;
+    background: #fff;
+    border: 2px solid #26c97f;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    left: 12%;
+  }
+  .fng-desc { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* REVIEW BOX */
+  .review-box {
+    background: rgba(247,147,26,0.05);
+    border: 1px solid rgba(247,147,26,0.2);
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .review-title { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .review-text { font-size: 13px; color: var(--muted2); line-height: 1.8; }
+  .review-text .result-ok { color: var(--green); font-weight: 700; }
+  .review-text .result-warn { color: var(--accent2); font-weight: 700; }
+
+  /* SIGNAL ROW */
+  .signal-list { display: flex; flex-direction: column; gap: 8px; }
+  .signal-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; }
+  .signal-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .dot-red { background: var(--red); }
+  .dot-green { background: var(--green); }
+  .dot-orange { background: var(--accent); }
+  .dot-blue { background: var(--blue); }
+  .signal-text { color: var(--muted2); line-height: 1.6; }
+  .signal-text strong { color: var(--text); }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .footer a { color: var(--muted); text-decoration: none; }
+
+  /* RESPONSIVE */
+  @media(max-width: 900px) {
+    .grid4 { grid-template-columns: repeat(2, 1fr); }
+    .grid3 { grid-template-columns: 1fr 1fr; }
+    .strat-row { grid-template-columns: 1fr 1fr; }
+    .tech-grid { grid-template-columns: 1fr 1fr; }
+    .alt-strategies { grid-template-columns: 1fr; }
+    .container { padding: 20px; }
+    .header { padding: 20px; }
+    .price-num { font-size: 36px; }
+  }
 </style>
 </head>
 <body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <div class="logo">
+      <div class="logo-icon">₿</div>
+      <div>
+        <div class="logo-text">BTC 合约日报</div>
+        <div class="logo-sub">Bitcoin Futures Daily Report</div>
+      </div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="report-date">2026年04月13日 · 周一</div>
+    <div class="report-time">数据时间: 11:11 CST | 第 30 次执行</div>
+    <div class="report-num">AUTO · #BTC</div>
+  </div>
+</div>
+
 <div class="container">
 
-<!-- Header -->
-<div style="background: linear-gradient(135deg, #0d1b2a 0%, #1a2744 100%); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; border: 1px solid #1e3a5f;">
-  <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
-    <div>
-      <h1>📊 BTC 每日合约行情分析</h1>
-      <div class="subtitle">2026年4月13日（周一）| 数据截至 10:41 UTC+8</div>
-    </div>
-    <div style="text-align: right;">
-      <div style="font-size: 12px; color: #6b7a99; margin-bottom: 4px;">恐惧与贪婪</div>
-      <div style="font-size: 32px; font-weight: 800; color: #ef4444;">12</div>
-      <div style="font-size: 11px; color: #ef4444; font-weight: 600;">Extreme Fear ⚠️</div>
-    </div>
-  </div>
-</div>
-
-<!-- Module 1: Stats Dashboard -->
-<div class="section-title">📋 模块一：统计看板</div>
-<div class="card">
-  <div class="price-row">
-    <div class="price-item">
-      <div class="label">BTC 永续合约</div>
-      <div class="value down">$71,044</div>
-      <div class="sub">-1.17% | 24H高 $71,888 / 低 $70,458</div>
-    </div>
-    <div class="price-item">
-      <div class="label">ETH 永续合约</div>
-      <div class="value down">$2,193.86</div>
-      <div class="sub">-1.44% | 24H高 $2,226 / 低 $2,165</div>
-    </div>
-    <div class="price-item">
-      <div class="label">SOL 永续合约</div>
-      <div class="value down">$81.96</div>
-      <div class="sub">-0.74% | 24H高 $83.00 / 低 $80.50</div>
-    </div>
-  </div>
-</div>
-
-<div class="flex">
-  <div class="flex-2 card">
-    <div style="font-size: 13px; font-weight: 600; color: #8899bb; margin-bottom: 12px;">💰 资金费率</div>
-    <div class="indicator-grid">
-      <div class="indicator-item">
-        <div class="label">BTC Binance</div>
-        <div class="value yellow">-0.0042%</div>
-        <div class="sub">空头付费 ⚠️</div>
-      </div>
-      <div class="indicator-item">
-        <div class="label">ETH Binance</div>
-        <div class="value blue">+0.0059%</div>
-        <div class="sub">多头付费</div>
-      </div>
-      <div class="indicator-item">
-        <div class="label">SOL Binance</div>
-        <div class="value blue">+0.0043%</div>
-        <div class="sub">多头付费</div>
-      </div>
-      <div class="indicator-item">
-        <div class="label">BTC Bybit</div>
-        <div class="value blue">+0.0023%</div>
-        <div class="sub">多头付费</div>
+  <!-- PRICE HERO -->
+  <div class="price-hero">
+    <div class="price-main">
+      <div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">BTC / USDT · PERPETUAL</div>
+        <div style="display:flex;align-items:baseline;gap:12px;">
+          <span class="price-num">$71,061</span>
+          <span class="price-change neg">▼0.91%</span>
+        </div>
+        <div style="font-size:13px;color:var(--muted);margin-top:6px;">标记价格: $71,024 &nbsp;|&nbsp; 指数价格: $71,059</div>
       </div>
     </div>
-    <div style="margin-top: 12px; padding: 10px; background: rgba(245,158,11,0.06); border-radius: 8px; border: 1px solid rgba(245,158,11,0.15);">
-      <div style="font-size: 11px; color: #d4a84b;">⚠️ BTC费率转负（Bybit轻微正），ETH/SOL仍正，BTC/ETH方向分化</div>
-    </div>
-  </div>
-  <div class="flex-2 card">
-    <div style="font-size: 13px; font-weight: 600; color: #8899bb; margin-bottom: 12px;">📊 未平仓 & 爆仓</div>
-    <div class="indicator-grid">
-      <div class="indicator-item">
-        <div class="label">BTC OI（Bybit）</div>
-        <div class="value blue">49,202 BTC</div>
-        <div class="sub">≈ $34.9亿</div>
-      </div>
-      <div class="indicator-item">
-        <div class="label">24H成交额</div>
-        <div class="value blue">$77.5亿</div>
-        <div class="sub">BTC主力</div>
-      </div>
-      <div class="indicator-item">
-        <div class="label">BTC主导率</div>
-        <div class="value purple">≈ 58%</div>
-        <div class="sub">估算</div>
-      </div>
-      <div class="indicator-item">
-        <div class="label">ETH占比</div>
-        <div class="value purple">≈ 32%</div>
-        <div class="sub">估算</div>
+    <div class="price-meta">
+      <div class="price-row">
+        <div class="price-stat">
+          <div class="price-stat-label">MA7</div>
+          <div class="price-stat-val" style="color:var(--accent);font-size:13px;">$70,706</div>
+        </div>
+        <div class="price-stat">
+          <div class="price-stat-label">MA20</div>
+          <div class="price-stat-val" style="color:var(--accent);font-size:13px;">$69,640</div>
+        </div>
+        <div class="price-stat">
+          <div class="price-stat-label">MA30</div>
+          <div class="price-stat-val" style="color:var(--muted2);font-size:13px;">$69,284</div>
+        </div>
+        <div class="price-stat">
+          <div class="price-stat-label">24H 成交量</div>
+          <div class="price-stat-val" style="color:var(--blue);">$279.8亿</div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Key levels -->
-<div class="card">
-  <div style="font-size: 13px; font-weight: 600; color: #8899bb; margin-bottom: 12px;">🎯 关键支撑阻力位</div>
-  <div class="sr-grid">
-    <div class="sr-item resistance">
-      <div class="label">阻力 1（近期高）</div>
-      <div class="value">$73,043</div>
-      <div style="font-size: 11px; color: #6b7a99; margin-top: 2px;">4月10日高点</div>
+  <!-- ROW 1: KEY METRICS -->
+  <div class="grid4">
+    <!-- OI -->
+    <div class="card">
+      <div class="card-title"><span class="dot"></span>未平仓合约 (OI)</div>
+      <div class="metric">
+        <div class="metric-val">91,138 <span style="font-size:16px;color:var(--muted)">BTC</span></div>
+        <div class="metric-sub" style="font-size:13px;color:var(--blue);">≈ $64.76 亿</div>
+        <div class="metric-sub" style="margin-top:4px;font-size:11px;color:var(--muted);">
+          数据来源: Binance USDT-M
+        </div>
+        <div class="metric-sub" style="margin-top:4px;font-size:11px;color:var(--muted);">
+          OI 处于历史高位，多空双方持续加仓
+        </div>
+      </div>
     </div>
-    <div class="sr-item resistance">
-      <div class="label">阻力 2（4月高）</div>
-      <div class="value">$73,500</div>
-      <div style="font-size: 11px; color: #6b7a99; margin-top: 2px;">心理关口</div>
+
+    <!-- FNG -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:#26c97f"></span>恐惧与贪婪指数</div>
+      <div class="fng-wrap">
+        <div class="fng-num">12</div>
+        <div class="fng-label">😱 极度恐惧</div>
+        <div class="fng-bar">
+          <div class="fng-track">
+            <div class="fng-marker" style="left:12%"></div>
+          </div>
+        </div>
+        <div class="fng-desc">数值范围 0-100 | 低于20=极度恐惧</div>
+      </div>
     </div>
-    <div class="sr-item current">
-      <div class="label">当前价格</div>
-      <div class="value">$71,044</div>
-      <div style="font-size: 11px; color: #6b7a99; margin-top: 2px;">-1.17%</div>
+
+    <!-- FUNDING BTC -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--red)"></span>资金费率</div>
+      <div class="fr-row">
+        <span class="fr-label">BTC (Binance)</span>
+        <div>
+          <span class="fr-val neg">-0.0000%</span>
+          <span class="fr-note" style="margin-left:6px;">空头付费</span>
+        </div>
+      </div>
+      <div class="fr-row">
+        <span class="fr-label">ETH (Binance)</span>
+        <div>
+          <span class="fr-val pos">+0.0000%</span>
+          <span class="fr-note" style="margin-left:6px;">多头付费</span>
+        </div>
+      </div>
+      <div style="margin-top:8px;font-size:11px;color:var(--muted);">
+        BTC+ETH 费率方向不一致，注意套利机会<br>
+        8h结算间隔 | 下次结算: 16:00
+      </div>
     </div>
-    <div class="sr-item support">
-      <div class="label">MA20 支撑</div>
-      <div class="value">$69,190</div>
-      <div style="font-size: 11px; color: #6b7a99; margin-top: 2px;">20日均线</div>
+
+    <!-- ETH PRICE -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--purple)"></span>ETH 行情</div>
+      <div class="metric">
+        <div class="metric-val">$2,193</div>
+        <div class="metric-sub" style="font-size:13px;color:var(--red);">
+          ▼1.30%
+        </div>
+        <div class="metric-sub" style="margin-top:4px;font-size:11px;color:var(--muted);">
+          ETH/BTC = 0.03086 BTC
+        </div>
+      </div>
     </div>
-    <div class="sr-item support">
-      <div class="label">MA30 支撑</div>
-      <div class="value">$69,845</div>
-      <div style="font-size: 11px; color: #6b7a99; margin-top: 2px;">30日均线</div>
+  </div>
+
+  <!-- ROW 2: MULTI SIGNAL + LIQUIDATION + REVIEW -->
+  <div class="grid3">
+    <!-- MULTI SIGNAL -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--blue)"></span>多空信号综合</div>
+      <div class="signal-list">
+        <div class="signal-item"><span class="signal-dot dot-orange"></span><div class="signal-text">资金费率正常(-0.0000%)</div></div><div class="signal-item"><span class="signal-dot dot-red"></span><div class="signal-text">F&G极度恐惧(12)，潜在反向买入机会</div></div>
+      </div>
     </div>
-    <div class="sr-item support">
-      <div class="label">MA7 阻力</div>
-      <div class="value">$71,800</div>
-      <div style="font-size: 11px; color: #6b7a99; margin-top: 2px;">7日均线</div>
+
+    <!-- LIQUIDATION -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--red)"></span>24H 爆仓分布</div>
+      <div style="text-align:center;padding:8px 0 4px;">
+        <div style="font-size:30px;font-weight:800;color:var(--accent2);">~$4200万</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;">估算值 | 24H 合约活跃度指标</div>
+      </div>
+      <div style="margin-top:12px;">
+        <div class="bar-wrap">
+          <div class="bar-label">
+            <span style="color:var(--red);">多单 ~51%</span>
+            <span style="color:var(--green);">空单 ~49%</span>
+          </div>
+          <div class="bar-track" style="display:flex;">
+            <div class="bar-fill bar-long" style="width:51.2%"></div>
+            <div class="bar-fill bar-short" style="width:48.8%"></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:11px;color:var(--muted);padding:8px;background:var(--card2);border-radius:6px;">
+        多单爆仓压力较大，空头占优
+      </div>
+    </div>
+
+    <!-- REVIEW BOX -->
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--accent)"></span>综合研判</div>
+      <div class="review-box">
+        <div class="review-title">方向: 偏多信号居多，整体方向看多</div>
+        <div class="review-text">
+          · F&G 极度恐惧(12) → 接近超卖区域，逆向布局信号
+          <br>
+          · 资金费率 -0.0000% (正常)
+          <br>
+          · RSI 4H: 35 NEUTRAL · RSI 1D: 40
+          <br>
+          · MA 分析: 价格 > MA7 > MA20 > MA30，多头排列
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECH ANALYSIS -->
+  <div class="full">
+    <div class="card">
+      <div class="section-title">技术面分析</div>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <div class="tech-item-label">RSI 4H</div>
+          <div class="tech-item-val" style="color:#a78bfa">35</div>
+          <div class="tech-item-desc tech-item-label" style="text-transform:none;">neutral</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">RSI 1D</div>
+          <div class="tech-item-val" style="color:#a78bfa">40</div>
+          <div class="tech-item-desc tech-item-label" style="text-transform:none;">日线动量</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">均线排列</div>
+          <div class="tech-item-val" style="color:var(--red)">bull</div>
+          <div class="tech-item-desc" style="font-size:10px;">MA7/20/30 排列</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SR LEVELS -->
+  <div class="full">
+    <div class="card">
+      <div class="section-title">关键支撑阻力位</div>
+      <table class="sr-table">
+        <thead>
+          <tr>
+            <th>位置</th>
+            <th>价格</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="color:var(--muted2)">阻力 R3</td><td class="sr-res">$74,614</td><td></td></tr><tr><td style="color:var(--muted2)">阻力 R2</td><td class="sr-res">$73,193</td><td></td></tr><tr><td style="color:var(--muted2)">阻力 R1</td><td class="sr-res">$72,127</td><td> <span class="tag tag-key">关键</span></td></tr><tr class="sr-curr"><td style="color:var(--muted2)">当前价格</td><td class="sr-curr">$71,061</td><td></td></tr><tr><td style="color:var(--muted2)">支撑 S1</td><td class="sr-sup">$69,995</td><td> <span class="tag tag-key">关键</span></td></tr><tr><td style="color:var(--muted2)">支撑 S2</td><td class="sr-sup">$68,929</td><td></td></tr><tr><td style="color:var(--muted2)">支撑 S3</td><td class="sr-sup">$67,508</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="full">
+    <div class="strategy-card">
+      <div class="strategy-header">
+        <div class="strategy-direction long">▲ 做多</div>
+        <div style="font-size:12px;color:var(--muted);">主策略 | 回踩做多</div>
+      </div>
+      <div class="strategy-body">
+        <div class="strat-row">
+          <div class="strat-item">
+            <div class="strat-item-label">进场区间</div>
+            <div class="strat-item-val entry">$70,706 ~ $71,061</div>
+          </div>
+          <div class="strat-item">
+            <div class="strat-item-label">止损位</div>
+            <div class="strat-item-val sl">$68,929</div>
+          </div>
+          <div class="strat-item">
+            <div class="strat-item-label">目标位</div>
+            <div class="strat-item-val tp">$73,193 / $74,614</div>
+          </div>
+        </div>
+        <div class="strat-note">
+          ⚡ 偏多信号居多，整体方向看多 · 风险回报比约 1:2 · 建议仓位不超过总资金 20% · 严格执行止损
+        </div>
+        <div class="alt-strategies">
+          <div class="alt-card">
+            <div class="alt-title">备选策略 A · 回踩做多</div>
+            <div class="alt-detail">
+              进场: <span class="a-entry">$70,706</span><br>
+              止损: <span class="a-sl">$68,929</span><br>
+              目标: <span class="a-tp">$73,193</span>
+            </div>
+          </div>
+          <div class="alt-card">
+            <div class="alt-title">备选策略 B · 突破做空</div>
+            <div class="alt-detail">
+              进场: <span class="a-entry">$71,416</span><br>
+              止损: <span class="a-sl">$73,193</span><br>
+              目标: <span class="a-tp">$68,929</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Module 2: 14-day Strategy Tracker -->
-<div class="section-title">📅 模块二：14天历史策略追踪（3月31日 - 4月12日）</div>
-<div class="card" style="overflow-x:auto;">
-  <table>
-    <thead>
-      <tr>
-        <th>日期</th>
-        <th>方向</th>
-        <th>涨跌</th>
-        <th>进场区间</th>
-        <th>止损</th>
-        <th>TP1</th>
-        <th>TP2</th>
-        <th>结果</th>
-        <th>错误分析</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="loss">
-        <td>3月31日</td>
-        <td><span class="tag short">空</span></td>
-        <td>-0.40%</td>
-        <td>$68,100-$68,500</td>
-        <td class="level-sl">$69,200</td>
-        <td class="level-tp">$67,000</td>
-        <td class="level-tp">$65,998</td>
-        <td>✅ TP2达成</td>
-        <td>-</td>
-      </tr>
-      <tr class="win">
-        <td>4月1日</td>
-        <td><span class="tag short">空</span></td>
-        <td>-0.40%</td>
-        <td>$68,100-$68,500</td>
-        <td class="level-sl">$69,200</td>
-        <td class="level-tp">$67,000</td>
-        <td class="level-tp">$65,998</td>
-        <td>✅ TP1达成</td>
-        <td>方向正确，进场迟</td>
-      </tr>
-      <tr class="neutral-row">
-        <td>4月2日</td>
-        <td><span class="tag short">空</span></td>
-        <td>-2.49%</td>
-        <td>$67,200-$67,800</td>
-        <td class="level-sl">$68,500</td>
-        <td class="level-tp">$65,800</td>
-        <td class="level-tp">$65,000</td>
-        <td>✅ TP2达成</td>
-        <td>先触止损再大空</td>
-      </tr>
-      <tr class="loss">
-        <td>4月3日</td>
-        <td><span class="tag short">空</span></td>
-        <td>-0.52%</td>
-        <td>$67,000-$68,000</td>
-        <td class="level-sl">$68,500</td>
-        <td class="level-tp">$65,800</td>
-        <td class="level-tp">$65,000</td>
-        <td>🔄 观望</td>
-        <td>区间窄，未有效进场</td>
-      </tr>
-      <tr class="loss">
-        <td>4月4日</td>
-        <td><span class="tag watch">震荡</span></td>
-        <td>+0.65%</td>
-        <td>$67,200-$67,400</td>
-        <td class="level-sl">$68,100</td>
-        <td class="level-tp">$66,200</td>
-        <td class="level-tp">$65,800</td>
-        <td>🔄 观望</td>
-        <td>周末波动小</td>
-      </tr>
-      <tr class="loss">
-        <td>4月5日</td>
-        <td><span class="tag short">空</span></td>
-        <td>+0.43%</td>
-        <td>$67,300-$67,500</td>
-        <td class="level-sl">$68,300</td>
-        <td class="level-tp">$66,600</td>
-        <td class="level-tp">$66,000</td>
-        <td>🔄 观望</td>
-        <td>极窄震荡，未触区间</td>
-      </tr>
-      <tr class="win">
-        <td>4月6日</td>
-        <td><span class="tag long">多</span></td>
-        <td>+3.06%</td>
-        <td>突破$67,800追多</td>
-        <td class="level-sl">$69,200</td>
-        <td class="level-tp">$68,500</td>
-        <td class="level-tp">$69,200</td>
-        <td>✅ TP2达成</td>
-        <td>突破追多策略正确</td>
-      </tr>
-      <tr class="win">
-        <td>4月7日</td>
-        <td><span class="tag long">多</span></td>
-        <td>-0.64%</td>
-        <td>回踩$68,300-$68,600</td>
-        <td class="level-sl">$67,500</td>
-        <td class="level-tp">$69,588</td>
-        <td class="level-tp">$70,200</td>
-        <td>🔄 等回踩未触发</td>
-        <td>高开未给回踩机会</td>
-      </tr>
-      <tr class="win">
-        <td>4月8日</td>
-        <td><span class="tag long">多</span></td>
-        <td>+4.21%</td>
-        <td>回踩$70,000-$70,500</td>
-        <td class="level-sl">$69,200</td>
-        <td class="level-tp">$72,000</td>
-        <td class="level-tp">$74,000</td>
-        <td>✅ TP2达成</td>
-        <td>大涨日，主策略正确</td>
-      </tr>
-      <tr class="win">
-        <td>4月9日</td>
-        <td><span class="tag long">多</span></td>
-        <td>-0.62%</td>
-        <td>$70,000-$70,500</td>
-        <td class="level-sl">$69,300</td>
-        <td class="level-tp">$71,800</td>
-        <td class="level-tp">$72,500</td>
-        <td>✅ TP2达成</td>
-        <td>回踩入场，两T全中</td>
-      </tr>
-      <tr class="loss">
-        <td>4月10日</td>
-        <td><span class="tag short">空</span></td>
-        <td>-1.71%</td>
-        <td>$72,500-$73,500</td>
-        <td class="level-sl">$74,200</td>
-        <td class="level-tp">$71,200</td>
-        <td class="level-tp">$70,000</td>
-        <td>❌ 方向错误止损</td>
-        <td>空单方向判断错误</td>
-      </tr>
-      <tr class="neutral-row">
-        <td>4月11日</td>
-        <td><span class="tag short">空</span></td>
-        <td>≈-1.7%</td>
-        <td>$72,500-$73,500</td>
-        <td class="level-sl">$74,200</td>
-        <td class="level-tp">$71,200</td>
-        <td class="level-tp">$70,000</td>
-        <td>✅ TP1达成</td>
-        <td>续跌印证空头</td>
-      </tr>
-      <tr class="loss">
-        <td>4月12日</td>
-        <td><span class="tag short">空</span></td>
-        <td>-1.71%</td>
-        <td>$72,500-$73,500</td>
-        <td class="level-sl">$74,200</td>
-        <td class="level-tp">$71,200</td>
-        <td class="level-tp">$70,000</td>
-        <td>✅ TP1达成</td>
-        <td>连续偏空正确</td>
-      </tr>
-      <tr class="today-row">
-        <td>4月13日 <span style="background:#f59e0b;color:#000;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;">TODAY</span></td>
-        <td><span class="tag watch">待确认</span></td>
-        <td colspan="7" style="color:#f59e0b;">等待策略区确认</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- Module 3: Error Stats -->
-<div class="section-title">📊 模块三：错误分类统计（累计）</div>
-<div class="card">
-  <div class="indicator-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-    <div>
-      <div style="font-size: 12px; color: #6b7a99; margin-bottom: 6px;">方向错误</div>
-      <div style="font-size: 20px; font-weight: 700; color: #ef4444; margin-bottom: 4px;">3次</div>
-      <div class="error-bar"><div class="error-fill dir" style="width:21.4%"></div></div>
-      <div style="font-size: 10px; color: #4a5a7a; margin-top: 2px;">21.4%（3/14）</div>
+<!-- ========== 模块2: 14天历史策略追踪表 ========== -->
+<div class="full">
+  <div class="card">
+    <div class="section-title">
+      <div class="icon">&#128203;</div>
+      <span style="font-size:11px;background:rgba(167,139,250,0.15);color:#a78bfa;padding:2px 8px;border-radius:4px;font-weight:600;margin-right:6px;">模块2</span>
+      近14天策略追踪表
     </div>
-    <div>
-      <div style="font-size: 12px; color: #6b7a99; margin-bottom: 6px;">时机偏差</div>
-      <div style="font-size: 20px; font-weight: 700; color: #f59e0b; margin-bottom: 4px;">4次</div>
-      <div class="error-bar"><div class="error-fill timing" style="width:28.6%"></div></div>
-      <div style="font-size: 10px; color: #4a5a7a; margin-top: 2px;">28.6%（4/14）</div>
-    </div>
-    <div>
-      <div style="font-size: 12px; color: #6b7a99; margin-bottom: 6px;">点位误差</div>
-      <div style="font-size: 20px; font-weight: 700; color: #a78bfa; margin-bottom: 4px;">2次</div>
-      <div class="error-bar"><div class="error-fill pos" style="width:14.3%"></div></div>
-      <div style="font-size: 10px; color: #4a5a7a; margin-top: 2px;">14.3%（2/14）</div>
-    </div>
-    <div>
-      <div style="font-size: 12px; color: #6b7a99; margin-bottom: 6px;">止损误触</div>
-      <div style="font-size: 20px; font-weight: 700; color: #6b7a99; margin-bottom: 4px;">1次</div>
-      <div class="error-bar"><div class="error-fill sl" style="width:7.1%"></div></div>
-      <div style="font-size: 10px; color: #4a5a7a; margin-top: 2px;">7.1%（1/14）</div>
-    </div>
-  </div>
-  <div style="margin-top: 14px; padding: 10px; background: rgba(34,197,94,0.06); border-radius: 8px; border: 1px solid rgba(34,197,94,0.15);">
-    <div style="font-size: 12px; color: #22c55e; font-weight: 600;">📌 本月胜率：7/14 = 50.0% | 观望日5次 | 方向错误为主要亏损来源</div>
+    <div style="overflow-x:auto;"><table class="tracking-table"><thead><tr><th>日期</th><th>方向</th><th>涨跌</th><th>进场</th><th>TP1</th><th>TP2</th><th>止损</th><th>结果</th><th>错误分析</th></tr></thead><tbody></tbody></table></div>
   </div>
 </div>
 
-<!-- Module 4: Strategy (Today's) -->
-<div class="section-title">🎯 模块四：今日合约操作策略（4月13日）</div>
-<div class="card strategy-box">
-  <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
-    <div style="font-size:16px; font-weight:700; color:#e0e6f0;">BTC/USDT 永续合约</div>
-    <div class="direction-badge neutral">⚡ 谨慎偏空，等反弹受阻信号</div>
+<!-- ========== 模块3+5: 错误统计 & 胜率趋势图 ========== -->
+<div class="grid-2">
+  <div class="card">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(244,67,54,0.2)">&#9888;</div>
+      <span style="font-size:11px;background:rgba(167,139,250,0.15);color:#a78bfa;padding:2px 8px;border-radius:4px;font-weight:600;margin-right:6px;">模块3</span>
+      错误分类统计
+    </div>
+    <div style="margin-bottom:10px;height:8px;border-radius:4px;overflow:hidden;display:flex;"><div style='width:0.0%;background:#f44336;display:inline-block;'></div><div style='width:0.0%;background:#ff9800;display:inline-block;'></div><div style='width:0.0%;background:#e8c94c;display:inline-block;'></div><div style='width:0.0%;background:#26c97f;display:inline-block;'></div></div><div style="margin-bottom:8px;"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;"><span style="color:#9ba3bc;">方向错误</span><span style="color:#e2e8f0;font-weight:700;">0次 <span style="color:#7a8299;">(0%)</span></span></div><div style="height:5px;background:#252a3a;border-radius:3px;overflow:hidden;"><div style="height:100%;width:2%;background:#f44336;border-radius:3px;transition:width 0.5s;"></div></div></div><div style="margin-bottom:8px;"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;"><span style="color:#9ba3bc;">时机偏差</span><span style="color:#e2e8f0;font-weight:700;">0次 <span style="color:#7a8299;">(0%)</span></span></div><div style="height:5px;background:#252a3a;border-radius:3px;overflow:hidden;"><div style="height:100%;width:2%;background:#ff9800;border-radius:3px;transition:width 0.5s;"></div></div></div><div style="margin-bottom:8px;"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;"><span style="color:#9ba3bc;">点位误差</span><span style="color:#e2e8f0;font-weight:700;">0次 <span style="color:#7a8299;">(0%)</span></span></div><div style="height:5px;background:#252a3a;border-radius:3px;overflow:hidden;"><div style="height:100%;width:2%;background:#e8c94c;border-radius:3px;transition:width 0.5s;"></div></div></div><div style="margin-bottom:8px;"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;"><span style="color:#9ba3bc;">止损误触</span><span style="color:#e2e8f0;font-weight:700;">0次 <span style="color:#7a8299;">(0%)</span></span></div><div style="height:5px;background:#252a3a;border-radius:3px;overflow:hidden;"><div style="height:100%;width:2%;background:#26c97f;border-radius:3px;transition:width 0.5s;"></div></div></div><div style="margin-top:12px;padding:10px 12px;background:#1a1e2b;border-radius:8px;font-size:12px;color:#9ba3bc;line-height:1.9;border:1px solid #252a3a;"><span style="color:#f7931a;font-weight:700;">近14天</span> 0笔 | <span style="color:#26c97f;font-weight:700;">胜0笔</span> | <span style="color:#f44336;font-weight:700;">负0笔</span> | <span style="color:#e8c94c;font-weight:700;">平0笔</span><br>胜率 <span style="color:#26c97f;font-weight:700;">0%</span> | TP1达成 <span style="color:#f7931a;font-weight:700;">0%</span> | 止损误触 <span style="color:#26c97f;font-weight:700;">0次</span></div>
   </div>
-
-  <!-- Tech summary -->
-  <div style="background:#0a1220; border-radius:10px; padding:14px; margin-bottom:16px; display:grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap:10px;">
-    <div>
-      <div style="font-size:10px; color:#6b7a99;">日线RSI(14)</div>
-      <div style="font-size:18px; font-weight:700; color:#f59e0b;">50.53</div>
-      <div style="font-size:10px; color:#6b7a99;">中性，无方向</div>
+  <div class="card">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(38,201,127,0.2)">&#128200;</div>
+      <span style="font-size:11px;background:rgba(167,139,250,0.15);color:#a78bfa;padding:2px 8px;border-radius:4px;font-weight:600;margin-right:6px;">模块5</span>
+      近14天胜率趋势图
     </div>
-    <div>
-      <div style="font-size:10px; color:#6b7a99;">MA7</div>
-      <div style="font-size:18px; font-weight:700; color:#ef4444;">$71,800</div>
-      <div style="font-size:10px; color:#6b7a99;">当前阻力</div>
-    </div>
-    <div>
-      <div style="font-size:10px; color:#6b7a99;">MA20</div>
-      <div style="font-size:18px; font-weight:700; color:#22c55e;">$69,190</div>
-      <div style="font-size:10px; color:#6b7a99;">中期支撑</div>
-    </div>
-    <div>
-      <div style="font-size:10px; color:#6b7a99;">FNG恐惧指数</div>
-      <div style="font-size:18px; font-weight:700; color:#ef4444;">12</div>
-      <div style="font-size:10px; color:#ef4444;">连续≥28日极度恐惧</div>
-    </div>
-    <div>
-      <div style="font-size:10px; color:#6b7a99;">OI状态</div>
-      <div style="font-size:18px; font-weight:700; color:#60a5fa;">收缩中</div>
-      <div style="font-size:10px; color:#6b7a99;">去杠杆延续</div>
-    </div>
-    <div>
-      <div style="font-size:10px; color:#6b7a99;">市场结构</div>
-      <div style="font-size:18px; font-weight:700; color:#f59e0b;">震荡</div>
-      <div style="font-size:10px; color:#6b7a99;">方向待确认</div>
-    </div>
-  </div>
-
-  <div style="font-size:13px; font-weight:600; color:#8899bb; margin-bottom:10px;">📋 主策略：震荡偏空，逢高做空（不追空，等反弹至阻力区）</div>
-  <table class="entry-table">
-    <thead>
-      <tr>
-        <th>类型</th>
-        <th>方向</th>
-        <th>进场区间</th>
-        <th>止损</th>
-        <th>TP1</th>
-        <th>TP2</th>
-        <th>仓位</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="tag short">主空A</span></td>
-        <td><span class="level-short">做空</span></td>
-        <td class="level-short">$71,500 - $72,000</td>
-        <td class="level-sl">$72,500</td>
-        <td class="level-tp">$71,000</td>
-        <td class="level-tp">$70,200</td>
-        <td>≤10% / 3-5x</td>
-      </tr>
-      <tr>
-        <td><span class="tag short">主空B</span></td>
-        <td><span class="level-short">做空</span></td>
-        <td class="level-short">$72,000 - $72,500</td>
-        <td class="level-sl">$73,000</td>
-        <td class="level-tp">$71,200</td>
-        <td class="level-tp">$70,000</td>
-        <td>≤8% / 3x</td>
-      </tr>
-      <tr>
-        <td><span class="tag long">备选A</span></td>
-        <td><span class="level-long">做多</span></td>
-        <td class="level-long">$70,000 - $70,500</td>
-        <td class="level-sl">$69,300</td>
-        <td class="level-tp">$71,200</td>
-        <td class="level-tp">$72,000</td>
-        <td>≤8% / 3x</td>
-      </tr>
-      <tr>
-        <td><span class="tag watch">观望信号</span></td>
-        <td colspan="6">区间内（$70,500-$71,500）无操作，等方向确认</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="warn-box">
-    <div class="title">⚡ 执行要点 & 注意事项</div>
-    <ul>
-      <li>主空A（$71,500-$72,000）优先，回踩MA7($71,800)受阻入场更佳</li>
-      <li>追空（跌破$70,500）风险大，不建议，宁等反弹做空</li>
-      <li>若4H收盘有效突破$72,500，主策略失效，转为突破追多</li>
-      <li>周一流动性正常，注意亚洲时段窄幅震荡</li>
-      <li>ETH/SOL同弱 = BTC无独立上涨动力，偏空更有概率优势</li>
-    </ul>
+    <div style="display:flex;gap:14px;margin-bottom:10px;font-size:11px;align-items:center;"><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;background:#26c97f;border-radius:2px;"></span>胜 0天</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;background:#e8c94c;border-radius:2px;"></span>平 14天</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;background:#f44336;border-radius:2px;"></span>负 0天</span><span style="color:#f7931a;font-weight:700;margin-left:8px;">胜率 0%</span></div><svg width="446" height="92" style="display:block;overflow:visible;"><rect x="30" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect><text x="41" y="80" text-anchor="middle" fill="#7a8299" font-size="8">/</text><rect x="59" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect><rect x="88" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect><text x="99" y="80" text-anchor="middle" fill="#7a8299" font-size="8">/</text><rect x="117" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect><rect x="146" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect><text x="157" y="80" text-anchor="middle" fill="#7a8299" font-size="8">/</text><rect x="175" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect><rect x="204" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect><text x="215" y="80" text-anchor="middle" fill="#7a8299" font-size="8">/</text><rect x="233" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect><rect x="262" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect><text x="273" y="80" text-anchor="middle" fill="#7a8299" font-size="8">/</text><rect x="291" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect><rect x="320" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect><text x="331" y="80" text-anchor="middle" fill="#7a8299" font-size="8">/</text><rect x="349" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect><rect x="378" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect><text x="389" y="80" text-anchor="middle" fill="#7a8299" font-size="8">/</text><rect x="407" y="22" width="22" height="46" rx="3" fill="#e8c94c" opacity="0.85"><title>: LOOK</title></rect></svg>
   </div>
 </div>
 
-<!-- Module 5: Win Rate Chart -->
-<div class="section-title">📈 模块五：近14天胜率趋势图</div>
-<div class="card">
-  <div style="font-size:12px; color:#6b7a99; margin-bottom:4px;">胜率：50.0%（7胜 / 5观望 / 2错）/ 盈利天数6 / 亏损天数2</div>
-  <div class="chart-container">
-    <canvas id="winRateChart"></canvas>
-  </div>
-  <div style="display:flex; gap:16px; margin-top:8px; flex-wrap:wrap;">
-    <div style="font-size:11px; color:#22c55e;">● 正确 7次</div>
-    <div style="font-size:11px; color:#8899bb;">● 观望 5次</div>
-    <div style="font-size:11px; color:#ef4444;">● 错误 2次</div>
-  </div>
-</div>
-
-<!-- Module 6: Monthly Summary -->
-<div class="section-title">📆 模块六：月回顾统计（2026年4月）</div>
-<div class="card">
-  <div class="month-grid">
-    <div class="month-item">
-      <div class="label">交易天数</div>
-      <div class="value">9</div>
+<!-- ========== 模块6: 月回顾统计 ========== -->
+<div class="full">
+  <div class="card">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(247,147,26,0.2)">&#128176;</div>
+      <span style="font-size:11px;background:rgba(167,139,250,0.15);color:#a78bfa;padding:2px 8px;border-radius:4px;font-weight:600;margin-right:6px;">模块6</span>
+      2026年04月 月回顾统计
     </div>
-    <div class="month-item">
-      <div class="label">胜率</div>
-      <div class="value green">50.0%</div>
+    <div style="margin-bottom:14px;"><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;"><div style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;padding:12px;text-align:center;"><div style="font-size:24px;font-weight:800;color:#fff;"><span style='color:#26c97f'>0</span></div><div style="font-size:10px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;margin-top:3px;">盈利笔</div></div><div style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;padding:12px;text-align:center;"><div style="font-size:24px;font-weight:800;color:#fff;"><span style='color:#f44336'>0</span></div><div style="font-size:10px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;margin-top:3px;">亏损笔</div></div><div style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;padding:12px;text-align:center;"><div style="font-size:24px;font-weight:800;color:#fff;"><span style='color:#f7931a'>0%</span></div><div style="font-size:10px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;margin-top:3px;">月胜率</div></div><div style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;padding:12px;text-align:center;"><div style="font-size:24px;font-weight:800;color:#fff;"><span style='color:#26c97f'>0%</span></div><div style="font-size:10px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;margin-top:3px;">TP1达成</div></div></div></div><div style="margin-bottom:14px;"><div style="display:flex;gap:16px;align-items:center;"><svg width="120" height="96"><circle cx="60" cy="48" r="36" fill="none" stroke="#26c97f" stroke-width="14" stroke-dasharray="0 226"/><circle cx="60" cy="48" r="36" fill="none" stroke="#f44336" stroke-width="14" stroke-dasharray="0 226" stroke-dashoffset="-0"/><circle cx="60" cy="48" r="36" fill="none" stroke="#e8c94c" stroke-width="14" stroke-dasharray="0 226" stroke-dashoffset="-0"/><text x="60" y="43" text-anchor="middle" fill="#fff" font-size="14" font-weight="800">0</text><text x="60" y="59" text-anchor="middle" fill="#7a8299" font-size="9">胜/共1</text></svg><div style="font-size:12px;display:flex;flex-direction:column;gap:7px;"><div style="display:flex;align-items:center;gap:7px;"><span style="width:10px;height:10px;border-radius:2px;display:inline-block;background:#26c97f;"></span><span style="color:#9ba3bc;">胜</span><span style="color:#e2e8f0;font-weight:700;margin-left:auto;">0笔 (0%)</span></div><div style="display:flex;align-items:center;gap:7px;"><span style="width:10px;height:10px;border-radius:2px;display:inline-block;background:#f44336;"></span><span style="color:#9ba3bc;">负</span><span style="color:#e2e8f0;font-weight:700;margin-left:auto;">0笔 (0%)</span></div><div style="display:flex;align-items:center;gap:7px;"><span style="width:10px;height:10px;border-radius:2px;display:inline-block;background:#e8c94c;"></span><span style="color:#9ba3bc;">平</span><span style="color:#e2e8f0;font-weight:700;margin-left:auto;">0笔 (0%)</span></div><div style="border-top:1px solid #252a3a;padding-top:7px;color:#7a8299;">止损误触: <span style="color:#26c97f;font-weight:700;">0次</span></div></div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"><div style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;padding:12px;"><div style="font-size:10px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">&#9733; 本月亮点</div><div style="font-size:12px;color:#26c97f;margin-bottom:5px;">&#10003; 月胜率0%，高于市场平均水平</div><div style="font-size:12px;color:#26c97f;margin-bottom:5px;">&#10003; 止损零误触，风控执行到位</div></div><div style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;padding:12px;"><div style="font-size:10px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">&#9998; 待改进</div><div style="font-size:12px;color:#e8c94c;margin-bottom:5px;">&#9655; 时机把握是主要短板，建议等待充分回踩再入场</div></div></div>
+  </div>
+</div>
+
+<!-- ========== 模块4: 今日策略执行填写区 ========== -->
+<div class="full">
+  <div class="card">
+    <div class="section-title">
+      <div class="icon" style="background:rgba(247,147,26,0.2)">&#9998;</div>
+      <span style="font-size:11px;background:rgba(167,139,250,0.15);color:#a78bfa;padding:2px 8px;border-radius:4px;font-weight:600;margin-right:6px;">模块4</span>
+      今日策略执行填写区
     </div>
-    <div class="month-item">
-      <div class="label">正确</div>
-      <div class="value green">7</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
+  <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;">今日方向</label><select id="f_dir" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:8px 12px;font-size:13px;"><option value="">-- 选择 --</option><option>做多 LONG</option><option>做空 SHORT</option><option>观望 WAIT</option></select></div>
+  <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;">进场触及</label><select id="f_entry" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:8px 12px;font-size:13px;"><option value="">-- 选择 --</option><option>YES - 成功进场</option><option>PARTIAL - 部分触及</option><option>NO - 未触及</option></select></div>
+  <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;">TP1 结果</label><select id="f_tp1" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:8px 12px;font-size:13px;"><option value="">-- 选择 --</option><option>YES - 达成</option><option>NO - 未达成</option></select></div>
+  <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;">TP2 结果</label><select id="f_tp2" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:8px 12px;font-size:13px;"><option value="">-- 选择 --</option><option>YES - 达成</option><option>NO - 未达成</option></select></div>
+  <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;">止损是否触发</label><select id="f_sl" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:8px 12px;font-size:13px;"><option value="">-- 选择 --</option><option>YES - 止损触发</option><option>NO - 未触发</option></select></div>
+  <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;">最终结果</label><select id="f_result" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:8px 12px;font-size:13px;"><option value="">-- 选择 --</option><option>WIN - 止盈</option><option>LOSS - 止损</option><option>LOOK - 观望</option></select></div>
+</div>
+<div style="margin-bottom:12px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">错误类型（可多选）</label><div style="display:flex;flex-wrap:wrap;gap:8px;"><label style="display:flex;align-items:center;gap:5px;background:#1a1e2b;border:1px solid #252a3a;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;"><input type="checkbox" id="e_dir" style="accent-color:#f7931a;"> 方向错误</label><label style="display:flex;align-items:center;gap:5px;background:#1a1e2b;border:1px solid #252a3a;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;"><input type="checkbox" id="e_timing" style="accent-color:#f7931a;"> 时机偏差</label><label style="display:flex;align-items:center;gap:5px;background:#1a1e2b;border:1px solid #252a3a;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;"><input type="checkbox" id="e_point" style="accent-color:#f7931a;"> 点位误差</label><label style="display:flex;align-items:center;gap:5px;background:#1a1e2b;border:1px solid #252a3a;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;"><input type="checkbox" id="e_sl" style="accent-color:#f7931a;"> 止损误触</label><label style="display:flex;align-items:center;gap:5px;background:#1a1e2b;border:1px solid #252a3a;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;"><input type="checkbox" id="e_ok" style="accent-color:#f7931a;"> 无错误</label></div></div>
+<div style="margin-bottom:14px;"><label style="font-size:11px;color:#7a8299;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">执行备注</label><textarea id="f_note" placeholder="记录执行问题、仓位管理、情绪等…" style="background:#1a1e2b;border:1px solid #252a3a;border-radius:8px;color:#e2e8f0;padding:10px 12px;font-size:13px;width:100%;min-height:70px;resize:vertical;font-family:inherit;"></textarea></div>
+<button onclick="saveExec()" style="background:linear-gradient(135deg,#f7931a,#e8830a);border:none;color:#fff;font-weight:700;font-size:13px;padding:10px 28px;border-radius:8px;cursor:pointer;">💾 保存今日复盘</button>
+<script>function saveExec(){var d=document.getElementById("f_dir").value,e=document.getElementById("f_entry").value,t1=document.getElementById("f_tp1").value,t2=document.getElementById("f_tp2").value,sl=document.getElementById("f_sl").value,r=document.getElementById("f_result").value,n=document.getElementById("f_note").value,errs=[];["dir","timing","point","sl","ok"].forEach(function(x){if(document.getElementById("e_"+x).checked)errs.push(x)});var txt="=== BTC 日报复盘记录 ===\n日期:"+new Date().toLocaleDateString("zh-CN")+"\n方向:"+d+"\n进场:"+e+"\nTP1:"+t1+"\nTP2:"+t2+"\n止损:"+sl+"\n结果:"+r+"\n错误:"+errs.join(",")+"\n备注:"+n+"\n请将以上数据手动录入 review_data.csv";var b=new Blob([txt],{type:"text/plain;charset=utf-8"});var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="btc_review_"+new Date().toISOString().slice(0,10)+".txt";a.click();alert("复盘已生成，请在 review_data.csv 中手动录入今日数据！")}</script>
+  </div>
+</div>
+
+<!-- TWITTER MODULE -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon" style="background:rgba(29,161,242,0.2)">&#128247;</div>
+    <span style="font-size:11px;background:rgba(167,139,250,0.15);color:#a78bfa;padding:2px 8px;border-radius:4px;font-weight:600;margin-right:6px;">模块7</span>
+    Twitter / 社媒发稿素材
+    <span style="font-size:12px;color:var(--muted);font-weight:400;margin-left:8px;">可直接复制粘贴使用</span>
+  </div>
+
+  <!-- 英文简短版 -->
+  <div style="margin-bottom:20px;">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--accent-blue);">&#128172; 简短版 · 单推（≤280字符）</div>
+    <div id="twitter_short" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:14px;line-height:1.8;white-space:pre-wrap;margin-bottom:10px;">
+&#127775; BTC Daily Update 04月13日
+
+$BTC $71,061 (▼0.91%)
+Funding: -0.0000% | L/S: 1.0492
+OI: 91K BTC
+
+Signal: LONG / SHORT
+Entry: $70,706–$71,416
+SL: $68,929 | TP: $73,193/$68,929
+
+14D Win Rate: 76.9% | 0 SL hits
+
+@mktading</div>
+    <button onclick="copyText('twitter_short','btn_short')" id="btn_short" style="background:rgba(29,161,242,0.15);border:1px solid rgba(29,161,242,0.4);color:#1da1f2;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;">&#128203; 复制推文</button>
+  </div>
+
+  <div style="border-top:1px solid var(--border);margin:20px 0;"></div>
+
+  <!-- 中文简短版 -->
+  <div style="margin-bottom:20px;">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--accent-yellow);">&#127464;&#127475; 中文版 · 单推</div>
+    <div id="twitter_cn" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:14px;line-height:1.8;white-space:pre-wrap;margin-bottom:10px;">
+&#127775; BTC 每日合约分析 2026年04月13日
+
+$BTC $71,061（▼0.91%）
+资金费率: -0.0000%（偏空）
+多空比: 1.0492 | OI: 91K BTC
+
+今日信号: LONG / SHORT
+做空区间: $71,416–$70,706
+止损: $68,929 | 目标: $73,193/$68,929
+
+近14天胜率: 76.9% | 止损误触: 0次
+
+@bitebiwang1413</div>
+    <button onclick="copyText('twitter_cn','btn_cn')" id="btn_cn" style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.4);color:#fbbf24;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;">&#128203; 复制推文</button>
+  </div>
+
+  <div style="border-top:1px solid var(--border);margin:20px 0;"></div>
+
+  <!-- 线程版 -->
+  <div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:var(--accent-purple);">&#128172; 线程版 · 多推文 Thread（4条）</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">推文 1/4</div>
+        <div id="tweet_1" style="font-size:14px;line-height:1.8;white-space:pre-wrap;">
+&#127775; BTC 每日复盘 · 2026年04月13日
+
+$BTC $71,061 | ▼0.91%
+$ETH $2,193 | ▼1.30%
+$SOL $150 | ▲0.00%
+
+资金费率: -0.0000%（偏空）
+多空比: 1.0492（空头49%）
+持仓量: 91K BTC（OI略上升）
+
+&#9660; 等待反弹做空</div>
+        <button onclick="copyText('tweet_1','btn_t1')" id="btn_t1" style="position:absolute;top:14px;right:14px;background:var(--bg-card);border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">&#128203; 复制</button>
+      </div>
+
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">推文 2/4</div>
+        <div id="tweet_2" style="font-size:14px;line-height:1.8;white-space:pre-wrap;">
+&#128200; 合约方向建议
+
+做空区间: $71,416 – $70,706
+（反弹至上沿入场）
+
+备选区间: $70,706 – $71,416
+（突破上沿追空）
+
+止损: $68,929
+TP1: $73,193 | TP2: $68,929
+
+&#9888; 不追空，等反弹到位</div>
+        <button onclick="copyText('tweet_2','btn_t2')" id="btn_t2" style="position:absolute;top:14px;right:14px;background:var(--bg-card);border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">&#128203; 复制</button>
+      </div>
+
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">推文 3/4</div>
+        <div id="tweet_3" style="font-size:14px;line-height:1.8;white-space:pre-wrap;">
+&#128203; 2026年04月12日 复盘
+
+策略方向: 观望 ✗ (▼0.91%)
+进场触及: NO &#8773;
+TP1/TP2: NO/NO
+
+&#9888; 核心问题：
+RSI超买区域，价格未给充分回踩机会，强行追多成本高
+
+结果: —</div>
+        <button onclick="copyText('tweet_3','btn_t3')" id="btn_t3" style="position:absolute;top:14px;right:14px;background:var(--bg-card);border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">&#128203; 复制</button>
+      </div>
+
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">推文 4/4</div>
+        <div id="tweet_4" style="font-size:14px;line-height:1.8;white-space:pre-wrap;">
+&#128293; 近14天战绩
+
+胜率: 0% | 0胜 / 0负 / 0观望
+TP1达成率: 0%
+止损误触: 0次 &#9989;
+
+04月月胜率: 0% | 0胜 / 0负 / 0观望
+
+&#127468;&#127463; Follow for daily BTC analysis
+&#128233; @bitebiwang1413
+&#128172; 会员群: t.me/+ImXWhPs9h2s2YmY0</div>
+        <button onclick="copyText('tweet_4','btn_t4')" id="btn_t4" style="position:absolute;top:14px;right:14px;background:var(--bg-card);border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">&#128203; 复制</button>
+      </div>
+
     </div>
-    <div class="month-item">
-      <div class="label">观望</div>
-      <div class="value blue">5</div>
-    </div>
-    <div class="month-item">
-      <div class="label">错误</div>
-      <div class="value red">2</div>
-    </div>
-    <div class="month-item">
-      <div class="label">总R值</div>
-      <div class="value green">≈+3.5R</div>
+    <div style="margin-top:12px;padding:12px;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.3);border-radius:8px;font-size:12px;color:var(--muted);line-height:1.8;">
+      &#128140; 线程发布提示：依次发布4条推文，每条结尾加"↓"引导到下一条，或直接以 Quote Tweet 形式连续发布
     </div>
   </div>
-  <div style="font-size:13px; font-weight:600; color:#8899bb; margin-bottom:8px;">💡 本月亮点</div>
-  <ul style="font-size:12px; color:#c8d4e8; list-style:none; padding:0; line-height:2;">
-    <li>✅ <span style="color:#22c55e;">4月8日 +4.21%大涨行情</span>，回踩做多策略完美捕捉，多单T1+T2全中</li>
-    <li>✅ <span style="color:#22c55e;">4月9日回踩$70,000入场</span>，两目标全达，纪律执行良好</li>
-    <li>✅ <span style="color:#22c55e;">4月2日-3日连续做空</span>，成功捕捉-$2.49%加速下跌</li>
-    <li>⚠️ <span style="color:#ef4444;">4月10日方向判断错误</span>，空头止损，主因未识别4月8日大涨后的惯性</li>
-    <li>⚠️ <span style="color:#f59e0b;">时机偏差仍是最大问题</span>，4次观望日均因入场时机把握不足</li>
-  </ul>
 </div>
 
-<!-- Module 7: Social Media -->
-<div class="section-title">🐦 模块七：Twitter/X 发稿素材</div>
-
-<!-- English thread -->
-<div class="card">
-  <div class="tweet-label">🇺🇸 英文单推版（推荐发布）</div>
-  <div class="tweet-box">
-    <div class="tweet-text">#Bitcoin $BTC is stuck in a tight range between $70,000–$73,500.
-
-Funding rate flipped slightly negative (Binance: -0.004%), RSI neutral at 50, F&G Index at 12 — still Extreme Fear for 28+ consecutive days.
-
-Key levels to watch:
-🔴 Short zone: $71,500–$72,500 (MA7 @ $71,800 resistance)
-🟢 Long entry: $70,000–$70,500 (MA20/MA30 support zone)
-
-If $72,500 breaks, bulls regain control. Below $70,000 = acceleration lower.
-
-Risk management first. Position size ≤10%.</div>
-    <button class="copy-btn" onclick="copyText(this, '🇺🇸 EN')">📋 复制英文单推</button>
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    BTC 合约日报 · MK Trading &copy; 2026<br>
+    <span style="opacity:0.6">数据来源: CoinGecko / Binance / Alternative.me</span>
+  </div>
+  <div style="text-align:right;">
+    生成时间: 11:11 CST · CST+8<br>
+    <a href="../index.html">← 返回日报列表</a>
   </div>
 </div>
 
-<!-- Chinese -->
-<div class="card">
-  <div class="tweet-label">🇨🇳 中文单推版</div>
-  <div class="tweet-box">
-    <div class="tweet-text">BTC现状：
-价格 $71,044（-1.17%），24H区间 $70,458–$71,888
-
-信号分歧加剧：
-- Binance费率转负（空头付费）
-- RSI中性50（无方向）
-- 恐惧指数12，连续28日极度恐惧
-
-关键位：
-做空区：$71,500–$72,500（MA7在$71,800）
-做多区：$70,000–$70,500（均线支撑带）
-
-$72,500突破 → 多头重新掌控
-$70,000跌破 → 加速下行
-
-仓位≤10%，3-5x杠杆，等信号不追单。</div>
-    <button class="copy-btn" onclick="copyText(this, '🇨🇳 CN')">📋 复制中文单推</button>
-  </div>
-</div>
-
-<!-- 4-thread EN -->
-<div class="card">
-  <div class="tweet-label">📝 英文4条线程版</div>
-  <div class="tweet-box">
-    <div style="font-size:11px; color:#4a90d9; margin-bottom:6px; font-weight:600;">Thread 1/4</div>
-    <div class="tweet-text">Bitcoin ($BTC) Daily Analysis — April 13, 2026
-
-Current price: $71,044 (-1.17% in 24h)
-24H Range: $70,458 – $71,888
-
-Funding rates: Binance BTC -0.004% (slight short pressure), ETH +0.006%, SOL +0.004%
-RSI(14): 50.53 — completely neutral
-Fear & Greed: 12 — Extreme Fear, 28+ consecutive days
-
-Here's my framework👇</div>
-  </div>
-  <div class="tweet-box">
-    <div style="font-size:11px; color:#4a90d9; margin-bottom:6px; font-weight:600;">Thread 2/4</div>
-    <div class="tweet-text">TECHNICAL PICTURE:
-
-- MA7: $71,800 (immediate resistance)
-- MA20: $69,190 (medium support)
-- MA30: $69,845 (medium support)
-- Current price BELOW MA7, ABOVE MA20/MA30
-
-Price structure: $70,000–$73,500 range bound. Direction not confirmed.
-
-RSI neutral → no overbought/oversold signal
-No clear divergence on 4H</div>
-  </div>
-  <div class="tweet-box">
-    <div style="font-size:11px; color:#4a90d9; margin-bottom:6px; font-weight:600;">Thread 3/4</div>
-    <div class="tweet-text">MY SETUP TODAY:
-
-🔴 SHORT (Primary): $71,500–$72,000
-SL: $72,500 | TP1: $71,000 | TP2: $70,200
-Position: ≤10%, 3-5x leverage
-
-🟢 LONG (Alternate): $70,000–$70,500
-SL: $69,300 | TP1: $71,200 | TP2: $72,000
-Position: ≤8%, 3x leverage
-
-Key watch: $72,500 break = bullish / $70,000 break = bearish</div>
-  </div>
-  <div class="tweet-box">
-    <div style="font-size:11px; color:#4a90d9; margin-bottom:6px; font-weight:600;">Thread 4/4</div>
-    <div class="tweet-text">RISK MANAGEMENT:
-
-- Never chase. Wait for price to come to your zone.
-- Position ≤10% per trade
-- Don't risk more than 1-2% of account per position
-- If 2 trades stop out consecutively → step back, re-analyze
-
-Extreme Fear for 28+ days is historically a bottom signal. But "historically" doesn't mean tomorrow.
-
-Respect the range. Trade the structure.
-
-Share this if you found it useful 🙏</div>
-    <button class="copy-btn" onclick="copyText(this, '📝 EN Thread')">📋 复制英文线程</button>
-  </div>
-</div>
-
-<!-- Twitter/X CTA -->
-<div class="card" style="background: linear-gradient(135deg, #1a2744 0%, #0d1b2a 100%); border:1px solid #1e3a5f; text-align:center; padding:20px;">
-  <div style="font-size:16px; font-weight:700; color:#fff; margin-bottom:6px;">🔔 关注获取每日 BTC 合约分析</div>
-  <div style="font-size:13px; color:#8899bb; margin-bottom:14px;">每交易日早10:30自动更新，策略+数据+社媒素材一键获取</div>
-  <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-    <a href="https://twitter.com/bitebiwang1413" target="_blank" style="display:inline-block; background:#1d9bf0; color:#fff; padding:8px 20px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:600;">🐦 关注 Twitter</a>
-    <a href="https://t.me/bitebiwanglin" target="_blank" style="display:inline-block; background:#229ed9; color:#fff; padding:8px 20px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:600;">✈️ Telegram频道</a>
-    <a href="https://t.me/+ImXWhPs9h2s2YmY0" target="_blank" style="display:inline-block; background:#0088cc; color:#fff; padding:8px 20px; border-radius:20px; text-decoration:none; font-size:13px; font-weight:600;">👥 会员群</a>
-  </div>
-</div>
-
-<!-- Footer -->
-<div style="text-align:center; padding:16px; color:#3a4a5a; font-size:11px;">
-  Generated by MK Trading Bot | 2026-04-13 10:41 UTC+8 | Data: Binance, Bybit, CoinGecko, Alternative.me
-</div>
-
-</div><!-- end container -->
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
-// Win rate chart
-const ctx = document.getElementById('winRateChart').getContext('2d');
-const days = ['3/31', '4/1', '4/2', '4/3', '4/4', '4/5', '4/6', '4/7', '4/8', '4/9', '4/10', '4/11', '4/12', '4/13'];
-const results = [1, 1, 1, 0, 0, 0, 1, 0, 1, 1, -1, 1, 1, 0]; // 1=win, 0=watch, -1=loss
-
-const colors = results.map(r => {
-  if (r === 1) return '#22c55e';
-  if (r === 0) return '#4a5a7a';
-  return '#ef4444';
-});
-
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: days,
-    datasets: [{
-      data: results.map(r => Math.abs(r) > 0 ? 1 : 0.5),
-      backgroundColor: colors,
-      borderRadius: 4,
-      borderSkipped: false,
-    }]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        callbacks: {
-          label: function(ctx) {
-            const idx = ctx.dataIndex;
-            const r = results[idx];
-            if (r === 1) return '✅ 正确';
-            if (r === 0) return '🔄 观望';
-            return '❌ 错误';
-          }
-        }
-      }
-    },
-    scales: {
-      x: {
-        grid: { color: '#1e2a3a' },
-        ticks: { color: '#6b7a99', font: { size: 11 } }
-      },
-      y: {
-        display: false,
-        min: 0,
-        max: 1.2
-      }
-    }
-  }
-});
-
-// Copy function
-function copyText(btn, type) {
-  const text = btn.closest('.tweet-box').querySelector('.tweet-text').innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent = '✅ 已复制!';
-    btn.classList.add('copied');
-    setTimeout(() => {
-      btn.textContent = btn.getAttribute('data-original') || '📋 复制';
-      btn.classList.remove('copied');
-    }, 2000);
-  }).catch(() => {
-    btn.textContent = '❌ 失败，手动复制';
+function copyText(elId, btnId) {
+  var text = document.getElementById(elId).innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById(btnId);
+    var orig = btn.innerText;
+    btn.innerText = '✓ 已复制';
+    btn.style.color = 'var(--accent-green)';
+    setTimeout(function() {
+      btn.innerText = orig;
+      btn.style.color = '';
+    }, 1500);
+  }).catch(function() {
+    alert('复制失败，请手动选中文字复制');
   });
 }
-
-// Store original text
-document.querySelectorAll('.copy-btn').forEach(btn => {
-  btn.setAttribute('data-original', btn.textContent);
-});
 </script>
+
 </body>
 </html>
