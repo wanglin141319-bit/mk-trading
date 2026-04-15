@@ -1,0 +1,66 @@
+{
+  "date": "2026-04-15",
+  "macro_events": [
+    {
+      "time": "14:00 UTC",
+      "event": "美联储理事沃勒讲话",
+      "country": "🇺🇸",
+      "importance": "高",
+      "impact": "可能提及通胀路径和利率前景",
+      "market_effect": "中等"
+    },
+    {
+      "time": "16:30 UTC",
+      "event": "美国3月零售销售月率",
+      "country": "🇺🇸",
+      "importance": "高",
+      "impact": "消费数据反映经济韧性",
+      "market_effect": "中等至高"
+    },
+    {
+      "time": "18:00 UTC",
+      "event": "欧洲央行行长拉加德讲话",
+      "country": "🇪🇺",
+      "importance": "中",
+      "impact": "欧元区货币政策展望",
+      "market_effect": "低至中等"
+    }
+  ],
+  "market_news": [
+    {
+      "title": "BlackRock增加BTC ETF持仓至历史新高",
+      "source": "彭博社",
+      "date": "2026-04-14",
+      "summary": "贝莱德IBIT昨日净流入2.85亿美元，总持仓达28.5万枚BTC",
+      "sentiment": "积极",
+      "crypto_impact": "高"
+    },
+    {
+      "title": "香港批准首只现货ETH ETF",
+      "source": "香港证监会",
+      "date": "2026-04-14",
+      "summary": "香港证监会批准华夏基金等三家机构推出现货以太坊ETF",
+      "sentiment": "积极",
+      "crypto_impact": "中等"
+    },
+    {
+      "title": "美国财政部考虑对DeFi协议实施更严格监管",
+      "source": "华尔街日报",
+      "date": "2026-04-13",
+      "summary": "财政部报告建议对去中心化金融协议实施类似银行的监管框架",
+      "sentiment": "消极",
+      "crypto_impact": "中等"
+    }
+  ],
+  "biggest_macro_variable": "美国3月零售销售数据",
+  "variable_impact": "如数据超预期强劲，可能强化美联储鹰派立场，对风险资产不利",
+  "trading_warning": "⚠️ 数据公布前后（16:30-17:30 UTC）建议减少新开仓，关注市场波动",
+  "market_sentiment": "谨慎乐观",
+  "sentiment_reason": "机构持续流入抵消监管担忧，技术面保持强势",
+  "next_week_events": [
+    "4月16日：美国新屋开工数据",
+    "4月17日：美联储褐皮书发布",
+    "4月18日：美国初请失业金人数",
+    "4月19日：美国成屋销售数据"
+  ]
+}
