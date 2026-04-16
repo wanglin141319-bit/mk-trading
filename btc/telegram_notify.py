@@ -117,6 +117,9 @@ def format_daily_report(data, strategy):
     change_icon = '\U0001f7e2' if change >= 0 else '\U0001f7e1'
     dir_icon = '\U0001f7e2 LONG' if dir_tag == 'LONG' else '\U0001f534 SHORT' if dir_tag == 'SHORT' else '\U0001f7e0 WAIT'
 
+    def fmt(v):
+        return f'${v:,.0f}' if isinstance(v, (int, float)) else v
+
     msg = (
         "\u26a1 *BTC Daily Report* " + datetime.now().strftime('%m/%d') + "\n"
         "━━━━━━━━━━━━━━━━━━━━\n\n"
@@ -126,7 +129,7 @@ def format_daily_report(data, strategy):
         "\U0001f4b0 Funding: *" + f'{funding_rate:.4f}' + "%* | OI L/S: *" + f'{ls_ratio:.2f}' + "*\n\n"
         "\U0001f3af *Today's Strategy:* " + dir_icon + "\n"
         "  Entry: $" + f'{price:,.0f}' + "\n"
-        "  SL: $" + f'{sl:,.0f}' + " | TP: $" + f'{tp1:,.0f}' + "\n"
+        "  SL: " + fmt(sl) + " | TP: " + fmt(tp1) + "\n"
         "  RR: *" + f'{rr:.1f}' + ":1*\n\n"
         "\U0001f4c8 EMA20: $" + f'{ema20:,.0f}' + "\n\n"
         "\U0001f6a8 *Full report:* https://mktrading.vip/btc/\n"
