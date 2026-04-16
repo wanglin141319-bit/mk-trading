@@ -381,7 +381,22 @@ def generate_html(data, strategy, history):
 
     return html
 
-# ============ GitHub 操作 ============
+# ============ Telegram 推送 ============
+def notify_telegram(data, strategy, report_file):
+    """发送日报到 Telegram"""
+    try:
+        sys.path.insert(0, BASE_DIR)
+        from telegram_notify import notify_telegram as send_tg
+        ok, result = send_tg(data, strategy, report_file)
+        if ok:
+            log('Telegram: sent OK (msg_id=' + str(result) + ')', 'TG')
+            return 'success'
+        else:
+            log('Telegram: ' + str(result), 'WARN')
+            return 'failed'
+    except Exception as e:
+        log('Telegram: module not found or error - ' + str(e)[:80], 'WARN')
+        return 'not_configured'
 def git_commit_push(report_file):
     """Git 自动提交推送"""
     log('Git: commit + push', 'GIT')
@@ -534,6 +549,9 @@ def main():
 
     # Step 8: Git commit + push
     git_result = git_commit_push(today_file)
+
+    # Step 9: Telegram 推送
+    tg_result = notify_telegram(data, strategy, today_file)
 
     # Step 9: 总结
     elapsed = time.time() - start

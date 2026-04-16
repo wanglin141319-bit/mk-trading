@@ -142,52 +142,74 @@ def get_funding_rate():
     return None
 
 def get_oi():
+    """获取未平仓合约 OI（仅 OI 数值，多空比由 get_liquidation 负责）"""
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
 
-    def try_binance():
+    def try_binance_oi():
         r = requests.get(
-            'https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=BTCUSDT&period=1h&limit=3',
+            'https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=BTCUSDT&period=1h&limit=1',
             timeout=8, verify=False, headers=headers)
         d = r.json()
         latest = d[-1]
-        return {'long_ratio': float(latest['longAccount']), 'short_ratio': float(latest['shortAccount']),
-                'long_short_ratio': float(latest['longShortRatio']), 'source': 'binance'}
+        return {
+            'long_ratio': round(float(latest['longAccount']) * 100, 1),
+            'short_ratio': round(float(latest['shortAccount']) * 100, 1),
+            'long_short_ratio': round(float(latest['longShortRatio']), 3),
+            'source': 'binance_global'
+        }
 
-    def try_bybit():
+    def try_bybit_oi():
         r = requests.get(
-            'https://api.bybit.com/v5/market/open-interest?category=linear&symbol=BTCUSDT&intervalDay=1&limit=5',
+            'https://api.bybit.com/v5/market/open-interest?category=linear&symbol=BTCUSDT&intervalDay=1&limit=3',
             timeout=6, headers=headers)
         d = r.json()
         if d['retCode'] == 0 and d['result']['list']:
             return {'records': d['result']['list'], 'source': 'bybit'}
         return None
 
-    result = retry_fetch(try_binance)
+    result = retry_fetch(try_binance_oi)
     if result:
-        log('  OI/LongShort <- ' + result['source'] + ': ratio=' + str(round(result['long_short_ratio'], 2)), 'OK')
+        log('  OI <- ' + result['source'] + ': long=' + str(result['long_ratio']) + '% / short=' + str(result['short_ratio']) + '%', 'OK')
         return result
-    result = retry_fetch(try_bybit)
+    result = retry_fetch(try_bybit_oi)
     if result:
-        log('  OI <- bybit', 'OK')
+        log('  OI <- bybit (records=' + str(len(result.get('records', []))) + ')', 'OK')
         return result
     return None
 
 def get_liquidation():
+    """获取爆仓/多空清算数据（Binance 多源融合）"""
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
-    def try_coinglass():
-        r = requests.get('https://api.coinglass.com/api/pro/v1/liquidation/last?symbol=BTC',
-                         timeout=8, headers=headers)
+
+    def try_binance_top_ratio():
+        # 多空持仓比（每小时更新，反映主力仓位）
+        r = requests.get(
+            'https://fapi.binance.com/futures/data/topLongShortPositionRatio?symbol=BTCUSDT&period=1h&limit=5',
+            timeout=8, verify=False, headers=headers)
         d = r.json()
-        if d.get('data'):
-            item = d['data']
-            return {'total': item.get('total'), 'long_liq': item.get('long'),
-                    'short_liq': item.get('short'), 'source': 'coinglass'}
-        return None
-    result = retry_fetch(try_coinglass)
+        latest = d[-1]
+        long_ratio = float(latest['longAccount'])
+        short_ratio = float(latest['shortAccount'])
+        ls_ratio = float(latest['longShortRatio'])
+        # 计算 24h 大户多空清算倾向（趋势变化）
+        if len(d) >= 2:
+            prev = d[-2]
+            change = float(latest['longShortRatio']) - float(prev['longShortRatio'])
+        else:
+            change = 0
+        return {
+            'long_ratio': round(long_ratio * 100, 1),
+            'short_ratio': round(short_ratio * 100, 1),
+            'long_short_ratio': round(ls_ratio, 3),
+            'trend_change': round(change, 3),
+            'source': 'binance_top_ratio'
+        }
+
+    result = retry_fetch(try_binance_top_ratio)
     if result:
-        log('  Liquidation <- ' + result['source'], 'OK')
+        log('  Liquidation/LSP <- binance_top_ratio: long=' + str(result['long_ratio']) + '% / short=' + str(result['short_ratio']) + '%', 'OK')
         return result
-    return {'total': 'N/A', 'long_liq': 'N/A', 'short_liq': 'N/A', 'source': 'none'}
+    return {'long_ratio': 'N/A', 'short_ratio': 'N/A', 'long_short_ratio': 'N/A', 'trend_change': 0, 'source': 'none'}
 
 def get_fear_greed():
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
