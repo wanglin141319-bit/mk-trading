@@ -1,6 +1,6 @@
 # MK Trading 长期记忆
 
-> 最后更新：2026-04-15
+> 最后更新：2026-04-16
 
 ---
 
@@ -56,6 +56,18 @@
 - 策略：气温/天气市场（10U可用）、事件驱动套利（50U+）
 - Telegram：https://t.me/bitebiwang1413
 - 频道：https://t.me/bitebiwanglin
+
+---
+
+## Telegram Bot 配置（2026-04-16）
+
+- Bot：[@MK_BTC_Alert_Bot](https://t.me/MK_BTC_Alert_Bot)
+- Token：`8626387493:AAE2XCzMzmhDiWRaGKVEjrj2EGLPsDN22-Q`
+- Chat ID：`8167434886`（比特币王林）→ **已切换为频道**
+- 频道：`@bitebiwanglin`（比特币王林公开频道，ID: -1003189007280）
+- 配置文件：`c:/Users/asus/mk-trading/btc/telegram_config.json`
+- 模块：`c:/Users/asus/mk-trading/btc/telegram_notify.py`
+- 每天 10:25 定时推送日报 + 策略信号到频道
 
 ---
 

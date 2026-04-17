@@ -1,0 +1,87 @@
+{
+  "ts": 1776338092.6503296,
+  "data": {
+    "timestamp": "2026-04-16T19:14:43.513417",
+    "btc": {
+      "price": 74331.1,
+      "change_24h": 0.402,
+      "high_24h": 75425.0,
+      "low_24h": 73580.85,
+      "vol_btc": 13344.68072,
+      "source": "binance"
+    },
+    "eth": {
+      "price": 2331.04,
+      "change_24h": 0.18,
+      "source": "binance"
+    },
+    "funding": {
+      "rate": -0.0033429999999999996,
+      "next_time": 1776355200000,
+      "source": "binance"
+    },
+    "oi": {
+      "long_ratio": 42.8,
+      "short_ratio": 57.2,
+      "long_short_ratio": 0.748,
+      "source": "binance_global"
+    },
+    "liquidation": {
+      "long_ratio": 46.4,
+      "short_ratio": 53.6,
+      "long_short_ratio": 0.864,
+      "trend_change": -0.011,
+      "source": "binance_top_ratio"
+    },
+    "fear_greed": {
+      "value": 23,
+      "classification": "Extreme Fear",
+      "prev_value": 23,
+      "prev_classification": "Extreme Fear",
+      "source": "alternative.me"
+    },
+    "technical": {
+      "rsi": 53.4271890329951,
+      "ema7": 69614.84437952531,
+      "ema20": 73235.87321321561,
+      "ema50": 82028.58244262499,
+      "macd_line": -5083.484491765514,
+      "macd_signal": -5083.484491765514,
+      "macd_hist": 0.0,
+      "macd_cross": "DEAD",
+      "bb_upper": 82241.55068406131,
+      "bb_middle": 70670.95,
+      "bb_lower": 59100.349315938685,
+      "close": 70757.0
+    },
+    "macro": {
+      "events": [
+        {
+          "time": "14:00",
+          "country": "US",
+          "flag": "🇺🇸",
+          "event": "美国PPI生产者价格指数",
+          "importance": "high",
+          "impact": "Fed降息预期，USD + 风险资产"
+        },
+        {
+          "time": "15:00",
+          "country": "US",
+          "flag": "🇺🇸",
+          "event": "NAHB房产市场指数",
+          "importance": "medium",
+          "impact": "次要经济指标"
+        }
+      ],
+      "weekly_key": {
+        "week": "周四",
+        "date": "2026-04-16",
+        "event": "FOMC会议纪要 / 美联储官员密集发声",
+        "description": "本周美联储多位官员讲话，关注利率路径指引",
+        "action": "数据公布前1小时禁止新开仓，已持仓带好止损"
+      },
+      "week": "周四",
+      "date": "2026-04-16"
+    }
+  }
+}

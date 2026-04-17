@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-04-17 09:00:47",
+  "btc": {
+    "price": 74977,
+    "change_24h": 0.22347,
+    "high_24h": 75404,
+    "low_24h": 73501,
+    "volume_24h": 44042114593
+  },
+  "eth": {
+    "price": 2345.2,
+    "change_24h": -0.47698
+  },
+  "fear_greed": {
+    "value": 21,
+    "classification": "Extreme Fear"
+  },
+  "funding": {
+    "btc": 0.002321,
+    "eth": 0.0016560000000000001
+  },
+  "oi": {
+    "oi_btc": 98338.698
+  },
+  "liquidations": {
+    "total_24h": 45000000,
+    "long_liq": 52,
+    "short_liq": 48
+  },
+  "long_short": null,
+  "technical": {
+    "rsi": 48.5,
+    "macd": -450,
+    "macd_signal": -380,
+    "ema_7": 84700,
+    "ema_20": 85200,
+    "ema_50": 83800,
+    "bb_upper": 87500,
+    "bb_middle": 84500,
+    "bb_lower": 81500
+  }
+}
