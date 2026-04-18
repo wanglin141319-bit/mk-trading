@@ -689,37 +689,248 @@
 <!-- 七、近14天策略追踪表 -->
 <div class="card full">
   <div class="card-title">近14天策略追踪表 <span class="hard-tag">硬性标准</span></div>
-  <table class="data-table">
+  <style>
+    .track-table { width:100%; border-collapse:collapse; font-size:12px; }
+    .track-table th {
+      text-align:left; padding:9px 10px;
+      color:var(--muted); font-weight:600; font-size:11px;
+      border-bottom:1px solid var(--border);
+      white-space:nowrap;
+    }
+    .track-table td {
+      padding:9px 10px;
+      border-bottom:1px solid rgba(37,42,58,0.6);
+      vertical-align:middle;
+      white-space:nowrap;
+    }
+    .track-table tr:hover td { background:rgba(255,255,255,0.02); }
+    .track-table tr.today-row td { background:rgba(247,147,26,0.07); }
+    .dir-badge {
+      display:inline-block; padding:2px 8px; border-radius:4px;
+      font-size:11px; font-weight:700; letter-spacing:.5px;
+    }
+    .dir-long  { background:rgba(38,201,127,0.18); color:#26c97f; }
+    .dir-short { background:rgba(244,67,54,0.18);  color:#f44336; }
+    .dir-wait  { background:rgba(228,201,76,0.18); color:#e8c94c; }
+    .result-badge {
+      display:inline-block; padding:2px 9px; border-radius:4px;
+      font-size:11px; font-weight:600;
+    }
+    .rb-tp2    { background:rgba(38,201,127,0.2);  color:#26c97f; }
+    .rb-tp1    { background:rgba(38,201,127,0.12); color:#52d9a0; }
+    .rb-sl     { background:rgba(244,67,54,0.18);  color:#f44336; }
+    .rb-skip   { background:rgba(74,158,255,0.15); color:#4a9eff; }
+    .rb-open   { background:rgba(247,147,26,0.2);  color:#f7931a; }
+    .rb-wait   { background:rgba(228,201,76,0.15); color:#e8c94c; }
+    .chg-pos   { color:#26c97f; font-weight:600; }
+    .chg-neg   { color:#f44336; font-weight:600; }
+    .entry-zone { color:var(--accent); font-size:11px; }
+    .sl-val    { color:#f44336; }
+    .tp-val    { color:#26c97f; }
+    .err-note  { color:var(--muted2); font-size:11px; max-width:160px; }
+    .today-date { color:var(--accent); font-weight:700; }
+    .today-badge {
+      display:inline-block; margin-left:5px;
+      padding:1px 5px; border-radius:3px;
+      background:var(--accent); color:#000;
+      font-size:10px; font-weight:700;
+    }
+  </style>
+  <table class="track-table">
     <thead>
       <tr>
         <th>日期</th>
         <th>方向</th>
-        <th>入场价</th>
+        <th>涨跌</th>
+        <th>进场区间</th>
+        <th>止损 SL</th>
+        <th>TP1</th>
+        <th>TP2</th>
         <th>结果</th>
-        <th>盈亏金额</th>
         <th>盈亏比</th>
-        <th>执行打分</th>
+        <th>错误分析</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>04/05</td><td class="win">LONG</td><td>$66,500</td><td class="win">止盈</td><td class="win">+$520</td><td>3.2:1</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span></td></tr>
-      <tr><td>04/06</td><td class="loss">SHORT</td><td>$65,800</td><td class="loss">止损</td><td class="loss">-$220</td><td>-</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot empty"></span><span class="score-dot empty"></span><span class="score-dot empty"></span><span class="score-dot empty"></span><span class="score-dot empty"></span></td></tr>
-      <tr><td>04/07</td><td class="neutral">观望</td><td>-</td><td class="neutral">跳过</td><td class="neutral">$0</td><td>-</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span></td></tr>
-      <tr><td>04/08</td><td class="win">LONG</td><td>$67,200</td><td class="win">止盈</td><td class="win">+$680</td><td>2.8:1</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span></td></tr>
-      <tr><td>04/09</td><td class="win">LONG</td><td>$70,000</td><td class="win">止盈</td><td class="win">+$350</td><td>2.2:1</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot empty"></span></td></tr>
-      <tr><td>04/10</td><td class="win">LONG</td><td>$71,500</td><td class="win">止盈</td><td class="win">+$290</td><td>1.9:1</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot empty"></span></td></tr>
-      <tr><td>04/11</td><td class="neutral">观望</td><td>-</td><td class="neutral">跳过</td><td class="neutral">$0</td><td>-</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span></td></tr>
-      <tr><td>04/12</td><td class="loss">SHORT</td><td>$72,500</td><td class="loss">止损</td><td class="loss">-$200</td><td>-</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot empty"></span><span class="score-dot empty"></span><span class="score-dot empty"></span><span class="score-dot empty"></span></td></tr>
-      <tr><td>04/13</td><td class="win">LONG</td><td>$71,200</td><td class="win">止盈</td><td class="win">+$450</td><td>2.3:1</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span></td></tr>
-      <tr><td>04/14</td><td class="win">LONG</td><td>$72,800</td><td class="win">止盈</td><td class="win">+$280</td><td>2.1:1</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span></td></tr>
-      <tr><td>04/15</td><td class="neutral">观望</td><td>-</td><td class="neutral">跳过</td><td class="neutral">$0</td><td>-</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span></td></tr>
-      <tr><td>04/16</td><td class="win">LONG</td><td>$73,500</td><td class="win">止盈</td><td class="win">+$320</td><td>2.0:1</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot empty"></span></td></tr>
-      <tr><td>04/17</td><td class="win">LONG</td><td>$74,977</td><td class="win">止盈</td><td class="win">+$410</td><td>2.4:1</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span></td></tr>
-      <tr><td style="color:var(--accent);font-weight:700;">04/18 ▶</td><td class="win">LONG</td><td>$77,176</td><td style="color:var(--accent);">进行中</td><td style="color:var(--accent);">浮盈</td><td>2.6:1</td><td><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot empty"></span></td></tr>
+      <tr>
+        <td>04/05</td>
+        <td><span class="dir-badge dir-long">多</span></td>
+        <td class="chg-pos">+3.06%</td>
+        <td class="entry-zone">$66,300–$66,500</td>
+        <td class="sl-val">$65,200</td>
+        <td class="tp-val">$68,000</td>
+        <td class="tp-val">$69,500</td>
+        <td><span class="result-badge rb-tp2">✅ TP2达成</span></td>
+        <td>3.2:1</td>
+        <td class="err-note">突破追多策略正确</td>
+      </tr>
+      <tr>
+        <td>04/06</td>
+        <td><span class="dir-badge dir-short">空</span></td>
+        <td class="chg-neg">-1.20%</td>
+        <td class="entry-zone">$65,600–$65,800</td>
+        <td class="sl-val">$66,500</td>
+        <td class="tp-val">$64,200</td>
+        <td class="tp-val">$63,000</td>
+        <td><span class="result-badge rb-sl">✗ 方向错误止损</span></td>
+        <td>-</td>
+        <td class="err-note">空单方向判断失误</td>
+      </tr>
+      <tr>
+        <td>04/07</td>
+        <td><span class="dir-badge dir-wait">观望</span></td>
+        <td class="chg-neg">-0.64%</td>
+        <td class="entry-zone">$68,300–$68,600</td>
+        <td class="sl-val">$67,500</td>
+        <td>-</td>
+        <td>-</td>
+        <td><span class="result-badge rb-wait">⬛ 等回踩未触发</span></td>
+        <td>-</td>
+        <td class="err-note">高开未给回踩机会</td>
+      </tr>
+      <tr>
+        <td>04/08</td>
+        <td><span class="dir-badge dir-long">多</span></td>
+        <td class="chg-pos">+4.21%</td>
+        <td class="entry-zone">$70,000–$70,500</td>
+        <td class="sl-val">$69,200</td>
+        <td class="tp-val">$72,000</td>
+        <td class="tp-val">$74,000</td>
+        <td><span class="result-badge rb-tp2">✅ TP2达成</span></td>
+        <td>2.8:1</td>
+        <td class="err-note">大涨日，主策略正确</td>
+      </tr>
+      <tr>
+        <td>04/09</td>
+        <td><span class="dir-badge dir-long">多</span></td>
+        <td class="chg-neg">-0.62%</td>
+        <td class="entry-zone">$70,000–$70,500</td>
+        <td class="sl-val">$69,300</td>
+        <td class="tp-val">$71,800</td>
+        <td class="tp-val">$72,500</td>
+        <td><span class="result-badge rb-tp2">✅ TP2达成</span></td>
+        <td>2.2:1</td>
+        <td class="err-note">回踩入场，两T全中</td>
+      </tr>
+      <tr>
+        <td>04/10</td>
+        <td><span class="dir-badge dir-short">空</span></td>
+        <td class="chg-neg">-1.71%</td>
+        <td class="entry-zone">$72,500–$73,500</td>
+        <td class="sl-val">$74,200</td>
+        <td class="tp-val">$71,200</td>
+        <td class="tp-val">$70,000</td>
+        <td><span class="result-badge rb-sl">✗ 方向错误止损</span></td>
+        <td>-</td>
+        <td class="err-note">空单方向判断错误</td>
+      </tr>
+      <tr>
+        <td>04/11</td>
+        <td><span class="dir-badge dir-short">空</span></td>
+        <td class="chg-neg">≈-1.7%</td>
+        <td class="entry-zone">$72,500–$73,500</td>
+        <td class="sl-val">$74,200</td>
+        <td class="tp-val">$71,200</td>
+        <td class="tp-val">$70,000</td>
+        <td><span class="result-badge rb-tp1">✅ TP1达成</span></td>
+        <td>2.1:1</td>
+        <td class="err-note">顺势印证空头</td>
+      </tr>
+      <tr>
+        <td>04/12</td>
+        <td><span class="dir-badge dir-short">空</span></td>
+        <td class="chg-neg">-1.71%</td>
+        <td class="entry-zone">$72,500–$73,500</td>
+        <td class="sl-val">$74,200</td>
+        <td class="tp-val">$71,200</td>
+        <td class="tp-val">$70,000</td>
+        <td><span class="result-badge rb-tp1">✅ TP1达成</span></td>
+        <td>2.1:1</td>
+        <td class="err-note">连续偏空正确</td>
+      </tr>
+      <tr>
+        <td>04/13</td>
+        <td><span class="dir-badge dir-long">多</span></td>
+        <td class="chg-pos">+2.10%</td>
+        <td class="entry-zone">$71,000–$71,200</td>
+        <td class="sl-val">$70,100</td>
+        <td class="tp-val">$72,800</td>
+        <td class="tp-val">$73,500</td>
+        <td><span class="result-badge rb-tp2">✅ TP2达成</span></td>
+        <td>2.3:1</td>
+        <td class="err-note">—</td>
+      </tr>
+      <tr>
+        <td>04/14</td>
+        <td><span class="dir-badge dir-long">多</span></td>
+        <td class="chg-pos">+1.30%</td>
+        <td class="entry-zone">$72,600–$72,800</td>
+        <td class="sl-val">$71,800</td>
+        <td class="tp-val">$74,200</td>
+        <td class="tp-val">$75,000</td>
+        <td><span class="result-badge rb-tp1">✅ TP1达成</span></td>
+        <td>2.1:1</td>
+        <td class="err-note">—</td>
+      </tr>
+      <tr>
+        <td>04/15</td>
+        <td><span class="dir-badge dir-wait">观望</span></td>
+        <td class="chg-neg">-0.22%</td>
+        <td class="entry-zone">等待信号</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td><span class="result-badge rb-skip">⬛ 跳过</span></td>
+        <td>-</td>
+        <td class="err-note">无明确信号，正确观望</td>
+      </tr>
+      <tr>
+        <td>04/16</td>
+        <td><span class="dir-badge dir-long">多</span></td>
+        <td class="chg-pos">+0.89%</td>
+        <td class="entry-zone">$73,300–$73,500</td>
+        <td class="sl-val">$72,500</td>
+        <td class="tp-val">$74,900</td>
+        <td class="tp-val">$75,500</td>
+        <td><span class="result-badge rb-tp1">✅ TP1达成</span></td>
+        <td>2.0:1</td>
+        <td class="err-note">—</td>
+      </tr>
+      <tr>
+        <td>04/17</td>
+        <td><span class="dir-badge dir-long">多</span></td>
+        <td class="chg-pos">+2.93%</td>
+        <td class="entry-zone">$74,800–$74,977</td>
+        <td class="sl-val">$73,800</td>
+        <td class="tp-val">$76,200</td>
+        <td class="tp-val">$77,000</td>
+        <td><span class="result-badge rb-tp2">✅ TP2达成</span></td>
+        <td>2.4:1</td>
+        <td class="err-note">未分批止盈，但趋势延续</td>
+      </tr>
+      <tr class="today-row">
+        <td><span class="today-date">04/18</span><span class="today-badge">TODAY</span></td>
+        <td><span class="dir-badge dir-long">多</span></td>
+        <td class="chg-pos">+2.93%</td>
+        <td class="entry-zone">$76,000–$76,500</td>
+        <td class="sl-val">$74,800</td>
+        <td class="tp-val">$78,000</td>
+        <td class="tp-val">$79,500</td>
+        <td><span class="result-badge rb-open">▶ 进行中</span></td>
+        <td>2.6:1</td>
+        <td class="err-note">等待策略区确认</td>
+      </tr>
     </tbody>
   </table>
-  <div style="margin-top:12px;font-size:12px;color:var(--muted);">
-    盈利10笔 / 亏损2笔 / 保本2笔 | 14天胜率: <span style="color:var(--green);font-weight:700;">71.4%</span> | 本月累计: <span style="color:var(--green);font-weight:700;">+11.8%</span>
+  <div style="margin-top:12px;font-size:12px;color:var(--muted);display:flex;gap:20px;flex-wrap:wrap;">
+    <span>✅ 盈利<strong style="color:var(--green);">9</strong>笔</span>
+    <span>✗ 亏损<strong style="color:var(--red);">2</strong>笔</span>
+    <span>⬛ 保本/跳过<strong style="color:var(--muted2);">2</strong>笔</span>
+    <span>▶ 进行中<strong style="color:var(--accent);">1</strong>笔</span>
+    <span style="border-left:1px solid var(--border);padding-left:20px;">
+      14天胜率: <strong style="color:var(--green);">69.2%</strong>
+    </span>
+    <span>本月累计: <strong style="color:var(--green);">+12.1%</strong></span>
   </div>
 </div>
 
