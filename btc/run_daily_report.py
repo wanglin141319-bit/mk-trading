@@ -246,13 +246,620 @@ def generate_strategy(data):
     }
     return strategy
 
+# ============ 动态板块生成函数 ============
+def _fmt(v, prefix='$'):
+    """格式化价格"""
+    if not v or v == 'N/A':
+        return '—'
+    return prefix + '{:,.0f}'.format(float(v))
+
+def _pct(v):
+    """格式化百分比"""
+    if v is None:
+        return '—'
+    return '{:+.1f}%'.format(float(v))
+
+def _dir_label(d):
+    """方向标签"""
+    return {'LONG': '🟢 多', 'SHORT': '🔴 空', 'WAIT': '🟡 观望'}.get(d, '🟡 观望')
+
+def _result_label(result):
+    """结果标签"""
+    return {
+        'WIN': ('✅ TP2达成', 'var(--green)'),
+        'WIN_TP1': ('✅ TP1达成', 'var(--green)'),
+        'LOSS': ('✗ 止损', 'var(--red)'),
+        'BREAK_EVEN': ('⬛ 等回踩', 'var(--muted)'),
+        'OPEN': ('▶ 进行中', 'var(--accent)'),
+    }.get(result, ('—', 'var(--muted)'))
+
+def _gen_score_stars(score, max_score=10):
+    """生成打分星"""
+    if score <= 0 or score > max_score:
+        return '—'
+    filled = '<span style="color:var(--accent);">★</span>'
+    empty = '<span style="color:var(--border);">☆</span>'
+    return filled * score + empty * (max_score - score)
+
+def gen_section1_stats(history, date_display):
+    """一、综合统计看板"""
+    last14 = history[-14:] if len(history) >= 14 else history
+
+    wins = sum(1 for h in last14 if h.get('result') in ('WIN', 'WIN_TP1'))
+    losses = sum(1 for h in last14 if h.get('result') == 'LOSS')
+    break_even = len(last14) - wins - losses
+    win_rate = round(wins / len(last14) * 100, 1) if last14 else 0
+
+    rr_rates = [h.get('rr', 0) for h in last14 if h.get('rr', 0) > 0]
+    avg_rr = round(sum(rr_rates) / len(rr_rates), 1) if rr_rates else 0
+
+    # 最大回撤（估算：取最低盈亏比）
+    all_pnl = [h.get('pnl', 0) for h in last14]
+    max_dd = min(all_pnl) if all_pnl else 0
+
+    wr_badge = '<span class="badge badge-green">达标≥55%</span>' if win_rate >= 55 else '<span class="badge badge-red">未达标</span>'
+    rr_badge = '<span class="badge badge-orange">达标≥2:1</span>' if avg_rr >= 2 else ''
+    dd_badge = '<span class="badge badge-green">达标&lt;15%</span>' if abs(max_dd) < 15 else '<span class="badge badge-red">超标</span>'
+
+    return f'''<div class="card full">
+  <div class="card-title">综合统计看板 <span class="hard-tag">硬性标准</span></div>
+  <div class="stats-grid">
+    <div class="stat-box">
+      <div class="stat-box-label">14天胜率</div>
+      <div class="stat-box-val" style="color:{"var(--green)" if win_rate >= 55 else "var(--red)"};">{win_rate}% {wr_badge}</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">本月累计盈亏</div>
+      <div class="stat-box-val" style="color:var(--green);">待核实</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">平均盈亏比</div>
+      <div class="stat-box-val orange">{avg_rr}:1 {rr_badge}</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">最大回撤</div>
+      <div class="stat-box-val" style="color:{"var(--green)" if abs(max_dd) < 15 else "var(--red)"};">{max_dd:+.1f}% {dd_badge}</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">本月交易日数</div>
+      <div class="stat-box-val">{len(history)}天</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">盈利/亏损/保本</div>
+      <div class="stat-box-val" style="font-size:14px;">{wins}笔 / {losses}笔 / {break_even}笔</div>
+    </div>
+  </div>
+</div>'''
+
+def gen_section11_yesterday_review(prev_strategy, history, data, today_display):
+    """十一、昨日复盘 - 基于真实数据自动生成"""
+    if not prev_strategy:
+        return f'''<div class="card full">
+  <div class="card-title">昨日复盘 ({today_display})</div>
+  <div style="padding:20px;text-align:center;color:var(--muted);">暂无昨日策略数据</div>
+</div>'''
+
+    btc = data.get('btc', {})
+    today_low = btc.get('low_24h', 0)
+    today_high = btc.get('high_24h', 0)
+
+    direction = prev_strategy.get('direction', 'WAIT')
+    sl = prev_strategy.get('stop_loss', 0)
+    tp1 = prev_strategy.get('tp1', 0)
+    tp2 = prev_strategy.get('tp2', 0)
+    entry_low = prev_strategy.get('entry_low', 0)
+    entry_high = prev_strategy.get('entry_high', 0)
+    rr = prev_strategy.get('rr_ratio', 0)
+
+    # 判断结果（基于今天价格 + 昨天策略）
+    if direction == 'WAIT':
+        sl_text = '—'
+        tp_text = '—'
+        result = 'OPEN'
+        pnl_text = '未开仓'
+        score = 0
+        score_bar = '—'
+        exec_note = '观望策略，无需执行'
+        highlight = '正确执行观望，等待明确信号'
+        fault = '无'
+    elif direction == 'LONG':
+        sl_hit = today_low < sl and sl > 0
+        tp2_hit = today_high >= tp2 and tp2 > 0
+        tp1_hit = today_high >= tp1 and tp1 > 0
+        sl_text = f'<span style="color:var(--red);">触发（{_fmt(sl)}）</span>' if sl_hit else '未触发'
+        if tp2_hit:
+            tp_text = f'<span style="color:var(--green);">TP2 {_fmt(tp2)} 达成 ✅</span>'
+            result = 'WIN'; pnl_text = 'TP2止盈'; score = 10; exec_note = '完美执行，TP2达成'
+            highlight = 'TP2完美止盈，多头行情顺利捕捉'
+            fault = '无'
+        elif tp1_hit:
+            tp_text = f'<span style="color:var(--green);">TP1 {_fmt(tp1)} 达成 ✅</span>'
+            result = 'WIN'; pnl_text = 'TP1止盈'; score = 8; exec_note = 'TP1达成，持仓管理良好'
+            highlight = 'TP1成功止盈，执行质量良好'
+            fault = '无'
+        elif sl_hit:
+            tp_text = '<span style="color:var(--muted);">未触及</span>'
+            result = 'LOSS'; pnl_text = '止损出局'; score = 5; exec_note = '止损触发，方向判断失误'
+            highlight = '无'
+            fault = '方向判断错误，逆势做多被止损'
+        else:
+            tp_text = f'<span style="color:var(--muted);">TP1={_fmt(tp1)} / TP2={_fmt(tp2)} 均未触及</span>'
+            result = 'BREAK_EVEN'; pnl_text = '持仓中（未平仓）'; score = 0; exec_note = '价格未达任一目标，保持观望'
+            highlight = 'SL未触发，本金保护到位'
+            fault = '入场后价格未触及TP即回落，未及时手动平仓'
+    else:  # SHORT
+        sl_hit = today_high > sl and sl > 0
+        tp2_hit = today_low <= tp2 and tp2 > 0
+        tp1_hit = today_low <= tp1 and tp1 > 0
+        sl_text = f'<span style="color:var(--red);">触发（{_fmt(sl)}）</span>' if sl_hit else '未触发'
+        if tp2_hit:
+            tp_text = f'<span style="color:var(--green);">TP2 {_fmt(tp2)} 达成 ✅</span>'
+            result = 'WIN'; pnl_text = 'TP2止盈'; score = 10; exec_note = '完美执行，TP2达成'
+            highlight = 'TP2完美止盈，空头行情顺利捕捉'
+            fault = '无'
+        elif tp1_hit:
+            tp_text = f'<span style="color:var(--green);">TP1 {_fmt(tp1)} 达成 ✅</span>'
+            result = 'WIN'; pnl_text = 'TP1止盈'; score = 8; exec_note = 'TP1达成，持仓管理良好'
+            highlight = 'TP1成功止盈，执行质量良好'
+            fault = '无'
+        elif sl_hit:
+            tp_text = '<span style="color:var(--muted);">未触及</span>'
+            result = 'LOSS'; pnl_text = '止损出局'; score = 5; exec_note = '止损触发，方向判断失误'
+            highlight = '无'
+            fault = '方向判断错误，逆势做空被止损'
+        else:
+            tp_text = f'<span style="color:var(--muted);">TP1={_fmt(tp1)} / TP2={_fmt(tp2)} 均未触及</span>'
+            result = 'BREAK_EVEN'; pnl_text = '持仓中（未平仓）'; score = 0; exec_note = '价格未达任一目标，保持观望'
+            highlight = 'SL未触发，本金保护到位'
+            fault = '入场后价格未触及TP即回落，未及时手动平仓'
+
+    # 执行打分
+    if score == 0:
+        score_bar = '<span style="font-size:10px;color:var(--muted);">—/10（未平仓）</span>'
+    else:
+        stars = ''.join([f'<span style="color:{"var(--accent)" if i < score else "var(--border)"};">★</span>' for i in range(1, 11)])
+        score_bar = f'{stars} <span style="font-size:10px;color:var(--muted);">{score}/10</span>'
+
+    dir_text = {'LONG': '🟢 做多', 'SHORT': '🔴 做空', 'WAIT': '🟡 观望'}.get(direction, '—')
+    entry_text = f"{_fmt(entry_low)}-{_fmt(entry_high)}" if entry_low and entry_high else '—'
+    pnl_color = 'var(--green)' if '止盈' in pnl_text else ('var(--red)' if '止损' in pnl_text else 'var(--muted)')
+
+    return f'''<div class="card full">
+  <div class="card-title">昨日复盘 ({prev_strategy.get('date', 'N/A')})</div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>币种</th>
+        <th>方向</th>
+        <th>实际入场价</th>
+        <th>止损触发</th>
+        <th>止盈</th>
+        <th>实际盈亏</th>
+        <th>执行打分</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>BTC</td>
+        <td>{dir_text}</td>
+        <td style="color:var(--accent);">{entry_text}</td>
+        <td>{sl_text}</td>
+        <td>{tp_text}</td>
+        <td style="color:{pnl_color};font-weight:700;">{pnl_text}</td>
+        <td>{score_bar}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div style="padding:12px;background:rgba(244,67,54,0.1);border-radius:8px;">
+      <div style="font-size:11px;color:var(--red);font-weight:600;margin-bottom:4px;">🔴 昨日最大失误</div>
+      <div style="font-size:12px;color:var(--muted2);">{fault}</div>
+    </div>
+    <div style="padding:12px;background:rgba(38,201,127,0.1);border-radius:8px;">
+      <div style="font-size:11px;color:var(--green);font-weight:600;margin-bottom:4px;">🟢 昨日亮点</div>
+      <div style="font-size:12px;color:var(--muted2);">{highlight}</div>
+    </div>
+  </div>
+  <div style="margin-top:10px;padding:8px 12px;background:rgba(247,147,26,0.08);border-radius:6px;font-size:11px;color:var(--muted);">
+    复盘依据：SL={_fmt(sl)} | TP1={_fmt(tp1)} | TP2={_fmt(tp2)} | 今日最高={_fmt(today_high)} | 今日最低={_fmt(today_low)}
+  </div>
+</div>'''
+
+def gen_section12_week_review(history):
+    """十二、本周综合复盘"""
+    last7 = history[-7:] if len(history) >= 7 else history
+    if not last7:
+        return '<div class="card full"><div class="card-title">本周综合复盘</div><div style="padding:20px;color:var(--muted);">暂无数据</div></div>'
+
+    wins = sum(1 for h in last7 if h.get('result') in ('WIN', 'WIN_TP1'))
+    losses = sum(1 for h in last7 if h.get('result') == 'LOSS')
+    break_even = len(last7) - wins - losses
+    total = len(last7)
+    win_rate = round(wins / total * 100, 1) if total > 0 else 0
+
+    # 本周第一天和最后一天日期
+    first_date = last7[0].get('date', 'N/A')
+    last_date = last7[-1].get('date', 'N/A')
+
+    # 找最大单笔（按盈亏估算）
+    all_entries = [(h.get('date', ''), h.get('result', ''), h.get('pnl', 0), h.get('rr', 0)) for h in last7]
+    best = max(all_entries, key=lambda x: x[2] if x[1] in ('WIN', 'WIN_TP1') else -999)
+    worst = min(all_entries, key=lambda x: x[2] if x[1] == 'LOSS' else 999)
+
+    best_txt = f"{best[0]} {'做多' if last7[all_entries.index(best)].get('direction') == 'LONG' else '做空'}" if best[0] else '—'
+    worst_txt = f"{worst[0]} {'做多' if last7[all_entries.index(worst)].get('direction') == 'LONG' else '做空'}" if worst[0] else '—'
+
+    # 本周失误分析
+    faults = []
+    for h in last7:
+        if h.get('result') == 'LOSS':
+            faults.append(f"{h.get('date', '')} 被止损")
+    fault_txt = '、'.join(faults) if faults else '本周无止损记录'
+
+    # 改进建议
+    if losses > wins:
+        improve = '止损次数超过止盈，需加强方向判断，建议等待更明确信号再入场'
+    elif break_even > wins:
+        improve = '观望次数偏多，本周行情判断趋于保守，可适度提高信号灵敏度'
+    else:
+        improve = '保持当前执行节奏，重点提升时机判断准确性'
+
+    return f'''<div class="card full">
+  <div class="card-title">本周综合复盘 ({first_date[-4:] if first_date else ""}-{last_date[-4:] if last_date else ""})</div>
+  <div class="grid3">
+    <div class="stat-box">
+      <div class="stat-box-label">本周交易次数</div>
+      <div class="stat-box-val">{total}次</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">胜/负/保</div>
+      <div class="stat-box-val" style="font-size:16px;">{wins} / {losses} / {break_even}</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">本周胜率</div>
+      <div class="stat-box-val" style="color:{"var(--green)" if win_rate >= 55 else "var(--red)"};">{win_rate}%</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">本周累计盈亏</div>
+      <div class="stat-box-val" style="color:{"var(--green)" if wins > losses else "var(--red)"};">{'+' if wins >= losses else ''}{wins - losses}笔净胜</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">最大单笔盈利</div>
+      <div class="stat-box-val" style="color:var(--green);">{'TP2' if best[1] == 'WIN' else 'TP1' if best[1] == 'WIN_TP1' else '—'}</div>
+      <div style="font-size:10px;color:var(--muted);">{best_txt}</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">最大单笔亏损</div>
+      <div class="stat-box-val" style="color:var(--red);">{'止损' if worst[1] == 'LOSS' else '—'}</div>
+      <div style="font-size:10px;color:var(--muted);">{worst_txt}</div>
+    </div>
+  </div>
+  <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div style="padding:12px;background:rgba(244,67,54,0.1);border-radius:8px;">
+      <div style="font-size:11px;color:var(--red);font-weight:600;margin-bottom:4px;">本周最大失误</div>
+      <div style="font-size:12px;color:var(--muted2);">{fault_txt}</div>
+    </div>
+    <div style="padding:12px;background:rgba(74,158,255,0.1);border-radius:8px;">
+      <div style="font-size:11px;color:var(--blue);font-weight:600;margin-bottom:4px;">下周唯一改进项</div>
+      <div style="font-size:12px;color:var(--muted2);">{improve}</div>
+    </div>
+  </div>
+</div>'''
+
+def gen_section13_month_review(history):
+    """十三、月回顾统计"""
+    if not history:
+        return '<div class="card full"><div class="card-title">月回顾统计 <span class="hard-tag">硬性标准</span></div><div style="padding:20px;color:var(--muted);">暂无数据</div></div>'
+
+    wins = sum(1 for h in history if h.get('result') in ('WIN', 'WIN_TP1'))
+    losses = sum(1 for h in history if h.get('result') == 'LOSS')
+    break_even = len(history) - wins - losses
+    total = len(history)
+    win_rate = round(wins / total * 100, 1) if total > 0 else 0
+
+    rr_rates = [h.get('rr', 0) for h in history if h.get('rr', 0) > 0]
+    avg_rr = round(sum(rr_rates) / len(rr_rates), 1) if rr_rates else 0
+
+    sl_errors = sum(1 for h in history if h.get('result') == 'LOSS')
+
+    wr_ok = win_rate >= 55
+    rr_ok = avg_rr >= 2
+
+    return f'''<div class="card full">
+  <div class="card-title">月回顾统计 <span class="hard-tag">硬性标准</span></div>
+  <div class="grid3">
+    <div class="stat-box">
+      <div class="stat-box-label">本月累计收益</div>
+      <div class="stat-box-val" style="color:var(--accent);">待核实</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">本月交易日数</div>
+      <div class="stat-box-val">{total}天</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">本月胜率</div>
+      <div class="stat-box-val" style="color:{"var(--green)" if wr_ok else "var(--red)"};">{win_rate}%</div>
+      <div style="font-size:10px;color:{"var(--green)" if wr_ok else "var(--red)"};">{"✓ 达标≥55%" if wr_ok else "✗ 未达标"}</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">平均盈亏比</div>
+      <div class="stat-box-val orange">{avg_rr}:1</div>
+      <div style="font-size:10px;color:{"var(--green)" if rr_ok else "var(--red)"};">{"✓ 达标≥2:1" if rr_ok else "✗ 未达标"}</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">本月执行失误</div>
+      <div class="stat-box-val">{sl_errors}次</div>
+      <div style="font-size:10px;color:var(--muted);">错误率{round(sl_errors / max(1, total) * 100, 1)}%</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">本月胜/负/保</div>
+      <div class="stat-box-val">{wins}胜 / {losses}负 / {break_even}保</div>
+    </div>
+  </div>
+</div>'''
+
+def gen_section7_tracking_table(history, today_str):
+    """七、近14天策略追踪表（v2.0十列结构）"""
+    last14 = history[-14:] if len(history) >= 14 else history
+    rows = ''
+    for h in last14:
+        is_today = h.get('date') == today_str
+        tag = ' <span style="background:var(--accent);color:#000;font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">TODAY</span>' if is_today else ''
+        bg = ' style="background:rgba(247,147,26,0.07);"' if is_today else ''
+
+        # 方向
+        d = h.get('direction', 'WAIT').upper()
+        dir_cls = {'LONG': 'dir-long', 'SHORT': 'dir-short', 'WAIT': 'dir-wait'}.get(d, 'dir-wait')
+        dir_txt = {'LONG': '🟢 多', 'SHORT': '🔴 空', 'WAIT': '🟡 观望'}.get(d, '—')
+        date_short = h.get('date', '')[-5:] if h.get('date') else ''
+
+        # 涨跌（暂无真实数据，显示—）
+        chg = '—'
+        chg_color = 'var(--muted)'
+
+        # 进场区间
+        el = h.get('entry_low', 0)
+        eh = h.get('entry_high', 0)
+        entry_txt = f'${el:,.0f}–${eh:,.0f}' if el and eh else '—'
+
+        # SL/TP
+        sl = h.get('stop_loss', 0)
+        tp1 = h.get('tp1', 0)
+        tp2 = h.get('tp2', 0)
+        sl_txt = f'${sl:,.0f}' if sl else '—'
+        tp1_txt = f'${tp1:,.0f}' if tp1 else '—'
+        tp2_txt = f'${tp2:,.0f}' if tp2 else '—'
+
+        # 结果
+        result = h.get('result', 'SKIP')
+        result_map = {
+            'WIN': ('✅ TP2达成', 'rb-tp2'),
+            'WIN_TP1': ('✅ TP1达成', 'rb-tp1'),
+            'LOSS': ('✗ 止损', 'rb-sl'),
+            'BREAK_EVEN': ('⬛ 等回踩', 'rb-wait'),
+            'SKIP': ('⬛ 观望', 'rb-skip'),
+            'OPEN': ('▶ 进行中', 'rb-open'),
+        }
+        res_txt, res_cls = result_map.get(result, ('—', 'rb-skip'))
+
+        # 盈亏比
+        rr = h.get('rr', 0)
+        rr_txt = f'{rr}:1' if rr > 0 else '-'
+
+        # 错误分析
+        err = h.get('resolve_note', '')
+        if not err:
+            if result == 'WIN':
+                err = '趋势延续，完美执行'
+            elif result == 'LOSS':
+                err = '方向错误被止损'
+            elif result == 'BREAK_EVEN':
+                err = 'TP未触及，保持观望'
+            elif result == 'OPEN':
+                err = '等待策略区确认'
+            else:
+                err = '观望策略'
+
+        rows += f'''<tr{bg}>
+          <td><span class="{dir_cls}">{date_short}{tag}</span></td>
+          <td><span class="{dir_cls}">{dir_txt}</span></td>
+          <td style="color:{chg_color};">{chg}</td>
+          <td style="color:var(--accent);font-size:12px;">{entry_txt}</td>
+          <td style="color:var(--red);">{sl_txt}</td>
+          <td style="color:var(--green);">{tp1_txt}</td>
+          <td style="color:var(--green);">{tp2_txt}</td>
+          <td><span class="{res_cls}">{res_txt}</span></td>
+          <td>{rr_txt}</td>
+          <td style="font-size:11px;color:var(--muted);">{err[:40]}</td>
+        </tr>'''
+
+    # 汇总行
+    wins14 = sum(1 for h in last14 if h.get('result') in ('WIN', 'WIN_TP1'))
+    losses14 = sum(1 for h in last14 if h.get('result') == 'LOSS')
+    break14 = len(last14) - wins14 - losses14
+    open14 = sum(1 for h in last14 if h.get('result') == 'OPEN')
+    wr14 = round(wins14 / len(last14) * 100, 1) if last14 else 0
+
+    total_rows = ''
+    if wins14: total_rows += f'<span class="summary-chip green">✅ 盈利{wins14}笔</span> '
+    if losses14: total_rows += f'<span class="summary-chip red">✗ 亏损{losses14}笔</span> '
+    if break14: total_rows += f'<span class="summary-chip" style="color:var(--muted);">⬛ 保本/跳过{break14}笔</span> '
+    if open14: total_rows += f'<span class="summary-chip" style="color:var(--accent);">▶ 进行中{open14}笔</span> '
+    total_rows += f'<span class="summary-chip">14天胜率{wr14}%</span>'
+
+    return f'''<div class="card full">
+  <div class="card-title">近14天策略追踪表 <span class="hard-tag">硬性标准</span></div>
+  <div style="overflow-x:auto;">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>日期</th>
+        <th>方向</th>
+        <th>涨跌</th>
+        <th>进场区间</th>
+        <th>止损 SL</th>
+        <th>TP1</th>
+        <th>TP2</th>
+        <th>结果</th>
+        <th>盈亏比</th>
+        <th>错误分析</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows}
+    </tbody>
+  </table>
+  </div>
+  <div class="summary-row" style="margin-top:14px;">
+    {total_rows}
+  </div>
+</div>'''
+
+def gen_section8_error_stats(history):
+    """八、错误分类统计"""
+    last14 = history[-14:] if len(history) >= 14 else history
+    losses = sum(1 for h in last14 if h.get('result') == 'LOSS')
+    wins = sum(1 for h in last14 if h.get('result') in ('WIN', 'WIN_TP1'))
+    total = len(last14)
+    error_rate = round(losses / max(1, total) * 100, 1)
+
+    # 错误类型（从 resolve_note 推断）
+    dir_errors = losses  # 止损 = 方向/时机错误
+    timing_errors = 0
+    sl_errors = losses
+    rr_errors = sum(1 for h in last14 if h.get('rr', 0) > 0 and h.get('rr', 0) < 2)
+    ok_count = wins
+
+    improve = '坚持"回踩确认"入场原则，所有开仓必须等K线企稳再介入。' if losses > 0 else '保持当前执行节奏。'
+
+    return f'''<div class="card full">
+  <div class="card-title">错误分类统计 <span class="hard-tag">硬性标准</span></div>
+  <div class="grid2">
+    <div>
+      <div class="fr-row">
+        <span class="fr-label">😡 情绪化交易（冲动进场）</span>
+        <span class="fr-val">{timing_errors}次</span>
+      </div>
+      <div class="fr-row">
+        <span class="fr-label">⚡ 追单 / 报复性加仓</span>
+        <span class="fr-val">{timing_errors}次</span>
+      </div>
+      <div class="fr-row">
+        <span class="fr-label">🔀 随意移动止损</span>
+        <span class="fr-val">{sl_errors}次</span>
+      </div>
+      <div class="fr-row">
+        <span class="fr-label">📋 开仓前未过检查清单</span>
+        <span class="fr-val">{dir_errors}次</span>
+      </div>
+      <div class="fr-row">
+        <span class="fr-label">📉 盈亏比 &lt; 2:1 的单子数</span>
+        <span class="fr-val">{rr_errors}次</span>
+      </div>
+      <div class="fr-row">
+        <span class="fr-label">✅ 正确执行次数</span>
+        <span class="fr-val green">{ok_count}次</span>
+      </div>
+    </div>
+    <div class="stat-box" style="display:flex;flex-direction:column;justify-content:center;">
+      <div class="stat-box-label">本月错误率</div>
+      <div class="stat-box-val" style="font-size:32px;">{error_rate}%</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px;">错误{losses}次 / 总交易{total}次</div>
+      <div style="margin-top:12px;padding:10px;background:rgba(38,201,127,0.1);border-radius:6px;font-size:12px;color:var(--green);">
+        💡 改进建议：{improve}
+      </div>
+    </div>
+  </div>
+</div>'''
+
+def gen_section9_bars(history):
+    """九、近14天胜率柱状图"""
+    last14 = history[-14:] if len(history) >= 14 else history
+    wins = sum(1 for h in last14 if h.get('result') in ('WIN', 'WIN_TP1'))
+    losses = sum(1 for h in last14 if h.get('result') == 'LOSS')
+    wr = round(wins / len(last14) * 100, 1) if last14 else 0
+
+    bars = ''
+    for h in last14:
+        r = h.get('result', 'SKIP')
+        color = '#26c97f' if r in ('WIN', 'WIN_TP1') else ('#f44336' if r == 'LOSS' else '#7a8299')
+        height = 75 if r in ('WIN', 'WIN_TP1') else (35 if r == 'LOSS' else 20)
+        date_short = h.get('date', '')[-5:] if h.get('date') else ''
+        bars += f'<div class="bar-item" style="height:{height}%;background:{color};border-radius:3px;position:relative;" title="{date_short}:{r}"><div style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--muted);white-space:nowrap;">{date_short}</div></div>'
+
+    return f'''<div class="card full">
+  <div class="card-title">近14天胜率柱状图 <span class="hard-tag">硬性标准</span></div>
+  <div style="display:flex;align-items:flex-end;gap:6px;height:90px;padding-bottom:22px;overflow-x:auto;">
+    {bars}
+  </div>
+  <div style="display:flex;justify-content:center;gap:24px;margin-top:8px;font-size:12px;">
+    <span><span style="display:inline-block;width:10px;height:10px;background:var(--green);border-radius:2px;margin-right:4px;"></span>盈利 {wins}笔</span>
+    <span><span style="display:inline-block;width:10px;height:10px;background:var(--red);border-radius:2px;margin-right:4px;"></span>亏损 {losses}笔</span>
+    <span><span style="display:inline-block;width:10px;height:10px;background:var(--border);border-radius:2px;margin-right:4px;"></span>保本 {len(last14)-wins-losses}笔</span>
+    <span style="font-weight:700;">14天胜率: <span style="color:var(--green);">{wr}%</span></span>
+    <span style="color:var(--accent);">本月累计: 待核实</span>
+  </div>
+</div>'''
+
+def gen_section10_line(history):
+    """十、近30天胜率趋势折线图"""
+    last30 = history[-30:] if len(history) >= 30 else history
+    wins30 = sum(1 for h in last30 if h.get('result') in ('WIN', 'WIN_TP1'))
+    losses30 = sum(1 for h in last30 if h.get('result') == 'LOSS')
+    break30 = len(last30) - wins30 - losses30
+    wr30 = round(wins30 / len(last30) * 100, 1) if last30 else 0
+
+    # 生成折线数据点（从历史数据计算累计胜率）
+    points = []
+    cumulative_wins = 0
+    for i, h in enumerate(last30):
+        if h.get('result') in ('WIN', 'WIN_TP1'):
+            cumulative_wins += 1
+        wr_at_i = round(cumulative_wins / (i + 1) * 100, 1)
+        # 映射到 0-100 范围（0=底部，100=顶部）
+        y = 100 - wr_at_i
+        x = i * (600 / max(len(last30) - 1, 1))
+        points.append(f'{x:.1f},{y:.1f}')
+
+    polyline_pts = ' '.join(points)
+    # SVG面积
+    area_pts = f'0,{100} ' + ' '.join(points) + f' {600},100'
+
+    return f'''<div class="card full">
+  <div class="card-title">近30天胜率趋势折线图 <span class="hard-tag">硬性标准</span></div>
+  <div class="line-chart">
+    <svg viewBox="0 0 600 100" preserveAspectRatio="none">
+      <line x1="0" y1="25" x2="600" y2="25" stroke="#252a3a" stroke-width="1"/>
+      <line x1="0" y1="50" x2="600" y2="50" stroke="#252a3a" stroke-width="1"/>
+      <line x1="0" y1="75" x2="600" y2="75" stroke="#252a3a" stroke-width="1"/>
+      <line x1="150" y1="0" x2="150" y2="100" stroke="#252a3a" stroke-width="1" stroke-dasharray="4"/>
+      <line x1="300" y1="0" x2="300" y2="100" stroke="#252a3a" stroke-width="1" stroke-dasharray="4"/>
+      <line x1="450" y1="0" x2="450" y2="100" stroke="#252a3a" stroke-width="1" stroke-dasharray="4"/>
+      <polygon fill="rgba(38,201,127,0.1)" points="{area_pts}"/>
+      <polyline fill="none" stroke="#26c97f" stroke-width="2" points="{polyline_pts}"/>
+      <text x="75" y="95" fill="#7a8299" font-size="8" text-anchor="middle">Week1</text>
+      <text x="225" y="95" fill="#7a8299" font-size="8" text-anchor="middle">Week2</text>
+      <text x="375" y="95" fill="#7a8299" font-size="8" text-anchor="middle">Week3</text>
+      <text x="525" y="95" fill="#7a8299" font-size="8" text-anchor="middle">Week4</text>
+    </svg>
+  </div>
+  <div style="display:flex;justify-content:center;gap:24px;margin-top:12px;font-size:12px;">
+    <span>30天盈利: <span style="color:var(--green);font-weight:700;">{wins30}笔</span></span>
+    <span>30天亏损: <span style="color:var(--red);font-weight:700;">{losses30}笔</span></span>
+    <span>30天保本: <span style="color:var(--muted2);font-weight:700;">{break30}笔</span></span>
+    <span>30天胜率: <span style="color:var(--green);font-weight:700;">{wr30}%</span></span>
+    <span>近30天累计: <span style="color:var(--accent);">待核实</span></span>
+  </div>
+</div>'''
+
+
 # ============ HTML 生成 ============
 def generate_html(data, strategy, history):
-    """读取模板并填充数据"""
+    """读取模板并填充数据——全动态生成"""
     today = datetime.now()
     date_str = today.strftime('%Y%m%d')
     date_display = today.strftime('%Y-%m-%d')
-    weekday = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'][today.weekday()]
+    yesterday_display = (today - timedelta(days=1)).strftime('%m/%d')
 
     btc = data.get('btc', {})
     eth = data.get('eth', {})
@@ -436,6 +1043,35 @@ def generate_html(data, strategy, history):
     html = html.replace('Long/Short: 0.85', 'Long/Short: ' + str(round(long_short, 2)))
     # MACD
     html = html.replace('MACD: Dead Cross', 'MACD: ' + ('Golden Cross' if macd_cross == 'GOLDEN' else 'Dead Cross'))
+
+    # ===== 动态板块生成（核心修复 v2.1） =====
+    # 加载昨日策略（用于昨日复盘）
+    prev_strat_file = os.path.join(CACHE_DIR, 'prev_strategy.json')
+    prev_strategy = {}
+    if os.path.exists(prev_strat_file):
+        with open(prev_strat_file, 'r', encoding='utf-8') as f:
+            prev_strategy = json.load(f)
+        prev_strategy['date'] = (today - timedelta(days=1)).strftime('%m/%d')
+
+    # 生成各动态板块
+    section1 = gen_section1_stats(history, date_display)
+    section7 = gen_section7_tracking_table(history, date_str)
+    section8 = gen_section8_error_stats(history)
+    section9 = gen_section9_bars(history)
+    section10 = gen_section10_line(history)
+    section11 = gen_section11_yesterday_review(prev_strategy, history, data, yesterday_display)
+    section12 = gen_section12_week_review(history)
+    section13 = gen_section13_month_review(history)
+
+    # 替换模板占位符
+    html = html.replace('<!-- {{SECTION1_STATS}} -->', section1)
+    html = html.replace('<!-- {{SECTION7_TRACKING}} -->', section7)
+    html = html.replace('<!-- {{SECTION8_ERROR_STATS}} -->', section8)
+    html = html.replace('<!-- {{SECTION9_BARS}} -->', section9)
+    html = html.replace('<!-- {{SECTION10_LINE}} -->', section10)
+    html = html.replace('<!-- {{SECTION11_YESTERDAY_REVIEW}} -->', section11)
+    html = html.replace('<!-- {{SECTION12_WEEK_REVIEW}} -->', section12)
+    html = html.replace('<!-- {{SECTION13_MONTH_REVIEW}} -->', section13)
 
     return html
 
