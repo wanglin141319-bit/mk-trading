@@ -47,6 +47,64 @@ def load_history():
     # 返回默认数据（首日运行时）
     return []
 
+def auto_resolve_yesterday(data, prev_strategy, history):
+    """
+    【核心逻辑】
+    今天看到昨天的策略里写的 TP/SL，和今天的价格数据一对比，
+    就能判断昨天那笔交易的结果——不需要用户告诉你。
+
+    判断规则：
+    1. 读取昨天日报里记录的 SL / TP1 / TP2
+    2. 读取今天的 24h 低点（low_24h）和 高点（high_24h）
+    3. 如果 low < SL  → SL触发，标记 rb-sl
+       如果 high >= TP2 → TP2达成，标记 rb-tp2
+       如果 high >= TP1 → TP1达成，标记 rb-tp1
+       否则 → 等回踩未触发，标记 rb-wait
+    """
+    if not prev_strategy or prev_strategy.get('direction') == 'WAIT':
+        return history
+
+    sl = prev_strategy.get('stop_loss', 0)
+    tp1 = prev_strategy.get('tp1', 0)
+    tp2 = prev_strategy.get('tp2', 0)
+
+    # 今天的价格区间
+    today_low = data.get('btc', {}).get('low_24h', 0)
+    today_high = data.get('btc', {}).get('high_24h', 0)
+
+    direction = prev_strategy.get('direction', 'LONG')
+
+    # 多头判断
+    if direction == 'LONG':
+        if sl > 0 and today_low < sl:
+            result = 'LOSS'
+        elif tp2 > 0 and today_high >= tp2:
+            result = 'WIN'
+        elif tp1 > 0 and today_high >= tp1:
+            result = 'WIN'
+        else:
+            result = 'BREAK_EVEN'  # 未触发任一目标
+    else:  # 空头
+        if sl > 0 and today_high > sl:
+            result = 'LOSS'
+        elif tp2 > 0 and today_low <= tp2:
+            result = 'WIN'
+        elif tp1 > 0 and today_low <= tp1:
+            result = 'WIN'
+        else:
+            result = 'BREAK_EVEN'
+
+    # 更新 history 最后一条
+    if history:
+        history[-1]['result'] = result
+        history[-1]['auto_resolved'] = True
+        history[-1]['resolve_note'] = (
+            f'Today H={today_high:,.0f} L={today_low:,.0f} | '
+            f'SL={sl:,.0f} TP1={tp1:,.0f} TP2={tp2:,.0f} → {result}'
+        )
+
+    return history
+
 def save_history(history):
     hist_file = os.path.join(CACHE_DIR, 'strategy_history.json')
     with open(hist_file, 'w', encoding='utf-8') as f:
@@ -490,11 +548,48 @@ def main():
     strategy = generate_strategy(data)
     log('Strategy: ' + strategy['direction'] + ' (confidence=' + str(strategy['confidence']) + ')', 'STRAT')
 
-    # Step 4: 历史数据
+    # Step 4: 加载历史数据
     history = load_history()
+
+    # Step 4b: 【自动复盘】用今天的数据自动判断昨天的交易结果
+    # 读取昨天的策略（存于 cache/prev_strategy.json）
+    prev_strat_file = os.path.join(CACHE_DIR, 'prev_strategy.json')
+    prev_strategy = {}
+    if os.path.exists(prev_strat_file):
+        with open(prev_strat_file, 'r', encoding='utf-8') as f:
+            prev_strategy = json.load(f)
+    # 执行自动复盘
+    history = auto_resolve_yesterday(data, prev_strategy, history)
 
     # Step 5: 生成 HTML
     html_content = generate_html(data, strategy, history)
+
+    # Step 5b: 保存今日策略到 cache/prev_strategy.json（明天的自动复盘用）
+    prev_strat_file = os.path.join(CACHE_DIR, 'prev_strategy.json')
+    with open(prev_strat_file, 'w', encoding='utf-8') as f:
+        json.dump(strategy, f, ensure_ascii=False, indent=2)
+    log('prev_strategy.json saved', 'STRAT')
+
+    # Step 5c: 更新 history（写入今日策略，作为明天自动复盘的对象）
+    # 先把今天的策略追加到 history，等明天自动结算
+    new_entry = {
+        'date': today_str,
+        'direction': strategy['direction'],
+        'entry_low': strategy['entry_low'],
+        'entry_high': strategy['entry_high'],
+        'stop_loss': strategy['stop_loss'],
+        'tp1': strategy['tp1'],
+        'tp2': strategy['tp2'],
+        'rr': strategy['rr_ratio'],
+        'result': 'OPEN',   # 今天刚开，标记 OPEN，等明天自动结算
+        'auto_resolved': False,
+        'resolve_note': '',
+    }
+    history.append(new_entry)
+    # 只保留近30天
+    if len(history) > 30:
+        history = history[-30:]
+    save_history(history)
 
     # Step 6: 保存日报
     ensure_dir(REPORTS_DIR)
@@ -550,7 +645,7 @@ def main():
     # Step 8: Git commit + push
     git_result = git_commit_push(today_file)
 
-    # Step 9: Telegram 推送
+    # Step 9: Telegram 推送（必须等 Git push 完成后才推送，避免推送时日报还没上线）
     tg_result = notify_telegram(data, strategy, today_file)
 
     # Step 9: 总结
