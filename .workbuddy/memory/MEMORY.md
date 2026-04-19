@@ -1,6 +1,6 @@
 # MK Trading 长期记忆
 
-> 最后更新：2026-04-18
+> 最后更新：2026-04-19
 
 ---
 
@@ -101,6 +101,37 @@
 |------|------|------|
 | v1.0 | 2026-04-15 | 初始16板块模板，策略追踪表为7列（日期/方向/入场价/结果/盈亏金额/盈亏比/执行打分） |
 | v2.0 | 2026-04-18 | **在v1.0基础上升级**：策略追踪表重构为10列（日期/方向/涨跌/进场区间/SL/TP1/TP2/结果/盈亏比/错误分析），增加彩色方向标签、结果标签、TODAY徽章 |
+| v2.1 | 2026-04-19 | **彻底修复虚构数据问题**：模板硬编码 → 占位符，7个动态生成函数全重构，数据100%来自真实API和strategy_history.json，auto_resolve逻辑固化 |
+
+### 模板占位符规范（v2.1）
+模板 `BTC_daily_report_20260415_PROFESSIONAL.html` 中硬编码板块已全部替换为占位符：
+
+| 占位符 | 对应板块 | 生成函数 |
+|--------|----------|----------|
+| `{{SECTION1_STATS}}` | 综合统计看板 | `gen_section1_stats()` |
+| `{{SECTION7_TRACKING}}` | 近14天策略追踪表 | `gen_section7_tracking_table()` |
+| `{{SECTION8_ERROR_STATS}}` | 错误分类统计 | `gen_section8_error_stats()` |
+| `{{SECTION9_BARS}}` | 近14天胜率柱状图 | `gen_section9_bars()` |
+| `{{SECTION10_LINE}}` | 近30天胜率趋势折线图 | `gen_section10_line()` |
+| `{{SECTION11_YESTERDAY_REVIEW}}` | 昨日复盘 | `gen_section11_yesterday_review()` |
+| `{{SECTION12_WEEK_REVIEW}}` | 本周综合复盘 | `gen_section12_week_review()` |
+| `{{SECTION13_MONTH_REVIEW}}` | 月回顾统计 | `gen_section13_month_review()` |
+
+### 自动复盘逻辑（v2.1 新增，2026-04-19）
+> **核心原则**：追踪表里的历史结果必须基于真实价格数据判断，禁止虚构。
+
+**自动复盘算法**（`auto_resolve_yesterday` 函数）：
+- 今天抓取到昨天的 24h 高点/低点，和昨天日报里的 SL/TP1/TP2 对比
+- 多头：`low < SL` → 止损 | `high >= TP2` → TP2达成 | `high >= TP1` → TP1达成 | 否则 → 等回踩未触发
+- 空头：`high > SL` → 止损 | `low <= TP2` → TP2达成 | `low <= TP1` → TP1达成 | 否则 → 等回踩未触发
+
+**策略 vs 复盘的区分**：
+- 生成日报时，当天行标记为 `rb-open`（▶ 进行中），盈亏比填"待定"
+- 等明天自动结算后再更新为真实结果标签
+
+**Telegram 时序**（v2.1 新增）：
+- Step 8: Git push → Step 9: Telegram 推送
+- 必须等 push 完成才推送，确保日报在 GitHub Pages 上可访问
 
 ---
 
