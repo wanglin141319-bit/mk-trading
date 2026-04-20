@@ -138,11 +138,13 @@ def auto_resolve_yesterday(data, prev_strategy, history):
         else:
             detail = f'HIGH=${day_high:,.0f} LOW=${day_low:,.0f} | 未进入进场区间'
 
-    # 更新 history 最后一条
+    # 更新 history 最后一条（但如果已被手动修正过，则不覆盖）
     if history:
-        history[-1]['result'] = result
-        history[-1]['auto_resolved'] = True
-        history[-1]['resolve_note'] = detail
+        last_note = history[-1].get('resolve_note', '')
+        if 'manual' not in last_note.lower():
+            history[-1]['result'] = result
+            history[-1]['auto_resolved'] = True
+            history[-1]['resolve_note'] = detail
 
     return history
 
