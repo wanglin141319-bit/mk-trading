@@ -709,7 +709,12 @@ def gen_section7_tracking_table(history, today_str):
         d = h.get('direction', 'WAIT').upper()
         dir_cls = {'LONG': 'dir-long', 'SHORT': 'dir-short', 'WAIT': 'dir-wait'}.get(d, 'dir-wait')
         dir_txt = {'LONG': '🟢 多', 'SHORT': '🔴 空', 'WAIT': '🟡 观望'}.get(d, '—')
-        date_short = h.get('date', '')[-5:] if h.get('date') else ''
+        # 日期格式化: 20260420 → 04/20（v2.2修复：之前[-5:]会输出60420）
+        date_raw = h.get('date', '')
+        if len(date_raw) == 8 and date_raw.isdigit():
+            date_short = date_raw[2:4] + '/' + date_raw[4:6]
+        else:
+            date_short = date_raw[-5:] if date_raw else ''
 
         # 涨跌（暂无真实数据，显示—）
         chg = '—'
@@ -907,7 +912,12 @@ def gen_section9_bars(history):
         else:  # BREAK_EVEN / SKIP / OPEN
             color = '#7a8299'
             height = 20
-        date_short = h.get('date', '')[-5:] if h.get('date') else ''
+        # 日期格式化: 20260420 → 04/20（v2.2修复）
+        date_raw = h.get('date', '')
+        if len(date_raw) == 8 and date_raw.isdigit():
+            date_short = date_raw[2:4] + '/' + date_raw[4:6]
+        else:
+            date_short = date_raw[-5:] if date_raw else ''
         bars += f'<div class="bar-item" style="height:{height}%;background:{color};border-radius:3px;position:relative;" title="{date_short}:{r}"><div style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--muted);white-space:nowrap;">{date_short}</div></div>'
 
     return f'''<div class="card full">
@@ -1150,9 +1160,15 @@ def generate_html(data, strategy, history):
     with open(TEMPLATE_FILE, 'r', encoding='utf-8') as f:
         html = f.read()
 
-    # 替换日期
-    html = html.replace('2026-04-15', date_display)
-    html = html.replace('BTC Daily Report \u00b7 #31', 'BTC Daily Report \u00b7 #32')
+    # ===== 替换日期（所有变体） =====
+    # 模板基准日期是 2026-04-15，需替换为当天真实日期
+    html = html.replace('2026-04-15', date_display)          # 2026-04-15 → 2026-04-20
+    html = html.replace('2026年04月15日', today.strftime('%Y年%m月%d日'))  # 中文格式
+    html = html.replace('04/15', today.strftime('%m/%d'))     # MM/DD 格式（追踪表等）
+    html = html.replace('BTC Daily Report · #31', 'BTC Daily Report · #' + str(31 + int(date_str[-2:]) - 15))  # 报告编号动态化（X推文格式）
+    html = html.replace('>#31<', '>' + str(31 + int(date_str[-2:]) - 15) + '<')  # 报告编号（HTML标签内）
+    html = html.replace('Daily Report #31', 'Daily Report #' + str(31 + int(date_str[-2:]) - 15))  # Footer 编号
+    html = html.replace('Apr 15, 2026', today.strftime('%b %d, %Y'))  # X推文里的英文日期
 
     # 替换价格
     html = html.replace('$74,132', '${:,}'.format(int(btc_price)))

@@ -190,6 +190,32 @@
     "tp1": 71888.18,
     "tp2": 70025.79,
     "rr": 0.63,
+    "result": "BREAK_EVEN",
+    "auto_resolved": true,
+    "resolve_note": "HIGH=$76,241 LOW=$73,724 | 未进入进场区间"
+  },
+  {
+    "date": "20260420",
+    "direction": "SHORT",
+    "entry_low": 74122.26,
+    "entry_high": 73092.36,
+    "stop_loss": 78612.11,
+    "tp1": 71887.41,
+    "tp2": 70025.05,
+    "rr": 0.63,
+    "result": "BREAK_EVEN",
+    "auto_resolved": true,
+    "resolve_note": "HIGH=$76,241 LOW=$73,724 | 未进入进场区间"
+  },
+  {
+    "date": "20260420",
+    "direction": "SHORT",
+    "entry_low": 74098.12,
+    "entry_high": 73092.36,
+    "stop_loss": 78612.11,
+    "tp1": 71864.0,
+    "tp2": 70002.24,
+    "rr": 0.63,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""
