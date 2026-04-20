@@ -81,10 +81,16 @@ new_entry = {
     'resolve_note': '',
 }
 history.append(new_entry)
+# 去重：每个日期只保留最后一条（防止重复运行导致多条同日记录）
+seen = {}
+for h in history:
+    seen[h['date']] = h
+history = list(seen.values())
+history.sort(key=lambda x: x.get('date', ''))
 if len(history) > 30:
     history = history[-30:]
 save_history(history)
-print(f"  Today's strategy saved as OPEN entry")
+print(f"  Today's strategy saved as OPEN entry (deduped: {len(history)} total)")
 
 # ===== Step 5: 生成 HTML + 保存 =====
 print("[4/6] Generating final HTML...")

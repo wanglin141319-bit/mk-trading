@@ -8,11 +8,11 @@
     "价格 < EMA50，中期趋势偏空"
   ],
   "resistance": 76240.66,
-  "entry_low": 74217.97,
+  "entry_low": 74222.15,
   "entry_high": 73092.36,
   "stop_loss": 78612.11,
-  "tp1": 71980.24,
-  "tp2": 70115.46,
+  "tp1": 71984.3,
+  "tp2": 70119.42,
   "rr_ratio": 0.65,
   "position_size": "10-15%",
   "trigger_condition": "反弹至 73092.0 滞涨后做空"
