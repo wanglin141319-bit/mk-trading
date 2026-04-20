@@ -1369,6 +1369,12 @@ def main():
         'resolve_note': '',
     }
     history.append(new_entry)
+    # 去重：每个日期只保留最后一条（防止重复运行导致多条同日记录）
+    seen = {}
+    for h in history:
+        seen[h['date']] = h
+    history = list(seen.values())
+    history.sort(key=lambda x: x.get('date', ''))
     # 只保留近30天
     if len(history) > 30:
         history = history[-30:]
