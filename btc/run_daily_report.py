@@ -70,7 +70,14 @@ def auto_resolve_yesterday(data, prev_strategy, history):
     第三步：如果未触进场区
       → BREAK_EVEN（真正的"等回踩未触发"）
     """
+    # 不处理 WAIT/NEUTRAL 策略
     if not prev_strategy or prev_strategy.get('direction') == 'WAIT' or prev_strategy.get('direction') == 'NEUTRAL':
+        return history
+
+    # 不处理今天日期的条目（auto_resolve 只复盘昨天）
+    from datetime import datetime as dt
+    today_s = dt.now().strftime('%Y%m%d')
+    if prev_strategy.get('date', '') == today_s:
         return history
 
     sl = prev_strategy.get('stop_loss', 0)
