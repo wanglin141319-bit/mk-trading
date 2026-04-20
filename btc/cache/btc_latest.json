@@ -1,22 +1,22 @@
 {
-  "ts": 1776655417.531617,
+  "ts": 1776656078.3766716,
   "data": {
-    "timestamp": "2026-04-20T11:23:33.250327",
+    "timestamp": "2026-04-20T11:34:32.521375",
     "btc": {
-      "price": 74470.47,
-      "change_24h": -1.377,
+      "price": 74526.4,
+      "change_24h": -1.355,
       "high_24h": 76240.66,
       "low_24h": 73724.31,
-      "vol_btc": 12817.91611,
+      "vol_btc": 12815.2071,
       "source": "binance"
     },
     "eth": {
-      "price": 2280.13,
-      "change_24h": -2.607,
+      "price": 2281.33,
+      "change_24h": -2.575,
       "source": "binance"
     },
     "funding": {
-      "rate": -0.008306,
+      "rate": -0.008499,
       "next_time": 1776672000000,
       "source": "binance"
     },

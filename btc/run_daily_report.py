@@ -709,10 +709,10 @@ def gen_section7_tracking_table(history, today_str):
         d = h.get('direction', 'WAIT').upper()
         dir_cls = {'LONG': 'dir-long', 'SHORT': 'dir-short', 'WAIT': 'dir-wait'}.get(d, 'dir-wait')
         dir_txt = {'LONG': '🟢 多', 'SHORT': '🔴 空', 'WAIT': '🟡 观望'}.get(d, '—')
-        # 日期格式化: 20260420 → 04/20（v2.2修复：之前[-5:]会输出60420）
+        # 日期格式化: 20260420 → 04/20（v2.2修复：YYYYMMDD格式，[4:6]=月 [6:8]=日）
         date_raw = h.get('date', '')
         if len(date_raw) == 8 and date_raw.isdigit():
-            date_short = date_raw[2:4] + '/' + date_raw[4:6]
+            date_short = date_raw[4:6] + '/' + date_raw[6:8]
         else:
             date_short = date_raw[-5:] if date_raw else ''
 
@@ -912,10 +912,10 @@ def gen_section9_bars(history):
         else:  # BREAK_EVEN / SKIP / OPEN
             color = '#7a8299'
             height = 20
-        # 日期格式化: 20260420 → 04/20（v2.2修复）
+        # 日期格式化: 20260420 → 04/20（v2.2修复：YYYYMMDD，[4:6]=月 [6:8]=日）
         date_raw = h.get('date', '')
         if len(date_raw) == 8 and date_raw.isdigit():
-            date_short = date_raw[2:4] + '/' + date_raw[4:6]
+            date_short = date_raw[4:6] + '/' + date_raw[6:8]
         else:
             date_short = date_raw[-5:] if date_raw else ''
         bars += f'<div class="bar-item" style="height:{height}%;background:{color};border-radius:3px;position:relative;" title="{date_short}:{r}"><div style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--muted);white-space:nowrap;">{date_short}</div></div>'
