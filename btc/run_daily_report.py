@@ -551,26 +551,59 @@ def gen_section13_month_review(history):
     if not history:
         return '<div class="card full"><div class="card-title">月回顾统计 <span class="hard-tag">硬性标准</span></div><div style="padding:20px;color:var(--muted);">暂无数据</div></div>'
 
-    wins = sum(1 for h in history if h.get('result') in ('WIN', 'WIN_TP1'))
-    losses = sum(1 for h in history if h.get('result') == 'LOSS')
-    break_even = len(history) - wins - losses
-    total = len(history)
+    wins_tp2 = sum(1 for h in history if h.get('result') == 'WIN')      # TP2全胜
+    wins_tp1 = sum(1 for h in history if h.get('result') == 'WIN_TP1')  # TP1半胜
+    losses   = sum(1 for h in history if h.get('result') == 'LOSS')      # 止损
+    total    = len(history)
+    wins     = wins_tp2 + wins_tp1
+    break_even = total - wins - losses
+
     win_rate = round(wins / total * 100, 1) if total > 0 else 0
-
     rr_rates = [h.get('rr', 0) for h in history if h.get('rr', 0) > 0]
-    avg_rr = round(sum(rr_rates) / len(rr_rates), 1) if rr_rates else 0
-
-    sl_errors = sum(1 for h in history if h.get('result') == 'LOSS')
+    avg_rr   = round(sum(rr_rates) / len(rr_rates), 1) if rr_rates else 0
 
     wr_ok = win_rate >= 55
     rr_ok = avg_rr >= 2
+
+    # -------- 累计盈亏计算 --------
+    # 优先用真实 pnl 字段；无则用 rr 估算：
+    #   WIN(TP2)  → +2R（假设 rr≈2:1 满分止盈）
+    #   WIN_TP1   → +1R
+    #   LOSS      → -1R
+    #   其他      → 0
+    pnl_values = []
+    for h in history:
+        pnl = h.get('pnl')
+        if pnl is not None and pnl != 0:
+            pnl_values.append(pnl)
+        elif h.get('result') == 'WIN':
+            pnl_values.append(2.0)
+        elif h.get('result') == 'WIN_TP1':
+            pnl_values.append(1.0)
+        elif h.get('result') == 'LOSS':
+            pnl_values.append(-1.0)
+        # SKIP / BREAK_EVEN / OPEN → 忽略（0）
+
+    total_pnl_r = round(sum(pnl_values), 2) if pnl_values else 0
+
+    # 判断最大回撤：用最小单笔 pnl
+    min_pnl = round(min(pnl_values), 2) if pnl_values else 0
+    max_dd_pct = round(abs(min_pnl) / 1.0 * 100, 1)  # 以 1R = 100% 回撤基准
+
+    # 颜色
+    pnl_color = 'var(--green)' if total_pnl_r >= 0 else 'var(--red)'
+    pnl_prefix = '+' if total_pnl_r >= 0 else ''
+
+    # 达标判断
+    dd_ok = abs(min_pnl) < 1.5  # 回撤 < 1.5R 视为达标
 
     return f'''<div class="card full">
   <div class="card-title">月回顾统计 <span class="hard-tag">硬性标准</span></div>
   <div class="grid3">
     <div class="stat-box">
-      <div class="stat-box-label">本月累计收益</div>
-      <div class="stat-box-val" style="color:var(--accent);">待核实</div>
+      <div class="stat-box-label">本月累计盈亏</div>
+      <div class="stat-box-val" style="color:{pnl_color};font-size:20px;font-weight:700;">{pnl_prefix}{total_pnl_r}R</div>
+      <div style="font-size:10px;color:{pnl_color};">{"✓ 正收益" if total_pnl_r > 0 else "✗ 亏损" if total_pnl_r < 0 else "— 持平"}</div>
     </div>
     <div class="stat-box">
       <div class="stat-box-label">本月交易日数</div>
@@ -587,9 +620,9 @@ def gen_section13_month_review(history):
       <div style="font-size:10px;color:{"var(--green)" if rr_ok else "var(--red)"};">{"✓ 达标≥2:1" if rr_ok else "✗ 未达标"}</div>
     </div>
     <div class="stat-box">
-      <div class="stat-box-label">本月执行失误</div>
-      <div class="stat-box-val">{sl_errors}次</div>
-      <div style="font-size:10px;color:var(--muted);">错误率{round(sl_errors / max(1, total) * 100, 1)}%</div>
+      <div class="stat-box-label">最大单笔回撤</div>
+      <div class="stat-box-val" style="color:{"var(--green)" if dd_ok else "var(--red)"};">{min_pnl}R</div>
+      <div style="font-size:10px;color:{"var(--green)" if dd_ok else "var(--red)"};">{"✓ &lt;1.5R" if dd_ok else "✗ 超标"}</div>
     </div>
     <div class="stat-box">
       <div class="stat-box-label">本月胜/负/保</div>

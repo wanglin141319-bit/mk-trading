@@ -1,0 +1,11 @@
+{
+  "direction": "WAIT",
+  "confidence": 15,
+  "resistance": 76241,
+  "entry_low": 73700,
+  "entry_high": 74300,
+  "stop_loss": 71500,
+  "tp1": 77000,
+  "tp2": 80000,
+  "rr_ratio": 0
+}
