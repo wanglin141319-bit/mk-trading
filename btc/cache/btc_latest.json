@@ -1,36 +1,36 @@
 {
-  "ts": 1776646756.8584464,
+  "ts": 1776654907.2415605,
   "data": {
-    "timestamp": "2026-04-20T08:59:11.457780",
+    "timestamp": "2026-04-20T11:15:02.477483",
     "btc": {
-      "price": 74341.93,
-      "change_24h": -1.716,
+      "price": 74495.52,
+      "change_24h": -1.383,
       "high_24h": 76240.66,
       "low_24h": 73724.31,
-      "vol_btc": 11935.03899,
+      "vol_btc": 12743.44886,
       "source": "binance"
     },
     "eth": {
-      "price": 2282.08,
-      "change_24h": -2.824,
+      "price": 2282.63,
+      "change_24h": -2.529,
       "source": "binance"
     },
     "funding": {
-      "rate": -0.005378,
+      "rate": -0.008109,
       "next_time": 1776672000000,
       "source": "binance"
     },
     "oi": {
-      "long_ratio": 49.8,
-      "short_ratio": 50.2,
-      "long_short_ratio": 0.993,
+      "long_ratio": 50.1,
+      "short_ratio": 49.9,
+      "long_short_ratio": 1.006,
       "source": "binance_global"
     },
     "liquidation": {
-      "long_ratio": 43.5,
-      "short_ratio": 56.5,
-      "long_short_ratio": 0.768,
-      "trend_change": -0.012,
+      "long_ratio": 43.1,
+      "short_ratio": 56.9,
+      "long_short_ratio": 0.759,
+      "trend_change": -0.011,
       "source": "binance_top_ratio"
     },
     "fear_greed": {

@@ -49,59 +49,100 @@ def load_history():
 
 def auto_resolve_yesterday(data, prev_strategy, history):
     """
-    【核心逻辑】
-    今天看到昨天的策略里写的 TP/SL，和今天的价格数据一对比，
-    就能判断昨天那笔交易的结果——不需要用户告诉你。
-
+    【核心逻辑 - v2.2 修复版】
+    
+    ⚠️ 关键原则：必须先判断"进场是否触发"，再判断SL/TP。
+    "等回踩未触发"和"已触发但止损/未达止盈"是完全不同的两件事。
+    
     判断规则：
-    1. 读取昨天日报里记录的 SL / TP1 / TP2
-    2. 读取今天的 24h 低点（low_24h）和 高点（high_24h）
-    3. 如果 low < SL  → SL触发，标记 rb-sl
-       如果 high >= TP2 → TP2达成，标记 rb-tp2
-       如果 high >= TP1 → TP1达成，标记 rb-tp1
-       否则 → 等回踩未触发，标记 rb-wait
+    第一步：判断进场区间是否被价格穿过（触发确认）
+      - 做多：low <= entry_high AND high >= entry_low → 已触发
+      - 空头：同上逻辑
+    第二步：如果已触发，再按优先级判断结果
+      - 多头：low < SL  → LOSS(止损)
+             high >= TP2 → WIN(TP2)
+             high >= TP1 → WIN_TP1(TP1)
+             否则 → TRIGGERED_NO_TP（已触发，但未达止盈也未止损）
+      - 空头：high > SL  → LOSS
+             low <= TP2   → WIN
+             low <= TP1   → WIN_TP1
+             否则 → TRIGGERED_NO_TP
+    第三步：如果未触进场区
+      → BREAK_EVEN（真正的"等回踩未触发"）
     """
-    if not prev_strategy or prev_strategy.get('direction') == 'WAIT':
+    if not prev_strategy or prev_strategy.get('direction') == 'WAIT' or prev_strategy.get('direction') == 'NEUTRAL':
         return history
 
     sl = prev_strategy.get('stop_loss', 0)
     tp1 = prev_strategy.get('tp1', 0)
     tp2 = prev_strategy.get('tp2', 0)
+    entry_low = prev_strategy.get('entry_low', 0)
+    entry_high = prev_strategy.get('entry_high', 0)
 
-    # 今天的价格区间
-    today_low = data.get('btc', {}).get('low_24h', 0)
-    today_high = data.get('btc', {}).get('high_24h', 0)
+    # 昨天策略执行日当天的24h价格区间（用今天获取到的昨日K线数据）
+    # 注意：data 里包含的是"当前最新数据"，对于复盘昨天需要用昨日的OHLC
+    # 这里用 data 中 btc 的 high_24h / low_24h 代表昨日实际波动
+    day_high = data.get('btc', {}).get('high_24h', 0)
+    day_low = data.get('btc', {}).get('low_24h', 0)
 
     direction = prev_strategy.get('direction', 'LONG')
 
-    # 多头判断
-    if direction == 'LONG':
-        if sl > 0 and today_low < sl:
-            result = 'LOSS'
-        elif tp2 > 0 and today_high >= tp2:
-            result = 'WIN'
-        elif tp1 > 0 and today_high >= tp1:
-            result = 'WIN'
+    # ========== 第一步：进场触发判断 ==========
+    triggered = False
+    if entry_low > 0 and entry_high > 0:
+        # 价格是否穿过进场区间
+        if day_low <= entry_high and day_high >= entry_low:
+            triggered = True
+
+    # 如果没有设置进场区间（兼容旧数据），默认认为触发过
+    if entry_low == 0 or entry_high == 0:
+        triggered = True
+
+    # ========== 第二步：如果已触发 → 判断SL/TP ==========
+    if triggered:
+        if direction == 'LONG':
+            if sl > 0 and day_low < sl:
+                result = 'LOSS'
+                detail = 'HIGH=${:,.0f} LOW=${:,.0f}$ | entry${:,.0f}-${:,.0f}| triggered->hit SL(${:.0f}$)'.format(day_high, day_low, entry_low, entry_high, sl)
+            elif tp2 > 0 and day_high >= tp2:
+                result = 'WIN'
+                detail = f'HIGH=${day_high:,.0f} | 达成TP2(${tp2:,.0f})'
+            elif tp1 > 0 and day_high >= tp1:
+                result = 'WIN_TP1'
+                detail = f'HIGH=${day_high:,.0f} | 达成TP1(${tp1:,.0f})，差TP2(${tp2:,,.0f})${(tp2 - day_high):,.0f}'
+            else:
+                # ⚠️ 关键修复：已进场，但既没到TP也没到SL → 不是"未触发"
+                result = 'TRIGGERED_NO_TP'
+                detail = f'HIGH=${day_high:,.0f}(距TP1${tp1:,.0f}差${(tp1-day_high):,.0f}) LOW=${day_low:,.0f}(距SL${sl:,.0f}余${(day_low-sl):,.0f}) | 已触发但未达任何目标'
+        else:  # SHORT
+            if sl > 0 and day_high > sl:
+                result = 'LOSS'
+                detail = 'HIGH=${:,.0f} LOW=${:,.0f}$ | entry${:,.0f}-${:,.0f}| triggered->hit SL(${:.0f}$)'.format(day_high, day_low, entry_low, entry_high, sl)
+            elif tp2 > 0 and day_low <= tp2:
+                result = 'WIN'
+                detail = f'LOW=${day_low:,.0f} | 达成TP2(${tp2:,.0f})'
+            elif tp1 > 0 and day_low <= tp1:
+                result = 'WIN_TP1'
+                detail = f'LOW=${day_low:,.0f} | 达成TP1(${tp1:,.0f})'
+            else:
+                result = 'TRIGGERED_NO_TP'
+                detail = f'HIGH=${day_high:,.0f} LOW=${day_low:,.0f} | 已触发但未达任何目标'
+    else:
+        # ========== 第三步：未触发进场 ==========
+        result = 'BREAK_EVEN'
+        if direction == 'LONG':
+            if day_high < entry_low:
+                detail = f'HIGH=${day_high:,.0f} < 进场下限${entry_low:,.0f} | 价格未到达场区'
+            else:
+                detail = f'LOW=${day_low:,.0f} > 进场上限${entry_high:,.0f} | 价格跳过进场区'
         else:
-            result = 'BREAK_EVEN'  # 未触发任一目标
-    else:  # 空头
-        if sl > 0 and today_high > sl:
-            result = 'LOSS'
-        elif tp2 > 0 and today_low <= tp2:
-            result = 'WIN'
-        elif tp1 > 0 and today_low <= tp1:
-            result = 'WIN'
-        else:
-            result = 'BREAK_EVEN'
+            detail = f'HIGH=${day_high:,.0f} LOW=${day_low:,.0f} | 未进入进场区间'
 
     # 更新 history 最后一条
     if history:
         history[-1]['result'] = result
         history[-1]['auto_resolved'] = True
-        history[-1]['resolve_note'] = (
-            f'Today H={today_high:,.0f} L={today_low:,.0f} | '
-            f'SL={sl:,.0f} TP1={tp1:,.0f} TP2={tp2:,.0f} → {result}'
-        )
+        history[-1]['resolve_note'] = detail
 
     return history
 
@@ -269,7 +310,8 @@ def _result_label(result):
         'WIN': ('✅ TP2达成', 'var(--green)'),
         'WIN_TP1': ('✅ TP1达成', 'var(--green)'),
         'LOSS': ('✗ 止损', 'var(--red)'),
-        'BREAK_EVEN': ('⬛ 等回踩', 'var(--muted)'),
+        'BREAK_EVEN': ('⬛ 等回踩未触发', 'var(--muted)'),
+        'TRIGGERED_NO_TP': ('⚠️ 触发但未达止盈', '#ff9800'),  # v2.2 新增
         'OPEN': ('▶ 进行中', 'var(--accent)'),
     }.get(result, ('—', 'var(--muted)'))
 
@@ -287,7 +329,8 @@ def gen_section1_stats(history, date_display):
 
     wins = sum(1 for h in last14 if h.get('result') in ('WIN', 'WIN_TP1'))
     losses = sum(1 for h in last14 if h.get('result') == 'LOSS')
-    break_even = len(last14) - wins - losses
+    triggered_no_tp = sum(1 for h in last14 if h.get('result') == 'TRIGGERED_NO_TP')  # v2.2
+    break_even = len(last14) - wins - losses - triggered_no_tp
     win_rate = round(wins / len(last14) * 100, 1) if last14 else 0
 
     rr_rates = [h.get('rr', 0) for h in last14 if h.get('rr', 0) > 0]
@@ -352,6 +395,7 @@ def gen_section11_yesterday_review(prev_strategy, history, data, today_display):
     rr = prev_strategy.get('rr_ratio', 0)
 
     # 判断结果（基于今天价格 + 昨天策略）
+    # v2.2: 先判断进场是否触发，再判断SL/TP
     if direction == 'WAIT':
         sl_text = '—'
         tp_text = '—'
@@ -362,56 +406,75 @@ def gen_section11_yesterday_review(prev_strategy, history, data, today_display):
         exec_note = '观望策略，无需执行'
         highlight = '正确执行观望，等待明确信号'
         fault = '无'
-    elif direction == 'LONG':
-        sl_hit = today_low < sl and sl > 0
-        tp2_hit = today_high >= tp2 and tp2 > 0
-        tp1_hit = today_high >= tp1 and tp1 > 0
-        sl_text = f'<span style="color:var(--red);">触发（{_fmt(sl)}）</span>' if sl_hit else '未触发'
-        if tp2_hit:
-            tp_text = f'<span style="color:var(--green);">TP2 {_fmt(tp2)} 达成 ✅</span>'
-            result = 'WIN'; pnl_text = 'TP2止盈'; score = 10; exec_note = '完美执行，TP2达成'
-            highlight = 'TP2完美止盈，多头行情顺利捕捉'
-            fault = '无'
-        elif tp1_hit:
-            tp_text = f'<span style="color:var(--green);">TP1 {_fmt(tp1)} 达成 ✅</span>'
-            result = 'WIN'; pnl_text = 'TP1止盈'; score = 8; exec_note = 'TP1达成，持仓管理良好'
-            highlight = 'TP1成功止盈，执行质量良好'
-            fault = '无'
-        elif sl_hit:
-            tp_text = '<span style="color:var(--muted);">未触及</span>'
-            result = 'LOSS'; pnl_text = '止损出局'; score = 5; exec_note = '止损触发，方向判断失误'
-            highlight = '无'
-            fault = '方向判断错误，逆势做多被止损'
-        else:
-            tp_text = f'<span style="color:var(--muted);">TP1={_fmt(tp1)} / TP2={_fmt(tp2)} 均未触及</span>'
-            result = 'BREAK_EVEN'; pnl_text = '持仓中（未平仓）'; score = 0; exec_note = '价格未达任一目标，保持观望'
-            highlight = 'SL未触发，本金保护到位'
-            fault = '入场后价格未触及TP即回落，未及时手动平仓'
-    else:  # SHORT
-        sl_hit = today_high > sl and sl > 0
-        tp2_hit = today_low <= tp2 and tp2 > 0
-        tp1_hit = today_low <= tp1 and tp1 > 0
-        sl_text = f'<span style="color:var(--red);">触发（{_fmt(sl)}）</span>' if sl_hit else '未触发'
-        if tp2_hit:
-            tp_text = f'<span style="color:var(--green);">TP2 {_fmt(tp2)} 达成 ✅</span>'
-            result = 'WIN'; pnl_text = 'TP2止盈'; score = 10; exec_note = '完美执行，TP2达成'
-            highlight = 'TP2完美止盈，空头行情顺利捕捉'
-            fault = '无'
-        elif tp1_hit:
-            tp_text = f'<span style="color:var(--green);">TP1 {_fmt(tp1)} 达成 ✅</span>'
-            result = 'WIN'; pnl_text = 'TP1止盈'; score = 8; exec_note = 'TP1达成，持仓管理良好'
-            highlight = 'TP1成功止盈，执行质量良好'
-            fault = '无'
-        elif sl_hit:
-            tp_text = '<span style="color:var(--muted);">未触及</span>'
-            result = 'LOSS'; pnl_text = '止损出局'; score = 5; exec_note = '止损触发，方向判断失误'
-            highlight = '无'
-            fault = '方向判断错误，逆势做空被止损'
-        else:
-            tp_text = f'<span style="color:var(--muted);">TP1={_fmt(tp1)} / TP2={_fmt(tp2)} 均未触及</span>'
-            result = 'BREAK_EVEN'; pnl_text = '持仓中（未平仓）'; score = 0; exec_note = '价格未达任一目标，保持观望'
-            highlight = 'SL未触发，本金保护到位'
-            fault = '入场后价格未触及TP即回落，未及时手动平仓'
+    else:
+        # ====== 第一步：进场触发判断 ======
+        triggered = False
+        if entry_low > 0 and entry_high > 0:
+            if today_low <= entry_high and today_high >= entry_low:
+                triggered = True
+        
+        if direction == 'LONG':
+            sl_hit = today_low < sl and sl > 0
+            tp2_hit = today_high >= tp2 and tp2 > 0
+            tp1_hit = today_high >= tp1 and tp1 > 0
+            sl_text = f'<span style="color:var(--red);">触发（{_fmt(sl)}）</span>' if sl_hit else '未触发'
+            
+            if not triggered:
+                # 未触发进场区 → 真正的"等回踩"
+                tp_text = '<span style="color:var(--muted);">未进入进场区</span>'
+                result = 'BREAK_EVEN'; pnl_text = '未触发进场'; score = 7; exec_note = '价格未到达场区间，观望正确'
+                highlight = '严格按计划等待入场信号，不追单'
+                fault = '无'
+            elif sl_hit:
+                # 已触发 → 触及止损
+                tp_text = f'<span style="color:var(--muted);">已触发进场，但LOW=${_fmt(today_low)}触及止损</span>'
+                result = 'LOSS'; pnl_text = '止损出局'; score = 4; exec_note = f'进场已触发(H=${_fmt(today_high)}/L=${_fmt(today_low)})，但触及SL(${_fmt(sl)})'
+                highlight = '无'; fault = '方向判断错误或时机不佳，被止损出场'
+            elif tp2_hit:
+                tp_text = f'<span style="color:var(--green);">TP2 {_fmt(tp2)} 达成 ✅</span>'
+                result = 'WIN'; pnl_text = 'TP2止盈'; score = 10; exec_note = '完美执行，TP2达成'
+                highlight = 'TP2完美止盈，多头行情顺利捕捉'; fault = '无'
+            elif tp1_hit:
+                tp_text = f'<span style="color:var(--green);">TP1 {_fmt(tp1)} 达成 ✅</span>'
+                result = 'WIN_TP1'; pnl_text = 'TP1止盈'; score = 8; exec_note = 'TP1达成，持仓管理良好'
+                highlight = 'TP1成功止盈，执行质量良好'; fault = '无'
+            else:
+                # ⚠️ v2.2 关键修复：已触发进场，但既没到TP也没到SL
+                gap_to_tp = tp1 - today_high if tp1 > 0 else 0
+                gap_to_sl = today_low - sl if sl > 0 else 0
+                tp_text = f'<span style="color:#ff9800;">H=${_fmt(today_high)}(距TP1差${gap_to_tp:,.0f}) L=${_fmt(today_low)}(距SL余${gap_to_sl:,.0f})</span>'
+                result = 'TRIGGERED_NO_TP'; pnl_text = '触发但浮亏/微利中'; score = 5; exec_note = f'进场已确认触发，但全天未达TP也未破SL'
+                highlight = '进场方向暂未验证，需关注次日走势'
+                fault = f'已进场但价格未达TP1(${_fmt(tp1)})即回落，需评估是否应手动平仓'
+        else:  # SHORT
+            sl_hit = today_high > sl and sl > 0
+            tp2_hit = today_low <= tp2 and tp2 > 0
+            tp1_hit = today_low <= tp1 and tp1 > 0
+            sl_text = f'<span style="color:var(--red);">触发（{_fmt(sl)}）</span>' if sl_hit else '未触发'
+            
+            if not triggered:
+                tp_text = '<span style="color:var(--muted);">未进入进场区</span>'
+                result = 'BREAK_EVEN'; pnl_text = '未触发进场'; score = 7; exec_note = '价格未到达场区间，观望正确'
+                highlight = '严格按计划等待入场信号，不追单'; fault = '无'
+            elif sl_hit:
+                tp_text = f'<span style="color:var(--muted);">已触发进场，但HIGH=${_fmt(today_high)}触及止损</span>'
+                result = 'LOSS'; pnl_text = '止损出局'; score = 4; exec_note = f'进场已触发(H=${_fmt(today_high)}/L=${_fmt(today_low)})，但触及SL(${_fmt(sl)})'
+                highlight = '无'; fault = '方向判断错误或时机不佳，被止损出场'
+            elif tp2_hit:
+                tp_text = f'<span style="color:var(--green);">TP2 {_fmt(tp2)} 达成 ✅</span>'
+                result = 'WIN'; pnl_text = 'TP2止盈'; score = 10; exec_note = '完美执行，TP2达成'
+                highlight = 'TP2完美止盈，空头行情顺利捕捉'; fault = '无'
+            elif tp1_hit:
+                tp_text = f'<span style="color:var(--green);">TP1 {_fmt(tp1)} 达成 ✅</span>'
+                result = 'WIN_TP1'; pnl_text = 'TP1止盈'; score = 8; exec_note = 'TP1达成，持仓管理良好'
+                highlight = 'TP1成功止盈，执行质量良好'; fault = '无'
+            else:
+                gap_to_tp = today_low - tp1 if tp1 > 0 else 0
+                gap_to_sl = sl - today_high if sl > 0 else 0
+                tp_text = f'<span style="color:#ff9800;">H=${_fmt(today_high)}(距SL余${gap_to_sl:,.0f}) L=${_fmt(today_low)}(距TP1差${gap_to_tp:,.0f})</span>'
+                result = 'TRIGGERED_NO_TP'; pnl_text = '触发但浮亏/微利中'; score = 5; exec_note = '进场已确认触发，但全天未达TP也未破SL'
+                highlight = '进场方向暂未验证，需关注次日走势'
+                fault = f'已进场但价格未达TP1(${_fmt(tp1)})即回落，需评估是否应手动平仓'
 
     # 执行打分
     if score == 0:
@@ -473,7 +536,8 @@ def gen_section12_week_review(history):
 
     wins = sum(1 for h in last7 if h.get('result') in ('WIN', 'WIN_TP1'))
     losses = sum(1 for h in last7 if h.get('result') == 'LOSS')
-    break_even = len(last7) - wins - losses
+    triggered_no_tp = sum(1 for h in last7 if h.get('result') == 'TRIGGERED_NO_TP')  # v2.2
+    break_even = len(last7) - wins - losses - triggered_no_tp  # v2.2
     total = len(last7)
     win_rate = round(wins / total * 100, 1) if total > 0 else 0
 
@@ -551,12 +615,13 @@ def gen_section13_month_review(history):
     if not history:
         return '<div class="card full"><div class="card-title">月回顾统计 <span class="hard-tag">硬性标准</span></div><div style="padding:20px;color:var(--muted);">暂无数据</div></div>'
 
-    wins_tp2 = sum(1 for h in history if h.get('result') == 'WIN')      # TP2全胜
-    wins_tp1 = sum(1 for h in history if h.get('result') == 'WIN_TP1')  # TP1半胜
-    losses   = sum(1 for h in history if h.get('result') == 'LOSS')      # 止损
+    wins_tp2 = sum(1 for h in history if h.get('result') == 'WIN')
+    wins_tp1 = sum(1 for h in history if h.get('result') == 'WIN_TP1')
+    losses   = sum(1 for h in history if h.get('result') == 'LOSS')
+    triggered_no_tp = sum(1 for h in history if h.get('result') == 'TRIGGERED_NO_TP')  # v2.2
     total    = len(history)
     wins     = wins_tp2 + wins_tp1
-    break_even = total - wins - losses
+    break_even = total - wins - losses - triggered_no_tp
 
     win_rate = round(wins / total * 100, 1) if total > 0 else 0
     rr_rates = [h.get('rr', 0) for h in history if h.get('rr', 0) > 0]
@@ -669,7 +734,8 @@ def gen_section7_tracking_table(history, today_str):
             'WIN': ('✅ TP2达成', 'rb-tp2'),
             'WIN_TP1': ('✅ TP1达成', 'rb-tp1'),
             'LOSS': ('✗ 止损', 'rb-sl'),
-            'BREAK_EVEN': ('⬛ 等回踩', 'rb-wait'),
+            'BREAK_EVEN': ('⬛ 等回踩未触发', 'rb-wait'),  # v2.2: 明确"未触发"
+            'TRIGGERED_NO_TP': ('⚠️ 触发未达止盈', 'rb-triggered'),  # v2.2: 新状态
             'SKIP': ('⬛ 观望', 'rb-skip'),
             'OPEN': ('▶ 进行中', 'rb-open'),
         }
@@ -709,7 +775,8 @@ def gen_section7_tracking_table(history, today_str):
     # 汇总行
     wins14 = sum(1 for h in last14 if h.get('result') in ('WIN', 'WIN_TP1'))
     losses14 = sum(1 for h in last14 if h.get('result') == 'LOSS')
-    break14 = len(last14) - wins14 - losses14
+    triggered14 = sum(1 for h in last14 if h.get('result') == 'TRIGGERED_NO_TP')
+    break14 = len(last14) - wins14 - losses14 - triggered14
     open14 = sum(1 for h in last14 if h.get('result') == 'OPEN')
     wr14 = round(wins14 / len(last14) * 100, 1) if last14 else 0
 
@@ -717,6 +784,7 @@ def gen_section7_tracking_table(history, today_str):
     if wins14: total_rows += f'<span class="summary-chip green">✅ 盈利{wins14}笔</span> '
     if losses14: total_rows += f'<span class="summary-chip red">✗ 亏损{losses14}笔</span> '
     if break14: total_rows += f'<span class="summary-chip" style="color:var(--muted);">⬛ 保本/跳过{break14}笔</span> '
+    if triggered14: total_rows += f'<span class="summary-chip" style="color:#ff9800;">⚠️ 触发未达TP{triggered14}笔</span> '  # v2.2
     if open14: total_rows += f'<span class="summary-chip" style="color:var(--accent);">▶ 进行中{open14}笔</span> '
     total_rows += f'<span class="summary-chip">14天胜率{wr14}%</span>'
 
@@ -753,6 +821,7 @@ def gen_section8_error_stats(history):
     last14 = history[-14:] if len(history) >= 14 else history
     losses = sum(1 for h in last14 if h.get('result') == 'LOSS')
     wins = sum(1 for h in last14 if h.get('result') in ('WIN', 'WIN_TP1'))
+    triggered_no_tp = sum(1 for h in last14 if h.get('result') == 'TRIGGERED_NO_TP')  # v2.2
     total = len(last14)
     error_rate = round(losses / max(1, total) * 100, 1)
 
@@ -763,7 +832,15 @@ def gen_section8_error_stats(history):
     rr_errors = sum(1 for h in last14 if h.get('rr', 0) > 0 and h.get('rr', 0) < 2)
     ok_count = wins
 
-    improve = '坚持"回踩确认"入场原则，所有开仓必须等K线企稳再介入。' if losses > 0 else '保持当前执行节奏。'
+    # v2.2: 改进建议根据实际状态动态生成
+    if triggered_no_tp > 0 and losses > wins:
+        improve = '触发但未达TP的次数较多，说明方向判断基本正确但时机或目标位需优化。建议：1) TP1适当收窄；2) 触发后设移动止损保护利润。'
+    elif losses > wins:
+        improve = '坚持"回踩确认"入场原则，所有开仓必须等K线企稳再介入。'
+    elif triggered_no_tp > wins:
+        improve = f'{triggered_no_tp}笔交易触发进场但未达止盈，说明入场信号有效但行情波动不足。可考虑降低TP1目标位或增加持仓周期。'
+    else:
+        improve = '保持当前执行节奏。'
 
     return f'''<div class="card full">
   <div class="card-title">错误分类统计 <span class="hard-tag">硬性标准</span></div>
@@ -797,7 +874,7 @@ def gen_section8_error_stats(history):
     <div class="stat-box" style="display:flex;flex-direction:column;justify-content:center;">
       <div class="stat-box-label">本月错误率</div>
       <div class="stat-box-val" style="font-size:32px;">{error_rate}%</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:8px;">错误{losses}次 / 总交易{total}次</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px;">错误{losses}次 / 触发未达TP{triggered_no_tp}次 / 总交易{total}次</div>  <!-- v2.2 -->
       <div style="margin-top:12px;padding:10px;background:rgba(38,201,127,0.1);border-radius:6px;font-size:12px;color:var(--green);">
         💡 改进建议：{improve}
       </div>
@@ -810,13 +887,26 @@ def gen_section9_bars(history):
     last14 = history[-14:] if len(history) >= 14 else history
     wins = sum(1 for h in last14 if h.get('result') in ('WIN', 'WIN_TP1'))
     losses = sum(1 for h in last14 if h.get('result') == 'LOSS')
+    triggered_no_tp = sum(1 for h in last14 if h.get('result') == 'TRIGGERED_NO_TP')  # v2.2
+    break_even_count = len(last14) - wins - losses - triggered_no_tp  # v2.2
     wr = round(wins / len(last14) * 100, 1) if last14 else 0
 
     bars = ''
     for h in last14:
         r = h.get('result', 'SKIP')
-        color = '#26c97f' if r in ('WIN', 'WIN_TP1') else ('#f44336' if r == 'LOSS' else '#7a8299')
-        height = 75 if r in ('WIN', 'WIN_TP1') else (35 if r == 'LOSS' else 20)
+        # v2.2: 六种状态颜色映射
+        if r in ('WIN', 'WIN_TP1'):
+            color = '#26c97f'
+            height = 75
+        elif r == 'LOSS':
+            color = '#f44336'
+            height = 35
+        elif r == 'TRIGGERED_NO_TP':  # v2.2 新增：橙色，中等高度
+            color = '#ff9800'
+            height = 50
+        else:  # BREAK_EVEN / SKIP / OPEN
+            color = '#7a8299'
+            height = 20
         date_short = h.get('date', '')[-5:] if h.get('date') else ''
         bars += f'<div class="bar-item" style="height:{height}%;background:{color};border-radius:3px;position:relative;" title="{date_short}:{r}"><div style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--muted);white-space:nowrap;">{date_short}</div></div>'
 
@@ -828,7 +918,8 @@ def gen_section9_bars(history):
   <div style="display:flex;justify-content:center;gap:24px;margin-top:8px;font-size:12px;">
     <span><span style="display:inline-block;width:10px;height:10px;background:var(--green);border-radius:2px;margin-right:4px;"></span>盈利 {wins}笔</span>
     <span><span style="display:inline-block;width:10px;height:10px;background:var(--red);border-radius:2px;margin-right:4px;"></span>亏损 {losses}笔</span>
-    <span><span style="display:inline-block;width:10px;height:10px;background:var(--border);border-radius:2px;margin-right:4px;"></span>保本 {len(last14)-wins-losses}笔</span>
+    <span><span style="display:inline-block;width:10px;height:10px;background:#ff9800;border-radius:2px;margin-right:4px;"></span>触发未达TP {triggered_no_tp}笔</span>  <!-- v2.2 -->
+    <span><span style="display:inline-block;width:10px;height:10px;background:var(--border);border-radius:2px;margin-right:4px;"></span>保本 {break_even_count}笔</span>  <!-- v2.2 修正 -->
     <span style="font-weight:700;">14天胜率: <span style="color:var(--green);">{wr}%</span></span>
     <span style="color:var(--accent);">本月累计: 待核实</span>
   </div>
@@ -839,7 +930,8 @@ def gen_section10_line(history):
     last30 = history[-30:] if len(history) >= 30 else history
     wins30 = sum(1 for h in last30 if h.get('result') in ('WIN', 'WIN_TP1'))
     losses30 = sum(1 for h in last30 if h.get('result') == 'LOSS')
-    break30 = len(last30) - wins30 - losses30
+    triggered30 = sum(1 for h in last30 if h.get('result') == 'TRIGGERED_NO_TP')  # v2.2
+    break30 = len(last30) - wins30 - losses30 - triggered30  # v2.2
     wr30 = round(wins30 / len(last30) * 100, 1) if last30 else 0
 
     # 生成折线数据点（从历史数据计算累计胜率）
@@ -879,6 +971,7 @@ def gen_section10_line(history):
   <div style="display:flex;justify-content:center;gap:24px;margin-top:12px;font-size:12px;">
     <span>30天盈利: <span style="color:var(--green);font-weight:700;">{wins30}笔</span></span>
     <span>30天亏损: <span style="color:var(--red);font-weight:700;">{losses30}笔</span></span>
+    <span>30天触发未达TP: <span style="color:#ff9800;font-weight:700;">{triggered30}笔</span></span>  <!-- v2.2 -->
     <span>30天保本: <span style="color:var(--muted2);font-weight:700;">{break30}笔</span></span>
     <span>30天胜率: <span style="color:var(--green);font-weight:700;">{wr30}%</span></span>
     <span>近30天累计: <span style="color:var(--accent);">待核实</span></span>
@@ -946,25 +1039,28 @@ def generate_html(data, strategy, history):
     # ===== 历史统计 =====
     if history:
         last_14 = history[-14:] if len(history) >= 14 else history
-        wins = sum(1 for h in last_14 if h.get('result') == 'WIN')
+        wins = sum(1 for h in last_14 if h.get('result') in ('WIN', 'WIN_TP1'))
         losses = sum(1 for h in last_14 if h.get('result') == 'LOSS')
-        break_even = sum(1 for h in last_14 if h.get('result') == 'BREAK_EVEN')
+        triggered_no_tp = sum(1 for h in last_14 if h.get('result') == 'TRIGGERED_NO_TP')  # v2.2
+        break_even = sum(1 for h in last_14 if h.get('result') == 'BREAK_EVEN')  # v2.2: 只计真正的未触发
         win_rate_14 = round(wins / len(last_14) * 100, 1) if last_14 else 0
         total_pnl = sum(h.get('pnl', 0) for h in last_14)
         max_dd = min([h.get('pnl', 0) for h in last_14] + [0])
         rr_rates = [h.get('rr', 0) for h in last_14 if h.get('rr', 0) > 0]
         avg_rr = round(sum(rr_rates) / len(rr_rates), 2) if rr_rates else 0
+        month_trades = wins + losses + break_even + triggered_no_tp  # v2.2: 完整统计
     else:
-        wins, losses, break_even = 0, 0, 0
+        wins, losses, break_even, triggered_no_tp = 0, 0, 0, 0  # v2.2
         win_rate_14 = 0
         total_pnl = 0
         max_dd = 0
         avg_rr = 0
+        month_trades = 0
 
     # ===== 策略追踪表 (近14天) =====
     hist_rows = ''
     for h in last_14:
-        result_map = {'WIN': 'win', 'LOSS': 'loss', 'BREAK_EVEN': 'break', 'SKIP': 'skip'}
+        result_map = {'WIN': 'win', 'WIN_TP1': 'win', 'LOSS': 'loss', 'BREAK_EVEN': 'break', 'TRIGGERED_NO_TP': 'triggered', 'SKIP': 'skip'}  # v2.2: 完整6态映射
         r = result_map.get(h.get('result', 'SKIP'), 'skip')
         score = h.get('score', 0)
         stars = ''.join(['\u2605' if i < score else '\u2606' for i in range(1, 11)])
@@ -980,10 +1076,10 @@ def generate_html(data, strategy, history):
 
     # ===== 胜率柱状图 =====
     bars_html = ''
-    bar_colors = {'WIN': '#00c853', 'LOSS': '#ff1744', 'BREAK_EVEN': '#9e9e9e', 'SKIP': '#9e9e9e'}
+    bar_colors = {'WIN': '#00c853', 'WIN_TP1': '#00c853', 'LOSS': '#ff1744', 'TRIGGERED_NO_TP': '#ff9800', 'BREAK_EVEN': '#9e9e9e', 'SKIP': '#9e9e9e'}  # v2.2: 完整6态颜色
     for h in last_14:
         color = bar_colors.get(h.get('result', 'SKIP'), '#9e9e9e')
-        height = 30 if h.get('result') == 'WIN' else 20 if h.get('result') == 'LOSS' else 10
+        height = 30 if h.get('result') in ('WIN', 'WIN_TP1') else 20 if h.get('result') == 'LOSS' else 25 if h.get('result') == 'TRIGGERED_NO_TP' else 10
         bars_html += '<div class="bar-item"><div class="bar ' + h.get('result', 'SKIP').lower() + '" style="height:' + str(height) + 'px;background:' + color + ';"></div><div class="bar-date">' + h.get('date', '')[-2:] + '</div></div>'
 
     # ===== 宏观事件 =====
@@ -1040,14 +1136,14 @@ def generate_html(data, strategy, history):
         'BTC $' + str(round(btc_price, 0)) + ' (' + change_icon + str(round(btc_change, 2)) + '% 24h) | '
         'RSI ' + str(round(rsi, 1)) + ' | Fear&Greed ' + str(fear_val) + ' (' + fear_class + ') | '
         'Funding ' + str(round(funding_rate, 4)) + '% | OI ' + str(round(long_short, 2)) + '\n\n'
-        '\u2192 Today: ' + dir_tag + ' ' + entry_low + '-' + entry_high + '\n'
+        '\u2192 Today: ' + dir_tag + ' ${:,.0f}-${:,.0f}\n'.format(entry_low, entry_high) +
         'SL $' + str(round(stop_loss, 0)) + ' | TP1 $' + str(round(tp1, 0)) + ' (' + str(rr) + ':1 R:R)\n\n'
         '30D Win Rate: ' + str(50) + '% | 14D PnL: $' + str(round(total_pnl, 2)) + '\n'
         '#BTC #Crypto #Trading'
     )
 
     # ===== 本月统计 =====
-    month_trades = wins + losses + break_even
+    month_trades = wins + losses + break_even + triggered_no_tp  # v2.2: 完整6态统计
     month_errors = 0  # 可由用户手动记录
 
     # ===== 模板读取 + 填充 =====
