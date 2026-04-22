@@ -192,6 +192,19 @@
     "tp1": 77500,
     "tp2": 78500,
     "rr": 2.0,
+    "result": "BREAK_EVEN",
+    "auto_resolved": true,
+    "resolve_note": "HIGH=$77,167 LOW=$74,822 | 未进入进场区间"
+  },
+  {
+    "date": "20260422",
+    "direction": "WAIT",
+    "entry_low": 77048.79,
+    "entry_high": 77434.03,
+    "stop_loss": 78204.52,
+    "tp1": 74737.33,
+    "tp2": 72811.11,
+    "rr": 2.0,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""

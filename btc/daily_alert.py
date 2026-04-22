@@ -7,6 +7,24 @@ import json
 import os
 from datetime import datetime
 
+# 代理配置：优先使用环境变量，回退到常用本地代理端口
+def _setup_proxy():
+    """自动检测并设置代理"""
+    if os.environ.get('HTTPS_PROXY') or os.environ.get('https_proxy'):
+        return  # 环境变量已设置，跳过
+    for port in [33210, 7890, 7891, 10808, 10809]:
+        try:
+            test = requests.get('https://api.coingecko.com/api/v3/ping',
+                                proxies={'https': f'http://127.0.0.1:{port}'}, timeout=3)
+            if test.status_code == 200:
+                os.environ['HTTP_PROXY'] = f'http://127.0.0.1:{port}'
+                os.environ['HTTPS_PROXY'] = f'http://127.0.0.1:{port}'
+                return
+        except Exception:
+            continue
+
+_setup_proxy()
+
 CONFIG_FILE = os.path.join(os.path.dirname(__file__), 'telegram_config.json')
 
 def load_config():
