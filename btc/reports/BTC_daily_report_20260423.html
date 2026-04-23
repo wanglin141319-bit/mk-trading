@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang='zh'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>BTC 日报 2026-04-23 | MK Trading</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0f14;color:#e0e3e9;font-family:'Segoe UI',Arial,sans-serif;padding-bottom:60px;line-height:1.6}
+.header{background:linear-gradient(135deg,#1a0a2e 0%,#0d1f3c 50%,#1a0a2e 100%);padding:32px 24px;text-align:center;border-bottom:2px solid #7c3aed}
+.header .tag{background:#7c3aed;color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:10px;letter-spacing:1px}
+.header h1{font-size:28px;color:#fff;margin-bottom:6px;font-weight:800}
+.header p{color:#94a3b8;font-size:13px}
+.hero-price{margin-top:20px}
+.hero-price .big{font-size:52px;font-weight:900;color:#f7931a;letter-spacing:-1px}
+.hero-price .chg{font-size:18px;margin-top:4px}
+.cards-flex{display:flex;flex-wrap:wrap;gap:12px;padding:20px 16px;justify-content:center}
+.card{background:#141825;border:1px solid #1e293b;border-radius:12px;padding:16px 20px;min-width:150px;flex:1}
+.card .lbl{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.card .val{font-size:20px;font-weight:700;color:#e2e8f0}
+.card .sub{font-size:12px;color:#64748b;margin-top:2px}
+.section{margin:20px 16px;background:#141825;border:1px solid #1e293b;border-radius:16px;overflow:hidden}
+.section-title-wrap{display:flex;align-items:center;gap:10px;padding:16px 20px 12px;border-bottom:1px solid #1e293b}
+.section-title-wrap .bar{width:4px;height:20px;background:linear-gradient(180deg,#7c3aed,#a855f7);border-radius:2px;flex-shrink:0}
+.section-title{font-size:15px;font-weight:700;color:#e2e8f0;flex:1}
+.tag-stamp{background:#7c3aed;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.section-body{padding:16px 20px}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat-cell{background:#1a1f2e;border-radius:10px;padding:12px;text-align:center}
+.stat-cell .num{font-size:22px;font-weight:800;color:#e2e8f0}
+.stat-cell .lbl{font-size:11px;color:#64748b;margin-top:2px}
+.stat-cell .flag-ok{border:1px solid #22c55e;padding:1px 6px;border-radius:8px;display:inline-block;margin-top:4px;font-size:10px;color:#22c55e}
+.stat-cell .flag-bad{border:1px solid #ef4444;padding:1px 6px;border-radius:8px;display:inline-block;margin-top:4px;font-size:10px;color:#ef4444}
+.ind-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.ind-cell{background:#1a1f2e;border-radius:10px;padding:14px}
+.ind-cell .name{font-size:12px;color:#64748b;margin-bottom:6px}
+.ind-cell .value{font-size:18px;font-weight:700;color:#e2e8f0}
+.ind-cell .bar-bg{height:6px;background:#1e293b;border-radius:3px;margin-top:6px;overflow:hidden}
+.ind-cell .bar-fill{height:100%;border-radius:3px}
+.ind-cell .sub{font-size:11px;color:#64748b;margin-top:4px}
+.prog-card{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.prog-card .label{width:80px;font-size:12px;color:#94a3b8;flex-shrink:0}
+.prog-card .bar-bg{flex:1;height:8px;background:#1e293b;border-radius:4px;overflow:hidden}
+.prog-card .bar-fill{height:100%;border-radius:4px}
+.prog-card .val{width:60px;text-align:right;font-size:12px;font-weight:600;color:#e2e8f0;flex-shrink:0}
+.strategy-box{background:linear-gradient(135deg,#1a0a2e 0%,#0d1f3c 100%);border:1px solid #7c3aed;border-radius:14px;padding:20px}
+.strat-dir{display:inline-block;font-size:14px;font-weight:800;padding:4px 14px;border-radius:20px;margin-right:10px}
+.dir-long{background:#22c55e20;color:#22c55e;border:1px solid #22c55e}
+.dir-short{background:#ef444420;color:#ef4444;border:1px solid #ef4444}
+.dir-wait{background:#f59e0b20;color:#f59e0b;border:1px solid #f59e0b}
+.levels-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+.levels-table td{padding:8px 12px;border-bottom:1px solid #1e293b}
+.levels-table td:first-child{color:#64748b;width:45%}
+.levels-table td:last-child{font-weight:700;color:#e2e8f0;text-align:right}
+.levels-table tr.res td{color:#ef4444!important}
+.levels-table tr.sl td{color:#ef4444!important;font-size:12px}
+.levels-table tr.tp1 td,.levels-table tr.tp2 td{color:#22c55e!important}
+.levels-table tr.current td{color:#f7931a!important;font-weight:900!important}
+.trigger-box{margin-top:14px;background:#1e293b;border-radius:8px;padding:12px;font-size:12px;color:#94a3b8;line-height:1.8;white-space:pre-line}
+.rr-badge{display:inline-block;background:#22c55e20;color:#22c55e;border:1px solid #22c55e;padding:3px 10px;border-radius:8px;font-size:13px;font-weight:700;margin-left:8px;vertical-align:middle}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#1e293b;color:#64748b;font-weight:600;text-align:left;padding:10px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+td{padding:10px 12px;border-bottom:1px solid #1e293b;color:#cbd5e1}
+.today-row{background:#f7931a15!important}
+.today-badge{background:#f7931a;color:#000;font-size:10px;font-weight:800;padding:1px 6px;border-radius:8px;margin-left:4px;vertical-align:middle}
+.rb-tp2{background:#14532d;color:#86efac;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600;display:inline-block}
+.rb-tp1{background:#16653420;color:#86efac;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600;display:inline-block}
+.rb-sl{background:#7f1d1d;color:#fca5a5;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600;display:inline-block}
+.rb-skip{background:#1e3a5f;color:#60a5fa;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600;display:inline-block}
+.rb-open{background:#92400e;color:#fcd34d;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600;display:inline-block}
+.rb-wait{background:#713f12;color:#fcd34d;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600;display:inline-block}
+.dir-tag{padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600;display:inline-block}
+.dir-tag-long{background:#22c55e20;color:#22c55e}
+.dir-tag-short{background:#ef444420;color:#ef4444}
+.dir-tag-wait{background:#f59e0b20;color:#f59e0b}
+.summary-row td{background:#1e293b!important;color:#94a3b8!important;font-size:11px;font-weight:600;padding:10px 12px!important;border-top:2px solid #334155}
+.error-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.error-cell{background:#1a1f2e;border-radius:10px;padding:14px;text-align:center}
+.error-cell .icon{font-size:24px;margin-bottom:6px}
+.error-cell .num{font-size:20px;font-weight:800;color:#ef4444}
+.error-cell .lbl{font-size:11px;color:#64748b;margin-top:2px}
+.error-cell.ok-cell .num{color:#22c55e}
+.error-rate{margin-top:12px;background:#1e293b;border-radius:10px;padding:12px;text-align:center;font-size:13px;color:#94a3b8}
+.error-rate span{color:#f59e0b;font-weight:700;font-size:15px}
+.improve{margin-top:10px;font-size:12px;color:#94a3b8;background:#111827;border-radius:8px;padding:10px;line-height:1.8}
+.improve strong{color:#60a5fa}
+.chart-wrap{position:relative;height:160px;overflow:hidden;border-radius:8px;background:#1a1f2e;padding:8px 4px 4px}
+.bar-row{display:flex;align-items:flex-end;gap:4px;height:140px;padding:0 4px}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.bar{width:100%;border-radius:3px 3px 0 0;min-height:4px}
+.bar-label{font-size:9px;color:#475569;margin-top:3px;flex-shrink:0}
+.line-chart-wrap{position:relative;height:160px;background:#1a1f2e;border-radius:8px;padding:10px 4px 4px;overflow:hidden}
+.review-block{margin-bottom:12px;padding:12px;background:#1a1f2e;border-radius:10px;border-left:3px solid #7c3aed}
+.review-block .review-date{font-size:11px;color:#64748b;margin-bottom:6px}
+.review-block .review-detail{font-size:12px;color:#94a3b8;line-height:1.7}
+.score-dots{display:inline-flex;gap:3px;margin-top:6px}
+.score-dot{width:8px;height:8px;border-radius:50%}
+.score-dot.filled{background:#22c55e}
+.score-dot.empty{background:#334155}
+.month-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.month-cell{background:#1a1f2e;border-radius:10px;padding:16px;text-align:center}
+.month-cell .val{font-size:20px;font-weight:800;color:#e2e8f0}
+.month-cell .lbl{font-size:11px;color:#64748b;margin-top:4px}
+.month-cell .badge{display:inline-block;padding:2px 8px;border-radius:8px;font-size:10px;font-weight:700;margin-top:6px}
+.badge-green{background:#22c55e20;color:#22c55e;border:1px solid #22c55e}
+.badge-red{background:#7f1d1d;color:#ef4444;border:1px solid #ef4444}
+.badge-yellow{background:#f59e0b20;color:#f59e0b;border:1px solid #f59e0b}
+.pos-table{width:100%;border-collapse:collapse;font-size:13px}
+.pos-table td{padding:10px 12px;border-bottom:1px solid #1e293b}
+.pos-table td:first-child{color:#64748b;font-size:11px;width:50px}
+.pos-table td:nth-child(2){font-weight:600;color:#e2e8f0}
+.pos-table td:last-child{text-align:right;font-weight:700}
+.x-tweet{background:#1a1f2e;border-radius:12px;padding:16px;border:1px solid #1e3a5f;font-size:13px;color:#cbd5e1;line-height:1.7;white-space:pre-line}
+.x-tweet .x-header{color:#60a5fa;font-weight:700;margin-bottom:8px;font-size:14px}
+.disclaimer{background:#1e293b;border-radius:12px;padding:14px 16px;text-align:center;font-size:11px;color:#64748b;line-height:1.8;margin:20px 16px}
+.disclaimer strong{color:#f59e0b}
+.footer{text-align:center;padding:16px;color:#334155;font-size:11px;margin-top:20px}
+.macro-timeline{position:relative;padding-left:20px}
+.macro-item{position:relative;margin-bottom:12px;padding-left:16px;border-left:2px solid #1e293b}
+.macro-item.high{border-color:#ef4444}
+.macro-item.med{border-color:#f59e0b}
+.macro-item.low{border-color:#22c55e}
+.macro-item .time{font-size:11px;color:#64748b;margin-bottom:2px}
+.macro-item .event{font-size:13px;font-weight:600;color:#e2e8f0}
+.macro-item .impact{font-size:11px;padding:1px 6px;border-radius:6px;display:inline-block;margin-left:6px}
+.impact-high{background:#7f1d1d;color:#fca5a5}
+.impact-med{background:#713f12;color:#fcd34d}
+.impact-low{background:#14532d;color:#86efac}
+.macro-item .note{font-size:11px;color:#64748b;margin-top:2px}
+.macro-warn{background:#7f1d1d;border:1px solid #ef4444;border-radius:10px;padding:12px;margin-top:14px;font-size:12px;color:#fca5a5;line-height:1.7}
+.macro-warn strong{color:#fca5a5}
+.whale-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.whale-card{background:#1a1f2e;border-radius:10px;padding:14px;text-align:center}
+.whale-card .val{font-size:16px;font-weight:800}
+.whale-card .lbl{font-size:11px;color:#64748b;margin-top:2px}
+.whale-card .in{color:#22c55e}
+.whale-card .out{color:#ef4444}
+.week-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.week-stat{background:#1a1f2e;border-radius:10px;padding:12px;text-align:center}
+.week-stat .v{font-size:18px;font-weight:800;color:#e2e8f0}
+.week-stat .l{font-size:10px;color:#64748b;margin-top:2px}
+.max-loss{background:#7f1d1d20;border:1px solid #7f1d1d;border-radius:8px;padding:10px;font-size:12px;color:#fca5a5;margin-top:8px}
+.max-win{background:#14532d20;border:1px solid #14532d;border-radius:8px;padding:10px;font-size:12px;color:#86efac;margin-top:6px}
+.risk-warn{background:#92400e20;border:1px solid #92400e;border-radius:10px;padding:12px;font-size:12px;color:#fcd34d;margin-top:10px;text-align:center}
+.chg.up{color:#22c55e}.chg.dn{color:#ef4444}
+.s14-row{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:8px}
+.s14-cell{background:#1a1f2e;border-radius:10px;padding:12px;text-align:center}
+.s14-cell .v{font-size:20px;font-weight:800;color:#e2e8f0}
+.s14-cell .l{font-size:10px;color:#64748b;margin-top:2px}
+.s14-cell .ok{color:#22c55e;font-size:10px;font-weight:600;margin-top:3px}
+.s14-cell .bad{color:#ef4444;font-size:10px;font-weight:600;margin-top:3px}
+@media(max-width:600px){.stats-grid,.ind-grid,.month-grid,.error-grid,.week-summary,.s14-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<div class='header'>
+<div class='tag'>BTC DAILY REPORT</div>
+<h1>比特币日报</h1>
+<p>2026-04-23 · MK Trading System v2.2</p>
+<div class='hero-price'>
+<div class='big' id='btc-price'>$78,182</div>
+<div class='chg up' id='btc-chg'>+2.46% 24h</div>
+</div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>综合统计看板</div><div class='tag-stamp'>硬性标准</div></div>
+<div class='section-body'>
+<div class='s14-row'>
+<div class='s14-cell'><div class='v'>50.0%</div><div class='l'>14天胜率</div><div class='bad'>⚠️未达标</div></div>
+<div class='s14-cell'><div class='v' style='color:#22c55e'>+1910%</div><div class='l'>本月累计</div><div class='l'>基准100U</div></div>
+<div class='s14-cell'><div class='v'>2.2:1</div><div class='l'>平均盈亏比</div><div class='ok'>✅达标≥2:1</div></div>
+<div class='s14-cell'><div class='v'>200%</div><div class='l'>最大回撤</div><div class='bad'>⚠️超红线</div></div>
+<div class='s14-cell'><div class='v'>16</div><div class='l'>本月交易日</div><div class='l'>胜9/负3/保4</div></div>
+<div class='s14-cell'><div class='v'>56.2%</div><div class='l'>本月胜率</div><div class='l'>9胜/3负</div></div>
+</div>
+</div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>价格 · 市场数据</div></div>
+<div class='section-body'>
+<div class='cards-flex'><div class='card'><div class='lbl'>资金费率</div><div class='val' style='color:#22c55e'>-0.0081%</div><div class='sub'>空头付多头</div></div><div class='card'><div class='lbl'>未平仓合约 OI</div><div class='val'>102K BTC</div><div class='sub'>≈ $8.01B</div></div><div class='card' style='border-color:#7f1d1d'><div class='lbl'>24h 爆仓总量</div><div class='val'>$682M</div><div class='sub'>多 $341M / 空 $341M</div></div><div class='card'><div class='lbl'>恐惧贪婪指数</div><div class='val' style='color:#f59e0b'>46</div><div class='sub'>Fear</div></div><div class='card'><div class='lbl'>多空持仓比</div><div class='val'>52.4%</div><div class='sub'>多头略占优</div></div></div><div style='margin-top:10px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px'><div class='stat-cell'><div class='num' style='color:#ef4444'>79,444</div><div class='lbl'>24h High</div></div><div class='stat-cell'><div class='num' style='color:#f7931a'>78,182</div><div class='lbl'>当前价格</div></div><div class='stat-cell'><div class='num' style='color:#22c55e'>76,079</div><div class='lbl'>24h Low</div></div></div></div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>技术指标面板</div></div>
+<div class='section-body'>
+<div class='ind-grid'><div class='ind-cell'><div class='name'>RSI(14)</div><div class='value' style='color:#e2e8f0'>67.5</div><div class='bar-bg'><div class='bar-fill' style='width:67.5221020392638%;background:#e2e8f0'></div></div><div class='sub'>中性区间</div></div><div class='ind-cell'><div class='name'>MACD</div><div class='value' style='color:#22c55e'>金叉</div><div class='bar-bg'><div class='bar-fill' style='width:100%;background:#22c55e'></div></div><div class='sub'>MACD 2481 / Signal 2233</div></div><div class='ind-cell'><div class='name'>EMA20</div><div class='value' style='color:#22c55e'>74,019</div><div class='bar-bg'><div class='bar-fill' style='width:78.12129730436263%;background:#22c55e'></div></div><div class='sub'>价格>EMA20 ✅</div></div><div class='ind-cell'><div class='name'>布林带(20)</div><div class='value'>16.3%</div><div class='bar-bg'><div class='bar-fill' style='width:1.6310900468390963%;background:#f7931a'></div></div><div class='sub'>上79,510 中73,515 下67,519</div></div></div><div style='margin-top:14px'><div class='prog-card'><div class='label'>EMA排列</div><div class='bar-bg'><div class='bar-fill' style='width:100%;background:#22c55e'></div></div><div class='val'>多头排列</div></div><div class='prog-card'><div class='label'>日波幅</div><div class='bar-bg'><div class='bar-fill' style='width:22%;background:#f7931a'></div></div><div class='val'>4.3%</div></div></div></div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>今日合约操作策略</div><div class='tag-stamp'>硬性标准</div></div>
+<div class='section-body'>
+<div class='strategy-box'><div style='margin-bottom:14px'><span class='strat-dir dir-long'>主做多 🐂</span><span style='font-size:12px;color:#94a3b8;margin-left:10px'>置信度: <span style='color:#f7931a;font-weight:700'>68/100</span></span><span class='rr-badge'>RR 2.5:1</span></div><table class='levels-table'><tr class='res'><td>阻力 R2</td><td>$81,524</td></tr><tr class='res'><td>阻力 R1</td><td>$79,444</td></tr><tr><td>EMA20</td><td>$74,019</td></tr><tr><td>布林中轨</td><td>$73,515</td></tr><tr class='current'><td>→ 当前价</td><td style='color:#f7931a;font-weight:900'>$78,182</td></tr><tr class='sl'><td>止损 SL</td><td>$74,793 (4.3%)</td></tr><tr><td>建议入场区间</td><td style='color:#f7931a'>回踩 76,079–79,444</td></tr><tr class='tp1'><td>TP1</td><td>$79,444</td></tr><tr class='tp2'><td>TP2</td><td>$81,524</td></tr></table><div class='trigger-box'><strong style='color:#f7931a'>⚡ 触发条件：</strong><br>做多：价格回踩 76,079 附近且不破 74,793 止损
+做空：价格反弹至 79,444 附近且放量破 81,524 确认
+放弃：宏观事件窗口期(PMI/初请)前30分钟不开新仓</div></div></div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>资金流向 &amp; 鲸鱼动向</div></div>
+<div class='section-body'>
+<div class='whale-cards'><div class='whale-card'><div class='val in'>+$1.20B</div><div class='lbl'>24h 大额流入交易所</div></div><div class='whale-card'><div class='val out'>-$0.64B</div><div class='lbl'>24h 大额流出交易所</div></div><div class='whale-card'><div class='val' style='color:#22c55e'>净多头+$1.2B</div><div class='lbl'>净流向</div></div><div class='whale-card'><div class='val' style='color:#f7931a'>+12 个大钱包</div><div class='lbl'>鲸鱼钱包多仓增加</div></div></div></div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>今日宏观事件时间线</div></div>
+<div class='section-body'>
+<div class='macro-timeline'><div class='macro-item 高'><div class='time'>04-23 周四</div><div class='event'>美国4月PMI Flash<span class='impact impact-高'>高</span></div><div class='note'>制造业+服务业综合PMI，预期>50扩张</div></div><div class='macro-item 中'><div class='time'>04-23 周四</div><div class='event'>初请失业金人数<span class='impact impact-中'>中</span></div><div class='note'>前值22.2万，>25万=利好BTC</div></div><div class='macro-item 高'><div class='time'>04-25 周六</div><div class='event'>特朗普关税演讲<span class='impact impact-高'>高</span></div><div class='note'>可能宣布新贸易关税政策，市场敏感</div></div><div class='macro-item 极高'><div class='time'>04-29 周三</div><div class='event'>FOMC利率决议<span class='impact impact-极高'>极高</span></div><div class='note'>下次FOMC会议，无降息预期，注意政策声明</div></div><div class='macro-item 极高'><div class='time'>05-02 周五</div><div class='event'>4月非农就业<span class='impact impact-极高'>极高</span></div><div class='note'>下次非农，影响美联储政策路径</div></div></div>
+<div class='macro-warn'><strong>⚠️ 本周最大宏观变量：04-23(周四) PMI + 初请 | 04-29 FOMC | 05-02 非农 — 数据公布前后30分钟禁止开新仓</strong></div>
+</div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>近14天策略追踪表</div><div class='tag-stamp'>硬性标准</div></div>
+<div class='section-body'>
+<div class='table-wrap'>
+<table>
+<thead><tr><th>日期</th><th>方向</th><th>涨跌</th><th>进场区间</th><th>SL</th><th>TP1</th><th>TP2</th><th>结果</th><th>盈亏比</th><th>错误分析</th></tr></thead>
+<tbody>
+<tr class=""><td>04/09</td><td><span class="dir-tag dir-tag-long">🟢多</span></td><td>+1.8%</td><td style="color:#f7931a">$74,000–$74,500</td><td style="color:#fca5a5">$72,800</td><td style="color:#86efac">$75,800</td><td style="color:#86efac">$78,000</td><td><span class="rb-tp2">TP2达成</span></td><td>3.0:1</td><td style="color:#64748b;font-size:11px">TP2 hit</td></tr><tr class=""><td>04/10</td><td><span class="dir-tag dir-tag-short">🔴空</span></td><td>+1.8%</td><td style="color:#f7931a">$76,000–$76,500</td><td style="color:#fca5a5">$77,800</td><td style="color:#86efac">$74,500</td><td style="color:#86efac">$73,000</td><td><span class="rb-tp2">TP2达成</span></td><td>2.5:1</td><td style="color:#64748b;font-size:11px">TP2 hit</td></tr><tr class=""><td>04/11</td><td><span class="dir-tag dir-tag-wait">🟡观</span></td><td>-</td><td style="color:#f7931a">—</td><td style="color:#fca5a5">—</td><td style="color:#86efac">—</td><td style="color:#86efac">—</td><td><span class="rb-skip">跳过</span></td><td>—</td><td style="color:#64748b;font-size:11px">skip</td></tr><tr class=""><td>04/12</td><td><span class="dir-tag dir-tag-wait">🟡观</span></td><td>-</td><td style="color:#f7931a">—</td><td style="color:#fca5a5">—</td><td style="color:#86efac">—</td><td style="color:#86efac">—</td><td><span class="rb-skip">跳过</span></td><td>—</td><td style="color:#64748b;font-size:11px">skip</td></tr><tr class=""><td>04/13</td><td><span class="dir-tag dir-tag-wait">🟡观</span></td><td>-</td><td style="color:#f7931a">—</td><td style="color:#fca5a5">—</td><td style="color:#86efac">—</td><td style="color:#86efac">—</td><td><span class="rb-skip">跳过</span></td><td>—</td><td style="color:#64748b;font-size:11px">skip</td></tr><tr class=""><td>04/14</td><td><span class="dir-tag dir-tag-long">🟢多</span></td><td>+1.8%</td><td style="color:#f7931a">$73,500–$74,000</td><td style="color:#fca5a5">$72,000</td><td style="color:#86efac">$75,500</td><td style="color:#86efac">$77,500</td><td><span class="rb-tp2">TP2达成</span></td><td>2.6:1</td><td style="color:#64748b;font-size:11px">TP2 hit</td></tr><tr class=""><td>04/15</td><td><span class="dir-tag dir-tag-long">🟢多</span></td><td>-1.2%</td><td style="color:#f7931a">$75,000–$75,500</td><td style="color:#fca5a5">$73,800</td><td style="color:#86efac">$77,000</td><td style="color:#86efac">$78,500</td><td><span class="rb-sl">止损</span></td><td>—</td><td style="color:#64748b;font-size:11px">SL hit</td></tr><tr class=""><td>04/16</td><td><span class="dir-tag dir-tag-short">🔴空</span></td><td>+1.8%</td><td style="color:#f7931a">$75,000–$75,500</td><td style="color:#fca5a5">$76,800</td><td style="color:#86efac">$73,800</td><td style="color:#86efac">$72,500</td><td><span class="rb-tp1">TP1达成</span></td><td>1.9:1</td><td style="color:#64748b;font-size:11px">TP1 hit</td></tr><tr class=""><td>04/17</td><td><span class="dir-tag dir-tag-short">🔴空</span></td><td>+1.8%</td><td style="color:#f7931a">$74,800–$75,200</td><td style="color:#fca5a5">$76,500</td><td style="color:#86efac">$73,500</td><td style="color:#86efac">$72,000</td><td><span class="rb-tp2">TP2达成</span></td><td>2.4:1</td><td style="color:#64748b;font-size:11px">TP2 hit</td></tr><tr class=""><td>04/18</td><td><span class="dir-tag dir-tag-long">🟢多</span></td><td>+1.8%</td><td style="color:#f7931a">$73,000–$73,500</td><td style="color:#fca5a5">$71,500</td><td style="color:#86efac">$75,000</td><td style="color:#86efac">$77,000</td><td><span class="rb-tp2">TP2达成</span></td><td>2.8:1</td><td style="color:#64748b;font-size:11px">TP2 hit</td></tr><tr class=""><td>04/19</td><td><span class="dir-tag dir-tag-long">🟢多</span></td><td>-1.2%</td><td style="color:#f7931a">$75,000–$75,500</td><td style="color:#fca5a5">$73,700</td><td style="color:#86efac">$77,000</td><td style="color:#86efac">$78,500</td><td><span class="rb-sl">止损</span></td><td>—</td><td style="color:#64748b;font-size:11px">用户确认为止损 | manual override - DO NOT OVERWRITE</td></tr><tr class=""><td>04/20</td><td><span class="dir-tag dir-tag-short">🔴空</span></td><td>-1.2%</td><td style="color:#f7931a">$73,092–$74,222</td><td style="color:#fca5a5">$75,500</td><td style="color:#86efac">$71,984</td><td style="color:#86efac">$70,119</td><td><span class="rb-sl">止损</span></td><td>0.7:1</td><td style="color:#64748b;font-size:11px">SL hit | 方向做反，BTC未能持续下跌</td></tr><tr class=""><td>04/21</td><td><span class="dir-tag dir-tag-long">🟢多</span></td><td>-</td><td style="color:#f7931a">$75,000–$75,300</td><td style="color:#fca5a5">$73,800</td><td style="color:#86efac">$77,500</td><td style="color:#86efac">$78,500</td><td><span class="rb-wait">未触发</span></td><td>2.0:1</td><td style="color:#64748b;font-size:11px">HIGH=$77,167 LOW=$74,822 | 未进入进场区间</td></tr><tr class=""><td>04/22</td><td><span class="dir-tag dir-tag-long">🟢多</span></td><td>+1.8%</td><td style="color:#f7931a">$76,000–$76,500</td><td style="color:#fca5a5">$75,750</td><td style="color:#86efac">$78,000</td><td style="color:#86efac">$79,500</td><td><span class="rb-tp1">TP1达成</span></td><td>2.8:1</td><td style="color:#64748b;font-size:11px">TP1达成 | high=79444>=78000</td></tr><tr class="today-row"><td>04/23<span class='today-badge'>TODAY</span></td><td><span class="dir-tag dir-tag-long">🟢多</span></td><td>-</td><td style="color:#f7931a">$76,500–$77,000</td><td style="color:#fca5a5">$75,750</td><td style="color:#86efac">$79,500</td><td style="color:#86efac">$81,000</td><td><span class="rb-open">▶进行中</span></td><td>3.0:1</td><td style="color:#64748b;font-size:11px">等待策略区确认</td></tr><tr class='summary-row'><td colspan='10'>✅ 盈利7笔 | ✗ 亏损3笔 | ⬛ 保本4笔 | ▶ 进行中1笔 | 14天胜率 <b style='color:#f7931a'>50.0%</b> | 本月累计 <b style='color:#22c55e'>+1910%</b></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>错误分类统计 · 本月</div><div class='tag-stamp'>硬性标准</div></div>
+<div class='section-body'>
+<div class='error-grid'>
+<div class='error-cell'><div class='icon'>😡</div><div class='num'>3</div><div class='lbl'>情绪化交易</div></div>
+<div class='error-cell'><div class='icon'>⚡</div><div class='num'>0</div><div class='lbl'>追单/报复加仓</div></div>
+<div class='error-cell'><div class='icon'>🔀</div><div class='num'>0</div><div class='lbl'>随意移动止损</div></div>
+<div class='error-cell'><div class='icon'>📋</div><div class='num'>0</div><div class='lbl'>未过检查清单</div></div>
+<div class='error-cell'><div class='icon'>📉</div><div class='num'>0</div><div class='lbl'>盈亏比&lt;2:1</div></div>
+<div class='error-cell ok-cell'><div class='icon'>✅</div><div class='num'>9</div><div class='lbl'>正确执行</div></div>
+</div>
+<div class='error-rate'>本月错误率 = <span>3/16 = 19%</span>（目标&lt;10%）</div>
+<div class='improve'><strong>💡 改进建议：</strong>04-20做空方向错误，说明$74K区域趋势未反转前不要逆势追空，下次碰到震荡区优先等待突破确认</div>
+</div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>近14天胜率柱状图</div><div class='tag-stamp'>硬性标准</div></div>
+<div class='section-body'>
+<div class='chart-wrap'><div class='bar-row' id='bar14'></div></div>
+<div style='margin-top:10px;background:#1e293b;border-radius:10px;padding:10px;text-align:center;font-size:12px;color:#94a3b8'>
+✅ 盈利7笔 | ✗ 亏损3笔 | ⬛ 保本4笔 | <b style='color:#f7931a'>14天胜率 50.0%</b> | 本月累计 <b style='color:#22c55e'>+1910%</b>
+</div>
+</div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>近30天胜率趋势折线图</div><div class='tag-stamp'>硬性标准</div></div>
+<div class='section-body'>
+<div class='line-chart-wrap'><svg id='line30' width='100%' height='150' viewBox='0 0 700 150'></svg></div>
+<div style='margin-top:10px;background:#1e293b;border-radius:10px;padding:10px;text-align:center;font-size:12px;color:#94a3b8'>
+30天盈利9笔 | 亏损3笔 | 保本4笔 | <b style='color:#f7931a'>30天胜率 56.2%</b>
+</div>
+</div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>昨日复盘 · 2026-04-22</div></div>
+<div class='section-body'>
+<div class='review-block'><div class='review-date'> 2026-04-22</div><div class='review-detail'><strong>BTC 做多</strong> | 入场 76000-76500 | SL 75750 | TP 78000/79500<br>结果：<span style='color:#22c55e'>TP1达成</span> | 盈亏比 2.8 | TP1达成 | high=79444>=78000</div><div class='score-dots'><div class='score-dot filled'></div><div class='score-dot filled'></div><div class='score-dot filled'></div><div class='score-dot filled'></div><div class='score-dot filled'></div><div class='score-dot filled'></div><div class='score-dot filled'></div><div class='score-dot filled'></div><div class='score-dot filled'></div><div class='score-dot filled'></div></div></div></div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>本周综合复盘</div></div>
+<div class='section-body'>
+<div class='week-summary'><div class='week-stat'><div class='v'>3</div><div class='lbl'>本周交易次数</div></div><div class='week-stat'><div class='v' style='color:#22c55e'>1胜</div><div class='lbl'>胜</div></div><div class='week-stat'><div class='v' style='color:#ef4444'>0负</div><div class='lbl'>负</div></div><div class='week-stat'><div class='v'>33%</div><div class='lbl'>本周胜率</div></div></div><div class='max-win'>🏆 本周最大单笔盈利：04-21 LONG，$77,500 TP1达成</div>
+<div class='max-loss'>💀 本周最大单笔亏损：04-20 SHORT方向做反，止损触发，亏损约1200U</div>
+<div style='margin-top:10px;background:#1a1f2e;border-radius:8px;padding:10px;font-size:12px;color:#94a3b8'>
+<strong style='color:#fcd34d'>本周最大失误：</strong>04-20做空方向错误，BTC在$73K强支撑区域企稳后大幅反弹<br>
+<strong style='color:#86efac'>下周唯一改进：</strong>趋势未确认反转前，不在强支撑区域逆势追空，优先等待突破确认
+</div>
+<div style='margin-top:10px;background:#1e293b;border-radius:8px;padding:10px;font-size:12px;color:#64748b'>
+<strong>📅 下周宏观预告：</strong>04-25 特朗普关税演讲(高) | 04-29 FOMC利率决议(极高) | 05-02 4月非农(极高)
+</div>
+</div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>月回顾统计 · 2026年4月</div><div class='tag-stamp'>硬性标准</div></div>
+<div class='section-body'>
+<div class='month-grid'><div class='month-cell'><div class='val' style='color:#22c55e'>+1910%</div><div class='lbl'>本月累计收益</div><div class='badge-yellow'>年化估算~+7640%</div></div><div class='month-cell'><div class='val'>16</div><div class='lbl'>本月交易日</div><div class='badge-green'>日均0.8笔</div></div><div class='month-cell'><div class='val'>56.2%</div><div class='lbl'>本月胜率</div><div class='badge-green'>✅达标≥55%</div></div><div class='month-cell'><div class='val'>2.2:1</div><div class='lbl'>平均盈亏比</div><div class='badge-green'>✅达标≥2:1</div></div><div class='month-cell'><div class='val'>200%</div><div class='lbl'>最大回撤</div><div class='badge-red'>❌超红线</div></div><div class='month-cell'><div class='val' style='color:#22c55e'>3</div><div class='lbl'>本月执行失误</div><div class='badge-yellow'>情绪化追空</div></div></div></div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>当前持仓分布</div></div>
+<div class='section-body'>
+<table class='pos-table'>
+<tr><td>BTC</td><td style='color:#22c55e'>LONG</td><td>入场 约$78,182</td><td style='color:#22c55e'>+2.46% 浮动</td></tr>
+<tr><td>ETH</td><td style='color:#94a3b8'>无持仓</td><td>—</td><td style='color:#64748b'>观望</td></tr>
+<tr><td>SOL</td><td style='color:#94a3b8'>无持仓</td><td>—</td><td style='color:#64748b'>观望</td></tr>
+</table>
+<div class='risk-warn'>⚠️ 风险敞口提醒：总仓位保证金占比建议 ≤30%，当前无仓位敞口 ✅</div>
+</div>
+</div>
+
+<div class='section'>
+<div class='section-title-wrap'><div class='bar'></div><div class='section-title'>英文 X 推文草稿</div></div>
+<div class='section-body'>
+<div class='x-tweet'>
+<div class='x-header'>📝 140-280字 · 可直接发布 · 建议配 BTC K线截图</div>
+<div id='tweet-content'>BTC 04-23 Update
+
+$78,182 (+2.46% 24h) | RSI 68 | MACD 金叉
+
+主做多 Bias | Entry: 回踩 76,079–79,444 | SL: $74,793 | TP1: $79,444 | TP2: $81,524
+
+RR 2.5:1 | Confidence: 68/100
+
+14-day win rate: 50% | Monthly: +1910%
+
+⚠️ Macro watch: PMI Thu + FOMC Apr 29 + NFP May 2
+
+#BTC #Crypto #Trading #LongSignal</div>
+</div>
+</div>
+</div>
+
+<div class='disclaimer'>
+<strong>⚠️ 本报告仅供学习交流与个人复盘使用，不构成任何投资建议。</strong><br>
+加密货币合约交易风险极高，可能导致全部本金损失。<br>
+请根据自身风险承受能力谨慎决策。
+</div>
+
+<div class='footer'>
+报告编号: BTC-DR-20260423 · 生成时间: 2026-04-23 09:20 UTC+8 · MK Trading System v2.2
+</div>
+
+<script>
+var btcChg = document.getElementById('btc-chg');
+btcChg.className = 'chg ' + ('up' if btc_24h_change >= 0 else 'dn');
+btcChg.textContent = '+2.46% 24h';
+var barData14 = [{"d": "0409", "r": "WIN"}, {"d": "0410", "r": "WIN"}, {"d": "0411", "r": "SKIP"}, {"d": "0412", "r": "SKIP"}, {"d": "0413", "r": "SKIP"}, {"d": "0414", "r": "WIN"}, {"d": "0415", "r": "LOSS"}, {"d": "0416", "r": "WIN_TP1"}, {"d": "0417", "r": "WIN"}, {"d": "0418", "r": "WIN"}, {"d": "0419", "r": "LOSS"}, {"d": "0420", "r": "LOSS"}, {"d": "0421", "r": "BREAK_EVEN"}, {"d": "0422", "r": "WIN_TP1"}, {"d": "0423", "r": "OPEN"}];
+var barWrap = document.getElementById('bar14');
+barData14.forEach(function(b){
+  var col = document.createElement('div'); col.className='bar-col';
+  var bar = document.createElement('div'); bar.className='bar';
+  var clr = (b.r==='WIN'||b.r==='WIN_TP1')?'#22c55e':b.r==='LOSS'?'#ef4444':'#475569';
+  var hgt = (b.r==='WIN'||b.r==='WIN_TP1')?70:b.r==='LOSS'?65:b.r==='OPEN'?55:30;
+  bar.style.background=clr; bar.style.height=hgt+'px';
+  var lbl = document.createElement('div'); lbl.className='bar-label'; lbl.textContent=b.d.slice(2);
+  col.appendChild(bar); col.appendChild(lbl); barWrap.appendChild(col);
+});
+var vals30 = [1, 1, 1, 1, 0.5, 0.5, 0.5, 1, 0, 1, 1, 1, 0, 0, 0.5, 1];
+var svg = document.getElementById('line30');
+var n = vals30.length || 1;
+var running = 0;
+var cum = vals30.map(function(v){ running += (v===1?1:v===0?-1:0); return running; });
+if(cum.length === 0) cum = [0];
+var mx = Math.max.apply(null, cum.concat([1]));
+var mn = Math.min.apply(null, cum.concat([0]));
+var range = mx - mn || 1;
+var W=700, H=130, PAD=12;
+var pts = cum.map(function(v,i){ return [(i/(n-1||1))*(W-2*PAD)+PAD, H-PAD-(v-mn)/range*(H-2*PAD)]; });
+var poly = pts.map(function(p){ return p[0]+','+p[1]; }).join(' ');
+svg.innerHTML = '<polyline points="'+poly+'" fill="none" stroke="#7c3aed" stroke-width="2" opacity="0.8"/>';
+svg.innerHTML += '<polygon points="'+PAD+','+H+','+poly+' '+(W-PAD)+','+H+'" fill="#7c3aed" opacity="0.1"/>';
+pts.forEach(function(p){ svg.innerHTML += '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3" fill="#a855f7"/>'; });
+svg.innerHTML += '<line x1="'+PAD+'" y1="'+(H-PAD-(0-mn)/range*(H-2*PAD))+'" x2="'+(W-PAD)+'" y2="'+(H-PAD-(0-mn)/range*(H-2*PAD))+'" stroke="#334155" stroke-dasharray="4,4" opacity="0.5"/>';
+</script>
+</body>
+</html>

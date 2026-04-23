@@ -166,7 +166,7 @@
     "rr": 0,
     "result": "LOSS",
     "auto_resolved": false,
-    "resolve_note": "用户确认为止损 | manual override - DO NOT OVERWRITE",
+    "resolve_note": "\u7528\u6237\u786e\u8ba4\u4e3a\u6b62\u635f | manual override - DO NOT OVERWRITE",
     "pnl": -1800
   },
   {
@@ -180,7 +180,7 @@
     "rr": 0.65,
     "result": "LOSS",
     "auto_resolved": true,
-    "resolve_note": "SL hit | 方向做反，BTC未能持续下跌",
+    "resolve_note": "SL hit | \u65b9\u5411\u505a\u53cd\uff0cBTC\u672a\u80fd\u6301\u7eed\u4e0b\u8dcc",
     "pnl": -1200
   },
   {
@@ -194,19 +194,19 @@
     "rr": 2.0,
     "result": "BREAK_EVEN",
     "auto_resolved": true,
-    "resolve_note": "HIGH=$77,167 LOW=$74,822 | 未进入进场区间"
+    "resolve_note": "HIGH=$77,167 LOW=$74,822 | \u672a\u8fdb\u5165\u8fdb\u573a\u533a\u95f4"
   },
   {
     "date": "20260422",
-    "direction": "WAIT",
-    "entry_low": 77048.79,
-    "entry_high": 77434.03,
-    "stop_loss": 78204.52,
-    "tp1": 74737.33,
-    "tp2": 72811.11,
-    "rr": 2.0,
-    "result": "OPEN",
-    "auto_resolved": false,
-    "resolve_note": ""
+    "direction": "LONG",
+    "entry_low": 76000,
+    "entry_high": 76500,
+    "stop_loss": 75750,
+    "tp1": 78000,
+    "tp2": 79500,
+    "rr": 2.8,
+    "result": "WIN_TP1",
+    "auto_resolved": true,
+    "resolve_note": "TP1\u8fbe\u6210 | high=79444>=78000"
   }
 ]
