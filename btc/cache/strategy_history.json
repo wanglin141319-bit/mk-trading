@@ -208,5 +208,31 @@
     "result": "WIN_TP1",
     "auto_resolved": true,
     "resolve_note": "TP1\u8fbe\u6210 | high=79444>=78000"
+  },
+  {
+    "date": "20260423",
+    "direction": "LONG",
+    "entry_low": 76500,
+    "entry_high": 77000,
+    "stop_loss": 75750,
+    "tp1": 79500,
+    "tp2": 81000,
+    "rr": 3.0,
+    "result": "TRIGGERED_NO_TP",
+    "auto_resolved": true,
+    "resolve_note": "LOW=76960<=77000(\u89e6\u53d1) | HIGH=78663<TP1=79500 | SL=75750\u672a\u89e6\u53ca | \u89e6\u53d1\u4f46\u672a\u8fbe\u6b62\u76c8"
+  },
+  {
+    "date": "20260424",
+    "direction": "LONG",
+    "entry_low": 77100,
+    "entry_high": 77500,
+    "stop_loss": 76200,
+    "tp1": 79500,
+    "tp2": 81000,
+    "rr": 2.7,
+    "result": "OPEN",
+    "auto_resolved": false,
+    "resolve_note": "\u7b49\u5f85\u7b56\u7565\u533a\u786e\u8ba4"
   }
 ]

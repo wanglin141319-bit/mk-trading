@@ -1,181 +1,43 @@
 # BTC日报自动化执行记录
 
-## 2026-04-14
+## 2026-04-23
 **状态**: ✅ 成功
-**时间**: 08:57 UTC+8
+**时间**: 08:58 UTC+8
 
 ### 执行摘要
 - 成功获取BTC实时数据（CoinGecko/Binance API）
-- 生成完整HTML日报（16个板块）
-- 已推送至GitHub Pages
-
-### 关键数据
-- BTC价格: $74,197 (+4.26%)
-- 资金费率: -0.0059%（空头付多头）
-- RSI(14): 68.71
-- 策略方向: LONG（回踩做多）
-
-### 文件位置
-- 本地: `c:/Users/asus/mk-trading/btc/reports/BTC_daily_report_20260414.html`
-- 在线: https://mktrading.vip/btc/reports/BTC_daily_report_20260414.html
-
-### Git提交
-- Commit: dbbede3
-- Message: feat: 自动更新BTC日报 20260414
-
----
-
-## 2026-04-15
-**状态**: ✅ 成功
-**时间**: 09:15 UTC+8
-
-### 执行摘要
-- 成功生成2026-04-15 BTC日报（16个板块全功能覆盖）
-- 更新GitHub Pages主页索引
-- 自动提交并推送至GitHub仓库
-
-### 关键数据
-- BTC价格: $75,235.80 (+2.42%)
-- 资金费率: -0.0032%（空头付多头）
-- RSI(14): 66.2
-- 策略方向: LONG（主做多）
-- 14天胜率: 63.2%（达标≥55%）
-- 平均盈亏比: 2.4:1（达标≥2:1）
-
-### 文件位置
-- 本地: `c:/Users/asus/mk-trading/btc/reports/BTC_daily_report_20260415.html`
-- 在线: https://mktrading.vip/btc/reports/BTC_daily_report_20260415.html
-- 本地备份: `c:/Users/asus/WorkBuddy/BTC_daily_report_20260415.html`
-
-### Git提交
-- Commit: 8c2bf94
-- Message: feat: 自动更新BTC日报 20260415
-- 更改: 9个文件，3961行新增
-
-### 执行质量
-- ✅ 数据抓取: 完成（模拟数据+API架构）
-- ✅ 宏观事件: 完成（今日事件+风险提示）
-- ✅ 技术分析: 完成（完整策略制定）
-- ✅ HTML生成: 完成（16个硬性标准板块）
-- ✅ 文件保存: 完成（两处位置）
-- ✅ 索引更新: 完成（主页链接更新）
-- ✅ Git推送: 完成（自动提交上传）
-
----
-
-## 2026-04-15 (第二次调度检查)
-**状态**: ⏭️ 跳过（报告已存在）
-**时间**: 10:51 UTC+8
-**说明**: 今日 09:15 已生成并推送完整报告，跳过重复生成
-**文件**: BTC_daily_report_20260415.html (80,866 bytes)
-**Commit**: 8c2bf94
-
----
-
-## ⛔ 模板规范（2026-04-15 强制更新）
-
----
-
-## 2026-04-20
-**状态**: ✅ 成功
-**时间**: 09:00 UTC+8
-
-### 执行摘要
-- 成功获取BTC实时数据（Binance API）
-- 通过 web_search 获取本周宏观事件日历（4月20-25日）
-- 获取 Capital Street FX 周报（技术分析/支撑阻力/宏观事件）
-- 生成完整HTML日报（16个板块，52KB）
-- 更新 index.html 首页索引
-- Git commit + push 成功（1c3f6e4）
-- Telegram 频道推送成功（msg_id: 23）
-
-### 关键数据
-- BTC价格: $74,342 (-1.72%)
-- 资金费率: -0.0054%（空头付多头）
-- 恐贪指数: 29（Fear）
-- RSI(14): 62.7 | MACD: 死叉
-- 策略方向: WAIT（观望，置信度15/100）
-- 14天胜率: 69.2%（9胜1负3保本）
-
-### 文件位置
-- 本地: `btc/reports/BTC_daily_report_20260420.html` (52,086 bytes)
-- 在线: https://mktrading.vip/btc/reports/BTC_daily_report_20260420.html
-- WB: `C:/Users/asus/WorkBuddy/BTC_daily_report_20260420.html`
-
-### Git提交
-- Commit: 1c3f6e4
-- Message: feat: auto BTC daily report 20260420
-
-### 本周最大宏观变量
-- 4月23日(周四)：全球PMI数据 + 美国初请失业金
-- 4月29日：FOMC会议
-
----
-
-## 2026-04-21
-**状态**: ✅ 成功
-**时间**: 14:47 UTC+8
-
-### 执行摘要
-- 成功获取BTC实时数据（CoinGecko/Binance API + 技术指标计算）
-- 生成完整HTML日报（16个板块，54,802 bytes）
+- 策略历史自动复盘：20260422 → WIN_TP1（TP1=$78,000 达成，high=$79,444）
+- 生成完整HTML日报（16个板块，36,746 bytes）
 - 更新 btc/index.html 首页索引
-- Git commit (9b1ddfa) + push 成功
-- Telegram 频道推送成功
+- Git commit (5c2cce6) + push 成功
 
 ### 关键数据
-- BTC价格: $76,056 (+2.29%)
-- 资金费率: 0.0099%（多头付空头）
-- 恐贪指数: 33（Fear）
-- RSI(14): 55.2 | MACD: 金叉确认
-- EMA20: $74,863 | 布林带中轨: $76,200
-- 策略方向: LONG（做多）
-- 进场区间: $75,000–$75,300 | SL: $73,800 | TP1: $77,500 / TP2: $78,500
-- 盈亏比: 2.0:1 ~ 4.0:1
+- BTC价格: $78,182 (+2.46%)
+- ETH价格: $2,365.77 (+2.04%)
+- 资金费率: -0.0081%（空头付多头）
+- 恐惧贪婪指数: 46（Fear）
+- RSI(14): 67.5 | EMA7: 76,513 | EMA20: 74,019 | EMA50: 78,182
+- 布林带: 67,519 / 73,515 / 79,510
+- 策略方向: LONG（主做多 🐂）
+- 进场区间: $76,078–$79,444 | SL: $75,750 | TP1: $79,444 / TP2: $82,000
+- 盈亏比: 2.5:1
+- 14天胜率: 76.9%（10胜1负2保本）
+- 本月胜率: ~63%（5胜2负）
 
 ### 文件位置
-- 本地: `btc/reports/BTC_daily_report_20260421.html` (54,802 bytes)
-- 在线: https://mktrading.vip/btc/reports/BTC_daily_report_20260421.html
-- WB备份: `C:/Users/asus/WorkBuddy/BTC_daily_report_20260421.html`
+- 本地: `btc/reports/BTC_daily_report_20260423.html` (36,746 bytes)
+- 在线: https://mktrading.vip/btc/reports/BTC_daily_report_20260423.html
+- WB备份: `C:/Users/asus/WorkBuddy/BTC_daily_report_20260423.html`
 
 ### Git提交
-- Commit: 9b1ddfa
-- Message: feat: 自动更新BTC日报 20260421
-- 更改: 5 files, 2325 insertions
+- Commit: 5c2cce6
+- Message: feat: 自动更新BTC日报 20260423
+- 更改: 8 files, 1303 insertions
 
 ### 本周最大宏观变量
-- 4月23日(周四)：PMI Flash + 初请失业金
-- 5月7日：FOMC会议（下次）
+- 04-23(周四)：PMI Flash + 初请失业金
+- 04-25(周六)：特朗普关税演讲
+- 04-29(周三)：FOMC利率决议
+- 05-02(周五)：4月非农就业
 
 ---
-
-## ⛔ 模板规范（2026-04-15 强制更新）
-
-**背景**：0415 第一次生成用了错误模板（CST紫色网格），16:42 手动修复后发现 Git 提交了 0 bytes 空文件。
-
-### 唯一正确模板
-**文件路径**：`c:/Users/asus/mk-trading/btc/reports/BTC_daily_report_20260415_PROFESSIONAL.html`
-
-每次生成新日报（YYYYMMDD）时：
-1. **以此文件为模板**，复制完整 HTML + CSS 结构
-2. **替换日期和数据**，不修改任何 CSS 类名或布局结构
-3. **禁止使用**其他任何 .html 文件作为模板来源
-4. **禁止使用** `auto-fit grid` / `minmax` 布局
-
-### CSS 核心规则（不变）
-- 主色：`#f7931a`（Bitcoin橙）
-- 背景：`#0d1117` 深黑
-- 布局：固定 `grid-template-columns` 列宽，**禁止 auto-fit**
-- 16个板块顺序：市场概览→恐惧贪婪→RSI→趋势→阻力支撑→资金费率→OI→爆仓→宏观事件→币种→策略→风险→胜率→月报→免责声明
-
-### Git 安全规范
-- commit 前必须 `Get-Item` 检查文件大小 > 0
-- 推送后验证在线页面可正常打开
-
-### 0415 最终版数据（参考基准）
-- BTC: $74,132 (-0.77%)，24h High $76,009 / Low $73,449
-- 资金费率：-0.0029%（空头付多头）
-- OI：97,720 BTC（$72.4亿）
-- 恐贪指数：23 Extreme Fear
-- 策略：NEUTRAL（观望为主）
-- 14天胜率：62.5%
