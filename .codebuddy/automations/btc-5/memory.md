@@ -1,5 +1,16 @@
 # BTC每日策略推送 - 执行记录
 
+## 2026-04-26 08:59 ✅ 成功
+- BTC: $77,490 (+0.04%) | ETH: $2,314 (-0.11%) | SOL: $86 (-0.30%)
+- 策略方向: BTC WAIT | ETH WAIT | SOL WAIT
+- Telegram message_id=65，已发送到 @bitebiwanglin
+
+## 2026-04-26 08:58 ✅ 成功
+- BTC: $77,514 (+0.07%) | ETH: $2,315 (-0.07%) | SOL: $86 (-0.25%)
+- 策略方向: BTC WAIT | ETH WAIT | SOL WAIT
+- Telegram message_id=64，已发送到 @bitebiwanglin
+
+
 ## 2026-04-24 09:00 ✅ 成功
 - BTC: $78,386 (-0.03%) | ETH: $2,332 (-1.69%) | SOL: $86 (-0.72%)
 - 策略方向: BTC WAIT | ETH LONG | SOL WAIT

@@ -244,8 +244,21 @@
     "tp1": 0,
     "tp2": 0,
     "rr": 0,
+    "result": "SKIP",
+    "auto_resolved": true,
+    "resolve_note": "周末观望策略，未触发任何入场信号"
+  },
+  {
+    "date": "20260426",
+    "direction": "WAIT",
+    "entry_low": 0,
+    "entry_high": 0,
+    "stop_loss": 0,
+    "tp1": 0,
+    "tp2": 0,
+    "rr": 0,
     "result": "OPEN",
     "auto_resolved": false,
-    "resolve_note": "Weekend + Trump tariff speech uncertainty. Wait."
+    "resolve_note": "周日观望策略，RSI超买+FOMC临近，等待周一方向确认"
   }
 ]

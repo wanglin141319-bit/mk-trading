@@ -1,0 +1,102 @@
+{
+  "btc": {
+    "price": 77505,
+    "change_24h": 0.01632,
+    "high_24h": 77878,
+    "low_24h": 77238,
+    "vol_24h": 17072854182,
+    "market_cap": 1552342733772,
+    "vol_btc": 220280.68101412812
+  },
+  "eth": {
+    "price": 2314.45,
+    "change_24h": -0.11842,
+    "high_24h": 2322.59,
+    "low_24h": 2306.12
+  },
+  "funding": {
+    "rate": 0.000241,
+    "symbol": "BTCUSDT"
+  },
+  "oi": {
+    "open_interest": 95698.425,
+    "oi_usd": 7417106429.625,
+    "long_short_ratio": 0.804,
+    "long_ratio": 0.4457,
+    "short_ratio": 0.5543
+  },
+  "fear_greed": {
+    "value": 33,
+    "classification": "Fear"
+  },
+  "technical": {
+    "rsi": 71.49,
+    "macd": 2037.22,
+    "macd_signal": 1854.37,
+    "macd_hist": 182.85,
+    "macd_cross": "GOLDEN",
+    "ema7": 77112.98,
+    "ema20": 74992.24,
+    "ema50": 72325.48,
+    "bb_upper": 79597.14,
+    "bb_middle": 74889.71,
+    "bb_lower": 70182.29,
+    "close": 77511.01
+  },
+  "liquidation": {
+    "total_24h": 120,
+    "long_24h": 75,
+    "short_24h": 45
+  },
+  "whale": {
+    "exchange_inflow": 1467.0,
+    "exchange_outflow": 1223.0,
+    "net_flow": 245.0,
+    "whale_count": 1842,
+    "note": "Estimated from exchange volume"
+  },
+  "macro": {
+    "events": [
+      {
+        "time": "全天",
+        "flag": "🇺🇸",
+        "event": "FOMC静默期（利率决议前静默窗口，无美联储讲话）",
+        "importance": "high",
+        "impact": "FOMC将于04-29-30召开，美联储官员已进入静默期，市场处于等待观望状态"
+      },
+      {
+        "time": "周日",
+        "flag": "🌍",
+        "event": "美国Q1 GDP初估（预定04-30发布）预期前瞻",
+        "importance": "medium",
+        "impact": "市场已开始定价Q1 GDP放缓预期（预期+0.4%），若数据差于预期可能利好BTC"
+      },
+      {
+        "time": "本周",
+        "flag": "🇺🇸",
+        "event": "关税谈判进展持续影响（特朗普周六演讲余震）",
+        "importance": "high",
+        "impact": "特朗普关税立场软化信号已推动上周BTC反弹，本周需关注谈判实质性进展"
+      },
+      {
+        "time": "04-29",
+        "flag": "🇺🇸",
+        "event": "🚨 FOMC利率决议（最高影响）",
+        "importance": "high",
+        "impact": "本周最大催化剂。市场预期维持利率不变，但鲍威尔讲话措辞至关重要"
+      },
+      {
+        "time": "05-02",
+        "flag": "🇺🇸",
+        "event": "4月非农就业报告",
+        "importance": "high",
+        "impact": "非农数据将影响下一步降息预期，强数据可能再次抑制风险资产"
+      }
+    ],
+    "weekly_key": {
+      "event": "⚠️ 04-29 FOMC利率决议",
+      "description": "本周最大宏观变量。市场预期维持5.25-5.50%不变，重点是鲍威尔对\"降息时间表\"的措辞。若偏鸽则BTC可继续上行，若偏鹰则面临回调压力。",
+      "action": "04-29决议前后24h控制仓位，不宜在决议前大仓位追多/追空"
+    }
+  }
+}
