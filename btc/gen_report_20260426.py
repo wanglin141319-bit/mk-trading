@@ -1028,20 +1028,20 @@ except Exception as e:
 # ===== Git commit + push =====
 log('Git commit + push...')
 try:
-    r1 = subprocess.run(['git', '-C', BASE_DIR, 'add', '.'], capture_output=True, text=True, timeout=30)
+    r1 = subprocess.run(['git', '-C', BASE_DIR, 'add', '.'], capture_output=True, text=True, timeout=30, encoding='utf-8', errors='replace')
     log(f'Git add: rc={r1.returncode}')
     
     commit_msg = f'feat: 自动更新BTC日报 20260426 - 周日观望策略，RSI超买71.5+FOMC临近'
-    r2 = subprocess.run(['git', '-C', BASE_DIR, 'commit', '-m', commit_msg], capture_output=True, text=True, timeout=30)
+    r2 = subprocess.run(['git', '-C', BASE_DIR, 'commit', '-m', commit_msg], capture_output=True, text=True, timeout=30, encoding='utf-8', errors='replace')
     if r2.returncode != 0:
         if 'nothing to commit' in r2.stdout.lower() or 'nothing to commit' in r2.stderr.lower():
             log('Git: nothing to commit (already pushed today)')
         else:
             log(f'Git commit failed: {r2.stderr[:150]}', 'ERROR')
     else:
-        log(f'Git committed: {r2.stdout[:100]}')
+        log(f'Git committed OK')
         
-        r3 = subprocess.run(['git', '-C', BASE_DIR, 'push', 'origin', 'main'], capture_output=True, text=True, timeout=60)
+        r3 = subprocess.run(['git', '-C', BASE_DIR, 'push', 'origin', 'main'], capture_output=True, text=True, timeout=60, encoding='utf-8', errors='replace')
         if r3.returncode == 0:
             log('Git push: SUCCESS')
         else:
