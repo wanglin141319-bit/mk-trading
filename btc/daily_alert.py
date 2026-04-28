@@ -35,9 +35,16 @@ def load_config():
     return None
 
 def fetch_crypto_data():
-    """获取BTC/ETH/SOL实时数据"""
+    """获取BTC/ETH/SOL实时数据，CoinGecko优先，Binance回退"""
+    data = _fetch_coingecko()
+    if data:
+        return data
+    print("[WARN] CoinGecko失败，切换Binance API...")
+    return _fetch_binance()
+
+def _fetch_coingecko():
+    """CoinGecko数据源"""
     try:
-        # CoinGecko API - 免费，无需Key
         url = "https://api.coingecko.com/api/v3/simple/price"
         params = {
             'ids': 'bitcoin,ethereum,solana',
@@ -49,10 +56,7 @@ def fetch_crypto_data():
         data = r.json()
         
         # 恐惧贪婪指数
-        fg_url = "https://api.alternative.me/fng/?limit=1"
-        fg_r = requests.get(fg_url, timeout=10)
-        fg_data = fg_r.json()
-        fear_greed = fg_data['data'][0] if fg_data.get('data') else {'value': 50, 'value_classification': 'Neutral'}
+        fear_greed = _fetch_fear_greed()
         
         return {
             'btc': {
@@ -70,8 +74,40 @@ def fetch_crypto_data():
             'fear_greed': fear_greed
         }
     except Exception as e:
-        print(f"[ERROR] 数据获取失败: {e}")
+        print(f"[WARN] CoinGecko获取失败: {e}")
         return None
+
+def _fetch_binance():
+    """Binance数据源（备用）"""
+    try:
+        symbols = {'btc': 'BTCUSDT', 'eth': 'ETHUSDT', 'sol': 'SOLUSDT'}
+        result = {}
+        for key, symbol in symbols.items():
+            url = f"https://api.binance.com/api/v3/ticker/24hr"
+            r = requests.get(url, params={'symbol': symbol}, timeout=10)
+            d = r.json()
+            result[key] = {
+                'price': float(d['lastPrice']),
+                'change': float(d['priceChangePercent']),
+            }
+        
+        fear_greed = _fetch_fear_greed()
+        result['fear_greed'] = fear_greed
+        return result
+    except Exception as e:
+        print(f"[ERROR] Binance获取失败: {e}")
+        return None
+
+def _fetch_fear_greed():
+    """获取恐惧贪婪指数"""
+    try:
+        fg_url = "https://api.alternative.me/fng/?limit=1"
+        fg_r = requests.get(fg_url, timeout=10)
+        fg_data = fg_r.json()
+        return fg_data['data'][0] if fg_data.get('data') else {'value': 50, 'value_classification': 'Neutral'}
+    except Exception as e:
+        print(f"[WARN] 恐惧贪婪指数获取失败: {e}")
+        return {'value': 50, 'value_classification': 'Neutral'}
 
 def analyze_strategy(data):
     """基于数据生成策略方向"""
