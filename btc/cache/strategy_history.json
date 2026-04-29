@@ -257,8 +257,47 @@
     "tp1": 0,
     "tp2": 0,
     "rr": 0,
+    "result": "SKIP",
+    "auto_resolved": true,
+    "resolve_note": "周日观望策略，RSI超买+FOMC临近，正确保持空仓"
+  },
+  {
+    "date": "20260427",
+    "direction": "WAIT",
+    "entry_low": 0,
+    "entry_high": 0,
+    "stop_loss": 0,
+    "tp1": 0,
+    "tp2": 0,
+    "rr": 0,
+    "result": "SKIP",
+    "auto_resolved": true,
+    "resolve_note": "观望策略，FOMC前谨慎，BTC涨+2.3%但未入场，保本"
+  },
+  {
+    "date": "20260428",
+    "direction": "WAIT",
+    "entry_low": 76000,
+    "entry_high": 76459,
+    "stop_loss": 75000,
+    "tp1": 78500,
+    "tp2": 79500,
+    "rr": 2.5,
     "result": "OPEN",
     "auto_resolved": false,
-    "resolve_note": "周日观望策略，RSI超买+FOMC临近，等待周一方向确认"
+    "resolve_note": "谨慎观望，等$76,000-$76,459支撑确认入场，FOMC前缩仓"
+  },
+  {
+    "date": "20260429",
+    "direction": "SHORT",
+    "entry_low": 76104.33,
+    "entry_high": 73121.45,
+    "stop_loss": 77863.52,
+    "tp1": 73809.72,
+    "tp2": 71897.55,
+    "rr": 1.94,
+    "result": "OPEN",
+    "auto_resolved": false,
+    "resolve_note": ""
   }
 ]
