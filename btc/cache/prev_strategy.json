@@ -1,18 +1,19 @@
 {
   "direction": "SHORT",
-  "confidence": 20,
+  "confidence": 30,
   "signals": [
     "极端恐惧，可能存在超卖反弹机会",
     "MACD 死叉，看空",
-    "价格 > EMA20，短期趋势偏多"
+    "价格 > EMA20，短期趋势偏多",
+    "价格 < EMA50，中期趋势偏空"
   ],
-  "resistance": 77154.0,
-  "entry_low": 76104.33,
+  "resistance": 77904.93,
+  "entry_low": 75212.04,
   "entry_high": 73121.45,
-  "stop_loss": 77863.52,
-  "tp1": 73809.72,
-  "tp2": 71897.55,
-  "rr_ratio": 1.94,
+  "stop_loss": 77358.15,
+  "tp1": 72944.34,
+  "tp2": 71054.59,
+  "rr_ratio": 1.5,
   "position_size": "10-15%",
   "trigger_condition": "反弹至 73121.0 滞涨后做空"
 }

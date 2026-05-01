@@ -1,0 +1,402 @@
+{
+  "ISR": {
+    "fertility": {
+      "year": "2024",
+      "value": 2.87
+    },
+    "urban": {
+      "year": "2024",
+      "value": 91.536188843818
+    }
+  },
+  "KOR": {
+    "fertility": {
+      "year": "2024",
+      "value": 0.748
+    },
+    "urban": {
+      "year": "2024",
+      "value": 81.1682528469686
+    }
+  },
+  "NGA": {
+    "fertility": {
+      "year": "2024",
+      "value": 4.382
+    },
+    "urban": {
+      "year": "2024",
+      "value": 62.9755675573659
+    }
+  },
+  "DEU": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.36
+    },
+    "urban": {
+      "year": "2024",
+      "value": 82.0211432579125
+    }
+  },
+  "FRA": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.61
+    },
+    "urban": {
+      "year": "2024",
+      "value": 78.7999750964116
+    }
+  },
+  "GBR": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.551
+    },
+    "urban": {
+      "year": "2024",
+      "value": 83.2429544416085
+    }
+  },
+  "BRA": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.614
+    },
+    "urban": {
+      "year": "2024",
+      "value": 87.8958549533146
+    }
+  },
+  "MEX": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.892
+    },
+    "urban": {
+      "year": "2024",
+      "value": 79.7538805976118
+    }
+  },
+  "IDN": {
+    "fertility": {
+      "year": "2024",
+      "value": 2.115
+    },
+    "urban": {
+      "year": "2024",
+      "value": 58.7509635387997
+    }
+  },
+  "PHL": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.894
+    },
+    "urban": {
+      "year": "2024",
+      "value": 55.4520983215477
+    }
+  },
+  "VNM": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.895
+    },
+    "urban": {
+      "year": "2024",
+      "value": 38.4900703430176
+    }
+  },
+  "THA": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.204
+    },
+    "urban": {
+      "year": "2024",
+      "value": 61.8689338391321
+    }
+  },
+  "MYS": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.543
+    },
+    "urban": {
+      "year": "2024",
+      "value": 76.9170296648992
+    }
+  },
+  "TUR": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.48
+    },
+    "urban": {
+      "year": "2024",
+      "value": 89.3443122873887
+    }
+  },
+  "ARG": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.504
+    },
+    "urban": {
+      "year": "2024",
+      "value": 92.2742315972952
+    }
+  },
+  "COL": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.634
+    },
+    "urban": {
+      "year": "2024",
+      "value": 78.5210811866115
+    }
+  },
+  "ZAF": {
+    "fertility": {
+      "year": "2024",
+      "value": 2.205
+    },
+    "urban": {
+      "year": "2024",
+      "value": 63.6917984858172
+    }
+  },
+  "EGY": {
+    "fertility": {
+      "year": "2024",
+      "value": 2.735
+    },
+    "urban": {
+      "year": "2024",
+      "value": 42.8004363938404
+    }
+  },
+  "PAK": {
+    "fertility": {
+      "year": "2024",
+      "value": 3.547
+    },
+    "urban": {
+      "year": "2024",
+      "value": 39.1734368360905
+    }
+  },
+  "BGD": {
+    "fertility": {
+      "year": "2024",
+      "value": 2.138
+    },
+    "urban": {
+      "year": "2024",
+      "value": 32.6783196323307
+    }
+  },
+  "AUS": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.481
+    },
+    "urban": {
+      "year": "2024",
+      "value": 87.6021469990446
+    }
+  },
+  "CAN": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.25
+    },
+    "urban": {
+      "year": "2024",
+      "value": 82.7002565766633
+    }
+  },
+  "RUS": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.418
+    },
+    "urban": {
+      "year": "2024",
+      "value": 75.1119136177067
+    }
+  },
+  "UKR": {
+    "fertility": {
+      "year": "2024",
+      "value": 0.988
+    },
+    "urban": {
+      "year": "2024",
+      "value": 69.5315643200148
+    }
+  },
+  "POL": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.14
+    },
+    "urban": {
+      "year": "2024",
+      "value": 59.9705468695101
+    }
+  },
+  "ITA": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.18
+    },
+    "urban": {
+      "year": "2024",
+      "value": 69.6047535143071
+    }
+  },
+  "ESP": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.1
+    },
+    "urban": {
+      "year": "2024",
+      "value": 80.315199821207
+    }
+  },
+  "SWE": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.43
+    },
+    "urban": {
+      "year": "2024",
+      "value": 88.8559748346228
+    }
+  },
+  "NOR": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.45
+    },
+    "urban": {
+      "year": "2024",
+      "value": 83.3293737928469
+    }
+  },
+  "FIN": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.25
+    },
+    "urban": {
+      "year": "2024",
+      "value": 74.2637190463636
+    }
+  },
+  "NLD": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.43
+    },
+    "urban": {
+      "year": "2024",
+      "value": 95.6396517079336
+    }
+  },
+  "CHE": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.29
+    },
+    "urban": {
+      "year": "2024",
+      "value": 85.4615370020764
+    }
+  },
+  "AUT": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.31
+    },
+    "urban": {
+      "year": "2024",
+      "value": 69.4658181096788
+    }
+  },
+  "BEL": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.44
+    },
+    "urban": {
+      "year": "2024",
+      "value": 87.6126557010527
+    }
+  },
+  "IRL": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.47
+    },
+    "urban": {
+      "year": "2024",
+      "value": 64.3470379255585
+    }
+  },
+  "NZL": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.57
+    },
+    "urban": {
+      "year": "2024",
+      "value": 83.9370658833132
+    }
+  },
+  "SGP": {
+    "fertility": {
+      "year": "2024",
+      "value": 0.97
+    },
+    "urban": {
+      "year": "2024",
+      "value": 100
+    }
+  },
+  "ARE": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.213
+    },
+    "urban": {
+      "year": "2024",
+      "value": 85.8171088279791
+    }
+  },
+  "SAU": {
+    "fertility": {
+      "year": "2024",
+      "value": 2.308
+    },
+    "urban": {
+      "year": "2024",
+      "value": 84.4554020211443
+    }
+  },
+  "QAT": {
+    "fertility": {
+      "year": "2024",
+      "value": 1.717
+    },
+    "urban": {
+      "year": "2024",
+      "value": 99.3219891728394
+    }
+  }
+}

@@ -1,42 +1,42 @@
 {
-  "ts": 1777429510.5665421,
+  "ts": 1777516859.438387,
   "data": {
-    "timestamp": "2026-04-29T10:25:02.499094",
+    "timestamp": "2026-04-30T10:38:04.916316",
     "btc": {
-      "price": 76486.76,
-      "change_24h": -0.85,
-      "high_24h": 77154.0,
-      "low_24h": 75666.6,
-      "vol_btc": 13480.34128,
+      "price": 75589.99,
+      "change_24h": -1.111,
+      "high_24h": 77904.93,
+      "low_24h": 74937.52,
+      "vol_btc": 18296.24218,
       "source": "binance"
     },
     "eth": {
-      "price": 2290.63,
-      "change_24h": -0.309,
+      "price": 2238.36,
+      "change_24h": -2.103,
       "source": "binance"
     },
     "funding": {
-      "rate": -0.0018700000000000001,
-      "next_time": 1777449600000,
+      "rate": -0.005595,
+      "next_time": 1777536000000,
       "source": "binance"
     },
     "oi": {
-      "long_ratio": 48.6,
-      "short_ratio": 51.4,
-      "long_short_ratio": 0.946,
+      "long_ratio": 51.4,
+      "short_ratio": 48.6,
+      "long_short_ratio": 1.058,
       "source": "binance_global"
     },
     "liquidation": {
-      "long_ratio": 45.1,
-      "short_ratio": 54.9,
-      "long_short_ratio": 0.822,
-      "trend_change": -0.005,
+      "long_ratio": 45.3,
+      "short_ratio": 54.7,
+      "long_short_ratio": 0.827,
+      "trend_change": -0.004,
       "source": "binance_top_ratio"
     },
     "fear_greed": {
-      "value": 26,
+      "value": 29,
       "classification": "Fear",
-      "prev_value": 33,
+      "prev_value": 26,
       "prev_classification": "Fear",
       "source": "alternative.me"
     },
@@ -74,14 +74,14 @@
         }
       ],
       "weekly_key": {
-        "week": "周三",
-        "date": "2026-04-29",
+        "week": "周四",
+        "date": "2026-04-30",
         "event": "FOMC会议纪要 / 美联储官员密集发声",
         "description": "本周美联储多位官员讲话，关注利率路径指引",
         "action": "数据公布前1小时禁止新开仓，已持仓带好止损"
       },
-      "week": "周三",
-      "date": "2026-04-29"
+      "week": "周四",
+      "date": "2026-04-30"
     }
   }
 }
