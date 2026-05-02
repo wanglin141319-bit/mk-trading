@@ -71,7 +71,54 @@ def auto_resolve_yesterday(data, prev_strategy, history):
       → BREAK_EVEN（真正的"等回踩未触发"）
     """
     # 不处理 WAIT/NEUTRAL 策略
-    if not prev_strategy or prev_strategy.get('direction') == 'WAIT' or prev_strategy.get('direction') == 'NEUTRAL':
+    # 【v2.3 升级】NEUTRAL/WAIT 策略也要做方向偏差判断
+    # 不再直接跳过，要对比"策略倾向"与"市场实际走势"
+    if not prev_strategy:
+        return history
+
+    if prev_strategy.get('direction') in ('WAIT', 'NEUTRAL'):
+        # 解析策略中的二级倾向（从 resolve_note 或 notes 里提取）
+        notes = prev_strategy.get('notes', '') or ''
+        strategy_text = (notes + ' ' + prev_strategy.get('direction_reason', '')).lower()
+
+        # 获取昨日实际市场走势（从 data 中取前一天的K线）
+        day_high = data.get('btc', {}).get('high_24h', 0)
+        day_low  = data.get('btc', {}).get('low_24h', 0)
+        day_chg  = data.get('btc', {}).get('price_change_24h', 0)
+
+        # 获取昨日策略的推荐方向文字
+        is_bearish_text = any(w in strategy_text for w in ['做空', '空', 'short', '偏空', '空头'])
+        is_bullish_text = any(w in strategy_text for w in ['做多', '多', 'long', '偏多', '多头'])
+
+        # 判断实际走势：涨幅 > 0.5% → 多头市场，< -0.5% → 空头市场，否则 → 震荡
+        if abs(day_chg) >= 0.5:
+            market_direction = 'BULL' if day_chg > 0 else 'BEAR'
+        else:
+            # 震荡：看高低点与前一天的关系（简化判断）
+            market_direction = 'RANGE'
+
+        # 判断方向偏差
+        direction_mismatch = False
+        bias_note = ''
+        if is_bearish_text and market_direction == 'BULL':
+            # 策略倾向做空，但市场实际大涨 → 方向完全判断错误
+            direction_mismatch = True
+            bias_note = f'市场大涨+{day_chg:.1f}%，策略倾向做空/观望，方向判断错误'
+        elif is_bullish_text and market_direction == 'BEAR':
+            direction_mismatch = True
+            bias_note = f'市场大跌{day_chg:.1f}%，策略倾向做多/观望，方向判断错误'
+        elif market_direction == 'BULL' and not is_bullish_text:
+            bias_note = f'市场上涨+{day_chg:.1f}%，策略倾向观望，未能把握做多机会'
+        elif market_direction == 'BEAR' and not is_bearish_text:
+            bias_note = f'市场下跌{day_chg:.1f}%，策略倾向观望，未能把握做空机会'
+
+        if direction_mismatch or bias_note:
+            if history:
+                last_note = history[-1].get('resolve_note', '')
+                if 'manual' not in last_note.lower():
+                    history[-1]['result'] = 'DIRECTION_ERROR'
+                    history[-1]['auto_resolved'] = True
+                    history[-1]['resolve_note'] = bias_note
         return history
 
     # 不处理今天日期的条目（auto_resolve 只复盘昨天）
@@ -750,6 +797,7 @@ def gen_section7_tracking_table(history, today_str):
             'LOSS': ('✗ 止损', 'rb-sl'),
             'BREAK_EVEN': ('⬛ 等回踩未触发', 'rb-wait'),  # v2.2: 明确"未触发"
             'TRIGGERED_NO_TP': ('⚠️ 触发未达止盈', 'rb-triggered'),  # v2.2: 新状态
+            'DIRECTION_ERROR': ('❌ 方向错误', 'rb-dir-err'),  # v2.3: NEUTRAL策略方向与市场背离
             'SKIP': ('⬛ 观望', 'rb-skip'),
             'OPEN': ('▶ 进行中', 'rb-open'),
         }
@@ -1079,7 +1127,7 @@ def generate_html(data, strategy, history):
     # ===== 策略追踪表 (近14天) =====
     hist_rows = ''
     for h in last_14:
-        result_map = {'WIN': 'win', 'WIN_TP1': 'win', 'LOSS': 'loss', 'BREAK_EVEN': 'break', 'TRIGGERED_NO_TP': 'triggered', 'SKIP': 'skip'}  # v2.2: 完整6态映射
+        result_map = {'WIN': 'win', 'WIN_TP1': 'win', 'LOSS': 'loss', 'BREAK_EVEN': 'break', 'TRIGGERED_NO_TP': 'triggered', 'SKIP': 'skip', 'DIRECTION_ERROR': 'loss'}  # v2.3: 方向错误计入亏损
         r = result_map.get(h.get('result', 'SKIP'), 'skip')
         score = h.get('score', 0)
         stars = ''.join(['\u2605' if i < score else '\u2606' for i in range(1, 11)])
