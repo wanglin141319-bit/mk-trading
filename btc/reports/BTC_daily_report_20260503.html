@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTC每日交易报告 2026-05-03</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background-color: #0d0f14;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header { 
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #2d3148;
+            margin-bottom: 30px;
+        }
+        .header h1 { 
+            color: #f7931a;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        .header .subtitle { color: #9e9e9e; font-size: 1rem; }
+        
+        /* 硬性标准板块标签 */
+        .hard-tag {
+            display: inline-block;
+            background-color: #9c27b0;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        /* 板块标题样式 */
+        .section-title {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin: 30px 0 15px 0;
+            padding-left: 15px;
+            border-left: 5px solid #9c27b0;
+        }
+        
+        /* 卡片容器 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background-color: #1a1d23;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .card h3 {
+            color: #bb86fc;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .card .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .card .subvalue { color: #9e9e9e; font-size: 0.9rem; }
+        
+        /* 价格展示 */
+        .price-hero {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #4caf50;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .price-change {
+            font-size: 1.2rem;
+            color: #4caf50;
+            text-align: center;
+        }
+        
+        /* 表格样式 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: #1a1d23;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #2d3148;
+        }
+        th { background-color: #2d3148; color: #bb86fc; }
+        tr:hover { background-color: #2d3148; }
+        
+        /* 进度条 */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #2d3148;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 5px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+        
+        /* 策略标签 */
+        .dir-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .dir-long { background-color: rgba(76, 175, 80, 0.2); color: #4caf50; }
+        .dir-short { background-color: rgba(244, 67, 54, 0.2); color: #f44336; }
+        .dir-neutral { background-color: rgba(158, 158, 158, 0.2); color: #9e9e9e; }
+        
+        /* 免责声明 */
+        .disclaimer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #2d3148;
+            border-radius: 8px;
+            color: #ff9800;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .card-grid { grid-template-columns: 1fr; }
+            .price-hero { font-size: 2.5rem; }
+            .header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <div class="header">
+        <h1>⚡ BTC 每日交易报告</h1>
+        <div class="subtitle">报告日期：2026-05-03 | 生成时间：2026-05-03 09:13:33</div>
+    </div>
+    
+    <!-- 一、综合统计看板（硬性标准） -->
+    <div class="section-title">一、综合统计看板<span class="hard-tag">硬性标准</span></div>
+    <div class="card-grid">
+        <div class="card">
+            <h3>14天胜率</h3>
+            <div class="value" style="color: #f44336">0.0%</div>
+            <div class="subvalue">未达标 ❌ (目标≥55%)</div>
+        </div>
+        <div class="card">
+            <h3>本月累计盈亏</h3>
+            <div class="value">数据待补充</div>
+            <div class="subvalue">基于历史交易计算</div>
+        </div>
+        <div class="card">
+            <h3>平均盈亏比</h3>
+            <div class="value" style="color: #f44336">0.00:1</div>
+            <div class="subvalue">未达标 ❌ (目标≥2:1)</div>
+        </div>
+        <div class="card">
+            <h3>最大回撤</h3>
+            <div class="value">数据待补充</div>
+            <div class="subvalue">目标<15%红线</div>
+        </div>
+        <div class="card">
+            <h3>本月交易统计</h3>
+            <div class="value">0 笔</div>
+            <div class="subvalue">盈利:0 | 亏损:0 | 保本:0</div>
+        </div>
+    </div>
+    
+    <!-- 二、价格+市场数据 -->
+    <div class="section-title">二、价格 + 市场数据</div>
+    <div class="price-hero">$78,348.0</div>
+    <div class="price-change">+0.02% (24小时涨跌幅)</div>
+    
+    <div class="card-grid" style="margin-top: 20px;">
+        <div class="card">
+            <h3>BTC资金费率</h3>
+            <div class="value">0.0016%</div>
+            <div class="subvalue">8小时结算一次</div>
+        </div>
+        <div class="card">
+            <h3>ETH资金费率</h3>
+            <div class="value">0.0049%</div>
+            <div class="subvalue">8小时结算一次</div>
+        </div>
+        <div class="card">
+            <h3>未平仓合约(OI)</h3>
+            <div class="value">$803,713</div>
+            <div class="subvalue">BTCUSDT永续合约</div>
+        </div>
+        <div class="card">
+            <h3>24h爆仓总量</h3>
+            <div class="value">$0</div>
+            <div class="subvalue">多单:0 | 空单:0</div>
+        </div>
+        <div class="card">
+            <h3>恐惧与贪婪指数</h3>
+            <div class="value" style="color: #4caf50">47</div>
+            <div class="subvalue">Neutral</div>
+        </div>
+        <div class="card">
+            <h3>多空持仓比</h3>
+            <div class="value">多:数据缺失% | 空:数据缺失%</div>
+            <div class="subvalue">近5分钟平均值</div>
+        </div>
+    </div>
+    
+    <!-- 三、技术指标面板 -->
+    <div class="section-title">三、技术指标面板</div>
+    <div class="card-grid">
+        <div class="card">
+            <h3>RSI(14)</h3>
+            <div class="value" style="color: #ff9800">60.8</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 60.76516627310099%; background-color: #ff9800"></div>
+            </div>
+            <div class="subvalue">中性</div>
+        </div>
+        <div class="card">
+            <h3>MACD</h3>
+            <div class="value">无交叉</div>
+            <div class="subvalue">柱状值:538.47</div>
+        </div>
+        <div class="card">
+            <h3>EMA指标</h3>
+            <div class="value">EMA7: 77,695.3</div>
+            <div class="subvalue">EMA20: 76,289.1<br>EMA50: 74,064.9</div>
+        </div>
+        <div class="card">
+            <h3>布林带</h3>
+            <div class="value">中轨: 76,705.7</div>
+            <div class="subvalue">上轨: 79,652.8<br>下轨: 73,758.6</div>
+        </div>
+    </div>
+    
+    <!-- 四、今日合约操作策略（硬性标准） -->
+    <div class="section-title">四、今日合约操作策略<span class="hard-tag">硬性标准</span></div>
+    <div class="card">
+        <h3>操作方向</h3>
+        <div class="dir-tag dir-neutral">NEUTRAL</div>
+        
+        <h3 style="margin-top: 20px;">关键价位</h3>
+        <table>
+            <tr><th>类型</th><th>价格</th><th>说明</th></tr>
+            <tr><td>阻力位</td><td>$79,485.7</td><td>近30天最高价</td></tr>
+            <tr><td>支撑位</td><td>$66,611.7</td><td>近30天最低价</td></tr>
+            <tr><td>建议进场区间</td><td>$N/A ~ $N/A</td><td>观望</td></tr>
+            <tr><td>止损SL</td><td>$N/A</td><td>N/A</td></tr>
+            <tr><td>止盈TP1</td><td>$N/A</td><td>第一目标位</td></tr>
+            <tr><td>止盈TP2</td><td>$N/A</td><td>第二目标位</td></tr>
+            <tr><td>盈亏比</td><td>N/A:1</td><td>N/A</td></tr>
+        </table>
+        
+        <h3 style="margin-top: 20px;">触发条件</h3>
+        <div class="subvalue">
+            市场结构不明朗，建议观望
+        </div>
+    </div>
+    
+    <!-- 五、资金流向&鲸鱼动向 -->
+    <div class="section-title">五、资金流向 & 鲸鱼动向</div>
+    <div class="card">
+        <div class="subvalue">⚠️ 大额资金流向数据需配置Glassnode/Whale Alert API Key，当前暂缺</div>
+        <table style="margin-top: 15px;">
+            <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+            <tr><td>大额流入交易所</td><td>数据待补充</td><td>单笔≥100BTC的流入</td></tr>
+            <tr><td>大额流出交易所</td><td>数据待补充</td><td>单笔≥100BTC的流出</td></tr>
+            <tr><td>净流向</td><td>数据待补充</td><td>流入-流出</td></tr>
+            <tr><td>鲸鱼钱包数量变化</td><td>数据待补充</td><td>持仓≥1000BTC的地址数</td></tr>
+        </table>
+    </div>
+    
+    <!-- 六、今日宏观事件时间线 -->
+    <div class="section-title">六、今日宏观事件时间线</div>
+    <div class="card">
+        <div class="subvalue">📅 今日暂无重大宏观事件</div>
+        <div style="margin-top: 15px;">
+            <div style="padding: 10px; border-left: 3px solid #ff9800; margin: 10px 0;">
+                ⚠️ <strong>本周最大宏观变量</strong>：美联储5月利率决议（预计5月15日公布），建议决议公布前后减少新开仓
+            </div>
+        </div>
+    </div>
+    
+    <!-- 七、近14天策略追踪表（硬性标准） -->
+    <div class="section-title">七、近14天策略追踪表<span class="hard-tag">硬性标准</span></div>
+    <div class="card">
+        <table>
+            <tr>
+                <th>日期</th><th>方向</th><th>入场价</th><th>结果</th><th>盈亏金额</th><th>盈亏比</th><th>执行打分</th>
+            </tr>
+            <tr><td colspan='7' style='text-align: center;'>暂无数交易记录</td></tr>
+        </table>
+    </div>
+    
+    <!-- 八、错误分类统计（硬性标准） -->
+    <div class="section-title">八、错误分类统计<span class="hard-tag">硬性标准</span></div>
+    <div class="card">
+        <div class="subvalue">⚠️ 错误分类数据需手动维护，当前展示统计框架</div>
+        <table>
+            <tr><th>错误类型</th><th>本月次数</th><th>占比</th></tr>
+            <tr><td>😡 情绪化交易</td><td>0</td><td>0%</td></tr>
+            <tr><td>⚡ 追单/报复性加仓</td><td>0</td><td>0%</td></tr>
+            <tr><td>🔀 随意移动止损</td><td>0</td><td>0%</td></tr>
+            <tr><td>📋 开仓前未过检查清单</td><td>0</td><td>0%</td></tr>
+            <tr><td>📉 盈亏比<2:1的单子数</td><td>0</td><td>0%</td></tr>
+            <tr><td>✅ 正确执行次数</td><td>0</td><td>0%</td></tr>
+        </table>
+        <div style="margin-top: 15px; color: #ff9800;">
+            本月错误率：0% | 改进建议：严格按策略执行，杜绝情绪化交易
+        </div>
+    </div>
+    
+    <!-- 九、近14天胜率柱状图（硬性标准） -->
+    <div class="section-title">九、近14天胜率柱状图<span class="hard-tag">硬性标准</span></div>
+    <div class="card">
+        <div class="subvalue">📊 柱状图需引入Chart.js库，当前展示统计汇总</div>
+        <div style="margin-top: 15px;">
+            盈利0笔 | 亏损0笔 | 保本0笔 | 14天胜率0.0% | 本月累计：数据待补充
+        </div>
+    </div>
+    
+    <!-- 十、近30天胜率趋势折线图（硬性标准） -->
+    <div class="section-title">十、近30天胜率趋势折线图<span class="hard-tag">硬性标准</span></div>
+    <div class="card">
+        <div class="subvalue">📈 折线图需引入Chart.js库，当前展示统计汇总</div>
+        <div style="margin-top: 15px;">
+            30天盈利0笔 | 亏损0笔 | 保本0笔 | 30天胜率0.0% | 近30天累计盈亏：数据待补充
+        </div>
+    </div>
+    
+    <!-- 十一、昨日复盘 -->
+    <div class="section-title">十一、昨日复盘</div>
+    <div class="card">
+        <div class='subvalue'>昨日无交易记录</div>
+        <div style="margin-top: 15px; color: #ff9800;">
+            昨日最大失误：数据待补充 | 昨日亮点：数据待补充
+        </div>
+    </div>
+    
+    <!-- 十二、本周综合复盘 -->
+    <div class="section-title">十二、本周综合复盘</div>
+    <div class="card">
+        <div class="subvalue">📅 本周交易数据需手动维护，当前展示框架</div>
+        <table>
+            <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+            <tr><td>本周交易总次数</td><td>0</td><td>全部交易笔数</td></tr>
+            <tr><td>胜/负/保</td><td>0/0/0</td><td>盈利/亏损/保本</td></tr>
+            <tr><td>本周胜率</td><td>0%</td><td>目标≥55%</td></tr>
+            <tr><td>本周累计盈亏</td><td>数据待补充</td><td>全部交易盈亏和</td></tr>
+            <tr><td>最大单笔盈利</td><td>数据待补充</td><td>日期+方向+金额</td></tr>
+            <tr><td>最大单笔亏损</td><td>数据待补充</td><td>日期+原因</td></tr>
+        </table>
+        <div style="margin-top: 15px; color: #ff9800;">
+            本周最大失误：数据待补充 | 下周唯一改进项：数据待补充 | 下周宏观事件预告：美联储5月利率决议（5月15日）
+        </div>
+    </div>
+    
+    <!-- 十三、月回顾统计（硬性标准） -->
+    <div class="section-title">十三、月回顾统计<span class="hard-tag">硬性标准</span></div>
+    <div class="card-grid">
+        <div class="card">
+            <h3>本月累计收益</h3>
+            <div class="value">数据待补充</div>
+            <div class="subvalue">vs上月：数据待补充</div>
+        </div>
+        <div class="card">
+            <h3>本月交易日数</h3>
+            <div class="value">0</div>
+            <div class="subvalue">年化收益估算：数据待补充</div>
+        </div>
+        <div class="card">
+            <h3>本月胜率</h3>
+            <div class="value" style="color: #f44336">0.0%</div>
+            <div class="subvalue">未达标 ❌</div>
+        </div>
+        <div class="card">
+            <h3>平均盈亏比</h3>
+            <div class="value" style="color: #f44336">0.00:1</div>
+            <div class="subvalue">未达标 ❌</div>
+        </div>
+        <div class="card">
+            <h3>最大回撤</h3>
+            <div class="value">数据待补充</div>
+            <div class="subvalue">目标<15%红线</div>
+        </div>
+        <div class="card">
+            <h3>本月执行失误次数</h3>
+            <div class="value">0</div>
+            <div class="subvalue">需手动维护</div>
+        </div>
+    </div>
+    
+    <!-- 十四、当前持仓分布 -->
+    <div class="section-title">十四、当前持仓分布</div>
+    <div class="card">
+        <div class="subvalue">⚠️ 当前无持仓数据，如有持仓请手动更新</div>
+        <table style="margin-top: 15px;">
+            <tr><th>币种</th><th>方向</th><th>数量</th><th>均价</th><th>浮动盈亏</th></tr>
+            <tr><td colspan="5" style="text-align: center;">暂无持仓</td></tr>
+        </table>
+        <div style="margin-top: 15px; color: #ff9800;">
+            总仓位风险敞口提醒：0% (≤30%保证金余额)
+        </div>
+    </div>
+    
+    <!-- 十五、英文X推文草稿 -->
+    <div class="section-title">十五、英文X推文草稿</div>
+    <div class="card">
+        <div style="background-color: #1a1d23; padding: 15px; border-radius: 8px; border: 1px solid #2d3148;">
+            <div style="color: #1da1f2; font-weight: bold; margin-bottom: 10px;">📋 推文预览（可直接复制发布）</div>
+            <div style="line-height: 1.8;">
+                🚨 BTC Update 2026-05-03 🚨<br>
+                Price: $78,348.0 | 24h Change: +0.02%<br>
+                RSI(14): 60.8 | MACD: 无交叉<br>
+                Strategy: NEUTRAL | Entry: $N/A~$N/A<br>
+                SL: $N/A | TP1: $N/A<br>
+                Risk/Reward: N/A:1<br>
+                30-Day Win Rate: 0.0% | Monthly PnL: TBD<br>
+                #BTC #Crypto #Trading<br>
+                (建议配BTC K线截图)
+            </div>
+        </div>
+    </div>
+    
+    <!-- 十六、风险免责声明 -->
+    <div class="disclaimer">
+        ⚠️ <strong>风险免责声明</strong><br>
+        本报告仅供学习交流与个人复盘使用，不构成任何投资建议。<br>
+        加密货币合约交易风险极高，可能导致全部本金损失。<br>
+        请根据自身风险承受能力谨慎决策。
+    </div>
+</body>
+</html>

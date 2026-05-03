@@ -1,0 +1,16 @@
+{
+  "trades": [
+    {
+      "date": "2026-05-03",
+      "direction": "NEUTRAL",
+      "entry_low": null,
+      "entry_high": null,
+      "sl": null,
+      "tp1": null,
+      "tp2": null,
+      "risk_reward": null,
+      "result": "OPEN"
+    }
+  ],
+  "monthly_stats": {}
+}
