@@ -87,28 +87,20 @@ fng = fetch_url("https://api.alternative.me/fng/?limit=1")
 data["fng_value"] = int(fng["data"][0]["value"]) if fng else None
 data["fng_class"] = fng["data"][0]["value_classification"] if fng else None
 
-# 5. 多空持仓比
-ls_ratio = fetch_url("https://fapi.binance.com/fapi/v1/longShortRatio?symbol=BTCUSDT&period=5m")
-data["long_ratio"] = float(ls_ratio["longRatio"]) * 100 if ls_ratio else None
-data["short_ratio"] = float(ls_ratio["shortRatio"]) * 100 if ls_ratio else None
+# 5. 多空持仓比（使用正确的API端点）
+ls_ratio = fetch_url("https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=BTCUSDT&period=5m&limit=1")
+if ls_ratio and len(ls_ratio) > 0:
+    data["long_ratio"] = float(ls_ratio[0]["longAccount"]) * 100
+    data["short_ratio"] = float(ls_ratio[0]["shortAccount"]) * 100
+else:
+    data["long_ratio"] = None
+    data["short_ratio"] = None
 
-# 6. 24h爆仓量
-liqs = fetch_url("https://fapi.binance.com/fapi/v1/allForceOrders?symbol=BTCUSDT&limit=1000")
-data["total_liq"] = 0.0
-data["long_liq"] = 0.0
-data["short_liq"] = 0.0
-if liqs and data["btc_price"]:
-    now_ts = datetime.datetime.now().timestamp() * 1000
-    recent = [l for l in liqs if now_ts - l["time"] <= 86400000]
-    for l in recent:
-        qty = float(l["qty"])
-        price = float(l["price"])
-        notional = qty * 0.0001 * price  # 合约面值换算
-        data["total_liq"] += notional
-        if l["side"] == "SELL":  # 强平多单
-            data["long_liq"] += notional
-        else:  # 强平空单
-            data["short_liq"] += notional
+# 6. 24h爆仓量（暂缺，需要CoinGlass API）
+data["total_liq"] = None
+data["long_liq"] = None
+data["short_liq"] = None
+# 注意：爆仓数据需要CoinGlass API key，当前暂缺
 
 # 7. K线数据 & 技术指标计算
 klines = fetch_url("https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1d&limit=100")
