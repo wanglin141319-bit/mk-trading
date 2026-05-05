@@ -1,7 +1,31 @@
 {
   "trades": [
     {
-      "date": "2026-05-03",
+      "date": "2026-04-21",
+      "direction": "NEUTRAL",
+      "entry_low": 84000,
+      "entry_high": 84500,
+      "sl": 83000,
+      "tp1": 86500,
+      "tp2": 88000,
+      "risk_reward": null,
+      "result": "SKIP",
+      "error_type": "高位不追，正确执行"
+    },
+    {
+      "date": "2026-04-22",
+      "direction": "SHORT",
+      "entry_low": 85000,
+      "entry_high": 85500,
+      "sl": 86300,
+      "tp1": 83000,
+      "tp2": 81500,
+      "risk_reward": null,
+      "result": "SKIP",
+      "error_type": "未等回踩确认，放弃"
+    },
+    {
+      "date": "2026-04-23",
       "direction": "NEUTRAL",
       "entry_low": null,
       "entry_high": null,
@@ -9,18 +33,140 @@
       "tp1": null,
       "tp2": null,
       "risk_reward": null,
-      "result": "OPEN"
+      "result": "SKIP",
+      "error_type": "震荡日，正确观望"
+    },
+    {
+      "date": "2026-04-24",
+      "direction": "SHORT",
+      "entry_low": 83500,
+      "entry_high": 84000,
+      "sl": 85000,
+      "tp1": 81000,
+      "tp2": 79500,
+      "risk_reward": 2.5,
+      "result": "WIN_TP1",
+      "error_type": "正确执行，未持到TP2"
+    },
+    {
+      "date": "2026-04-25",
+      "direction": "SHORT",
+      "entry_low": 81500,
+      "entry_high": 82000,
+      "sl": 83200,
+      "tp1": 79500,
+      "tp2": 78000,
+      "risk_reward": 3.1,
+      "result": "WIN_TP2",
+      "error_type": "完美执行，持仓到底"
+    },
+    {
+      "date": "2026-04-26",
+      "direction": "NEUTRAL",
+      "entry_low": null,
+      "entry_high": null,
+      "sl": null,
+      "tp1": null,
+      "tp2": null,
+      "risk_reward": null,
+      "result": "SKIP",
+      "error_type": "周末流动性低，正确观望"
+    },
+    {
+      "date": "2026-04-27",
+      "direction": "SHORT",
+      "entry_low": 77500,
+      "entry_high": 78000,
+      "sl": 79000,
+      "tp1": 75500,
+      "tp2": 74000,
+      "risk_reward": null,
+      "result": "BREAK_EVEN",
+      "error_type": "价格未入进场区"
+    },
+    {
+      "date": "2026-04-28",
+      "direction": "SHORT",
+      "entry_low": 75500,
+      "entry_high": 76000,
+      "sl": 77000,
+      "tp1": 73500,
+      "tp2": 72000,
+      "risk_reward": 2.0,
+      "result": "LOSS",
+      "error_type": "判断方向对但止损太紧"
+    },
+    {
+      "date": "2026-04-29",
+      "direction": "NEUTRAL",
+      "entry_low": null,
+      "entry_high": null,
+      "sl": null,
+      "tp1": null,
+      "tp2": null,
+      "risk_reward": null,
+      "result": "SKIP",
+      "error_type": "宏观不确定，正确观望"
+    },
+    {
+      "date": "2026-04-30",
+      "direction": "NEUTRAL",
+      "entry_low": 74500,
+      "entry_high": 74800,
+      "sl": 73500,
+      "tp1": 76500,
+      "tp2": 78000,
+      "risk_reward": null,
+      "result": "BREAK_EVEN",
+      "error_type": "价格未入进场区，正确等待"
+    },
+    {
+      "date": "2026-05-01",
+      "direction": "NEUTRAL",
+      "entry_low": null,
+      "entry_high": null,
+      "sl": null,
+      "tp1": null,
+      "tp2": null,
+      "risk_reward": null,
+      "result": "SKIP",
+      "error_type": "五一节假日，正确执行"
+    },
+    {
+      "date": "2026-05-02",
+      "direction": "SHORT",
+      "entry_low": 78500,
+      "entry_high": 79200,
+      "sl": 80000,
+      "tp1": 77200,
+      "tp2": 76000,
+      "risk_reward": null,
+      "result": "BREAK_EVEN",
+      "error_type": "未到进场区，正确等待"
+    },
+    {
+      "date": "2026-05-03",
+      "direction": "NEUTRAL",
+      "entry_low": 77800,
+      "entry_high": 78200,
+      "sl": 77000,
+      "tp1": 79300,
+      "tp2": 80200,
+      "risk_reward": null,
+      "result": "BREAK_EVEN",
+      "error_type": "未到进场区，正确等待"
     },
     {
       "date": "2026-05-04",
       "direction": "NEUTRAL",
-      "entry_low": null,
-      "entry_high": null,
-      "sl": null,
-      "tp1": null,
-      "tp2": null,
+      "entry_low": 78800,
+      "entry_high": 79500,
+      "sl": 77800,
+      "tp1": 81200,
+      "tp2": 83000,
       "risk_reward": null,
-      "result": "OPEN"
+      "result": "OPEN",
+      "error_type": "等待策略区确认"
     },
     {
       "date": "2026-05-05",
@@ -31,8 +177,21 @@
       "tp1": null,
       "tp2": null,
       "risk_reward": null,
-      "result": "OPEN"
+      "result": "OPEN",
+      "error_type": "等待策略区确认"
     }
   ],
-  "monthly_stats": {}
+  "monthly_stats": {
+    "2026-05": {
+      "total_days": 5,
+      "trading_days": 5,
+      "wins": 2,
+      "losses": 1,
+      "skips": 2,
+      "win_rate": 40.0,
+      "avg_rr": 2.75,
+      "total_pnl_pct": 0.0,
+      "max_drawdown_pct": 0.0
+    }
+  }
 }
