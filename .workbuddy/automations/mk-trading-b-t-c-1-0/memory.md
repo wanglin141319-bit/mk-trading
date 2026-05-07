@@ -2,6 +2,33 @@
 
 ## 执行历史
 
+### 2026-05-06 (09:02)
+- **状态**: 成功（完整16板块）
+- **报告编号**: #52
+- **关键数据（实时）**:
+  - BTC价格: $81,150 (+1.22%)
+  - 恐惧贪婪指数: 46 (Fear)
+  - 资金费率: -0.0092% (空头付多头)
+  - RSI: 68.3 (偏热)
+  - MACD: +1,929 Signal:+1,689 Hist:+241 (金叉多头)
+  - OI: 113,813 BTC (~$9.24B) 创近期新高
+  - EMA7: 79,487 | EMA20: 77,443 | EMA50: 74,669 (多头排列)
+  - 多空比: 33.9%/66.1% (空头主导)
+  - BB上轨: $81,146（价格触及上轨）
+- **策略方向**: 主做多 LONG
+- **进场区间**: $80,663–$80,988
+- **止损 SL**: $79,932
+- **止盈 TP1/TP2**: $82,773 / $84,396
+- **盈亏比**: 2.0:1
+- **生成文件**: BTC_daily_report_20260506.html (43,259 bytes, 完整16板块)
+- **Git提交**: 2209edf
+- **推送状态**: 成功
+- **Telegram**: ✅ 推送成功
+- **本周最大宏观变量**: 新Fed主席人选不确定性（Powell任期5月结束）
+- **05/04 复盘**: BREAK_EVEN（价格未入$78,800-$79,500区间）
+- **05/05 复盘**: SKIP（无明确进场区间，正确观望）
+- **备注**: CoinGecko API被限流，改用Binance现货/K线API作为主数据源
+
 ### 2026-05-04 (15:12)
 - **状态**: 成功（完整版重新生成，覆盖早版残缺文件）
 - **执行时间**: 15:12 UTC+8（第二次运行）
@@ -129,17 +156,16 @@
 - **状态**: 成功
 
 ## 数据质量记录
-- CoinGecko API: 正常（ETH有时超时需重试）
-- Binance API (fapi): 正常 (现货api.binance.com有时被拒绝)
+- CoinGecko API: ⚠️ 05/06被限流（返回空/缺market_data），需加fallback
+- Binance API (现货): 正常，作为05/06主数据源
+- Binance K线 (api/v3/klines): 正常，limit=100获取日线
+- Binance API (fapi): 正常 (资金费率/OI/多空比)
 - Fear & Greed API: 正常（需加User-Agent头）
-- 资金费率 API: 正常 (fapi.binance.com)
-- OI API: 正常 (fapi.binance.com)
-- 爆仓API (CoinGlass): 无法访问（返回N/A）
-- 技术指标: CoinGecko OHLC API (days=90) 正常，作为备用代替Binance K线
+- 爆仓API (CoinGlass): 无法访问（返回N/A），使用估算值
 
 ## 注意事项
-- Binance现货K线(api.binance.com/api/v3/klines)有时返回"远程主机强迫关闭连接"
-- 改用CoinGecko OHLC endpoint计算技术指标 (作为备用)
+- CoinGecko限流时自动切换Binance现货API作为fallback
+- Binance K线API (1d interval, limit=100) 可正常计算EMA50
 - 多空持仓比例API（Binance globalLongShortAccountRatio）有时返回空，已容错
-- ETH价格有时超时，已添加重试逻辑
-- **本周最大宏观变量：05/08 CPI**，建议数据前后减少开仓
+- **本周最大宏观变量：新Fed主席人选**，Powell任期5月结束，继任者政策立场不确定性高
+- 报告编号修正：#52（05/06），上一期#53为05/05的编号
