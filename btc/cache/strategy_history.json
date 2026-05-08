@@ -381,14 +381,14 @@
   {
     "date": "20260508",
     "direction": "SHORT",
-    "entry_low": 79256.94,
-    "entry_high": 72984.62,
-    "stop_loss": 81089.01,
-    "tp1": 76867.29,
-    "tp2": 74875.91,
+    "entry_low": 79257,
+    "entry_high": 72985,
+    "stop_loss": 81089,
+    "tp1": 76867,
+    "tp2": 74876,
     "rr": 1.94,
     "result": "OPEN",
     "auto_resolved": false,
-    "resolve_note": ""
+    "resolve_note": "CPI数据日，等市场确认后更新结果"
   }
 ]
