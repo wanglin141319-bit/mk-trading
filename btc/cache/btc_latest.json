@@ -1,58 +1,58 @@
 {
-  "ts": 1777516859.438387,
+  "ts": 1778216238.1452768,
   "data": {
-    "timestamp": "2026-04-30T10:38:04.916316",
+    "timestamp": "2026-05-08T12:57:09.528427",
     "btc": {
-      "price": 75589.99,
-      "change_24h": -1.111,
-      "high_24h": 77904.93,
-      "low_24h": 74937.52,
-      "vol_btc": 18296.24218,
+      "price": 79655.22,
+      "change_24h": -1.606,
+      "high_24h": 81708.32,
+      "low_24h": 79181.48,
+      "vol_btc": 17120.31763,
       "source": "binance"
     },
     "eth": {
-      "price": 2238.36,
-      "change_24h": -2.103,
+      "price": 2281.99,
+      "change_24h": -1.922,
       "source": "binance"
     },
     "funding": {
-      "rate": -0.005595,
-      "next_time": 1777536000000,
+      "rate": -0.000545,
+      "next_time": 1778227200000,
       "source": "binance"
     },
     "oi": {
-      "long_ratio": 51.4,
-      "short_ratio": 48.6,
-      "long_short_ratio": 1.058,
+      "long_ratio": 43.1,
+      "short_ratio": 56.9,
+      "long_short_ratio": 0.759,
       "source": "binance_global"
     },
     "liquidation": {
-      "long_ratio": 45.3,
-      "short_ratio": 54.7,
-      "long_short_ratio": 0.827,
-      "trend_change": -0.004,
+      "long_ratio": 41.0,
+      "short_ratio": 59.0,
+      "long_short_ratio": 0.696,
+      "trend_change": -0.001,
       "source": "binance_top_ratio"
     },
     "fear_greed": {
-      "value": 29,
+      "value": 38,
       "classification": "Fear",
-      "prev_value": 26,
-      "prev_classification": "Fear",
+      "prev_value": 47,
+      "prev_classification": "Neutral",
       "source": "alternative.me"
     },
     "technical": {
-      "rsi": 63.521758182492334,
-      "ema7": 74217.75936100417,
-      "ema20": 73121.44515265115,
-      "ema50": 76340.72117096896,
-      "macd_line": -670.4050849075575,
-      "macd_signal": -670.4050849075575,
+      "rsi": 68.21405335068314,
+      "ema7": 76834.53562788882,
+      "ema20": 72984.62068462349,
+      "ema50": 70844.8825508113,
+      "macd_line": 2567.915056639933,
+      "macd_signal": 2567.915056639933,
       "macd_hist": 0.0,
       "macd_cross": "DEAD",
-      "bb_upper": 77358.15380477771,
-      "bb_middle": 70042.35,
-      "bb_lower": 62726.5461952223,
-      "close": 76345.0
+      "bb_upper": 80538.56431044347,
+      "bb_middle": 71263.6,
+      "bb_lower": 61988.63568955654,
+      "close": 81425.0
     },
     "macro": {
       "events": [
@@ -74,14 +74,14 @@
         }
       ],
       "weekly_key": {
-        "week": "周四",
-        "date": "2026-04-30",
+        "week": "周五",
+        "date": "2026-05-08",
         "event": "FOMC会议纪要 / 美联储官员密集发声",
         "description": "本周美联储多位官员讲话，关注利率路径指引",
         "action": "数据公布前1小时禁止新开仓，已持仓带好止损"
       },
-      "week": "周四",
-      "date": "2026-04-30"
+      "week": "周五",
+      "date": "2026-05-08"
     }
   }
 }
