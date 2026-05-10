@@ -222,3 +222,8 @@
 - **Binance globalLongShortAccountRatio 返回HTML错误页面**，改用 OKX API `rubik/stat/contracts/long-short-account-ratio` 获取多空比 (05/07起)
 - **本周最大宏观变量：05/08 CPI数据**，数据发布前后减少新开仓
 - 报告编号：#53 (05/07)，#52 (05/06)
+
+### 2026-05-09 (09:27)
+- **状态**: 跳过（报告已存在）
+- **原因**: `BTC_daily_report_20260509.html` 已存在，脚本自动跳过
+- **EXIT**: 0

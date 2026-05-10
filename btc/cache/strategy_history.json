@@ -1,18 +1,5 @@
 [
   {
-    "date": "20260410",
-    "direction": "SHORT",
-    "entry_low": 76000,
-    "entry_high": 76500,
-    "stop_loss": 77800,
-    "tp1": 74500,
-    "tp2": 73000,
-    "rr": 2.5,
-    "result": "WIN",
-    "auto_resolved": true,
-    "resolve_note": "TP2 hit"
-  },
-  {
     "date": "20260411",
     "direction": "WAIT",
     "entry_low": 0,
@@ -387,6 +374,19 @@
     "tp1": 77450.46,
     "tp2": 75443.97,
     "rr": 1.94,
+    "result": "BREAK_EVEN",
+    "auto_resolved": true,
+    "resolve_note": "HIGH=$81,080 LOW=$80,135 | 未进入进场区间"
+  },
+  {
+    "date": "20260510",
+    "direction": "WAIT",
+    "entry_low": 80599.82,
+    "entry_high": 81002.82,
+    "stop_loss": 81808.82,
+    "tp1": 78181.83,
+    "tp2": 76166.83,
+    "rr": 2.0,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""
