@@ -1,18 +1,5 @@
 [
   {
-    "date": "20260411",
-    "direction": "WAIT",
-    "entry_low": 0,
-    "entry_high": 0,
-    "stop_loss": 0,
-    "tp1": 0,
-    "tp2": 0,
-    "rr": 0,
-    "result": "SKIP",
-    "auto_resolved": true,
-    "resolve_note": "skip"
-  },
-  {
     "date": "20260412",
     "direction": "WAIT",
     "entry_low": 0,
@@ -387,6 +374,19 @@
     "tp1": 78181.83,
     "tp2": 76166.83,
     "rr": 2.0,
+    "result": "OPEN",
+    "auto_resolved": false,
+    "resolve_note": ""
+  },
+  {
+    "date": "20260511",
+    "direction": "SHORT",
+    "entry_low": 81315.6,
+    "entry_high": 73621.08,
+    "stop_loss": 83195.26,
+    "tp1": 78863.87,
+    "tp2": 76820.77,
+    "rr": 1.94,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""
