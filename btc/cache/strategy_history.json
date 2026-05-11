@@ -381,12 +381,12 @@
   {
     "date": "20260511",
     "direction": "SHORT",
-    "entry_low": 81315.6,
-    "entry_high": 73621.08,
-    "stop_loss": 83195.26,
-    "tp1": 78863.87,
-    "tp2": 76820.77,
-    "rr": 1.94,
+    "entry_low": 80598.0,
+    "entry_high": 81164.0,
+    "stop_loss": 82892.0,
+    "tp1": 76859.0,
+    "tp2": 74848.0,
+    "rr": 1.83,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""

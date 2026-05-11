@@ -296,27 +296,45 @@ def generate_strategy(data):
         final_direction = 'WAIT'
 
     # 关键价位
+    # 修复 v2.3：入场区间不再使用 EMA20/布林带截断，改为贴近当前价的合理区间
+    # 做空：在当前价附近反弹高点进场（上方0.3%-0.8%），不依赖远离的EMA20
+    # 做多：在当前价附近回踩低点进场（下方0.3%-0.8%），不依赖远离的布林中轨
     resistance = recent_high
-    entry_zone_low = price
-    entry_zone_high = price * 1.005
-    stop_loss = price * 1.015
-    take_profit_1 = price * 0.97
-    take_profit_2 = price * 0.945
 
     if final_direction == 'SHORT':
-        resistance = max(ema20, recent_high)
-        entry_zone_low = price * 0.995
-        entry_zone_high = min(price * 1.008, ema20)
-        stop_loss = max(price * 1.018, bb_upper)
-        take_profit_1 = price * 0.965
-        take_profit_2 = price * 0.94
+        # 做空进场：等价格小幅反弹后进场，区间在当前价上方0-0.5%
+        entry_zone_low  = round(price * 0.998, 0)       # 当前价下方0.2%（即时进场下限）
+        entry_zone_high = round(price * 1.005, 0)       # 当前价上方0.5%（反弹进场上限）
+        # 止损设在近期高点上方0.5%，但最少离入场区0.8%以上（避免止损太紧）
+        sl_base = max(recent_high * 1.005, entry_zone_high * 1.008)
+        stop_loss = round(sl_base, 0)
+        # 止盈按 2:1 / 3:1 盈亏比计算，相对入场中点
+        entry_mid = (entry_zone_low + entry_zone_high) / 2
+        risk_pts   = stop_loss - entry_mid
+        take_profit_1 = round(entry_mid - risk_pts * 2.0, 0)   # 2:1
+        take_profit_2 = round(entry_mid - risk_pts * 3.0, 0)   # 3:1
+        resistance = max(ema20, recent_high) if ema20 > price else recent_high
+
     elif final_direction == 'LONG':
-        support = recent_low
-        entry_zone_low = max(price * 0.995, bb_middle)
-        entry_zone_high = price
-        stop_loss = bb_lower
-        take_profit_1 = min(price * 1.035, ema20)
-        take_profit_2 = min(price * 1.06, bb_upper)
+        # 做多进场：等价格小幅回踩后进场，区间在当前价下方0-0.5%
+        entry_zone_high = round(price * 1.002, 0)       # 当前价上方0.2%（即时进场上限）
+        entry_zone_low  = round(price * 0.995, 0)       # 当前价下方0.5%（回踩进场下限）
+        # 止损设在近期低点下方0.5%，但最少离入场区0.8%以上
+        sl_base = min(recent_low * 0.995, entry_zone_low * 0.992)
+        stop_loss = round(sl_base, 0)
+        # 止盈按 2:1 / 3:1 盈亏比计算
+        entry_mid = (entry_zone_low + entry_zone_high) / 2
+        risk_pts   = entry_mid - stop_loss
+        take_profit_1 = round(entry_mid + risk_pts * 2.0, 0)   # 2:1
+        take_profit_2 = round(entry_mid + risk_pts * 3.0, 0)   # 3:1
+
+    else:
+        # WAIT / NEUTRAL：给一个观察区间，不建议进场
+        entry_zone_low  = round(price * 0.995, 0)
+        entry_zone_high = round(price * 1.005, 0)
+        stop_loss = round(price * 1.015, 0)
+        take_profit_1 = round(price * 0.97, 0)
+        take_profit_2 = round(price * 0.945, 0)
 
     # 盈亏比
     risk = abs(price - stop_loss)
