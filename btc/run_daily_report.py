@@ -1293,6 +1293,64 @@ def generate_html(data, strategy, history):
     html = html.replace('<!-- {{SECTION12_WEEK_REVIEW}} -->', section12)
     html = html.replace('<!-- {{SECTION13_MONTH_REVIEW}} -->', section13)
 
+    # ===== 策略板块动态替换（修复入场区间乱显示旧值的bug）=====
+    # 1. 方向标签 + 样式
+    strategy_dir_map = {'LONG': ('bull', '做多 / LONG'), 'SHORT': ('bear', '做空 / SHORT'), 'WAIT': ('neutral', '观望 / WAIT'), 'NEUTRAL': ('neutral', '观望 / NEUTRAL')}
+    s_class, s_label = strategy_dir_map.get(direction, ('neutral', '观望'))
+    strategy_tag_html = '<span class="strategy-tag ' + s_class + '">' + s_label + '</span>'
+    html = html.replace('<span class="strategy-tag neutral">观望 / 轻仓试空</span>', strategy_tag_html)
+
+    # 2. 策略描述文字（根据方向动态生成）
+    strategy_desc_map = {
+        'LONG': 'MACD金叉 + RSI偏热 | 等待回踩入场做多 | 注意止损纪律',
+        'SHORT': 'MACD死叉 | 等待反弹滞涨做空 | 注意止损纪律',
+        'WAIT': '市场方向不明 | 建议观望为主 | 激进者可轻仓试探',
+        'NEUTRAL': '宏观事件临近 | 建议观望为主 | 减少新开仓',
+    }
+    s_desc = strategy_desc_map.get(direction, '市场方向不明，建议观望')
+    html = html.replace(
+        '市场结构：高位回撤 | 资金费率负值收窄 | RSI回落至54中性区域 | MACD死叉中 | 建议观望为主，激进者轻仓试空',
+        s_desc
+    )
+
+    # 3. 入场区间
+    entry_text = '${:,}-${:,}'.format(int(entry_low), int(entry_high))
+    html = html.replace('$74,500-$74,800', entry_text)
+
+    # 4. 止损 / 止盈
+    html = html.replace('$75,500', '${:,}'.format(int(stop_loss)))
+    html = html.replace('$73,000', '${:,}'.format(int(tp1)))
+    html = html.replace('$72,200', '${:,}'.format(int(tp2)))
+
+    # 5. 盈亏比（统一用 TP2 的 rr_ratio，TP1 约为一半）
+    tp1_rr = round(rr * 0.5, 1) if rr > 0 else 1.0
+    html = html.replace('1.3:1', str(tp1_rr) + ':1')
+    html = html.replace('2.9:1', str(round(rr, 1)) + ':1' if rr > 0 else '2.0:1')
+
+    # 6. 仓位
+    pos_size = strategy.get('position_size', '10-15%')
+    html = html.replace('建议仓位: <span style="color:var(--accent);font-weight:700;">10-15%</span>', '建议仓位: <span style="color:var(--accent);font-weight:700;">' + pos_size + '</span>')
+
+    # 7. 触发条件（根据方向动态生成）
+    if direction == 'SHORT':
+        trigger = '价格反弹至 ' + entry_text + ' 区间滞涨后做空；止损设 ' + '${:,}'.format(int(stop_loss)) + '；目标 ' + '${:,}'.format(int(tp1)) + ' / ' + '${:,}'.format(int(tp2)) + '。'
+    elif direction == 'LONG':
+        trigger = '价格回踩至 ' + entry_text + ' 区间企稳后做多；止损设 ' + '${:,}'.format(int(stop_loss)) + '；目标 ' + '${:,}'.format(int(tp1)) + ' / ' + '${:,}'.format(int(tp2)) + '。'
+    else:
+        trigger = '无明确进场区间，建议观望为主，减少新开仓。'
+    html = html.replace(
+        '价格反弹至$74,500-$74,800区间且无力突破EMA20($75,420)可轻仓试空；止损设$75,500；目标$73,000/$72,200。注意控制仓位，避免追空。',
+        trigger
+    )
+
+    # 8. X推文草稿里的策略摘要（Section 16）
+    strategy_summary = dir_tag + ' Entry: ' + entry_text + ' | SL: ${:,} | TP1: ${:,} | TP2: ${:,} ({:.1f}:1 R:R)'.format(
+        int(stop_loss), int(tp1), int(tp2), rr)
+    html = html.replace(
+        '📉 Strategy: WAIT / Light SHORT\n• Entry: $74,500-$74,800\n• SL: $75,500 | TP1: $73,000 | TP2: $72,200\n• R/R: 2.9:1 for TP2',
+        strategy_summary
+    )
+
     return html
 
 # ============ Telegram 推送 ============
