@@ -1,18 +1,5 @@
 [
   {
-    "date": "20260414",
-    "direction": "LONG",
-    "entry_low": 73500,
-    "entry_high": 74000,
-    "stop_loss": 72000,
-    "tp1": 75500,
-    "tp2": 77500,
-    "rr": 2.6,
-    "result": "WIN",
-    "auto_resolved": true,
-    "resolve_note": "TP2 hit"
-  },
-  {
     "date": "20260415",
     "direction": "LONG",
     "entry_low": 75000,
@@ -387,6 +374,19 @@
     "tp1": 79350.0,
     "tp2": 78415.0,
     "rr": 1.66,
+    "result": "WIN_TP1",
+    "auto_resolved": true,
+    "resolve_note": "LOW=$78,755 | 达成TP1($79,350)"
+  },
+  {
+    "date": "20260514",
+    "direction": "SHORT",
+    "entry_low": 79436.0,
+    "entry_high": 79993.0,
+    "stop_loss": 81731.0,
+    "tp1": 75682.0,
+    "tp2": 73665.0,
+    "rr": 1.83,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""

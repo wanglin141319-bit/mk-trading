@@ -1,43 +1,43 @@
 {
-  "ts": 1778635997.9175165,
+  "ts": 1778722125.492329,
   "data": {
-    "timestamp": "2026-05-13T09:33:09.338369",
+    "timestamp": "2026-05-14T09:28:36.666271",
     "btc": {
-      "price": 81100.0,
-      "change_24h": -0.232,
-      "high_24h": 81332.29,
-      "low_24h": 79843.59,
-      "vol_btc": 12436.75155,
+      "price": 79595.46,
+      "change_24h": -1.842,
+      "high_24h": 81324.64,
+      "low_24h": 78754.65,
+      "vol_btc": 14938.23703,
       "source": "binance"
     },
     "eth": {
-      "price": 2291.53,
-      "change_24h": -1.308,
+      "price": 2263.9,
+      "change_24h": -1.251,
       "source": "binance"
     },
     "funding": {
-      "rate": 0.005013,
-      "next_time": 1778659200000,
+      "rate": 0.006528,
+      "next_time": 1778745600000,
       "source": "binance"
     },
     "oi": {
-      "long_ratio": 42.9,
-      "short_ratio": 57.1,
-      "long_short_ratio": 0.752,
+      "long_ratio": 50.0,
+      "short_ratio": 50.0,
+      "long_short_ratio": 1.002,
       "source": "binance_global"
     },
     "liquidation": {
-      "long_ratio": 47.1,
-      "short_ratio": 52.9,
-      "long_short_ratio": 0.891,
+      "long_ratio": 48.1,
+      "short_ratio": 51.9,
+      "long_short_ratio": 0.928,
       "trend_change": 0.001,
       "source": "binance_top_ratio"
     },
     "fear_greed": {
-      "value": 42,
+      "value": 34,
       "classification": "Fear",
-      "prev_value": 49,
-      "prev_classification": "Neutral",
+      "prev_value": 42,
+      "prev_classification": "Fear",
       "source": "alternative.me"
     },
     "technical": {
@@ -74,14 +74,14 @@
         }
       ],
       "weekly_key": {
-        "week": "周三",
-        "date": "2026-05-13",
+        "week": "周四",
+        "date": "2026-05-14",
         "event": "FOMC会议纪要 / 美联储官员密集发声",
         "description": "本周美联储多位官员讲话，关注利率路径指引",
         "action": "数据公布前1小时禁止新开仓，已持仓带好止损"
       },
-      "week": "周三",
-      "date": "2026-05-13"
+      "week": "周四",
+      "date": "2026-05-14"
     }
   }
 }
