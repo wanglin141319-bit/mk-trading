@@ -1,42 +1,42 @@
 {
-  "ts": 1778894840.3462396,
+  "ts": 1778981191.3045278,
   "data": {
-    "timestamp": "2026-05-16T09:27:12.875055",
+    "timestamp": "2026-05-17T09:26:21.540500",
     "btc": {
-      "price": 79100.0,
-      "change_24h": -2.866,
-      "high_24h": 81471.82,
-      "low_24h": 78659.0,
-      "vol_btc": 16973.13128,
+      "price": 77974.6,
+      "change_24h": -1.423,
+      "high_24h": 79211.77,
+      "low_24h": 77640.0,
+      "vol_btc": 12115.55444,
       "source": "binance"
     },
     "eth": {
-      "price": 2227.62,
-      "change_24h": -2.624,
+      "price": 2177.94,
+      "change_24h": -2.236,
       "source": "binance"
     },
     "funding": {
-      "rate": 0.0035420000000000004,
-      "next_time": 1778918400000,
+      "rate": 0.0046749999999999995,
+      "next_time": 1779004800000,
       "source": "binance"
     },
     "oi": {
-      "long_ratio": 52.5,
-      "short_ratio": 47.5,
-      "long_short_ratio": 1.105,
+      "long_ratio": 54.8,
+      "short_ratio": 45.2,
+      "long_short_ratio": 1.212,
       "source": "binance_global"
     },
     "liquidation": {
-      "long_ratio": 49.6,
-      "short_ratio": 50.4,
-      "long_short_ratio": 0.983,
-      "trend_change": 0.002,
+      "long_ratio": 49.8,
+      "short_ratio": 50.2,
+      "long_short_ratio": 0.994,
+      "trend_change": -0.002,
       "source": "binance_top_ratio"
     },
     "fear_greed": {
-      "value": 31,
+      "value": 27,
       "classification": "Fear",
-      "prev_value": 43,
+      "prev_value": 31,
       "prev_classification": "Fear",
       "source": "alternative.me"
     },
@@ -74,14 +74,14 @@
         }
       ],
       "weekly_key": {
-        "week": "周六",
-        "date": "2026-05-16",
+        "week": "周日",
+        "date": "2026-05-17",
         "event": "FOMC会议纪要 / 美联储官员密集发声",
         "description": "本周美联储多位官员讲话，关注利率路径指引",
         "action": "数据公布前1小时禁止新开仓，已持仓带好止损"
       },
-      "week": "周六",
-      "date": "2026-05-16"
+      "week": "周日",
+      "date": "2026-05-17"
     }
   }
 }
