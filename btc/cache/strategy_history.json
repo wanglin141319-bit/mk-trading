@@ -1,19 +1,5 @@
 [
   {
-    "date": "20260419",
-    "direction": "LONG",
-    "entry_low": 75000,
-    "entry_high": 75500,
-    "stop_loss": 73700,
-    "tp1": 77000,
-    "tp2": 78500,
-    "rr": 0,
-    "result": "LOSS",
-    "auto_resolved": false,
-    "resolve_note": "用户确认为止损 | manual override - DO NOT OVERWRITE",
-    "pnl": -1800
-  },
-  {
     "date": "20260420",
     "direction": "SHORT",
     "entry_low": 73092,
@@ -387,6 +373,19 @@
     "tp1": 73210.0,
     "tp2": 71283.0,
     "rr": 1.83,
+    "result": "TRIGGERED_NO_TP",
+    "auto_resolved": true,
+    "resolve_note": "HIGH=$77,800 LOW=$76,051 | 已触发但未达任何目标"
+  },
+  {
+    "date": "20260519",
+    "direction": "SHORT",
+    "entry_low": 76614.0,
+    "entry_high": 77151.0,
+    "stop_loss": 78189.0,
+    "tp1": 74270.0,
+    "tp2": 72963.0,
+    "rr": 1.76,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""
