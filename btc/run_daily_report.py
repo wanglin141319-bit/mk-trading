@@ -210,11 +210,11 @@ def save_history(history):
 # ============ 策略制定 ============
 def generate_strategy(data):
     """基于数据生成今日策略"""
-    btc = data.get('btc', {})
-    funding = data.get('funding', {})
-    oi = data.get('oi', {})
-    fg = data.get('fear_greed', {})
-    tech = data.get('technical', {})
+    btc = data.get('btc', {}) or {}
+    funding = data.get('funding', {}) or {}
+    oi = data.get('oi', {}) or {}
+    fg = data.get('fear_greed', {}) or {}
+    tech = data.get('technical', {}) or {}
 
     price = btc.get('price', 0)
     change = btc.get('change_24h', 0)
@@ -456,7 +456,7 @@ def gen_section11_yesterday_review(prev_strategy, history, data, today_display):
   <div style="padding:20px;text-align:center;color:var(--muted);">暂无昨日策略数据</div>
 </div>'''
 
-    btc = data.get('btc', {})
+    btc = data.get('btc', {}) or {}
     today_low = btc.get('low_24h', 0)
     today_high = btc.get('high_24h', 0)
 
@@ -1072,14 +1072,14 @@ def generate_html(data, strategy, history):
     date_display = today.strftime('%Y-%m-%d')
     yesterday_display = (today - timedelta(days=1)).strftime('%m/%d')
 
-    btc = data.get('btc', {})
-    eth = data.get('eth', {})
-    funding = data.get('funding', {})
-    oi = data.get('oi', {})
-    liq = data.get('liquidation', {})
-    fg = data.get('fear_greed', {})
-    tech = data.get('technical', {})
-    macro = data.get('macro', {})
+    btc = data.get('btc', {}) or {}
+    eth = data.get('eth', {}) or {}
+    funding = data.get('funding', {}) or {}
+    oi = data.get('oi', {}) or {}
+    liq = data.get('liquidation', {}) or {}
+    fg = data.get('fear_greed', {}) or {}
+    tech = data.get('technical', {}) or {}
+    macro = data.get('macro', {}) or {}
 
     # 安全获取值
     def safe(v, default='N/A', fmt=None):

@@ -1,19 +1,5 @@
 [
   {
-    "date": "20260420",
-    "direction": "SHORT",
-    "entry_low": 73092,
-    "entry_high": 74222,
-    "stop_loss": 75500,
-    "tp1": 71984,
-    "tp2": 70119,
-    "rr": 0.65,
-    "result": "LOSS",
-    "auto_resolved": true,
-    "resolve_note": "SL hit | 方向做反，BTC未能持续下跌",
-    "pnl": -1200
-  },
-  {
     "date": "20260421",
     "direction": "LONG",
     "entry_low": 75000,
@@ -386,6 +372,19 @@
     "tp1": 74270.0,
     "tp2": 72963.0,
     "rr": 1.76,
+    "result": "BREAK_EVEN",
+    "auto_resolved": true,
+    "resolve_note": "HIGH=$0 LOW=$0 | 未进入进场区间"
+  },
+  {
+    "date": "20260523",
+    "direction": "WAIT",
+    "entry_low": 74373.0,
+    "entry_high": 75120.0,
+    "stop_loss": 75868.0,
+    "tp1": 72504.0,
+    "tp2": 70635.0,
+    "rr": 2.0,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""

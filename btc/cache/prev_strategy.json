@@ -1,18 +1,18 @@
 {
-  "direction": "SHORT",
-  "confidence": 20,
+  "direction": "WAIT",
+  "confidence": -5,
   "signals": [
     "极端恐惧，可能存在超卖反弹机会",
-    "MACD 死叉，看空",
-    "价格 > EMA20，短期趋势偏多"
+    "价格 > EMA20，短期趋势偏多",
+    "价格触及布林带上轨，超买信号"
   ],
-  "resistance": 77800.0,
-  "entry_low": 76614.0,
-  "entry_high": 77151.0,
-  "stop_loss": 78189.0,
-  "tp1": 74270.0,
-  "tp2": 72963.0,
-  "rr_ratio": 1.76,
-  "position_size": "10-15%",
-  "trigger_condition": "反弹至 77151.0 滞涨后做空"
+  "resistance": 75493.86,
+  "entry_low": 74373.0,
+  "entry_high": 75120.0,
+  "stop_loss": 75868.0,
+  "tp1": 72504.0,
+  "tp2": 70635.0,
+  "rr_ratio": 2.0,
+  "position_size": "0%",
+  "trigger_condition": "RSI < 35 或 MACD 金叉 + 价格站稳 EMA20 后介入"
 }
