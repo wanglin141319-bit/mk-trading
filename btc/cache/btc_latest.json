@@ -1,14 +1,14 @@
 {
-  "ts": 1779533409.444882,
+  "ts": 1779586169.1042304,
   "data": {
-    "timestamp": "2026-05-23T18:46:37.019923",
+    "timestamp": "2026-05-24T09:26:26.488860",
     "btc": {
-      "price": 74746.4,
+      "price": 76887.8,
       "source": "gate"
     },
     "eth": null,
     "funding": {
-      "rate": 0.0085,
+      "rate": -0.006200000000000001,
       "source": "gate"
     },
     "oi": null,
@@ -20,8 +20,8 @@
       "source": "none"
     },
     "fear_greed": {
-      "value": 28,
-      "classification": "Fear",
+      "value": 25,
+      "classification": "Extreme Fear",
       "prev_value": 28,
       "prev_classification": "Fear",
       "source": "alternative.me"
@@ -47,14 +47,14 @@
         }
       ],
       "weekly_key": {
-        "week": "周六",
-        "date": "2026-05-23",
+        "week": "周日",
+        "date": "2026-05-24",
         "event": "FOMC会议纪要 / 美联储官员密集发声",
         "description": "本周美联储多位官员讲话，关注利率路径指引",
         "action": "数据公布前1小时禁止新开仓，已持仓带好止损"
       },
-      "week": "周六",
-      "date": "2026-05-23"
+      "week": "周日",
+      "date": "2026-05-24"
     }
   }
 }

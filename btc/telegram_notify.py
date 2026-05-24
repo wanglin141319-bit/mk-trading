@@ -94,11 +94,11 @@ def send_photo(bot_token, chat_id, file_path, caption=None):
 # ============ 日报摘要格式化 ============
 def format_daily_report(data, strategy):
     """将数据格式化为 Telegram 消息"""
-    btc = data.get('btc', {})
-    fg = data.get('fear_greed', {})
-    tech = data.get('technical', {})
-    funding = data.get('funding', {})
-    oi = data.get('oi', {})
+    btc = data.get('btc', {}) or {}
+    fg = data.get('fear_greed', {}) or {}
+    tech = data.get('technical', {}) or {}
+    funding = data.get('funding', {}) or {}
+    oi = data.get('oi', {}) or {}
 
     price = btc.get('price', 0)
     change = btc.get('change_24h', 0)
