@@ -2,16 +2,15 @@
   "direction": "WAIT",
   "confidence": -5,
   "signals": [
-    "极端恐惧，可能存在超卖反弹机会",
     "价格 > EMA20，短期趋势偏多",
     "价格触及布林带上轨，超买信号"
   ],
-  "resistance": 77656.68,
-  "entry_low": 76503.0,
-  "entry_high": 77272.0,
-  "stop_loss": 78041.0,
-  "tp1": 74581.0,
-  "tp2": 72659.0,
+  "resistance": 77972.3,
+  "entry_low": 76814.0,
+  "entry_high": 77586.0,
+  "stop_loss": 78358.0,
+  "tp1": 74884.0,
+  "tp2": 72954.0,
   "rr_ratio": 2.0,
   "position_size": "0%",
   "trigger_condition": "RSI < 35 或 MACD 金叉 + 价格站稳 EMA20 后介入"
