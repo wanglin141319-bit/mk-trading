@@ -1,18 +1,5 @@
 [
   {
-    "date": "20260424",
-    "direction": "LONG",
-    "entry_low": 77100,
-    "entry_high": 77500,
-    "stop_loss": 76200,
-    "tp1": 79500,
-    "tp2": 81000,
-    "rr": 2.7,
-    "result": "TRIGGERED_NO_TP",
-    "auto_resolved": true,
-    "resolve_note": "LOW=77264<=77500(triggered) | HIGH=78581<TP1=79500 | SL=76200 not hit | triggered but no TP"
-  },
-  {
     "date": "20260425",
     "direction": "WAIT",
     "entry_low": 0,
@@ -384,6 +371,19 @@
     "stop_loss": 77925.0,
     "tp1": 74470.0,
     "tp2": 72550.0,
+    "rr": 2.0,
+    "result": "OPEN",
+    "auto_resolved": false,
+    "resolve_note": ""
+  },
+  {
+    "date": "20260527",
+    "direction": "WAIT",
+    "entry_low": 75482.0,
+    "entry_high": 76241.0,
+    "stop_loss": 77000.0,
+    "tp1": 73586.0,
+    "tp2": 71689.0,
     "rr": 2.0,
     "result": "OPEN",
     "auto_resolved": false,
