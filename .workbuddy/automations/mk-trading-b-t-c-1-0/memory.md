@@ -2,6 +2,20 @@
 
 ## 执行历史
 
+### 2026-05-27 (09:27)
+- **状态**: 报告生成成功，Git push 成功，Telegram 推送失败（网络 SSL 问题）
+- **关键数据（实时）**:
+  - BTC价格: $75,861.8（Gate.io 数据，Binance/OKX 均 SSL 连接重置）
+  - 恐惧贪婪指数: 25 (Extreme Fear)
+  - 资金费率: +0.0085% (多头付空头，Gate.io)
+  - RSI/MACD/EMA/OI: 数据缺失（外网 API 全部 ConnectionResetError）
+- **策略方向**: **WAIT**（confidence=-5，数据不足）
+- **生成文件**: BTC_daily_report_20260527.html
+- **Git提交**: push OK ✅
+- **Telegram**: ❌ 失败（SSL 连接重置）
+- **耗时**: 221.8s
+- **备注**: 外网访问持续 SSL 断开（连续第5天），仅 Gate.io 部分可用；技术指标全 N/A
+
 ### 2026-05-26 (09:27)
 - **状态**: 报告生成成功，Git push 成功，Telegram 推送失败（网络 SSL 问题）
 - **关键数据（实时）**:
