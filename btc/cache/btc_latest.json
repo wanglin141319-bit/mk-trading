@@ -1,32 +1,59 @@
 {
-  "ts": 1779931957.1699739,
+  "ts": 1780018256.304811,
   "data": {
-    "timestamp": "2026-05-28T09:29:05.647792",
+    "timestamp": "2026-05-29T09:30:42.626042",
     "btc": {
-      "price": 74324.2,
-      "source": "gate"
+      "price": 73574.01,
+      "change_24h": -0.992,
+      "high_24h": 74408.52,
+      "low_24h": 72582.82,
+      "vol_btc": 21298.75074,
+      "source": "binance"
     },
-    "eth": null,
+    "eth": {
+      "price": 2007.65,
+      "change_24h": -0.538,
+      "source": "binance"
+    },
     "funding": {
       "rate": 0.01,
-      "source": "gate"
+      "next_time": 1780041600000,
+      "source": "binance"
     },
-    "oi": null,
+    "oi": {
+      "long_ratio": 63.8,
+      "short_ratio": 36.2,
+      "long_short_ratio": 1.764,
+      "source": "binance_global"
+    },
     "liquidation": {
-      "long_ratio": "N/A",
-      "short_ratio": "N/A",
-      "long_short_ratio": "N/A",
-      "trend_change": 0,
-      "source": "none"
+      "long_ratio": 57.4,
+      "short_ratio": 42.6,
+      "long_short_ratio": 1.349,
+      "trend_change": -0.001,
+      "source": "binance_top_ratio"
     },
     "fear_greed": {
-      "value": 22,
+      "value": 23,
       "classification": "Extreme Fear",
-      "prev_value": 25,
+      "prev_value": 22,
       "prev_classification": "Extreme Fear",
       "source": "alternative.me"
     },
-    "technical": null,
+    "technical": {
+      "rsi": 64.7711349836525,
+      "ema7": 77207.51377404225,
+      "ema20": 74678.26625651142,
+      "ema50": 70959.07665921147,
+      "macd_line": 2789.0344404468487,
+      "macd_signal": 2789.0344404468487,
+      "macd_hist": 0.0,
+      "macd_cross": "DEAD",
+      "bb_upper": 83430.98635166437,
+      "bb_middle": 74187.65,
+      "bb_lower": 64944.31364833562,
+      "close": 75822.0
+    },
     "macro": {
       "events": [
         {
@@ -47,14 +74,14 @@
         }
       ],
       "weekly_key": {
-        "week": "周四",
-        "date": "2026-05-28",
+        "week": "周五",
+        "date": "2026-05-29",
         "event": "FOMC会议纪要 / 美联储官员密集发声",
         "description": "本周美联储多位官员讲话，关注利率路径指引",
         "action": "数据公布前1小时禁止新开仓，已持仓带好止损"
       },
-      "week": "周四",
-      "date": "2026-05-28"
+      "week": "周五",
+      "date": "2026-05-29"
     }
   }
 }

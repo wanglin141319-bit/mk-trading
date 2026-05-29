@@ -2,6 +2,19 @@
 
 ## 执行历史
 
+### 2026-05-28 (09:25)
+- **状态**: 报告生成成功，Git commit 成功，Git push 失败（GitHub SSL），Telegram 未推送（脚本被截停）
+- **关键数据**:
+  - BTC价格: $74,324（Gate.io 数据）
+  - 恐惧贪婪指数: 23 (Extreme Fear)
+  - 技术指标: RSI 54.3 / MACD -820 / EMA20 $75,420（⚠️可能为模板默认值，API数据未更新）
+- **策略方向**: **WAIT**（confidence=-5，数据不足）
+- **生成文件**: BTC_daily_report_20260528.html (55,152 bytes)
+- **Git提交**: commit OK ✅, push ❌ (Empty reply from server)
+- **Telegram**: ❌ 未推送（脚本后台进程被截停，Git push阻塞后无响应）
+- **备注**: 连续第6天外网SSL不稳定；技术指标疑似模板默认值；auto_resolve 未能结算5/23-5/27的WAIT日（API数据缺失导致方向偏差判断跳过）
+- **修复**: 脚本需用venv Python路径运行（裸路径缺少requests模块）
+
 ### 2026-05-27 (09:27)
 - **状态**: 报告生成成功，Git push 成功，Telegram 推送失败（网络 SSL 问题）
 - **关键数据（实时）**:

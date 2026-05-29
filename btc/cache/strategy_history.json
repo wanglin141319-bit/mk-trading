@@ -1,18 +1,5 @@
 [
   {
-    "date": "20260426",
-    "direction": "WAIT",
-    "entry_low": 0,
-    "entry_high": 0,
-    "stop_loss": 0,
-    "tp1": 0,
-    "tp2": 0,
-    "rr": 0,
-    "result": "SKIP",
-    "auto_resolved": true,
-    "resolve_note": "周日观望策略，RSI超买+FOMC临近，正确保持空仓"
-  },
-  {
     "date": "20260427",
     "direction": "WAIT",
     "entry_low": 0,
@@ -385,6 +372,19 @@
     "tp1": 72094.0,
     "tp2": 70236.0,
     "rr": 2.0,
+    "result": "OPEN",
+    "auto_resolved": false,
+    "resolve_note": ""
+  },
+  {
+    "date": "20260529",
+    "direction": "SHORT",
+    "entry_low": 73427.0,
+    "entry_high": 73942.0,
+    "stop_loss": 74781.0,
+    "tp1": 71492.0,
+    "tp2": 70395.0,
+    "rr": 1.72,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""
