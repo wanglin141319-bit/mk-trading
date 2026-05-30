@@ -1,18 +1,5 @@
 [
   {
-    "date": "20260427",
-    "direction": "WAIT",
-    "entry_low": 0,
-    "entry_high": 0,
-    "stop_loss": 0,
-    "tp1": 0,
-    "tp2": 0,
-    "rr": 0,
-    "result": "SKIP",
-    "auto_resolved": true,
-    "resolve_note": "观望策略，FOMC前谨慎，BTC涨+2.3%但未入场，保本"
-  },
-  {
     "date": "20260428",
     "direction": "WAIT",
     "entry_low": 76000,
@@ -385,6 +372,19 @@
     "tp1": 71492.0,
     "tp2": 70395.0,
     "rr": 1.72,
+    "result": "TRIGGERED_NO_TP",
+    "auto_resolved": true,
+    "resolve_note": "HIGH=$74,514 LOW=$72,512 | 已触发但未达任何目标"
+  },
+  {
+    "date": "20260530",
+    "direction": "SHORT",
+    "entry_low": 73485.0,
+    "entry_high": 74000.0,
+    "stop_loss": 74887.0,
+    "tp1": 71454.0,
+    "tp2": 70309.0,
+    "rr": 1.74,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""
