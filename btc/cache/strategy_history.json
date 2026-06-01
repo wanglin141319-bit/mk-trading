@@ -1,18 +1,5 @@
 [
   {
-    "date": "20260429",
-    "direction": "SHORT",
-    "entry_low": 76104.33,
-    "entry_high": 73121.45,
-    "stop_loss": 77863.52,
-    "tp1": 73809.72,
-    "tp2": 71897.55,
-    "rr": 1.94,
-    "result": "BREAK_EVEN",
-    "auto_resolved": true,
-    "resolve_note": "HIGH=$77,905 LOW=$74,938 | 未进入进场区间"
-  },
-  {
     "date": "20260430",
     "direction": "SHORT",
     "entry_low": 75212.04,
@@ -385,6 +372,19 @@
     "tp1": 72504.0,
     "tp2": 71648.0,
     "rr": 1.65,
+    "result": "TRIGGERED_NO_TP",
+    "auto_resolved": true,
+    "resolve_note": "HIGH=$74,244 LOW=$73,400 | 已触发但未达任何目标"
+  },
+  {
+    "date": "20260601",
+    "direction": "SHORT",
+    "entry_low": 73446.0,
+    "entry_high": 73961.0,
+    "stop_loss": 74615.0,
+    "tp1": 71880.0,
+    "tp2": 70969.0,
+    "rr": 1.68,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""

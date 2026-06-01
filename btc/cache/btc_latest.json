@@ -1,43 +1,43 @@
 {
-  "ts": 1780191048.7171721,
+  "ts": 1780277584.0888436,
   "data": {
-    "timestamp": "2026-05-31T09:30:41.732566",
+    "timestamp": "2026-06-01T09:32:59.533938",
     "btc": {
-      "price": 74103.05,
-      "change_24h": 0.664,
-      "high_24h": 74275.66,
-      "low_24h": 73216.0,
-      "vol_btc": 7193.81779,
+      "price": 73593.0,
+      "change_24h": -0.795,
+      "high_24h": 74243.94,
+      "low_24h": 73400.0,
+      "vol_btc": 7100.12268,
       "source": "binance"
     },
     "eth": {
-      "price": 2030.48,
-      "change_24h": 0.532,
+      "price": 2003.45,
+      "change_24h": -1.411,
       "source": "binance"
     },
     "funding": {
-      "rate": 0.005219,
-      "next_time": 1780214400000,
+      "rate": 0.006618000000000001,
+      "next_time": 1780300800000,
       "source": "binance"
     },
     "oi": {
-      "long_ratio": 60.3,
-      "short_ratio": 39.7,
-      "long_short_ratio": 1.521,
+      "long_ratio": 60.2,
+      "short_ratio": 39.8,
+      "long_short_ratio": 1.513,
       "source": "binance_global"
     },
     "liquidation": {
-      "long_ratio": 58.1,
-      "short_ratio": 41.9,
-      "long_short_ratio": 1.387,
-      "trend_change": 0.002,
+      "long_ratio": 57.8,
+      "short_ratio": 42.2,
+      "long_short_ratio": 1.368,
+      "trend_change": 0.001,
       "source": "binance_top_ratio"
     },
     "fear_greed": {
-      "value": 28,
+      "value": 29,
       "classification": "Fear",
-      "prev_value": 23,
-      "prev_classification": "Extreme Fear",
+      "prev_value": 28,
+      "prev_classification": "Fear",
       "source": "alternative.me"
     },
     "technical": {
@@ -74,14 +74,14 @@
         }
       ],
       "weekly_key": {
-        "week": "周日",
-        "date": "2026-05-31",
+        "week": "周一",
+        "date": "2026-06-01",
         "event": "FOMC会议纪要 / 美联储官员密集发声",
         "description": "本周美联储多位官员讲话，关注利率路径指引",
         "action": "数据公布前1小时禁止新开仓，已持仓带好止损"
       },
-      "week": "周日",
-      "date": "2026-05-31"
+      "week": "周一",
+      "date": "2026-06-01"
     }
   }
 }
