@@ -1,42 +1,42 @@
 {
-  "ts": 1780277584.0888436,
+  "ts": 1780363062.4837084,
   "data": {
-    "timestamp": "2026-06-01T09:32:59.533938",
+    "timestamp": "2026-06-02T09:17:36.952133",
     "btc": {
-      "price": 73593.0,
-      "change_24h": -0.795,
-      "high_24h": 74243.94,
-      "low_24h": 73400.0,
-      "vol_btc": 7100.12268,
+      "price": 71340.0,
+      "change_24h": -3.1,
+      "high_24h": 74019.58,
+      "low_24h": 70686.68,
+      "vol_btc": 24285.25446,
       "source": "binance"
     },
     "eth": {
-      "price": 2003.45,
-      "change_24h": -1.411,
+      "price": 1997.25,
+      "change_24h": -0.512,
       "source": "binance"
     },
     "funding": {
-      "rate": 0.006618000000000001,
-      "next_time": 1780300800000,
+      "rate": 0.01,
+      "next_time": 1780387200000,
       "source": "binance"
     },
     "oi": {
-      "long_ratio": 60.2,
-      "short_ratio": 39.8,
-      "long_short_ratio": 1.513,
+      "long_ratio": 67.6,
+      "short_ratio": 32.4,
+      "long_short_ratio": 2.09,
       "source": "binance_global"
     },
     "liquidation": {
-      "long_ratio": 57.8,
-      "short_ratio": 42.2,
-      "long_short_ratio": 1.368,
-      "trend_change": 0.001,
+      "long_ratio": 60.9,
+      "short_ratio": 39.1,
+      "long_short_ratio": 1.555,
+      "trend_change": 0.004,
       "source": "binance_top_ratio"
     },
     "fear_greed": {
-      "value": 29,
-      "classification": "Fear",
-      "prev_value": 28,
+      "value": 23,
+      "classification": "Extreme Fear",
+      "prev_value": 29,
       "prev_classification": "Fear",
       "source": "alternative.me"
     },
@@ -74,14 +74,14 @@
         }
       ],
       "weekly_key": {
-        "week": "周一",
-        "date": "2026-06-01",
+        "week": "周二",
+        "date": "2026-06-02",
         "event": "FOMC会议纪要 / 美联储官员密集发声",
         "description": "本周美联储多位官员讲话，关注利率路径指引",
         "action": "数据公布前1小时禁止新开仓，已持仓带好止损"
       },
-      "week": "周一",
-      "date": "2026-06-01"
+      "week": "周二",
+      "date": "2026-06-02"
     }
   }
 }
