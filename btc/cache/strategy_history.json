@@ -1,18 +1,5 @@
 [
   {
-    "date": "20260501",
-    "direction": "LONG",
-    "entry_low": 77000,
-    "entry_high": 78000,
-    "stop_loss": 75500,
-    "tp1": 80000,
-    "tp2": 82000,
-    "rr": 2.1,
-    "result": "TRIGGERED_NO_TP",
-    "auto_resolved": true,
-    "resolve_note": "H=78920 L=76078 | 触发进场但未达止盈/止损"
-  },
-  {
     "date": "20260502",
     "direction": "LONG",
     "entry_low": 77500,
@@ -385,6 +372,19 @@
     "tp1": 65561.0,
     "tp2": 62618.0,
     "rr": 1.89,
+    "result": "TRIGGERED_NO_TP",
+    "auto_resolved": true,
+    "resolve_note": "HIGH=$71,336 LOW=$66,193 | 已触发但未达任何目标"
+  },
+  {
+    "date": "20260603",
+    "direction": "SHORT",
+    "entry_low": 66767.0,
+    "entry_high": 67235.0,
+    "stop_loss": 71693.0,
+    "tp1": 57617.0,
+    "tp2": 52925.0,
+    "rr": 1.94,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""
