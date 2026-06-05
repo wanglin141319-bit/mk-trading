@@ -1,42 +1,42 @@
 {
-  "ts": 1780539908.3694792,
+  "ts": 1780626311.2843566,
   "data": {
-    "timestamp": "2026-06-04T10:25:03.137448",
+    "timestamp": "2026-06-05T10:25:03.092049",
     "btc": {
-      "price": 62926.08,
-      "change_24h": -5.63,
-      "high_24h": 67516.0,
-      "low_24h": 61383.56,
-      "vol_btc": 39676.18956,
+      "price": 62920.01,
+      "change_24h": -0.008,
+      "high_24h": 64764.32,
+      "low_24h": 62205.0,
+      "vol_btc": 33702.84847,
       "source": "binance"
     },
     "eth": {
-      "price": 1768.31,
-      "change_24h": -4.595,
+      "price": 1743.0,
+      "change_24h": -1.432,
       "source": "binance"
     },
     "funding": {
-      "rate": 0.00029299999999999997,
-      "next_time": 1780560000000,
+      "rate": 0.002067,
+      "next_time": 1780646400000,
       "source": "binance"
     },
     "oi": {
-      "long_ratio": 67.0,
-      "short_ratio": 33.0,
-      "long_short_ratio": 2.033,
+      "long_ratio": 67.2,
+      "short_ratio": 32.8,
+      "long_short_ratio": 2.049,
       "source": "binance_global"
     },
     "liquidation": {
-      "long_ratio": 59.4,
-      "short_ratio": 40.6,
-      "long_short_ratio": 1.46,
-      "trend_change": -0.02,
+      "long_ratio": 57.2,
+      "short_ratio": 42.8,
+      "long_short_ratio": 1.337,
+      "trend_change": -0.005,
       "source": "binance_top_ratio"
     },
     "fear_greed": {
       "value": 12,
       "classification": "Extreme Fear",
-      "prev_value": 11,
+      "prev_value": 12,
       "prev_classification": "Extreme Fear",
       "source": "alternative.me"
     },
@@ -74,14 +74,14 @@
         }
       ],
       "weekly_key": {
-        "week": "周四",
-        "date": "2026-06-04",
+        "week": "周五",
+        "date": "2026-06-05",
         "event": "FOMC会议纪要 / 美联储官员密集发声",
         "description": "本周美联储多位官员讲话，关注利率路径指引",
         "action": "数据公布前1小时禁止新开仓，已持仓带好止损"
       },
-      "week": "周四",
-      "date": "2026-06-04"
+      "week": "周五",
+      "date": "2026-06-05"
     }
   }
 }
