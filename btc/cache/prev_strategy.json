@@ -10,12 +10,12 @@
     "价格触及布林带下轨，超卖信号"
   ],
   "resistance": 73699.04,
-  "entry_low": 62794.0,
-  "entry_high": 63235.0,
-  "stop_loss": 65088.0,
-  "tp1": 58868.0,
-  "tp2": 56794.0,
-  "rr_ratio": 1.87,
+  "entry_low": 60709.0,
+  "entry_high": 61135.0,
+  "stop_loss": 64006.0,
+  "tp1": 54754.0,
+  "tp2": 51670.0,
+  "rr_ratio": 1.91,
   "position_size": "10-15%",
-  "trigger_condition": "反弹至 63235.0 滞涨后做空"
+  "trigger_condition": "反弹至 61135.0 滞涨后做空"
 }
