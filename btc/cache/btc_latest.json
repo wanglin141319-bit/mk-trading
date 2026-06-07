@@ -1,36 +1,36 @@
 {
-  "ts": 1780712712.4582844,
+  "ts": 1780799108.8860233,
   "data": {
-    "timestamp": "2026-06-06T10:25:03.328216",
+    "timestamp": "2026-06-07T10:25:03.282777",
     "btc": {
-      "price": 60830.65,
-      "change_24h": -3.321,
-      "high_24h": 63688.0,
-      "low_24h": 59130.91,
-      "vol_btc": 54561.23701,
+      "price": 61294.0,
+      "change_24h": 0.783,
+      "high_24h": 61664.13,
+      "low_24h": 59500.0,
+      "vol_btc": 20124.74123,
       "source": "binance"
     },
     "eth": {
-      "price": 1572.47,
-      "change_24h": -9.784,
+      "price": 1586.88,
+      "change_24h": 0.906,
       "source": "binance"
     },
     "funding": {
-      "rate": -0.002327,
-      "next_time": 1780732800000,
+      "rate": -0.002638,
+      "next_time": 1780819200000,
       "source": "binance"
     },
     "oi": {
-      "long_ratio": 66.1,
-      "short_ratio": 33.9,
-      "long_short_ratio": 1.952,
+      "long_ratio": 66.4,
+      "short_ratio": 33.6,
+      "long_short_ratio": 1.979,
       "source": "binance_global"
     },
     "liquidation": {
-      "long_ratio": 55.7,
-      "short_ratio": 44.3,
-      "long_short_ratio": 1.257,
-      "trend_change": 0.006,
+      "long_ratio": 53.4,
+      "short_ratio": 46.6,
+      "long_short_ratio": 1.147,
+      "trend_change": 0.017,
       "source": "binance_top_ratio"
     },
     "fear_greed": {
@@ -74,14 +74,14 @@
         }
       ],
       "weekly_key": {
-        "week": "周六",
-        "date": "2026-06-06",
+        "week": "周日",
+        "date": "2026-06-07",
         "event": "FOMC会议纪要 / 美联储官员密集发声",
         "description": "本周美联储多位官员讲话，关注利率路径指引",
         "action": "数据公布前1小时禁止新开仓，已持仓带好止损"
       },
-      "week": "周六",
-      "date": "2026-06-06"
+      "week": "周日",
+      "date": "2026-06-07"
     }
   }
 }
