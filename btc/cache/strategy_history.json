@@ -1,18 +1,5 @@
 [
   {
-    "date": "20260507",
-    "direction": "LONG",
-    "entry_low": 80800,
-    "entry_high": 81200,
-    "stop_loss": 79800,
-    "tp1": 83000,
-    "tp2": 84500,
-    "rr": 2.2,
-    "result": "LOSS",
-    "auto_resolved": true,
-    "resolve_note": "H=81891 L=79706 | 触发进场，但被止损 SL=79800"
-  },
-  {
     "date": "20260508",
     "direction": "SHORT",
     "entry_low": 79257,
@@ -385,6 +372,19 @@
     "tp1": 61711.0,
     "tp2": 60121.0,
     "rr": 2.0,
+    "result": "OPEN",
+    "auto_resolved": false,
+    "resolve_note": ""
+  },
+  {
+    "date": "20260708",
+    "direction": "SHORT",
+    "entry_low": 62799.0,
+    "entry_high": 63239.0,
+    "stop_loss": 64565.0,
+    "tp1": 59927.0,
+    "tp2": 58381.0,
+    "rr": 1.83,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""
