@@ -219,6 +219,46 @@
   .footer-tools a{ font-size:11.5px; color:var(--text-dim); text-decoration:none; opacity:.45; transition:opacity .3s,color .3s; }
   .footer-tools a:hover{ opacity:.9; color:var(--accent); }
 
+  /* ===== 最新动态（自动追踪） ===== */
+  .feed-head{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+  .live-dot{
+    display:inline-flex; align-items:center; gap:8px; font-size:11.5px; letter-spacing:.5px;
+    color:var(--green); padding:5px 14px; border-radius:100px;
+    background:rgba(0,255,136,0.06); border:1px solid rgba(0,255,136,0.24);
+  }
+  .live-dot i{ width:6px; height:6px; border-radius:50%; background:var(--green); animation:livepulse 1.9s infinite; }
+  @keyframes livepulse{
+    0%,100%{ opacity:1; box-shadow:0 0 0 0 rgba(0,255,136,.5); }
+    50%{ opacity:.5; box-shadow:0 0 0 6px rgba(0,255,136,0); }
+  }
+  .scan-time{ font-size:11.5px; color:var(--text-dim); }
+  .feed{ display:flex; flex-direction:column; gap:14px; }
+  .fi{
+    background:var(--bg-card); border:1px solid var(--border);
+    border-left:2px solid rgba(0,212,255,0.5); border-radius:12px; padding:20px 22px;
+  }
+  .fi.new{ border-left-color:var(--gold); background:linear-gradient(120deg,rgba(255,215,0,0.055),var(--bg-card)); }
+  .fi-top{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-bottom:11px; }
+  .fi-date{ font-family:'Orbitron',monospace; font-size:12px; color:var(--accent); letter-spacing:1px; }
+  .fi-new{
+    font-size:10px; padding:2px 9px; border-radius:100px; letter-spacing:.5px;
+    color:var(--gold); background:rgba(255,215,0,0.09); border:1px solid rgba(255,215,0,0.3);
+  }
+  .fi-title{ font-size:15.5px; font-weight:700; line-height:1.6; margin-bottom:12px; }
+  .fi-quote{
+    font-size:13.5px; color:var(--text-mid); line-height:1.85; padding:12px 16px; margin-bottom:13px;
+    border-radius:9px; background:rgba(255,255,255,0.025); border-left:2px solid rgba(255,255,255,0.1);
+  }
+  .fi-read{ font-size:13.5px; color:var(--text-mid); line-height:1.85; }
+  .fi-read b{ color:var(--text); }
+  .fi-foot{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:14px; }
+  .fi-tag{
+    font-size:10.5px; padding:3px 11px; border-radius:100px;
+    color:var(--accent); background:rgba(0,212,255,0.07); border:1px solid rgba(0,212,255,0.2);
+  }
+  .fi-src{ font-size:10.5px; color:var(--text-dim); margin-left:auto; }
+  .feed-empty{ font-size:13.5px; color:var(--text-dim); padding:20px 0; }
+
   .fade-in{ opacity:0; transform:translateY(26px); transition:all .8s cubic-bezier(0.16,1,0.3,1); }
   .fade-in.visible{ opacity:1; transform:translateY(0); }
 
@@ -235,6 +275,8 @@
     .profile{ gap:18px; }
     .avatar{ width:72px; height:72px; font-size:28px; border-radius:20px; }
     .card{ padding:20px; }
+    .fi{ padding:16px 16px; }
+    .fi-quote{ padding:11px 13px; }
     .tbl{ font-size:12.5px; }
     .tbl td, .tbl th{ padding:9px 7px; }
   }
@@ -250,6 +292,7 @@
     <li><a href="../">首页</a></li>
     <li><a href="../btc/">行情分析</a></li>
     <li><a href="./" class="active">名人榜</a></li>
+    <li><a href="#feed">最新动态</a></li>
     <li><a href="../#matrix">自媒体矩阵</a></li>
   </ul>
 </nav>
@@ -303,6 +346,30 @@
     </div>
   </div>
 </div>
+
+<div class="divider"></div>
+
+<!-- ===== 最新动态（自动追踪） ===== -->
+<section id="feed">
+  <div class="container">
+    <div class="section-label fade-in">LIVE TRACKER</div>
+    <h2 class="section-title fade-in">最新动态 · 自动追踪</h2>
+    <div class="feed-head">
+      <span class="live-dot"><i></i>每日自动扫描</span>
+      <span class="scan-time" id="scanTime"></span>
+    </div>
+    <p class="section-desc fade-in">
+      本区块由每日扫描任务维护：抓取他 X 上的新发言，保留原话，并附上解读。
+      <strong>「原话」是他的观点，「解读」是我的判断，两者请分开看。</strong>
+    </p>
+
+    <div class="feed" id="feedList">
+      <div class="feed-empty">动态数据加载中……若长时间无内容，说明数据文件未就位。</div>
+    </div>
+
+    <div class="note" id="feedSrc" style="margin-top:20px"></div>
+  </div>
+</section>
 
 <div class="divider"></div>
 
@@ -761,6 +828,7 @@
   </div>
 </footer>
 
+<script src="data/killa-feed.js"></script>
 <script>
 /* 星辰背景 */
 const canvas = document.getElementById('stars-canvas');
@@ -799,6 +867,51 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 /* 导航滚动态 */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+
+/* ===== 最新动态渲染（数据来自 data/killa-feed.js） ===== */
+(function () {
+  const F = window.KILLA_FEED;
+  const box = document.getElementById('feedList');
+  const st = document.getElementById('scanTime');
+  const sd = document.getElementById('feedSrc');
+  if (!box) return;
+
+  if (!F || !Array.isArray(F.entries) || !F.entries.length) {
+    box.innerHTML = '<div class="feed-empty">暂无动态数据。数据文件 <code>data/killa-feed.js</code> 尚未生成或为空。</div>';
+    return;
+  }
+
+  if (st && F.lastScan) {
+    const t = new Date(F.lastScan);
+    const pad = n => String(n).padStart(2, '0');
+    const stamp = pad(t.getMonth() + 1) + '-' + pad(t.getDate()) + ' ' + pad(t.getHours()) + ':' + pad(t.getMinutes());
+    st.textContent = '最后扫描 ' + stamp + ' · 累计收录 ' + (F.total || F.entries.length) + ' 条';
+  }
+  if (sd && F.sources) {
+    sd.innerHTML = '<b>信息来源：</b>' + F.sources +
+      '。本站仅做归档与解读，<strong>不构成任何投资建议</strong>。';
+  }
+
+  const NEW_WINDOW = 3 * 24 * 3600 * 1000;
+  const now = Date.now();
+  box.innerHTML = F.entries.map(function (e) {
+    const t = new Date(e.date + 'T00:00:00+08:00').getTime();
+    const isNew = isFinite(t) && (now - t) <= NEW_WINDOW && (now - t) >= 0;
+    return '<div class="fi' + (isNew ? ' new' : '') + '">' +
+      '<div class="fi-top">' +
+        '<span class="fi-date">' + e.date + '</span>' +
+        (isNew ? '<span class="fi-new">NEW</span>' : '') +
+        '<span class="fi-src">' + (e.src || '') + '</span>' +
+      '</div>' +
+      '<div class="fi-title">' + e.title + '</div>' +
+      '<div class="fi-quote">' + e.quote + '</div>' +
+      '<div class="fi-read"><b style="color:var(--accent)">解读 · </b>' + e.read + '</div>' +
+      '<div class="fi-foot">' + (e.tags || []).map(function (x) {
+        return '<span class="fi-tag">' + x + '</span>';
+      }).join('') + '</div>' +
+    '</div>';
+  }).join('');
+})();
 </script>
 </body>
 </html>

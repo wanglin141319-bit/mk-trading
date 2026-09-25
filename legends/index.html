@@ -160,6 +160,16 @@
   .legend-head{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:6px; }
   .legend-name{ font-size:20px; font-weight:700; }
   .legend-handle{ font-size:13px; color:var(--accent); font-family:'Orbitron',monospace; }
+  .legend-live{
+    display:inline-flex; align-items:center; gap:6px; font-size:10.5px; letter-spacing:.5px;
+    padding:3px 10px; border-radius:100px;
+    color:var(--green); background:rgba(0,255,136,0.06); border:1px solid rgba(0,255,136,0.26);
+  }
+  .legend-live i{ width:5px; height:5px; border-radius:50%; background:var(--green); animation:livepulse 1.9s infinite; }
+  @keyframes livepulse{
+    0%,100%{ opacity:1; box-shadow:0 0 0 0 rgba(0,255,136,.5); }
+    50%{ opacity:.5; box-shadow:0 0 0 6px rgba(0,255,136,0); }
+  }
   .legend-tagline{ color:var(--text-mid); font-size:14.5px; margin-bottom:14px; }
   .legend-tags{ display:flex; gap:7px; flex-wrap:wrap; margin-bottom:14px; }
   .tag{
@@ -342,6 +352,7 @@ const LEGENDS = [
     handle: "@KillaXBT",
     avatar: "K",
     url: "killa.html",
+    tracking: true,
     tagline: "匿名 BTC 量化交易者。2025 年 5 月那张预测 BTC 见顶 12 万、随后崩盘的「神图」，让他一战封神。",
     tags: [
       { text: "BTC 周期派", cls: "c" },
@@ -422,6 +433,7 @@ function renderList(catKey) {
         <div class="legend-head">
           <span class="legend-name">${l.name}</span>
           <span class="legend-handle">${l.handle}</span>
+          ${l.tracking ? '<span class="legend-live"><i></i>追踪中</span>' : ''}
         </div>
         <div class="legend-tagline">${l.tagline}</div>
         <div class="legend-tags">${tags}</div>
