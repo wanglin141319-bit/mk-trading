@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>加密交易圈名人榜 | MK Trading</title>
+<meta name="description" content="加密交易圈名人榜 —— 收录并拆解 BTC / 加密货币领域知名交易员与分析师的方法论、实盘战绩与争议。第一位：Killa @KillaXBT。">
+<meta name="author" content="MK">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#05060f">
+<link rel="canonical" href="https://mktrading.vip/legends/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="加密交易圈名人榜 | MK Trading">
+<meta property="og:description" content="收录并拆解加密交易圈知名交易员的方法论、战绩与争议。">
+<meta property="og:url" content="https://mktrading.vip/legends/">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap">
+
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root{
+    --bg-deep:#05060f;
+    --bg-card:rgba(12,15,30,0.85);
+    --bg-card-hover:rgba(18,22,45,0.95);
+    --accent:#00d4ff;
+    --accent2:#7b61ff;
+    --accent3:#ff6b35;
+    --green:#00ff88;
+    --red:#ff4757;
+    --gold:#ffd700;
+    --text:#e8eaf0;
+    --text-dim:#6b7280;
+    --text-mid:#9ca3af;
+    --border:rgba(255,255,255,0.06);
+    --glow:0 0 40px rgba(0,212,255,0.15);
+  }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Inter','Noto Sans SC',sans-serif;
+    background:var(--bg-deep); color:var(--text);
+    line-height:1.7; overflow-x:hidden;
+  }
+  #stars-canvas{ position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+
+  /* ===== 导航 ===== */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 40px; transition:all .4s;
+    backdrop-filter:blur(0px);
+  }
+  nav.scrolled{
+    background:rgba(5,6,15,0.88); backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border); padding:12px 40px;
+  }
+  .nav-logo{
+    font-family:'Orbitron',monospace; font-size:20px; font-weight:800;
+    color:var(--accent); letter-spacing:2px; text-decoration:none;
+  }
+  .nav-links{ display:flex; gap:30px; list-style:none; }
+  .nav-links a{
+    color:var(--text-mid); text-decoration:none; font-size:14px;
+    font-weight:400; position:relative; transition:color .3s;
+  }
+  .nav-links a:hover{ color:var(--accent); }
+  .nav-links a.active{ color:var(--accent); font-weight:600; }
+
+  .container{ max-width:1200px; margin:0 auto; padding:0 40px; position:relative; z-index:1; }
+
+  /* ===== Hero ===== */
+  .hero{
+    padding:170px 0 70px; text-align:center; position:relative; z-index:1;
+  }
+  .hero-badge{
+    display:inline-block; font-family:'Orbitron',monospace;
+    font-size:11px; letter-spacing:5px; color:var(--accent);
+    border:1px solid rgba(0,212,255,0.3); border-radius:100px;
+    padding:8px 22px; margin-bottom:26px;
+    background:rgba(0,212,255,0.05);
+  }
+  .hero h1{
+    font-size:clamp(32px,5.5vw,56px); font-weight:800; line-height:1.2;
+    margin-bottom:20px; letter-spacing:1px;
+  }
+  .gradient-text{
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 50%,var(--gold) 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .hero p{ color:var(--text-mid); font-size:16px; max-width:660px; margin:0 auto 36px; }
+  .hero-stats{ display:flex; justify-content:center; gap:56px; flex-wrap:wrap; }
+  .hero-stat .num{
+    font-family:'Orbitron',monospace; font-size:30px; font-weight:700; line-height:1.2;
+  }
+  .hero-stat .num.accent{ color:var(--accent); }
+  .hero-stat .num.gold{ color:var(--gold); }
+  .hero-stat .num.green{ color:var(--green); }
+  .hero-stat .label{ font-size:12px; color:var(--text-dim); letter-spacing:1.5px; margin-top:4px; }
+
+  .divider{
+    height:1px; margin:0;
+    background:linear-gradient(90deg,transparent,var(--border),rgba(0,212,255,0.12),var(--border),transparent);
+  }
+
+  /* ===== 榜单 ===== */
+  section{ padding:90px 0; position:relative; }
+  .section-label{
+    font-family:'Orbitron',monospace; font-size:12px; letter-spacing:4px;
+    color:var(--accent); text-transform:uppercase; margin-bottom:12px;
+  }
+  .section-title{ font-size:34px; font-weight:700; margin-bottom:16px; }
+  .section-desc{ color:var(--text-mid); font-size:15px; margin-bottom:44px; max-width:680px; }
+
+  .filter-bar{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px; }
+  .filter-chip{
+    font-size:12.5px; padding:7px 16px; border-radius:100px; cursor:pointer;
+    border:1px solid var(--border); color:var(--text-mid);
+    background:var(--bg-card); transition:all .3s; user-select:none;
+  }
+  .filter-chip:hover{ border-color:rgba(0,212,255,0.4); color:var(--text); }
+  .filter-chip.active{
+    border-color:var(--accent); color:var(--accent);
+    background:rgba(0,212,255,0.08); box-shadow:0 0 20px rgba(0,212,255,0.1);
+  }
+
+  .legend-list{ display:flex; flex-direction:column; gap:20px; }
+
+  .legend-card{
+    display:flex; gap:26px; align-items:flex-start;
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:18px; padding:28px 30px;
+    text-decoration:none; color:inherit; transition:all .4s;
+    position:relative; overflow:hidden;
+  }
+  .legend-card::before{
+    content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+    background:linear-gradient(180deg,var(--accent),var(--accent2));
+    opacity:0; transition:opacity .4s;
+  }
+  .legend-card:hover{
+    background:var(--bg-card-hover); transform:translateY(-4px);
+    box-shadow:var(--glow); border-color:rgba(0,212,255,0.25);
+  }
+  .legend-card:hover::before{ opacity:1; }
+  .legend-card.soon{ opacity:.5; cursor:default; }
+  .legend-card.soon:hover{ transform:none; box-shadow:none; background:var(--bg-card); border-color:var(--border); }
+
+  .legend-rank{
+    font-family:'Orbitron',monospace; font-size:13px; font-weight:700;
+    color:var(--text-dim); min-width:34px; padding-top:6px; letter-spacing:1px;
+  }
+  .legend-avatar{
+    width:68px; height:68px; border-radius:18px; flex:none;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Orbitron',monospace; font-size:26px; font-weight:800;
+    background:linear-gradient(145deg,rgba(0,212,255,0.16),rgba(123,97,255,0.16));
+    border:1px solid rgba(0,212,255,0.25); color:var(--accent);
+  }
+  .legend-body{ flex:1; min-width:0; }
+  .legend-head{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:6px; }
+  .legend-name{ font-size:20px; font-weight:700; }
+  .legend-handle{ font-size:13px; color:var(--accent); font-family:'Orbitron',monospace; }
+  .legend-tagline{ color:var(--text-mid); font-size:14.5px; margin-bottom:14px; }
+  .legend-tags{ display:flex; gap:7px; flex-wrap:wrap; margin-bottom:14px; }
+  .tag{
+    font-size:11.5px; padding:4px 11px; border-radius:7px;
+    background:rgba(255,255,255,0.04); border:1px solid var(--border); color:var(--text-mid);
+  }
+  .tag.c{ color:var(--accent); border-color:rgba(0,212,255,0.28); background:rgba(0,212,255,0.07); }
+  .tag.g{ color:var(--gold); border-color:rgba(255,215,0,0.26); background:rgba(255,215,0,0.06); }
+  .tag.p{ color:var(--accent2); border-color:rgba(123,97,255,0.3); background:rgba(123,97,255,0.08); }
+
+  .legend-record{
+    display:flex; gap:26px; flex-wrap:wrap;
+    padding-top:14px; border-top:1px solid var(--border);
+  }
+  .rec-item{ font-size:13px; color:var(--text-mid); }
+  .rec-item b{ display:block; font-family:'Orbitron',monospace; font-size:16px; font-weight:700; color:var(--text); margin-bottom:2px; }
+  .rec-item b.up{ color:var(--red); }
+  .rec-item b.down{ color:var(--green); }
+  .rec-item b.gold{ color:var(--gold); }
+
+  .legend-go{
+    align-self:center; flex:none; font-size:13px; color:var(--accent);
+    font-family:'Orbitron',monospace; letter-spacing:1px; white-space:nowrap;
+  }
+
+  /* ===== 说明块 ===== */
+  .how-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .how-card{
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:16px; padding:26px;
+  }
+  .how-card .ico{
+    font-family:'Orbitron',monospace; font-size:20px; font-weight:800;
+    color:var(--accent); margin-bottom:12px;
+  }
+  .how-card h3{ font-size:16px; font-weight:600; margin-bottom:8px; }
+  .how-card p{ font-size:13.5px; color:var(--text-mid); line-height:1.75; }
+
+  /* ===== Footer ===== */
+  footer{
+    padding:50px 0; text-align:center; border-top:1px solid var(--border);
+    position:relative; z-index:1;
+  }
+  .footer-logo{
+    font-family:'Orbitron',monospace; font-size:16px; font-weight:700;
+    color:var(--accent); margin-bottom:8px;
+  }
+  footer p{ color:var(--text-dim); font-size:12.5px; }
+  .footer-tools{ margin-top:18px; display:flex; justify-content:center; gap:24px; flex-wrap:wrap; }
+  .footer-tools a{
+    font-size:11.5px; color:var(--text-dim); text-decoration:none;
+    opacity:.45; transition:opacity .3s,color .3s; letter-spacing:.5px;
+  }
+  .footer-tools a:hover{ opacity:.9; color:var(--accent); }
+
+  .fade-in{ opacity:0; transform:translateY(26px); transition:all .8s cubic-bezier(0.16,1,0.3,1); }
+  .fade-in.visible{ opacity:1; transform:translateY(0); }
+
+  @media(max-width:900px){
+    nav{ padding:14px 20px; } nav.scrolled{ padding:11px 20px; }
+    .nav-links{ display:none; }
+    .container{ padding:0 22px; }
+    section{ padding:64px 0; }
+    .hero{ padding:130px 0 50px; }
+    .section-title{ font-size:26px; }
+    .how-grid{ grid-template-columns:1fr; }
+    .legend-card{ flex-direction:column; gap:16px; padding:22px; }
+    .legend-avatar{ width:56px; height:56px; font-size:22px; }
+    .legend-go{ align-self:flex-start; }
+    .hero-stats{ gap:32px; }
+    .hero-stat .num{ font-size:24px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="stars-canvas"></canvas>
+
+<nav id="navbar">
+  <a href="../" class="nav-logo">MK</a>
+  <ul class="nav-links">
+    <li><a href="../">首页</a></li>
+    <li><a href="../btc/">行情分析</a></li>
+    <li><a href="./" class="active">名人榜</a></li>
+    <li><a href="../#strategies">交易策略</a></li>
+    <li><a href="../#matrix">自媒体矩阵</a></li>
+  </ul>
+</nav>
+
+<!-- ===== Hero ===== -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">CRYPTO TRADERS · HALL OF FAME</div>
+    <h1><span class="gradient-text">加密交易圈</span> 名人榜</h1>
+    <p>
+      收录加密市场里真正有公开判断记录的交易员与分析师。<br>
+      不看粉丝量，只看<strong>他说过什么、怎么论证、结果如何</strong>——
+      包括封神的那一战，也包括翻车的那几次。
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num accent" id="statCount">1</div><div class="label">已收录</div></div>
+      <div class="hero-stat"><div class="num gold">2025 — 2026</div><div class="label">覆盖周期</div></div>
+      <div class="hero-stat"><div class="num green" id="statUpdated">2026.09</div><div class="label">最近更新</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 榜单 ===== -->
+<section>
+  <div class="container">
+    <div class="section-label fade-in">THE RANKING</div>
+    <h2 class="section-title fade-in">榜单</h2>
+    <p class="section-desc fade-in">
+      按收录顺序排列，不设高低。每一位都包含档案、方法论拆解、实盘轨迹与争议复盘。
+    </p>
+
+    <div class="filter-bar fade-in" id="filterBar"></div>
+    <div class="legend-list" id="legendList"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 收录标准 ===== -->
+<section>
+  <div class="container">
+    <div class="section-label fade-in">METHODOLOGY</div>
+    <h2 class="section-title fade-in">收录与评价标准</h2>
+    <p class="section-desc fade-in">这份榜单不是吹捧墙。看一个人准不准，要看他准的时候靠什么，不准的时候亏多少。</p>
+    <div class="how-grid">
+      <div class="how-card fade-in">
+        <div class="ico">01</div>
+        <h3>必须有公开判断记录</h3>
+        <p>能被检索到具体日期、具体观点的公开发言。只喊「要涨要跌」不算，要能拆出逻辑链和价位。</p>
+      </div>
+      <div class="how-card fade-in">
+        <div class="ico">02</div>
+        <h3>战绩与失误都要写</h3>
+        <p>命中的那次怎么赢的，翻车的那次错在哪。只记录高光时刻的榜单没有阅读价值。</p>
+      </div>
+      <div class="how-card fade-in">
+        <div class="ico">03</div>
+        <h3>区分「判断」与「策略」</h3>
+        <p>方向对不等于能赚钱。会明确标出：他的输出是阶段识别工具，还是可直接执行的交易系统。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-logo">MK</div>
+    <p>合约交易 · 数据驱动 · 纪律优先</p>
+    <p style="margin-top:8px;opacity:.55">&copy; 2026 MK Trading. All rights reserved.</p>
+    <p style="margin-top:14px;font-size:11px;opacity:.5;max-width:640px;margin-left:auto;margin-right:auto">
+      ⚠️ 榜单内容基于公开信息整理，仅供研究学习，<strong>不构成任何投资建议</strong>。任何人的判断都可能出错。
+    </p>
+    <div class="footer-tools">
+      <a href="../">返回首页</a>
+      <a href="../btc/">行情分析</a>
+      <a href="../position_calculator.html">仓位计算器</a>
+      <a href="../profit_calculator.html">利润计算器</a>
+      <a href="../account_overview.html">账户总览</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   名人榜数据源 —— 新增名人只需在 LEGENDS 里加一条对象，
+   并在 legends/ 目录下建对应的详情页即可。
+   ============================================================ */
+const LEGENDS = [
+  {
+    rank: "01",
+    id: "killa",
+    name: "Killa",
+    handle: "@KillaXBT",
+    avatar: "K",
+    url: "killa.html",
+    tagline: "匿名 BTC 量化交易者。2025 年 5 月那张预测 BTC 见顶 12 万、随后崩盘的「神图」，让他一战封神。",
+    tags: [
+      { text: "BTC 周期派", cls: "c" },
+      { text: "旋转市场数学", cls: "" },
+      { text: "公开实盘仓位", cls: "p" },
+      { text: "公开认错", cls: "g" }
+    ],
+    cat: ["btc", "cycle"],
+    record: [
+      { label: "顶部预判误差", value: "−3.9%", cls: "up" },
+      { label: "自述命中率", value: "75–80%", cls: "" },
+      { label: "X 粉丝", value: "20 万+", cls: "gold" },
+      { label: "底部模型偏差", value: "−35%", cls: "down" }
+    ]
+  },
+  {
+    rank: "02",
+    name: "虚位以待",
+    handle: "COMING SOON",
+    avatar: "?",
+    soon: true,
+    tagline: "更多加密交易圈名人正在整理中 —— 欢迎推荐你觉得值得拆解的名字。",
+    tags: [{ text: "持续收录", cls: "g" }],
+    cat: []
+  }
+];
+
+const CATEGORIES = [
+  { key: "all",   label: "全部" },
+  { key: "btc",   label: "BTC 专项" },
+  { key: "cycle", label: "周期模型" },
+  { key: "onchain", label: "链上数据" },
+  { key: "ta",    label: "技术分析" },
+  { key: "macro", label: "宏观驱动" }
+];
+
+/* ---------- 渲染筛选器 ---------- */
+const filterBar = document.getElementById('filterBar');
+CATEGORIES.forEach((c, i) => {
+  const el = document.createElement('div');
+  el.className = 'filter-chip' + (i === 0 ? ' active' : '');
+  el.textContent = c.label;
+  el.dataset.key = c.key;
+  el.onclick = () => {
+    document.querySelectorAll('.filter-chip').forEach(x => x.classList.remove('active'));
+    el.classList.add('active');
+    renderList(c.key);
+  };
+  filterBar.appendChild(el);
+});
+
+/* ---------- 渲染榜单 ---------- */
+function renderList(catKey) {
+  const list = document.getElementById('legendList');
+  list.innerHTML = '';
+  const items = LEGENDS.filter(l => l.soon || catKey === 'all' || (l.cat || []).includes(catKey));
+
+  if (!items.length) {
+    list.innerHTML = '<p style="color:var(--text-dim);font-size:14px">该分类下暂无收录，敬请期待。</p>';
+    return;
+  }
+
+  items.forEach(l => {
+    const card = document.createElement(l.soon ? 'div' : 'a');
+    card.className = 'legend-card fade-in visible' + (l.soon ? ' soon' : '');
+    if (!l.soon) card.href = l.url;
+
+    const tags = (l.tags || []).map(t =>
+      `<span class="tag ${t.cls || ''}">${t.text}</span>`).join('');
+
+    const record = (l.record || []).map(r =>
+      `<div class="rec-item"><b class="${r.cls || ''}">${r.value}</b>${r.label}</div>`).join('');
+
+    card.innerHTML = `
+      <div class="legend-rank">${l.rank}</div>
+      <div class="legend-avatar">${l.avatar}</div>
+      <div class="legend-body">
+        <div class="legend-head">
+          <span class="legend-name">${l.name}</span>
+          <span class="legend-handle">${l.handle}</span>
+        </div>
+        <div class="legend-tagline">${l.tagline}</div>
+        <div class="legend-tags">${tags}</div>
+        ${record ? `<div class="legend-record">${record}</div>` : ''}
+      </div>
+      ${l.soon ? '' : '<div class="legend-go">查看详情 →</div>'}
+    `;
+    list.appendChild(card);
+  });
+}
+renderList('all');
+document.getElementById('statCount').textContent = LEGENDS.filter(l => !l.soon).length;
+
+/* ---------- 星辰背景 ---------- */
+const canvas = document.getElementById('stars-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [];
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  stars = [];
+  const n = Math.floor((W * H) / 14000);
+  for (let i = 0; i < n; i++) {
+    stars.push({
+      x: Math.random() * W, y: Math.random() * H,
+      r: Math.random() * 1.3 + 0.3,
+      a: Math.random() * 0.5 + 0.15,
+      s: Math.random() * 0.012 + 0.004
+    });
+  }
+}
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  for (const s of stars) {
+    s.a += s.s;
+    if (s.a > 0.75 || s.a < 0.12) s.s *= -1;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0,212,255,${s.a})`;
+    ctx.fill();
+  }
+  requestAnimationFrame(draw);
+}
+resize();
+window.addEventListener('resize', resize);
+draw();
+
+/* ---------- 进场动画 & 导航 ---------- */
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Killa @KillaXBT | 加密交易圈名人榜 · MK Trading</title>
+<meta name="description" content="Killa（@KillaXBT）全景拆解：2025 年 5 月精准预判 BTC 见顶 12 万的「神图」、旋转市场数学方法论、$74,688 做空与公开认错、周期加速论，以及底部模型偏差 35% 的争议复盘。">
+<meta name="author" content="MK">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#05060f">
+<link rel="canonical" href="https://mktrading.vip/legends/killa.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Killa @KillaXBT | 加密交易圈名人榜">
+<meta property="og:description" content="封神的那一战，和翻车的那几次。">
+<meta property="og:url" content="https://mktrading.vip/legends/killa.html">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Killa (@KillaXBT) 全景拆解 — 加密交易圈名人榜",
+  "about": {
+    "@type": "Person",
+    "name": "Killa",
+    "alternateName": "KillaXBT",
+    "jobTitle": "加密货币量化交易者",
+    "description": "专注 BTC 的匿名量化交易者，以旋转市场数学方法论和 2025 年 5 月 BTC 顶部预判闻名。"
+  },
+  "publisher": { "@type": "Organization", "name": "MK Trading", "url": "https://mktrading.vip" },
+  "isPartOf": { "@type": "WebSite", "name": "加密交易圈名人榜", "url": "https://mktrading.vip/legends/" }
+}
+</script>
+
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root{
+    --bg-deep:#05060f; --bg-card:rgba(12,15,30,0.85); --bg-card-hover:rgba(18,22,45,0.95);
+    --accent:#00d4ff; --accent2:#7b61ff; --accent3:#ff6b35;
+    --green:#00ff88; --red:#ff4757; --gold:#ffd700;
+    --text:#e8eaf0; --text-dim:#6b7280; --text-mid:#9ca3af;
+    --border:rgba(255,255,255,0.06); --glow:0 0 40px rgba(0,212,255,0.15);
+  }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:'Inter','Noto Sans SC',sans-serif; background:var(--bg-deep); color:var(--text); line-height:1.78; overflow-x:hidden; }
+  #stars-canvas{ position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+  .container{ max-width:900px; margin:0 auto; padding:0 40px; position:relative; z-index:1; }
+  .container-wide{ max-width:1200px; margin:0 auto; padding:0 40px; position:relative; z-index:1; }
+
+  /* 导航 */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 40px; transition:all .4s;
+  }
+  nav.scrolled{ background:rgba(5,6,15,0.9); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); padding:12px 40px; }
+  .nav-logo{ font-family:'Orbitron',monospace; font-size:20px; font-weight:800; color:var(--accent); letter-spacing:2px; text-decoration:none; }
+  .nav-links{ display:flex; gap:30px; list-style:none; }
+  .nav-links a{ color:var(--text-mid); text-decoration:none; font-size:14px; transition:color .3s; }
+  .nav-links a:hover{ color:var(--accent); }
+  .nav-links a.active{ color:var(--accent); font-weight:600; }
+
+  /* Hero */
+  .hero{ padding:150px 0 60px; position:relative; z-index:1; }
+  .crumb{ font-size:12.5px; color:var(--text-dim); margin-bottom:26px; }
+  .crumb a{ color:var(--text-dim); text-decoration:none; transition:color .3s; }
+  .crumb a:hover{ color:var(--accent); }
+  .profile{ display:flex; align-items:center; gap:26px; flex-wrap:wrap; margin-bottom:26px; }
+  .avatar{
+    width:96px; height:96px; border-radius:26px; flex:none;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Orbitron',monospace; font-size:38px; font-weight:800; color:var(--accent);
+    background:linear-gradient(145deg,rgba(0,212,255,0.16),rgba(123,97,255,0.16));
+    border:1px solid rgba(0,212,255,0.28);
+    box-shadow:0 0 50px rgba(0,212,255,0.12);
+  }
+  .profile h1{ font-size:clamp(30px,5vw,44px); font-weight:800; line-height:1.15; letter-spacing:.5px; }
+  .profile .handle{ font-family:'Orbitron',monospace; font-size:15px; color:var(--accent); letter-spacing:1.5px; margin-top:6px; }
+  .role-pill{
+    display:inline-block; margin-top:12px; font-size:12.5px; padding:6px 16px;
+    border-radius:100px; color:var(--gold);
+    background:rgba(255,215,0,0.07); border:1px solid rgba(255,215,0,0.26);
+  }
+  .lede{ color:var(--text-mid); font-size:16px; max-width:720px; margin-bottom:34px; }
+  .lede strong{ color:var(--text); }
+
+  .stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .stat{
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:14px; padding:18px 16px;
+  }
+  .stat .k{ font-size:11.5px; color:var(--text-dim); letter-spacing:.5px; margin-bottom:7px; }
+  .stat .v{ font-family:'Orbitron',monospace; font-size:20px; font-weight:700; line-height:1.25; }
+  .stat .v small{ font-family:'Inter',sans-serif; font-size:12px; font-weight:500; color:var(--text-dim); margin-left:2px; }
+  .stat .d{ font-size:11.5px; color:var(--text-dim); margin-top:5px; line-height:1.5; }
+  .v.accent{ color:var(--accent); } .v.gold{ color:var(--gold); }
+  .v.green{ color:var(--green); } .v.red{ color:var(--red); }
+
+  .divider{ height:1px; margin:0; background:linear-gradient(90deg,transparent,var(--border),rgba(0,212,255,0.12),var(--border),transparent); }
+
+  /* 通用区块 */
+  section{ padding:66px 0; position:relative; }
+  .section-label{
+    font-family:'Orbitron',monospace; font-size:11.5px; letter-spacing:4px;
+    color:var(--accent); text-transform:uppercase; margin-bottom:10px;
+  }
+  .section-title{ font-size:29px; font-weight:700; margin-bottom:14px; }
+  .section-desc{ color:var(--text-mid); font-size:14.5px; margin-bottom:34px; }
+  p{ color:var(--text-mid); margin-bottom:14px; }
+  p strong{ color:var(--text); }
+  .hl{ color:var(--accent); font-weight:600; }
+  .gold{ color:var(--gold); font-weight:600; }
+  .mono{ font-family:'Orbitron',monospace; font-size:.92em; letter-spacing:.5px; }
+  .up{ color:var(--red); font-weight:600; }    /* 中国习惯：红涨 */
+  .down{ color:var(--green); font-weight:600; } /* 中国习惯：绿跌 */
+
+  .card{
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:16px; padding:26px; margin-bottom:16px;
+  }
+  .card.gold-b{ border-color:rgba(255,215,0,0.3); background:linear-gradient(160deg,rgba(255,215,0,0.05),var(--bg-card)); }
+  .card h3{ font-size:17px; font-weight:700; margin-bottom:12px; display:flex; align-items:center; gap:9px; }
+  .card h3::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--accent); flex:none; }
+  .card.gold-b h3::before{ background:var(--gold); }
+
+  /* 表格 */
+  .tbl{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  .tbl th{
+    text-align:left; padding:10px; color:var(--text-dim); font-weight:600;
+    font-size:11.5px; letter-spacing:.5px; border-bottom:1px solid rgba(255,255,255,0.1);
+    background:rgba(255,255,255,0.02);
+  }
+  .tbl td{ padding:11px 10px; border-bottom:1px solid var(--border); color:var(--text-mid); vertical-align:top; line-height:1.65; }
+  .tbl tr:last-child td{ border-bottom:none; }
+  .tbl td:first-child{ color:var(--text); font-weight:600; white-space:nowrap; }
+
+  /* 公式 */
+  .formula{
+    background:rgba(0,0,0,0.35); border:1px solid var(--border); border-radius:12px;
+    padding:16px; margin:14px 0; font-family:'Orbitron',monospace;
+    font-size:13px; color:var(--gold); overflow-x:auto; white-space:nowrap; line-height:2;
+  }
+  .formula .c{ color:var(--text-dim); }
+
+  /* 时间线 */
+  .tl{ position:relative; padding-left:28px; }
+  .tl::before{
+    content:''; position:absolute; left:6px; top:8px; bottom:8px; width:1px;
+    background:linear-gradient(180deg,rgba(0,212,255,0.5),var(--border) 10%,var(--border) 90%,transparent);
+  }
+  .ev{ position:relative; margin-bottom:26px; }
+  .ev::before{
+    content:''; position:absolute; left:-26px; top:8px; width:9px; height:9px; border-radius:50%;
+    background:var(--bg-deep); border:2px solid rgba(255,255,255,0.16);
+  }
+  .ev.key::before{ background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 4px rgba(0,212,255,0.15); }
+  .ev.win::before{ background:var(--green); border-color:var(--green); box-shadow:0 0 0 4px rgba(0,255,136,0.14); }
+  .ev.loss::before{ background:var(--red); border-color:var(--red); box-shadow:0 0 0 4px rgba(255,71,87,0.14); }
+  .ev .when{ font-family:'Orbitron',monospace; font-size:12px; font-weight:700; color:var(--accent); letter-spacing:1px; margin-bottom:4px; }
+  .ev.win .when{ color:var(--green); } .ev.loss .when{ color:var(--red); }
+  .ev .what{ font-size:15.5px; font-weight:600; color:var(--text); margin-bottom:6px; }
+  .ev .desc{ font-size:14px; color:var(--text-mid); }
+  .quote{
+    margin-top:10px; padding:12px 16px; background:rgba(255,255,255,0.025);
+    border-left:2px solid rgba(0,212,255,0.5); border-radius:0 8px 8px 0;
+    font-size:13.5px; color:var(--text-mid);
+  }
+  .quote .en{ display:block; color:#d3dae8; font-style:italic; margin-bottom:6px; }
+  .quote .src{ font-size:11.5px; color:var(--text-dim); }
+
+  /* 工具标签 */
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+  .chip{
+    padding:6px 13px; border-radius:8px; font-size:12.5px;
+    background:rgba(255,255,255,0.04); border:1px solid var(--border); color:var(--text-mid);
+  }
+  .chip.c{ color:var(--accent); border-color:rgba(0,212,255,0.28); background:rgba(0,212,255,0.07); }
+  .chip.p{ color:var(--accent2); border-color:rgba(123,97,255,0.3); background:rgba(123,97,255,0.08); }
+  .chip.g{ color:var(--gold); border-color:rgba(255,215,0,0.26); background:rgba(255,215,0,0.06); }
+
+  /* 双栏 verdict */
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .vcard{ border-radius:16px; padding:24px; border:1px solid var(--border); }
+  .vcard.good{ background:linear-gradient(160deg,rgba(0,255,136,0.05),var(--bg-card)); border-color:rgba(0,255,136,0.22); }
+  .vcard.bad{ background:linear-gradient(160deg,rgba(255,71,87,0.05),var(--bg-card)); border-color:rgba(255,71,87,0.22); }
+  .vcard h3{ font-size:16px; font-weight:700; margin-bottom:14px; }
+  .vcard.good h3{ color:var(--green); } .vcard.bad h3{ color:var(--red); }
+  .vcard ul{ list-style:none; }
+  .vcard li{ font-size:13.5px; color:var(--text-mid); line-height:1.72; padding-left:18px; position:relative; margin-bottom:11px; }
+  .vcard li:last-child{ margin-bottom:0; }
+  .vcard li::before{ content:''; position:absolute; left:0; top:9px; width:5px; height:5px; border-radius:50%; }
+  .vcard.good li::before{ background:var(--green); }
+  .vcard.bad li::before{ background:var(--red); }
+  .vcard li b{ color:var(--text); }
+
+  .note{
+    background:rgba(0,212,255,0.05); border:1px solid rgba(0,212,255,0.2);
+    border-radius:12px; padding:15px 18px; font-size:13px; color:var(--text-mid); line-height:1.75; margin-top:16px;
+  }
+  .note b{ color:var(--accent); }
+  .note.warn{ background:rgba(255,215,0,0.05); border-color:rgba(255,215,0,0.22); }
+  .note.warn b{ color:var(--gold); }
+
+  /* 价位表 */
+  .levels{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+  .lvl{
+    background:var(--bg-card); border:1px solid var(--border); border-radius:13px; padding:16px;
+  }
+  .lvl .p{ font-family:'Orbitron',monospace; font-size:17px; font-weight:700; color:var(--accent); margin-bottom:6px; }
+  .lvl .m{ font-size:12.5px; color:var(--text-mid); line-height:1.6; }
+  .lvl .m b{ color:var(--text); }
+
+  footer{ padding:50px 0; text-align:center; border-top:1px solid var(--border); position:relative; z-index:1; margin-top:20px; }
+  .footer-logo{ font-family:'Orbitron',monospace; font-size:16px; font-weight:700; color:var(--accent); margin-bottom:8px; }
+  footer p{ color:var(--text-dim); font-size:12.5px; margin-bottom:4px; }
+  .footer-tools{ margin-top:18px; display:flex; justify-content:center; gap:24px; flex-wrap:wrap; }
+  .footer-tools a{ font-size:11.5px; color:var(--text-dim); text-decoration:none; opacity:.45; transition:opacity .3s,color .3s; }
+  .footer-tools a:hover{ opacity:.9; color:var(--accent); }
+
+  .fade-in{ opacity:0; transform:translateY(26px); transition:all .8s cubic-bezier(0.16,1,0.3,1); }
+  .fade-in.visible{ opacity:1; transform:translateY(0); }
+
+  @media(max-width:900px){
+    nav{ padding:14px 20px; } nav.scrolled{ padding:11px 20px; }
+    .nav-links{ display:none; }
+    .container,.container-wide{ padding:0 22px; }
+    section{ padding:48px 0; }
+    .hero{ padding:118px 0 44px; }
+    .section-title{ font-size:23px; }
+    .stat-grid{ grid-template-columns:repeat(2,1fr); }
+    .two{ grid-template-columns:1fr; }
+    .levels{ grid-template-columns:1fr; }
+    .profile{ gap:18px; }
+    .avatar{ width:72px; height:72px; font-size:28px; border-radius:20px; }
+    .card{ padding:20px; }
+    .tbl{ font-size:12.5px; }
+    .tbl td, .tbl th{ padding:9px 7px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="stars-canvas"></canvas>
+
+<nav id="navbar">
+  <a href="../" class="nav-logo">MK</a>
+  <ul class="nav-links">
+    <li><a href="../">首页</a></li>
+    <li><a href="../btc/">行情分析</a></li>
+    <li><a href="./" class="active">名人榜</a></li>
+    <li><a href="../#matrix">自媒体矩阵</a></li>
+  </ul>
+</nav>
+
+<!-- ===== Hero ===== -->
+<div class="hero">
+  <div class="container">
+    <div class="crumb"><a href="../">首页</a> ／ <a href="./">加密交易圈名人榜</a> ／ Killa</div>
+
+    <div class="profile">
+      <div class="avatar">K</div>
+      <div>
+        <h1>Killa</h1>
+        <div class="handle">@KillaXBT</div>
+        <div class="role-pill">专注 BTC 的匿名量化交易者</div>
+      </div>
+    </div>
+
+    <p class="lede">
+      2025 年 5 月 13 日，他发了一张图，推演比特币会冲上 12 万、然后跌破 10 万进入长期下跌。
+      当时 BTC 还在 10 万附近，市场极度乐观。<strong>五个月后，BTC 在 $126,080 见顶，随后崩盘。</strong>
+      那张图误差只有 3.9%，他也因此从一个普通账号变成了被中文媒体反复引用的名字。
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="k">X 粉丝</div>
+        <div class="v gold">20<small>万+</small></div>
+        <div class="d">2026.04 约 18 万 → 2026.07 破 20 万</div>
+      </div>
+      <div class="stat">
+        <div class="k">顶部预判误差</div>
+        <div class="v green">−3.9%</div>
+        <div class="d">预测 $121,362 / 实际 $126,080</div>
+      </div>
+      <div class="stat">
+        <div class="k">自述命中率</div>
+        <div class="v accent">75–80%</div>
+        <div class="d">方向判断维度，非点位精度</div>
+      </div>
+      <div class="stat">
+        <div class="k">底部模型偏差</div>
+        <div class="v red">−35%</div>
+        <div class="d">预测 $38,800–42,680 / 实际低位 ≈ $57,600</div>
+      </div>
+    </div>
+
+    <div class="note warn" style="margin-top:22px">
+      <b>一句话结论：</b>他的<strong>方向感</strong>值钱，他的<strong>点位</strong>不值钱。
+      输出的是「阶段识别工具」，不是可以照抄下单的交易系统。
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== 成名作 ===== -->
+<section>
+  <div class="container">
+    <div class="section-label fade-in">THE CALL</div>
+    <h2 class="section-title fade-in">成名作：2025 年 5 月那张「神图」</h2>
+    <p class="section-desc fade-in">他用一套自己命名的框架，标注了此后整整一轮行情的路径。</p>
+
+    <div class="card gold-b fade-in">
+      <h3>他说了什么</h3>
+      <p>
+        框架叫 <strong>Rotational Market Mathematics（旋转市场数学）</strong>。
+        做法是把价格切分成一段段「盘整区块」，<strong>数区间内的摆动次数</strong>，
+        再用公式量化「流动性何时被吸收完」，从而判断动能何时耗尽。
+      </p>
+      <div class="formula">
+        <span class="c">吸筹期：</span>(2×2)+1 = 5　　(5×2)+1 = 11
+        <br>
+        <span class="c">高位派发衰竭：</span>(2×5)+1 = 9　　(3×2)+1 = 7
+        <br>
+        <span class="c">熊市延续：</span>4×2 = 8　　(5×5)+1 = 26
+      </div>
+      <p style="margin-bottom:0">
+        他在 11.5–12 万派发区标出了<strong>重叠衰竭集群</strong>，判断供给吸收完成；
+        结论是价格跌破 10 万后不会只是「回调」，而是进入长期下跌，进入 7 万附近的低位派发区间。
+      </p>
+      <div class="quote">
+        <span class="en">“Your welcome. I have just saved you all. $BTC”</span>
+        <span class="src">—— 2025 年 5 月 13 日，X</span>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <h3>事后验证</h3>
+      <table class="tbl">
+        <tr><th>项目</th><th>数值</th></tr>
+        <tr><td>他的顶部预测</td><td class="mono">$121,362</td></tr>
+        <tr><td>实际历史最高</td><td class="mono up">$126,080（2025-10-06）</td></tr>
+        <tr><td>误差</td><td class="mono down">约 −3.9%（偏低）</td></tr>
+        <tr><td>后续走势</td><td>10 月 10 日闪崩，此后一路走低 —— 与推演路径吻合</td></tr>
+      </table>
+      <div class="note">
+        <b>为什么这张图重要：</b>它发布在市场最乐观的时候，且给了完整的路径而非单一价格。
+        多数「预测」只给方向或只给点位，他给的是<strong>结构 + 顺序</strong>，所以更容易被记住。
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 时间线 ===== -->
+<section>
+  <div class="container">
+    <div class="section-label fade-in">TIMELINE</div>
+    <h2 class="section-title fade-in">完整轨迹</h2>
+    <p class="section-desc fade-in">从封神到认错，再到转向做多、延伸至山寨币 —— 一年多时间里他的判断经过几次关键转折。</p>
+
+    <div class="tl">
+
+      <div class="ev win">
+        <div class="when">2025.05.13</div>
+        <div class="what">「神图」问世</div>
+        <div class="desc">发布旋转市场数学推演图，预言 BTC 冲上 12 万后跌破 10 万并长期下行。</div>
+      </div>
+
+      <div class="ev">
+        <div class="when">2025.11.15</div>
+        <div class="what">顶部后的结构跟踪</div>
+        <div class="desc">
+          给出完整多空剧本：先扫 <span class="mono">$94,100</span> 流动性，年度开盘 <span class="mono">$93,500</span> 可能回测，
+          <span class="mono">$89,000–$91,000</span> 是理想做多区，跌破 <span class="mono">$85,000</span> 多头逻辑完全失效；
+          上方阻力 <span class="mono">$98,300</span>，破位才有 <span class="mono">$100,000</span>。
+          并明确提醒<strong>不要用 10 倍杠杆</strong>，区间有 4–5% 宽度，3–4 倍才够安全。
+        </div>
+      </div>
+
+      <div class="ev">
+        <div class="when">2025.12 — 2026.02</div>
+        <div class="what">历史押韵系列</div>
+        <div class="desc">
+          <strong>2025.12：</strong>类比 2021 年结构，判断先探底 8 万再破 9 万 → 实际未破 8 万，但确实突破 9 万（最高近 9.8 万）。<br>
+          <strong>2026.01：</strong>统计规律「每月 14 日后两周平均跌 8%」→ 1 月 15 日见顶后最大跌幅超 <span class="down">38%</span>。<br>
+          <strong>2026.02：</strong>类比 2022 年剧本，判断冲高后跌破 6 万形成底部区间。
+        </div>
+      </div>
+
+      <div class="ev key">
+        <div class="when">2026.04.25</div>
+        <div class="what">底部模型：$38,800</div>
+        <div class="desc">
+          用同一套框架反向推算底部。核心假设是「周期高低点倍数逐轮衰减」：
+          15.50x → 7.64x → 6.26x → 4.47x，据此推定本轮 <span class="mono">3.25x</span>，
+          由 <span class="mono">$126,100 ÷ 3.25</span> 得出基准底部 <span class="mono">$38,800</span>，
+          考虑 5% 偏差后给出 <span class="mono">$40,740</span> / <span class="mono">$42,680</span>。
+          他明确表示<strong>当前价格绝不是底部</strong>，计划 7–8 月大举建仓现货。
+        </div>
+      </div>
+
+      <div class="ev key">
+        <div class="when">2026.04 中旬</div>
+        <div class="what">在 $74,688 做空 BTC</div>
+        <div class="desc">阶段高位开空。这是他此后几个月所有争议的来源。</div>
+      </div>
+
+      <div class="ev loss">
+        <div class="when">2026.05.05 — 05.07</div>
+        <div class="what">公开认错：空单进得太早</div>
+        <div class="desc">
+          止损从 <span class="mono">$80,000</span> → <span class="mono">$83,000</span> → <span class="mono">$84,000</span> 连续上调。
+          仍坚持熊市判断：历史熊市持续 300–400 天，当时仅走 <strong>212 天</strong>。
+        </div>
+        <div class="quote">
+          <span class="en">“My short was too early, plain and simple. I was wrong to short without proper confirmations. I didn't follow my own plan. That's on me.”</span>
+          <span class="src">—— 2026 年 5 月 5 日，X</span>
+        </div>
+      </div>
+
+      <div class="ev">
+        <div class="when">2026.05.21</div>
+        <div class="what">坚持 $74,000，并给出失效条件</div>
+        <div class="desc">
+          「结构更像修正性的，我仍然认为 7.4 万美元很快到来。<strong>这一论点的失效条件是 BTC 重新突破 8.1 万美元。</strong>」
+          —— 观点 + 明确失效位，是他最值得学的表达习惯。
+        </div>
+      </div>
+
+      <div class="ev">
+        <div class="when">2026.05.31 — 06.01</div>
+        <div class="what">披露分批建仓计划</div>
+        <div class="desc">
+          公开已买入 <strong>3 枚 BTC @ $74,000</strong>，计划<strong>每跌 5,000 美元再加 3 枚</strong>。
+          「更低的报价只意味着更多的建仓机会。」
+        </div>
+        <div class="quote">
+          <span class="en">“This isn't a trade for me. It's an investment. As an investor, I am building my long term spot positions over the next 3-4 months.”</span>
+          <span class="src">—— 2026 年 6 月 1 日，X</span>
+        </div>
+      </div>
+
+      <div class="ev win">
+        <div class="when">2026.06.05</div>
+        <div class="what">在市场恐慌中反向做多，目标 $160,000</div>
+        <div class="desc">
+          止损 <span class="mono">$31,950</span>，目标 <span class="mono">$160,000</span>，仓位以<strong>现货 + 低倍杠杆</strong>为主。
+          核心论据是一条链上数据链 —— 历次熊市底部的「盈利地址比例」逐轮阶梯式上升：
+        </div>
+        <div class="formula">
+          2015 <span class="c">35.82%</span> → 2019 <span class="c">40.47%</span> → 2022 <span class="c">45.11%</span> → 2026 <span class="c">51.12%</span>
+          <span class="c">　（每轮约 +5%）</span>
+        </div>
+        <div class="desc">
+          同时提出<strong>周期加速论</strong>：持币结构变化正在加快牛熊轮转，
+          上一轮在减半前就创新高，本轮可能在 <strong>2028 年 4 月减半前</strong>再创新高。
+        </div>
+      </div>
+
+      <div class="ev">
+        <div class="when">2026.07.22</div>
+        <div class="what">艾略特 5 浪：底部或已形成</div>
+        <div class="desc">
+          提出历轮熊市都会完成 5 浪调整并形成两个重要高点 —— 顶部后的「<strong>自满高点</strong>」，
+          随后的「<strong>死猫反弹</strong>」建立阶段性底部，空头挤压推升反弹，真正底部在第二次回测后形成。
+          他认为当前结构已完成，<strong>低点可能已出现</strong>；但历史熊市约 365 天，
+          本轮若已见底仅约 260 天，<strong>提前约 100 天</strong>，因此维持「50 对 50」判断。
+        </div>
+      </div>
+
+      <div class="ev">
+        <div class="when">2026.07.24 — 07.25</div>
+        <div class="what">订单簿观察 + 周期加速论</div>
+        <div class="desc">
+          发布币安订单簿截图称「教科书般的设定，暴跌保护团队回来了」—— 62,000 下方多档买单，58,000 附近最密集。
+          次日指出上一周期<strong>从底部到新 ATH 仅用 476 天</strong>，远快于前两个周期。
+        </div>
+      </div>
+
+      <div class="ev win">
+        <div class="when">2026.08.07</div>
+        <div class="what">警告：突破周线趋势线后别做空</div>
+        <div class="desc">
+          贴出 <strong>2018 / 2022 / 2026 三张周线对比图</strong>，都呈现标准的「高点下降通道」形态。
+          「上个周期许多人过度复杂化了简单的趋势转变，<strong>周线图才是最佳确认信号</strong>。」
+          此后 BTC 走出近 25% 的单周涨幅。
+        </div>
+      </div>
+
+      <div class="ev loss">
+        <div class="when">2026.08.24 → 08.31</div>
+        <div class="what">一周内观点急转</div>
+        <div class="desc">
+          8 月 24 日还在等 7.0–7.3 万美元的浅回调入场；8 月 31 日直接切换为
+          「最终甚至<strong>以 10 万美元买入都无关紧要</strong>」「<strong>最大的错误是置身事外</strong>」。
+        </div>
+      </div>
+
+      <div class="ev">
+        <div class="when">2026.09.08</div>
+        <div class="what">转向山寨币：SOL / HYPE / ASTER</div>
+        <div class="desc">
+          认为「山寨币可能已提前见底」。他坦言不看好绝大多数山寨币、认为 99.9% 的项目会归零，
+          但只要能赚钱就值得选择性参与 —— 逻辑支点是历史上 BTC 筑底缓涨期是山寨最佳布局窗口，
+          上一轮 BTC 从 1.6 万涨到 7.4 万期间山寨普遍涨 300%–500%。
+        </div>
+        <div class="quote">
+          持仓披露：SOL 入场 <span class="mono">$76</span>（约 +50%）；HYPE 现货与多单入场
+          <span class="mono">$51.55</span>（约 +70%）；ASTER 波段多单，目标 +50% 至 +100%。
+        </div>
+      </div>
+
+      <div class="ev">
+        <div class="when">2026.09.10</div>
+        <div class="what">缺口不必回补 + 自己的成本线</div>
+        <div class="desc">
+          认为下方缺口<strong>没有必然理由被完全回补</strong> —— 该缺口成因是约 <strong>60 亿美元空头清算</strong>。
+          并给出自己的持仓坐标：<strong>2 倍多单入场 $62,600，现货平均成本 $65,800</strong>，
+          最坏回测约 <span class="mono">$69,000</span>，预期 <span class="mono">$73,000–$75,000</span> 承接后向 $85,000 推进。
+        </div>
+      </div>
+
+      <div class="ev">
+        <div class="when">2026.09.14</div>
+        <div class="what">方法论宣言：新闻是干扰项</div>
+        <div class="desc">
+          罕见的纯理念长文：多数人过度关注宏观与政策数据，但在他 <strong>七年交易生涯（四年全职）</strong>中，
+          从未依赖新闻为结果找依据。「大多数市场叙事不过是干扰项」「<strong>BTC 的走势往往先于其背后的明确原因显现</strong>」，
+          相关性存在滞后 —— 即便洞悉大局，时机不对仍会失败。
+        </div>
+      </div>
+
+      <div class="ev key">
+        <div class="when">2026.09.17 — 09.18</div>
+        <div class="what">最新定调</div>
+        <div class="desc">
+          「计划没变。我仍然认为 BTC 会先形成一个<strong>更高低点</strong>，再走出向 9 万的一腿。」
+          但提醒可能长期区间震荡，<strong>回落至 7 万低段才是真正底部</strong>，称这是「经典的流动性循环」。
+          同时明确：<strong>BTC 在 2026 年内难以触及 10 万美元</strong>，关口或延后至 2027 年。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 方法论 ===== -->
+<section>
+  <div class="container">
+    <div class="section-label fade-in">METHODOLOGY</div>
+    <h2 class="section-title fade-in">方法论拆解</h2>
+    <p class="section-desc fade-in">他不是一个只会画线的博主。他的工具箱里有 9 类信号，混合使用。</p>
+
+    <div class="card fade-in">
+      <h3>核心骨架</h3>
+      <div class="chips">
+        <span class="chip c">旋转市场数学</span>
+        <span class="chip c">周期倍数递减</span>
+        <span class="chip c">历史押韵 / 枢轴窗口</span>
+        <span class="chip p">艾略特波浪</span>
+        <span class="chip p">链上指标</span>
+        <span class="chip g">订单簿 / 清算墙</span>
+        <span class="chip g">周线趋势线</span>
+        <span class="chip g">HTF POI</span>
+        <span class="chip">日历季节性</span>
+      </div>
+      <table class="tbl">
+        <tr><th>工具</th><th>怎么用</th></tr>
+        <tr><td>旋转市场数学</td><td>切分盘整区块、数摆动次数，用 (n×m)+1 量化流动性耗尽时点。招牌武器。</td></tr>
+        <tr><td>周期倍数递减</td><td>高低点倍数逐轮衰减，用于反向推算周期底部。</td></tr>
+        <tr><td>历史押韵</td><td>核心理念「历史不精确重复，但往往押韵」。把当前窗口与历史某阶段对比，做<strong>模糊方向判断</strong>。</td></tr>
+        <tr><td>艾略特波浪</td><td>5 浪调整结构；自满高点 → 死猫反弹 → 空头挤压 → 第二次回测成底。</td></tr>
+        <tr><td>链上指标</td><td>盈利地址比例（51.12%）、短期持有者成本线、盈利持仓量趋势线。</td></tr>
+        <tr><td>订单簿</td><td>币安买单墙位置、清算缺口成因、CME 缺口。</td></tr>
+        <tr><td>周线趋势线</td><td>2018 / 2022 / 2026 高点下降通道对比，周线突破视作最清晰的右侧反转信号。</td></tr>
+        <tr><td>HTF POI</td><td>高时间框架兴趣点，作为「持续移动」的锚。</td></tr>
+        <tr><td>日历季节性</td><td>「每月 5 日附近反转」「每月 14 日后两周平均跌 8%」等统计模式。</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 战绩 ===== -->
+<section>
+  <div class="container">
+    <div class="section-label fade-in">TRACK RECORD</div>
+    <h2 class="section-title fade-in">战绩复盘</h2>
+    <p class="section-desc fade-in">只有把失误和命中放在一起看，才知道一个人的真实水平。</p>
+
+    <div class="two">
+      <div class="vcard good fade-in">
+        <h3>✓ 命中的判断</h3>
+        <ul>
+          <li><b>2025.05 顶部预判</b>：$121,362 vs 实际 $126,080，误差 3.9%，且给出完整崩盘路径。</li>
+          <li><b>2026.01 月度模式</b>：预测 1 月 14 日后至少跌 8%，实际最大跌幅超 38%。</li>
+          <li><b>2026.04 高位做空</b>：$74,688 确实处在阶段高位区间。</li>
+          <li><b>2026.06.05 反向做多</b>：市场最恐慌时清空转多，情绪极值操作。</li>
+          <li><b>山寨币布局</b>：SOL +50%、HYPE +70%，方向与进场时机都对。</li>
+          <li><b>2026.08.07 周线警告</b>：提示突破长期下降趋势线后不要做空，此后 BTC 单周涨近 25%。</li>
+        </ul>
+      </div>
+
+      <div class="vcard bad fade-in">
+        <h3>✗ 失误与瑕疵</h3>
+        <ul>
+          <li><b>空单过早</b>：$74,688 做空后止损被迫从 $80,000 抬到 $84,000，本人公开认错。</li>
+          <li><b>底部模型未兑现</b>：$38,800–$42,680 与实际低位（约 $57,600）差近 35%。</li>
+          <li><b>观点漂移过快</b>：8 月 24 日等 7.0–7.3 万回调，8 月 31 日改口「10 万买入都无关紧要」，仅隔 7 天。</li>
+          <li><b>目标价缩水</b>：6 月的 $160,000 目标，到 8 月变成「明年创历史新高」。</li>
+          <li><b>操作与预测脱节</b>：多次出现「方向对，但按预测下单会被扫损」的情况。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 争议 ===== -->
+<section>
+  <div class="container">
+    <div class="section-label fade-in">CRITIQUE</div>
+    <h2 class="section-title fade-in">争议：那张图真的很「神」吗</h2>
+    <p class="section-desc fade-in">PANews 在 2026 年 3 月专门发文，把这套方法与 CryptoBullet 的「滴答分形」并列为「刻舟求剑」式预测，并给出三点质疑。</p>
+
+    <div class="card fade-in">
+      <table class="tbl">
+        <tr><th>质疑</th><th>具体论证</th></tr>
+        <tr>
+          <td>① 事后量化</td>
+          <td>先划分区间、<strong>主观数出摆动</strong>，再根据已发生的走势「选择性赋值」，最后用公式表达。
+              同一段震荡，跌了就是 (2×2)+1=5 看跌，涨了就能改成 (3×3)+1=10 看涨 ——
+              <strong>数字不是算出来的，是可以随结果调整的</strong>。</td>
+        </tr>
+        <tr>
+          <td>② 幸存者偏差</td>
+          <td>市场每天有无数预测，错的无人记得。你看到「1 张对的图」，看不到背后「100 张错的图」。</td>
+        </tr>
+        <tr>
+          <td>③ 无执行价值</td>
+          <td>预测只给模糊方向，<strong>不给入场位、不给止损、不给仓位</strong>。
+              2026 年 1 月那次最精准的预测，下跌也要等到 15 日之后 ——
+              按此下单很可能先被反向行情扫损。它是「阶段识别工具」，不是「可复用的交易策略」。</td>
+        </tr>
+      </table>
+      <div class="note">
+        <b>另一视角：</b>中文财经博主「比特摩斯」同样指出这是「事后精准」而非「提前预测」，
+        类比历史上从神坛跌落的 S2F 库存流量比模型与 Ahr999 指数。
+        但同时也承认：KillaXBT 的长处是<strong>能把复杂价格行为讲成一个「看起来有逻辑」的故事</strong>，
+        在牛熊切换阶段确实有参考价值。
+      </div>
+      <div class="note warn">
+        <b>历史会押韵，但不会照着截图复印。</b>真正值得借鉴的不是某一张「神图」，
+        而是图背后提示的<strong>情绪、流动性和结构变化</strong>；真正需要警惕的，
+        是把模糊的阶段判断当成可以精确下注的交易指令。
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 价位速查 ===== -->
+<section>
+  <div class="container">
+    <div class="section-label fade-in">LEVELS</div>
+    <h2 class="section-title fade-in">当前立场速查</h2>
+    <p class="section-desc fade-in">截至 2026 年 9 月 18 日，他给出的关键价位与对应剧本。仅供理解他的框架，不构成任何操作建议。</p>
+
+    <div class="levels">
+      <div class="lvl fade-in">
+        <div class="p">$85,000 – $86,000</div>
+        <div class="m">关键阻力区，需要<strong>持续突破</strong>。站稳后焦点转向 $88,000 – $95,000。</div>
+      </div>
+      <div class="lvl fade-in">
+        <div class="p">$82,000 – $84,000</div>
+        <div class="m">潜在对冲区 / 中间阻力。他建议在此区间<strong>对冲敞口</strong>，对无盘整的上涨保持谨慎。</div>
+      </div>
+      <div class="lvl fade-in">
+        <div class="p">$80,000</div>
+        <div class="m">看涨旗形突破位。突破后目标区间 $82,250 – $98,000。</div>
+      </div>
+      <div class="lvl fade-in">
+        <div class="p">$75,000</div>
+        <div class="m">支撑位。跌破则进一步下探 <strong>$71,000 – $68,000</strong>。</div>
+      </div>
+      <div class="lvl fade-in">
+        <div class="p">$73,000 – $75,000</div>
+        <div class="m">他预期的承接区。守住后再次上攻，目标 $85,000。</div>
+      </div>
+      <div class="lvl fade-in">
+        <div class="p">$70,000 低段</div>
+        <div class="m">他认为的<strong>真正底部候选区</strong>。形成更高低点后，再走出向 $90,000 的一腿。</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>核心判断一句话：</b>2026 年摸不到 10 万 → 先做一个更高低点（可能探至 7 万低段）→ 再走一腿到 9 万 →
+      真正新高要等 2027 年 → 最终目标仍是 $160,000。山寨币（SOL / HYPE / ASTER）已提前见底，进入轮动布局期。
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 借鉴 ===== -->
+<section>
+  <div class="container">
+    <div class="section-label fade-in">TAKEAWAYS</div>
+    <h2 class="section-title fade-in">对交易者的启示</h2>
+    <p class="section-desc fade-in">抛开粉丝量和「封神」叙事，他身上真正值得拿走的东西不多，但都很硬。</p>
+
+    <div class="card fade-in">
+      <h3>值得学的 5 件事</h3>
+      <table class="tbl">
+        <tr><td>结构优先</td><td>「BTC 走势先于原因显现，相关性存在滞后」—— 等新闻做交易，等于看后视镜开车。</td></tr>
+        <tr><td>永远给失效位</td><td>他的每篇分析都带「若突破 X，则论点失效」。这比给出目标价更有价值。</td></tr>
+        <tr><td>分批 + 抗回撤</td><td>每跌 $5,000 加 3 枚、在 $55K–$70K 多档挂买 —— 用仓位结构化解择时焦虑。</td></tr>
+        <tr><td>敢于公开认错</td><td>认错本身不产生盈利，但能避免「死扛到底」的毁灭性亏损。</td></tr>
+        <tr><td>周线做右侧确认</td><td>2018 / 2022 / 2026 三周期高点下降通道，突破即转向 —— 简单，但有效。</td></tr>
+      </table>
+    </div>
+
+    <div class="card fade-in">
+      <h3>必须警惕的 4 件事</h3>
+      <table class="tbl">
+        <tr><td>别当交易指令</td><td>他的输出是<strong>阶段判断</strong>，缺入场 / 止损 / 仓位三要素，直接跟单极易被扫损。</td></tr>
+        <tr><td>公式不可验证</td><td>旋转市场数学的参数可随结果调整，不具备可回测性，无法证伪。</td></tr>
+        <tr><td>观点漂移快</td><td>2026 年 8 月一周内两次转向；底部模型偏差 35%。跟单需要极强的时间纪律。</td></tr>
+        <tr><td>身份不可核验</td><td>匿名账号，无审计过的交易记录，所有「战绩」均来自本人披露。</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-logo">MK</div>
+    <p>合约交易 · 数据驱动 · 纪律优先</p>
+    <p style="margin-top:8px;opacity:.55">&copy; 2026 MK Trading. All rights reserved.</p>
+    <p style="margin-top:14px;font-size:11px;opacity:.5">
+      ⚠️ 本页内容基于公开信息整理，仅供研究学习，<strong>不构成任何投资建议</strong>。
+      所涉人物观点与价位均可能出错，请独立判断、自负风险。
+    </p>
+    <div class="footer-tools">
+      <a href="./">← 返回名人榜</a>
+      <a href="../">首页</a>
+      <a href="../btc/">行情分析</a>
+      <a href="../position_calculator.html">仓位计算器</a>
+      <a href="../profit_calculator.html">利润计算器</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* 星辰背景 */
+const canvas = document.getElementById('stars-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [];
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  stars = [];
+  const n = Math.floor((W * H) / 14000);
+  for (let i = 0; i < n; i++) {
+    stars.push({ x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.3+0.3,
+                 a:Math.random()*0.5+0.15, s:Math.random()*0.012+0.004 });
+  }
+}
+function draw() {
+  ctx.clearRect(0,0,W,H);
+  for (const s of stars) {
+    s.a += s.s;
+    if (s.a > 0.75 || s.a < 0.12) s.s *= -1;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+    ctx.fillStyle = `rgba(0,212,255,${s.a})`;
+    ctx.fill();
+  }
+  requestAnimationFrame(draw);
+}
+resize(); window.addEventListener('resize', resize); draw();
+
+/* 进场动画 */
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+/* 导航滚动态 */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+</script>
+</body>
+</html>
