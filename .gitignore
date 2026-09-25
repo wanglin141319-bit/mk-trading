@@ -1,0 +1,17 @@
+# ── 本地工具目录（严禁提交，本仓库为 PUBLIC） ──
+# 内含实盘持仓、策略状态、执行日志等私有内容
+.workbuddy/
+.codebuddy/
+
+# ── 临时与系统文件 ──
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+*.log
+
+# ── Python ──
+__pycache__/
+*.pyc
+.venv/
+venv/
