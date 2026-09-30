@@ -1,42 +1,42 @@
 {
-  "ts": 1790648714.4257128,
+  "ts": 1790735152.0697558,
   "data": {
-    "timestamp": "2026-09-29T10:25:03.045032",
+    "timestamp": "2026-09-30T10:25:02.814059",
     "btc": {
-      "price": 82994.79,
-      "change_24h": -0.778,
-      "high_24h": 84381.3,
-      "low_24h": 82563.0,
-      "vol_btc": 20207.42815,
-      "source": "binance"
+      "price": 83472.7,
+      "change_24h": 0.5700000000000001,
+      "high_24h": 84573.2,
+      "low_24h": 82866.8,
+      "vol_btc": 4755.293809,
+      "source": "bybit"
     },
     "eth": {
-      "price": 2656.42,
-      "change_24h": 0.01,
-      "source": "binance"
+      "price": 2670.0,
+      "change_24h": 0.53,
+      "source": "bybit"
     },
     "funding": {
-      "rate": 0.0026509999999999997,
-      "next_time": 1790668800000,
+      "rate": 0.005395,
+      "next_time": 1790755200000,
       "source": "binance"
     },
     "oi": {
-      "long_ratio": 58.1,
-      "short_ratio": 41.9,
-      "long_short_ratio": 1.387,
+      "long_ratio": 57.9,
+      "short_ratio": 42.1,
+      "long_short_ratio": 1.373,
       "source": "binance_global"
     },
     "liquidation": {
-      "long_ratio": 65.3,
-      "short_ratio": 34.7,
-      "long_short_ratio": 1.884,
-      "trend_change": -0.012,
+      "long_ratio": 65.9,
+      "short_ratio": 34.1,
+      "long_short_ratio": 1.931,
+      "trend_change": 0.006,
       "source": "binance_top_ratio"
     },
     "fear_greed": {
-      "value": 73,
+      "value": 71,
       "classification": "Greed",
-      "prev_value": 74,
+      "prev_value": 73,
       "prev_classification": "Greed",
       "source": "alternative.me"
     },
@@ -74,14 +74,14 @@
         }
       ],
       "weekly_key": {
-        "week": "周二",
-        "date": "2026-09-29",
+        "week": "周三",
+        "date": "2026-09-30",
         "event": "FOMC会议纪要 / 美联储官员密集发声",
         "description": "本周美联储多位官员讲话，关注利率路径指引",
         "action": "数据公布前1小时禁止新开仓，已持仓带好止损"
       },
-      "week": "周二",
-      "date": "2026-09-29"
+      "week": "周三",
+      "date": "2026-09-30"
     }
   }
 }
