@@ -5,13 +5,13 @@
     "MACD 死叉，看空",
     "价格 > EMA20，短期趋势偏多"
   ],
-  "resistance": 84573.2,
-  "entry_low": 83306.0,
-  "entry_high": 83890.0,
-  "stop_loss": 84996.0,
-  "tp1": 80802.0,
-  "tp2": 79404.0,
-  "rr_ratio": 1.75,
+  "resistance": 85649.95,
+  "entry_low": 83338.0,
+  "entry_high": 83922.0,
+  "stop_loss": 86078.0,
+  "tp1": 78734.0,
+  "tp2": 76286.0,
+  "rr_ratio": 1.85,
   "position_size": "10-15%",
-  "trigger_condition": "反弹至 83890.0 滞涨后做空"
+  "trigger_condition": "反弹至 83922.0 滞涨后做空"
 }

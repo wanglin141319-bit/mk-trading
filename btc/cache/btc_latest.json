@@ -1,42 +1,42 @@
 {
-  "ts": 1790735152.0697558,
+  "ts": 1790821511.4013731,
   "data": {
-    "timestamp": "2026-09-30T10:25:02.814059",
+    "timestamp": "2026-10-01T10:25:02.766241",
     "btc": {
-      "price": 83472.7,
-      "change_24h": 0.5700000000000001,
-      "high_24h": 84573.2,
-      "low_24h": 82866.8,
-      "vol_btc": 4755.293809,
-      "source": "bybit"
+      "price": 83504.82,
+      "change_24h": 0.037,
+      "high_24h": 85649.95,
+      "low_24h": 82956.11,
+      "vol_btc": 18490.50199,
+      "source": "binance"
     },
     "eth": {
-      "price": 2670.0,
-      "change_24h": 0.53,
-      "source": "bybit"
+      "price": 2687.22,
+      "change_24h": 0.62,
+      "source": "binance"
     },
     "funding": {
-      "rate": 0.005395,
-      "next_time": 1790755200000,
+      "rate": 0.003848,
+      "next_time": 1790841600000,
       "source": "binance"
     },
     "oi": {
-      "long_ratio": 57.9,
-      "short_ratio": 42.1,
-      "long_short_ratio": 1.373,
+      "long_ratio": 57.8,
+      "short_ratio": 42.2,
+      "long_short_ratio": 1.367,
       "source": "binance_global"
     },
     "liquidation": {
-      "long_ratio": 65.9,
-      "short_ratio": 34.1,
-      "long_short_ratio": 1.931,
-      "trend_change": 0.006,
+      "long_ratio": 67.4,
+      "short_ratio": 32.6,
+      "long_short_ratio": 2.07,
+      "trend_change": -0.026,
       "source": "binance_top_ratio"
     },
     "fear_greed": {
-      "value": 71,
+      "value": 74,
       "classification": "Greed",
-      "prev_value": 73,
+      "prev_value": 71,
       "prev_classification": "Greed",
       "source": "alternative.me"
     },
@@ -74,14 +74,14 @@
         }
       ],
       "weekly_key": {
-        "week": "周三",
-        "date": "2026-09-30",
+        "week": "周四",
+        "date": "2026-10-01",
         "event": "FOMC会议纪要 / 美联储官员密集发声",
         "description": "本周美联储多位官员讲话，关注利率路径指引",
         "action": "数据公布前1小时禁止新开仓，已持仓带好止损"
       },
-      "week": "周三",
-      "date": "2026-09-30"
+      "week": "周四",
+      "date": "2026-10-01"
     }
   }
 }
