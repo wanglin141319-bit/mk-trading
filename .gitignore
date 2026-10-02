@@ -10,6 +10,9 @@ Thumbs.db
 *.tmp
 *.log
 
+# X 抓取中间产物（x-read-handle.js 会往 cwd 落盘）
+KillaXBT-*.json
+
 # ── Python ──
 __pycache__/
 *.pyc
