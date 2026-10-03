@@ -1,18 +1,5 @@
 [
   {
-    "date": "20260517",
-    "direction": "SHORT",
-    "entry_low": 77819.0,
-    "entry_high": 78364.0,
-    "stop_loss": 79608.0,
-    "tp1": 75058.0,
-    "tp2": 73542.0,
-    "rr": 1.79,
-    "result": "TRIGGERED_NO_TP",
-    "auto_resolved": true,
-    "resolve_note": "HIGH=$78,600 LOW=$76,735 | 已触发但未达任何目标"
-  },
-  {
     "date": "20260518",
     "direction": "SHORT",
     "entry_low": 76796.0,
@@ -385,6 +372,19 @@
     "tp1": 83045.0,
     "tp2": 82066.0,
     "rr": 1.66,
+    "result": "LOSS",
+    "auto_resolved": true,
+    "resolve_note": "HIGH=$87,220 LOW=$83,888$ | entry$84,706-$85,300| triggered->hit SL($85982$)"
+  },
+  {
+    "date": "20261003",
+    "direction": "SHORT",
+    "entry_low": 84472.0,
+    "entry_high": 85065.0,
+    "stop_loss": 87656.0,
+    "tp1": 78994.0,
+    "tp2": 76106.0,
+    "rr": 1.87,
     "result": "OPEN",
     "auto_resolved": false,
     "resolve_note": ""
