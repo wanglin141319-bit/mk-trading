@@ -18,6 +18,13 @@ try:
 except ImportError:
     print("[FATAL] 缺少 requests"); sys.exit(2)
 
+# Telegram 推送（可选；模块缺失或配置缺失时自动跳过，不影响主流程）
+try:
+    import telegram_push as tg
+except Exception as _e:
+    tg = None
+    print(f"[WARN] Telegram 模块加载失败（将跳过推送）：{_e}")
+
 # ================= 路径 =================
 BASE    = os.path.dirname(os.path.abspath(__file__))   # btc/precise
 BTC     = os.path.dirname(BASE)                        # btc
@@ -476,6 +483,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--no-push', action='store_true')
     ap.add_argument('--dry-run', action='store_true')
+    ap.add_argument('--no-tg', action='store_true', help='跳过 Telegram 推送')
     ap.add_argument('--date', default=None)
     a = ap.parse_args()
 
@@ -515,11 +523,27 @@ def main():
     upsert_index(today, num, S['price'], S['direction'])
 
     if a.dry_run:
-        log('--dry-run：跳过 git', 'SKIP')
+        log('--dry-run：跳过 git 与 Telegram', 'SKIP')
     elif a.no_push:
-        log('--no-push：已生成，未推送', 'SKIP')
+        log('--no-push：已生成，未推送（git / Telegram 均跳过）', 'SKIP')
     else:
-        git_publish(['btc/reports/', 'btc/index.html', 'btc/precise/', 'btc/run_daily_report.py'])
+        published = git_publish(['btc/reports/', 'btc/index.html', 'btc/precise/'])
+        # Telegram 推送：仅在报告已上线（git 成功）后进行，确保频道里的链接可点
+        if a.no_tg or not tg:
+            log('Telegram 推送已跳过', 'SKIP')
+        elif not published:
+            log('git 未成功，跳过 Telegram 推送（避免发出无效链接）', 'WARN')
+        else:
+            try:
+                r = tg.push(D, S, W, num, today, report_path=out,
+                            A={'d1': d1, 'h4': h4, 'h1': h1})
+                okn = len([x for x in r.get('sent', []) if x.get('ok')])
+                if r.get('ok'):
+                    log(f'Telegram 已推送 → {okn}/{len(r.get("sent", []))} 个目标', 'OK')
+                else:
+                    log(f'Telegram 未推送：{r.get("reason") or "全部失败"}', 'WARN')
+            except Exception as e:
+                log(f'Telegram 推送异常（不影响主流程）：{str(e)[:120]}', 'ERROR')
 
     print('\n' + '=' * 56)
     print(f"BTC ${S['price']:,.0f} ({D['spot']['change_24h_pct']:+.2f}%) | {S['direction']} | 入场 {S['entry_low']:,}-{S['entry_high']:,} SL {S['stop']:,} TP1 {S['tp1']:,}")
