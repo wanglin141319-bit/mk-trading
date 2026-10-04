@@ -405,9 +405,22 @@ def resolve_number(today):
     ns = [int(x) for x in re.findall(r'BTC Daily Report · #(\d+)', html)]
     return (max(ns) + 1) if ns else 1
 
+def fix_page_chrome(html, today):
+    """维护 index.html 的页面框架（历史脚本遗留问题）：
+       ① 清理 <body> 后未被 <ul> 包裹的孤儿 <li> —— 它们会被浏览器渲染到页面左上角（如"5月4日日报"）
+       ② 把「View Today's Analysis」CTA 按钮指向【今日】报告（原先硬编码停留在 2026-05-07）
+    """
+    import re
+    html, n_orphan = re.subn(r'(<body[^>]*>)[ \t\r\n]*(?:<li>.*?</li>[ \t\r\n]*)+', r'\1\n', html, flags=re.S)
+    html, n_cta = re.subn(r'(<a href=")reports/BTC_daily_report_\d{8}\.html(" class="btn-report")',
+                          rf'\1reports/BTC_daily_report_{today}.html\2', html)
+    if n_orphan or n_cta:
+        log(f'页面框架修正：清理孤儿 <li> {n_orphan} 处 / CTA 指向更新 {n_cta} 处', 'OK')
+    return html
+
 def upsert_index(today, num, price, direction):
-    """今日卡片已存在则整体替换，否则插入到列表首位"""
-    html = open(INDEX, encoding='utf-8').read()
+    """今日卡片已存在则整体替换，否则插入到列表首位；同时维护页面框架"""
+    html = fix_page_chrome(open(INDEX, encoding='utf-8').read(), today)
     dcn = {'LONG': '做多', 'SHORT': '做空', 'WAIT': '观望'}[direction]
     tag = {'LONG': 'bull', 'SHORT': 'bear', 'WAIT': 'neutral'}[direction]
     en  = {'LONG': 'LONG', 'SHORT': 'SHORT', 'WAIT': 'WAIT'}[direction]
