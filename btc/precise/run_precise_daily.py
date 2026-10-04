@@ -484,6 +484,7 @@ def main():
     ap.add_argument('--no-push', action='store_true')
     ap.add_argument('--dry-run', action='store_true')
     ap.add_argument('--no-tg', action='store_true', help='跳过 Telegram 推送')
+    ap.add_argument('--tg-force', action='store_true', help='忽略当日已推送状态，强制重发')
     ap.add_argument('--date', default=None)
     a = ap.parse_args()
 
@@ -536,7 +537,7 @@ def main():
         else:
             try:
                 r = tg.push(D, S, W, num, today, report_path=out,
-                            A={'d1': d1, 'h4': h4, 'h1': h1})
+                            A={'d1': d1, 'h4': h4, 'h1': h1}, force=a.tg_force)
                 okn = len([x for x in r.get('sent', []) if x.get('ok')])
                 if r.get('ok'):
                     log(f'Telegram 已推送 → {okn}/{len(r.get("sent", []))} 个目标', 'OK')

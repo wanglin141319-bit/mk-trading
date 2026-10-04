@@ -25,6 +25,7 @@ BASE = os.path.dirname(os.path.abspath(__file__))          # btc/precise
 REPO = os.path.dirname(os.path.dirname(BASE))              # mk-trading
 PRIV = os.path.join(REPO, '.workbuddy', 'btc_precise')     # 私密目录（gitignore）
 CFG_PATH = os.path.join(PRIV, 'telegram_config.json')
+STATE_PATH = os.path.join(PRIV, 'push_state.json')         # 幂等状态（记录已推送日期）
 CST = timezone(timedelta(hours=8))
 
 # 常见代理端口（用于自动探测；clash/v2ray 默认端口）
@@ -51,6 +52,23 @@ def load_config():
 def save_config(cfg):
     os.makedirs(PRIV, exist_ok=True)
     json.dump(cfg, open(CFG_PATH, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+
+# ================= 幂等状态 =================
+def _load_state():
+    """记录已成功推送的日期，避免同一天多入口（多调度）重复发帖"""
+    if os.path.exists(STATE_PATH):
+        try:
+            return json.load(open(STATE_PATH, encoding='utf-8'))
+        except Exception:
+            pass
+    return {}
+
+def _save_state(st):
+    os.makedirs(PRIV, exist_ok=True)
+    json.dump(st, open(STATE_PATH, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+
+def already_pushed(today):
+    return _load_state().get('last_date') == today
 
 # ================= 代理 =================
 def _port_open(port, host='127.0.0.1'):
@@ -192,8 +210,9 @@ def build_message(D, S, W, num, today, report_url):
     return "\n".join(lines)
 
 # ================= 推送入口 =================
-def push(D, S, W, num, today, report_path=None, report_url=None, A=None, cfg=None):
-    """推送日报到所有配置的目标。返回 dict 结果。失败不抛异常（不影响主流程）"""
+def push(D, S, W, num, today, report_path=None, report_url=None, A=None, cfg=None, force=False):
+    """推送日报到所有配置的目标。返回 dict 结果。失败不抛异常（不影响主流程）
+       force=False 时同一天只推一次（幂等，避免多调度重复发帖）"""
     cfg = cfg or load_config()
     if not cfg:
         return {'ok': False, 'reason': 'no config', 'sent': []}
@@ -202,6 +221,9 @@ def push(D, S, W, num, today, report_path=None, report_url=None, A=None, cfg=Non
     tok = cfg.get('bot_token')
     if not tok or not cfg.get('chat_ids'):
         return {'ok': False, 'reason': 'missing token/chat', 'sent': []}
+    if not force and already_pushed(today):
+        log(f'{today} 已推送过，跳过（如需重发用 --tg-force）', 'SKIP')
+        return {'ok': False, 'reason': 'already pushed today', 'sent': []}
 
     proxies, pdesc = resolve_proxies(cfg)
     log(f'代理：{pdesc}')
@@ -226,6 +248,14 @@ def push(D, S, W, num, today, report_path=None, report_url=None, A=None, cfg=Non
             dok, dinfo = send_document(cfg, proxies, cid, report_path,
                                        caption=f"📄 BTC 日报 {today[:4]}-{today[4:6]}-{today[6:]}")
             sent[-1]['doc'] = {'ok': dok, 'info': str(dinfo)}
+
+    # 仅在至少一个目标成功时记录状态（失败则允许下次重试）
+    if ok_any:
+        st = _load_state()
+        st['last_date'] = today
+        st['last_pushed_at'] = datetime.now(CST).strftime('%Y-%m-%d %H:%M:%S')
+        st['last_msg_ids'] = [x['info'] for x in sent if x.get('ok')]
+        _save_state(st)
 
     return {'ok': ok_any, 'proxy': pdesc, 'sent': sent}
 
