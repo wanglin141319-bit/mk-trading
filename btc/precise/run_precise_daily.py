@@ -541,6 +541,8 @@ def main():
                 okn = len([x for x in r.get('sent', []) if x.get('ok')])
                 if r.get('ok'):
                     log(f'Telegram 已推送 → {okn}/{len(r.get("sent", []))} 个目标', 'OK')
+                elif r.get('reason') == 'already pushed today':
+                    log('Telegram：今日已推送，无需重复', 'SKIP')
                 else:
                     log(f'Telegram 未推送：{r.get("reason") or "全部失败"}', 'WARN')
             except Exception as e:

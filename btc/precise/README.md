@@ -1,33 +1,41 @@
 # BTC 日报 · 精准版 —— 系统规范
 
-> 版本：v1.0（2026-10-04 建立）
-> 入口：`btc/run_daily_report.py`（转发器） → `btc/precise/run_precise_daily.py`（主程序）
+> 版本：v1.1（2026-10-04 更新）
+> 主程序：`btc/precise/run_precise_daily.py`
+> 推送模块：`btc/precise/telegram_push.py`
 > 网站：https://mktrading.vip/btc/
+> 频道：https://t.me/bitebiwanglin
 
 ---
 
 ## 0. 系统概览
 
 ```
-Windows 计划任务（每天 10:25）
+Windows 计划任务 BTC_Daily_Report_Auto（每天 10:25）
+WorkBuddy 自动化「BTC 精准日报」（每天 09:30）
         ↓
-btc/run_daily_report.py          ← 转发器（旧版已弃用，保留备份 .bak-20261004）
+btc/precise/run_precise_daily.py    ← 主程序（唯一入口）
         ↓
-btc/precise/run_precise_daily.py ← 主程序
-        ↓
-① 抓取 Gate.io 实时数据     ② 计算标准口径指标
-③ 复盘历史策略 → 胜率        ④ 生成 HTML 日报
+① 抓取 Gate.io 实时数据      ② 计算标准口径指标
+③ 复盘历史策略 → 胜率         ④ 生成 HTML 日报
         ↓
 btc/reports/BTC_daily_report_YYYYMMDD.html   ← 报告文件
 btc/index.html                                ← 报告列表（自动置顶）
         ↓
 git add → commit → push origin main           ← 发布到 GitHub Pages
         ↓
-https://mktrading.vip/btc/reports/BTC_daily_report_YYYYMMDD.html
+telegram_push.py → 频道 @bitebiwanglin         ← 推送（需本地代理）
 ```
 
-私密数据（不发布）：策略日志存于 `mk-trading/.workbuddy/btc_precise/strategy_log.json`
-（`.workbuddy/` 已被 `.gitignore` 排除，**本仓库为 PUBLIC，严禁提交**）。
+**私密数据（严禁发布）**，全部存于 `mk-trading/.workbuddy/btc_precise/`：
+
+| 文件 | 内容 |
+|---|---|
+| `strategy_log.json` | 每日策略记录 + 复盘结果 |
+| `telegram_config.json` | Bot Token / 目标 chat_id / 代理 |
+| `push_state.json` | 推送幂等状态（记录已推送日期） |
+
+> 🔴 `.workbuddy/` 已被 `.gitignore` 排除。**本仓库为 PUBLIC，严禁提交其中任何文件。**
 
 ---
 
@@ -135,52 +143,132 @@ https://mktrading.vip/btc/reports/BTC_daily_report_YYYYMMDD.html
 - ⚠️ tag 必须用 `bull` / `bear` / `neutral`（站点 CSS 只定义了这三个；
   **旧版用的 `short` 类没有样式**，属遗留 bug）。
 
-### 3.3 Git 发布流程
+### 3.3 页面框架自动维护（`fix_page_chrome`）
+
+历史脚本在 `index.html` 留下过两类坏结构，脚本每日自动修复：
+
+1. `<body>` 之后**未被 `<ul>` 包裹的孤儿 `<li>`** → 浏览器会渲染到页面左上角（即用户看到的「5 月 4 日日报」）。
+2. 「View Today's Analysis」CTA 按钮 href 硬编码停留在旧日期 → 自动改为指向当日报告。
+
+### 3.4 Git 发布流程
 
 1. **安全前置检查**：`git status --porcelain` 中出现 `.workbuddy` / `.codebuddy` → **立即中止**（PUBLIC 仓库）。
-2. `git add btc/reports/ btc/index.html btc/precise/ btc/run_daily_report.py`
+2. `git add btc/reports/ btc/index.html btc/precise/`
 3. `git commit -m "auto: BTC日报 YYYYMMDD"`
 4. `git push origin HEAD:main`
 5. 失败时保留本地文件，打印错误，不抛出（报告本地已生成）。
 
-### 3.4 冲突处理（重要）
-
-- Windows 计划任务原先 10:25 调用 `btc/run_daily_report.py`（旧版）。
-- 现已把该文件改为**转发器**，转调 `precise/run_precise_daily.py`，
-  因此**旧任务无需改动即可产出精准版**。
-- 旧版源码备份：`btc/run_daily_report.py.bak-20261004`（如需回滚，改回原名即可）。
+> 调度：Windows 计划任务 `BTC_Daily_Report_Auto` 已**直接指向** `precise/run_precise_daily.py`
+> （旧的转发器 `btc/run_daily_report.py` 已删除；旧版源码备份 `run_daily_report.py.bak-20261004` 保留在本机，未入库）。
 
 ---
 
-## 四、运维手册
+## 四、Telegram 推送要求
+
+### 4.1 目标与身份
+
+| 项目 | 值 |
+|---|---|
+| Bot | `@MK_BTC_Alert_Bot`（id 8626387493） |
+| 目标频道 | **比特币王林公开频道** `@bitebiwanglin`（id `-1003189007280`） |
+| 凭证文件 | `.workbuddy/btc_precise/telegram_config.json`（**私密，绝不入库**） |
+
+### 4.2 配置格式
+
+```json
+{
+  "bot_token": "123456:ABC...",
+  "chat_ids": ["-1003189007280"],
+  "proxy": "http://127.0.0.1:33210",
+  "enabled": true,
+  "attach_html": false
+}
+```
+
+- **`chat_ids` 为数组 → 群发**：可同时填频道、群组、私聊（各自的 chat_id），一次推送全部送达。
+- `proxy`：留空则自动探测；本机实测可用端口为 clash 的 `33210`(HTTP) / `33211`(SOCKS5)。
+- `attach_html: true` → 额外把 HTML 报告作为文件附件发送（默认关闭，频道阅读以文本卡片为主）。
+
+### 4.3 网络要求（关键）
+
+> ⚠️ **Telegram API 在本机直连不可达**（`api.telegram.org` 直连/沙箱代理均超时）。
+> 必须经**本地代理**（clash）转发。脚本按以下顺序自动解决：
+> 1. 用配置里的 `proxy`（若实测可达）；
+> 2. 否则扫描常见代理端口（`33210/33211/7890/7897/10809/1080/2080/4780…`）并逐个实测；
+> 3. 均不可用 → 记 WARN 并跳过推送（**不影响报告生成与网站发布**）。
+
+### 4.4 幂等规则（重要）
+
+你有两个调度入口（Windows 10:25 + WorkBuddy 09:30），若不做处理频道每天会收到**两条重复推送**。
+
+- `push_state.json` 记录 `last_date`；同一日期再次运行时 → **跳过推送**。
+- 仅在**至少一个目标发送成功**时才写入状态（失败允许下次重试）。
+- 需要手动重发（如修正内容后）→ 加 `--tg-force`。
+
+### 4.5 消息格式规范
+
+- 解析模式：**HTML**（`<b>` / `<i>`），必须对 `&` `<` `>` 做转义（模块内 `_esc()` 已处理）。
+- 固定结构：标题（#编号 · 日期）→ 分隔线 → 现价与涨跌（🟢/🔴 + ▲/▼）→ RSI/MACD → 恐惧贪婪 + 资金费 → OI → 今日策略（方向/入场/SL/TP1/TP2/盈亏比/仓位）→ 多空评分 → 触发/失效 → 完整日报链接 → 历史胜率 → 署名分隔线。
+- 颜色与符号语义：涨用 🟢▲、跌用 🔴▼；多 = 🟢、空 = 🔴、观望 = 🟡。
+- 链接指向**当日线上报告**，因此推送必须在 **git 发布成功之后**执行（避免发出无效链接）。
+
+### 4.6 安全要点
+
+- **Token 只存在于私密配置文件中**，任何情况下不得写入仓库内文件、日志或提交历史。
+- 历史上 Token 曾随 `btc/telegram_config.json` 泄露于 PUBLIC 仓库（2026-04-16 起）。
+  **在 BotFather 执行 `/revoke` 换新 Token 后**，只需更新私密配置里的 `bot_token` 字段即可，
+  脚本无需改动：
+
+  ```bash
+  python -c "import json,io; p=r'C:/Users/asus/mk-trading/.workbuddy/btc_precise/telegram_config.json'; c=json.load(open(p,encoding='utf-8')); c['bot_token']='新Token'; json.dump(c,open(p,'w',encoding='utf-8'),ensure_ascii=False,indent=2)"
+  ```
+
+---
+
+## 五、运维手册
 
 ```bash
-# 正式运行（生成 + 发布）
-python C:/Users/asus/mk-trading/btc/precise/run_precise_daily.py
+PY=C:/Users/asus/.workbuddy/binaries/python/versions/3.13.12/python.exe
 
-# 只生成不推送
-python .../run_precise_daily.py --no-push
+# 正式运行（生成 + 发布网站 + 推送频道）
+$PY C:/Users/asus/mk-trading/btc/precise/run_precise_daily.py
 
-# 完全演练（不碰 git）
-python .../run_precise_daily.py --dry-run
+# 只生成，不推送任何地方
+$PY .../run_precise_daily.py --no-push
 
-# 补跑指定日期（用于回填）
-python .../run_precise_daily.py --date 20261004
+# 完全演练（不碰 git / Telegram）
+$PY .../run_precise_daily.py --dry-run
+
+# 生成并发布网站，但不推 Telegram
+$PY .../run_precise_daily.py --no-tg
+
+# 强制重发今日推送到频道（忽略幂等）
+$PY .../run_precise_daily.py --tg-force
+
+# 补跑指定日期（回填）
+$PY .../run_precise_daily.py --date 20261004
+
+# Telegram 模块自检（只读，不发消息）
+$PY C:/Users/asus/mk-trading/btc/precise/telegram_push.py --check
+
+# Telegram 连通性测试（会向所有目标发一条测试消息）
+$PY .../telegram_push.py --test
 ```
 
 - 解释器：`C:/Users/asus/.workbuddy/binaries/python/versions/3.13.12/python.exe`
 - 依赖：`requests`（已装）；`urllib3` 关闭证书告警。
-- 日志：stdout，`[DONE]` 表示成功。
-- 私密日志：`mk-trading/.workbuddy/btc_precise/strategy_log.json`
+- 日志：stdout，`[DONE]` 表示成功；各步骤带 `[OK]/[WARN]/[ERROR]/[SKIP]` 标签。
+- 私密目录：`mk-trading/.workbuddy/btc_precise/`
 
 ---
 
-## 五、变更记录
+## 六、变更记录
 
 | 日期 | 版本 | 变更 |
 |---|---|---|
 | 2026-10-04 | v1.0 | 新建精准版流水线；数据源切至 Gate.io；修正 MACD/RSI 口径、价格自洽、OI/强平标签；新增策略追踪与胜率；旧脚本改为转发器 |
+| 2026-10-04 | v1.1 | ① 计划任务直接指向新脚本，删除旧转发器；② 修复 index.html 孤儿 `<li>` 与 CTA 硬编码；③ **新增 Telegram 推送**（@bitebiwanglin 频道、本地代理自动探测、多目标群发、当日幂等）；④ 清理仓库历史遗留文件 |
 
 ---
 
-*本规范与 `run_precise_daily.py` 同步维护：改脚本必改此文档，反之亦然。*
+*本规范与 `run_precise_daily.py` / `telegram_push.py` 同步维护：改脚本必改此文档，反之亦然。*
