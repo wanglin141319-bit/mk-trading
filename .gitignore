@@ -11,8 +11,10 @@ Thumbs.db
 *.tmp
 *.log
 
-# X 抓取中间产物（x-read-handle.js 会往 cwd 落盘）
+# X 抓取中间产物（x-read-handle.js 现固定写入 x-session 自身目录，此处为兜底）
 KillaXBT-*.json
+Bitebiwang1413-*.json
+*-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9].json
 
 # ── Python ──
 __pycache__/
