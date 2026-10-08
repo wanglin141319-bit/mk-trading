@@ -23,13 +23,77 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-10-07T15:06:00+08:00",
+  lastScan: "2026-10-08T15:15:00+08:00",
   // 累计收录条数
-  total: 79,
+  total: 87,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-10-08",
+      title: "首次把当前价位定性为「挂单接货区」：别被羊群吓退",
+      quote: "This is where you start bidding, anon. But let the herd scare you into believing otherwise. In due time, I’ll see you on the other side, just like every single time before.（匿名者，这里就是你该开始挂单接货的地方。但就让羊群吓你、让你相信相反的事吧。时候到了，我会像之前每一次那样，在对岸见你。）随推附一张图，图内内容未读取，未作转述。",
+      read: "改动的是他 10-07 深夜那笔 82.86K 的 10 倍多单的<b>性质</b>——2 小时前那只是一笔个人交易（entry 82.860），这条第一次把它升格为面向所有人的<b>公开挂单建议</b>：这里是「开始接货」的位置。它同时把 10-05「82.5K 是决策线」和 10-07「80–82K 是我要重建 10 倍仓的区间」两条收束成一句话——他不再等 80–82K 的下沿，而是把当前 82.8K 附近直接当成建仓区。⚠️ 分析：正文<b>没有给出任何具体价位</b>，「这里」究竟指 82.8K 还是 82.2K 无法从文本独立确认（配图未读取），故这条只能作为<b>口径</b>而非点位引用；另注意按 10-08 实际盘面，日低已到 82,227、现价约 82,9xx，他的挂单区已被向下穿过一次。失效条件：与他自己的 82.5K 绑定——若 82.5K 被有效失守并向 80–82K 甚至 74–77K 延伸，「这里该开始接货」就变成接刀；反向的验证是价格不再探 80–82K 而直接从 82.8K 一线起涨，则这条升格成立。",
+      tags: ["仓位建议", "关键价位", "情绪指标"],
+      src: "X 原文 @KillaXBT · 2108049404863074707"
+    },
+    {
+      date: "2026-10-08",
+      title: "纯图卡片：先掌握耐心，才谈得上掌握交易",
+      quote: "纯图片推文，正文为空；图内文字为：To master the art of trading, you must first master the art of patience.（要掌握交易这门艺术，你必须先掌握耐心这门艺术。）",
+      read: "纯励志卡片，<b>无点位、无新增条件</b>。作用是把 6 小时前那条「this is LTF chop & I am a HTF trader（这是低周期噪音，我是高周期交易者）」的立场再确认一次，属情绪层表述而非市场判断。这条也是本次扫描中唯一一条没有文字的推文（其余抓取到的均已取到正文）。无失效条件（本条不含任何价位）。",
+      tags: ["情绪指标"],
+      src: "X 原文 @KillaXBT · 2108041077017968925"
+    },
+    {
+      date: "2026-10-08",
+      title: "首次给出日历反指节点 10-14：叙事往哪走就打反向",
+      quote: "October 14th is the date to watch for $BTC My 14th pivots have been producing inverse narrative moves. We saw the same setup around 75K before the move into 87K, a move I was long on. If a bearish narrative develops into October 14th, I will be looking for the inverse: a move higher. If bullish sentiment takes over into that date, then I would anticipate the opposite, a potential bearish move.（10 月 14 日是 BTC 要盯的日期。我的 14 号枢轴一直在制造反向的叙事行情。75K 附近我们见过同样的设置，之后就是涨向 87K 那一波——那波我做多了。如果到 10 月 14 日之前发展出看空叙事，我就找它的反面：向上。如果到那天看多情绪占了上风，那我预期相反的方向，可能是一波下跌。）随推附一张图，图内内容未读取，未作转述。",
+      read: "改动的是 09-26「月度开盘枢轴、跌进月开历史偏多」那套<b>季节性反指</b>的颗粒度——他把笼统的「月开附近」换成<b>具体的日历日 10-14</b>，并明确规则是<b>情绪反指</b>：看空叙事 → 看涨，看多情绪 → 看跌。这是他第一次把方向的决定权完全交给「届时的市场叙事」而不是价位，与 10-04「中期选举后走弱」、10-07「人们想要更低价」属同一套逆向框架。⚠️ 注意性质：这是<b>条件式表述而非单向预测</b>——他没说 10-14 会涨或会跌，只说会反向，因此它不能被当成看多信号使用；且他自述该模式在 75K 附近兑现过，属战绩复盘口径。失效条件：到 10-14 时情绪没有形成明确单边（既不成看空叙事、也无看多情绪）→ 反指无从取用；更硬的失效是<b>叙事与走势同向</b>（看空叙事下继续下跌），届时「14 号枢轴反指」这套用法本轮作废。",
+      tags: ["周期判断", "情绪指标", "失效条件"],
+      src: "X 原文 @KillaXBT · 2107923667061772539"
+    },
+    {
+      date: "2026-10-08",
+      title: "自认改计划：不等 80–82K，提前 0.75% 就重新上 10 倍多",
+      quote: "Plans change. That is trading. Initially, I was prepared to sit out and wait for the 80-82K area. However, seeing sentiment completely fall apart while we are still holding the exact same range is telling. We have also just wiped out roughly 750M in longs on this move down. To me, this looks like a healthy market cleanse, a brief deleveraging event. We dropped 6% from the highs, so I have decided to re-enter with a 10x long. In bull markets, the \"ideal\" sweep or perfect entry often never comes. The level everyone is waiting for is the one price does not need to revisit. From experience, I would rather position slightly ahead of the herd than be left waiting for a level that doesn't have to be tested. That is why I have re-entered the position just 0.75% lower.（计划会变，这就是交易。本来我准备按兵不动、等 80–82K 区域。但看到情绪彻底崩掉、而我们还卡在完全相同的区间里，这很说明问题。这波下跌里我们刚刚清掉了大约 7.5 亿美元的多头。在我看来，这像一次健康的市场清洗、一次短暂的去杠杆事件。我们从高点跌了 6%，所以我决定用 10 倍杠杆重新进场。牛市里，「理想」的扫针或完美入场往往永远不来。所有人都在等的那个价位，正是价格不需要回去的价位。凭经验，我宁愿比羊群稍微提前一点点建仓，也不愿干等一个未必会被测试的位置。这就是我只低了 0.75% 就重新进场的原因。）引推是他本人 2 小时前的原帖：Entry is 82.860. Invalidation is 74.550（入场 82.860，失效 74.550）。",
+      read: "<b>这条是本轮最该警惕的一条：他当场推翻了自己 2 小时前刚说出口的计划。</b>10-07 21:12 他明确讲「80–82K 是我要重建那笔激进 10 倍仓的区间、此刻没有理由急着开新多」，23:07 就在 82.86K 进场，这条再把改计划的理由摊开。改动的是 10-05「不等回踩、分批部署」以及 10-07「等 80–82K」这两条<b>可执行性</b>——把「等更低」用「情绪崩塌 + 7.5 亿美元多头被清算 + 自高点回落 6%」解释成「健康清洗、短暂去杠杆」，与 09-25「该爆的都爆了、杠杆已重置」是同一套论证。⚠️ 两处需注意（分析）：① 这是他<b>连续第二次</b>宣布要等更低、又提前进场（10-05 说等 80–82K → 10-06 在 83.5K 建仓；10-07 又说不急 → 当晚 82.86K 进场），说明「等回踩」在他这里系统性不可信；② 按 10-08 实际盘面，从 10-05 高点 86,999 到日低 82,227 约 −5.5%，与他说的「跌 6%」基本吻合（若按 10-02 插针 87,220 算约 −5.7%），未构成夸报；但「7.5 亿美元多头清算」为他的自述口径，无法独立核验。失效条件：若价格继续下破并触及他自己给的 74,550 失效线，「健康清洗」的定性当场反转成趋势转弱，这笔提前进场会被套在区间上沿之上；反向若 82.8K 一线直接止跌起涨，则「提前 0.75%」被证明是对的。",
+      tags: ["仓位建议", "链上数据", "失效条件"],
+      src: "X 原文 @KillaXBT · 2107892993831440645"
+    },
+    {
+      date: "2026-10-07",
+      title: "止损当晚重开 10 倍多：入场 82.86K，失效 74.55K，目标 126K",
+      quote: "I have decided to activate into another 10x long position on $BTC here. Entry is 82.860. Invalidation is 74.550 with maintaince margin. In the event invalidation is hit, I will long a second entry on 10x. This is again, a seperate position from my current longs from 62.600 & 76400. The objective of this trade is simple. Utilize leverage to capitalize on bitcoins movement to 126,000 next year.（我已决定在这里再开一笔 10 倍 BTC 多单。入场价 82.860。按维持保证金计算的失效位是 74.550。若失效被触发，我会再开第二个 10 倍入场。这一笔同样与他 62.600 和 76400 的现有持仓相互独立。这笔交易的目标很简单：用杠杆去吃下比特币明年走向 126,000 的这段行情。）引推是他本人同日 21:12 的原帖（即 83.5K 那笔已在保本位被止损、80–82K 是他要重建的区间）。",
+      read: "改动的是 09-29「第三笔多单开在 83.5K」那条的<b>三代持仓结构</b>——83.5K 那笔已于当晚在保本位被止损，取而代之的是 <b>82.860 的新一笔 10 倍</b>，与 62.6K / 76.4K 并列、并声明相互独立。三个新参数值得记：① <b>首次给 10 倍仓写明硬失效价 74.550</b>（此前 09-29 只推算「约 −10% ≈ 75K」），且这个价位与他 10-03 给出的「74K–77K 投降底」基本重合，等于把失效线压在投降底的下沿；② 首次明确<b>失效即加仓</b>——「若失效被触发，我会再开第二个 10 倍入场」，把 09-29「第一笔失效即换更低位再入」从口头逻辑正式写成执行规则，属金字塔式补仓（不是止损离场）；③ 目标首次写成「126,000 <b>next year</b>」，与 10-04「Q2–Q3 交易在 126K 上方」口径一致，把 126K 明确放到 2027 年。⚠️ 分析：入场 82.860 比他 2 小时前自己说的 80–82K 区间<b>上沿还高</b>，只比被止损的 83.5K 低 0.75%，等于「等更低」实际上没等。失效条件：价格触及 74,550（维持保证金线）→ 该仓失效，且按他的规则会再加一笔 10 倍（风险叠加而非收敛），届时 74–77K 投降底情景直接对撞；反向若 82.86 站住并向上攻破 87K，这笔即被他定义为抢跑成功。",
+      tags: ["仓位建议", "关键价位", "失效条件"],
+      src: "X 原文 @KillaXBT · 2107850216044917032"
+    },
+    {
+      date: "2026-10-07",
+      title: "一句情绪条：这点跌幅也叫跌？把图拉远",
+      quote: "Dip? What dip, for ants? When in doubt, zoom out... $BTC You can tell everyone is glued to the 5 minute TF clicking buttons for dopamine.（跌？什么跌，给蚂蚁看的？有疑问的时候，就把图拉远……BTC。你一眼就能看出，所有人都黏在 5 分钟级别上点按钮找多巴胺。）随推附一张图，图内内容未读取，未作转述。",
+      read: "纯态度条，<b>无点位、无新条件</b>。是把 10-07「这是低周期噪音，我是高周期交易者」的立场在情绪层面再确认一次——按 10-08 实际盘面，从 10-05 高点 86,999 到日低 82,227 约 −5.5%，他把它定性为「给蚂蚁看的跌幅」，等于预先否认这根回撤具备结构性意义。与他 09-30「低周期都是噪音」、10-02「把牛市里的事搞复杂」同源，属同一套「不做短周期、不加解释」框架的又一次取样。无失效条件（本条不含任何价位）。",
+      tags: ["情绪指标"],
+      src: "X 原文 @KillaXBT · 2107845824445321621"
+    },
+    {
+      date: "2026-10-07",
+      title: "83.5K 那笔 10 倍在保本位被止损，改等 80–82K 重建",
+      quote: "GM. We failed to break 87K yet again. In due time we will, but that wasn't the thesis behind this trade. So as mentioned in my previous post, the 10x long was stopped at BE. It was an aggressive continuation long, anticipating a breakout on the second test of the highs. Since the break failed and we're back at entry, 80-82K is now the range I'll be watching to rebuild that aggressive 10x long. For now, I'm holding my 62.6K and 76.4K entries. I see no reason to rush into new longs at the moment, though the 10x strategy will definitely work for anyone who is underexposed. Risk management is vital, and I already hold enough BTC as it stands. I am still bullish, still expecting higher, this is LTF chop & I am a HTF trader.（早上好。我们再一次没能突破 87K。迟早会破的，但那并不是这笔交易的论点。所以正如上一条所说，那笔 10 倍多单在保本位被止损了。它是一笔激进的延续多单，赌的是第二次测试高点时突破。既然突破失败、我们又回到了入场价，80–82K 就是我现在盯着的、用来重建那笔激进 10 倍多单的区间。眼下我持有 62.6K 和 76.4K 两笔。此刻我看不出有什么理由急着开新多，不过对于敞口不足的人来说，这套 10 倍策略肯定有效。风控至关重要，而我现在手上的 BTC 已经足够多了。我依然看涨、依然预期更高——这只是低周期噪音，而我是做高周期的。）引推是他本人 10-05 的原帖（83.5K 那笔止损上移到入场价，并给 87K 破位设了「必须在这一根周线内」的死线）。",
+      read: "改动的是 10-06「83.5K 那笔止损上移到成本价、自称 risk free trade」那条的<b>最终结果</b>——他确认这笔在保本位被止损离场，也就是 09-24 以来那笔号称浮盈 25 万美元的激进 10 倍仓，以零盈亏结束。同时改动的是 10-05 那张时间表的<b>结算</b>：「87K 必须在这一根周线内突破」的死线被判失败（「failed to break 87K yet again」），他照自己预设的失败分支切换到「回踩 80–82K 重建 10 倍仓」。需要留意（分析）：① 他这次公开说了「<b>此刻没有理由急着开新多</b>」，但 2 小时后就在 82.86K 建了仓（见同日 23:07 那条），这两句直接冲突；② 62.6K / 76.4K 两笔仍不动，说明减风险只发生在最激进的那一笔；③「这只是 LTF 噪音、我是 HTF 交易者」是<b>事后免责</b>式措辞，把择时失败归入周期噪音。失效条件：若价格不回落 80–82K 就重新站上 87K，他「等 80–82K 重建」的计划又落空一次（与 10-06 同类情形重演）；反向若 82.5K 有效失守并深入 80–82K 下方，则他 10-03 的 74–77K 投降底剧本被激活，重建区本身也要重估。",
+      tags: ["仓位建议", "关键价位", "失效条件"],
+      src: "X 原文 @KillaXBT · 2107821439688516081"
+    },
+    {
+      date: "2026-10-07",
+      title: "纯情绪条：他们要更低，等真低了又想要更低",
+      quote: "They want lower until lower actually comes, then they want even lower.（他们想要更低的价格，直到更低真的来了，然后他们又想要更低。）",
+      read: "纯情绪／态度条，<b>无点位、无新条件</b>。是把 09-28「希望这是假突破的人越多、说明空仓越多」、10-04「等回踩 2–3% 的人全被抢跑」那套<b>逆向情绪读数</b>的第四次取样，对象这次是「盼跌心态永不满足」。作用在于把「多数人没有正确持仓」这个前提再确认一次，为次日凌晨「情绪彻底崩掉 = 健康清洗」的判断做了铺垫。无失效条件（本条不含任何价位）。",
+      tags: ["情绪指标"],
+      src: "X 原文 @KillaXBT · 2107814460324810778"
+    },
     {
       date: "2026-10-07",
       title: "插针砸到 83.5K 后喊话：不敢买血的人不配吃涨",
