@@ -23,13 +23,62 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-10-08T15:15:00+08:00",
+  lastScan: "2026-10-09T15:18:00+08:00",
   // 累计收录条数
-  total: 87,
+  total: 93,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-10-09",
+      title: "首次量化本轮最大回撤约14%：87K到75K，70K或永不再来",
+      quote: "\"A lot of people are posting previous cycle corrections as though Bitcoin is guaranteed to mirror them perfectly. That is a big mistake… We have retraced roughly 50% of the entire bear market decline, something we have never seen before. Add in the largest short-liquidation event from 62K to 80K, and the context is completely different. You cannot compare cycles that saw 77-80% drawdowns and then expect the same depth of corrections now. We bottomed around -54%. … In 2023, BTC dropped 77%. During the recovery from 16K to 69K, the deepest correction was roughly 21%. This cycle, BTC only dropped 54%, around one third less severe. Applying that same logic, a 21% correction reduced by one-third would put the largest pullback closer to 14%. A 14% drop from the 87K highs puts $BTC almost precisely at 75K. And thats if we get the full blown corrrection from 87K. It could be from 95K down to 80K. It's to soon to say. … Are you really willing to miss a potential 60% move higher because you are waiting for an extra 6% lower? I wouldn't be. Larger capital clearly isn't either. I still believe the 92-95K region is where we could see a more meaningful, broader correction, but it may simply take time to get there. For those still waiting on 70K: based on the maths, the context, and the way this cycle has behaved, there is a real chance we never see it again. Even another test of 75K would be a gift. … This is Wall Street's asset now.\"（很多人把历史周期的回调拿来发帖，好像比特币就一定会完美复制它们。这是个巨大的错误……我们已经收复了整个熊市跌幅的大约 50%，这是我们从未见过的。再加上 62K 到 80K 那次史上最大的空头清算事件，语境完全不同。你不能拿那些曾出现 77-80% 跌幅的周期来比较，然后指望现在的回调深度一样。我们的底部大约只跌了 -54%……2023 年 BTC 跌了 77%，而在 16K 涨到 69K 的复苏过程中，最深的一次回调大约是 21%。本轮 BTC 只跌了 54%，严重程度大约少了三分之一。套用同样逻辑，把 21% 的回调减少三分之一，最大回撤会更接近 14%。从 87K 高点跌 14%，BTC 几乎正好落在 75K。而这还是假设我们从 87K 就展开完整回调。也可能从 95K 跌到 80K，现在说还太早……你真的愿意为了多等 6% 的下跌，而错过潜在 60% 的上涨吗？我不会。大资金显然也不会。我仍然认为 92-95K 区域才是我们可能看到一次更有意义、更广泛回调的地方，但走到那里可能只是需要时间。对于那些还在等 70K 的人：基于这套数学、语境和本轮周期的表现方式，我们真的有再也不会见到它的可能。就算再测一次 75K，那也算是一份礼物……现在这是华尔街的资产了。）"
+,
+      read: "这条一次性改动了他<b>三条既有判断</b>：① 把 10-03 那句含糊的「Q4 若真投降会加更多多单」量化成<b>本轮最大回撤≈14%</b>（87K→约 75K），并首次把「一次更有意义、更广泛的回调」的<b>发生区上移到 92-95K</b>——这等于把 10-05/10-06「年内上限压到 95K 下方、余下时间区间震荡」改写成「先上到 92-95K，再谈更大回调」，口径由守转攻；② 「等 70K 的人可能永远等不到」「再测 75K 都算礼物」——这句对他在 10-07 亲手写的 10 倍仓失效价 <b>74.550</b> 构成暗示：他认为那根线不该被碰到；③ 首次把「<b>这是华尔街的资产</b>」当成结构性论据，用来解释为什么回调应该更浅（此前 10-04 只提过「机构垂直吸筹」）。⚠️ 分析：14% 那步算式本身可复核（87,000×0.86≈74,820，与他 74.550 的失效位几乎重合，属自洽）；但「已收复熊市跌幅 50%」与「底部 -54%」两个数字仍无法与 87K 独立对齐（10-07 已标注同一问题），属不可独立验证的自述口径。另注意他此处<b>自己在用历史分形做线性外推</b>（2023 的 21% 回调减三分之一），而他在 10-06 曾专门否定别人用 2023 分形——属同一手法的双标使用。失效条件：① <b>数学失效</b>——若自 87K 的回撤超过 14%（即跌破约 74,800），或「95K→80K」那条路径实际演变成「87K→70K 下方」，「比上一轮浅三分之一」整套推演作废；② <b>硬位失效</b>——74,550（他自家 10 倍仓维持保证金失效位）被打穿，则「75K 是礼物／70K 见不到」同时失效，并触发他 10-07 写明的「失效即再开第二个 10 倍」加仓规则。",
+      tags: ["周期判断", "目标价", "失效条件"],
+      src: "X 原文 @KillaXBT · 2108302262401376433"
+    },
+    {
+      date: "2026-10-09",
+      title: "发布8分半视频版「计划·情形·预期」并置顶",
+      quote: "\"Update for $BTC — Plans, scenarios, expecations.\"（BTC 更新——计划、情形、预期。原文拼写即为 expecations。）推文本身只带一段时长约 517.6 秒（8 分 38 秒）的自制视频，并引用了他自己早前那条同样是视频的 \"Current outlook for $BTC.\"。<b>视频与引推内容本轮均无法转写</b>，按「不猜测」原则不作任何转述。",
+      read: "改动的是他对外沟通的<b>形式</b>而非方向判断——他把此前零散、逐条发出的表态收束成一条<b>置顶的完整视频更新</b>（计划／情形／预期三件套），发布后约 1 小时又用一条长文（见同日「14% 回撤」那条）补上了其中的回撤幅度部分。分析：置顶意味着这是他现在的主页门面，8 分半的体量说明这是一次系统性表态；但他<b>没有在正文里给任何数字</b>，因此本条不能当作点位或方向依据，可用信息仅是「他放出了一份完整剧本更新」这一事实。⚠️ 本条已标 <b>存疑</b>：存疑的是「视频内容」而非来源，来源是一手原推。失效条件：本条不含可验收的价位或方向；唯一风险是把「发布长视频」误读成看多或看空信号——它两者都不是。建议直接在 X 上观看该视频核对。",
+      tags: ["基准剧本", "存疑"],
+      src: "X 原文 @KillaXBT · 2108286922283987415"
+    },
+    {
+      date: "2026-10-09",
+      title: "立场自白：赢家常是黑羊，人人都同意就没有优势",
+      quote: "\"To win in a game where 90% fail, you are often the black sheep. You have to be prepared to be misunderstood. If everyone agreed with what I do, there's a good chance my edge wouldn't exist.\"（在一个 90% 的人都会输的游戏里，想赢你往往得当那只黑羊。你得准备好被误解。如果所有人都认同我做的事，那我的优势很可能根本不存在。）",
+      read: "纯立场自白，<b>无点位、无方向</b>；改动的不是判断，而是为前一日「这里该开始接货／别被羊群吓退」（10-08 凌晨）提供<b>自我解释</b>——把「与大众共识相反」本身当成 edge 的论据。⚠️ 分析：这类表述的实际作用是把「被市场证伪」预先重新定义为「黑羊的正常处境」，属<b>不可证伪</b>的话术，不应计入任何方向性证据，仅可作为情绪取样（这是他近期第 N 次围绕「羊群／共识」发言）。失效条件：本条不含价位；可观察的反向信号是——若他此后开始强调「我和大多数人看法一致」，这套「逆共识」自我定位即被自己放弃。",
+      tags: ["情绪指标", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2108271148207346081"
+    },
+    {
+      date: "2026-10-09",
+      title: "驳「78K 崩盘」预测：牛市中的 FUD 只会变成上涨燃料",
+      quote: "\"Not like we haven't seen before. More $BTC FUD, right in the middle of a bull market. What have I said repeatedly? FUD during a bullish macro trend ultimately becomes fuel for higher prices on the HTFs. And once again, the fear is building while the macro structure remains firmly bullish. Oh well. Some people never learn. I will let them be. Time will prove who is right.\"（又不是没见过。牛市正中间，又来了更多 BTC 的 FUD。我反复说过什么？宏观多头趋势里的 FUD，最终会变成更高周期上涨的燃料。又一次，恐惧在累积，而宏观结构依然坚定看多。算了，有些人永远学不会，随他们去。时间会证明谁对。）所引推文内容为：\"BREAKING: US Government just transferred out $1B worth of Bitcoin / Our traders forecast $BTC will crash to $78,000 this month\"（突发：美国政府刚转出价值 10 亿美元的比特币／我们的交易员预测 BTC 本月将崩至 78,000。）",
+      read: "改动的是他处理<b>具体利空信息</b>的口径——把「美国政府转出 10 亿美元 BTC + 某机构预测本月崩到 78,000」这类可验证的利空，整体归类为「牛市中的 FUD」，并重申 FUD 是 HTF 上涨燃料（与 09-26 同源的又一次复述）。⚠️ 关键分析：他<b>没有逐条回应 78,000 这个数字</b>，而是用「宏观结构依然坚定看多」直接压过去；而按他本人 10-03 给的投降底 74–77K、以及同日长文给的「87K 回撤 14%≈75K」，<b>78K 恰好落在他自己认可的回撤区间内</b>——也就是说他反驳的是「崩盘」这个定性，而不是 78K 这个价位，两者并不矛盾。失效条件：① <b>实质失效</b>——若 10 月内价格真的下探 78K 并继续走低（跌破约 74,800），「FUD 会自动变成燃料」在本轮被实测打脸；② 更弱的失效是 FUD 之后价格长期横盘不涨（燃料未点火）。",
+      tags: ["情绪指标", "宏观驱动", "失效条件"],
+      src: "X 原文 @KillaXBT · 2108229866726269230"
+    },
+    {
+      date: "2026-10-08",
+      title: "首次把 USDT 市占率破位回踩纳入判断依据",
+      quote: "\"Study January 2024 $BTC. This is one of the most important charts to watch. USDT.D remains in a significant macro downtrend and is now making its first major retest of that BOS, the exact same playbook we saw last cycle.\"（研究一下 2024 年 1 月。这是最值得看的图表之一。USDT.D（USDT 市占率）仍处在显著的宏观下行趋势中，现在正在进行对该破位（BOS，结构破坏）的第一次重要回踩——和上一轮周期我们看到的剧本一模一样。）",
+      read: "这是<b>本轮首次出现的新分析维度</b>——此前 feed 里从未有过他用稳定币市占率作论据的记录。他用「USDT.D 宏观下行 + 破位后首次回踩」类比 2023–2024 年初，隐含结论是资金将从稳定币流向加密资产。改动的是他论证的<b>证据类型</b>：从纯价格结构／情绪，扩展到<b>资金面指标</b>。⚠️ 分析：他<b>只给了类比、没给任何数值</b>（未说 USDT.D 当前水平、也未给回踩目标位），因此这条<b>不可独立验收</b>，只能当作他的定性倾向记录；另外他此处用的又是历史分形类比（2024 年 1 月），与他在 10-06 专门否定别人用分形的态度存在张力。失效条件：USDT.D 若在该破位位止跌回升（稳定币市占率重回上行），「资金流向加密」这条资金面论据即作废；对价格的方向性判断仍以 10-03 的 97K／74–77K 与 10-09 的「14%≈75K」为准，本条不提供独立价位。",
+      tags: ["链上数据", "周期判断"],
+      src: "X 原文 @KillaXBT · 2108224103333216707"
+    },
+    {
+      date: "2026-10-08",
+      title: "复盘空头：从67K一路空到87K的人，现在为小回撤欢呼",
+      quote: "\"The same people who shorted $BTC all the way from 67K to 87K are now celebrating because the price is finally seeing a small correction. They convince themselves they're just looking for a bullish retest, but deep down, all they really want is to make back everything they lost in one trade. And the irony is that their inability to control their own greed is exactly what got them fucked in the first place. They haven't learned a damn thing. And that's exactly why the same shit will happen again.\"（那些从 67K 一路空到 87K 的人，现在因为价格终于出现小回撤而在庆祝。他们说服自己只是在等一个看涨回踩，但内心深处，他们真正想要的是一笔单子把亏掉的全部赚回来。而讽刺的是，他们控制不住自己的贪婪，正是一开始把他们搞死的原因。他们什么都没学到。这也正是同样的破事会再次发生的原因。）",
+      read: "改动的是他对<b>对手盘结构</b>的描述——把当前这波回撤的卖方定性为「在 67K→87K 全程做空、急需一笔单子回本的亏损者」，等于宣告 80K 一带的抛压来自<b>急于回本的高杠杆空头</b>而不是趋势资金。这条与同日凌晨那条「这里该开始接货／别被羊群吓退」构成一组：凌晨先给建议，晚间再定义对手是谁，为「与对手反向操作」补上叙事。⚠️ 分析：这是他 10-04「踏空者被抢跑」的升级版——从嘲笑观望者转为嘲笑做空者，语气更硬，但<b>无任何新增点位或方向改动</b>，属情绪层条目。失效条件：若价格继续下破（失守 10-08 日低 80,393 并走向 75K），「抛压来自需要回本的空头、他们会被挤」这套叙事将失去解释力——持续创新低通常意味着更强的现货卖压，而非空头回补。",
+      tags: ["情绪指标", "战绩复盘"],
+      src: "X 原文 @KillaXBT · 2108164103097213373"
+    },
     {
       date: "2026-10-08",
       title: "首次把当前价位定性为「挂单接货区」：别被羊群吓退",
