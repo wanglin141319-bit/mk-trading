@@ -23,13 +23,53 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-10-09T15:18:00+08:00",
+  lastScan: "2026-10-10T15:03:00+08:00",
   // 累计收录条数
-  total: 93,
+  total: 98,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-10-10",
+      title: "低80K区接盘密集，称市场下方几乎无支撑",
+      quote: "\"Buyers are clearly stepping in on this move down. We saw something very similar during the previous range as well. There appears to be very little support beneath current price, which suggests a high concentration of bids and conviction around the low 80Ks, most likely reinforced by it being a key psychological level for $BTC. Interesting times.\"（买家显然正在这波下跌中进场。我们在上一个震荡区间也见过非常相似的情况。当前价格下方似乎几乎没有支撑，这说明买盘和高信念仓位高度集中在<b>低 80K 区域</b>，很可能还因为那里是 BTC 的关键心理关口而被强化。有意思的时期。）",
+      read: "改成的是他 10-08「这里该开始接货／别被羊群吓退」那条的<b>论据</b>——从喊口号升级为盘口结构描述：他不是说「80K 是价值区」，而是说「下方没有支撑＝买盘全都堆在低 80K」。⚠️ 分析：这是一句<b>无价位、无新点位</b>的定性判断，且逻辑上是「双刃」——「下方无支撑」同时也可以读成「一旦低 80K 失守，下跌会很快」（这正是他 10-09 自己写的「无法突破就下看 76-78K」的前提）。所以本条不能单独当看多证据，只能当<b>他指出买盘挂单集中区在低 80K</b> 这一事实记录。配图（一张低 80K 区间走势图）已读取，仅重复文本含义，无额外数字。失效条件：价价格有效跌破低 80K（约 80,000–80,500）并加速下行，则「买盘高度集中于此、下方无支撑」的整个表述反转为利空证据；反之若他在此逐步加仓，则本条即为其加仓前的口径铺垫。",
+      tags: ["关键价位", "仓位建议", "情绪指标"],
+      src: "X 原文 @KillaXBT · 2108620452335632385"
+    },
+    {
+      date: "2026-10-10",
+      title: "距中期选举24天，给出选举前后两套互斥剧本",
+      quote: "\"We are now 24 days away from the midterms. Historically, $BTC has reacted negatively afterwards in 3/4 instances. My view therefore remains unchanged: any meaningful de-risking is more likely to begin after the midterms rather than before them. I do not expect a new bear market low. However, I do expect a higher low to form after the midterms, potentially an important established low before the next leg towards new highs. There are two main scenarios I'm observing: 1.) BTC pumps into the midterms, followed by a 10%+ correction afterwards. 2.) BTC sells off into the midterms, then begins trending higher shortly after.\"（我们现在距中期选举还有 24 天。历史上，BTC 在选举之后有 3/4 次是负面反应。所以我的看法不变：任何有意义的<b>去风险更可能发生在选举之后</b>，而不是之前。我不预期出现新的熊市低点。但我确实预期选举后会形成一个<b>更高的低点</b>，那可能是在奔赴新高之前一个重要的确立低点。我目前在观察两个主要情形：1.) BTC 在选举前上涨，选举后出现 10%+ 的回调；2.) BTC 在选举前下跌，随后不久开始走高。）（引推是他自己更早一条：「如果 BTC 就一直涨到中期选举呢？每个中期选举周期我们都看到 BTC 在选举之后表现负面。所以为什么不等到中期选举真正临近时再对价格行动做出反应。至少，这就是我在做的。」）",
+      read: "改成的是他 10-04 首次提出的「中期选举」锚点——把它从「一句宏观背景」升级为<b>带两套互斥剧本的前瞻框架</b>，并给出<b>「选举后见更高低点」这一可验收的时间与形态双重判据</b>（「higher low after the midterms」是他首次把形态词与日历事件绑死）。⚠️ 分析：两套剧本<b>互相覆盖了所有方向</b>（涨也对他有用、跌也对他有用），属典型的事后免责式框架，本身不构成方向证据；但他明确的、不可改口的锚点是「<b>不预期新熊市低点</b>」+「<b>选举后更可能去风险</b>」两句。配图（4 张历史周期图 + 选举日竖线）已读取，<b>视觉上确实呈现 3/4 次选举后回落</b>，与全文数字自洽。失效条件：① 若在<b>选举之前</b>就出现大规模去风险（如跌破 76-78K 并加速），则「去风险更可能在选举之后」的时间判断失效；② 若选举后形成的不是「更高低点」而是创出<b>新低</b>，则「不预期新熊市低点」与「higher low」同时失效。",
+      tags: ["宏观驱动", "周期判断", "关键价位"],
+      src: "X 原文 @KillaXBT · 2108593070065209423"
+    },
+    {
+      date: "2026-10-09",
+      title: "用USDT.D定生死：企稳则筑更高低点冲90K，破位则回低70K",
+      quote: "\"It is extremely important that... if we are following the 2023 fractal, USDT.D now shows acceptance back within the range on the LTFs after deviating above the highs. Right now, USDT.D has also deviated above its highs, similar to what we saw in 2023, and is now pushing back up for a retest. If this retest forms a lower high, it would strongly suggest USDT.D is continuing its macro downtrend. That would support the idea that BTC is forming a higher low here before expanding towards 90K. What we do not want to see is USDT.D reclaiming those highs and holding above them with no sign of rejection. If that happens, it would suggest BTC is likely headed back towards the low 70Ks. These are the key levels to watch now in determining whether this low is truly in... or not.\"（极其重要的一点……如果我们遵循 2023 分形，USDT.D 在低周期上<b>偏离高点后已回归区间内并获接受</b>。现在 USDT.D 也已偏离其高点，与 2023 年所见相似，并正反弹回来做一次回测。如果这次回测形成<b>更低的高点</b>，就强烈暗示 USDT.D 在延续其宏观下行趋势。那将支持「BTC 正在此处筑<b>更高低点</b>、随后向 90K 扩张」的思路。我们不希望看到的是 USDT.D <b>重新站上那些高点并站稳、毫无拒绝迹象</b>。若发生那种情况，就暗示 BTC 很可能下探<b>低 70K</b>。这些就是当下判断这个低点是否真正成立的关键位。）（同日 22:17 他另发一条更正：原文第一行把 USDT.D 误写成 BTC，实为「USDT.D 在低周期上回归区间」——即本条的指标主体全为 USDT.D。）",
+      read: "改成的是他 10-08「Study January 2024／USDT.D 处于宏观下行趋势」这条<b>只给类比、不给数值</b>的模糊论证——本轮首次把 USDT.D 变成<b>带双向触发条件的可验收判据</b>：看多触发 = USDT.D 回测形成更低高点（继续宏观下行）→ 支持 BTC 筑更高低点冲 <b>90K</b>；看空触发 = USDT.D 收复前高并站稳 → BTC 回<b>低 70K</b>。⚠️ 分析：这是他自 10-06 起<b>第 3 次围绕 USDT.D 发言</b>（10-08 上午首提、下午补 6.57% 关键位、本条给双向框架），说明这是他现在主打的分析抓手；但全文<b>只给形态、不给 USDT.D 具体数值</b>（6.57% 在另一条），故仍属「有条件、不可独立验收」的判据。注意本条同时把他 10-09 早间「无法突破 84-85K 则下看 76-78K」与「低 70K」串成了一条<b>下行升级链条</b>。失效条件：① 若 USDT.D 收复前高并站稳（看空触发兑现），则「BTC 筑更高低点冲 90K」作废，且他 10-09 早间的 76-78K 会进一步下修到低 70K；② 反之若 USDT.D 的 6.57% 被跌破（见同日另一条），则本条的看空分支被排除，利多分支激活。",
+      tags: ["链上数据", "周期判断", "关键价位"],
+      src: "X 原文 @KillaXBT · 2108557868890779936"
+    },
+    {
+      date: "2026-10-09",
+      title: "USDT.D关键位6.57%：不破则10倍多单继续持有",
+      quote: "\"This is one of the most important charts to watch. USDT.D has respected its HTF macro downtrend, rejecting in a very similar fashion to what we saw in 2023. The first key point of interest sits at 6.57%. If USDT.D bounces from there, $BTC will likely see a short term LTF rejection. However, if USDT.D breaks below this level, it would confirm that the recent move was simply a bearish retest, opening the door for BTC to reclaim and push above $87K. Until 6.57% breaks, we are not fully out of the woods. But so far, so good. The 10x long lives.\"（这是最值得看的图表之一。USDT.D 一直尊重其高周期宏观下行趋势，拒绝的方式与我们 2023 年所见非常相似。第一个关键关注位在 <b>6.57%</b>。如果 USDT.D 从那里反弹，BTC 可能会看到一次短期低周期拒绝。但如果 USDT.D 跌破该位，就确认最近这波只是<b>一次看跌回测</b>，为 BTC 重新收复并推上 <b>$87K</b> 打开大门。在 6.57% 被跌破之前，我们还没有完全脱离险境。但到目前为止，还不错。<b>10 倍多单继续活着。</b>）（引推为他 10-08 的「Study January 2024」原帖。）",
+      read: "改成的是他 10-07 开的那笔 <b>82.860 的 10 倍多单</b>的处境定性——首次给出这笔仓位的<b>外部（非价格）失效判据</b>：不看 BTC 价，改看 <b>USDT.D 的 6.57%</b>。⚠️ 分析：这解决了此前一个矛盾——10-09 早间他刚说「无法突破就下看 76-78K」，若跌到 76-78K 则 74,550 的失效线近在咫尺；本条等于给这笔 10 倍仓<b>加了一层他自认更灵敏的前置指标</b>，把「BTC 价格止损」部分替换为「USDT.D 跌破 6.57% 才真正开门」。同时「<b>The 10x long lives</b>」是他对该仓位<b>首次公开强调仍持有</b>（此前多轮只提 62.6K/76.4K，未明确 10 倍仓是否还在）。失效条件：USDT.D <b>跌破 6.57%</b>即触发利多（BTC 可冲 87K）；反之 USDT.D 从 6.57% 反弹并站稳，则他会预期 BTC 出现短期低周期拒绝，并很可能按 10-09 早间的预案把目标下调至 76-78K——即这笔 10 倍仓的 BU 价 74,550 将首次进入真实施压区。",
+      tags: ["链上数据", "关键价位", "仓位建议"],
+      src: "X 原文 @KillaXBT · 2108526625612558560"
+    },
+    {
+      date: "2026-10-09",
+      title: "承认低周期结构转弱：先站回84-85K否则下看76-78K",
+      quote: "\"I may be bullish, but I'm not oblivious to the current LTF market structure. $BTC is now coming back into the previous May range high, an area it broke back below. If this isn't simply deviation above the highs, followed by acceptance back into the range and a move lower, then we need to see a reclaim fairly quickly. Ideally, BTC pushes back above the 84-85K region, then retests and respects the previous range lows around 82.8K. If that happens, the structure is back in place for us to trend higher. On the other hand, if we cannot break this barrier... then we can push to 76-78K. Relatively straightforward.\"（我可能看多，但我并非无视当前的<b>低周期市场结构</b>。BTC 现在正回到此前 5 月区间的高点，一个它刚跌破回去的区域。如果这不只是「偏离高点后回归区间并走低」的假动作，那我们就需要看到<b>相当快地重新收复</b>。理想情况是 BTC 推回 <b>84-85K 区域</b>之上，然后回测并尊重前区间低点约 <b>82.8K</b>。若如此，结构就重新就位，可以继续走高。另一方面，若我们无法突破这道屏障……那我们就可能推向 <b>76-78K</b>。相对直白。）",
+      read: "改成的是他 10-08 那条「牛市中的 FUD 只会变成上涨燃料」的<b>单边乐观口径</b>——本条首次公开承认<b>低周期结构已经转弱</b>，并给出明确的双向路径与价位：乐观路径 = 收复 <b>84-85K</b> 并守住 <b>82.8K</b>；悲观路径 = 无法突破则下看 <b>76-78K</b>。⚠️ 分析：这是他自 10-08 以来<b>首次为由多转空预留价位</b>，且 76-78K 与他 10-03 提的「74-77K 投降底」、10-07 的 10 倍仓失效价 74,550 形成下拉链条，实际等于把「下行目标」与「自家仓位风险区」并到了同一个价格带。同时 82.8K 这个「前区间低点」与他自己 82.860 的 10 倍进场价几乎重合——<b>他要守住的结构位就是他自己的成本线</b>，两者已被绑死。失效条件：① 若 BTC 无法收复 84-85K 且跌破 82.8K，则本条悲观分支激活（下看 76-78K），并直接威胁其 10 倍仓 74,550 的失效线；② 若 BTC 快速收复 84-85K 并回踩 82.8K 成功，则结构修复、继续维持其看多主线。",
+      tags: ["周期判断", "关键价位", "失效条件"],
+      src: "X 原文 @KillaXBT · 2108474403474252110"
+    },
     {
       date: "2026-10-09",
       title: "首次量化本轮最大回撤约14%：87K到75K，70K或永不再来",
