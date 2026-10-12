@@ -23,13 +23,53 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-10-11T15:20:00+08:00",
+  lastScan: "2026-10-12T15:03:00+08:00",
   // 累计收录条数
-  total: 104,
+  total: 109,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-10-12",
+      title: "定调：低杠杆多单已出清，上方只剩 86–88K 的空头",
+      quote: "\"Seems like this move did exactly what it needed to do. Take out a bunch of low leverage $BTC longs. Now it's just shorts between 86-88K.\"（这波走势看起来正好做了它该做的事——把一批<b>低杠杆</b>的 BTC <b>多单</b>打掉。现在剩下的，就只有 <b>86–88K</b> 之间的<b>空头</b>了。）（配图为他自己的清算热力图：<b>绿色流动性簇密集分布在 86,000–88,500</b> 区间，而 <b>80,000–82,000</b> 下方的紫色/蓝色簇明显稀疏。）",
+      read: "改动的是他 <b>10-09「下方没有支撑、买盘集中在低 80K」</b>与 10-10「下方流动性很少」那套——本条把「多单被打掉」从风险兑现<b>翻转成利多燃料</b>：低杠杆多头出清之后，他首次用<b>具体数字</b>把 86–88K 写成<b>仅剩的空头暴露区</b>，等于给 10-10 的「上方 EQH 买侧流动性池」钉上价位。⚠️ 分析：这条与 10-10「破 6.56% 上看 90-95K」是同一条上行链条的两段；但要留意 <b>86–88K 恰好压在他 10-06 给对冲空单的 89.4–90.6K 下方一档</b>，而 87K 又是他 10-05 设过、10-08 亲口判失败的周线死线——同一带区间被他反复赋予「<b>目标 / 失效 / 对冲</b>」三重身份，口径存在重叠。失效条件：① 价格若冲到 86–88K 后被压回、并有效跌回 <b>82.8K</b>（其 10 倍仓成本线）下方，「空头被取」的假设反转；② 若他随后开始在该区间<b>布空</b>而不是等空头被挤，「空头暴露」的读法作废。",
+      tags: ["关键价位", "仓位建议", "趋势切换"],
+      src: "X 原文 @KillaXBT · 2109408661609074733"
+    },
+    {
+      date: "2026-10-12",
+      title: "自证 USDT.D：宏观下行 + 首度回测 BOS，「这张图最重要」",
+      quote: "\"I did say this was one of the most important charts to observe.... $BTC\"（我早就说过，这是最值得观察的图之一……）（引推是他自己 10-08 的原帖：\"Study January 2024 $BTC This is one of the most important charts to watch. USDT.D remains in a significant macro downtrend and is now making its first major retest of that BOS, the exact same playbook we saw last cycle.\" 即——研究 <b>2024 年 1 月</b>的 BTC；USDT.D 仍处在一个<b>显著的宏观下行趋势</b>中，现在正在对这个 <b>BOS（结构破位）</b>做<b>第一次重大回测</b>，与我们上一轮周期见过的剧本<b>一模一样</b>。）",
+      read: "改动的是他 <b>10-09 至 10-10 的 USDT.D 双向框架</b>——本条本身不新增价位，属<b>自引式再确认</b>：他把 10-08「USDT.D 首度回测 BOS + 2024 年 1 月类比」这张图<b>重新置顶为「最重要」</b>，等于在 10-11 那根插针、约 2B 多单清算之后，公开宣告「图还没坏、剧本仍在」。⚠️ 分析：这是他自 10-06 起<b>第 5 次</b>围绕 USDT.D 发言，但**只表态、不给数字**（6.7% / 6.56% 两个关键位仍是 10-10 的旧值），属于叙事维护而非新增信息；把它与同日「上方只剩 86–88K 空头」并列看，他的多头叙事在 10-11 插针后**不降反增**。失效条件：本条的可检验点仍只有 USDT.D 的 <b>6.7% / 6.56%</b>——USDT.D 站上并站稳 <b>6.7%</b>，则「宏观下行 + 首度回测」的整条类比作废（与 10-10 那条免责推同源）。",
+      tags: ["链上数据", "战绩复盘"],
+      src: "X 原文 @KillaXBT · 2109326604702978153"
+    },
+    {
+      date: "2026-10-11",
+      title: "第 14 个日历枢轴将至：更希望先盘底再涨，先急涨反要谨慎",
+      quote: "\"My 14th pivot is approaching next week. It's a date I've been tracking and talking about since $BTC first surpassed 100K, around a year and a half ago. The pivot has been consistent, and right now we're seeing a more bearish narrative build into it. If that continues, I'd be looking for an inverse move back upwards, as we've seen in the last 3 instances: a bullish move following a bearish narrative. For continuation, it may actually be better to see price consolidate around the lows before pushing higher after the 14th. If we start pushing up aggressively into the date, I'd be more cautious, as that could set up an inverse move back down aswell. Works both ways.\"（我的<b>第 14 个枢轴</b>下周就到。这是我自 BTC 首次突破 100K 起、大约<b>一年半</b>前就在追踪和谈论的一个日期。这个枢轴一直很稳定，而现在我们看到<b>一个更偏空的叙事正在向它聚集</b>。若这种情况延续，我会预期一次<b>向上的反向移动</b>——前 3 次就是这样：<b>看空叙事之后跟着一根上涨</b>。若要延续，更好的情形其实是价格在低点附近<b>先盘整</b>、等 14 号之后再往上推；若在到达该日期前就开始<b>猛烈上攻</b>，我反而会更谨慎，因为那也可能同样搭出一个<b>向下的反向移动</b>。两个方向都成立。）",
+      read: "改动的是他 <b>10-08 首次提出的「14 号枢轴制造反向叙事行情」</b>——本轮把它从单条观察<b>升级为带序号、带历史样本的日历模型</b>（自称第 14 个枢轴、前 3 次均为「先空叙事 → 后上涨」），并首次给出<b>条件化的双向解读</b>：<b>先盘底再上</b>是他偏好的路径，<b>提前急涨</b>反而触发他的反向警报。⚠️ 分析：这是他近期少见的<b>对称表述</b>（\"Works both ways\"），可与 10-08 的 10-14 日历节点对照——下周恰好覆盖 10-14，两条可视为同一模型的不同说法。但正因双向，本条的<b>可证伪性很低</b>：涨也能对、跌也能对。失效条件：真正能推翻它的是<b>枢轴日期本身落空</b>——即下周（10-12 起那一周）过去后，市场既未按其偏好先盘底、也未出现叙事反转，枢轴计数「一年半来一直稳定」的说法就需要重新核对；此外若他在枢轴兑现后转而宣称「本次是例外」，则说明该模型已无法自我结算。",
+      tags: ["周期判断", "失效条件"],
+      src: "X 原文 @KillaXBT · 2109297721798447498"
+    },
+    {
+      date: "2026-10-11",
+      title: "选举剧本细化：去风险在选举之后，三笔多单满仓未动",
+      quote: "\"The ideal scenario would be for $BTC to push higher into the midterms, build a bullish narrative and sweep the highs. Then, as in previous cycles, we get a corrective move after the midterms. This time though, that correction wouldn't lead to a new cycle low. It would establish a higher low instead. That feels like the most plausible scenario to me. If we dump into the midterms, I think we're more likely to pump afterwards towards 95K.\"（最理想的情形是：BTC <b>顶着中期选举往上推</b>、把看多叙事做起来、<b>扫掉高点</b>；然后像前几个周期一样，选举之后出现一次<b>回调</b>。但这次不同——那次回调<b>不会创出新的周期低点</b>，而是做出一个<b>更高低点</b>。这在我看来是最合理的情形。如果我们<b>跌进选举</b>，我反而认为之后更可能<b>拉升到 95K</b>。）\"同上，后半段：\"Nearly 2B in longs have just been liquidated, and the midterms are only 3 weeks away... it looks like shorts are more exposed than longs right now. 3/4 midterms were followed by bearish price action one to two months later. Based on that historical sample, the odds are 75%... So i think we only get the derisking after, not before the midterms. I'm still holding the 10x long, along with the longs I posted at 62.6K and 76.4K. All positions remain open at full size.\"（刚刚有近 <b>20 亿美元</b>的多头被清算，而中期选举只剩 <b>3 周</b>……就当前价格行为、情绪、以及<b>一方叙事已被打掉</b>这几点看，现在<b>空头比多头更暴露</b>。<b>4 次中期选举里有 3 次</b>都在之后一到两个月出现偏空的价格行为，按这个样本，概率是 <b>75%</b>。我不反对市场上涨，但我交易的是统计和数据，不是我希望的结果。所以我认为<b>去风险只会发生在选举之后，而不是之前</b>。我仍然持有那笔 <b>10 倍多单</b>，以及我在 <b>62.6K</b> 和 <b>76.4K</b> 发的多单。<b>所有仓位维持满仓、全部在场</b>。）",
+      read: "改动的是他 <b>10-06「本季度 75% 概率出现某种形式的拒绝」</b>与 <b>10-04 首次引入的中期选举锚点</b>——本轮把两者<b>合并成一个带结构的双分支剧本</b>：① 乐观路径＝选举前上推扫高 → 选举后回调但<b>只做更高低点、不创新低</b>；② 悲观路径＝跌进选举 → <b>之后反而拉到 95K</b>。⚠️ 分析：两条路径<b>结局都指向更高</b>（更高低点 / 拉到 95K），这是一套<b>「无论怎样都偏多」的条件结构</b>——真正的空头情形（选举后创出新周期低）被他明确排除，而这正是他 10-03 亲手量出的 74–77K 投降区所在的位置，两套口径存在张力。同条还首次把 <b>75% 这个数字的来源讲清楚</b>（4 次中 3 次、选举后 1–2 个月偏空），比 10-06 只丢数字更可核查。仓位面：首次在一条推里<b>同时点名三笔多单并声明满仓未动</b>（10 倍仓 + 62.6K + 76.4K），与 10-08「10 倍仓 82.860 重开」接得上。失效条件：① 他的「更长周期不创新低」前提被打破——有效跌破 <b>74,550</b>（其 10 倍仓失效价）并触及 <b>74–77K</b> 投降区；② 时间上，<b>11-03 前后</b>若出现他所说的「选举后回调」但直接创出新周期低点，则本条的核心修正（\"wouldn't lead to a new cycle low\"）作废。",
+      tags: ["宏观驱动", "基准剧本", "仓位建议"],
+      src: "X 原文 @KillaXBT · 2109277589068013744"
+    },
+    {
+      date: "2026-10-11",
+      title: "放两张并排走势图：「模拟是真的」暗示形态重演（未标周期）",
+      quote: "\"Simulation. Is. Real... $BTC\" / \"Would be funny if?\"（<b>模拟是真的</b>……BTC。／要是（真那样）就有意思了？）（配图为两张走势图<b>并排比对</b>：用彩色圆点标注出彼此相似的摆动结构，右侧一段呈现<b>先深跌后 V 型反转</b>的形态。他未在正文里说明这两张图分别对应哪个周期/标的。）",
+      read: "改动的是他 <b>09-29 专门写长文否定 2023 分形</b>、<b>10-06 又把该分形「摆回桌面」</b>这条反复摇摆的线索——本条虽无文字结论，但配图做成<b>并排形态对照 + 彩色打点</b>，且用「would be funny if?」的反问句式，等于<b>在图上暗示当前走势正在重复某个历史结构</b>。⚠️ 分析：本条属<b>图表暗示而非明确观点</b>，两个对比周期均未标注，<b>不做任何推演</b>；其价值仅在于印证「分形重演」这条思路在他 10-11 的发言里<b>仍在活跃</b>，与他同日「更高低点、选举后回调不创新低」的乐观口径方向一致（右侧图是先跌后 V 反）。<b>按不猜测原则，本条标 存疑，不作为任何价位依据。</b>失效条件：本条无可验收内容；唯一可追的是——若他随后明确说出对比的两个时段、且实际走势与之背离，这条暗示即被他自己推翻。",
+      tags: ["周期判断", "存疑"],
+      src: "X 原文 @KillaXBT · 2109250113444921738"
+    },
     {
       date: "2026-10-11",
       title: "长期目标首次钉死年份：160-180K 见，2029 年",
