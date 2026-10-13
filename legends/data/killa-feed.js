@@ -23,13 +23,61 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-10-12T15:03:00+08:00",
+  lastScan: "2026-10-13T15:08:00+08:00",
   // 累计收录条数
-  total: 109,
+  total: 115,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-10-13",
+      title: "量化上方空头：87K 挂着 50 亿美元以上可见清算",
+      quote: "\"We have 5B+ in visible $BTC liquidations sitting at 87K.\"（我们有 <b>50 亿美元以上</b>的 BTC <b>可见清算</b>就挂在 <b>87K</b> 上。）（配图为他贴出的一张清算地图（Liquidation Map）：图上标注 <b>累计清算区域 $5.01B</b>、当前标记价位处预计清算 <b>$2.28B</b>，交易所分布 Binance 41.8% / OKX 17% / Bybit 15% 等；图表坐标轴分辨率不足，无法独立读出这 5.01B 具体压在哪个价位的哪一段。）",
+      read: "改动的是他 <b>10-12 凌晨「上方只剩 86–88K 的空头」</b>——当时只有定性判断与他自制热力图的色块；本条第一次用<b>第三方清算地图</b>把 87K 一带的空头暴露量<b>量化成 50 亿美元级</b>，把 87K 从「目标区」正式讲成<b>上方燃料池</b>。⚠️ 分析：与 10-12 凌晨的 86–88K 属同一条上行链条，但含义不同——86–88K 讲的是「谁在场」，本条讲的是「有多少钱在那儿」，为他「先冲上去扫空头、再谈回调」的口径提供了可引用的数字。需留意 <b>87K 一带同时压着他 10-05 设过、10-08 亲口判失败的周线死线</b>，也紧贴 10-06 对冲空单 89.4–90.6K 的下沿——他反复强调上方空头，等于为「冲向该区域」造势。失效条件：① 若价格上到 86–88K 却没有出现对应的挤压/清算（说明那些只是挂单而非真实可触发仓位），本条的量级判断落空；② 若他随后在该区间转为<b>做空或对冲</b>，「上方是燃料」的读法自我否定。",
+      tags: ["关键价位", "目标价"],
+      src: "X 原文 @KillaXBT · 2109750791049453971"
+    },
+    {
+      date: "2026-10-13",
+      title: "给 80K 划红线：丢了就看 76–78K，跌破反而加仓看 95K",
+      quote: "\"There are really only 2 short term scenarios for $BTC. Either we derisk into the midterms and establish a low before, or we rally into the midterms and derisk afterwards. Let's just say bulls really don't want to lose 80K. If they do, I'm afraid we could see a deeper correction towards 76K-78K. That's not my preferred scenario, I'm looking for a larger correction from the 90Ks back into the low 80s. A move to 76K would also mean round tripping my 76K long, which I'm still holding at full size.\"（BTC 短期其实只有 <b>两种剧本</b>：要么我们在中期选举前就去风险、并在此之前先做出一个低点；要么我们<b>顶着选举往上拉</b>、选举之后再<b>去风险</b>。这么说吧，<b>多头真的不想丢掉 80K</b>。一旦丢掉，我担心会看到一次<b>更深的回调、朝 76K–78K 去</b>。这不是我偏好的情形——我本来在等的是<b>从 90K 段回调到低 80K</b>。而走到 76K 也意味着把我 <b>76K 那笔多单原路打回</b>，那笔我仍然满仓持有。）\" 后半段：\"The best case scenario for bulls from here is to start pushing higher into the midterms, break out of the range and make a new high, then see the classic post midterm derisking. For that scenario to play out, BTC needs to start bouncing soon. If BTC does dip below 80K, I'll be looking to add to my spot position, increase my longs and target a move towards 95K and beyond.\"（对多头而言最好的情形是：开始<b>顶着选举往上推</b>、<b>突破区间创出新高</b>，然后出现经典的<b>选举后去风险</b>。这个剧本要成立，<b>BTC 必须很快开始反弹</b>。而如果 BTC 真的<b>跌破 80K</b>，我会考虑<b>加现货、加多单</b>，并把目标放在<b>朝 95K 甚至更高</b>的一波上。）",
+      read: "改动的是他 <b>10-11「选举后回调不会创周期新低、只做更高低点」</b>这条——本轮第一次把 <b>76–78K</b> 明确写成<b>他需要提前承认的可能性</b>，虽然同时标注为「非偏好」。⚠️ 分析：这条一次讲清两件事——① 他<b>偏好的路径仍是「先到 90K 段、再回调到低 80K」</b>，即上行为主、回调可控；② 但他第一次给「丢掉 80K」配了具体后果（76–78K），而这个区间<b>正好落在他 10-03 亲手量出的 74–77K 投降区里</b>，与 10-11「不创周期新低」的承诺存在明显张力。仓位面：首次把 <b>76K 那笔多单</b>与「被原路打回（round trip）」挂钩，等于承认该笔在 76K 一带将<b>回到盈亏平衡</b>；同时重申「跌破 80K 就加仓」，与他 10-08 已写明的「10 倍仓失效即再开第二个 10 倍」构成 <b>下行加仓叠加</b>。失效条件：① 偏好路径失效——若价格没有先去 90K 段、而是<b>直接跌破 80K</b>，则「更想看到 90K→低 80K 的回调」这条口径作废，切换为他自给的 76–78K 分支；② 承诺失效——若真走到 76–78K 而他一改常态不加仓、反而减仓，则「跌破 80K 就加」这条规则作废；③ 若 76K long 真被 round trip 打回且未按计划加仓，其「满仓」叙事需要重新核对。",
+      tags: ["基准剧本", "关键价位", "仓位建议"],
+      src: "X 原文 @KillaXBT · 2109689403224297605"
+    },
+    {
+      date: "2026-10-12",
+      title: "买盘必须现身：否则 80K 防御只是把人骗进区间",
+      quote: "\"You want to see $BTC bulls step in here. Otherwise, we risk a more corrective move below 80K. We closed above the range, and now we're retesting its structural integrity. If price breaks back below and fails to reclaim it, that compromises the range. We don't need another sweep of the lows to find liquidity, we've already seen around $2B in liquidations. That would actually signal more weakness than strength in my eyes. What we need now is strength. Buyers have to show their hand. Otherwise, the defence of 80K may have just baited people into the range before a move towards 76-78K. This is a key area if we are going higher.\"（你会想在这里看到 BTC <b>多头现身</b>。否则我们就有风险走出一波<b>更深的回调到 80K 下方</b>。我们<b>收在区间之上</b>，现在正在回测这个区间的<b>结构完整性</b>。如果价格重新跌回区间内、并且<b>收不回来</b>，那这个区间就被破坏了。我们<b>不需要再扫一次低点</b>去找流动性——<b>大约 20 亿美元</b>的清算我们已经见过了。在我眼里，那反而会<b>更像疲弱而不是强势</b>的信号。现在需要的是强势，<b>买方必须亮出底牌</b>。否则，<b>80K 的防御</b>可能只是把人们<b>骗进区间</b>，然后再朝 <b>76–78K</b> 去。如果我们要往上走，这就是关键的价位。）（本条为回复式推文，引的是他自己 3 小时前的「82.5–81.9K 必须守住」那条；配图两张走势图标注，未逐一读取。）",
+      read: "改动的是他 <b>10-12 凌晨「低杠杆多单已被打掉、上方只剩 86–88K 空头」</b>那条——当时的读法是「<b>清完杠杆就该上</b>」；本条把他自己 3 小时前的 82.5–81.9K 防守区摊开检验，并首次承认「<b>再扫一次低点反而代表更弱</b>」，等于把框架从「<b>扫针即利多</b>」下调为「<b>需要买方自证</b>」。⚠️ 分析：这是本轮少见的<b>偏空语气条</b>——他连续给出两个「非偏好」的下行参照：跌破 80K → 76–78K；并第一次说「80K 的防御可能只是诱多」。与同日凌晨 04:59 那条「上方 87K 挂着 50 亿清算」并列，他同一天里既强调上方燃料、又承认下方脆弱，属<b>双向条件式</b>表述。失效条件：① 若买方确实在该区现身、价格收回 84K 上方，「诱多」的担心解除，本条回到上行口径；② 若价格<b>跌回 82K 下方并站不住</b>，则他同日 18:00 给的「守住 82.5–81.9K」与他自己的多头剧本同时进入验证；③ 他所说「约 20 亿美元清算」为自述口径，无法独立核验，本条不作为规模依据。",
+      tags: ["失效条件", "关键价位", "情绪指标"],
+      src: "X 原文 @KillaXBT · 2109650303691772014"
+    },
+    {
+      date: "2026-10-12",
+      title: "用 STH 供给过热反证底部已成，并点名别信恐惧贪婪指数",
+      quote: "\"Funny how STH supply reached overheated levels last cycle after breaking away from the macro bottom, just like it has this cycle. That's another sign the bottom is in. Even after reaching those levels in 2023, $BTC still continued to grind higher while respecting the HTF trend. That's exactly what we're seeing now. Don't get fooled by the Fear & Greed Index. The market can stay irrational far longer than most people expect.\"（有意思的是，上个周期 <b>STH（短期持有者）供给</b>在脱离宏观底部之后来到了<b>过热</b>水平，这个周期也是一样。<b>这是底部已经形成的又一个信号</b>。即便在 2023 年达到那些水平之后，BTC 依然<b>在尊重高周期趋势的前提下继续往上磨</b>——这正是我们现在看到的。别被<b>恐惧贪婪指数</b>骗了，市场保持非理性的时间可以比大多数人预期的长得多。）（配图为一张 STH 供给走势图，未读取。）",
+      read: "改动的是他 <b>10-01「所有关键 HTF 均线指向底部已成」</b>那条底部判定——本轮第一次把 <b>STH（短期持有者）供给</b>这个链上指标纳入「底部已成」的证据链，并用 <b>2023 年同形态继续上行</b>做先例。⚠️ 分析：① 属<b>叙事加固</b>而非新增价位，与前一日「自证 USDT.D」同类；② 需注意他这里用的是 <b>2023 类比</b>——他在 09-29 曾专门写长文<b>否定 2023 分形</b>，此后 10-06、10-09、10-11 又反复把该分形摆回桌面，本条已是第 N 次引用 2023，<b>「反分形 → 用分形」的摇摆仍在继续</b>；③ 「别被恐惧贪婪指数骗」是他近期第 6 次<b>反向情绪论据</b>（前有 disbelief、讥讽空仓盼暴跌等），一贯用来为「继续持有」提供情绪层支撑。失效条件：① STH 供给口径<b>未给数值、未给来源</b>，无法独立验收，只能视作叙事；② 若此后价格<b>跌破 80K 并朝 76–78K 去</b>，则「底部已成」与「像 2023 那样继续磨高」同时被打断；③ 若他随后在下跌中改口「底部未成」，本条自证为事后叙事。",
+      tags: ["链上数据", "基准剧本", "存疑"],
+      src: "X 原文 @KillaXBT · 2109630168247529707"
+    },
+    {
+      date: "2026-10-12",
+      title: "自夸周一高点枢轴again：区间震荡里抓 2–3% 反向波",
+      quote: "\"My $BTC monday high pivot strategy is proving itself yet again. I've been posting about this for 1.5 years straight, and it keeps playing out. It's most consistent in ranging markets, where it catches those 2-3% inverse moves. This is the result of relentless backtesting which is why you haven't seen this mentioned anywhere else before...\"（我的 BTC <b>「周一高点枢轴」策略</b>又一次自我应验了。我<b>连续 1.5 年</b>都在讲这个，它一直在兑现。它在<b>区间震荡市</b>里最稳定，能抓到那种 <b>2–3% 的反向波动</b>。这是<b>海量回测</b>的结果——也是为什么你在别处没见过有人提这个……）（配图为一张标注过的走势图，未读取。）",
+      read: "改动的是他 <b>10-11「第 14 个日历枢轴」</b>模型——本条是同一套「<b>日历/日枢轴 + 反向叙事</b>」思路的<b>战绩自证版</b>，把 10-12（周一）高点 84,352 之后那波回落说成策略命中。⚠️ 分析：① 这是本轮<b>第 2 条自证类</b>发言（前有「自证 USDT.D」），与其 10-11 那条「People might call me cocky」的心态长文连起来看，属<b>连贯的信誉维护动作</b>；② 值得注意的自我设限：他明说该策略「<b>在区间震荡市里最稳定</b>」——等于承认<b>趋势行情下这套东西会失灵</b>，与他同期「底部已成、要上 90–95K」的<b>趋势级多头口径存在内部不一致</b>（若真进入趋势，按他自己的说法这套就不适用了）；③ 实盘对照：10-12 周一高点 84,352 → 10-13 低点 81,033，幅度约 <b>−3.9%</b>，比他自述的 2–3% 略大，方向一致。失效条件：① 该策略无公开规则、无公开回测，<b>不可独立验收</b>，只能看他后续是否继续宣称命中；② 若市场从区间转入单边趋势（他本人预期是向上突破），则该策略按他自述会失效，届时看他是否还继续用它解释行情；③ 本条未含任何交易价位，不构成操作依据。",
+      tags: ["战绩复盘", "周期判断", "存疑"],
+      src: "X 原文 @KillaXBT · 2109599968579219618"
+    },
+    {
+      date: "2026-10-12",
+      title: "周线收在前影低点上方，但 82.5–81.9K 必须守住",
+      quote: "\"$BTC closed the week above the prior wick lows. If we come back down to the 82.5–81.9K region, it's vital that bulls defend this area. We don't have to retest it, but with the 14th approaching, it's definitely possible. This is the area where you want to see buyers step in and confirm that we've reclaimed the range. Anything below equals danger.\"（BTC <b>周线收在前一根影线的低点之上</b>。如果我们重新下探到 <b>82.5–81.9K 区域</b>，多头<b>守住这个区域是至关重要的</b>。我们不一定非得回测它，但<b>随着 14 号临近</b>，这完全有可能。这就是你希望看到买方现身、<b>确认我们已经收回区间</b>的位置。<b>跌破这里就等于危险。</b>）（配图为一张标注 82.5–81.9K 的走势图，未读取。）",
+      read: "改动的是他 <b>10-11「本周收盘价高于上一周低点即看多」</b>——本条是那条判据的<b>兑现与落地</b>：周线确实收在前影低点上方，他随即把「看多」这个抽象条件<b>换算成一个具体防守带 82.5–81.9K</b>。⚠️ 分析：① 相比 10-10 他给的「守住 82.8K（≈10 倍仓成本线）」，本轮防守区<b>整体下移约 0.3–0.9K</b>、下沿压到 81.9K —— 这是他在维持「不预期新低」口径的同时，对下方容忍度的一次<b>小幅放宽</b>；② 本条与他同日 22:20 那条「买方必须现身、否则 80K 防御可能是诱多」<b>互相咬合</b>：先给防守带、再给它加「必须自证」的条件，属<b>事前免责式框架</b>（守住了=我说对了，守不住=我说过要买方现身）；③ 实盘对照：10-12 日低 <b>81,750</b>、10-13 日低 <b>81,033</b>，<b>两度向下穿破 81.9K</b>，其中 10-13 更低 —— 他说的「跌破这里等于危险」已被<b>触发过</b>，随后价格迅速收回 83K 上方，可视为「当天收回」而非有效跌破。失效条件：① 若日线<b>收在 81.9K 之下并连续站不回来</b>，则本条「收回区间」的确认失败，直接接入他 10-13 给的 76–78K 分支；② 若 14 号枢轴前后价格<b>没有回测该区就一路走高</b>，则本条的防守意义自然消退（他自己也说「不一定非得回测」）；③ 82.5–81.9K 若被他后续上调或下调，本条具体价位作废，须以其最新表述为准。",
+      tags: ["关键价位", "失效条件", "周期判断"],
+      src: "X 原文 @KillaXBT · 2109584967822921878"
+    },
     {
       date: "2026-10-12",
       title: "定调：低杠杆多单已出清，上方只剩 86–88K 的空头",
