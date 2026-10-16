@@ -23,13 +23,53 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-10-15T15:01:00+08:00",
+  lastScan: "2026-10-16T15:10:00+08:00",
   // 累计收录条数
-  total: 129,
+  total: 134,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-10-16",
+      title: "「坏消息是故意放大的」：把每根阴线都解读为吓出筹码",
+      quote: "\"Every time $BTC drops, there's suddenly a reason not to buy. In a bull market, bad news is deliberately amplified to scare people out of their positions. Scared money doesn't make money. Greed can stay elevated for months while the market keeps pushing higher. Study.\"（每次 BTC 下跌，就会突然冒出一个「不该买」的理由。在牛市里，坏消息是<b>被故意放大</b>的，目的就是把人从仓位里吓出去。<b>胆小的钱赚不到钱</b>。<b>贪婪可以维持数月</b>而市场继续走高。研究一下。）（配图为一张与正文论点配套的图片，无独立价位信息。）",
+      read: "改动的是他对<b>下跌成因的解释框架</b>——从 10-13「买方必须亮底牌」这类结构化条件，滑向「下跌＝坏消息被故意放大＝洗筹码」的<b>纯叙事解读</b>。⚠️ 分析：① 「贪婪可以维持数月」有实质含义——他在提前给「情绪过热不等于见顶」<b>铺垫免责</b>，即未来即使恐惧贪婪指数长期高位也不构成减仓理由，与 10-12「别被恐惧贪婪指数骗」一脉相承；② 本条无价位无条件，属持有型叙事的第 7 次情绪取样。失效条件：① 若出现一次<b>与坏消息无关、且日线收破 80K / 逼近 74,550</b> 的下跌，本条「坏消息放大论」无法解释，需回到他的结构分支；② 若他本人在坏消息出现后减仓，本条自我否定。",
+      tags: ["情绪指标", "基准剧本", "存疑"],
+      src: "X 原文 @KillaXBT · 2110829936218935509"
+    },
+    {
+      date: "2026-10-16",
+      title: "守住 80K 的条件剧本：配图为左右形态对照，未标价位",
+      quote: "\"If $BTC manages to hold above 80K, I expect this to happen:\"（如果 BTC 能<b>守住 80K 上方</b>，我预期会发生以下情况：）（配图为左右两幅并排的 K 线形态对照图，右侧图带一个标注约 83.2K 的标记框；图上<b>无完整价位刻度可读</b>，按不猜测原则不作形态细节转述。）",
+      read: "改动的是他把 <b>80K 从「跌破就加仓的触发位」（10-13）升级为「整份剧本的前提条件」</b>——10-15 实盘盘中曾插到 <b>79,800（Binance）/ 79,676（Coinbase）</b>、日线收回 82,246，他随后在 80K 上方重申这份条件剧本，等于<b>把盘中破位定性为可忽略的插针</b>。⚠️ 分析：① 本条只给前提、结果细节全在图里（图不可读），可验收的只有「80K 守住与否」这一个开关；② 与他 10-13「跌破 80K 就加现货加多单、目标 95K+」对照，<b>80K 现在同时承担「守住则看涨」和「跌破则加仓」两种相反含义</b>，双向口径并存。失效条件：① 日线<b>有效收在 80K 下方</b>（10-15 那种盘中插针收回不算），本条剧本前提直接作废；② 若他后续给出与配图形态不同的另一套走势，以最新口径为准。",
+      tags: ["基准剧本", "关键价位", "失效条件"],
+      src: "X 原文 @KillaXBT · 2110804712719306952"
+    },
+    {
+      date: "2026-10-16",
+      title: "「所有看跌理由都是借口」：牛市延续前的标准杂音",
+      quote: "\"Seems to me they are using every excuse in the book to justify why BTC should go lower. This is exactly the type of shit you see in a bull market before continuation.\"（在我看来，他们正把<b>能找到的每一个借口</b>都拿来论证 BTC 该跌。这恰恰是牛市在<b>延续之前</b>你会看到的那种东西。）",
+      read: "改动的是他对<b>本轮利空清单的定性</b>——同日凌晨（00:27）他刚列举「加息、全球债收益率垂直拉升、DXY 新高、Ledger 钱包被黑」四项利空，两分钟后把这批利空统一定性为「牛市延续前的标准杂音」，即<b>利空密集≠顶部、反而佐证牛市</b>。⚠️ 分析：① 这把他 10-03「在牛市里」的框架进一步固化成<b>不可证伪结构</b>——利空被解释成牛市证据，利多自然也是证据；② 与他 10-11 自认「选举后有 75% 概率出现偏空行为」仍有未调和的张力。失效条件：① 若价格在利空密集期<b>日线收破 80K</b>，本条「杂音论」作废；② 若他本人随后承认某个利空有实质影响（例如为此调整仓位），本条被自我否定。",
+      tags: ["情绪指标", "宏观驱动"],
+      src: "X 原文 @KillaXBT · 2110771027827675612"
+    },
+    {
+      date: "2026-10-16",
+      title: "四重宏观利空压顶，「BTC 仍守在 80K 上方」当抗跌证据",
+      quote: "\"Rate hikes. Global bond yields going vertical. DXY printing new highs. Ledger wallet hacks. And yet $BTC is still holding above 80K.\"（加息。<b>全球债券收益率垂直拉升</b>。<b>DXY 创新高</b>。<b>Ledger 钱包被黑</b>。然而 BTC <b>仍守在 80K 上方</b>。）",
+      read: "改动的是他的<b>抗跌论证来源</b>——此前论据主要是技术结构（清算池、USDT.D、Delta），本条首次把<b>宏观利空清单</b>整体搬出来当「BTC 强势」的反衬，并把 80K 明确标为当下的<b>事实防守线</b>。⚠️ 分析：① 关键背景：10-15 日内 BTC 曾跌到 <b>79,800（Binance）/ 79,676（Coinbase）</b>，他说「仍守在 80K 上方」依据的是收回后的价位（收盘 82,246）——严格说 80K 已被盘中击穿过一次，他的表述<b>选择性忽略了插针</b>；② 本条等于把 80K 的意义从「他自设的加仓触发位」升格为「市场已被验证的支撑」，但验证方式恰是一次盘中破位，属<b>带瑕疵的证据</b>。失效条件：① 日线<b>收在 80K 下方</b>即直接推翻本条；② 若 DXY/收益率继续走高压垮风险偏好、BTC 再度插针 80K 下方，「抗跌」叙事失效；③ 若他不再提 80K 或把防线悄悄下移，说明该位已被他放弃。",
+      tags: ["宏观驱动", "关键价位"],
+      src: "X 原文 @KillaXBT · 2110769622731329607"
+    },
+    {
+      date: "2026-10-15",
+      title: "「距 75K 仅 7%、距 126K 有 56%」：劝人别为抄底踏空",
+      quote: "\"We're 7% away from 75K. We're 56% away from 126K. Maybe we test 75K, maybe we don't. Nobody can say with 100% certainty, not even me. So humble yourself and ask, are you really willing to risk missing a 56% move to new highs because you're fixated on buying 7% lower? I said the same thing when $BTC was at 60K. People were waiting for 50K, trying to squeeze out another 10%, and ended up missing the entire move. The market has a funny way of never giving you exactly what you want. And even when it does, people move the goalposts and ask for more.\"（我们<b>距 75K 只有 7%</b>，<b>距 126K 有 56%</b>。也许会测 75K，也许不会。没人能 100% 确定，我也不能。所以谦逊一点，问问自己：你真的愿意因为执着于<b>再低 7% 买入</b>，而去冒<b>错过 56% 涨向新高</b>的风险吗？BTC 在 60K 时我说过同样的话。人们等着 50K，想再挤 10%，结果错过了整段行情。市场总有不按你要的价位给你的方式。就算给了，人们又会移动球门柱、要求更多。）",
+      read: "改动的是他对<b>下行空间的公开口径</b>——10-09 他说「再测 75K 都算礼物」是拒绝性表述，本条首次把「<b>也许会测 75K、也许不会</b>」写成平等的两种可能，并用 60K→126K 的赔率对比劝人别等回调，等于把 75K 从「不太会到的位」降级为「可接受的小回撤」。⚠️ 分析：① 数字上最要命的一点：<b>75K 距他 10 倍仓失效价 74,550 只有约 450 美元</b>——他一边劝人「别等 75K」，一边自己的杠杆仓死线就贴在 75K 下方，若真去测 75K，10 倍仓会被一起带走并触发「失效即再开第二个 10 倍」的叠加规则；② 这是典型的<b>踏空焦虑叙事</b>（与 10-05「等再低 2–3% 的人全被抢跑」同源），出现频率上升通常伴随他对持仓浮亏的敏感；③ 126K 引用与 10-08「126,000 next year」一致，未变。失效条件：① 若价格<b>跌破 75K 甚至 74,550</b>，本条「7% 小回撤」定性失效，同时触发 10 倍仓失效与加仓规则——将是整套剧本最重的一次压力测试；② 若他接下来在更低位置减仓而非加仓，本条劝多口径自我否定。",
+      tags: ["目标价", "关键价位", "仓位建议"],
+      src: "X 原文 @KillaXBT · 2110710451281543632"
+    },
     {
       date: "2026-10-15",
       title: "个人消息门槛上抬：做体量的可私信，公开剧本继续发",
