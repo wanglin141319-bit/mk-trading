@@ -23,13 +23,77 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-10-16T15:10:00+08:00",
+  lastScan: "2026-10-17T17:10:00+08:00",
   // 累计收录条数
-  total: 134,
+  total: 143,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-10-17",
+      title: "「Q4 拉升、Q1 去风险」：首次给出季度级减仓时间表",
+      quote: "\"Q4 pump. Q1 derisks. Q2 accumulates. Q3 Expansion.\"（Q4 拉升。Q1 去风险。Q2 吸筹。Q3 扩张。）",
+      read: "改动的是他<b>整条周期剧本的颗粒度</b>——此前他只有「2027 创新高」「126K 目标」这类长期口径（10-08 / 10-15），本条首次把周期切成<b>四个季度阶段</b>，并第一次给出明确的<b>去风险窗口：Q1</b>。⚠️ 分析：① 这是他公开口径里最接近「何时卖」的一次表述——此前所有发言都在讲别做空、别踏空，本条等于承认<b>他自己预设了减仓时点</b>；② 「Q2 accumulates」隐含 Q1 去风险后价格回落、Q2 再接回，即他预期的路径是<b>先涨、回调、再涨</b>，与他 10-11「选举后 75% 概率出现偏空行为」的回调预期可拼合；③ 本条无价位、无验收开关，季度划分短期不可证伪。失效条件：若 Q1 之前价格就已见顶回落、或 Q1 之后仍在创新高而他并不减仓，该季度表作废；若他后续给出不同的阶段划分，以最新口径为准。",
+      tags: ["周期判断", "目标价", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2111257729407029475"
+    },
+    {
+      date: "2026-10-17",
+      title: "利空清单加码到七项，定性为「猎流动性」并预告暴力拉升",
+      quote: "\"A reminder. Oil surging. MSTR delisting fears. Hot CPI. Rate hikes. Global bond yields going parabolic. DXY printing new highs. Ledger wallet hacks. They really don't want you to be long... Brother, we are dropping cause we are hunting liquidity. Nothing more. Nothing less... None of my predictions or trades have ever been based on the news. None. Its, all, fucking, noise.\"（提醒一下。油价飙升。MSTR 退市恐慌。CPI 超热。加息。全球债收益率进入抛物线。DXY 创新高。Ledger 钱包被黑。他们真不想你做多、真想你恐慌……兄弟，我们下跌是因为<b>在猎流动性</b>，没别的……我的预测和交易<b>从来没有一条基于新闻</b>……全是噪音。）",
+      read: "改动的是他对<b>利空清单的规模与解释</b>——10-16 他列四项宏观利空当「抗跌证据」，本条扩到<b>七项</b>（新增油价、MSTR 退市恐慌、CPI 超热），并把下跌成因从「杂音」升级为单一机制「猎流动性」，同时放话「下一根 face ripping leg（暴力拉升）会让人说不出话」。⚠️ 分析：① 「face ripping leg」是他第一次在本轮回调里对<b>上行力度</b>给出定性（快而猛），与 10-14「87–88K 上方空头池」方向一致；② 「从未基于新闻交易」把宏观叙事整体贬为噪音，但他 10-16 自己把宏观利空当抗跌论据——<b>宏观对他「是证据还是噪音」随论点切换</b>，属口径自相矛盾点；③ 发布时 BTC 已从 10-16 低点 80,809 收回 81,615（Binance），他是在反弹初段喊话。失效条件：① 日线<b>收破 80K</b>，「猎流动性即将反向」的机制解读作废；② 若一周内价格仍在 81K 下方徘徊、拉升不来，「暴力拉升」的时点预期落空。",
+      tags: ["情绪指标", "宏观驱动", "失效条件"],
+      src: "X 原文 @KillaXBT · 2111196292626198901"
+    },
+    {
+      date: "2026-10-17",
+      title: "罕见点名山寨买区：SOL/LTC/ASTER/BNB，看 +50–75% 弹性",
+      quote: "\"I rarely share my thoughts on altcoins... A lot of coins flushed 20–30% during this BTC drop, which is substantial considering BTC itself only fell around 8%. In the early stages of a bull cycle, I'd rather be positioned in these coins before BTC makes new highs. SOL, LTC, ASTER, BNB all look interesting to bid here. SOL 97-103 / LTC 56-59 / ASTER 0.66-0.7 / BNB 722-680. There may still be some more temporary downside, but I think the RR is starting to look attractive. If BTC makes its move towards 126K, I believe many of these coins will rally 50-75% from current prices.\"（我很少谈山寨，但很多币位置不错。这轮 BTC 只跌约 8%，很多山寨跌了 20–30%。牛市早期，我更愿意在 BTC 创新高前先埋伏这些币。四个币现在可以出价的区间：SOL 97–103 / LTC 56–59 / ASTER 0.66–0.7 / BNB 722–680。可能还有短暂下行，但盈亏比开始有吸引力。如果 BTC 走向 126K，我相信很多山寨会从现价再涨 50–75%。）",
+      read: "改动的是他的<b>覆盖范围与相对强弱判断</b>——这是本 feed 收录以来他第一次公开给<b>具体山寨币买区</b>（此前只谈 BTC）。⚠️ 分析：① 核心论点「山寨跌幅大于 BTC＝牛市早期先埋伏山寨」隐含<b>山寨补涨</b>判断，是对他此前「只看 BTC 大周期」口径的一次扩圈；② 「BTC 先到 126K、山寨再涨 50–75%」把山寨行情<b>从属于 BTC 新高</b>——主逻辑未变，山寨只是更高弹性的表达；③ 本条给了可验收的具体区间（如 SOL 97–103），是近期少有的可打分条目。失效条件：① 若 BTC 跌破 80K 拖垮山寨、SOL 深跌穿 97 且他不认错，该买区作废；② 若 BTC 先创 126K 新高而山寨没涨 50–75%，相对强弱判断失效；③ 若他中途改推另一篮子币，以最新口径为准。",
+      tags: ["山寨", "关键价位", "目标价"],
+      src: "X 原文 @KillaXBT · 2111177575934673239"
+    },
+    {
+      date: "2026-10-17",
+      title: "USDT.D 剧本：74K 上方形成更高低点，回撤没那么深",
+      quote: "\"Everyone wants the upside. Few are willing to buy the blood that comes before it. USDT.D is showcasing a scenario where BTC creates a higher low above 74K, while USDT.D continues to respect its macro downtrend. Which would imply the retrace down might not be as deep as you think.\"（人人都想要涨幅，没几个人愿意买涨幅之前的血。USDT.D（泰达市占率）正在展示这样一种情景：BTC 在 <b>74K 上方形成更高的低点</b>，同时 USDT.D 继续尊重其宏观下降趋势。这意味着<b>回撤可能没有你想的那么深</b>。）（配图为 BTC 日线，右侧 83–84K 一带有一处矩形标注区并写有 The higher low 相关字样、另有一条向右下的虚线标注，图上小字无法完全辨认，按不猜测原则不转述细节。）",
+      read: "改动的是他对<b>本轮低点位置的定量预期</b>——10-13 给的下行分支是 76–78K、10-15 劝人「别执着再低 7%」，本条首次把「更高低点」的锚放到 <b>74K 上方</b>，比此前口径又放宽了 2K 左右，同时借 USDT.D 的宏观下降趋势论证「跌不深」。⚠️ 分析：① 与 10-13「2023 复刻必须在 75.5K 上方形成更高低点」基本同源，本条把要求从 75.5K 放宽到 74K 上方；② <b>74K 与他 10 倍仓失效价 74,550 几乎重合</b>——「更高低点在 74K 上方」的另一面是承认最深可接受回撤就贴着爆仓线上沿；③ 实测 10-16 低点 80,809（Binance）、10-17 现价约 81,7K，距 74K 尚有约 9%。失效条件：① 日线<b>收破 74K</b>（同时触发他 10 倍仓失效），本条「更高低点」剧本作废；② 若 USDT.D 反转走强（资金回流稳定币避险），「跌不深」的论据失效。",
+      tags: ["基准剧本", "关键价位", "失效条件"],
+      src: "X 原文 @KillaXBT · 2111141615788028394"
+    },
+    {
+      date: "2026-10-16",
+      title: "「市场按 mini-cycle 走」：配图标注摆动点，留悬念不展开",
+      quote: "\"You have alot to learn.... Study time, not just price. The market moves in mini-cycles most people never notice. If only you knew what I know... $BTC\"（你还有很多要学……研究的是<b>时间</b>，不只是价格。市场按<b>大多数人注意不到的小周期</b>在走。要是你知道我知道的就好了。）（配图为连续黑点标注摆动高低点的走势图，疑似 mini-cycle 枢轴标记，纵轴数值无法辨认，按不猜测原则不转述。）",
+      read: "改动的是他 <b>10-11「14 号日历枢轴」模型的表达方式</b>——从具体的「14 号」日期锚，泛化成「时间维度上有隐秘小周期」的神秘化表述，配图当证据但不给解读。⚠️ 分析：① 「Study time, not just price」呼应 10-11 枢轴模型的核心（时间锚先于价位），本条属该模型<b>给自己立信用的二次营销</b>；② 「If only you knew what I know」是知识垄断话术，无任何可验收内容。失效条件：本条无具体价位/日期，无独立失效开关；真正的检验仍是 14 号枢轴后是否出现他预期的向上反应——若 10 月下旬仍未出现，这套「时间周期」叙事整体降级。",
+      tags: ["周期判断", "存疑"],
+      src: "X 原文 @KillaXBT · 2111099094823252111"
+    },
+    {
+      date: "2026-10-16",
+      title: "一句生活鸡汤，无市场内容",
+      quote: "\"Comparison is the thief of joy. Be grateful for what you have, never compare yourself to anyone, and be humble. Karma has a funny way of coming back to you.\"（比较是快乐的贼。感恩你拥有的，别和任何人比，保持谦逊。因果自有回报方式。）",
+      read: "本条<b>不含任何市场判断、不含价位、不含仓位信息</b>，属纯心态箴言，与他 10-15 的 GM 鸡汤同属安抚型输出。⚠️ 分析：收录价值仅在计时——发帖时点在 10-16 BTC 收阴（81,615，Binance）当晚，他仍用「别比较、保持谦逊」的调子讲话，与同日「猎流动性」「暴力拉升预告」的多头冲锋口径并存，无新增信号。失效条件：本条无市场内容，不存在价位或方向上的失效条件。",
+      tags: ["情绪指标"],
+      src: "X 原文 @KillaXBT · 2111075039965573624"
+    },
+    {
+      date: "2026-10-16",
+      title: "「牛市要接被扫的低点」：自曝上一区间 76K 接过多单",
+      quote: "\"You long sweeps in a bull market. I've been saying this since the previous range, where I took a long at 76K. It keeps working because every time we approach or sweep the lows, people lower their targets and start expecting the worst. You should know this by now...\"（牛市里就要在<b>扫低点</b>的时候做多。上一轮区间我就在 <b>76K</b> 接了多。它一直有效，因为每次接近或扫破低点，人们就下调目标、往最坏处想。你现在该懂了……）",
+      read: "改动的是他的<b>操作手法自述</b>——本条是他本轮回调中第一次把「逢扫低点做多」上升为<b>显式规则</b>，并自曝上一区间（57K→76K 那段）在 76K 接过多单。⚠️ 分析：① 76K 这笔与 10-13 披露的 82.86K 十倍仓不同，属更早的另一笔——他的持仓拼图又补上一块；② 「每次扫低点都该接多」与 10-15「Delta 全红只需接多」同构，都是<b>单边化的指标读法</b>，规则在任何下跌里都指向买入、无失效分支；③ 隐含操作预期：若再扫 80–81K，他视为买点而非破位。失效条件：① 若下一次扫低后<b>没有反弹</b>（连续 2–3 根日线收在扫低点下方），该规则在本区间失效；② 若他自己在低点被扫后减仓，规则自我否定。",
+      tags: ["仓位建议", "关键价位", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2111054445349855256"
+    },
+    {
+      date: "2026-10-16",
+      title: "买墙在低位被吸：需求充足、上方卖压很少",
+      quote: "\"During this entire drop for BTC, we've seen some nice buy walls get absorbed, similar to what we saw in the previous range before expansion... Whales wait for the range to establish, then place bids around the lows where we are likely to see manipulation... one thing is clear, there's plenty of demand, and very few asks above us.\"（这整轮下跌里，我们看到一些漂亮的<b>买单墙被吸收</b>，和上一轮区间扩张前类似。鲸鱼等区间确立后就在低点附近挂买单——那正是最容易看到操纵的地方……有一点很明确：<b>下方需求充足，上方卖压很少</b>。）（配图为暗色流动性/清算热力图，上下布满黄色流动性条带，现价位于中部偏下，图上数值无法辨认。）",
+      read: "改动的是他对<b>当前区间性质的定性</b>——10-16 凌晨他把下跌定性为「猎流动性」，本条给出同方向的<b>订单簿证据</b>（买墙被吸＝真实需求在接），并把当前结构直接类比「上一轮扩张前」，隐含<b>横盘后向上扩张</b>的预期。⚠️ 分析：① 「very few asks above us」是他第一次对上方卖压给定性判断——若成立则反弹阻力小，与 10-14「87–88K 上方空头池」不矛盾（池在 87K 以上，81–87K 之间真空）；② 「买墙被吸」是交易所订单簿快照，第三方无法独立验证，属自述证据。失效条件：① 若价格再破 80,809（10-16 低点，Binance）并逼近 80K，「需求充足」作废；② 若反弹在 84–85K 一带被明显卖压打回，「上方没卖压」证伪。",
+      tags: ["基准剧本", "关键价位", "存疑"],
+      src: "X 原文 @KillaXBT · 2111021836200825091"
+    },
     {
       date: "2026-10-16",
       title: "「坏消息是故意放大的」：把每根阴线都解读为吓出筹码",
@@ -61,6 +125,14 @@ window.KILLA_FEED = {
       read: "改动的是他的<b>抗跌论证来源</b>——此前论据主要是技术结构（清算池、USDT.D、Delta），本条首次把<b>宏观利空清单</b>整体搬出来当「BTC 强势」的反衬，并把 80K 明确标为当下的<b>事实防守线</b>。⚠️ 分析：① 关键背景：10-15 日内 BTC 曾跌到 <b>79,800（Binance）/ 79,676（Coinbase）</b>，他说「仍守在 80K 上方」依据的是收回后的价位（收盘 82,246）——严格说 80K 已被盘中击穿过一次，他的表述<b>选择性忽略了插针</b>；② 本条等于把 80K 的意义从「他自设的加仓触发位」升格为「市场已被验证的支撑」，但验证方式恰是一次盘中破位，属<b>带瑕疵的证据</b>。失效条件：① 日线<b>收在 80K 下方</b>即直接推翻本条；② 若 DXY/收益率继续走高压垮风险偏好、BTC 再度插针 80K 下方，「抗跌」叙事失效；③ 若他不再提 80K 或把防线悄悄下移，说明该位已被他放弃。",
       tags: ["宏观驱动", "关键价位"],
       src: "X 原文 @KillaXBT · 2110769622731329607"
+    },
+    {
+      date: "2026-10-15",
+      title: "「激动时刻快到了」：让他们继续预期最坏",
+      quote: "\"Exciting times soon. Let them expect the worst... $BTC\"（激动人心的时刻快到了。让他们继续往最坏处预期……）（配图为左右两幅带圆点标注的历史走势对照图，圆点标记转折位，图上数值无法辨认，按不猜测原则不转述。）",
+      read: "改动的是他对<b>近期时点的信心表达</b>——发布于 10-15 晚上（14 号枢轴兑现当晚），可视为对枢轴模型反向拉升预期的<b>二次确认</b>：看空叙事浓＝他反着押。⚠️ 分析：① 本条是 10-15 至 10-17 一连串多头口径（枢轴兑现→猎流动性→买墙被吸→暴力拉升预告）的<b>最早一环</b>，整条时间线方向一致、逐步加码；② 无价位、无时间窗，「soon」不可验收。失效条件：① 若 10 月下旬前没有出现他暗示的向上反应，与枢轴模型一同落空；② 若他随后改口「还需要更多时间筑底」，视为口径漂移。",
+      tags: ["周期判断", "情绪指标"],
+      src: "X 原文 @KillaXBT · 2110722605527486961"
     },
     {
       date: "2026-10-15",
