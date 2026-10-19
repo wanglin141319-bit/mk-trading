@@ -23,13 +23,53 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-10-18T15:12:00+08:00",
+  lastScan: "2026-10-19T15:10:00+08:00",
   // 累计收录条数
-  total: 150,
+  total: 155,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-10-19",
+      title: "「底部已数月」：首次用 -54% 回撤幅度论证周期不同",
+      quote: "\"$BTC bottom has been in for months. Market bottomed at -54%. Not -75%+. Good luck thinking we are going to do the same bull market retracements as previous cycles. But what do I know. Just a random guy who happened to short 123K and long 62K\"（BTC 的<b>底部已经在了、而且已经好几个月</b>。市场在 <b>-54%</b> 就见底了，不是 -75% 以上。祝你好运——如果你还指望我们重复前几个周期的牛市回撤幅度。不过我又懂什么呢？我只是个碰巧<b>在 123K 做空、62K 做多</b>的普通人。）——本条转推他自己更早的「三次主要低点」长帖，引文为 \"In every major $BTC bear market, we've seen 3 significant lows. The third major low this cycle was the $57K low.\"（每轮 BTC 大熊市我们都见到三个显著低点，本轮第三个主要低点是 <b>57K</b>）。配图为该长帖用的四宫格对照图——四段历史走势各自标出三个低点、最后一个标注为 capitulation low（投降低点），当前周期一段同样标出三点。",
+      read: "改动的是他<b>定义底部的方式</b>——此前他靠失效价框住下行（74,550 的 10 倍仓、never sub 70K），本条第一次改用<b>回撤幅度百分比</b>论证：本轮只跌 54%，所以不会重复历史周期 75%+ 的深度。⚠️ 分析：① -54% 隐含他把 <b>126K</b> 当作本轮顶部（126K×0.46≈58K，与 57K 第三低点吻合），也就是说「-75%」对应的<b>约 31.5K</b> 被他彻底排除，比「never sub 70K」更激进；② 这是他「周期不同论」的第三次升级：10-17 用季节性（Q3=新Q4）、10-18 用绝对化措辞（never sub 70K），本条换成<b>可量化的深度差</b>，是三次里唯一有数字支撑的；③ 「short 123K / long 62K」是他首次在同一句里给出双向完整战绩，但<b>无截图、无交易所凭据</b>，属自述口径，不可核实。失效条件：① 周线收盘跌回 <b>57K 下方</b>（回撤 >55%）——「-54% 即本轮底」作废，同时「三次低点已完成」的形态被打散、需要第四次低点；② 若 8 周内未创出高于 87–88K 的段高，「底部已数月」从「已成底」退化为长期区间；③ 他也可能用「-54%」偷换口径（从 126K 起算还是从最高收盘起算未说明），口径一变结论就变。",
+      tags: ["周期判断", "目标价", "战绩复盘"],
+      src: "X 原文 @KillaXBT · 2111944574839001275"
+    },
+    {
+      date: "2026-10-19",
+      title: "把空头比作「下一个 Michael Burry」，收尾一句「趋势是你的朋友」",
+      quote: "\"Mfs really trying to be the next Michael burry. Humble yourself. The trend is your friend.\"（这些人真的在努力当<b>下一个 Michael Burry</b>。谦虚点吧。<b>趋势是你的朋友</b>。）",
+      read: "改动的是他对空头的<b>表述层级</b>——10-18 凌晨他还在用「62% 净空」这种数据口径论证逼空，本条只剩姿态与嘲讽，没有给任何价位、任何数据，是连续五天里第一条<b>纯情绪贴</b>。⚠️ 分析：① 作用是社群认同与心理加固，这类发言通常出现在持仓承压、需要外部确认的时候；② 「趋势是你的朋友」的前提是趋势已翻转为上行，而这恰是他与空头的核心分歧（他用周线 100/200 EMA 翻转论证，空头用 87 段被拒论证），本条<b>完全没有回应这个分歧</b>；③ 把对手盘比作 Burry，等于把「看空」框定为偏执，属修辞先手，不构成论据。失效条件：① 若 BTC 周线收盘跌破 <b>79,813</b>（本周低）并继续下探 76–78，「趋势」在本级别上并非上行，这句话直接反噬；② 他趋势论证的真正根是<b>周线 100/200 EMA 翻转</b>，若周线重新收在该均线带下方，趋势论点从根上失效。",
+      tags: ["情绪指标", "趋势切换"],
+      src: "X 原文 @KillaXBT · 2111856501031583983"
+    },
+    {
+      date: "2026-10-18",
+      title: "周线复盘：多头侧已被猎，83.6K 定为区间投降的判定开关",
+      quote: "\"There's always a story to tell when looking at weekly candles. Last week, $BTC had a rejection from the 87s down to the 80s. After recovering 50% of the dump, the next weekly candle opened, our current one... that weekly candle started the week pushing up on Monday, constantly rejecting the weekly open, and ultimately leading to a sweep of the previous weekly low at 80K. So far, the side that's been hunted has been the long side. That means there's a good chance we start taking the other side next week, though I'd keep an eye out in case we get another sweep of this week's low at 79.8K. If we do, look for longs. If we don't, then 83.6K is the area to observe yet again. If we can't flip that area, we remain in range-based capitulation. If we can... well then up lol. So, in short, we hunted the PWL. Maintain above it or see any sweeps, look for longs. Watch for the next weekly candle to start pushing upwards and take out some late shorts who chased this move down. Absolute worst case scenario for bulls would be deviating to the 76-78 region. I do not see a sweep of 74K happening.\"（上周 BTC 从 87 段被拒、跌到 80 段；收复这波跌幅的 50% 之后，本周这根周线开盘了……它周一先冲高、但持续被周开压制，最终扫掉上周低点 80K。<b>到目前为止被猎杀的是多头一侧</b>，这意味着<b>下周我们很可能开始吃另一侧</b>，不过我会盯着本周低点 <b>79.8K</b> 会不会再被扫一次。如果被扫，就找做多机会；如果没有，那 <b>83.6K</b> 又是要观察的区域——<b>翻不上去，我们就还在区间式投降里</b>；翻上去了……那就涨呗。总之我们扫了 PWL（上周低点）：守住它上方、或者看到任何扫针，都找多。注意下一根周线是否开始向上发力、把追这波下跌的<b>晚到空头</b>打掉。对多头来说<b>绝对最坏的情形</b>是偏离到 <b>76–78</b> 区域。我<b>不认为会看到扫 74K</b> 这件事发生。）——配图为他自制的周线图，标注 <b>WEEKLY OPEN 83,774.2</b>、<b>PWL HUNTED 80,413.6</b>、<b>CURRENT WEEKLY LOW 79,813.4</b>，另有一条 77,703.0 横线；图中现价标记约 <b>82,065</b>。",
+      read: "这一条同时改了他三条既有判断：① 10-17 的「最坏 76–78」从<b>假设分支</b>升格为「绝对最坏情形」，并第一次明说「<b>不认为会扫 74K</b>」——等于把他自己 74,550 的失效线往前收了一格；② <b>83.6K 从「观察区」升级为二值判定开关</b>：翻上＝上行、翻不上＝继续「区间式投降」，这是他第一次给自己的看多加上可验收的条件；③ 新增「<b>多头侧已被猎 → 下周轮到另一侧</b>」的对称轮动判断，是 10-18「62% 净空」那条的机制化版本（下一步是挤空）。⚠️ 分析：① 他把 80,413.6 标为「PWL HUNTED」，但本周实际低点是 <b>79,813.4</b> 更低——「守住 PWL 上方」已被他自己的数据打破，他真正依赖的是本周低 79,813，只是嘴上仍说 PWL；② 83.6K 与周开 83,774.2 只差约 170 美元，把判断押在这么窄的带上，容错极低；③ 「不认为扫 74K」与「绝对最坏 76–78」之间留了 2K 无剧本空白，这段若被击穿他无预案。失效条件：① <b>79,813 被周线收破且不收回</b>，「守住/扫针找多」整条作废；② 74K 真被扫，「不认为扫 74K」直接打脸，同时 74,550 的 10 倍仓失效、按其规则还要开第二个 10 倍；③ 83.6K 连续两周上不去，「区间式投降」升为主剧本，他的看多从「即将突破」降级为「继续磨」。",
+      tags: ["关键价位", "基准剧本", "失效条件"],
+      src: "X 原文 @KillaXBT · 2111834694018834435"
+    },
+    {
+      date: "2026-10-18",
+      title: "重发「一切已计价」图：把利空清单升级成跨周期框架",
+      quote: "\"I think this is worth reposting for people to study. Bad news during a bull market = fuels continuation. We've seen wave after wave of 'bad' news and events, and it lines up with what we've seen in every cycle $BTC before.\"（我认为这张图值得重发让大家研究。<b>牛市里的坏消息＝续涨的燃料</b>。我们已经看到一波接一波的「坏」消息和事件，而<b>这与 BTC 之前每个周期里发生的事完全对得上</b>。）——转推的是他自己此前那条 「The 'Everything Is Priced In' chart」长帖，引文说这张图记录了各周期的重大催化剂与消息事件、以及它们之后通常发生什么；配图即该图表。",
+      read: "改动的是<b>论据的性质</b>——10-16 他给的是一份一次性利空清单（油涨 / MSTR 退市担忧 / CPI 走热 / 加息 / 债券收益率飙升 / 美元新高 / Ledger 被盗），本条把它收束成一张<b>跨周期可复用的历史图表</b>，等于宣称「利空不改方向」是统计规律、不是他的个人判断。⚠️ 分析：① 这是本轮唯一带方法论野心的动作，但图是<b>他自制</b>的——选哪些事件、怎么对齐「之后发生什么」全由他定，<b>选择偏差</b>无法排除；② 该框架的致命处是<b>不区分噪音级与结构性利空</b>：MSTR 真被摘牌、ETF 连续大额净流出这类会改变资金结构的事件，在这套框架里和「Ledger 被盗」同级；③ 它与 10-18「62% 净空」、10-19「趋势是你的朋友」拼成完整闭环——利空多 → 大家看空 → 空头拥挤 → 逼空，四步全部不可证伪。失效条件：① 出现<b>结构性利空且被价格确认</b>（ETF 连续两周净流出、MSTR 实际摘牌、美联储真加息）后 BTC 仍下跌，「利空是燃料」被证伪；② 若他自己在下跌中减仓，等于亲手否定这套框架。",
+      tags: ["宏观驱动", "基准剧本", "存疑"],
+      src: "X 原文 @KillaXBT · 2111804741605060626"
+    },
+    {
+      date: "2026-10-18",
+      title: "「讲不通才涨」＋首次承诺 126K 前不平仓、清算价为 0",
+      quote: "\"It doesn't go up because it makes sense. It goes up because it doesn't make sense. If the market always made sense and every move could be justified by logic, everyone would make money. That's simply not how the $BTC works. Still long. Will close nothing until 126K. Liquidation is 0.\"（它上涨不是因为讲得通，而是因为<b>讲不通</b>。如果市场永远讲得通、每一步都能用逻辑解释，那所有人都会赚钱。BTC 根本不是这样运作的。<b>我仍然做多。126K 之前一分钱都不平。清算价是 0。</b>）——本条转推他 10-18 凌晨那条「never sub 70K / 从现价涨 75%」的推文。",
+      read: "改动的是<b>持仓承诺的口径</b>——10-14 他对那笔成本 2.08–2.33 万的长线仓说的是「<b>到 15 万美元前不平</b>」，本条换成「<b>126K 之前不平</b>」，两个平仓目标位不一致：要么是不同仓位、要么他把目标下调了，他没有说明是哪一种。同时首次给出<b>清算价为 0</b>——这才是他敢喊「never sub 70K」、敢在 80K 下方继续接多的结构性原因：<b>他可以零成本扛任何回撤</b>。⚠️ 分析：① 「清算价 0」意味着无杠杆或极低杠杆，与他 10-13 那笔 <b>82,860 的 10 倍仓</b>不是同一笔，两条承诺不能互相担保；② 「讲不通才涨」是对「利空这么多为什么还涨」的事后解释，属<b>不可证伪的元叙事</b>，与他 10-17「坏消息全是噪音」是同一件事的两种说法；③ 126K 是他自 9 月起的固定目标位，本条把「不平仓」的时点锚在它上面，等于把 126K 变成可验收的<b>持仓终点</b>。失效条件：① 他在 126K 之前平掉任何一笔，该承诺作废（最容易验证的一条）；② 126K 在 2026 年内未触及，「126K 前不平」就从承诺变成长期扛单，机会成本由他自己承担；③ 若他后续改口说「126K 是减仓不是清仓」，承诺同样作废。",
+      tags: ["仓位建议", "目标价", "关键价位"],
+      src: "X 原文 @KillaXBT · 2111778314444587186"
+    },
     {
       date: "2026-10-18",
       title: "「永不再破 70K」：首次用绝对化措辞，并放话从现价涨 75%",
