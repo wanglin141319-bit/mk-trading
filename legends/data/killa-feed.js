@@ -23,13 +23,157 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-10-21T15:05:00+08:00",
+  lastScan: "2026-10-24T18:58:00+08:00",
   // 累计收录条数
-  total: 166,
+  total: 184,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-10-24",
+      title: "「和 2023 一模一样」：复刻剧本首次点名 74K 之上的更高低点",
+      quote: "\"Spitting image of 2023. Once $BTC broke above the range and printed a weekly higher high, it never fell back below the previous high. Instead, it went on to form a higher low. If we see a similar pattern this time, there's a scenario where BTC holds above the previous range and forms a higher low above the 74K low. The trend remains very much bullish.\"（<b>和 2023 年一模一样</b>。当年 BTC <b>突破区间、打出周线更高高点</b>之后，<b>再也没跌回前一个高点下方</b>，而是继续<b>做出一个更高的低点</b>。如果这次重复同样的形态，那么存在这样的情形：BTC <b>守住前一个区间</b>，并在 <b>74K 这个低点之上</b>形成更高的低点。<b>趋势仍然非常看多</b>。）——本条无配图，纯文字。",
+      read: "改动的是他<b>2023 复刻剧本的验收门槛</b>——10-13 的说法是「必须在 <b>75.5K 上方</b>形成更高低点、最好守住 80K」；本条把参照低点从 75.5K <b>下移到 74K</b>，并把「复刻」拆成两个条件（守住前区间 + 在 74K 之上做更高低点）。等于用更低的门槛换更大的成立概率。⚠️ 分析：① <b>74K 这个数字他没说明对应哪一段的低点</b>，本轮日线最低只到 <b>80,451</b>（10-24），无法核对 74K 从哪来；② 「spitting image」是形态类比，样本只有 2023 一次，<b>n=1 不构成统计证据</b>；③ 与他 10-19「never sub 70K」、10-21「76.8–80.8K 网格」拼起来，<b>74K 正好卡在网格下沿之下、70K 之上</b>，同时贴着 10 倍仓失效价 <b>74,550</b>。失效条件：① 周线收在 <b>80K</b> 下方并继续走低，「holds above the previous range」的前提直接不成立；② 跌破 <b>74K</b> → 「在 74K 之上做更高低点」被价格否定，同时触发他自家 10 倍仓的失效线；③ 他没给时间窗，这个类比从 10-13 讲到 10-24 已 11 天，可无限顺延。",
+      tags: ["基准剧本", "关键价位", "周期判断"],
+      src: "X 原文 @KillaXBT · 2113941069599588836"
+    },
+    {
+      date: "2026-10-24",
+      title: "「别把话说歪了」：自证熊市全程看空、底部翻多、现在仍多",
+      quote: "\"Talk all you want. I was bearish throughout the entire $BTC bear market, then bullish right at the bottom. I'm still bullish. Don't get things twisted.\"（<b>随你们怎么说</b>。整段 BTC 熊市里我<b>一直是空头</b>，然后<b>正好在底部翻多</b>。我现在<b>仍然看多</b>，<b>别把话给我说歪了</b>。）——本条无配图，纯文字。",
+      read: "改动的是<b>叙事归属权</b>而不是价位——把「Killa 是个死多头」的质疑改写成「我在熊市全程看空、在底部精准翻多」，用<b>择时能力</b>给自己的持仓背书。可核对的部分只有一半：他 10-18 / 10-19 确实公开看多，但「整个熊市都在看空」在本库 <b>180+ 条收录里找不到对应原文</b>，反而他 10-11 就给过「2029 年 160–180K 顶部」这种跨周期看多判断。⚠️ 分析：这条出现在价格从 84,898 跌回 <b>80,451</b> 的档口，功能是<b>稳心态、稳住跟随者</b>，不是新信息。失效条件：① 若价格跌破 <b>74K</b> 而他仍在喊多，「right at the bottom」的定性被价格直接否掉；② 纯立场声明，<b>无价位、无仓位、无时间</b>，按他自己的验收标准完全不可执行。",
+      tags: ["战绩复盘", "存疑"],
+      src: "X 原文 @KillaXBT · 2113737979479065069"
+    },
+    {
+      date: "2026-10-24",
+      title: "「Déjà vu」：把 10 月低点直接定性成「那就是底」",
+      quote: "\"Déjà vu is like your brain remembering a moment that hasn't happened before. Trust your gut... cause that was indeed, the bottom.\"（<b>既视感</b>就像大脑在<b>回忆一件还没发生过的事</b>。<b>相信你的直觉</b>……因为<b>那就是底</b>。）——配图状态未取到（详情页探测中断）。",
+      read: "改动的是<b>底部确认的状态</b>——10-19 他给 83.6K 时用的是「<b>区间式投降 / 反转</b>」的二值开关，意思是<b>还没确认反转</b>；本条直接宣布「<b>that was indeed the bottom</b>」，从「等确认」跳到「已确认」。而中间<b>没有任何新的价格证据</b>：10-22 收 81,416、10-23 收 81,189，比 10-21 的 84,093 低了约 3%。⚠️ 分析：① 「déjà vu」是<b>不可证伪的知觉</b>，用它替代结构证据，等于把判断降级成感觉；② 与同日 18:30 那条「74K 之上做更高低点」并置看，是<b>先宣布底、再补条件</b>，顺序反了。失效条件：① 日线收在 <b>80,451</b>（10-24 低点）之下并继续扩张，「那就是底」被自己的区间下沿否掉；② 若真跌到 74K，底的位置要整体下移一档，这条须自我修订。",
+      tags: ["情绪指标", "周期判断", "存疑"],
+      src: "X 原文 @KillaXBT · 2113694190441759045"
+    },
+    {
+      date: "2026-10-24",
+      title: "「还要涨很多」：把看多身份绑到「只有现货才算多头」",
+      quote: "\"All you need to know is, We're going a lot fucking higher. Leverage has ruined people. Nobody's holding $BTC spot. They're all overleveraged, PA chasing, adrenaline chasing clowns. That's why you see flip floppers everywhere. Nobody wants price to move in a straight line because they know they won't catch it with leverage. The only people who are genuinely bullish are the ones who actually hold spot.\"（你只需要知道一件事：<b>我们还要涨很多</b>。<b>杠杆把人毁了</b>。<b>没人拿现货</b>，全是<b>过度杠杆、追价格行为、追肾上腺素的小丑</b>——所以你到处看到<b>立场翻来覆去的人</b>。没人希望价格<b>走直线</b>，因为他们知道自己<b>用杠杆根本吃不到</b>。真正看多的人，<b>只有那些真拿着现货的</b>。）——配图为图表（已确认带图，未逐张读图）。",
+      read: "改动的是<b>看多论据的类型</b>——10-20 他用资金面（USDC 月增发 52 亿）、10-22 用 USDT.D 结构，本条换成<b>持仓者结构论</b>：只有现货持有者才是真多头，杠杆客都是噪音。实际功能是把「为什么还没涨」解释成「杠杆太多、没人愿意直线拉升」，属<b>不可证伪的归因</b>——涨了是他对，不涨是杠杆客的错。⚠️ 分析：① 「going a lot fucking higher」<b>无幅度、无时间、无价位</b>；② 与他自己的操作矛盾——他 10-13 开的是 <b>10 倍杠杆</b>（82.860 那笔），本条却骂杠杆客，属<b>双标</b>；③ 「只有现货才真看多」在逻辑上把他自己也排除在外。失效条件：① 若后续放量直线上涨而 OI 同步创新高，「杠杆毁人」的框架自破；② 若他再公开晒杠杆加仓，这条的立场声明失效。",
+      tags: ["情绪指标", "仓位建议", "存疑"],
+      src: "X 原文 @KillaXBT · 2113662734092865690"
+    },
+    {
+      date: "2026-10-23",
+      title: "「80K 就是那个区域」：区间底确立，改成只做多扫针",
+      quote: "\"I've said this plenty of times before, in a bull market, you long the sweeps within the range. But people keep failing to do it. They're fixated on the corrective scenario because we've only just come out of a bear market full of fakeouts. Now they assume every rally is going to result with a fakeout. The range and base are established. 80K is the area. Could we see another sweep? Possibly. But eventually, we won't, and $BTC will move higher without you. Trade the fucking trend.\"（这话我说过很多次：<b>牛市里，就在区间内做多扫针</b>。但人总是做不到。他们死盯着<b>回调剧本</b>，因为刚从一个充满假突破的熊市里出来，于是假设<b>每一次拉升都是假突破</b>。<b>区间和底部已经确立了</b>，<b>80K 就是那个区域</b>。还会不会有再一次扫针？<b>有可能</b>。但最终不会有了，<b>BTC 会在你没有仓位的时候往上走</b>。<b>顺着趋势做</b>。）——配图为图表（已确认带图，未逐张读图）。",
+      read: "改动的是<b>入场方式与区间定义</b>——10-21 他给的是 <b>76.8–80.8K 的网格区间</b>，本条把区域收窄成一个点「<b>80K is the area</b>」，动作也从「网格收租」换成「<b>long the sweeps</b>」（扫针就接、不挂网格）。同时首次<b>承认还可能再扫一次</b>，等于给 80K 下方留了缓冲带。⚠️ 分析：① 「could we see another sweep? Possibly」是他给自己留的<b>免责口</b>——扫了不算错、不扫也不算错；② 「eventually, we won't」<b>没有任何时间约束</b>，与他同日「枢轴就在几天内」的时间表不匹配；③ 80K 这条线 10-15 已被盘中插到 <b>80,226</b>，10-24 再创 <b>80,451</b>，实际是<b>贴着 80K 反复磨</b>，不是「确立后向上」。失效条件：① 日线<b>收在 80K 下方</b>且不收回，「the area」被破，多头框架失去锚；② 他没给扫针深度，79.8K、76.8K 都算「扫针」，执行上无法界定仓位与止损。",
+      tags: ["关键价位", "仓位建议", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2113634799386824991"
+    },
+    {
+      date: "2026-10-23",
+      title: "周期枢轴首次量化：11/11 反向、至少 5% 向上",
+      quote: "\"The next major cycle pivot is approaching in a few days. Its consistency has proven itself across 600+ days of price action. 11 out of 11 times, we've seen an inverse move in $BTC against the narrative. Clinical cycles. We're still building a noticeably bearish narrative into this pivot. If it follows the pattern of every pivot before it, that points to an inverse move to the upside for BTC, likely at least 5% in the opposite direction. We might not see a major move just yet, but this is what I'll be watching when the time comes.\"（<b>下一个重要的周期枢轴，就在几天之内</b>。它的稳定性已经在 <b>600 多天</b>的价格行为里被验证：<b>11 次里有 11 次</b>，BTC 都走出一段<b>与叙事相反的行情</b>。临床级的周期。这次进入枢轴时，市场仍在<b>堆积明显偏空的叙事</b>。如果它重复此前每一次枢轴的形态，那就指向 BTC <b>向上反向运动</b>，幅度<b>很可能至少 5%</b>。也许<b>暂时还看不到大行情</b>，但时间到了，这就是我要盯的东西。）——配图为<b>黑点标注的摆动结构图</b>：纵轴约 75K–105K，最后一个黑点（预期枢轴）落在现价右上方，<b>无日期刻度可读</b>。",
+      read: "改动的是「<b>拐点就在这几天</b>」这句的<b>可验收性</b>——10-21 他只说 a few more days，本条第一次给出<b>样本（600+ 天、11/11）、方向（反向于叙事 = 向上）、幅度（至少 5%）</b>，是近期最接近可量化的表述。但两个问题没解决：<b>「几天」是滚动的</b>——10-21 说几天、10-23 还说几天，窗口在往后推；<b>日期依旧没给</b>，配图只有黑点、没有时间轴。⚠️ 分析：① 「11 out of 11」是<b>样本内回测</b>，600 天里只出现 11 次枢轴，<b>样本量不足以支撑「临床级」的说法</b>；② 他自己留了后门「might not see a major move just yet」，事后可解释成「枢轴还没到」；③ 按 10-24 收盘 <b>80,621</b> 算，5% 上行要到约 <b>84,650</b>，正好压在他 10-21 设的 <b>83.7–84.2K</b> 关卡上沿之上——两个预测在这里<b>可交叉验证</b>，是本库少见的能对齐之处。失效条件：① 从 10-24 起<b>5 个交易日内</b>未出现 ≥5% 单边上行（未站上 84.6K），「11/11」的样本外预测失败；② 若枢轴以<b>向下</b>方式兑现（跌破 80,451 加速），他可以说「拐点到了、只是方向向下」，表述两头可解释；③ 跌破 <b>76.8K</b> 网格下沿，「周期枢轴」的看多含义彻底反转。",
+      tags: ["周期判断", "目标价", "失效条件"],
+      src: "X 原文 @KillaXBT · 2113611898633486717"
+    },
+    {
+      date: "2026-10-23",
+      title: "「反复坐电梯才是洗人」：拿 62.6K 十次试探做类比",
+      quote: "\"Nothing is more frustrating than watching your position constantly round trip. And this is precisely the type of price action that causes 90% of people to close their winning positions too early. We saw the same thing when price kept bouncing off 62.6k, testing that level at least 10 times before finally making its next leg higher. After rejecting the highs repeatedly, people start losing confidence in their swings. Instead of holding their positions, they begin aggressively scalping the range. Closing, opening, closing, opening. Sure, they might make some money along the way. But when the range finally breaks, they end up missing the very move that would have been the most profitable. This is exactly how the market wears down your conviction. Repeated rejections make you question your positioning, and eventually, you start reacting to every minor fluctuation instead of focusing on the bigger picture. The reality is that catching the larger moves is far more profitable than constantly scalping for peanuts. Stop letting short term price action distract you from what actually matters.\"（没什么比看着持仓<b>反复坐电梯</b>更难受。而这种价格行为，正是让 <b>90% 的人过早平掉盈利仓位</b>的原因。当年价格反复在 <b>62.6K</b> 附近被弹回、<b>至少测试了 10 次</b>才走出下一段，我们见过同样的事。<b>反复被高点拒绝</b>之后，人开始<b>怀疑自己的波段仓位</b>，于是不再持有，而是<b>在区间里疯狂 scalping</b>——平了又开、开了又平。他们当然能赚点钱，但<b>区间最终突破时，他们错过了最赚钱的那一段</b>。市场就是这样<b>磨掉你的信念</b>：反复被拒让你怀疑持仓，最后你对每一个小波动都反应过度，而不看大图。<b>吃大行情远比抠小钱赚钱</b>。别让短期价格行为分散你对真正重要的事的注意力。）——本条无配图，纯文字。",
+      read: "改动的是<b>他给持有者的操作指令</b>——10-20 他还在公开教「<b>周一扫针后做空吃 1–3%</b>」，本条反过来骂「<b>在区间里反复 scalping 的人会错过突破</b>」，指令从「做区间」翻转成「别做区间、拿住波段」。⚠️ 分析：① 这条与他<b>自己 10-21 给的 76.8–80.8K 网格</b>直接冲突——网格本身就是机械化高频进出，正是他这里骂的行为；同一账号在 48 小时内既劝人挂网格、又骂人 scalping；② 62.6K 的类比属<b>事后挑选成功样本</b>：那次确实在第 10 次试探后突破，但他没提历史上还有多少次「试探 10 次后直接破位」。失效条件：① 若区间再横 2–3 周不破，「拿住」的机会成本持续放大，而网格反而在赚钱，本条实操价值归零；② 若价格跌破 <b>80,451</b> 向下扩张，「反复被拒后向上突破」的类比方向就反了。",
+      tags: ["仓位建议", "周期判断", "存疑"],
+      src: "X 原文 @KillaXBT · 2113586518996423078"
+    },
+    {
+      date: "2026-10-23",
+      title: "「挂网格、接低点、别看小周期」：把中期选举当前提",
+      quote: "\"Lots of people are waiting for $BTC to sweep the lows. Let's see if a systematic algo steps in and front runs those orders again. That's been the pattern for a while now: the lows get defended just when most people expect them to break. The next couple of weeks should be interesting, especially with the midterms approaching. You already know my view. Set up a grid bot, bid the lows, and completely ignore the LTF price action.\"（很多人在等 BTC <b>去扫低点</b>。看看这次会不会又有<b>系统性算法</b>插进来，<b>抢在他们前面吃掉这些挂单</b>。这阵子的规律一直是这样：<b>就在多数人以为要破的时候，低点被守住</b>。<b>接下来几周会很有意思</b>，尤其是<b>中期选举</b>临近。我的观点你早就知道：<b>挂个网格机器人，在低点挂买单，完全无视小周期价格行为</b>。）——配图为图表（已确认带图，未逐张读图）。",
+      read: "改动的是<b>执行工具与近期催化剂</b>——首次明确让人「<b>set up a grid bot</b>」，并首次把<b>中期选举（≈11-03）</b>写进近期剧本，替代 10-20 的「CPI」和 10-15 的「14 号枢轴」当主催化剂。同时把「低点总在多数人以为要破的时候被守住」提炼成<b>可重复的规律</b>。⚠️ 分析：① 与同日 19:01「别在区间里 scalping、要拿住」<b>正面冲突</b>——网格就是机械 scalping，两条间隔仅 3 小时；② 网格<b>没给上下沿</b>，等于没给风险边界，与 10-21 明确写 76.8–80.8K 的版本相比是倒退；③ 「低点被守住」是<b>结果论</b>，10-24 已到 80,451，离 10-17 周线低点 <b>79,813</b> 只剩 0.8%。失效条件：① 日线收在 <b>79,813</b> 下方 → 「lows get defended」的规律当场破；② 中期选举后若继续走弱，「next couple of weeks」的时间窗作废；③ 若他自己不真跑网格，「my advice」就只是话术。",
+      tags: ["仓位建议", "宏观驱动", "关键价位"],
+      src: "X 原文 @KillaXBT · 2113327422812672438"
+    },
+    {
+      date: "2026-10-23",
+      title: "「还在翻转过的周线高点上方」：用 FUD 清单当抗跌证据",
+      quote: "\"Despite all the chatter, we're still trading above the same weekly highs we flipped. They're throwing every bit of FUD in the book at the market, and this is still what the chart looks like. Not to mention, we are literally in a bull market. $BTC\"（<b>外面吵得再厉害</b>，我们<b>仍然在那些被我们翻转的周线高点上方</b>交易。他们把<b>书上所有 FUD 都扔向市场</b>了，而图表还是这个样子。更别说，我们<b>实打实处在牛市里</b>。$BTC）——配图为图表（已确认带图，未逐张读图）。",
+      read: "改动的是<b>抗跌论据的层级</b>——10-16 至 10-20 他用的是「利空清单 + 价格没跌」这种<b>情绪面抗跌论</b>，本条升级成「<b>结构未破</b>」：价格仍在翻转过的周线高点之上。⚠️ 关键问题：<b>他没说是哪一条周线高点</b>，无法核对——10-19 那周周线开盘是 <b>83,774</b>，10-21 日线收 84,093（在其上），但 10-22 收 <b>81,416</b>、10-23 收 <b>81,189</b>，<b>已经落回 83.7K 周开下方</b>。若他指的就是这一条，本句在发出时已不成立。② 「literally in a bull market」是<b>定义之争</b>，不是证据。失效条件：① 若所指为 <b>83.6–84.2K</b> 那条（10-21 刚「翻转」的），本句已被 10-22 收盘否定；② 若指更低的 80K 一带区间高点，则「仍在牛市」要等 <b>80K 日线收破</b>才被证伪；③ 无价位、无图注，属不可核实表述，收录按<b>存疑</b>处理更稳妥。",
+      tags: ["关键价位", "存疑", "趋势切换"],
+      src: "X 原文 @KillaXBT · 2113317046310072628"
+    },
+    {
+      date: "2026-10-22",
+      title: "一句话嘲讽：「上次 75K 没人做多，现在又想要了」",
+      quote: "\"They didn't long 75K the last time, now they want it again.\"（<b>上次 75K 他们没做多，现在又想要了</b>。）——本条无配图，纯文字。",
+      read: "改动的是<b>他对 75K 的定位</b>——10-15 他还把「也许会测 75K」写成<b>平等可能</b>（并劝人别等回调），本条把 75K 定性成「<b>上次白给、没人要，现在又来求</b>」的错失位，等于<b>明确不打算再等 75K</b>。⚠️ 分析：74–75K 现在被他自己架在<b>夹层</b>里——既是 10-24 那句「74K 之上做更高低点」的下沿，也是 10 倍仓失效价 <b>74,550</b> 所在；嘴上说这是「不该等的价」，仓位却在这里失效，<b>话术与风控分离</b>。失效条件：① 若价格真回到 75K 一带（距 10-24 低点 80,451 约 <b>6.8%</b>），这条从预警变成事后嘲讽，且他必须在 74,550 认输；② 纯一句话，<b>无价位、无仓位</b>，不可执行。",
+      tags: ["关键价位", "情绪指标"],
+      src: "X 原文 @KillaXBT · 2113279201499590963"
+    },
+    {
+      date: "2026-10-22",
+      title: "承认 PWO 翻转失败：仍在区间，建议照旧接扫针",
+      quote: "\"Unfortunately $BTC was unable to flip the PWO. Not the strongest candle. We're still range-bound. They're definitely making things uncomfortable for anyone trying to catch the next move. My advice is the same, just keep bidding the sweeps.\"（很遗憾，BTC <b>没能翻转 PWO（上周开盘价）</b>。<b>不是一根强 K</b>。我们<b>仍在区间里</b>。他们确实在<b>让所有想抓下一波的人难受</b>。我的建议照旧：<b>继续在扫针处挂买单</b>。）——配图为图表（已确认带图，未逐张读图）。",
+      read: "改动的是<b>他 10-21「开始吃空头」那波的验收结论</b>——10-21 他把 <b>83.7–84.2K</b> 设成「第一道重要关卡」，说翻转成功才谈回前高；本条由他本人承认 <b>PWO 没翻转</b>，并把定性退回「<b>still range-bound</b>」。这是三天里第一次<b>自我确认突破失败</b>。⚠️ 分析：① 承认失败的同时仍维持「<b>keep bidding the sweeps</b>」，即<b>结论不改、只改措辞</b>，10-19 那个判定开关形同虚设；② 10-19 那周周线开盘 <b>83,774</b>，10-22 收 <b>81,416</b>，差 2.8%，这条的承认是诚实的；③ 「they're making things uncomfortable」把区间震荡归因于<b>对手方操纵</b>，是熟悉的<b>责任外化</b>套路。失效条件：① 下周（10-26 起）PWO 仍未被收复，区间剧本延续，他 10-23「枢轴 5% 上行」须另找理由；② 若 80K 收破，「bidding the sweeps」变成<b>接飞刀</b>。",
+      tags: ["关键价位", "失效条件", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2113261734572245287"
+    },
+    {
+      date: "2026-10-22",
+      title: "USDT.D 破位首次日线 BOS 回测：守住则看 87K 以上",
+      quote: "\"For bears, the major area held. For bulls, will the major area reject? Let's see. So far, USDT.D has broken down and is now coming into its first BOS retest on the daily TF. Technically speaking, if it remains below this orange area, $BTC could make a leg up to new highs above 87K. Losing this area would mean we remain rangebound and likely take liquidity at the highs on USDT.D, while BTC revisits the lows yet again. Overall, this is the key area for bulls to watch if we're going to maintain the uptrend.\"（对空头来说，<b>关键区域守住了</b>。对多头来说，<b>这个关键区域会不会反过来压制？</b>拭目以待。到目前为止，<b>USDT.D 已经破位</b>，现在正走<b>日线级别第一次 BOS 回测</b>。技术上讲，<b>只要它待在这个橙色区下方，BTC 就可能走出向上一段、创出 87K 以上的新高</b>。<b>丢掉这个区域</b>，就意味着<b>继续区间震荡</b>，USDT.D 大概率去取上方流动性，而 BTC <b>再一次回探低点</b>。总体而言，这是多头要盯的<b>关键区域</b>——如果我们想维持上行趋势的话。）——配图为 USDT.D 图表（已确认带图，未逐张读图）。",
+      read: "改动的是<b>目标价的重新挂出</b>——把 10-14 说过的「上方猎 <b>87–88K</b>」重新摆上台面，并首次给出<b>可核对的触发器</b>：USDT.D 留在橙色区下方 → BTC 上攻 87K+；丢区 → 区间延续 + BTC 再探低。这是他近期<b>少见的双向条件式</b>表述，比同期单边喊多可验收得多。⚠️ 分析：① 87K 与他 10-21 的 126K / 150K 目标之间<b>没有中间路径</b>，属不同时间尺度混用；② 「orange area」的数值只在图上，文字没给，<b>外部无法独立核对</b>。失效条件：① USDT.D 站回橙色区上方 → 87K 目标作废，回到区间下沿剧本；② 若 USDT.D 在区下方而 BTC 仍跌破 80,451，说明<b>跷跷板关系已断</b>，整个框架失效；③ 87K 若在 11 月前未触及，「a leg up」的时效性消失。",
+      tags: ["目标价", "关键价位", "失效条件"],
+      src: "X 原文 @KillaXBT · 2113109977439068212"
+    },
+    {
+      date: "2026-10-22",
+      title: "USDT.D 第一道关口被测：空头不愿见它破",
+      quote: "\"The first major barrier has now been tested. This is a critical level for bears. They don't want to see it break, because that could open the door for $BTC to trend toward a new high, and potentially push even higher. USDT.D could see a dead cat bounce from here, but the broader trend remains bearish. Observe.\"（<b>第一道主要关口现在已经被测试过了</b>。对空头来说这是<b>关键位</b>——他们<b>不希望看到它被跌破</b>，因为一旦破，就可能为 BTC <b>打开通往新高的门</b>，甚至<b>推得更高</b>。USDT.D 从这里可能出现<b>死猫跳</b>，但<b>更大级别的趋势仍然是向下的</b>。<b>观察</b>。）——配图为图表（已确认带图，未逐张读图）。",
+      read: "改动的是<b>USDT.D 在他框架里的权重</b>——10-17 他只是拿 USDT.D 讲「74K 上方更高低点」，本条把它升级成<b>BTC 方向的先行指标</b>（空头的关键位、破了就开新高的门）。这是他叙事里少见的<b>可跨品种独立核对</b>的条件。⚠️ 分析：① 他自己先说「可能有死猫跳」，等于给反弹<b>预留免责</b>——弹了是死猫跳、不弹是趋势延续，两头都对；② 「barrier」的价位只在图上，文字没给；③ 本条与同日 87K 目标那条是<b>同一条逻辑的两步</b>，不是两个独立信号，别重复计权。失效条件：① 若 USDT.D 反弹后<b>站稳</b>在关口上方，BTC 新高的门就没打开，本条作废；② 若 USDT.D 继续跌而 BTC 也跌，说明<b>相关性断裂</b>，该框架整体失效。",
+      tags: ["宏观驱动", "关键价位", "存疑"],
+      src: "X 原文 @KillaXBT · 2113046102236713163"
+    },
+    {
+      date: "2026-10-22",
+      title: "「黑色星期一在哪」：拿空头的崩盘剧本开嘲讽",
+      quote: "\"Is black Monday in the room with us?\"（<b>「黑色星期一」是跟我们待在同一个房间吗？</b>）——本条无配图，纯文字。",
+      read: "改动的是<b>他对空头叙事的处理方式</b>——10-21 他还在用 ANSEM 归零案做<b>信用修补</b>，本条直接把「黑色星期一」当笑话讲，等于宣告<b>空头那个崩盘剧本已被价格否掉</b>（10-21 收 <b>84,093</b>，是 10-18 以来最高收盘）。⚠️ 分析：这条<b>零信息量</b>，唯一价值是<b>时间标记</b>——他把 10-20 至 10-21 的下跌定性成「没发生过的事」。按收录惯例保留，但只作情绪取样。失效条件：① 若随后出现单日大幅下跌，「黑色星期一」的嘲讽<b>反成反向指标</b>；② 无价位、无仓位，不可执行。",
+      tags: ["情绪指标", "存疑"],
+      src: "X 原文 @KillaXBT · 2113009643983130999"
+    },
+    {
+      date: "2026-10-21",
+      title: "14 号枢轴自评兑现：「又一次证明谁在掌控这游戏」",
+      quote: "\"I remember how many people questioned my 14th pivot. They lost conviction. They started second guessing, thinking, 'Surely Killa will be wrong this time?' Yet again, we saw a clear bearish move into my date, followed shortly after by the inverse move. Once again, I've shown you who runs this game... $BTC\"（我记得<b>有多少人质疑我 14 号那个枢轴</b>。他们<b>丢了信念</b>，开始自我怀疑，心想「<b>这次 Killa 总该错了吧</b>？」结果又一次：<b>进入我给的日期时是明确的下跌，随后不久就走出了反向行情</b>。又一次，我让你们看到<b>谁在掌控这个游戏</b>……$BTC）——本条无配图，纯文字。",
+      read: "改动的是<b>他的战绩叙事</b>——把 10-14 那个枢轴（当时他说「14 号之后更可能看多、延续到本月剩余时间」）记为<b>已兑现</b>。可核对的一半成立：10-14 收 <b>81,682</b> → 10-21 收 <b>84,093</b>，确实是上行；但「<b>跌进日期后马上反向</b>」的机制仍然只是<b>事后叙事</b>，没有事前定义的判定标准。⚠️ 分析：① 「很多人质疑我」属<b>不可核实的群体指称</b>，无法查证；② 这条是他 10-23 那套「<b>11/11 枢轴必反向</b>」统计说法的<b>情绪铺垫</b>——先立人设、再上数据；③ 「谁在掌控这个游戏」是典型<b>权威型话术</b>，不提供任何可操作信息。失效条件：① 若「延续到本月剩余时间」被否定（10-24 已跌到 80,621，本月只剩一周），战绩认定要打折；② 下一个枢轴若失败，「11/11」变「11/12」，整套框架的权威性受损。",
+      tags: ["战绩复盘", "周期判断"],
+      src: "X 原文 @KillaXBT · 2112936647557877878"
+    },
+    {
+      date: "2026-10-21",
+      title: "多空带大幅张开：预告「显著波动很快要来」",
+      quote: "\"$BTC Significant volatility should be approaching soon. The long and short bands have widened considerably, creating a much larger gap between them.\"（$BTC <b>显著的波动应该很快就要来了</b>。<b>多空带已经大幅张开</b>，两者之间的<b>差距被拉得很大</b>。）——配图为带多空带的 BTC 图表（已确认带图，未逐张读图）。",
+      read: "改动的是<b>他支撑「要动了」的论据类型</b>——同日白天他用的是<b>周期样本</b>（「下一周期拐点就在这几天」），本条换成<b>波动率结构</b>（多空带张开 = 压缩转扩张）。论据的独立性比「11/11」那个样本内回测更强一点。⚠️ 分析：① 只给<b>波动</b>不给<b>方向</b>，技术上可以两头解释（暴涨或暴跌都算「显著波动」）；② 「soon」没有时间上限，比「a few days」更模糊；③ 本条是同日三连发（波动将至 → 吃空头 → 枢轴复盘）的<b>第一环</b>，是那波判断的<b>技术依据</b>而非独立观点。失效条件：① 若带宽继续扩大而价格继续横 1–2 周，「压缩-扩张」的因果不成立；② 若波动以向下方式出现（跌破 80,451 加速），他可以说「波动来了、方向是下」，本条免责；③ 无价位，不可执行。",
+      tags: ["周期判断", "失效条件", "存疑"],
+      src: "X 原文 @KillaXBT · 2112924116265337294"
+    },
+    {
+      date: "2026-10-21",
+      title: "开始吃空头：第一道关卡 83.7–84.2K，翻不上去就继续区间",
+      quote: "\"「That means there's a good chance we start taking the other side next week.」 Indeed, we're taking out $BTC shorts now. Our first significant barrier is around 83.7-84.2K. If we fail to flip this area, expect more range bound price action. Reclaim it, and the chances of revisiting the highs increase.\"（「<b>这意味着下周我们很可能开始吃另一侧</b>。」没错，<b>我们现在正在吃 BTC 的空头</b>。<b>第一道重要关卡大概在 83.7–84.2K</b>。<b>翻不上去</b>，就继续<b>区间震荡</b>；<b>收回来</b>，<b>回前高的概率就上升</b>。）——配图为图表（已确认带图，未逐张读图）。",
+      read: "改动的是<b>10-19 那个 83.6K 开关的具体形式</b>——从<b>单点 83.6K</b> 扩成 <b>83.7–84.2K 的带状关卡</b>，并首次明确<b>二值结果</b>（reclaim → 回前高概率升 / fail → 继续区间）。开头引用的「下周吃另一侧」是他 10-19 自己说过的话，属<b>承诺兑现</b>而非新判断。⚠️ 实盘核对：10-21 日线高 <b>84,898</b>、收 <b>84,093</b>（收盘落在带内），10-22 收 <b>81,416</b>、10-23 收 <b>81,189</b> → <b>翻转只维持了一个交易日</b>。按他自己的规则，10-22 之后应预期「more range bound」，这与他 10-23 起「还要涨很多」的表述<b>互相打脸</b>。失效条件：① 已部分发生——连续两日收在 83.7K 下方，「reclaim」不成立；② 若之后收盘重回 <b>84.2K</b> 上方，本条重新激活，仍是他手上最干净的一条判定规则；③ 若跌破 <b>80,451</b>，「回前高」整条路径作废。",
+      tags: ["关键价位", "仓位建议", "失效条件"],
+      src: "X 原文 @KillaXBT · 2112897692573610375"
+    },
+    {
+      date: "2026-10-21",
+      title: "USDT.D 看跌回测成型：宏观下行 + BTC 宏观上行 = 更看多",
+      quote: "\"Well, well, well... Looks like a bearish retest to me. The structure is confirming a breakdown from 1D/1W resistance, with USDT.D still in a macro downtrend while $BTC remains in a macro uptrend. We retested the BOS, formed yet another lower high, and now the structure is pointing towards a corrective move lower in USDT.D, which would mean further upside for BTC. Let's see if we can keep this trajectory. Trend is your friend.\"（好、好、好……在我看来这像是一次<b>看跌回测</b>。结构正在确认<b>从日线/周线阻力位向下破位</b>，同时 <b>USDT.D 仍在宏观下行趋势</b>里，而 <b>BTC 仍在宏观上行趋势</b>里。我们回测了 <b>BOS</b>，<b>又形成一个更低的高点</b>，现在结构指向 USDT.D 的<b>一轮向下修正</b>——那意味着 <b>BTC 还有上行空间</b>。看看我们能不能保持这条轨迹。<b>趋势是你的朋友</b>。）——配图为 USDT.D 图表（已确认带图，未逐张读图）。",
+      read: "改动的是<b>多空归因框架</b>——从「BTC 自身结构」切换到「<b>USDT.D 宏观下行 / BTC 宏观上行</b>」的跷跷板叙事，这是他 10-17 以来 USDT.D 系列表述里<b>第一次完整成型</b>。⚠️ 分析：① 10-21 当天 BTC 先冲到 84,898 再回落，跷跷板<b>当日成立</b>；10-22 收 81,416、10-24 收 80,621，BTC 下行而 USDT.D 是否同步走强<b>本轮未独立核对</b>，若 USDT.D 也跌，框架当场失效；② 他给的是 <b>1D/1W 级别</b>判断，3 天内的波动不构成证伪，属<b>低可验收性</b>表述。失效条件：① USDT.D 反而走强（资金回流美元）→ BTC 上行结论反转；② 若 BTC 跌破 <b>80,451</b> 而 USDT.D 仍在跌，「macro uptrend」的定性被否定；③ 「trend is your friend」是口号，不构成条件。",
+      tags: ["宏观驱动", "周期判断", "存疑"],
+      src: "X 原文 @KillaXBT · 2112881376986808801"
+    },
     {
       date: "2026-10-21",
       title: "「ANSEM 已 -75%」：借别人的票爆掉，划清「交易员 vs 提取者」界线",
