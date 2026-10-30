@@ -23,13 +23,53 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-10-29T12:57:45+08:00",
+  lastScan: "2026-10-30T15:10:00+08:00",
   // 累计收录条数
-  total: 208,
+  total: 213,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-10-30",
+      title: "「还在 76.4K 多单里，回吐 15%」：首次承认浮盈归零，74K 才是加仓点",
+      quote: "\"I am still in my $BTC long from 76.4K. The plan has not changed at all. Unfortunately, I'm round-tripping a 15% move. But when I took this position, I wasn't aiming for 15%, I was aiming for 75-100%... In regards to the 10x long strategy, the aggressive re-entry at 82.8K will be taken out at 74K. If we get a wick to 74K, I will re-evaluate and look to enter another 10x long... This is, indeed, most likely going to be the last significant low before we trend significantly higher. We are now 13% off the highs. The biggest retrace we saw back in 2022, based on a 77% drawdown, was 22%. I do not think we will drop 20%... Nonetheless, still long & will either hold till my target or SL.\"（<b>我还在 76.4K 的多单里</b>，计划完全没变。不幸的是，<b>我正在回吐一段 15% 的行情</b>。但我当初进场不是为了 15%，<b>我要的是 75-100%</b>……<b>82.8K 那笔激进的十倍多单将在 74K 被打掉</b>；如果插针到 74K，我会<b>重新评估、再开一笔十倍多单</b>……这很可能<b>就是我们大幅上行前的最后一个重要低点</b>。<b>现在距高点已跌 13%</b>，2022 年那轮最大回撤（在 77% 熊市里）也只有 22%，<b>我不认为会跌 20%</b>……无论如何，<b>还是多，要么拿到目标，要么打到止损</b>。）——本条无配图，纯文字。",
+      read: "改动的是<b>「爆仓价」与「加仓价」的关系</b>——10-25 他说 74,000 插针即爆仓、爆仓后「在原失效位再开一笔更小的十倍」，当时读起来像被动挨打；本条把它改写成<b>主动计划</b>：82.8K 那笔十倍<b>「将在 74K 被打掉」</b>，并会重新评估、再开一笔。第二处新增是用 <b>2022 年 22% 最大回撤</b>给本轮 <b>13%</b> 定性，把「最后一跌」从口号变成了带百分比的论据。⚠️分析：①「<b>round-tripping 15%</b>」口径对不上——10-21 高点 84,898 距 76.4K 仅 <b>+11%</b>，按 15% 反推需要约 <b>87.9K</b> 的高点，本库无此记录，<b>存疑</b>；②把 74K 同时当「爆仓价」和「理想加仓价」，本质是<b>承认短期还要再跌约 6%</b>，与他 10-29「枢轴已触发、下一站 90K」<b>直接冲突</b>；③13% vs 22% 的对比给的是<b>跌幅百分比而不是价位</b>——按 84,898 算 20% 是 <b>67.9K</b>，远低于他自己 74K 的爆仓价，等于立了一个自己活不到的容错区间。失效条件：① <b>日线收在 74,000 下方</b>，「不会跌 20%」+「最后一跌」两条同时破产；② 若 74K 真插针而<b>他没按计划再开十倍</b>，「有计划」就退回「被动扛单」；③「hold till target or SL」意味着 <b>126K 之前不主动减仓</b>，任何中途止盈都算自破。",
+      tags: ["仓位建议", "失效条件", "周期判断"],
+      src: "X 原文 @KillaXBT · 2115967897126293585"
+    },
+    {
+      date: "2026-10-30",
+      title: "「Binance 的 FUD 就是为了制造低点」：把交易所危机纳入筑底叙事",
+      quote: "\"If you're genuinely naive enough to think Binance is going to fall, you're probably in the lower IQ bracket of X... And what better way to put in a low than to make everyone shit their pants first? The matrix is getting creative with the fud this cycle, respect it.\"（<b>如果你真天真到认为 Binance 会倒</b>，那你大概在 X 上属于智商偏低那档……<b>还有比先吓得所有人尿裤子更好的筑底方式吗？</b>这个周期的 FUD 越来越有创意了，得服。）——同线程另有一条：\"It's just fud. @Binance are good.\"（<b>只是 FUD，Binance 没事</b>。）",
+      read: "改动的是<b>利空清单的边界</b>——10-29 21:20 那份十项清单里<b>没有任何交易所风险项</b>，本条新增「Binance FUD」，并把它直接解释成<b>有人刻意制造恐慌来完成筑底</b>。⚠️分析：①这是本库<b>第一次出现交易所信用风险话题</b>，他给的是结论（不会倒）而不是证据；②「$2B 对他们是零钱」用的是<b>自营深度</b>，跟<b>偿付能力</b>不是一回事，两个论据被他当成一个用；③把 FUD 预设成筑底工具，等于<b>把所有负面消息预先归入利好</b>，此后无论跌多少都能自圆其说，属不可证伪框架——这类叙事在他 10-14「一切已计价」时已经出现过一次。失效条件：① 出现<b>链上净流出激增 / 稳定币折价 / 提币暂停</b>任一硬信号，「只是 FUD」当场失效；② 若 BTC 在这轮 Binance 风波后仍<b>跌破 74,000</b>，说明这不是筑底而是真实的流动性收缩；③「低点已经做出来了」若两周内不成立，本条按他自己的框架也该作废。",
+      tags: ["宏观驱动", "情绪指标", "存疑"],
+      src: "X 原文 @KillaXBT · 2115910800905035843"
+    },
+    {
+      date: "2026-10-30",
+      title: "「FOMC 影线回测被拒，回到区间」：90K 从下一站退回待定",
+      quote: "\"Unfortunately, we rejected the FOMC wick on the retest. Back to the range it is. It's pretty obvious what they're trying to do here, bait shorts, build liquidity and hunt internal range longs. All this PA does is frustrate $BTC longs before the next 10% move. After this many hunts, not many people will have the conviction to hold their positions.\"（不幸的是，<b>回测时我们被 FOMC 那根影线打回来了</b>，<b>又回到区间里</b>。他们想干什么很明显：<b>诱空、堆流动性、再扫掉区间内的多头</b>。这些价格行为唯一的作用就是<b>在下一次 10% 移动之前把多头磨到没信心</b>。扫了这么多次之后，没多少人还有信念拿住仓位了。）",
+      read: "改动的是<b>10-29 23:59 那条路径图</b>——当时他给的顺序是「收复 83–84K → 下一站 90K」，本条<b>承认回测被拒、退回区间</b>，把当下走势重新解释成「诱空 + 扫区间内多头」。⚠️分析：①「back to the range」等于<b>自己放弃了 83–84K 的即时突破预期</b>，但<b>没有撤回 90K 目标</b>，只把时间往后推——这是他惯用的「目标不动、路径改口」；②「before the next 10% move」<b>已经有方向模糊性</b>：10-28 他说的是「向上 10%+」，这里只写「下一次 10% 移动」，<b>没有写方向</b>，措辞在退守；③「扫掉区间内多头」与他同日 08:43「我还在 76.4K 多单里」并存，<b>等于承认自己就是被扫的那批人</b>。失效条件：① <b>79–80K 区间下沿收破</b>（10-29 已收 77,991），「回到区间」里的「区间」这个词就没法再用；② 若「下一次 10% 移动」在 <b>11-04–11-07</b> 窗口内没出现，10-28 那条同时到期作废。",
+      tags: ["关键价位", "趋势切换", "失效条件"],
+      src: "X 原文 @KillaXBT · 2115882578712608889"
+    },
+    {
+      date: "2026-10-29",
+      title: "「收复 83–84K 才是 90K 的开关」：首次给上行路径加前置条件",
+      quote: "\"$BTC We're back to testing the FOMC wick high, a critical LTF area. Bulls ideally need to flip this high with force to trigger a nice squeeze into the 83Ks. If they can't reclaim this high, we could easily flop back down to the 79–80Ks. Flip the 83–84K area, and 90K is next.\"（$BTC <b>我们又回到测试 FOMC 影线高点</b>，这是一个关键的<b>低周期区域</b>。多头最好<b>用力度翻上这个高点</b>，从而触发一波<b>冲向 83K 的挤空</b>；<b>如果收复不了，很容易直接摔回 79–80K</b>。<b>翻上 83–84K 区域，下一站就是 90K</b>。）",
+      read: "改动的是<b>90K 的成立方式</b>——10-28 他说「未来 7–10 天最小 10%+，主预期进 90Ks」，是<b>无条件预测</b>；本条第一次把它拆成「<b>先收复 83–84K，否则跌回 79–80K</b>」的二选一。⚠️分析：①这是他近期少见的<b>把上下两边都写清</b>的路径图，可证伪性最高；②结果在约 8 小时后揭晓：<b>10-29 日线最低 77,910、收 77,991</b>，79–80K 下沿被直接击穿，按他自己的规则「flop back down」成立、90K 路径作废；③值得注意这 79–80K 与 10-19 划的周线低 <b>79,813</b>、10-23 的「<b>80K is the area</b>」完全重合——<b>三条支撑在同一晚一起破</b>，不是三个独立假设同时错。失效条件：本条自身已给出（<b>收复不了即回落</b>）且已在 10-29 兑现；后续若要再谈 90K，<b>必须先重新收复 83–84K</b>，否则纯口头。",
+      tags: ["关键价位", "目标价", "失效条件"],
+      src: "X 原文 @KillaXBT · 2115835902111174869"
+    },
+    {
+      date: "2026-10-29",
+      title: "「十项利空压不住，这本身就是牛市证据」：利空清单扩到史上最长",
+      quote: "\"You'd expect it to be trading a lot lower... We're definitely in the process of establishing a major pivot low soon. Bearish FOMC, with rates held (priced in), Rising oil prices, Hot CPI data, Global bond yields surging, DXY rallying, Ledger wallet hack, Relentless FUD around the pivot to AI, MSTR delisting fears — Yet despite all of this, Bitcoin is quite literally holding its range... Bad news in a bear market pushes prices lower, bad news in a bull market pushes prices higher. Sometimes strength isn't about how much an asset rallies on good news. It's about how well it holds up when everything seems to be going against it.\"（<b>你会以为它该跌得更多</b>……我们<b>肯定正在形成一个重要的周期低点</b>。利空清单：<b>鹰派 FOMC</b>（利率按兵不动、已被计价）、<b>油价上涨</b>、<b>CPI 偏热</b>、<b>全球债券收益率飙升</b>、<b>DXY 反弹</b>、<b>Ledger 钱包被盗</b>、<b>围绕 AI 枢纽的持续 FUD</b>、<b>MSTR 退市担忧</b>——<b>尽管如此，比特币就是literally 守住了区间</b>……<b>熊市里坏消息砸价格，牛市里坏消息推价格</b>。有时候强势不在于好消息涨多少，而在于<b>四面楚歌时它有多抗跌</b>。）",
+      read: "改动的是<b>利空清单的长度与用法</b>——10-14 那条只有「一切已计价」的抽象说法，10-26 列过 4 项，本条扩到 <b>10 项</b>（首次出现 <b>Ledger 被盗、MSTR 退市担忧、AI 叙事分流、全球债券收益率、DXY、油价、CPI</b>），并把「抗跌」正式升格为<b>牛市判据</b>。⚠️分析：①「<b>坏消息在牛市推高价格</b>」是本轮最锋利也最危险的一句：它<b>把所有下跌都解释成洗盘</b>，等于<b>取消止损</b>；②判据在 <b>12 小时内</b>就出现裂缝——本条发于 21:20，之后 10-29 日线收 <b>77,991（-4.1%）</b>、10-30 盘中最低 <b>76,500</b>，正是他口中「早就该在 70K 下方」的那种跌幅；③他说「holding its range」，但当天区间下沿 79,710 已破。失效条件：① <b>76,500 已于 10-30 出现</b>，「抗跌」叙事第一道裂缝成立；② 若 <b>74,000 被扫</b>，「坏消息=牛市洗盘」必须改写成「坏消息=趋势转折」；③ 他承诺「<b>major pivot low soon</b>」，若 <b>11-07</b> 前不出现像样的低点反转，这条按他自己的时间框架到期。",
+      tags: ["宏观驱动", "情绪指标", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2115795810461819353"
+    },
     {
       date: "2026-10-29",
       title: "「这里的情绪比 62K 还差」：把 80K 的情绪面直接对标熊市底",
