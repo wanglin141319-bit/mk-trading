@@ -23,13 +23,53 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-10-30T15:10:00+08:00",
+  lastScan: "2026-10-31T15:08:00+08:00",
   // 累计收录条数
-  total: 213,
+  total: 218,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-10-31",
+      title: "「周线 50MA 下偏即投降」：加仓从十倍单换成现货",
+      quote: "\"Back in 2023, once $BTC flipped the 50MA on the weekly, it pretty much respected it throughout the entire bull market. We've flipped the MA, and now we're deviating slightly below it, as we've seen many times before. These deviations have typically marked capitulation, with the deviations getting bought up quickly. That's why I decided to add to my spot bags from 65K for the first time since we tested 87K. Do as you wish with this information.\"（<b>2023 年 BTC 周线翻上 50MA 之后，整轮牛市基本都尊重它</b>。我们的均线已经翻转，<b>现在略微偏离到它下方</b>，这种情况以前见过很多次。<b>这类偏离通常标志着投降，而且偏离很快就被买回</b>。所以我决定<b>从 65K 起加现货，这是自 87K 那次测试以来第一次</b>。这些信息你爱怎么用怎么用。）——配图为周线蜡烛 + 一条均线，用多个黑点标出历次向下偏离（含最右侧现价处那一个），图上无日期刻度。",
+      read: "改动的是<b>加仓用什么工具</b>——10-25 到 10-30 他的加仓计划一直是<b>杠杆</b>（82.8K 十倍单「将在 74K 被打掉」、插针 74K「再开一笔十倍」），本条改成<b>现货</b>，并把 2023 年周线 50MA 当成论据。同日 23:14 那条补上了持仓结构：65K 起已重仓、全部成交后现货均价约 <b>67–68K</b>。⚠️分析：① 用 <b>2023 年单一样本</b>外推「50MA 偏离=投降」，且没给偏离幅度上限——按他的说法跌破越多反而越是买点，属<b>不可证伪</b>；② 「from 65K」措辞有歧义，可读成「从 65K 开始建仓」也可读成「在 65K 加仓」，结合后一条「均价会升到 67–68K」，应是前者；③ 读图确认：黑点确实都落在均线下方、事后价格都弹回均线上方，<b>但图上没有日期刻度</b>，无法核对 2023 那几段偏离的深度与本轮是否同量级——本轮只偏离「slightly」，与 2023 的偏离幅度可比性存疑。失效条件：① <b>周线连续两周收在 50MA 下方且偏离继续扩大</b>（不被买回），「偏离=投降」当场作废；② 若他随后又在 74K 开十倍多单，「改用现货」的降杠杆口径自破；③ 现货均价 67–68K 是心理成本线，<b>日线收在 67K 下方</b>则「低价筹码」叙事变成深度套牢。",
+      tags: ["仓位建议", "关键价位", "失效条件"],
+      src: "X 原文 @KillaXBT · 2116304891991695857"
+    },
+    {
+      date: "2026-10-31",
+      title: "「60% 的市场在赌 7 万以下」：情绪论据首次给比例",
+      quote: "\"Every cycle, it's the same story. They've been trying to kill $BTC since 2009, and it's still here. 60% of the market is betting on sub $70K. I wonder how this plays out...\"（<b>每个周期都是同一个故事</b>。他们<b>从 2009 年就想弄死 BTC</b>，它还在。<b>市场上有 60% 在赌 7 万以下</b>。我倒想看看这怎么收场……）——本条无配图，纯文字。",
+      read: "改动的是<b>情绪指标的可量化程度</b>——10-29 他说「这里的情绪比 62K 那会儿还差」是纯定性、零数字；本条第一次给出 <b>60% 押注 7 万下方</b>这个比例，把「多数人看空」变成可以对照的仓位事实。⚠️分析：① <b>60% 的口径没交代</b>——是持仓人数占比、还是某个预测市场/投票的赔率？无出处即无法核对，属他惯用的「借群体仓位给自己背书」；② 「since 2009 一直想弄死它」是纯叙事，不含价格信息，实际功能是给「反着大众站队」提供情绪合法性；③ 这条与同日 23:14「我继续加现货」拼成完整的<b>逆向交易链条</b>，但逆向交易成立的前提是那 60% 真错了，他没有任何证据说明这 60% 是「散户噪音」而不是「聪明钱」。失效条件：① 若 BTC <b>日线收破 70,000</b>，这 60% 就是对的，「反着大众」变成站错边；② 若他始终说不出 60% 的统计来源，按他自己「只收录可靠来源」的标准，本条应降级为<b>存疑</b>；③ 立即检验窗口在 11 月初（见同日 02:01 那条的月初反弹规律），若月初不涨，他的逆向底气就没有任何短期支撑。",
+      tags: ["情绪指标", "存疑", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2116273646784405564"
+    },
+    {
+      date: "2026-10-31",
+      title: "「我的 FOMC 枢轴这次没成」：首次认错，剧本挪到月初",
+      quote: "\"Monthly close for $BTC is approaching soon. Over the past 4 months, we've seen a rally at the start of the month. It'll be interesting to see whether we get a similar move again, especially with the noticeably bearish narrative going into it. Unfortunately, my FOMC pivot didn't work this time around. There's no excuse, not even with the binance news. As I always say, everything is priced in. It's just ironic how the FUD showed up afterwards. It's a game of probabilities. Now that we have the monthly close approaching, it'll be interesting to see if we get a move to the upside at the start of next month.\"（<b>月线收盘快到了</b>。<b>过去 4 个月，月初都出现过一波上涨</b>。这次进场前看空叙事这么明显，还能不能有同样的走势，值得看。<b>不幸的是，我的 FOMC 枢轴这次没成</b>。<b>没有借口，就算拿 Binance 的消息也说不过去</b>。我一直说，<b>一切都被计价了</b>。讽刺的是 FUD 是事后才出现的。这是个概率游戏。月线快收了，下个月初会不会来一波上行，值得看。）——本条无配图，纯文字。",
+      read: "改动的是<b>「枢轴已触发」这条判断的存废</b>——10-29 他宣布「大周期枢轴刚刚触发，时候到了」，同一天还给了「收复 83–84K → 下一站 90K」的路径；本条第一次白纸黑字写 <b>my FOMC pivot didn't work</b>，而且<b>主动关掉甩锅通道</b>（not even with the binance news）。这是本库近 50 天里他第一次<b>不带条件地承认一条判断失败</b>。⚠️分析：① 认错后立刻用「everything is priced in」把自己捞回来——同一句话 10-14、10-29 用来解释「跌了也不该跌」，现在用来解释「我错了但框架没错」，属<b>框架自保</b>；② 替代剧本换成<b>月度季节性：过去 4 个月月初都涨</b>，样本只有 4 个、还都是同一轮行情里的月份，统计意义极弱；③ 时点选得巧——10-31 发帖，11-01 就是月初，<b>24 小时内即可验收</b>，是本轮最容易被证伪的一条。失效条件：① <b>11-01 至 11-03 没有月初上行</b>，「过去 4 个月月初都涨」当场作废，他也失去最后一个短期看多抓手；② 10-30 收 77,368、10-31 现价约 77,380，月线大概率是<b>连续第二根阴线</b>，「月初反弹」的历史前提本身就不成立；③ 若「everything is priced in」继续被用来解释每一次超预期下跌，他将不存在任何可被证伪的宏观判断。",
+      tags: ["战绩复盘", "周期判断", "失效条件"],
+      src: "X 原文 @KillaXBT · 2116229046761660526"
+    },
+    {
+      date: "2026-10-30",
+      title: "「扫 74K 我再买现货」：现货满仓均价 67–68K",
+      quote: "\"Bought some more $BTC spot here. I have been progressively adding exposure on each of these drops & will continue to do so. If we sweep 74K, I'll be buying more spot. I'm already heavily exposed from 65K, and if I'm fully filled, my average spot entry will move up to around 67–68K.\"（<b>这里又买了些 BTC 现货</b>。<b>每一波下跌我都在逐步加仓，还会继续加</b>。<b>如果扫到 74K，我会买更多现货</b>。<b>我从 65K 起就已经重仓了</b>，如果全部成交，<b>我的现货均价会抬到 67–68K 左右</b>。）——本条无配图，纯文字。",
+      read: "改动的是 <b>74K 这个价位的用途</b>——10-30 00:43 他写的是「82.8K 那笔十倍<b>将在 74K 被打掉</b>，插针 74K 我会<b>再开一笔十倍多单</b>」；本条同一价位改成了<b>买现货</b>，杠杆口径整体降级。同时首次披露现货持仓结构：<b>65K 起已重仓，全部成交后均价约 67–68K</b>。⚠️分析：① 74K 现在同时承担三个角色——十倍单爆仓价、现货加仓点、他的心理支撑，<b>一个价位绑三件事，一次插针会连锁触发全部</b>；② 「均价会抬到 67–68K」是反向信息：现价 77.4K 继续买只会推高成本，说明他<b>预期还要往下买好几档</b>，即他自己也不认为 77K 是底；③ 与同日「不会跌 20%（按 84,898 折约 67.9K）」并读，<b>67–68K 的满仓均价正好压在「不会跌到」的下沿</b>，等于把全部子弹押在一个他自己说不该到的价位。失效条件：① <b>日线收在 67,000 下方</b>，「不会跌 20%」与「满仓均价 67–68K」同时破产；② 若 74K 真被扫而他没加现货，「分批加仓」退回口头；③ 若他在 74K 以下重新开十倍多单，「从杠杆转现货」的降风险叙事作废。",
+      tags: ["仓位建议", "关键价位", "失效条件"],
+      src: "X 原文 @KillaXBT · 2116187036424065195"
+    },
+    {
+      date: "2026-10-30",
+      title: "「FTX 崩盘是底，Binance 被黑也会是底」：事故当引擎",
+      quote: "\"FTX collapse marked the bottom. So will the Binance hack. The best way to recoup losses is to send prices significantly higher, not lower. Do not think for one moment that Binance won't do exactly that. They hold multiple billions in $BTC and have the firepower to execute multibillion dollar longs that aren't visible to retail. Not to mention, they probably made $1B in liquidations, slippage, and fees anyway. It might just take some time for the market to rebalance after the temporary damage. But after that, I think it's crystal clear where we are headed on the HTF.\"（<b>FTX 崩盘标记了底部，Binance 被黑也会一样</b>。<b>弥补损失最好的办法是把价格大幅推高，而不是压低</b>。<b>别以为 Binance 不会这么干</b>。他们手里有<b>几十亿的 BTC</b>，有火力执行<b>散户看不见的十亿美元级多单</b>。更别说他们大概已经靠清算、滑点和手续费<b>赚了 10 亿美元</b>。暂时的损伤之后，市场可能需要一点时间再平衡。但之后，<b>大周期往哪走我觉得再清楚不过了</b>。）——本条无配图，纯文字。",
+      read: "改动的是<b>交易所事故在剧本里的角色</b>——10-29 20:57 他只说 Binance 不会倒、「$2B 对他们是零钱」（防守性判断）；本条升级成<b>主动看多论据</b>：被黑之后 Binance 有动机把价格<b>推高</b>来补损失，而且它有「散户看不见的十亿级多单」火力。⚠️分析：① 这是本库<b>第一次出现「交易所会拉盘自救」这类阴谋论式推理</b>，既无法证实也无法证伪，但功能是把利空直接翻译成利多，与 10-29「坏消息在牛市推高价格」是同一套不可证伪框架的延伸；② 「FTX 崩盘是底」这个类比本身有硬伤——FTX 是<b>信用毁灭 + 强制清算</b>，底部来自彻底出清；Binance 若只是被盗，出清程度完全不同，两者不能直接对照；③ 「他们赚了 10 亿清算/滑点/手续费」逻辑上站得住，但这恰恰等于<b>承认散户在被吃</b>，是风险描述而非利好。失效条件：① 出现<b>提币暂停、稳定币在 Binance 折价、链上净流出激增</b>任一硬信号，「Binance 没事」当场作废；② 若 11 月中旬前 BTC 未能收复 <b>83–84K</b>（他自己 10-29 给 90K 设的开关），「事故即反转引擎」没有任何价格证据；③ 若 Binance 公布的实际损失远超 $2B，本条的成本假设失效。",
+      tags: ["宏观驱动", "存疑", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2116136817263054937"
+    },
     {
       date: "2026-10-30",
       title: "「还在 76.4K 多单里，回吐 15%」：首次承认浮盈归零，74K 才是加仓点",
