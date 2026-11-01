@@ -23,13 +23,53 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-10-31T15:08:00+08:00",
+  lastScan: "2026-11-01T15:10:00+08:00",
   // 累计收录条数
-  total: 218,
+  total: 223,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-01",
+      title: "月线收盘前改口：扫到月线低点就买，不必再等 74K",
+      quote: "\"$BTC monthly close is only a few hours away. If we sweep the current monthly low, you simply bid. That is it.\"（<b>BTC 月线收盘只剩几个小时了</b>。<b>如果扫掉当前的月线低点，你直接买就行</b>。<b>就这样</b>。）——本条无配图，纯文字。",
+      read: "改动的是<b>加仓的触发价</b>——10-30 23:14 他写的是「<b>如果扫 74K，我再买更多现货</b>」，动作门槛压在 74K；本条把这个门槛<b>上提到月线低点 76,326</b>（10-30 打出的 10 月最低），等于承认<b>不必等到 74K</b>，破 76.3K 就该动手。第二处改动是<b>从「我买」变成「你就买」</b>——此前每条都在描述自己的仓位，本条第一次对读者下<b>无条件指令</b>（you simply bid. That is it.），无止损、无仓位、无容错档位。⚠️分析：① 10 月月线收在 <b>77,582</b>，11-01 亚盘已回到 <b>78,014</b>，「扫月线低点」<b>尚未发生</b>，本条仍处待验证状态；② 「That is it」把风控删干净了——76,326 买进，74,000 是他自己十倍单的爆仓位，<b>两者只差 3%</b>，买完就得直面清算线；③ 与同日 00:58「最坏再跌 5%（约 74.1K）」并读，<b>他允许的最坏情形正好压在他的爆仓线上</b>，「扫低点就买」与「最坏 5%」是同一个价位的两面。失效条件：① 若扫破 <b>76,326 后继续下行到 74,000 下方</b>，「扫了就买」等于把他自己送进爆仓，指令变成接刀；② 若月线低点始终没被扫、价格直接上攻，本条属<b>从未触发</b>，不能计为判断兑现；③ 若真跌破 76.3K 而他实际没加仓，「you simply bid」只是口头喊单。",
+      tags: ["关键价位", "仓位建议", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2116638508379234425"
+    },
+    {
+      date: "2026-11-01",
+      title: "2023 分形补上「跌破前低」剧本：周线新高被改判为假突破",
+      quote: "\"$BTC Spitting image of 2023 so far. The only difference is that the weekly HH ended up being manipulation above the range, followed by acceptance back below it. That doesn't change the fact that the trend is up. It just means this could be the new range before the final leg higher. We also didn't see a sweep of the lows in 2023, so maybe that's something worth noting this time around. We could also spend weeks chopping here. I guess we're going to have to fuck around and find out. A lot of people are looking for that capitulation below the lows, like we saw in 2023 when BTC dropped from 25K to 19K. If we're at that stage of the cycle, then this fractal becomes invalidated and we get that flush below the lows before pushing to 95K+. Either way, if this fractal doesn't play out and we do capitulate below the lows, we're talking about another 5% drop at most from current prices. Awfully similar PA. The only difference is that we formed a weekly HH, which we didn't do last time. Let's see.\"（<b>BTC 到目前为止和 2023 年一模一样</b>。<b>唯一的区别是，那根周线新高最后成了区间上方的操纵，随后又被收回区间之下</b>。这<b>不改变趋势向上</b>这个事实，<b>只是说明这可能就是最后一波上涨前的新区间</b>。<b>2023 年我们没有看到扫低点</b>，这次也许值得注意。<b>也可能在这里横上几周</b>。只能走着瞧了。<b>很多人在等跌破前低的那次投降</b>，就像 2023 年 BTC 从 25K 跌到 19K 那样。<b>如果我们处在那个阶段，这个分形就失效了</b>，我们会先洗破前低，<b>然后再推向 95K+</b>。不管怎样，<b>如果分形不成立、真的跌破前低投降，按现价再跌 5% 就是极限</b>。价格行为像得离谱，<b>唯一区别是这次我们做出了周线新高，上次没有</b>。看吧。）——配图为 2023 与 2026 的价格走势对比（分形对照），图上具体刻度未逐点核对。",
+      read: "改动的是<b>周线新高的性质</b>——他此前把 10-21 冲上 <b>84,898</b> 的新高当作上行趋势延续，10-26 还给过「10-26 至 11-01 这周偏多」的时间判断；本条把这根周线新高<b>重新定性为「区间上方的操纵 + 收回区间内」</b>，等于亲手撤掉自己多头结构的最高级别证据，把它降级成<b>假突破</b>。第二处改动是<b>第一次承认「跌破前低完成投降」是与主剧本并行的合法剧本</b>：10-30 到 10-31 他一直在讲「13% 已接近尾声、不会跌 20%」，本条给出分形失效后的路径——<b>先洗破前低，再上 95K+</b>。⚠️分析：① 「再跌 5%」按 78,014 折算约 <b>74,100</b>，与他 74,000 的十倍爆仓位、现货加仓位<b>三个数叠在一起</b>——他所谓的最坏情形就是自己阵亡的位置，这不是巧合，是他把剧本写到了自己的账户边上；② 两个分支都以「更高」收尾（分形成立→最后一波；分形失效→洗破后 95K+），<b>方向层面不可证伪</b>，可证伪的只有幅度（5%）和时间（weeks of chop 是他首次允许的横盘时长）；③ 「2023 年没扫低点，所以这次也许值得注意」逻辑上是<b>反向类比</b>——上次没扫、这次可能扫，等于用同一张图推出相反结论，属看图说话的自由度；④ 95K+ 是他给过的<b>最低的「洗破后」目标</b>（此前是 90K 门槛、126K 终局），说明中期预期在往下挪。失效条件：① 若从现价<b>跌超 5%（约 74,100 下方）</b>，「5% 是极限」当场作废，且十倍仓已爆；② 若横盘<b>超过 3-4 周</b>仍无方向，「weeks of chopping」变成「months」，「最后一波」的时间成本失控；③ 若价格直接上攻而不洗破前低，分形失效分支从未触发，本条只能算<b>免责声明</b>而非判断。",
+      tags: ["趋势切换", "周期判断", "失效条件"],
+      src: "X 原文 @KillaXBT · 2116575526831714761"
+    },
+    {
+      date: "2026-10-31",
+      title: "「You shall not pass」：同一句话 21 分钟内连发两次",
+      quote: "\"You shall not pass. $BTC\"（<b>你过不去</b>。BTC。）——纯文字，无价位、无方向说明；配图内容<b>未取到</b>（抓取仅含文本，无法核对图上刻度）。同一句在 <b>22:59（ID 2116545479466958998）与 23:20（ID 2116550768849535212）各发一次</b>，文字完全一致。",
+      read: "改动的是<b>表达方式而非判断</b>——本条不含任何价格信息，功能是<b>在区间下沿表态「跌不下去」</b>：当时 10-31 盘中低点 <b>77,114</b>，距他 76.4K 多单成本仅 +0.9%。⚠️分析：① 严格说这不是观点，是<b>情绪标记</b>，本库按「忠实转述」原则只记录文本，<b>不替他补图上点位</b>；② 同一句话 21 分钟内发两次，通常意味着第一次曝光不足——<b>他在意这个位置的市场共识</b>，也说明他没有新论据可加，只能用口号加固；③ 与同日 21:11 的「80K 下方是最后机会」相比，本条把「看多」从论证降级成梗，<b>论据密度在下降</b>。失效条件：① 若 <b>76,326 月线低点被扫破</b>（他次日自己说「扫了就买」），这句「过不去」被价格直接否掉；② 配图内容不可核，<b>本条不构成可验收判断</b>，只能作为情绪与语气的时间戳。",
+      tags: ["情绪指标", "存疑"],
+      src: "X 原文 @KillaXBT · 2116550768849535212"
+    },
+    {
+      date: "2026-10-31",
+      title: "「这周末感觉要大波动」：首次用直觉预报，没给方向",
+      quote: "\"Very strange feeling about this weekend. I can't explain it, but I've got a weird feeling we're about to see some major volatility.\"（<b>对这个周末有种很奇怪的感觉</b>。<b>我说不清</b>，但就是有种预感，<b>我们快要见到一次大波动了</b>。）——本条无配图，纯文字。",
+      read: "改动的是<b>判断的来源</b>——本库此前所有条目都挂靠在可核对象上（周线 50MA、2022 年 22% 回撤、月度季节性、60% 押注比例），本条<b>第一次出现「我感觉」型预报</b>，且他本人明确说「I can't explain it」，<b>零论据、零方向、零价位</b>。⚠️分析：① 这是<b>纯情绪条目</b>，唯一价值是时间戳——10-31 21:43 他预期周末出现「major volatility」，而实际周末（10-31 低 77,114 至 11-01 高 78,068）<b>振幅仅 1.2%</b>，属正常周末波动，<b>「大波动」未兑现</b>；② 「weird feeling」出现在 76.4K 多单被套、十倍仓逼近 74K 爆仓位的时点，更像<b>焦虑外化</b>而非分析；③ 与同日 12 小时后的「扫月线低点就买」连读，可看出他周末的真实状态是<b>等一个方向，然后不管哪个方向都往多头解释</b>。失效条件：① 周末振幅已出（<b>1.2%</b>），「major volatility」按常规口径（≥5%）<b>已落空</b>；② 纯直觉无方向，<b>无法从结果反推对错</b>，本库不将其计为有效判断；③ 若他后续把这次小波动追认为「我说的就是它」，属事后追认，应标注存疑。",
+      tags: ["情绪指标", "存疑"],
+      src: "X 原文 @KillaXBT · 2116526464296173752"
+    },
+    {
+      date: "2026-10-31",
+      title: "重发「本轮回撤更浅」：80K 下方算最后上车机会",
+      quote: "\"I'm posting this again because I think it's absolutely necessary given the context. Now that we've dropped into the mid-70Ks after ranging above 80K for weeks, we're getting close to the end of this bull market retracement. We're down 13%. The biggest drops we saw last cycle were 22%, and that was during a 77% bear market. This bear market wasn't even close to as brutal, so my main theory remains exactly the same. The $BTC Bull market retracements will be shallower this cycle. Given that, are you really willing to miss now (a 62% move from current prices) because you're fixated on getting in 3–4% lower? When you look at it simply from a RR perspective, you can clearly see that the reward outweighs the risk. As I've said, I'm primarily a swing trader... But the targets will keep getting lower and lower, just like they did last time, until people are left on the sidelines in disbelief. If you wanted to get in below 80K, now's your chance. Don't fuck it up this time, or you'll be buying above 90K. Take it from someone who is fully exposed with a avg of 65K when everyone else was calling for lower.\"（<b>我重发这条，因为按现在的处境它绝对必要</b>。既然在 80K 上方横了几周之后跌到 <b>70 中段</b>，<b>这轮牛市回调已经接近尾声</b>。<b>我们跌了 13%</b>。上一轮最大跌幅是 <b>22%</b>，而那是在 <b>77% 的熊市</b>里。这轮熊市远没那么惨，<b>所以我的核心理论完全没变：本轮回撤会更浅</b>。既然如此，<b>你真打算为了再便宜 3–4% 而错过现在这 62% 的空间吗</b>？单看<b>盈亏比</b>，<b>回报明显大于风险</b>。我说过，我主要是波段交易者……<b>但目标会越来越低，直到把人都甩在场外</b>。<b>如果你想在 80K 以下进场，就是现在。这次别再搞砸了，否则你只能在 90K 上方买</b>。这是一个<b>均价 65K、满仓在手</b>的人说的，当时所有人都在喊更低。）——本条无配图，纯文字，是他本人对旧帖的重发。",
+      read: "改动的是<b>「最后上车价」的位置</b>——此前他的加仓口径是「扫 74K 买现货」（10-30）、「扫月线低点就买」（次日 05:08），都在 <b>76.3K 下方</b>；本条把「该进场的价格」上移到 <b>80K 以下都算</b>，并给出<b>错过成本</b>：不在 80K 下方买，就得在 90K 上方追。这是本库第一次把「踏空代价」写成具体价位差（<b>80K vs 90K，约 +12.5%</b>）。同时首次把「62% 空间」量化——按 78,014 折算目标约 <b>126,400</b>，与他 126K 终局口径吻合，对应盈亏比约 <b>12:1</b>（62% 对 5%）。⚠️分析：① 这条是他<b>自己承认「重发」</b>，属旧论据二次投放，说明 10-31 当天 <b>没有新证据</b>，只有语气加码；② 「均价 65K 满仓」与 10-30 23:14「全部成交后均价会抬到 67–68K」<b>口径不一致</b>——两天内均价自述从 65K 变成 67–68K 又回到 65K，<b>自述持仓数据不可靠</b>；③ 12:1 的盈亏比是<b>分子分母都取自他自己的假设</b>（62% 是他 126K 目标的反推，5% 是他自己说不会再跌），不构成独立证据；④ 「targets will keep getting lower」这句在讲别人踏空，但也暴露他<b>把目标价当成移动靶</b>。失效条件：① <b>11-03 前若跌破 76,326 并继续走弱</b>，「80K 以下是最后机会」变成「80K 以下是半山腰」，跟跟随者一起被套；② 若 126K 未在<b>他此前给的 280 天窗口</b>内兑现，62% 的分母作废；③ 若他再次改口均价（65K / 67–68K / 其他），本条的可信度应按<b>存疑</b>处理。",
+      tags: ["目标价", "仓位建议", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2116518365699194951"
+    },
     {
       date: "2026-10-31",
       title: "「周线 50MA 下偏即投降」：加仓从十倍单换成现货",
