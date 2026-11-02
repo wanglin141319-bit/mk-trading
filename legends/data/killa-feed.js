@@ -23,13 +23,61 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-01T15:10:00+08:00",
+  lastScan: "2026-11-02T15:05:00+08:00",
   // 累计收录条数
-  total: 223,
+  total: 229,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-02",
+      title: "第一次谈黄金：XAU 或阶段性见顶，但仍在此买一堆",
+      quote: "\"Just because Gold ($XAU) may be topped for a while doesn't mean there isn't money to be made. I bought a stack of gold here. -30% from the highs.\"（<b>黄金（XAU）就算阶段性见顶了，也不代表没钱可赚</b>。<b>我在这里买了一堆黄金</b>。<b>较高点已经 -30%</b>。）——本条无配图，纯文字。",
+      read: "改动的是<b>他覆盖的资产范围</b>——本库 223 条以前全部围绕 BTC，本条<b>第一次出现黄金仓位</b>，并且是<b>在「可能已经见顶」的前提下买入</b>。这暴露的不是商品观点，而是<b>同一套操作习惯的复用</b>：10-30 到 11-01 他反复讲「BTC 跌 13% 就接近尾声、偏离 50MA 就是投降、扫低点就买」，本条的句式结构完全一样——<b>先承认可能还有下跌，再在回撤 30% 的位置直接买</b>。他真正在赌的是「大幅回撤后必有反弹」，标的可以换。<b>第二条含义</b>是：他在 BTC 上说自己「满仓、均价 65K」，此刻又买黄金，说明<b>他手上还有可用资金</b>，此前「完全暴露（fully exposed）」的说法与实际加仓能力<b>不一致</b>。⚠️分析：① 本条<b>没有任何价位、比例、时间</b>——“a stack”是多少、「highs」是哪一天的高点，全部无法核对，不可计为可验证判断；② 「topped for a while」是他<b>第一次对非 BTC 资产下顶部分形判断</b>，与此前「BTC 结构就是结构」的自信相比，措辞明显更软（may be）；③ 若黄金与 BTC 同步下跌，他等于<b>在两个高相关资产上同时加仓</b>，分散是假的。失效条件：① 若 XAU 从当前位置<b>再跌超 10%</b>，「-30% 就是买点」的重演逻辑被打破，属抢反弹失败；② 若他后续不再提这笔黄金（本库多例：说买之后无下文），应按<b>口头仓位</b>处理，不计入战绩；③ 若金价继续新高，「may be topped」被直接否掉，本条只剩「我买了」这一个可核事实。",
+      tags: ["宏观驱动", "仓位建议", "失效条件"],
+      src: "X 原文 @KillaXBT · 2117065042545786955"
+    },
+    {
+      date: "2026-11-02",
+      title: "「BTC 就是要涨，不管你喜不喜欢」：阻力带下方只剩喊话",
+      quote: "\"$BTC is going higher. Whether you like it or not. The market doesn't care about your \"feelings\".\"（<b>BTC 就是要涨</b>。<b>不管你喜不喜欢</b>。<b>市场不在乎你的「感觉」</b>。）——本条无配图，纯文字。",
+      read: "改动的是<b>论证方式</b>，不是结论——他 11-01 22:58 那条还在讲结构：必须<b>强势突破 78.8K–80.1K</b>，否则可能被拒、回落到月线低点。三小时后（11-02 05:36）论据全部消失，只剩<b>「is going higher」+「不管你喜不喜欢」</b>。本库此前已记录过一次同样的降级：10-31 的「You shall not pass」是<b>把看多从论证降成梗</b>，本条是第二次，且这次的措辞带<b>对抗性</b>（market doesn't care about your feelings）。⚠️分析：① 时间点很关键——这条发在<b>他自己划定的 78.8K–80.1K 阻力带尚未被验证</b>的时段，等于<b>在关键测试前先把结论喊出来</b>；② 「feelings」是回击质疑者，不是分析，<b>本条零价位、零指标、零时间</b>，不可计为有效判断；③ 与同日 02:29 的 STH basis 那条并读，可见他的表达节奏是<b>先给一个可核指标，再补一句情绪加固</b>——指标负责让他看起来在分析，口号负责留住跟随者。失效条件：① 若价格在 <b>78.8K–80.1K 被拒并回落至月线低点</b>，本句被价格当场否掉，且他前一天给的回调路径才是对的；② 若「going higher」兑现但用了数周横盘（他自己 10-31 说过 weeks of chop），本句在时间维度上<b>不可证伪也不可计分</b>；③ 本条与 11-01「we need to see BTC forcefully flip 78.8K–80.1K」<b>互相矛盾</b>——一条说必须先突破才算数，一条说反正要涨，引用时应以前者为准。",
+      tags: ["情绪指标", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2117007845048697178"
+    },
+    {
+      date: "2026-11-02",
+      title: "首次引入链上成本位：BTC 正在测试短期持有者成本基础",
+      quote: "\"$BTC is testing the short term holder cost basis. In strong rallies, we often see the STH basis respected before price continues higher. Worth keeping an eye on, especially while we remain in a bull trend.\"（<b>BTC 正在测试短期持有者成本基础</b>。<b>在强势上涨中，我们经常看到价格先尊重 STH 成本线，然后继续走高</b>。<b>值得留意</b>，尤其是在我们仍处牛市趋势的时候。）——本条无配图，纯文字。",
+      read: "改动的是<b>他用来验证多头的指标集合</b>——此前他全部用价格结构类证据（周线 50MA、2023 分形、-13% vs -22% 回撤幅度、月度季节性），本条<b>第一次引入链上成本类指标（STH basis，短期持有者持仓成本）</b>。这有两个后果：① <b>他给自己新增了一个更早失效的观察位</b>——成本线是硬数字，价格站上去/跌破都能判，比 50MA 更容易被证伪；② 他把「正在测试」定义为<b>中性事件而非看多信号</b>（原话只说 worth keeping an eye on，没说 buy），这是本库少见的<b>不加仓表态</b>。⚠️分析：① 「in strong rallies we often see the STH basis respected」是<b>条件式陈述</b>——他自己把它锚在「strong rallies」前提上，而当前是 13% 回撤后的低位，<b>是否属于 strong rally 未定义</b>，存在循环论证空间；② 本条<b>没有给出 STH basis 的具体数值</b>，读者无法自行核对，只能等他自己后续报价；③ 时间上紧接「Déjà vu」（00:26）之后，说明他在<b>同一张图上叠加多个指标找支撑</b>，是典型的「先有结论再找证据」动作。失效条件：① 若价格<b>明确跌破 STH 成本线且 3 日内未收回</b>，「尊重成本线后继续上行」当场作废，该位置从支撑变压力；② 若他此后<b>再也不提 STH basis</b>（本库多例），说明这只是一次性说辞，不计入其分析框架；③ 若他随后给出的 STH 数值与价格明显不符，本条应降级为<b>存疑</b>。",
+      tags: ["链上数据", "关键价位", "失效条件"],
+      src: "X 原文 @KillaXBT · 2116960747498676300"
+    },
+    {
+      date: "2026-11-02",
+      title: "「Déjà vu」两个词配图：2023 分形第三次投放",
+      quote: "\"Déjà vu.. $BTC\"（<b>似曾相识</b>。BTC。）——<b>配图内容未取到</b>（抓取结果仅含文本，无法核对图上刻度与日期）。从时间与上下文看，大概率仍是 10-31「Spitting image of 2023」那张 2023 vs 2026 对比图，但<b>本库不替他补图上内容</b>。",
+      read: "改动的是<b>证据的重复次数，不是判断</b>——10-31 16:58 他发过完整版分形论证（「唯一区别是这次做出了周线新高」），本条用两个词再投一次，<b>属旧论据的三次投放</b>（10-31 完整版 → 10-31 重发的「80K 以下是最后机会」→ 本条）。这说明<b>月线收盘前后他没有新的结构证据</b>，只能用同一张图维持叙事。⚠️分析：① 严格说本条不构成观点，仅有<b>情绪与时机信息</b>：它出现在月线收盘后、78.8K–80.1K 阻力测试前，功能是<b>提前给可能出现的下跌贴上「剧本内」标签</b>；② 分形类论证的天然问题是<b>可以按需选起点</b>——他 10-31 已经承认两个分支最终都指向更高，方向层面不可证伪；③ 配图不可核，<b>本条不进入可验证判断序列</b>。失效条件：① 若后续走势与 2023 分形<b>形态明显背离</b>（例如不洗破前低也不向上，而是长期阴跌），该图被自然淘汰；② 若他再发第三次「Déjà vu」类内容，应视为<b>叙事疲劳</b>信号而非新证据；③ 配图内容无法核对，<b>任何基于该图的点位解读都属推测，本库不采纳</b>。",
+      tags: ["周期判断", "存疑"],
+      src: "X 原文 @KillaXBT · 2116929760383131794"
+    },
+    {
+      date: "2026-11-01",
+      title: "月线收盘划出 78.8K–80.1K：不做空但给短线空",
+      quote: "\"$BTC Monthly close is in. What's next? At the moment, apart from my monthly pivot, our first LTF barrier is 78.8K–80.1K. Given that we've broken down into the lower part of the range, this is the first area I'd be watching for a reaction. I'm bullish and will remain bullish, as I have been since 62K. But structure is structure. Right now, we need to see BTC forcefully flip 78.8K–80.1K, or risk getting rejected from it. With Monday's high usually established early in the week, it's worth watching this area for an LTF rejection. If that happens, you could potentially look for scalp shorts, targeting only 1–2%. Personally, I won't be shorting. We're down 13% in a bull market, and I'm not interested in shorting. If we fail to flip the local highs, we could trend back down to the monthly low. If we get a sweep, that's where you'd look for bigger buys. That's what I'll be watching as we head into next week.\"（<b>BTC 月线收盘了</b>。<b>接下来呢</b>？目前除了我的<b>月线枢轴</b>，<b>第一个低周期阻力就是 78.8K–80.1K</b>。既然我们<b>已经跌破到区间的下半部</b>，<b>这就是我第一个观察反应的位置</b>。<b>我是多头，而且会一直是多头，从 62K 起就是</b>。<b>但结构就是结构</b>。<b>现在我们需要 BTC 强势翻上 78.8K–80.1K，否则就有被它压回的风险</b>。<b>周一的高点通常在一周早段就形成</b>，值得在这个区域留意低周期的拒绝。<b>如果真被拒绝，你可以考虑做短线空，目标只要 1–2%</b>。<b>但我个人不会做空</b>——<b>牛市里已经跌了 13%，我没兴趣做空</b>。<b>如果我们没法翻上局部高点，就可能一路回落到月线低点</b>。<b>如果那里被扫，才是你去找更大级别买点的地方</b>。<b>下周我就盯这些</b>。）——本条无配图，纯文字。",
+      read: "改动的是<b>「扫低点就买」这句无条件指令的结构</b>——11-01 05:08 他写的是「扫掉月线低点，你直接买（you simply bid. That is it.）」，<b>没有前置条件</b>；本条把路径改成<b>两段式</b>：先必须<b>强势翻上 78.8K–80.1K</b>，翻不上才轮到回落月线低点，而且那里从「bid」升级为<b>「bigger buys（更大级别的买点）」</b>。也就是说他把 76.3K 附近明确定位成<b>分批加码区</b>，不再是单向一次性买入。<b>第二处改动</b>：本库第一次出现<b>78.8K–80.1K 这个具体阻力带</b>，此前他的上方参照一直是「80K 整数关口」「月线枢轴」这类模糊说法，现在给出了可验收的上下沿。<b>第三处</b>：他破例公开了一套<b>短线做空方案</b>（目标 1–2%），同时声明自己不做——这是他<b>第一次把「给读者的方案」和「自己的仓位」拆开</b>。⚠️分析：① 「I'm bullish... But structure is structure」是本次最重要的措辞，等于<b>给看多加了前提</b>，与他 11-02 05:36「BTC 就是要涨，不管你喜不喜欢」<b>自相矛盾</b>，两条相隔 7 小时；② 「从 62K 起就是多头」是本库首次出现的成本参照，与 10-31 自述「均价 65K」、10-30「均价会到 67–68K」<b>三个数字并存</b>，他的持仓自述继续不可核；③ 他承认「已经跌破到区间的下半部」，这与 10-31「这可能就是最后一波上涨前的新区间」相比，<b>区间叙事已经站到了下沿</b>，容错只剩一次月线低点；④ 给出的短线空目标只有 1–2%，<b>扣掉手续费几乎无利可图</b>，属免责式建议而非真实机会；⑤ 全文<b>没有给止损</b>，无论多空。失效条件：① 若价格<b>未经 78.8K–80.1K 就直接上攻或直接破位</b>，该阻力带从未被测试，本条只能算<b>设定观察点</b>，不能算判断兑现；② 若<b>强势翻上 80.1K 后两日内跌回 78.8K 下方</b>，「flip 即转多」的推论失效；③ 若跌破月线低点后<b>没有快速扫回</b>而是持续下行，「bigger buys」变成接刀，且他 74K 的十倍爆仓位会先被打掉；④ 若他真的做了空（与他「won't be shorting」相反），本条可信度按<b>存疑</b>处理。",
+      tags: ["关键价位", "仓位建议", "失效条件"],
+      src: "X 原文 @KillaXBT · 2116907615410151878"
+    },
+    {
+      date: "2026-11-01",
+      title: "泼冷水 Hyperliquid：KYC 一来去中心化只剩门面",
+      quote: "先发（20:56）: \"Everyone is trading on hyperliquid because of \"decentralization.\" So what happens when they introduce KYC? The US will not allow mass adoption without it. So I guess it was all a facade in the end.\"（<b>所有人都在 Hyperliquid 上交易，理由是「去中心化」</b>。<b>那他们上 KYC 的时候会怎样</b>？<b>没有 KYC，美国不会允许大规模采用</b>。<b>所以我猜最后这一切都只是门面</b>。）——27 分钟后补发澄清（21:23）: \"...I want to clarify that I'm not bearish on $HYPE or what Hyperliquid is building. Quite the opposite. ... The concern is whether Hyperliquid is gradually moving away from the very principles that made it successful in the first place. ... as Hyperliquid expands, KYC and compliance requirements will inevitably become part of certain products and services. ... let's not pretend Hyperliquid is the holy grail of decentralisation.\"（<b>我要澄清：我对 HYPE 和 Hyperliquid 在做的事并不看空，恰恰相反</b>……<b>问题在于它是否正在逐渐背离当初让它成功的那些原则</b>……<b>随着扩张，KYC 与合规要求不可避免地会进入部分产品和服务</b>……<b>别把 Hyperliquid 当成去中心化的圣杯</b>。）",
+      read: "改动的是<b>本库对 Killa 的题材画像</b>——223 条以前他<b>没有对任何非 BTC 标的下过判断</b>，这是第一条<b>山寨/平台币</b>评论，而且角度不是价格而是<b>叙事合法性</b>。第二处改动在<b>他自己内部</b>：20:56 那条是<b>结论式嘲讽</b>（all a facade），21:23 那条立刻收回并加限定（not bearish on HYPE, quite the opposite），27 分钟内从「门面」退到「值得审视」——<b>同样的观点，态度强度被自己削掉一半</b>。⚠️分析：① 他给的因果是「美国不放行无 KYC 的大规模采用 → Hyperliquid 必然上 KYC → 去中心化叙事破产」，<b>逻辑成立但时间未知</b>，属无法定日的判断；② 这条对 BTC 交易<b>没有直接价位含义</b>，唯一用处是<b>情绪读数</b>：在 BTC 关键阻力测试前一天，他去议论别家平台的合规原罪，说明<b>手上的 BTC 剧本已经讲完，没有新东西可说</b>；③ 他强调「看多增长 ≠ 忽视妥协」，是标准的<b>两头下注表述</b>，涨跌都能自证；④ 本库不把他对 HYPE 的态度当交易信号，<b>因为他没给任何仓位或价位</b>。失效条件：① 若 Hyperliquid <b>确实引入 KYC 后份额仍继续上升</b>，「facade」论点在事实层面被削弱；② 若他随后<b>公开买入 HYPE</b>，「not bearish」升级为持仓，本条的批评色彩需重读为<b>建仓前的压价话术</b>（仅作可能性，不作结论）；③ 若他<b>再也不提 HYPE</b>，本条按一次性评论处理，不进入其核心框架。",
+      tags: ["山寨", "情绪指标", "存疑"],
+      src: "X 原文 @KillaXBT · 2116883730874667107（前一条 2116876998052294711）"
+    },
     {
       date: "2026-11-01",
       title: "月线收盘前改口：扫到月线低点就买，不必再等 74K",
