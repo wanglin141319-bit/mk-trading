@@ -23,13 +23,45 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-04T15:06:00+08:00",
+  lastScan: "2026-11-05T15:05:00+08:00",
   // 累计收录条数
-  total: 241,
+  total: 245,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-05",
+      title: "月线开盘 5/5 全涨：把本轮反弹记成季节性第 5 次",
+      quote: "\"Monthly close comes in clutch yet again. $BTC has now pumped 5/5 times a few days after a new monthly open, primarily because we were dumping into it.\"（<b>月线收盘又一次救场</b>。<b>$BTC 现在是 5 次里 5 次，都在新月线开盘后几天内拉升</b>，<b>主要因为开盘前我们一直在往里面砸</b>。）——纯文字，无配图，无价位。",
+      read: "改动的是<b>归因方式</b>，不是目标。10-31 他给的是「过去 4 个月月初都涨」，样本 4；本条把它升格为 <b>5/5</b>，并把本轮（11-04 低点 75,736 → 11-05 高 80,918，约 +6.8%）<b>当作规律的第 5 个样本</b>。关键在最后半句：<b>「primarily because we were dumping into it」把上涨解释成「月线开盘前的砸盘被反手」</b>，等于把「月初必涨」从统计规律改写成一条<b>可以先验识别的机制</b>。⚠️分析：① <b>样本只有 5，且窗口是他自己事后挑的</b>，不构成统计显著性；② 与 11-04 01:14「下行有限、上行无限」属同一套<b>事后归因</b>，只是换了个更好听的壳；③ 它回答了他 11-01 悬着的「月初是否上行」——<b>本轮确实兑现</b>，这是近两周唯一一条按期兑现的短期判断；④ 但「primarily」没有任何证据，无法验收。失效条件：① <b>12-01 新月线开盘后 3–5 天内若无同等幅度拉升，5/5 变 5/6，季节性剧本降级为巧合</b>；② 若出现「月初下跌」，他此前所有「月初必涨」条目一并作废；③ 本条无价位，<b>不计为交易判断，只登记归因口径的升级</b>。",
+      tags: ["周期判断", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2118077648937304110"
+    },
+    {
+      date: "2026-11-05",
+      title: "改口分层：HTF 肯定多，LTF 未翻箱体只算区间下沿",
+      quote: "\"Sure, I am bullish on $BTC, but let's observe the current structure. We had a strong reaction from the lows into midterms. Price swept the previous monthly low and triggered an aggressive short squeeze. The HTF structure is definitely bullish. On the LTFs, though, we're approaching a critical area: the previous range resistance that we broke below. ... If we can't flip it, we're still in the lower boundary of the range. If we do flip this box, it will likely trigger an aggressive short squeeze towards 87K–88K, where things get more interesting.\"（<b>我当然看多，但先看结构</b>。低点到<b>中期选举</b>有一波强反弹，<b>价格扫掉前一个月线低点、引发了一次激进空头挤压</b>。<b>HTF 结构确定是多的</b>；但 <b>LTF 上我们正接近一个关键区：此前跌穿的那个区间阻力</b>。<b>翻不上去就还在区间下沿</b>；<b>翻上去大概率触发向 87K–88K 的激进空头挤压，那里才更有意思</b>。）",
+      read: "改动的是<b>「底部已成立」的验收层级</b>。11-03 01:08 他用的是完成时态 the bottom is in；本条拆成两层：<b>HTF 无条件多，LTF 有条件多</b>——把短期方向的裁决权交给「能否翻上此前跌穿的区间阻力」。那个阻力他在 11-01 划过：<b>78.8K–80.1K</b>；本条发布时价格已到 80.3K 一带（11-04 收 80,504），<b>人已经在箱体里，却还在说「翻不上去就还在下沿」</b>——条件表述与实际位置脱节，是典型的<b>留后门</b>。⚠️分析：① 上行目标从 11-03 的「87K+ 爆仓区」收窄为 <b>87–88K 且加了前置条件</b>，比昨天的无条件磁吸更保守；② 「扫月线低点 + 空头挤压」是对 11-04 那根先 -8.7% 再拉回 +6.8% 的<b>事后定性</b>，不是事前预判；③ 与 11-04 01:14「上行无限」相比，这里第一次给<b>上限区间（88K）</b>，说明心里的天花板从「无限」收缩到「88K 附近再看」。失效条件：① <b>日线站不上 80.1K、并回落跌破 78.8K → 翻箱体失败，本条自动切回区间下沿剧本（即回 76.3K 一带）</b>；② 若冲到 87–88K 他不减仓反而抬高目标，说明这个「上限」只是话术；③ 若跌破 75.7K（11-04 实际低点），「HTF 确定是多的」当场作废。",
+      tags: ["关键价位", "目标价", "失效条件"],
+      src: "X 原文 @KillaXBT · 2118055594452230228"
+    },
+    {
+      date: "2026-11-04",
+      title: "认赔 82.9K 十倍单：76.2K 补回，晒四笔持仓明细",
+      quote: "\"Good morning. $BTC took out my aggressive 10x long, and I triggered back into another 10x long precisely at 76.2K, as outlined in my image and plan. I entered the original aggressive 10x long at 82.9K with smaller margin and less risk... After the 8.5% drop, maintenance margin, fees, and the time the position had been open all factored in. That took out my first entry, but my second entry was triggered. ... There have been no changes to my larger 62.6K long, my spot position from around 65K, or the swing long I entered previously that captured the move to 87K before round-tripping. I've also re-entered the 10x long. ... So, I'm currently in 3 longs, with the rest in spot. ... Current positions: 62.6K long / 76.2K swing long (entered before 87K) / 10x re-entry at 76.2K (entered on this initial sweep) / More spot: 77.5K\"（<b>早上好。$BTC 打掉了我的激进十倍多单</b>，<b>我按图和计划，在 76.2K 精确补回了一笔十倍多单</b>。第一笔 82.9K 的十倍单我当时<b>用的是更小的保证金、更低的风险</b>……<b>8.5% 的跌幅之后，维持保证金、手续费、以及持仓时间一起算账</b>，<b>把第一笔打掉了，但第二笔被触发</b>。……我的 <b>62.6K 大单、65K 附近的现货、以及此前那笔吃到 87K 又原路跌回的 swing 多单，全都没动</b>。十倍单也补回来了。……<b>我现在是 3 笔多单，其余全是现货</b>。……当前持仓：<b>62.6K 多 / 76.2K swing 多（87K 之前进的）/ 76.2K 十倍补单（首次扫针时进）/ 另有 77.5K 的现货加仓</b>。）",
+      read: "改动的是<b>「74K 才爆仓」这条自述</b>。10-30 他说 82.8K 的十倍多单「<b>将在 74K 被打掉</b>」，10-31 又把 74K 写成「买现货」的位置；<b>实际被打掉在 11-04 11:00 那根 75,736 的低点，比他自报的爆仓位高约 1.7K</b>——差额正好是他自己列的「维持保证金 + 手续费 + 持仓时间」三项。<b>这是本库第一次拿到他爆仓价的可核对偏差</b>，意味着他此前所有「74K 才出事」的表述都偏乐观。第二层：<b>76.2K 的补仓被事后装进「as outlined in my image and plan」</b>，但 11-04 14:22 那条视频没有任何可核文字，<b>全库唯一带 76.2K 的文字就是本条</b>——「我早就说了」无法独立验证。⚠️分析：① 结构首次完整公开：62.6K 多（底仓）、76.2K swing 多、76.2K 十倍补单、77.5K 现货加仓，<b>四笔全多、零对冲</b>；② <b>「more spot at 77.5K」比 11-04 低点高 2.3%</b>，所谓「这波下跌我又买了现货」并不在最低处；③ 与 11-01「fully exposed、均价 65K」并读，现货均价口径至少第三次摆动（65K → 67–68K → 65K 起），<b>自述持仓仍不可靠</b>；④ 本条发布时价格已在 79.3K 并正拉向 81.2K——<b>是浮盈后的持仓汇报，不是进场信号</b>。失效条件：① <b>价格回落跌破 76.2K → 这笔补回的十倍单同样爆仓，「76.2K 精确抄底」变成双杀</b>；② 若跌破 75.7K（11-04 低点），「扫针即底」的整个 11-04 叙事失效；③ 若后续他改口称 62.6K 底仓也已了结，本条持仓表作废。",
+      tags: ["仓位建议", "战绩复盘", "关键价位"],
+      src: "X 原文 @KillaXBT · 2117997608945754531"
+    },
+    {
+      date: "2026-11-04",
+      title: "重发「扫月线低点就 bid」：扫针已过十小时才发出",
+      quote: "\"If we sweep the current monthly low, you simply bid. $BTC\"（<b>如果扫掉当前月线低点，你只管买</b>。）——纯文字，无配图，无具体价位。与他 11-01 月线收盘前那条指令<b>几乎逐字相同</b>。",
+      read: "改动的是<b>这条指令的时间属性</b>，不是内容。11-01 他在月线收盘前把「扫月线低点 76,326 就买」定成事前指令；本条把同一句话再发一次，但<b>发布时间是 11-04 21:00，而扫针发生在同日 11:00（低点 75,736），此时价格已从低点反弹约 +4.8% 回到 78.3K</b>——<b>这是一条在结果出来之后才发出的「事前指令」</b>。⚠️分析：① 内容零新增，唯一新增的是<b>时间戳带来的性质变化</b>：同一句话从「预注册」变成「复盘式复述」，效果是让跟随者以为他提前讲过；② 与 2 小时后（23:09）的持仓汇报连读，构成一条完整的<b>「我喊了—我做了—我赚了」闭环</b>，但三个环节的真实顺序是<b>行情先走、喊话后到</b>；③ 本库据此下调他「提前给条件」类条目的可信权重：<b>以后凡是他重发旧指令，一律先按事后追认处理</b>。失效条件：① 若他下次在扫针<b>之前</b>（价格仍在低点上方 1% 内）发出同类指令并留下时间戳，本条的可疑性可部分洗清；② 若 76,326 再度被扫而他不再重复此句，说明这句只是行情配合时的口号；③ 本条无价位、无仓位，<b>不计为交易判断</b>。",
+      tags: ["仓位建议", "存疑"],
+      src: "X 原文 @KillaXBT · 2117965293175640569"
+    },
     {
       date: "2026-11-04",
       title: "改发视频讲「当前看法」：底部论后首次只在视频里给观点",
