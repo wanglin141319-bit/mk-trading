@@ -23,13 +23,85 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-05T15:05:00+08:00",
+  lastScan: "2026-11-06T15:05:00+08:00",
   // 累计收录条数
-  total: 245,
+  total: 254,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-06",
+      title: "长文宣告熊市结束：结构已筑底，押上真金白银",
+      quote: "「The BTC bottom is already in, and what we're likely seeing now is the market derisking as legacy markets fall off a cliff, with crypto simply following the correlation. ... Structurally speaking, we've formed the traditional corrective bottom. Seasonality wise, we haven't formed the traditional cycle bottom. ... I'm implying that, structurally, the market has bottomed and the bear market is over. So either you have more faith in market structure or in seasonality. I have more faith in structure because seasonality can change. I find it extremely hard to believe BTC will form a new low in Q4. ... If I am wrong, well then I lose alot of money.」（<b>BTC 的底部已经在了</b>，<b>现在看到的很可能是传统市场崩跌带动的市场去风险，加密只是跟随相关性</b>。<b>结构上，我们已经形成了典型的调整型底部</b>；<b>季节上，我们没有形成典型的周期底部</b>。<b>我的意思是：结构上市场已经见底，熊市结束了</b>。<b>所以你要么更信市场结构，要么更信季节性</b>；<b>我更信结构，因为季节性会变</b>。<b>我极难相信 BTC 会在 Q4 创新低</b>。<b>如果我错了，我会亏很多钱</b>。）——配图讲「每个周期 BTC 都形成 3 个重要低点」。文中他还写：<b>BTC 距高点已跌 13.5%</b>，<b>2023 那次的底部与今年几乎一模一样，第二、第三个主低点靠得很近、都由扫针形成</b>。",
+      read: "改动的是 <b>11-05 02:59 那条分层表述里的条件</b>。当时他说 HTF 确定多、LTF 要看能否翻上 78.8–80.1K 的区间阻力；本条<b>把条件整个撤掉</b>，直接给完成式结论「熊市结束」。更重要的是，他第一次<b>把「Q4 季节性见底」当成反方论点正面拆解</b>，还把它和自己 11-05 04:27 那条「月线开盘 5/5 全涨」摆在同一套叙事里——<b>季节性有用时拿来当证据，碍事时用「seasonality can change」推开</b>。这是把可验收的价格判断，换成了不可验收的信仰选择题。<b>「if I am wrong I lose a lot of money」是本库第一次出现他把结论和自身损益直接绑定</b>，属于提高承诺成本、降低可撤回性。⚠️分析：① 他自己说距高点 -13.5%，但库里 10-21 的高点是 <b>84,898</b>，按 78K 算只有 -8%，13.5% 对应的高点约 90K，<b>与他引用过的高点对不上，回撤幅度存疑</b>；② 「每个周期 3 个重要低点」是图形归纳，样本 3 个周期，无统计意义；③ 本条发布前六小时他刚承认「we're back in the chop」（11-05 23:15），<b>价格还在震，结论先升格</b>。失效条件：① <b>Q4 内跌破 75,736（11-04 实际低点）并创出新低 → 「底部已成立」当场作废</b>，且按他自己的话要「亏很多钱」；② 若他随后把「熊市结束」回收成「结构性底部」并重新引入对冲，本条降级为口号；③ 若 12 月仍在 76–82K 横盘，本条虽未被价格否证，但等于零信息。",
+      tags: ["周期判断", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2118478688362922018"
+    },
+    {
+      date: "2026-11-06",
+      title: "把当前扫针类比 25K–30K：同一种猎杀换个周期",
+      quote: "「We saw the same hunts back in the 25K-30K range. Same shit, different cycle...」（<b>我们在 25K–30K 那一段见过一模一样的猎杀</b>。<b>同样的破事，换了个周期</b>。）——纯文字，无配图，无价位。",
+      read: "改动的是 <b>对 11-04 那根 75,736 扫针的定性</b>。11-05 04:27 他给的解释是「月线开盘前我们一直在砸，被反手」；本条换成「猎人扫止损」，并拿 25K–30K 那段历史行情当先例。这一步的用处是：<b>如果扫针只是猎杀，它就不构成趋势证据，多头结构不需要被修正</b>——正好给 11-05 02:59 那条「未翻箱体」的隐忧找了个免责说法。⚠️分析：① 25K–30K 时期他本人并未以多头身份持仓，现在回看把它定义成「猎杀」，属<b>事后重述</b>；② 无价位、无新条件，纯类比，不可验收；③ 与「熊市结束」同日发出，功能是给结论补情绪支撑，不是补证据。失效条件：<b>跌破 75,736 且不快速收回 → 「猎杀」定性变成「破位」</b>，本条与其底部论一起失效。",
+      tags: ["周期判断", "存疑"],
+      src: "X 原文 @KillaXBT · 2118474032206979266"
+    },
+    {
+      date: "2026-11-06",
+      title: "重申 126K：先把「拿住要熬的苦」写成剧本",
+      quote: "「The amount of shit you'll have to sit through before BTC gets to 126K. The chop, the fear, the constant it's over posts, watching your position round trip and questioning whether you're completely wrong. Then, when BTC finally reaches 126K, people will call you lucky.」（<b>在 BTC 到 126K 之前，你要熬过多少破事</b>：<b>震荡、恐惧、满屏的「结束了」</b>、<b>看着自己的仓位坐电梯回到原点、怀疑自己是不是完全错了</b>。<b>等 BTC 真到 126K，人们只会说你运气好</b>。）",
+      read: "改动的是 <b>目标位的有效期口径</b>。126K 不是新数字——10-27 他就给过三档目标（100K/160 天、<b>126K/280 天</b>、160K/500 天）；本条没改数字，但<b>把「到达前必须先经历震荡、恐惧、浮盈回吐」写成了前置条件</b>。结合 11-05 02:59 他给的 87–88K 短期目标与本条，可以读出：<b>短期目标暂时不提，改用 280 天口径的长目标来稳住持仓叙事</b>。⚠️分析：① <b>把「可能坐电梯」提前写进剧本，等于为后续回撤预置解释</b>，降低被追责概率；② 126K 仍无时间点更新，<b>不构成新信息</b>；③ 与「熊市结束」组合，构成典型的持仓者自我叙事。失效条件：① 若他后续把近期目标从 126K 下调（回到 100K 以下），说明长目标被放弃；② <b>若 11 月内跌破 75.7K 而他不再提 126K，本条沦为口号</b>。",
+      tags: ["目标价", "周期判断"],
+      src: "X 原文 @KillaXBT · 2118392251634036757"
+    },
+    {
+      date: "2026-11-06",
+      title: "用纳指 −6% 解释回撤：定性为「牛市前最后一洗」",
+      quote: "「I'm still swing long. I'm still holding all of my spot, and I'm still in my full sized long from 62.6K... What we're seeing in legacy markets looks like the typical Q4 derisking after midterms. The difference this time is that BTC is substantially higher. As I write this, the Nasdaq is down 6% on the day and the S&P 500 is down 3.4%. Nasdaq is 14% off its highs, while the S&P 500 is down 6%. In my view, this is the final shakeout before we transition into the true bull phase.」（<b>我仍然是 swing 多</b>，<b>现货一股没卖</b>，<b>62.6K 的满仓多单还在</b>……<b>传统市场现在这个样子，像极了中期选举后典型的 Q4 去风险</b>。<b>这次的区别是 BTC 的位置显著更高</b>。<b>写这条时纳指当日 −6%、标普 −3.4%</b>，<b>纳指距高点 −14%、标普 −6%</b>。<b>在我看来，这是进入真正主升段之前的最后一次洗盘</b>。）",
+      read: "改动的是 <b>下跌的归因来源</b>。此前他把回撤说成「受控抛售」（11-03）、「月线开盘前的砸盘」（11-05 04:27），<b>本条第一次给出可核对的外部读数</b>（纳指当日 −6%、标普 −3.4%、纳指距高点 −14%、标普 −6%），并把性质定为「中期选举后 Q4 常规去风险」。<b>本库第一次出现 final shakeout（最后一洗）这个措辞</b>，含义很明确：<b>这轮下跌不是趋势反转，是牛市前最后一次洗盘</b>。⚠️分析：① 「typical Q4 derisking after midterms」只有本届一个样本，<b>称不上 typical</b>；② 他强调「BTC is substantially higher」，但相对位置更高恰恰意味着下跌空间更大，<b>逻辑上不构成支撑</b>；③ 持仓表述与 11-04 15:09 完全一致（62.6K 多 / swing 多 / 现货全留），<b>但这轮他没再提 76.2K 那笔十倍补单——十倍单还在不在，本条回避了</b>。失效条件：① 若纳指继续下杀并带崩 BTC 跌破 75.7K，<b>final shakeout 变成 first leg down</b>；② 若他后续承认十倍单已被打掉，「计划未变」的说法作废。",
+      tags: ["宏观驱动", "仓位建议", "失效条件"],
+      src: "X 原文 @KillaXBT · 2118375157630734524"
+    },
+    {
+      date: "2026-11-05",
+      title: "六字表态仍多，并把看空方定义成「羊群」",
+      quote: "「I am still long. Fuck the herd.」（<b>我仍然做多</b>。<b>去他的羊群</b>。）——纯文字，无配图，无价位。",
+      read: "改动的是 <b>沟通方式，不是判断</b>。本条没有任何价位与条件，功能是对同日 23:15「we're back in the chop」的情绪对冲。<b>把「羊群」当对手盘，意味着他已把「市场看空」本身当成反向指标</b>——这与 11-03「指认上升楔形 + 周月线阻力、却嘲讽看空者」是同一套防御性叙事。⚠️分析：① 本条无可核对内容，<b>只能算情绪标签，不能计入观点变更</b>；② 它出现在「承认重回震荡」之后三分钟，<b>顺序上是先认错、立刻用口号盖过去</b>。失效条件：<b>无价位可验</b>；若跌破 75.7K 而他仍以「fuck the herd」回应，说明已放弃条件管理。",
+      tags: ["情绪指标", "存疑"],
+      src: "X 原文 @KillaXBT · 2118362446469492966"
+    },
+    {
+      date: "2026-11-05",
+      title: "承认重回震荡：BOS 回踩失败，整段涨幅被吞",
+      quote: "「That was a brutal rejection, almost the entire move up got retraced after the retest of the prior BOS. Looks like we're back in the chop. Unfortunately, it doesn't seem like they're going to make the next leg higher an easy one to catch.」（<b>这是一次残暴的拒绝</b>，<b>回踩前一个 BOS 之后，几乎整段涨幅都被吞回去了</b>。<b>看起来我们又回到了震荡里</b>。<b>可惜他们不打算让下一段上涨那么好抓</b>。）",
+      read: "改动的是 <b>11-05 02:59 亲手立下的验收条件</b>。他当时说：翻上此前跌穿的区间阻力（78.8–80.1K）就会触发向 87–88K 的空头挤压。本条承认价格在回踩前 BOS 后被打回、<b>几乎整段涨幅被吞</b>——<b>按他自己的标准，翻箱体没成立，行情回到震荡</b>。这是本库第一次看到他<b>主动承认短期结构失败</b>（此前一律用「受控抛售」「洗盘」定性）。⚠️分析：① 本条 23:15 发布，<b>早于 00:09 的「最后一洗」和 07:00 的「熊市结束」，时间顺序是「先认震荡、再升格结论」</b>；② 「they」指做市商/主力，仍是不可验证的对手盘叙事；③ <b>87–88K 的短期目标事实上被推迟，但后续推文里没有明确撤回</b>。失效条件：① 若次日价格直接收复 80.1K 上方，「back in the chop」只是噪音；② 若持续在 78K 下方磨，<b>87–88K 目标默认延期</b>。",
+      tags: ["关键价位", "趋势切换"],
+      src: "X 原文 @KillaXBT · 2118361645210825007"
+    },
+    {
+      date: "2026-11-05",
+      title: "复盘油价见顶→BTC 见底：+5% 已兑现，样本仅 1",
+      quote: "「OIL dropping marked BTC's local bottom. Following this confluence, BTC rallied 5% shortly afterwards. It was a useful signal to watch for short term relief.」（<b>油价下跌标记了 BTC 的局部底</b>。<b>这个共振之后，BTC 随即反弹了 5%</b>。<b>这是一个用来观察短期喘息的可用信号</b>。）",
+      read: "改动的是 <b>宏观相关性证据链的构成</b>。10-31 他发过「每次油价见顶，BTC 随后见底，上次发这个相关性是在 62K」（配图）；本条是对那次判断的<b>事后验证</b>——油价下跌标记局部底、随后 +5%。这是近期少有的<b>「先给信号、后被价格兑现」的闭环</b>，也是他这套宏观相关性目前唯一可核对的样本。⚠️分析：① <b>样本 1</b>，且「油价下跌」与「BTC 见底」的时点重合度未量化；② 只验证局部底，<b>不验证趋势</b>；③ 他把这条当作 76.2K 补单的旁证，但补单发生在 11-04 15:09、<b>早于本条发布，顺序上是先开枪后画靶</b>。失效条件：<b>油价再度拐头向上而 BTC 同步新低，该相关性破产</b>。",
+      tags: ["宏观驱动", "战绩复盘"],
+      src: "X 原文 @KillaXBT · 2118352884429369778"
+    },
+    {
+      date: "2026-11-05",
+      title: "USDT.D 0.786 被拒：低点或已成，仍留 77–78K 缺口",
+      quote: "「Things are starting to look promising for BTC based on USDT.D. It perfectly retested the 0.786 level before having a strong rejection. BTC could reject towards 77–78K based on the fractal, but USDT.D suggests the low may already be in.」（<b>从 USDT.D 看，BTC 的情况开始有点起色</b>。<b>它精准回踩 0.786 之后被强力拒绝</b>。<b>按分形，BTC 有可能回落测试 77–78K</b>，<b>但 USDT.D 暗示低点或许已经在了</b>。）——配图 USDT.D 走势。",
+      read: "改动的是 <b>下行空间的表述</b>。11-04 01:14 他说「下行有限、上行无限」，<b>本条第一次给出具体回落目标区 77–78K</b>，等于承认 11-04 低点 75,736 之上这段还可能再走一遍；但结论同时是「低点或许已在」——<b>条件与结论相互对冲</b>。⚠️分析：① USDT.D（稳定币市值占比）是情绪与资金偏好的<b>比值指标，不是链上资金流</b>，不能当链上证据用；② <b>77–78K 与他 76.2K 的十倍补单成本只差 1.5–2%</b>，若真跌到该区，那笔单再度承压；③ 「could」+「may」双重弱化，<b>属于可撤回表述</b>。失效条件：① <b>跌破 77K 且 USDT.D 重新上破 0.786 → 「低点已在」作废</b>；② 若直接收复 80.1K，77–78K 的回踩预告自动失效。",
+      tags: ["关键价位", "目标价", "失效条件"],
+      src: "X 原文 @KillaXBT · 2118318763355345237"
+    },
+    {
+      date: "2026-11-05",
+      title: "「傻多好过聪明空」：把方法论定成只做多",
+      quote: "「I have said this numerous times before. It is far easier being a dumb bull than a smart bear in a trending market.」（<b>这话我说过很多次</b>：<b>在趋势市里，当一个傻多头，远比当一个聪明空头容易</b>。）",
+      read: "改动的是 <b>他的自我定位</b>。10-30 至 11-02 他多次强调自己「不是死多」「会看结构」，<b>本条直接把方法论写成「趋势市里装傻做多 > 聪明做空」，等于公开关闭做空方向</b>。与 11-04 18:17「你不该在牛市里做空 BTC」是同一口号的第二次复述。⚠️分析：① 这是一条<b>不可证伪的方法论</b>：赚了是多头正确，亏了是「熬」，把结果责任移出判断体系；② 它解释了为什么他从 10-21 到现在<b>零对冲</b>——不是观点，是纪律设定。失效条件：① 若他在震荡里重新开空或建议对冲，本条自我否证；② <b>若价格进入下跌趋势而他仍坚持只多，这套方法论就是本轮亏损的直接来源</b>。",
+      tags: ["仓位建议", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2118305287148818895"
+    },
     {
       date: "2026-11-05",
       title: "月线开盘 5/5 全涨：把本轮反弹记成季节性第 5 次",
