@@ -23,13 +23,101 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-06T15:05:00+08:00",
+  lastScan: "2026-11-08T15:20:00+08:00",
   // 累计收录条数
-  total: 254,
+  total: 265,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-08",
+      title: "用 2018 类比兜底：这轮只是提前一个月",
+      quote: "「2018 marked 1 month sooner by accident, its nov. Same principle applies. Bullish」（2018 年那次只是<b>碰巧提前了一个月</b>；现在就是 11 月。<b>同样的原理适用</b>。<b>看多</b>。）",
+      read: "改动的是 <b>11-06 07:00 那条「结构底已成立」的证据链</b>——那条靠的是「每个周期 3 个重要低点 + 传统调整型底部」的价格结构，本条换成了<b>跨周期时间对齐</b>：用 2018 年的月份位置给自己找台阶。问题是它<b>把可验证的东西换成了不可验证的东西</b>——「提前一个月」既没说清对齐的是 2018 年的哪一月，也没给价位，<b>任何走势都能被套进「同样的原理」</b>。⚠️分析：本库已有三次同类操作（10-28「枢轴已触发」、11-03「底部已成立」、11-06「熊市结束」），每次结论升级后都没有新增证据，这次连图都没配。<b>失效条件</b>：① 若 11 月内跌破 <b>74,888</b>（11-06 实际低点），「同样的原理」当场作废；② 本条无点位无时间轴，<b>本质上不可证伪</b>，建议只当情绪读数（当时他刚被套、连发两条看多），不计入判断权重。",
+      tags: ["周期判断", "存疑"],
+      src: "X 原文 @KillaXBT · 2119171604131488209"
+    },
+    {
+      date: "2026-11-08",
+      title: "「这次不会不一样」：嘲讽看空者用老剧本",
+      quote: "「I'm sure this time won't be any \"different\"... $BTC」（我确信这次不会有任何「不一样」……$BTC）——配一张 BTC 图表。",
+      read: "这条是<b>把 11-07 03:07 自己划的 50K 底线悄悄收回</b>。24 小时前他刚说「跌破这两块区域就直接去 50K」，现在改口成「这次不会不一样」，等于宣布<b>看空剧本不成立</b>，但没有给出任何新的价格或数据依据，只是语气反转。⚠️分析：<b>真正被改动的是风险披露的完整性</b>——他保留了「看多」的结论，删掉了「跌破就去 50K」的场景，读者只看到半套剧本。<b>失效条件</b>：① 若价格先跌破 74,888 再创新低，则「这次不会不一样」与「50K」两条同时生效，他的公信力缺口最大；② 若 11-09（下周一）高点被翻上并守住，本条算他对；③ 单看本条无法判断他是真有依据还是单纯不服，<b>必须与 11-08 01:58 那条合并读</b>。",
+      tags: ["趋势切换", "情绪指标"],
+      src: "X 原文 @KillaXBT · 2119170249237082603"
+    },
+    {
+      date: "2026-11-08",
+      title: "周线 HH 后不创新低，若破新低就销号",
+      quote: "「$BTC has literally never made a new low after forming a weekly HH. Of course, that's based on BTC having already impulsed from the bottom. So, based on history, this next low should be a HL. BTC is already down 14%, and HTF market structure has shifted, so it's likely we're close to forming one. If we somehow make a new LL after forming a weekly HH, I'll probably deactivate my account.」（BTC <b>在形成周线更高高点之后，从来没有创过新低</b>。当然，这建立在 BTC 已经从底部启动的前提下。<b>所以按历史，这次的低点应该是更高低点（HL）</b>。<b>BTC 已经跌了 14%</b>，且 <b>HTF 结构已经转变</b>，所以我们很可能正在接近形成这个 HL。<b>如果我们真的在周线 HH 之后创出新低，我大概会注销账号。</b>）",
+      read: "这是他<b>第一次把周期结论和人格担保绑在一起</b>（此前最重的是 11-06「if I am wrong I lose a lot of money」，那是钱，这是账号），改动的是 11-06 那条只能靠「结构 vs 季节性」信仰二选一的表述——现在至少给了一个<b>可证伪的结构命门：周线新低</b>。同时他把回调幅度口径写成 <b>-14%</b>，按 Binance 日线 87,220（10-02 高点）→ 74,888（11-06 低点）算确实是 <b>-14.1%</b>，<b>这个数字对得上</b>，是该条可信度最高的部分。⚠️分析：① 「周线 HH 后从不创新低」是 3 个周期样本的归纳，样本量不足，且他自己补了前提「这建立在已经从底部启动的前提下」——<b>前提本身就是要证明的结论，属循环论证</b>；② 「销号」是不可执行的惩罚（没人能强制），本质是加强语气而非承担责任。<b>失效条件</b>：① <b>周线（周日 08:00 GMT+8 收）收在 74,888 下方</b> → 本条与「底部已成立」同时作废，且他必须面对自己说的「销号」；② 若他把「新低」重新定义成「周线收盘新低」还是「插针新低」都可解释，注意后续是否偷偷改口径。",
+      tags: ["周期判断", "失效条件", "关键价位"],
+      src: "X 原文 @KillaXBT · 2119127419563241612"
+    },
+    {
+      date: "2026-11-07",
+      title: "给出下周硬验收：周一高点必须被翻上并守住",
+      quote: "「Monday has been a shitty day for $BTC. Almost every upside sweep on Monday has been retraced over the past 2 months. We sweep local highs, then reject back down. If we're genuinely going higher next week, ideally Monday's high gets flipped and holds for the rest of the week.」（周一对比特币来说一直是烂日子。<b>过去两个月，几乎每一次周一的上冲扫高都被回吐了</b>。我们扫掉局部高点，然后被压回去。<b>如果下周真的要往上走，理想情况是周一的高点被翻上去，并在本周剩下的时间守住。</b>）",
+      read: "这是把 11-02 21:54 那条「近两周每周一必成当周高点」的<b>观察，升级成一条可验收的条件</b>——从描述规律变成「翻不上就是假的」。这是他本月少见的<b>给多方设门槛</b>而不是只给方向，实操价值高于同期所有喊多推文。⚠️分析：① 他把「周一上冲被回吐」当成规律，但过去两周样本只有 2 个，且 11-02 那一周本身是他自己看多最凶的一周；② 条件写得含糊——「周一的高点」是哪个时区的高点、翻上多少算翻上都没定，<b>事后极易被解释成达标</b>。<b>失效条件</b>：① 若 11-09 周一高点在周三前未被收盘价站上，「下周往上走」按他自己的标准即为伪，届时看他是否再次回避；② 反之若翻上并守住，这是他近期唯一能自证的判断，可作为其信号质量的样本。",
+      tags: ["关键价位", "周期判断"],
+      src: "X 原文 @KillaXBT · 2119066842689880156"
+    },
+    {
+      date: "2026-11-07",
+      title: "把下跌全归因为流动性猎杀，拒绝消息驱动",
+      quote: "「The market moves to hunt liquidity. There's quite literally no other reason for it. When BTC drops, 95% of the time it's simply cleansing the market. Don't mistake the timing of news for the reason BTC moved. BTC moves up and down to seek liquidity, not because of the headlines. ... Stop trying to justify moves that are already explained by liquidity.」（<b>市场是为猎杀流动性而动的，几乎没有别的原因</b>。BTC 下跌时，<b>95% 的情况只是在清洗市场</b>。<b>不要把新闻发生的时点误当成 BTC 波动的原因</b>。BTC 上下波动是为了寻找流动性，不是因为头条。<b>别再为「流动性已经能解释的走势」硬找理由。</b>）",
+      read: "这是方法论条目，作用是<b>预先豁免</b>：他把「下跌」的解释权整体收进「流动性猎杀」，等于给此前 10-30 那份<b>十项利空清单（Ledger 被盗 / MSTR 退市 / AI 分流 / 债券收益率 / DXY / 油价 / CPI）全部作废</b>——利空不再是理由，只是时点。改动的是 10-30「抗跌=牛市判据」那套宏观框架，现在宏观被请出局。⚠️分析：这是<b>不可证伪的万能解释</b>：涨是猎杀空头，跌是清洗多头，任何走势都被吞掉，代价是他的判断从此不再包含可被价格否证的信息。对本库的意义是<b>降权</b>——凡此后以「猎杀流动性」解释下跌的推文，都不再算新信息。<b>失效条件</b>：① 若他某天开始重新引用宏观（CPI/FOMC/油价）来解释走势，说明这套框架他自己也没守住；② 本条无价格含义，不构成任何点位依据。",
+      tags: ["存疑", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2119041173511635290"
+    },
+    {
+      date: "2026-11-07",
+      title: "称现货买盘是 60K 以来最强，只有视频无数据",
+      quote: "「The most spot buying we have seen since $BTC tested the 60Ks. In hindsight, ⚡️」（<b>这是自 BTC 测试 60K 一带以来，我们见过的最强现货买盘</b>。事后看……⚡️）——配一段视频，无文字数据。",
+      read: "这是他<b>第一次明确给出「现货买盘」这一维度的强弱判断</b>（此前谈现货只谈自己的仓位成本，不谈市场买盘），方向上是在为「底部已成立」补一条资金面证据。⚠️分析：<b>证据不可核</b>——没有交易所名、没有指标名（CVD？现货/合约比？ETF 净流入？），只给一段视频；本库对不可核的图表结论一律降权（参照 11-02「Déjà vu」分形图）。同时要注意时序：他发这条时价格 <b>75.8K</b>，正处在 11-05 以来低位横盘，<b>「最强现货买盘」与「价格不涨」并存</b>，本身就是矛盾信号。<b>失效条件</b>：① 若后续 3–5 日价格继续下台阶（跌破 74,888），「现货买盘最强」即为误判；② 若他之后再提「现货买盘」，需看是否给出可核指标，否则继续按存疑处理。",
+      tags: ["链上数据", "存疑"],
+      src: "X 原文 @KillaXBT · 2119017524977348641"
+    },
+    {
+      date: "2026-11-07",
+      title: "目标越喊越低：87K 求之不得的 80K 如今无人要",
+      quote: "「Funny how the targets just naturally get lower and lower. If you'd been told at 87K that you'd get the chance to buy $BTC below 80K, you'd have clicked buy without hesitation. Now that we're here, literally nobody is interested. ... 6 months from now, people will look back an realize just how much of a generational entry this was.」（<b>有意思的是，目标价就这么自然地越喊越低</b>。如果在 87K 的时候有人告诉你，你能在 80K 以下买到 BTC，你会毫不犹豫点买入。<b>现在我们就在这里，却几乎没人在意</b>。……<b>6 个月后回头看，人们才会意识到这是多大的一次「世代级入场机会」。</b>）——同时引用了一条媒体标题：「BREAKING: Our traders forecast Bitcoin $BTC will crash to $70,000 this month」。",
+      read: "改动的是 <b>11-03「bottom is in」之后的叙事层级</b>——从「底部成立」升级为「<b>generational entry（世代级入场）</b>」，这是本库迄今<b>最高级别的看多措辞</b>。更关键的是<b>他第一次公开承认「目标价在下移」这个现象本身</b>（此前都是别人指出、他回避），但立刻把它解释成<b>群体心理问题</b>（大家说要在某处买，真到了就继续往下等），而不是自己判断有误。⚠️分析：① 他引用的 70K 崩盘预测被他当反向指标用，等于把「别人更空」当成自己更对的理由；② 「6 个月后」是<b>无法当期验收</b>的时间口径，与 11-06「Q4 不创新低」相比是明显的往后退；③ 说服对象从「读者该买」变成「读者会后悔」，属情绪施压。<b>失效条件</b>：① 若 6 个月内（约 2027-05）BTC 未显著高于当前 75.8K，「世代级入场」作废；② 近期硬约束仍是 74,888，跌破则本条降格为被套后的自我安慰。",
+      tags: ["目标价", "情绪指标", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2118810798214496637"
+    },
+    {
+      date: "2026-11-07",
+      title: "首次划 50K 底线：跌破这两块区域直接去 50K",
+      quote: "「We really don't want to see $BTC lose either of these two areas. If my thesis is correct & the bottom is truly in, you'd expect these levels to hold. If we start breaking below... we are going directly to 50K. We're at some major zones now on the HTF.」（<b>我们真的不希望 BTC 丢掉这两块区域中的任何一块</b>。<b>如果我的论点正确、底部真的已经成立，你应该预期这些位置守住</b>。<b>一旦开始往下破……我们就直接去 50K</b>。我们现价就在 HTF 的几个重要区域上。）",
+      read: "这是<b>本库第一次出现 50K 这个下行终点</b>，也是他第一次给出「底部论作废后」的具体落点——比 11-01「最坏再跌 5%（≈74,100）」低了 <b>约 32%</b>。改动的是 10-30「不会跌 20%（按 84,898 折算 67.9K）」那条下限：<b>他用 50K 替掉了 67.9K，风险敞口被自己放大了近一倍</b>。⚠️分析：① 他没有写出「这两块区域」的具体价位，配图刻度不可辨（本库惯例不代填），所以这条<b>看着他给条件，实际没给可核数字</b>；② 50K 与他自己的 62.6K 成本、74K 爆仓位形成鲜明对比——若真到 50K，他整条多头仓位体系全灭，说明他把「作废」写得很重、但没写对策。<b>失效条件</b>：① 若价格在未跌破所谓两块区域前就反弹，本条永不触发；② 若跌破后并未直奔 50K（例如在 70K 附近止跌），则「直接去 50K」为过度外推；③ 这与他 11-07 05:00「世代级入场」同日发布，<b>两条并列即是他当天的完整剧本：要么这里就是底，要么腰斩</b>。",
+      tags: ["失效条件", "关键价位", "周期判断"],
+      src: "X 原文 @KillaXBT · 2118782452324028873"
+    },
+    {
+      date: "2026-11-06",
+      title: "重提血溅街头就买，自引满仓满风险",
+      quote: "「Buy when there's blood in the streets. Even if its your own. $BTC」（<b>血流成河时就买入，哪怕那血是你自己的</b>）——并引用自己的一条旧帖：「I am all in on $BTC. Maximum risk. Maximum exposure. Maximum uncertainty. Buy when there's blood in the streets, even if the blood is your own.」（<b>我全仓 BTC。最大风险、最大敞口、最大不确定性。</b>）",
+      read: "这条本身没有新价格信息，但把<b>仓位口径摆到了最极端</b>：此前他的自我描述是「still swing long / still holding spot」（11-06 置顶长文），此处升级为 <b>all in + maximum risk + maximum exposure</b>。改动的是 10-31「加仓工具从十倍杠杆换成现货分批」那套<b>降杠杆叙事</b>——工具可以换，但总敞口被他明确说是「最大」。⚠️分析：要区分<b>自引旧帖</b>和<b>新表态</b>——引用的那段是对旧文的复述，属事后追认，不是新决策（本库 11-05 已下调「事后追认」类条目权重）。真正的新信息是<b>他在 74,888 已经出现、浮亏扩大的时点，仍选择强调满仓满风险</b>，而不是提高现金比例。<b>失效条件</b>：① 若他在 74K 附近不但没加仓、反而减仓或转向对冲，「maximum exposure」为话术；② 若跌破 74,888 后他仍未披露任何减仓，则「all in」是持续状态，可作为其后续「小仓位」说法的对照证据。",
+      tags: ["仓位建议", "情绪指标"],
+      src: "X 原文 @KillaXBT · 2118708290083590235"
+    },
+    {
+      date: "2026-11-06",
+      title: "长文认错：76.2K 续仓已回吐，该对冲没对冲",
+      quote: "「I managed to catch this entire 50% move to the upside from 62–65K. ... I've currently round tripped the continuation long from 76.2K, which I entered before we pushed to 87K. I'm not going to make excuses, but it was poor from me not to hedge that continuation long. It would have been much smarter to hedge that particular position. ... My plans during a bull trend are very simple, add exposure on dips, and don't hedge unless it's absolutely necessary. The area I thought looked best was 95K. We didn't get there, and it's still the area I'm paying attention to. ... We're in a bull market and have retraced about 35-40% of the move up.」（我吃到了 62–65K 起这一整段 <b>50% 的上涨</b>。……<b>我目前已经把 76.2K 的续仓多单全部回吐了</b>——那笔是在价格推到 87K 之前建的。<b>我不找借口，没给这笔续仓做对冲是我做得差</b>，对冲那笔会聪明得多。……我在牛市里的计划非常简单：<b>逢跌加仓，除非绝对必要否则不对冲</b>。<b>我认为最适合对冲的位置是 95K，我们没到那里，它仍是我在关注的位置。</b>……我们在牛市里，<b>已经回撤了这波上涨的约 35–40%</b>。）",
+      read: "这是本库第一次他<b>点名某一笔具体仓位「已经回吐（round tripped）」并承认「没对冲是失误」</b>——比 10-31「my FOMC pivot didn't work」更具体，因为他给了仓位、给了价位、给了动作评价。同时这条<b>改动了减仓阈值</b>：此前对冲/减仓的参照是 87–88K（11-03 给的磁吸区上限），现在他明说<b>真正想动手的位置是 95K</b>，等于把兑现目标上移、把「什么时候撤」推到更远。⚠️分析：① <b>回撤幅度被他低估</b>——他写 35–40%，但按 62.6K→87,220 这段上涨算，跌到 74,888 已回吐约 <b>50%</b>，写出 35–40% 更像是美化；② 「不对冲」被他用「经验」正当化，却又承认这次该对冲，<b>规则与案例自相矛盾</b>；③ 「95K 才是我关注的对冲位」很可能是给「为什么现在扛单」找理由。<b>失效条件</b>：① 若价格真的反弹到 95K 而他并未减仓，则「95K 对冲」为话术；② 若在 74,888 下方他仍不对冲且继续满仓，则这套「只加不减」规则的可信度归零；③ 「62–65K 起吃满 50% 上涨」不可核（无成交记录），仅作自述。",
+      tags: ["仓位建议", "战绩复盘", "目标价"],
+      src: "X 原文 @KillaXBT · 2118673211814457539"
+    },
+    {
+      date: "2026-11-06",
+      title: "USDT.D 仍在下跌趋势，用它给底部做旁证",
+      quote: "「Despite the aggressive hunts on $BTC, USDT.D remains in its downtrend, which puts the bigger picture into perspective. If the bottom is truly in, we shouldn't see USDT.D fill any of the imbalance from its initial move higher (the same move that pushed BTC up). That would give people a re-entry too close to the bottom.」（<b>尽管 BTC 被猛烈猎杀，USDT.D 仍然处在下跌趋势里</b>，这让大图景更清楚。<b>如果底部真的成立，我们就不该看到 USDT.D 回补它最初那波上涨留下的失衡区</b>（就是推着 BTC 上去的那一波）。<b>那会给大家一个太靠近底部的重新入场机会。</b>）",
+      read: "USDT.D 从 10-29 的<b>「作废开关」</b>变成了现在的<b>「看多旁证」</b>——同一指标，此前是「若上破红线则多头剧本失效」，现在是「它还在跌，所以底还在」。改动的是 10-29 那条非价格失效条件的角色定义（判定器 → 支持项）。⚠️分析：<b>这是本库最典型的「指标双用」</b>：一个指标既能作废判断、又能支撑判断，等于随时可解释。他这次给了新的可核条件——<b>USDT.D 若回补那波上涨的失衡区（imbalance），「底部成立」就必须让位</b>，这是他近期<b>少有的明确、可查的非价格条件</b>，值得作为独立监控项。<b>失效条件</b>：① USDT.D 回补失衡区 → 按他自己的话，「底部已成立」不成立；② 他未给出失衡区的具体区间，需自行在 USDT.D 图上定位；③ 若他之后再拿 USDT.D 既当利多见底证据、又当利空作废条件，本条降级为噪音。",
+      tags: ["链上数据", "失效条件"],
+      src: "X 原文 @KillaXBT · 2118649209872171300"
+    },
     {
       date: "2026-11-06",
       title: "长文宣告熊市结束：结构已筑底，押上真金白银",
