@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BTC 合约日报 #81 | 20261109</title><style>
+:root{--bg:#0d0f14;--card:#141720;--card2:#1a1e2b;--border:#252a3a;--accent:#f7931a;--up:#ff4d4f;--down:#26c97f;--text:#e2e8f0;--muted:#7a8299;--muted2:#9ba3bc;}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;font-size:14px;line-height:1.65}
+.wrap{max-width:760px;margin:0 auto;padding:0 0 40px}
+.header{background:linear-gradient(135deg,#1a1e2b,#141720 60%,#1c1424);border-bottom:1px solid var(--border);padding:24px 22px 20px}
+.logo{display:flex;align-items:center;gap:10px;margin-bottom:12px}.logo .ic{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f7931a,#e8c94c);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0d0f14;font-size:17px}
+.logo h1{font-size:17px;font-weight:600}.logo .sub{font-size:11px;color:var(--muted)}
+.priceline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}.priceline .big{font-size:34px;font-weight:700;letter-spacing:-1px}
+.priceline .chg{font-size:16px;font-weight:600;color:#26c97f}.priceline .meta{font-size:12px;color:var(--muted2)}
+.badge{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;border:1px solid var(--border);background:var(--card2);color:var(--muted2);margin-top:8px}
+.badge.ok{color:#26c97f;border-color:#1e5c42;background:#0f2419}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;margin:14px 14px 0;padding:18px}
+.card h2{font-size:15px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.card h2 .bar{width:3px;height:15px;border-radius:2px;background:var(--accent)}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px 8px;text-align:right;border-bottom:1px solid #1d2230}
+th{color:var(--muted);font-weight:500;font-size:11.5px}th:first-child,td:first-child{text-align:left}
+td.tf{font-weight:600;color:var(--accent)}.pos{color:var(--up)}.neg{color:var(--down)}.sm{font-size:11px;color:var(--muted2)}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kv .item{background:var(--card2);border-radius:10px;padding:12px 14px}
+.kv .k{font-size:11.5px;color:var(--muted);margin-bottom:3px}.kv .v{font-size:16px;font-weight:600}
+.levels{display:flex;flex-direction:column;gap:6px}.lvl{display:flex;justify-content:space-between;align-items:center;padding:9px 13px;border-radius:9px;background:var(--card2);font-size:13px}
+.lvl.r{border-left:3px solid var(--up)}.lvl.s{border-left:3px solid var(--down)}.lvl.now{border-left:3px solid var(--accent);background:#1e1a12;font-weight:700}
+.plan{background:linear-gradient(135deg,#1a1e2b,#141720);border:1px solid var(--border);border-radius:14px;margin:14px 14px 0;padding:20px}
+.plan .dir{font-size:22px;font-weight:700;color:#26c97f;display:flex;align-items:center;gap:10px}
+.plan .conf{font-size:11.5px;color:var(--muted2);background:var(--card2);padding:2px 10px;border-radius:20px}
+.plan .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.plan .cell{background:#0f1218;border-radius:10px;padding:12px 14px;border:1px solid #1d2230}
+.plan .cell .k{font-size:11px;color:var(--muted)}.plan .cell .v{font-size:15px;font-weight:600;margin-top:2px}
+.plan .note{margin-top:14px;font-size:12.5px;color:var(--muted2);line-height:1.7}.plan .note b{color:var(--text)}
+ul.sig{list-style:none}ul.sig li{padding:7px 0 7px 20px;position:relative;font-size:13px;color:var(--muted2);border-bottom:1px solid #1a1f2b}
+ul.sig li:before{content:'·';position:absolute;left:6px;color:var(--accent);font-weight:700}ul.sig li:last-child{border-bottom:none}
+.tw{font-size:13px;line-height:1.8;background:#0f1218;border-radius:10px;padding:14px;color:var(--muted2);border:1px solid #1d2230}
+.warn{font-size:12.5px;color:#f5a623;background:#241c0e;border:1px solid #4a3a15;border-radius:10px;padding:12px 14px;line-height:1.7}
+.foot{text-align:center;font-size:11px;color:#4a5165;padding:20px 14px 0;line-height:1.9}svg{display:block;width:100%;height:auto}
+</style></head><body><div class="wrap">
+
+<div class="header">
+  <div class="logo"><div class="ic">₿</div><div><h1>BTC 合约日报 #81</h1>
+  <div class="sub">20261109 · 数据源 Gate.io + alternative.me</div></div></div>
+  <div class="priceline"><span class="big">$75,103</span><span class="chg">▼ -0.92%</span></div>
+  <div class="priceline"><span class="meta">24h 高 $76,200 · 低 $73,550 · 成交 6,436 BTC</span></div>
+  <div class="priceline" style="margin-top:4px"><span class="meta">合约 Mark $75,082 · 指数 $75,108</span></div>
+  <span class="badge ok">✓ 全篇价格同源，偏差 &lt;3%</span>
+  <span class="badge">抓取 09:42 UTC+8</span>
+</div>
+
+<div class="card"><h2><span class="bar"></span>近 30 日走势</h2>
+<svg viewBox="0 0 660 138" preserveAspectRatio="none">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7931a" stop-opacity="0.28"/><stop offset="100%" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs>
+<polyline points="0.0,10.0 22.8,32.2 45.5,16.8 68.3,34.3 91.0,27.7 113.8,35.0 136.6,36.5 159.3,29.3 182.1,31.2 204.8,18.6 227.6,6.0 250.3,37.3 273.1,40.0 295.9,43.5 318.6,52.0 341.4,52.0 364.1,43.3 386.9,38.2 409.7,77.2 432.4,85.0 455.2,82.6 477.9,73.2 500.7,90.8 523.4,83.4 546.2,48.0 569.0,99.7 591.7,102.3 614.5,102.0 637.2,114.0 660.0,111.3" fill="none" stroke="#f7931a" stroke-width="2"/>
+<polygon points="0,120 0.0,10.0 22.8,32.2 45.5,16.8 68.3,34.3 91.0,27.7 113.8,35.0 136.6,36.5 159.3,29.3 182.1,31.2 204.8,18.6 227.6,6.0 250.3,37.3 273.1,40.0 295.9,43.5 318.6,52.0 341.4,52.0 364.1,43.3 386.9,38.2 409.7,77.2 432.4,85.0 455.2,82.6 477.9,73.2 500.7,90.8 523.4,83.4 546.2,48.0 569.0,99.7 591.7,102.3 614.5,102.0 637.2,114.0 660.0,111.3 660,120" fill="url(#g)"/>
+<text x="2" y="135" fill="#7a8299" font-size="11">30天前 $74,819</text>
+<text x="660" y="135" fill="#7a8299" font-size="11" text-anchor="end">今日 $84,059</text></svg></div>
+
+<div class="card"><h2><span class="bar"></span>关键价位（摆动高低点）</h2><div class="levels">
+<div class="lvl r"><span>R2 强阻力</span><b>$81,194</b></div>
+<div class="lvl r"><span>R1 阻力</span><b>$80,992</b></div>
+<div class="lvl now"><span>现价</span><b style="color:var(--accent)">$75,103</b></div>
+<div class="lvl s"><span>S1 支撑</span><b>$74,902</b></div>
+<div class="lvl s"><span>S2 强支撑</span><b>$62,508</b></div></div></div>
+
+<div class="card"><h2><span class="bar"></span>技术指标（多周期）</h2><table>
+<tr><th>周期</th><th>收盘</th><th>EMA20</th><th>EMA50</th><th>EMA200</th><th>RSI14</th><th>MACD DIF/DEA/柱</th><th>布林 下/中/上</th></tr>
+<tr><td class='tf'>日线</td><td>$75,049</td><td>$78,153</td><td>$79,273</td><td>$75,760</td><td>36.6</td><td class='neg'>-1,677 / -1,324 / -353<br><span class='sm'>空头 · —</span></td><td class='sm'>$73,633<br>$78,661<br>$83,688</td></tr><tr><td class='tf'>4H</td><td>$75,049</td><td>$76,061</td><td>$77,052</td><td>$80,071</td><td>34.6</td><td class='neg'>-566 / -549 / -17<br><span class='sm'>空头 · 死叉</span></td><td class='sm'>$75,170<br>$75,796<br>$76,421</td></tr><tr><td class='tf'>1H</td><td>$75,044</td><td>$75,430</td><td>$75,783</td><td>$76,802</td><td>41.9</td><td class='neg'>-255 / -165 / -90<br><span class='sm'>空头 · —</span></td><td class='sm'>$74,487<br>$75,590<br>$76,693</td></tr></table>
+<div class="sm" style="margin-top:10px">RSI 用 Wilder 平滑；MACD 金叉/死叉按柱状图穿越零轴判定。</div></div>
+
+<div class="card"><h2><span class="bar"></span>资金面</h2><div class="kv">
+<div class="item"><div class="k">资金费率（8h）</div><div class="v pos">0.0100%</div></div>
+<div class="item"><div class="k">未平仓量 OI</div><div class="v">58,100 BTC</div></div>
+<div class="item"><div class="k">账户多空比</div><div class="v">2.237</div></div>
+<div class="item"><div class="k">主动买卖比</div><div class="v">1.50</div></div>
+<div class="item"><div class="k">强平 · 多单</div><div class="v neg">0 张</div></div>
+<div class="item"><div class="k">强平 · 空单</div><div class="v pos">0 张</div></div></div>
+<div class="sm" style="margin-top:10px">OI 单位张（1 张 = 0.0001 BTC）；强平为 Gate 平台口径，与 Coinglass 全网口径不同。</div></div>
+
+<div class="card"><h2><span class="bar"></span>情绪面</h2><div class="kv">
+<div class="item"><div class="k">恐惧与贪婪</div><div class="v" style="color:var(--accent)">29 · 恐惧</div></div>
+<div class="item"><div class="k">昨日 / 7日均</div><div class="v">28 / 31.4</div></div></div>
+<div class="sm" style="margin-top:12px">宏观：本报告未接入实时经济日历，重大数据请自行核对。</div></div>
+
+<div class="card"><h2><span class="bar"></span>综合研判</h2><ul class="sig"><li>日线：价 < EMA200，长期空头格局</li><li>日线：价 < EMA50，中期偏空</li><li>日线：MACD 空头（DIF -1,677 / DEA -1,324）</li><li>4H：价 < EMA20，短线偏空</li><li>资金费率 0.0100%（中性）</li></ul>
+<div style="margin-top:12px;font-size:13px;color:var(--muted2)">多空评分 <b class="pos">多 0</b> : <b class="neg">空 8</b> → 方向 <b style="color:#26c97f">做空 SHORT</b>（信心 中高）</div></div>
+
+<div class="plan"><div class="dir">做空 SHORT <span class="conf">信心 中高 · 仓位 10-15%</span></div>
+<div class="grid">
+<div class="cell"><div class="k">入场区间</div><div class="v">$75,103 – $75,854</div></div>
+<div class="cell"><div class="k">止损 SL</div><div class="v" style="color:var(--down)">$81,396</div></div>
+<div class="cell"><div class="k">止盈 TP1</div><div class="v" style="color:var(--up)">$63,644</div></div>
+<div class="cell"><div class="k">止盈 TP2</div><div class="v" style="color:var(--up)">$57,726</div></div>
+<div class="cell"><div class="k">盈亏比</div><div class="v">2.00 : 1</div></div>
+<div class="cell"><div class="k">参考杠杆</div><div class="v">≤ 10x</div></div></div>
+<div class="note"><b>触发：</b>反弹至 75,103-75,854 滞涨（1H 长上影 / RSI 走弱）后做空<br><b>失效：</b>1H 收盘站上 81,396（R1 80,992）则做空逻辑失效</div></div>
+
+<div class="card"><h2><span class="bar"></span>策略追踪（自动复盘）</h2>
+<div class="kv" style="grid-template-columns:1fr 1fr 1fr">
+<div class="item"><div class="k">已结算</div><div class="v">9</div></div>
+<div class="item"><div class="k">胜 / 负</div><div class="v"><span class="pos">2</span> / <span class="neg">7</span></div></div>
+<div class="item"><div class="k">胜率</div><div class="v" style="color:var(--accent)">22.2%</div></div></div>
+<table style="margin-top:14px"><tr><th>日期</th><th>方向</th><th>入场区间</th><th>结果</th></tr><tr><td>20261108</td><td>空</td><td class='sm'>$75,797-$76,555</td><td class='sm'>进行中</td></tr><tr><td>20261107</td><td>空</td><td class='sm'>$75,925-$76,685</td><td class='sm'>进行中</td></tr><tr><td>20261106</td><td>空</td><td class='sm'>$76,156-$76,917</td><td class='sm'>EXPIRED</td></tr><tr><td>20261105</td><td>多</td><td class='sm'>$79,744-$80,550</td><td class='neg'>LOSS</td></tr><tr><td>20261104</td><td>空</td><td class='sm'>$76,956-$77,726</td><td class='sm'>EXPIRED</td></tr><tr><td>20261103</td><td>空</td><td class='sm'>$77,224-$77,996</td><td class='sm'>EXPIRED</td></tr><tr><td>20261102</td><td>观望</td><td class='sm'>$76,454-$78,951</td><td class='sm'>EXPIRED</td></tr></table>
+<div class="sm" style="margin-top:10px">复盘规则：1H K线先触止损判负、先触 TP1 判胜（同根 K线保守判负）；72 根未触及记「EXPIRED」不计入胜率。</div></div>
+
+<div class="card"><h2><span class="bar"></span>英文 X 文案</h2><div class="tw">
+$BTC $75,103 (-0.92%) · Funding 0.0100% · OI 58,100 BTC.<br>
+Price above EMA20/50/200 on Daily &amp; 4H → uptrend intact.<br>
+Plan: SHORT entry $75,103–$75,854, SL $81,396, TP $63,644/$57,726.<br>
+#BTC #Bitcoin #Crypto #Trading</div></div>
+
+<div class="card"><h2><span class="bar"></span>风险提示</h2><div class="warn">
+1. 本报告为量化规则输出，<b>不构成投资建议</b>。<br>
+2. 数据为 2026-11-09T09:42:10（UTC+8）快照，开仓前请核对实时价格。<br>
+3. 单笔亏损建议控制在总资金 1–2% 以内。</div></div>
+
+<div class="foot">MK Trading · BTC Daily Report #81 · 生成于 2026-11-09T09:42:10 UTC+8<br>
+Data: Gate.io · alternative.me</div></div></body></html>
