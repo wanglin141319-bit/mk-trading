@@ -23,13 +23,73 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-09T15:05:00+08:00",
+  lastScan: "2026-11-10T15:00:00+08:00",
   // 累计收录条数
-  total: 269,
+  total: 274,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-10",
+      title: "承认 BTC 与美股负向脱钩，说该关机了",
+      quote: "「So wait a minute. SP500 & Nasdaq rebound 3% & 6.6%. $BTC does absolutely nothing. SP500 & Nasdaq then drop 0.5% & 0.65% after hours & BTC goes down -1.1%. Its time to log off for a while.」（<b>标普、纳指分别反弹 3% 和 6.6%，BTC 一动不动</b>；随后标普、纳指盘后只跌 0.5% 和 0.65%，<b>BTC 直接跌 1.1%</b>。该关机一阵子了。）",
+      read: "这条动的是他 <b>11-06 00:09 立的宏观传导判断</b>——当时他用纳指 −6% 定性为「牛市前最后一洗」，把美股当成 $BTC 的方向来源。现在他自己把这段关系写成<b>单向失效</b>：利好不跟、利空必跟，属于<b>负向脱钩</b>，比单纯不相关更差。同时首次出现 <b>log off（关机离场）</b> 这种退出语，与他 11-08「世代级入场 / 销号担保」的强度正相反。⚠️分析：这条不是转空，是<b>挫败感外溢</b>，但它客观上给他自己预留了「我不看了、所以不负责」的退路。<b>失效条件</b>：① 若 CPI 后 BTC 补涨追上美股（他 03:19 那条 5/5 预言），脱钩论只是「滞后」而非「失效」；② 若下一个交易日美股再涨、BTC 继续不动或下跌，则他整套宏观腿彻底作废，只剩价格行为一条腿；③ 若他真关机数日不发帖，本条应视为<b>情绪读数</b>而非新判断。",
+      tags: [
+        "宏观驱动",
+        "情绪指标",
+        "周期判断"
+      ],
+      src: "X 原文 @KillaXBT · 2120001033589895517"
+    },
+    {
+      date: "2026-11-10",
+      title: "首次松口：连我自己都开始有这种感觉",
+      quote: "「I refuse to fucking believe, That $BTC will not follow SP500s recovery. Very disappointing to see SP500 recover half of its entire drop while BTC has done absolutely nothing. <b>Even I'm starting to feel it.</b>」（我他妈不信 BTC 会不跟标普的反弹。看着标普收复整段跌幅的一半、BTC 毫无动作，非常失望。<b>连我自己都开始有这种感觉了。</b>）",
+      read: "这是 11-09 06:40「I was wrong」之后<b>第二次心理松动</b>，但性质不同：上一次是认错，这一次是<b>主动承认自己正在被行情说服</b>——Even I'm starting to feel it 里的 it，指的就是「这轮多头可能真的错了」。直接改动的是他 <b>11-09 22:38「same plan, same invalidations」的笃定</b>：计划没变，但信心已经出现裂缝，两者的时间差只有 12 小时。⚠️分析：本库多次记录过「嘴松手不动」，所以单看文字不足以判转向，要看仓位。<b>失效条件</b>：① 若 24 小时内他重新发 conviction / bid / generational entry 类表述并加仓，这条降级为情绪波动；② 若随后出现减仓、删帖、或不再提多头，则这是立场转向的<b>前置信号</b>；③ 若价格反而在 CPI 后拉起，他会把这句话回收成「我早就说会跟」。",
+      tags: [
+        "情绪指标",
+        "趋势切换",
+        "存疑"
+      ],
+      src: "X 原文 @KillaXBT · 2119981453337653724"
+    },
+    {
+      date: "2026-11-10",
+      title: "OI 逆势创新高，反问谁要被挤爆",
+      quote: "「$BTC is down 16% from the highs, yet OI keeps climbing. Open interest at these levels has lined up with BTC forming several major lows before. <b>Wonder who's about to get squeezed?</b>」（BTC 距高点已跌 16%，<b>未平仓合约却还在往上堆</b>。这个位置的 OI 过去几次都对应 BTC 形成重要低点。<b>不知道这次谁要被挤爆？</b>）",
+      read: "新增了一条<b>衍生品维度</b>的看多论据。改动在于他对「高 OI」的定性翻转：10-28 到 10-30 期间他把高 OI 当<b>风险</b>（爆仓连锁、他自己十倍单被扫），现在改当<b>底部信号 + 挤压燃料</b>。⚠️分析：这条有两个硬伤——① 他没说是多头拥挤还是空头拥挤，被挤爆的可能是<b>多方自己</b>；② 他自己四笔全多、无对冲，OI 里就包含他自己，属于<b>用自己正在亏的仓位证明底部</b>。历史上「OI 新高 + 价格新低」更常见的是多头被清算。<b>失效条件</b>：OI 继续升而价格继续跌（多头不断加仓被埋）＝挤压方向朝下，该论据反转为利空；只有 OI 高位 + 价格快速拉升 + 空头费率转负，才算他说的那种挤压。",
+      tags: [
+        "链上数据",
+        "情绪指标",
+        "存疑"
+      ],
+      src: "X 原文 @KillaXBT · 2119909090214171008"
+    },
+    {
+      date: "2026-11-10",
+      title: "CPI 后 5/5 涨 3-5%，对应 76-77K",
+      quote: "「We have CPI tomorrow & $BTC is dumping into it. The past 5/5 times, we saw a 3-5% move to the upside shortly after. That would equate to BTC testing 76-77K locally. <b>Ideally we need to reclaim the range & then things start looking better.</b>」（明天有 CPI，BTC 正往数据里砸。过去 <b>5 次全中</b>，公布后不久都出现 3–5% 的上行，对应 BTC 短线去测 <b>76–77K</b>。理想情况是先收复区间，然后才谈得上转好。）",
+      read: "把 11-09 06:10 那条空泛的「本周强反弹」<b>具体化并挂了 deadline</b>：CPI 后 3–5% 上行 → 目标 <b>76–77K</b>，并首次明确验收前提是「reclaim the range」。这是近期最可核的一条——3–5% 从 74.7K 算就是 77.0K–78.4K，与他给的 76–77K 基本重合，可以直接用日线高低点验。⚠️分析：5/5 这种小样本胜率是他惯用手法（此前「过去 4 个月月初都涨」「每周一必成当周高点」都在 24h–72h 内被打破），所以样本本身不构成证据，但<b>deadline 明确</b>，是难得的可证伪条目。<b>失效条件</b>：CPI 公布后 24–48 小时内未出现 +3% 上行、或未触及 76K，则 5/5 作废，连带他的季节性、月初效应、CPI 洗盘论一起降级；若上行但收不回区间，按他自己写的只算「看着好一点」，不构成翻转。",
+      tags: [
+        "宏观驱动",
+        "目标价",
+        "关键价位"
+      ],
+      src: "X 原文 @KillaXBT · 2119872551669092526"
+    },
+    {
+      date: "2026-11-09",
+      title: "又加一笔，持仓均价抬到 75.7K",
+      quote: "「I'm still in the same $BTC continuation long. I added a little here, <b>bringing my average to 75.7K</b>. Same plan, same invalidations. My stops are still set at my previous 3x swing entry from 62.6K. Let the games begin.」（我还在原来那笔 BTC 续势多单里。这里又加了一点，<b>均价被拉到 75.7K</b>。计划不变、失效条件不变。止损仍然设在我之前 62.6K 那笔 3x swing 的入场。）",
+      read: "首次给出<b>加仓后的新均价 75.7K</b>（此前 11-05 披露的四笔是 62.6K 多 / 76.2K swing / 76.2K 十倍补单 / 77.5K 现货）。这条动的是 11-05「改用现货分批、降杠杆」的叙事——<b>又回到合约加仓</b>，而且是往下跌里加。更关键的是止损口径：把止损挂在 <b>62.6K 那笔 3x swing 的入场</b>，意味着离当前价（约 74.8K）有 <b>16% 以上</b>的空间，等于<b>实质没有短线止损</b>，接受的是账户级回撤而不是单笔风险。⚠️分析：均价 75.7K 已高于现价，属于<b>加仓即被套</b>，「same invalidations」也因此变得不可执行——真正的失效点从 74K 悄悄挪到了 62.6K。<b>失效条件</b>：① 价格在均价 75.7K 之下持续停留，则这条只能证明他在摊平而非判断正确；② 若跌破 73,510（11-08 低点）后仍无任何减仓动作，则「same invalidations」是话术，他的实际风险敞口要以 62.6K 计；③ 若他后续把止损上移，说明这轮加仓是被动扛单而非计划内。",
+      tags: [
+        "仓位建议",
+        "关键价位",
+        "失效条件"
+      ],
+      src: "X 原文 @KillaXBT · 2119801875772125339"
+    },
     {
       date: "2026-11-09",
       title: "砸盘后只发「I was wrong」，未说错在哪",
