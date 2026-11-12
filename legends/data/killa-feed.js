@@ -23,13 +23,49 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-11T15:05:00+08:00",
+  lastScan: "2026-11-12T15:05:00+08:00",
   // 累计收录条数
-  total: 278,
+  total: 281,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-12",
+      title: "把 BTC 不动归因于 Anthropic IPO 抽走资金",
+      quote: "「I think BTC is waiting on Anthropic IPO to be done & dusted. Just like SPCX.」（我认为 BTC 在等 Anthropic 的 IPO <b>彻底办完</b>。就像当年的 SPCX 一样。）",
+      read: "改动的是他 <b>11-12 08:00 长文里那句模糊的「attention is shifting from BTC」</b>——两小时前那还只是「感觉相似（getting a similar vibe）」，这条把它升级成一个<b>可以等待的具体事件</b>：IPO 落地 = 压制解除。⚠️分析：这是他这一轮第一次把行情停滞的<b>原因外包给一个非加密事件</b>，好处是给自己争取时间（IPO 没办完就不算他错），代价是把可证伪的开关交到别人手里。他在长文里比的是 SpaceX 上市后 BTC 形成宏观底，这是<b>单样本类比</b>，且没给时间差。参照系已连挂两次：他 11-10 03:19 说的「CPI 后 5/5 涨 3–5%」在 11-11 落空（当日最高 74,811、收 74,015，全程无 3% 反弹）。<b>失效条件</b>：① IPO 办完 BTC 仍不涨，「等 IPO」这个解释当场破产；② 若他在 IPO 前就先改口（转空或重提 50K），本条作废；③ 若他后来把 IPO 从「原因」降格成「背景」而不再解释，说明这只是一次事后归因。",
+      tags: [
+        "宏观驱动",
+        "周期判断",
+        "存疑"
+      ],
+      src: "X 原文 @KillaXBT · 2120708627715575842"
+    },
+    {
+      date: "2026-11-12",
+      title: "76K 成了第一道关，翻上才看 80 年代",
+      quote: "「We're testing 2 diagonals, something that's been quite consistent during BTC's range bound periods over the past few years. We're also testing a HTF trendline from the lows while filling part of the imbalance left on the move up. ... 76K is the first barrier, around Monday's high. Flip that, and we push to 80s again. After 50 days of slow bleed, the market is at a decision point.」（我们正在测试<b>两条对角趋势线</b>，这在过去几年 BTC 区间震荡时相当有规律；同时在测试一条<b>从低点起的高周期趋势线</b>，并回补上涨途中留下的<b>部分失衡区</b>。……<b>76K 是第一道关</b>，大致是周一的高点；翻上它，就再次推向 <b>80 年代</b>。慢跌 50 天后，市场到了一个<b>决策点</b>。）随推配图一张，图内价格刻度不可辨认，未从中取任何点位。",
+      read: "改动的是他 <b>11-09 06:10「本周强反弹」</b>那条带截止日的预言——现在退成<b>纯条件式</b>：先翻 76K 才轮到 80K，并首次把「decision point」写进措辞，等于承认方向未定。也和他 <b>11-11 00:05 的 126K</b> 形成量级落差：一个是 6–8 个月后的目标，一个是眼前 +3% 的关口。⚠️分析：76K 他自己标注为「周一的 high」，但客观数据 11-09（周一）最高 <b>75,599</b>，76K 更接近 11-06 的 76,416 与 11-07 的 76,250，<b>大约上移了 400 美元</b>——与他历史上引用自家位置时「口径漂移」的老毛病一致。新增的「鲸鱼在低流动性里建仓、可 scale into 上千枚 BTC」属不可验证叙事，本库不作证据。交叉价：11-12 盘中约 <b>73,650</b>，76K 在其上方约 3.2%，80 年代约 +9%。<b>失效条件</b>：① 76K 翻不上、且跌回 73,209（11-11 低点）之下，本条两个目标同时作废；② 若他随后把「第一道关」下调到 75K 或 74K，说明这是贴着行情改的；③ 两条对角与趋势线都没给数值、图不可读，无法独立复核，只能当他自述处理。",
+      tags: [
+        "关键价位",
+        "目标价",
+        "周期判断"
+      ],
+      src: "X 原文 @KillaXBT · 2120708292469006796"
+    },
+    {
+      date: "2026-11-12",
+      title: "结束 MIA 回归，首次承认年底可能创新低",
+      quote: "「Im back. ... I think this correction was very much needed in a way after the impulse upwards. Just I wasn't prepared/hedged in the sense of protecting my lower entries. ... Hence me still being long, continuing to add spot exposure, and executing some lower leverage longs in the process. ... Either 1. $BTC is heavily delayed & about to react very negatively to this news in the short term, we form a new low into EOY then the recovery is even more violent than the first one. Or 2. BTC's resilience to this negative news is showing early signs & characteristics of how a bull market begins. ... I am a tad bit uncertain myself which is why I am sticking with my plan despite it all.」（我回来了。……回头看，这轮修正某种程度上<b>是必要的</b>，只是<b>我没做好准备、也没对冲，没能保护住低位那几笔仓位</b>。……所以我<b>仍然是多</b>，继续<b>加现货</b>，同时做一些<b>更低杠杆的多单</b>。……要么 1：$BTC 严重滞后，短期对消息面做出负面反应，<b>年底前创新低</b>，然后反弹比第一次更暴力；要么 2：BTC 对利空的抗跌，正是<b>牛市初期</b>的特征。……<b>我自己也有点不确定</b>，所以尽管这样我还是按计划走。）",
+      read: "一次改动三条既有判断：① <b>11-09 01:08「the bottom is in」</b> 退成「两个分支、到时自然清楚（will have clarity in due time）」，且分支 1 明确写出<b>年底前创新低</b>；② <b>11-11 12:52「Going MIA for a few days」</b> 实际只离场约 <b>19 小时</b>（11-11 12:52 → 11-12 08:00），MIA 兑现度接近于零；③ 杠杆口径首次降到「lower leverage longs」，与 10-30 起的 <b>10 倍</b>叙事不同，同时仍称自己在加现货、仍持多。⚠️分析：这是他两周来<b>第一次把下跌路径写成合法分支</b>（11-07 给过「跌破就去 50K」，随后删帖改口），也是首次承认<b>没有保护低成本仓位</b>——范围比 11-06 只承认 76.2K 续仓 round trip 大得多。但结尾仍是「按计划走」，即<b>承认可能错、动作不变</b>。所谓「抗跌=牛市初期特征」是双向解读：既可以读成牛市起点，也可以读成延迟下跌，两种结局他都占。<b>失效条件</b>：① 分支 1 兑现（年底前创新低）时，他是按「反弹更暴力」继续扛，还是转空；② 若之后再出现高杠杆单，「lower leverage」就是一次性措辞；③ 「structure reclaiming the range」他没给数值（按上下文应是 76K / 80.1K），若他自己改用别的界线，本条不可核；④ 7 天内有任何减仓或对冲证据，说明「still being long」已过期。",
+      tags: [
+        "基准剧本",
+        "仓位建议",
+        "失效条件"
+      ],
+      src: "X 原文 @KillaXBT · 2120667900235419859"
+    },
     {
       date: "2026-11-11",
       title: "带立场消失几天，视频里画了向上箭头",
