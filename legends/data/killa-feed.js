@@ -23,13 +23,85 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-12T15:05:00+08:00",
+  lastScan: "2026-11-13T15:05:00+08:00",
   // 累计收录条数
-  total: 281,
+  total: 287,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-13",
+      title: "−22% 已用尽牛市回撤额度，要么马上涨要么准备 60 出头",
+      quote: "「The biggest bull market drop $BTC saw last cycle was −22%. BTC is now −22%. So if we are genuinely bottomed & in a bull market, you would start expecting us to move soon otherwise we should start preparing for the possibility of low 60s.」（上一轮牛市里 BTC 最大的回撤就是 −22%，现在也 −22% 了。所以如果我们真见底、真在牛市里，你应该开始预期我们很快就要动；否则就该开始准备「60 出头」这个可能性。）",
+      read: "改动的是他 <b>11-12 08:00 那套「两个分支、到时自明」</b>——那条还把「牛市初期抗跌」当主选项，「年底前创新低」只是并列分支；这条把两者压成一个<b>对称的二元赌</b>：−22% 这个刻度既是他最后的看多论据，也成了他的转空触发器。等于他亲手把「已经见底」从结论降级为<b>未经证实的假设</b>，并首次给出「low 60s」这个具体区间（高于 11-07 提过的 50K，但远低于 11-12 的 77–78K 回踩版）。⚠️分析：这是本库第一次他用<b>回撤额度</b>当盘中论据。好处是终于给了可核对的刻度；坏处是 −22% 是<b>单一样本的极值</b>（上轮牛市一次），拿样本极值当边界，等于说「要么我对，要么我错」，但「move soon」没有任何时间窗。数字核对：按 Binance 09-21 高点 87,395 算，69,182 为 −20.8%，要到 <b>68,170</b> 才是 −22%；他 14:05 发帖时价格在 68.8K 附近，基本对得上。<b>失效条件</b>：① 若到 11-16 既没有出现他说的「move」，也没跌进 60 出头，他自设的二元赌两头都不成立，本条作废；② 若他随后把「soon」解释成「几周内」，等于悄悄删掉截止日，本条降级为口号；③ 若他在跌进 60 出头之前就先改口说「−22% 只是历史参照」，等于撤回论据。",
+      tags: [
+        "周期判断",
+        "失效条件",
+        "关键价位",
+      ],
+      src: "X 原文 @KillaXBT · 2121122245879980189",
+    },
+    {
+      date: "2026-11-13",
+      title: "破 60K 就从硬件钱包补保证金，把爆仓价压到零",
+      quote: "「If we breach 60K, I'm personally going to add margin from my hardware wallets, making my liquidations effectively zero on all my swings... My current liquidations are around 30–33K... That is why its important to hold more spot & only have a smaller allocation in perps.」（跌破 60K 我就从硬件钱包调保证金进来，让我所有 swing 仓的爆仓价实际上归零；我现在的爆仓价大约在 30–33K。这就是为什么必须多拿现货、合约只放小仓位。）同一帖里给了两条路：「either start buying spot and gradually add exposure, or wait until next year, when the 4-year cycle traditionally begins.」",
+      read: "改动的是他 <b>11-12 22:42 那张失效价表</b>——表里 75–76K 续仓明写失效价 62K，也就是会被打掉；这条把它实质撤销：真跌破 60K 他不是认错离场，而是<b>加保证金把爆仓价推到零</b>，让「被打掉」这件事根本不发生。⚠️分析：这是本库第一次他把失效条件改成<b>不可失效</b>。62K 这个唯一可证伪的开关，被换成一个只能由他自己宣布的口径（爆仓价 30–33K，且可无限补弹药）。同时首次披露仓位结构约 <b>70% 现货 / 30% 合约</b>，并给了一个明确二选一：现在慢慢买现货，或者<b>等到明年四年周期起点</b>。矛盾点：同一天 09:37 他又写「若测试 62.6K，我的 75–76K 续仓会被止损」——两套说法并存，互相抵消。<b>失效条件</b>：① 若他真在 60K 之下补保证金，则此后所有「失效价」表述一律降权到口号级，不可再当风控信号读；② 若他反而在 60K 之上先减仓或平多，「补保证金」这套就是事后叙事；③ 「等明年再进场」与他仍在场内持有相冲突——若他真信明年才是起点，现在的多单就没有持有理由。",
+      tags: [
+        "仓位建议",
+        "失效条件",
+        "关键价位",
+      ],
+      src: "X 原文 @KillaXBT · 2121097250130497769",
+    },
+    {
+      date: "2026-11-13",
+      title: "2021 牛市高点成最后一道关，失守即去创新低",
+      quote: "「Last level in sight for $BTC. Testing 2021 bull market highs. If we are unable to see a reaction around this area, then we are likely going to push to new lows on BTC.」（BTC 最后一个可见的位置了，正在测试 2021 牛市高点。如果这个区域看不到任何反应，那我们大概率要去创新低。）",
+      read: "改动的是他 <b>11-12 10:40 的「76K 第一道关、翻上才推 80 年代」</b>——那套上行路径已整段作废，现在他给的是<b>下行路径的最后一格</b>：2021 牛市高点（约 69K 一带）。实盘核对：Binance 11-13 最低已打到 <b>67,568</b>，等于已经探进这个区域，最高仅 71,514。⚠️分析：本库第一次他把「创新低」写成<b>基准情形的触发条件</b>，而不是尾巴上的备选分支；「last level in sight」这句话等于宣布下方<b>没有他自己认可的结构支撑</b>——这句话一旦成立，下面就没法再用「等下一个位置」拖时间。<b>失效条件</b>：① 若 67.5K 一带出现有效反抽并站回 71.5K，「创新低」推迟而非作废；② 若他随后又画一条更低的支撑（65K 或 62.6K），说明「最后一道关」是随口说的，本条权重下调；③ 若价格在 67–69K 横住超过三天，既无反应也无新低，本条进待定。",
+      tags: [
+        "关键价位",
+        "趋势切换",
+        "失效条件",
+      ],
+      src: "X 原文 @KillaXBT · 2121084322044113339",
+    },
+    {
+      date: "2026-11-13",
+      title: "公开认错：错在「先测 90 年代」，80K 到 71K 一路看多",
+      quote: "「Despite being wrong about testing the 90s before a major correction, there's still plenty of money to be made... I stayed bullish for most of the drop from 80K to 71K (a 12% drop so far)... You want to start seeing some absorption now otherwise, panic likely sets in below 70K. Maybe then we'll get a bounce... If we do break 57K, that would mean we've been in a downtrend for 400+ days, surpassing the 2023 bear market.」（我错在「大调整之前会先测 90 年代」这个判断上，但还有得赚。80K 跌到 71K 这 12% 里，我大部分时间都在看多。现在必须看到承接，否则 70K 下方容易进入恐慌——也许那时才有反弹。真跌破 57K，就意味着下跌已持续 400 多天，超过 2023 年那轮熊市。）",
+      read: "改动的是他 <b>11-11 00:05 的 126K 目标</b>与 11-12 的「牛市初期抗跌」——这条第一次把「我看错了」写成<b>已发生的事实</b>而不是条件句，并亲自圈出错误的区间：80K→71K 全程看多，起因是先给了「先测 90 年代再大调整」这条路径。⚠️分析：他新给两个刻度——<b>70K 下方＝恐慌区</b>，且他把反弹当成恐慌的<b>结果</b>而非趋势延续；<b>57K＝400 天熊市</b>（超过 2023 那轮）。也就是说多头框架现在只剩一条很窄的缝：69–70K 要有承接、57K 不能破。末尾仍留一句「中期选举后长期看多会让 BTC 在 HTF 上抛物线」，这句<b>没有任何近期时点</b>，属不可证伪，必须单独打最低权重。<b>失效条件</b>：① 70K 下方若走成阴跌（无恐慌、也无反弹），他的 panic→bounce 剧本落空；② 57K 若破，他自己下的「400 天/超 2023 熊市」定性成立，126K 彻底作废；③ 若他之后不再提 57K，等于默认删除该刻度。",
+      tags: [
+        "战绩复盘",
+        "关键价位",
+        "周期判断",
+      ],
+      src: "X 原文 @KillaXBT · 2121054924251295934",
+    },
+    {
+      date: "2026-11-13",
+      title: "USDT.D 走 ABC，多头必须先等它跌破黑点",
+      quote: "「Observing a potential ABC correction on USDT.D which coincides with $BTC. This was my initial plan... We're testing the 0.382–0.5 zone, just as we did last time... If USDT.D rejects this zone and starts losing the black dotted low, that would suggest a similar pattern is playing out. For now, bears are in control. Bulls need to see USDT.D lose that black dotted low before considering a move higher on the HTF. If we can't get back below the black dot, bulls are in danger short term.」（USDT.D 可能在走 ABC 调整，和 BTC 同步，这是我最初的剧本。现在测 0.382–0.5 区域，跟上次一样。若 USDT.D 在这区域被拒并开始失守那条黑点低点，说明形态在重演。目前空头掌控；多头必须先看到 USDT.D 丢掉那个黑点，才谈得上 HTF 上行。）",
+      read: "改动的是他 <b>11-08 把 USDT.D 从「作废开关」降级为「看多旁证」</b>那次调整——这条把它重新升回<b>主判据</b>，而且方向翻了个：以前是「USDT.D 回补失衡区则底部论失效」，现在是「USDT.D 不跌破黑点，多头就不许涨」。本库第一次出现他白纸黑字写 <b>bears are in control</b>。⚠️分析：好处是这条<b>完全可核对</b>（看图就知道有没有跌破黑点）；坏处是他没给黑点的具体数值、也没定义「rejects this zone」的标准，判据始终握在他手里。更关键的是这句与 22:42「仓位全留、仍看多 HTF」并列，是典型的<b>看法转空、仓位不动</b>分裂。<b>失效条件</b>：① 若 USDT.D 跌破黑点而 BTC 不跟涨，这个相关性样本直接失效；② 若他两天内不再提 USDT.D，等于静默撤回判据；③ 若他把 bulls 改回 in control 却不解释，该判据信誉归零。",
+      tags: [
+        "趋势切换",
+        "关键价位",
+        "失效条件",
+      ],
+      src: "X 原文 @KillaXBT · 2120964369341133181",
+    },
+    {
+      date: "2026-11-12",
+      title: "承认 1.5 年连胜终结，首度公开三档成本与失效价",
+      quote: "「It does, in fact, seem like my 1.5 year streak is coming to an end... It was definitely foolish not to realize any gains from the profits made on the way up. In doing so, the market erased nearly all of them... Long from 75–76K > Inval. 62K / Long from 62.6K > Inval. 31K / Spot from 65.9K > Inval. none... BTC has now retraced more than half of the move upwards.」（我 1.5 年的连胜确实要结束了。上涨途中不兑现利润是愚蠢的，市场几乎把它们全部抹掉了。仓位：75–76K 的多单失效价 62K；62.6K 的多单失效价 31K；65.9K 的现货没有失效价。BTC 已回吐这波上涨的一半以上。）",
+      read: "改动的是他 <b>11-12 08:00 的「两个分支、到时自明」</b>——那条还在给自己留「年底前创新低也只是分支」的余地，这条直接给出<b>认输式定性</b>（连胜终结、是我错了），并第一次公开完整成本与失效价表。⚠️分析：这是本库第一次他把「没止盈」认定为<b>唯一错误</b>，而不是方向错——这个归因很重要：方向不用改，只要「以后记得止盈」，所以后续很难出现方向层面的转向。三档失效价里只有 62K 是真的会触发的，31K 与「none」等于不存在。<b>失效条件</b>：① 若 62K 被打到而他不按表离场（例如按 11-13 12:26 的说法补保证金），这张表当场作废；② 若他改口说「62K 指的是周线收盘」之类，属事后改口径；③ 他自述「没亏钱，只是回吐浮盈」——若后续披露实际亏损，本条可信度整体下调。",
+      tags: [
+        "战绩复盘",
+        "仓位建议",
+        "存疑",
+      ],
+      src: "X 原文 @KillaXBT · 2120889950556061803",
+    },
     {
       date: "2026-11-12",
       title: "把 BTC 不动归因于 Anthropic IPO 抽走资金",
