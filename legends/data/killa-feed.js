@@ -23,13 +23,53 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-13T15:05:00+08:00",
+  lastScan: "2026-11-14T15:05:00+08:00",
   // 累计收录条数
-  total: 287,
+  total: 292,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-14",
+      title: "首提 40–50K 情景，并把 65K 定为多头生死线",
+      quote: "「There are really only 2 scenarios for $BTC here. Either the bottom was never in and we're heading to new lows, or this was a very brutal 23% shakeout… We retraced 65% of the move to the upside… With all my buys/longs, my overall average exposure is around 69K. That includes spot bought at 65.9K, the long at 62.6K, and smaller spot buys in the 73K-77K region during this drop. That said, if we lose 65K and start losing 60K, I think it's reasonable to assume we could see the 40Ks-50Ks. And no, I'm not turning bearish.」",
+      read: "<b>改掉了「62–65K 成本很低、回撤无伤」这条既有判断</b>：他首次公开全组合均价约 69K（含 62.6K 多单、65.9K 现货、73–77K 补的现货），按 11-14 收盘 67,410 算已整体浮亏约 2%，此前反复讲的「我还很舒服」不再成立。同时把 11-07 的「跌破就去 50K」细化为 <b>40–50K</b>，并把分水岭从 60K 上移到 <b>65K</b>，等于把多头的容错空间又压缩了 5%。<b>失效条件</b>：日线收回 65K 上方并站稳，这套 40–50K 情景才作废；反之失守 60K，他自己已把 40–50K 写成合理假设。",
+      tags: ["关键价位", "仓位建议", "失效条件"],
+      src: "X 原文 @KillaXBT · 2121410683212321229"
+    },
+    {
+      date: "2026-11-14",
+      title: "看多理由换成日历：中期选举后一年必涨",
+      quote: "「The amount of bad news hitting the market right now is honestly insane. If you're using higher leverage, have your stops set. You don't want to get blown out before year end. We are always bullish the following year after midterms.」",
+      read: "首次把看多依据从技术结构换成 <b>日历（2027 年）</b>——等于承认当下拿不出可交易的多头理由，只剩「明年会涨」。同时把 11-12 的「lower leverage longs」升级为 <b>必须挂止损、别在年底前被打爆</b>，说明他自己也在防被扫。<b>失效条件</b>：年底前若再创 11-14 低点 66,456 以下新低，「明年必涨」就从判断退化为拖延话术；若他自己随后仍不设止损，则这条只是劝别人的话。",
+      tags: ["宏观驱动", "周期判断", "仓位建议"],
+      src: "X 原文 @KillaXBT · 2121360177739776211"
+    },
+    {
+      date: "2026-11-14",
+      title: "发周期极值仪表盘，称深蓝区买入从未错",
+      quote: "「$BTC cycle extremes. It combines the most powerful BTC top & bottom indicators into one clear chart. This allows us to see when many indicators confirm the same signal. Buying in dark blue has always been a good decision.」（配图刻度不可辨，未做点位解读）",
+      read: "本库第一次他把判断<b>外包给一张多指标合成仪表盘</b>，而不是给价位或结构。相比 11-13 已白纸黑字写「bears are in control」，这条不改变任何可证伪条件，只提供情绪支撑。<b>失效条件</b>：图无刻度、无历史样本数、无失败案例；若下轮他不再更新该图或删帖，视为一次性安慰话术。",
+      tags: ["情绪指标", "存疑"],
+      src: "X 原文 @KillaXBT · 2121323933710668072"
+    },
+    {
+      date: "2026-11-14",
+      title: "自曝全组合 1.8 倍杠杆，卖一半股票换 U 补现货",
+      quote: "「My plan on the HTFs has not changed… my exposure is 95%: 70% spot and 30% perps. If we go below 60K, I'll use 10-15% of 70% spot position to make my perp positions effectively 0… combining my perps and spot, I'm effectively 1.8x leveraged across my entire crypto portfolio… BTC would basically have to fall below 20K to take me out… I've also decided to liquidate 50% of my stock portfolio so I have cash on hand to increase my spot exposure to BTC.」",
+      read: "<b>改掉了 11-13「破 60K 就从硬件钱包补保证金」的模糊口径</b>：首次量化——只用 70% 现货里的 10–15%，把爆仓价从 11-13 自述的 30–33K 一路推到 <b>低于 20K</b>，并首次披露全组合 <b>1.8 倍杠杆</b>、以及卖掉一半股票仓位换现金加现货。含义很直白：他不是在降风险，是把场外资产也押进来。<b>失效条件</b>：BTC 跌破 20K（他自己划的爆仓线）；或 65K 失守后他没真加现货，这套账本只是自我安慰。",
+      tags: ["仓位建议", "失效条件", "目标价"],
+      src: "X 原文 @KillaXBT · 2121287979876352252"
+    },
+    {
+      date: "2026-11-13",
+      title: "承认这次回撤比历次牛市底都糟，给出 42–52K",
+      quote: "「If the $BTC bottom is in at 57K… the imbalance has been completely filled… if 57K was the bottom, we'd need to hold above 65K. If we don't, that would suggest we could test 42-52K, potentially the final drop before the true bottom is in… So when people say this is a typical bull market retracement, it actually isn't. It's worse.」",
+      read: "<b>改掉了 11-06「熊市已结束、结构底成立」这条核心判断</b>：他首次用「imbalance 已被完全填平、类似 Covid 崩盘」论证本次回撤比历史上任何一次牛市底都更极端，并把真正的底部候选放到 <b>42–52K</b>（11-07 还只说 50K 单点）。同时首次给多头一条明确确认条件：<b>守住 65K</b>。<b>失效条件</b>：V 型收复（他未定量）或重新站上 65K 并回补失衡区；反之若周线创新高后又破前低，他自己也说是史上首见。",
+      tags: ["周期判断", "关键价位", "趋势切换"],
+      src: "X 原文 @KillaXBT · 2121265709887934687"
+    },
     {
       date: "2026-11-13",
       title: "−22% 已用尽牛市回撤额度，要么马上涨要么准备 60 出头",
