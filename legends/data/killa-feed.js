@@ -23,13 +23,61 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-14T15:05:00+08:00",
+  lastScan: "2026-11-15T15:05:00+08:00",
   // 累计收录条数
-  total: 292,
+  total: 298,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-15",
+      title: "改口三种情景，结论推到未来几周",
+      quote: "「Currently observing these 3 scenarios for $BTC. We will find out over the next few weeks which one we are following.」（目前在观察 BTC 的三种情景，未来几周就能知道走的是哪一种。）配图三张：Scenario 1「Inverse H&S」右肩约 62–63K 守住、颈线约 81K，突破后指向 105–108K；Scenario 2「Three drive of lows」第三驱沿下降趋势线探到约 56–57K 后回升，指向 100K 附近；Scenario 3「A much longer range」在 45–62K 区间反复震荡（图上标注 Manipulation），之后上攻 135K 一线。",
+      read: "改掉 11-14 09:11 那条「这里只有 2 个情景」——现在扩成 3 个，而且<b>三种结局全部指向 100K 以上</b>（105–108K / 100K / 135K）。这是本库第一次看到他的情景树<b>没有一个是下跌结局</b>，说明他正在把 11-14 才写下的 40–50K 从「目标」重新降级为「路径中的洗盘段」：Scenario 3 干脆把 45–62K 整块标成 Manipulation。<b>另一处改动</b>：「未来几周才知道」把 11-16 那个二元赌的截止点推到了 12 月初，可证伪窗口被拉长。<b>失效条件</b>：① 62,006（11-15 低点）被有效跌破且未能在 Scenario 2 那条趋势线（56–57K）止跌，三张图同时作废；② 若他随后重新把 40–50K 说成目标（与 02:04 那条口径打架），说明这套「全是多头结局」的图是选择性画的；③ 三张图都没有时间轴，本身不可证伪。",
+      tags: ["基准剧本", "周期判断", "目标价"],
+      src: "X 原文 @KillaXBT · 2121758026486915141"
+    },
+    {
+      date: "2026-11-15",
+      title: "画出先扫 50–62K 再冲 96–98K 的剧本",
+      quote: "「If you want to wipe out the entire market, You sweep 50-62K first, then send $BTC to 96-98K.」（如果你想把整个市场洗光，就先扫掉 50–62K，再把 BTC 送到 96–98K。）",
+      read: "<b>首次给出 96–98K 这个本轮上行目标</b>（此前最近的进攻目标是 11-11 的 126K 远期版），并给出两段式路径：先扫 50–62K、再拉 96–98K。真正的改动是<b>把 50–62K 重新定义成洗盘区而不是底部区</b>——这与 37 分钟前（05:00）他说的「57K 已具备底部特征」直接对冲，等于他自己承认那条 57K 支撑可以被市场故意打穿。<b>注意口径</b>：这是条件推演句（If you want to...），不是他的建仓计划，不能当成他的目标价用。<b>失效条件</b>：① 若价格在 62K 上方直接起涨、从未扫进 50 几，这套先扫再拉的剧本作废；② 96–98K 与他 11-14「2027 年底 126K」的框架期限冲突，若他把 96–98K 说成近期目标，等于承认此前 126K 是远期兜底。",
+      tags: ["目标价", "基准剧本", "关键价位"],
+      src: "X 原文 @KillaXBT · 2121729604805185566"
+    },
+    {
+      date: "2026-11-15",
+      title: "称本轮熊市比 2018/2022 都长，仍不认空",
+      quote: "「Let's not pretend this price action is normal… This bear market is already longer than the ones in 2018 and 2022… dropping all the way to 65K isn't overkill, because it is… The orders that defended the 57K lows have now been pulled… I'm still holding my 2x long from 62.6K, with spot averaging around 69K after all the additional buys… Either way, I'm not bearish. I'm just surprised by the speed and volatility of the move we've seen recently.」",
+      read: "<b>本库第一次他把「熊市长度」当主论据</b>（已长于 2018、2022 两轮），也是第一次明说<b>「57K 那批护盘买单已被撤走」</b>——这直接拆掉他 11-13 以来一直依赖的「plunge protection team 会在前低托底」框架。同时把 65K 以下的下跌定性为 overkill（过度），论据从「结构没坏所以会涨」换成「跌得太多所以不正常」，属<b>可证伪性下降</b>：AI 泡沫破了 / 股市进入长期震荡 / 只是牛市前的 FUD，三个并列猜测只要继续跌都能自洽。<b>失效条件</b>：① 57K 若真被跌破，他这套护盘托底框架彻底作废，40–50K 就是主线；② 这条「I'm not bearish」与 8 小时前（11-14 23:25）「大概率跌破前低」自相矛盾，谁先被删谁就是真实立场；③ 62.6K 那笔 2x 多单的失效价仍是 11-12 说过的 31K，等于没有短线止损。",
+      tags: ["周期判断", "情绪指标", "失效条件"],
+      src: "X 原文 @KillaXBT · 2121709763134431563"
+    },
+    {
+      date: "2026-11-15",
+      title: "只剩一笔多单，40–50K 改称潜在目标",
+      quote: "「This is my only long on $BTC as we speak. This position will remain open until invalidation is hit. If 57K isn't the bottom, then 40s-50s is a potential target.」（现在我在 BTC 上只有这一笔多单，会一直拿到失效为止。如果 57K 不是底，那么 40 几到 50 几就是潜在目标。）",
+      read: "把 11-14 09:11 的「40–50K 只是一种要考虑的可能性」升级成 <b>potential target（潜在目标）</b>，同时把 57K 从「底部候选」改成<b>需要被证伪的前提</b>——他自己已经把 57K 当假设、把 40–50K 当路径。<b>另一处改动</b>：仓位口径落到「只有这一笔多单」，与 11-14「全组合 1.8 倍杠杆、95% 暴露」相比已经收缩到单一合约仓。<b>但「until invalidation is hit」仍是空话</b>：他 11-12 给这笔 62.6K 多单的失效价是 31K，等于要跌 50% 才算失效，中间没有任何止损。<b>失效条件</b>：① 57K 未被跌破且价格重回 68,446（11-14 高点）上方，40–50K 应降级为尾部风险；② 若他一边说「等失效」一边在 62–65K 补多，则「只剩一笔」是话术；③ 11-15 低点 62,006 已跌破其 62.6K 入场价，这笔已在水下。",
+      tags: ["目标价", "关键价位", "仓位建议"],
+      src: "X 原文 @KillaXBT · 2121665695884939630"
+    },
+    {
+      date: "2026-11-15",
+      title: "65K 砍掉续涨多单，首次公开认亏",
+      quote: "「Cutting my $BTC continuation long here at 65K for a loss. After capturing the move from 76K to 87K, we unfortunately failed to hold the range. That invalidates my thesis for this being a continuation long… The only position I'm holding now is my long from 62.6K, which I'll hold until invalidation. I'm also holding all of my spot from 69K… This is my first loss on a swing since the 123K short.」（在 65K 这里把 BTC 续涨多单亏损平掉。76K→87K 那段吃到了，但区间没守住，这废掉了我把它当续涨单的逻辑。现在只剩 62.6K 那笔多单，拿到失效为止；69K 的现货全部还在。这是我自 123K 做空以来第一笔波段亏损。）",
+      read: "<b>本库第一次记录他真实平仓亏损</b>，两处既有判断同时作废：① 11-12 起反复讲的「HTF 计划没变」正式失效，他承认 76K→87K 那笔续涨逻辑被打破；② 仓位从 11-14「95% 暴露、全组合 1.8 倍、70% 现货+30% 合约」收缩为一笔 62.6K 多单 + 全部现货，<b>合约端实际减了仓</b>。细节核对：他 11-12 给这笔续涨单的失效价是 62K，实际却在 <b>65K 提前 3,000 美元离场</b>——说明他看到结构走坏会破例，比他公开的纪律更早动手。<b>失效条件</b>：① 他保留「现货全不动、在更低位再进多」，所以这是减杠杆不是转空，若后续现货也被卖出才算立场真变；② 62.6K 那笔的 invalidation 仍是 31K，等于没有可执行止损；③ 若他很快在 62–65K 重新做多，则「waiting」只是过渡话术。",
+      tags: ["仓位建议", "战绩复盘", "失效条件"],
+      src: "X 原文 @KillaXBT · 2121644863858893266"
+    },
+    {
+      date: "2026-11-14",
+      title: "首次断言将跌破前低、Q4 才见真底",
+      quote: "「Unfortunately $BTC has lost the previous ATH. It is starting to look increasingly likely that we are going to capitulate through the lows & form the true bottom in Q4.」（不幸的是 BTC 已经丢掉前一轮周期的历史高点。越来越可能的是，我们会跌破前低、在 Q4 才形成真正的底部。）",
+      read: "改掉 11-14 09:11「底部可能已经在、只是 23% 暴力洗盘」那条并列判断——那条他还说「我不转空」，这条直接写 <b>capitulate through the lows（跌破前低）已经 increasingly likely</b>，等于他自己把 57K 这个底部候选降级。<b>另一处</b>：这是他 11-13 提「last level in sight（前一轮周期高点约 69K 是最后一道关）」之后，正式确认这道关已破。同时把「true bottom」推到 Q4，与他 11-14 05:50「中期选举后一年必涨（2027）」形成两级时间错配：底部在 2026 Q4，上涨在 2027。<b>失效条件</b>：① 若 24–48 小时内 V 型收回 68,446（11-14 高点）上方，capitulate 叙事作废；② 若 62,006（11-15 低点）被跌破，40–50K 从情景升为主线；③ 他随后（11-15 08:11）画出三张全是多头结局的情景图，已部分自我抵消本条。",
+      tags: ["趋势切换", "周期判断", "关键价位"],
+      src: "X 原文 @KillaXBT · 2121625468420170212"
+    },
     {
       date: "2026-11-14",
       title: "首提 40–50K 情景，并把 65K 定为多头生死线",
