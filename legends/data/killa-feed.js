@@ -23,13 +23,45 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-15T15:05:00+08:00",
+  lastScan: "2026-11-16T15:05:00+08:00",
   // 累计收录条数
-  total: 298,
+  total: 302,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-16",
+      title: "首称熊市地板临近，但拒绝给任何价位",
+      quote: "「The bear market floor is approaching. It has never been a bad time to buy $BTC around this period. No need to overcomplicate things.」（熊市地板正在临近；这个时段买 BTC 从来都不是坏时机，不必把事情搞复杂。）发帖时 BTC 约 64.8K，当日盘中低点 64,294。",
+      read: "改动：11-15 08:11 他还在说「未来几周才知道走哪个情景」、三张图全是 100K 以上的多头结局；这条第一次用 <b>bear market floor</b> 这种既定事实口吻承认熊市，却<b>一个价位、一个时间都不给</b>，等于把 11-15 02:04 的 40–50K 目标、11-15 06:18 的「先扫 50–62K」全部悬空。<b>失效条件</b>：① 62,006（11-15 低点）被有效跌破后他仍不改口，「floor 临近」就退化成越跌越买的无限定投话术；② 若他随后重新捡起 40–50K 目标，与这条直接矛盾；③ 「this period」无定义，本身不可证伪。",
+      tags: ["周期判断", "基准剧本", "关键价位"],
+      src: "X 原文 @KillaXBT · 2122116185097748601"
+    },
+    {
+      date: "2026-11-16",
+      title: "自曝 8 单 7 胜，明说 2027 前不做续涨多",
+      quote: "「Since 123K, I shared 7 major swing shorts as we entered Q4... I was wrong on 1 swing out of 8 over 400 days. I entered a 2–3x short at 123K. The only other 2x long I've taken was at 62.6K... I won't look for another continuation long until Q1 2027. Until then, the only major swing I'm holding is the 2x long from 62.6K.」同帖附 9 条自证链接：7 条 swing short 标 W，62K long 标 Pending，75K long 标 L。",
+      read: "改动：11-14 09:11 他说的是「仓位零减、卖掉一半股票换现金继续加现货」，这条把做多时间窗直接推到 <b>2027 年一季度</b>——本库第一次出现他主动放弃年内做多，并把持仓压缩成「只剩 62.6K 那笔 2 倍多」。<b>失效条件</b>：① 2027 之前若再出现实际补仓（他 11-14 才刚卖股换币），这条时限当场作废；② 8 单里 62K 那笔自己标 Pending、75K 标 L，分母未经结算，<b>「8 单 7 胜」是自评不是审计</b>；③ 他 11-13 09:37 亲口承认 80K→71K 一路看多，这段不在清单里——若被追问而不解释，400 天只错 1 单的口径会崩。",
+      tags: ["战绩复盘", "周期判断", "存疑"],
+      src: "X 原文 @KillaXBT · 2122071912721612975"
+    },
+    {
+      date: "2026-11-16",
+      title: "押 Anthropic IPO 复刻，反弹看 68–70K",
+      quote: "「It'll be interesting to see whether $BTC repeats the pattern we saw in the lead up to the SpaceX IPO, with Anthropic's IPO coming up next week. It would mean that we get some relief on the LTFs around 68s-70s.」（想知道 BTC 会不会复刻 SpaceX 上市前的走势，Anthropic 的 IPO 就在下周；若复刻，低周期上能在 68K–70K 一带得到一些缓解。）",
+      read: "改动：11-15 08:11 的三个情景只给结构不给价格，这条第一次给出<b>可量化的反弹区间 68–70K</b>，并把它绑在一个外部事件（下周 Anthropic IPO）上——11-12 10:41 提 Anthropic 只是用来解释行情停滞，现在升级成给反弹定价的开关。<b>失效条件</b>：① IPO 落地后 LTF 没摸到 68K，这套宏观类比作废；② 现价 64.8K，距 68K 还有约 5%，若 64,294（11-16 低点）再破，反弹路径先断；③ 同一天 07:55 又说熊市地板临近，两套时间尺度混用会互相打脸。",
+      tags: ["宏观驱动", "目标价", "失效条件"],
+      src: "X 原文 @KillaXBT · 2122035961697861792"
+    },
+    {
+      date: "2026-11-16",
+      title: "70K 下方 1.5K BTC 成交，另有 2K 买单",
+      quote: "「Plunge protection team is back. 1.5K $BTC spot filled on the drop since sub-70K on binance with another 2K BTC in bids below us. Seems like we are approaching very attractive areas for big boys to start loading.」（护盘队回来了：Binance 上 70K 下方这波下跌里 1.5K 枚 BTC 现货被吃掉，下方还挂着 2K 枚买单；看起来大玩家开始建仓的价位很近了。）",
+      read: "改动：11-15 05:00 他的说法是「57K 那批护盘买单已经被撤走」，这条反过来给出<b>现货买盘重新出现的证据</b>，把 60K 出头说成大玩家建仓区，也是 07:55「地板临近」的前置依据。<b>失效条件</b>：① 他看到的是 Binance 盘口与成交流、不是全市场，3.5K 枚（约 2.3 亿美元）随时可能撤单；② 原话用 Seems like，属推测而非数据；③ 若价格直接穿过 60K 而不停留，吸引大玩家接货的判断当场被证伪。",
+      tags: ["链上数据", "关键价位", "情绪指标"],
+      src: "X 原文 @KillaXBT · 2122017008447345098"
+    },
     {
       date: "2026-11-15",
       title: "改口三种情景，结论推到未来几周",
