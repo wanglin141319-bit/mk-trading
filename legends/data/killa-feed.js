@@ -23,13 +23,61 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-16T15:05:00+08:00",
+  lastScan: "2026-11-17T15:05:00+08:00",
   // 累计收录条数
-  total: 302,
+  total: 308,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-17",
+      title: "主打每月14号反向叙事，称75%概率吃到6-7%",
+      quote: "「You could have inversed the narrative around the 14th of each month on $BTC and captured a 6–7% move shortly afterwards 75% of the time. Those who know, know. I've been using my 14th pivot for 400 days, and it's proven itself time and time again.」（你完全可以在每月 14 号前后把叙事反过来做，之后不久就能吃到 6–7% 的波动，75% 的时候都成立。懂的人自然懂；我这个「14 号转折」已经用了 400 天，一次又一次被验证。）发帖时 BTC 约 64,700。",
+      read: "改动：此前他所有可证伪的判据都是价格位（62.6K 成本、57.7K 开关、67.2–68.9K 第一关、75K 才做续涨多），这条第一次单独引入一个<b>纯日历判据</b>——每月 14 号反转叙事、75% 命中、400 天样本。作用是给「只剩 62.6K 一笔底仓、不加仓也不砍仓」的僵持状态找一个不依赖点位的进出理由，等于把 11-16 21:45 那条「要么不扫 57K、要么远破 57K」的二元赌，换成一个按月复利的短线机会。<b>失效条件</b>：① 75% 与 400 天都没有样本清单，也没定义「反向」是指收盘反转还是插针反转，不可审计；② 6–7% 对现价只有约 4,000 美元，小于他 11-15 单日 62,006→66,132 的 6.6% 振幅，<b>几乎任何一天都能事后算「成立」</b>，本身不可证伪；③ 11 月 14 号已经过去，若这段窗口没出现 6–7% 单边反向，这条当场作废；④ 与 11-16 19:59 的价位框架无交集，两套体系冲突时以谁为准他没说。",
+      tags: ["周期判断", "存疑", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2122462940477444468"
+    },
+    {
+      date: "2026-11-17",
+      title: "重申12-14个月翻倍，现价翻倍即约12.9万",
+      quote: "「Despite this recent drop on $BTC, I am still very confident in my prediction. Meaning BTC could increase 100% from current prices. I doubt any other asset is going to give you a return like that within a 12-14 month timespan.」（尽管 BTC 最近这波下跌，我依然非常确信自己的预测——意思是 BTC 可以从现价涨 100%。我不认为有任何其他资产能在 12–14 个月内给你这样的回报。）发帖时 BTC 约 64,700，翻倍即约 129,000。",
+      read: "改动：11-16 07:55 他刚用 <b>bear market floor</b> 这种防守口吻说话、且拒给价位，这条把口径重新拉回进攻——明确 12–14 个月 100%。这与 11-16 04:59「2027 Q1 前不找续涨多」时间上勉强能并存（2027 Q1 起算 12–14 个月≈2028 上半年到 129K），但代价是<b>把 11-15 的 96–98K、11-11 的 126K 两个具体目标，并成一个「翻倍」的模糊上限</b>，等于放弃了中间验证点。<b>失效条件</b>：① 他没给 12–14 个月的起点——从今天算到 2027 年 11 月，还是从 62.6K 进场算到 2027 年 1 月，两种算法差整整一年；② 若在 2027 Q1 之前出现实际补多，与 04:59 那条直接打架；③ 现价距 62,006（11-15 低点）仅 4%，60K 一失守，翻倍路径要先重建；④ 100% 是整数关口而非结构推导，中间无任何可验证节点。",
+      tags: ["目标价", "周期判断", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2122425461439598758"
+    },
+    {
+      date: "2026-11-16",
+      title: "称本轮是BTC史上最长熊市周期，暗示底部渐近",
+      quote: "「This cycle is not the same as others. It is infact the longest $BTC bear cycle we have ever had in history.」（这轮周期和以往都不一样——事实上它是 BTC 历史上最长的一轮熊市周期。）",
+      read: "改动：11-15 05:00 他只是把「熊市已经比 2018/2022 更长」当作长文里的一个论据，这条把它抽出来<b>单独定调</b>，逻辑是把「时间长」直接换算成「离底近」，为 11-16 07:55 的 floor approaching 补一个理由。这是本库第一次看到他不再用结构（imbalance、趋势线、颈线）而<b>纯用时长</b>论证底部。<b>失效条件</b>：① 「最长熊市周期」没有起点定义——从 87,395（09-21）算还是从 126K 顶部算，结论完全不同；② 熊市长度与底部位置没有因果关系，2018 与 2022 都是跌完才被叫熊市，用时长论证底部是<b>循环论证</b>；③ 与他 11-16 04:59「2027 Q1 才考虑续涨多」冲突：真要是史上最长熊市，明年一季度就转多的假设缺支撑；④ 若 57.7K 破位走向他自己给的 52–53K，「最长熊市」还要再拉长，这条会自我强化成越跌越对的死循环。",
+      tags: ["周期判断", "存疑", "情绪指标"],
+      src: "X 原文 @KillaXBT · 2122346591420092483"
+    },
+    {
+      date: "2026-11-16",
+      title: "两连阴6月K为底，57K要么不扫要么远破",
+      quote: "「Perspective is everything. In most bear markets, we see 2 red 6 month candles before the market reverses upwards. Greed is what makes people miss the bottom. The constant fixation on this has to be tested before price can move higher. I wonder how many people are looking at the current $BTC structure and thinking, I will long the sweep below $57K. Either we don't sweep 57K, or we move significantly below it.」（多数熊市里，市场反转向上之前都会出现 2 根红色 6 月 K 线。贪婪才让人错过底部——总执着于「必须先测试某个位置」价格才能涨。我不知道有多少人看着现在的结构在想「我要等扫破 57K 再进多」；<b>要么我们根本不扫 57K，要么就大幅跌破它</b>。）配图：BTC 全历史 6 月 K 线，在历史上几次转涨之前的连续两根红 K 处标 2 Red，末端当前这根同样标了 2 Red。",
+      read: "改动：这条直接推翻 11-15 06:18「先扫 50–62K 再拉 96–98K」，也绕开了 11-15 02:04 自己写的 40–50K 目标路径——把「先扫 57K 再涨」判成<b>大多数人会犯的错</b>，改成二元结论。同时第一次把「底部将近」落到<b>一根具体周期 K 线</b>上（6 月 K 连续两阴），比 11-16 11:59 那句统计上已到底要硬。<b>失效条件</b>：① 6 月 K 当前这根要到 12 月底才收线，<b>用未完成 K 线论证 2 red 属于提前使用数据</b>，只要 12 月反弹收阳，图上这个 2 Red 就消失；② 配图历史上只标了 3 处 2 Red，样本撑不起 most bear markets；③ 「远破 57K」他 11-16 19:59 已给出 52–53K、以及 48K 的 IBIT 插针底，若真远破，7:55「floor 临近」同时作废；④ 不扫 57K 直接起涨这一支，必须先翻上 67.2–68.9K 才算兑现。",
+      tags: ["周期判断", "关键价位", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2122325062141218932"
+    },
+    {
+      date: "2026-11-16",
+      title: "改判区间震荡，67.2K第一关，破57.7K看52K",
+      quote: "「Given that we have broken into the lower boundary of the range, I think the most plausible scenario here is that we range a little, meaning it's most likely going to be choppy and a scalper's paradise. The first barrier to observe on the LTFs is the 67.2K–68.9K region. If we are unable to flip this barrier upon retest, then it leaves the door open for a retest back down. Flip this area, on the other hand, and the next significant area is around the 74Ks region. If we break the 57.7K low, then the next logical target becomes 53K–52K. I do have some smaller bids there myself. ... I won't be scalping it with any size, or much at all. ... The only area I am interested in looking for continuation longs right now is above 75K, as I am already in my swing long from 62.6K.」（既然已经跌破区间下沿，目前最可能的剧本是<b>先震一段</b>，也就是来回磨、短线客的天堂。LTF 上第一道要观察的屏障是 <b>67.2K–68.9K</b>；回踩翻不上去，就等于给再次下探留了门；翻上去，下一个重要区域在 <b>74K 一带</b>。若跌破 <b>57.7K</b> 低点，下一个合理目标就是 <b>53K–52K</b>，我自己在那里挂了一些小单。……我不会用仓位去做这种震荡，一点也不。现在唯一想找续涨多的位置是 <b>75K 之上</b>，因为我手上已经有 62.6K 那笔波段多了。）另提到最坏情况：若丢了 57K，48K 的 IBIT ETF 批准插针低点很可能是最终的底；且现在还在 60 几上方，没破之前下沿都未获验证。",
+      read: "改动：本库第一次拿到他<b>完整的三段式区间剧本 + 双向条件</b>（守 60 几→磨→翻 67.2–68.9K→看 74K；翻不上→回踩；破 57.7K→52–53K），并用<b>价格门槛（75K 之上）取代时间门槛（2027 Q1）</b>来决定何时做续涨多——比 11-16 04:59 那条更可执行。同时首次披露自己在 <b>52–53K 真挂了小单</b>，这比 11-16 01:20 说的 70K 下方 2K 枚买单低了近 20%，等于承认接货区被自己下移。<b>失效条件</b>：① 67.2–68.9K 若被一次性翻上而不先回踩震荡，「先震一段」的判断作废；② 57.7K 是他自己钉的开关，若破了直接在 55K 反转，52–53K 那批小单永不成交，剧本白写；③ 48K 是他给的最坏情况，真到 48K 时 11-16 07:55 的 floor 与 21:45 的 2 red 两处说法同时破产；④ 他把震荡定性为 scalper's paradise 又说不带仓位做，定性会诱导读者去做、建议却相反，口径不自洽。",
+      tags: ["基准剧本", "关键价位", "仓位建议"],
+      src: "X 原文 @KillaXBT · 2122298386259091813"
+    },
+    {
+      date: "2026-11-16",
+      title: "回应质疑：自62K起就看多，现在仍然看多",
+      quote: "「I have been bullish on $BTC since 62K & I am still bullish. Just think I need to clarify this for the select few.」（我从 62K 起就一直看多 BTC，现在仍然看多。只是觉得有必要为少数几个人把这点说清楚。）",
+      read: "改动：这是给 11-16 04:59「8 单 7 胜、2027 Q1 前不找续涨多」引发的质疑打的补丁——把<b>不做续涨多</b>和<b>不看多</b>切割开。他 11-15 00:42 刚在 65K 砍掉 76K 那笔续涨多认亏，这条等于说砍单是止损、不是转空。<b>失效条件</b>：① since 62K 是选择性锚点——他 11-13 09:37 亲口承认 80K→71K 一路看多，那段的成本远高于 62K，<b>以 62K 为起点会把浮亏段隐去</b>；② 若 62.6K 那笔唯一持仓在跌破 62,006 后被砍，still bullish 就失去仓位支撑，只剩口头；③ 同日 19:59 他说 75K 之上才考虑续涨多，与 still bullish 不矛盾，但读者极易读成「现价可加」，实际他自己不加。",
+      tags: ["仓位建议", "战绩复盘", "存疑"],
+      src: "X 原文 @KillaXBT · 2122272519306813703"
+    },
     {
       date: "2026-11-16",
       title: "首称熊市地板临近，但拒绝给任何价位",
