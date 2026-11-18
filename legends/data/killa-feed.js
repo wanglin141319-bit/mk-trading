@@ -23,13 +23,45 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-17T15:05:00+08:00",
+  lastScan: "2026-11-18T15:05:00+08:00",
   // 累计收录条数
-  total: 308,
+  total: 312,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-18",
+      title: "称再忍两个月，新低区间是底部最后阶段",
+      quote: "「I think this is the most important chart you'll see. Despite the bearish narratives, the bearish macro, and a heavily inflated stock market where everything seems significantly overvalued, $BTC is following the same pattern it has in every previous cycle. All you have to do is endure the next 2 months of pain... Stop feeding into the idea that we're going to be stuck in a bear market for a while. We're close to the end. The market has a funny way of making everyone lose conviction before we eventually start trading much higher. Christmas and the holidays will bring thinner liquidity... I think this new lower range will be the final stage of the bottom formation before we trend towards new ATH.」（我认为这是你能看到的最重要的一张图。尽管看空叙事满天飞、宏观偏空、股市也明显高估，$BTC 依然在走它每一轮都走过的同一个形态。你要做的只是熬过接下来两个月的痛苦……别再被「我们还要在熊市里待很久」这种说法喂大。我们接近尾声了。市场总爱在真正开始走高之前先让所有人丢掉信念。圣诞和假期会带来更薄的流动性和更多分心……我认为这个新的低位区间，就是走向新 ATH 之前底部形成的最后阶段。）配图：按减半后天数对齐的四轮周期叠加图（2012-2016 / 2016-2020 / 2020-2024 / 2024-2028），当前这轮橙色曲线在 6 万出头，是四条线同一位置上最低的一档。",
+      read: "改动：11-16 23:10 他还在用<b>史上最长熊市周期</b>这种口吻（拿时间长当利空），这条把口径整个翻过来——<b>别信还要困在熊市里，我们接近尾声，新的低位区间就是底部最后一段</b>，并且第一次给出时间尺度「再忍两个月」（约 2027 年 1 月中）。这等于把 11-17 06:52 那套「每月 14 号反转、6–7% 波段」的月度短线体系，抬到<b>季度级的底部判断</b>，也把 11-16 07:55 只敢说 floor approaching、不给价位的模糊态度，换成了明确的「新低区间＝底部收尾」。<b>失效条件</b>：① 他说 same pattern，但配图是按减半后天数对齐的收益率曲线，当前橙色线在同样第 900 多天只有 6 万出头，是四轮里最低的一档——形状像、高度差一个量级，用<b>形态相似推相同结局</b>缺价格维度支撑；② 「两个月」没有起点也没有证伪点，若 2027 年 1 月中仍在 6 万下方磨，这条自动过期；③ new lower range 是他第一次承认现价已进入一个<b>更低的新箱体</b>（此前框架一直是 67.2–68.9K、74K 这些上方关卡），却没给箱体上下沿，等于撤掉了原来那套可验证的价位表；④ 若 57.7K 破位走向他自己给的 52–53K，「最后阶段」就得重新计时，这条会被自己的剧本推翻。",
+      tags: ["周期判断", "基准剧本", "目标价"],
+      src: "X 原文 @KillaXBT · 2122799808100421650"
+    },
+    {
+      date: "2026-11-18",
+      title: "列历次底部月份，劝人等明年或低杠杆建仓",
+      quote: "「In 2015, BTC bottomed Jan 12th. In 2018, BTC bottomed Dec 10th. In 2022, BTC bottomed Nov 21st. $BTC put in its first low on July 1st, but we're still within the 5 window for a bottom to form. If you want to preserve capital, you can either wait until next year to build your positions or start adding lower leverage exposure now. I'm still holding my positions, with 30% allocated to perps and 70% to spot. Please understand that I am not risking my entire portfolio on leverage but a fraction.」（2015 年 BTC 在 1 月 12 日见底；2018 年是 12 月 10 日；2022 年是 11 月 21 日。$BTC 今年 7 月 1 日打出了第一个低点，但我们仍处在底部形成的窗口里。如果你想保住本金，可以等到明年再建仓，或者现在就开始分批加低杠杆敞口。我自己的仓位还在，30% 在合约、70% 在现货。请理解我并没有拿整个组合去赌杠杆，只是一小部分。）",
+      read: "改动：11-16 04:59 他用的是<b>时间禁令</b>（2027 Q1 前不找续涨多），这条第一次把「底部窗口」锚在<b>日历年尾巴</b>——2015/2018/2022 三次底部全落在 11 月中到 1 月中，实际把 11-18 05:11 的「再忍两个月」换成日历坐标；同时首次给追随者<b>两个可选动作</b>（等明年建仓 / 现在就低杠杆分批），从「我只报我的仓位」变成给操作建议。<b>失效条件</b>：① 三次样本都落在年内尾段，但 2022 那次 11-21 之后还跌了两周才真见底，<b>窗口本身不含价位</b>，无法证伪；② 「7 月 1 日第一个低点」这条与他 11-15 自述 76K→87K、且 11-13 承认 80K→71K 全程看多的叙事对不上，这个低点在往期推文里从未出现过；③ 30% 合约 / 70% 现货的分母没说清（整个组合还是加密仓位），而他 11-14 才披露卖股票换现金加现货，两种口径算出来的杠杆差很远；④ 若 12 月真破 57.7K 走向 52–53K，「年内建仓」会让听他的人先吃一段套。",
+      tags: ["周期判断", "仓位建议", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2122768386161844612"
+    },
+    {
+      date: "2026-11-18",
+      title: "矿工仍在亏损运营，被当作底部信号",
+      quote: "「$BTC miners are still operating in a loss. If you know... you know. 😉」（$BTC 矿工还在亏本运营。懂的人自然懂。）配图：Bitbo 的「BTC 价格 ÷ 各周期底部价格」倍数图，按「距难度底部以来的区块数」上色（0–20 万区块，蓝到红），当前这一点已落在红色区，倍数约 200%–350%。",
+      read: "改动：他此前的底部论据全部是价格结构（imbalance 填平、6 月 K 两连阴、USDT.D 翻多），这条第一次引入<b>矿工侧的供给侧指标</b>：矿工亏损 + 难度底部时钟走到红区。这和他 11-14「卖股换现金加现货」是同一套逻辑——跌破生产成本就是买点，等于给「底部最后阶段」补一个非价格理由。<b>失效条件</b>：① 他只发了图，没写结论，if you know you know 属暗示不算判断；矿工亏损在 2018、2022 都持续过数月乃至一年，<b>出现亏损不等于见底</b>；② 配图纵轴是「相对各轮底部的倍数」，当前约 200%–350%，而历史真底部都在 100% 附近，图上离底还远；③ 难度底部红区在 2021 年也亮过（当时并非底部），单指标有假信号；④ 矿工关机的抛压是滞后变量，若跌破 6 万会二次触发，这条会先被打脸再兑现。",
+      tags: ["链上数据", "周期判断", "存疑"],
+      src: "X 原文 @KillaXBT · 2122747397537517882"
+    },
+    {
+      date: "2026-11-17",
+      title: "发减半周期对比图，问这次是否不一样",
+      quote: "「Let's see if this time is 'different' for $BTC」（咱们看看这次对 $BTC 来说是不是「不一样」。）配图：BTC 长周期 K 线，竖线标出 2016/07、2020/05、2024/04、2028/04 四次减半，并用粉色色块框出三段减半后的下跌区间，跨度标注 3641 天与 2716 天，最后一段自 2024/04 起、至今仍在延续。",
+      read: "改动：这是把 11-16 21:45「2 根红 6 月 K」那套判据<b>换周期复用</b>——比较单位从 6 月 K 拉到整个减半周期（3641 天≈10 年），相当于给「这次不一样」预留反证空间。它本身不带方向，价值在于暴露他真正在用的尺子：<b>减半后第 N 天的位置</b>，而不是某根 K 线的形态。<b>失效条件</b>：① 全文只有一句问句，没有任何价位或结论，属引导贴，不能当判断记录用；② 粉色区间没有定义（是回撤区间、还是减半到破前高的时间），3641 与 2716 两个跨度混用，图上无法核对哪个数字对应哪一段；③ 若后续推文不给这条收口，它将永远无法被验证或推翻，只能当情绪素材。",
+      tags: ["周期判断", "基准剧本", "存疑"],
+      src: "X 原文 @KillaXBT · 2122717122396864791"
+    },
     {
       date: "2026-11-17",
       title: "主打每月14号反向叙事，称75%概率吃到6-7%",
