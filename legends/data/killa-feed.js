@@ -23,13 +23,53 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-18T15:05:00+08:00",
+  lastScan: "2026-11-19T15:05:00+08:00",
   // 累计收录条数
-  total: 312,
+  total: 317,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-19",
+      title: "嘲观望者：低 60K 是又一次机会，不买就别喊运气差",
+      quote: "「The market gives you another chance to buy in the low 60Ks, and you still pass. Then, when it goes higher, you'll say you were unlucky.」（市场又给了你一次在 60K 出头买入的机会，你还是错过了。等它涨上去，你就会说自己运气不好。）",
+      read: "改动：把 11-18 22:59「最难受的位置是做多」这种自我安慰式表述，升级成<b>对外的行动催促</b>——不再讲条件、不再列情景，直接认定现价（发帖时约 63.7K，当日低点 62,062）就是<b>应当建仓的低 60K 区间</b>。这和他 11-18 21:18 说「圣诞前还要震荡」只隔 12 小时，口径自相矛盾：一边说还要磨，一边催人现在就买。<b>失效条件</b>：① 全文零价位、零止损、零仓位比例，若 62,062 失守并走向他自己划的 57.7K，这条从「又一次机会」变成<b>叫人在半山腰接刀</b>；② 他自己那笔 62.6K 多单是 4 个月前建的、目前浮亏，拿浮亏单当别人的入场理由，不可复制；③ 「low 60Ks」与他 11-15 的 40–50K 目标、11-13 的 70K 下方恐慌区并存，价位体系仍是<b>上下两套不互斥的说法</b>。",
+      tags: ["情绪指标", "仓位建议", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2123218358015521270"
+    },
+    {
+      date: "2026-11-19",
+      title: "清算地图：57–61K 有 8–9B 多头待爆，先扫低处",
+      quote: "「There's roughly 8-9B in long liquidations between 57K and 61K, compared with about 21B in total short liquidations up to 100K. It looks like we may be targeting the lower liquidity first before making a decisive HTF move.」（57K 到 61K 之间大约有 8–9B 的多头清算，相比之下一直到 100K 累计约 21B 的空头清算。看起来我们可能先去找下方的流动性，然后才做出决定性的高周期方向选择。）配图为 BTC 清算热力图：57–61K 一带密集多头清算柱，右侧累计空头清算曲线一路上抬，标注 $105,400–105,500 处累计约 21.37B 空头（+68.82%）。",
+      read: "改动：给 11-16 19:59「破 57.7K 则看 53–52K」这条纯价位剧本，第一次补上<b>流动性依据</b>——把「先扫下方」从形态推演换成<b>清算磁铁排序</b>：下方 8–9B 多头更近，上方 21B 空头更远，结论是先向下取近处的钱。这等于承认<b>62K 不是终点</b>，与他 11-18 05:11「新低区间＝底部收尾」不冲突，却和 11-19 08:54「现在就买」构成时间差：地图说要先下，喊话说现在上。<b>失效条件</b>：① 热力图是静态快照，清算量随持仓实时变化，57–61K 的多头一旦被提前平掉或反手加仓，8–9B 立即过期；② 他只写 may be targeting，无触发价、无时间窗，若下周仍在 63K 上方横盘则无法验证；③ 若价格直接从 63K 上攻而不扫 57–61K，「先取低处流动性」当场证伪。",
+      tags: ["链上数据", "关键价位", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2123157912369676537"
+    },
+    {
+      date: "2026-11-19",
+      title: "换个宏观抓手：美元进长期横盘，BTC 历史上都涨",
+      quote: "「Everyone seems concerned about $DXY rising, but few are looking at how it has lined up with $BTC's price action in previous cycles. As you can see, BTC has rallied every time in the past when the dollar has entered a prolonged range. I believe we may be about to see the dollar do the same again, which could mean capital starts flowing back into BTC, as it has in previous cycles.」配图为 BTC（对数轴，2012–2026）与 DXY 双联图，DXY 上用三段「Prolonged Range - Risk appetite shifting」箱体标出约 2016–2017、2019–2020、2024–2025，并在 2025 年末之后又画了一段延续到右侧的箱体。",
+      read: "改动：11-18 05:11 他还把<b>偏空宏观</b>列为需要「忍过去」的逆风，这条把宏观从逆风改写成<b>潜在顺风</b>——不用降息、不用流动性，改用 DXY 横盘＝风险偏好回归这条更软的通道。这是他本库第一次把美元指数当<b>主判据</b>（此前宏观只提 CPI、Anthropic IPO、中期选举）。<b>失效条件</b>：① 「prolonged range」没有量化定义，图上三段箱体的宽度和持续时间差别很大，属<b>事后挑样本</b>；② 他自己开头就承认 everyone concerned about DXY rising，若箱体上沿被向上突破，横盘前提直接消失；③ 2024–2025 那段「横盘后 BTC 上涨」对应的是 ETF 流入加减半，用单一宏观变量解释，归因被高估；④ 只写 capital starts flowing back，无时间表，若 12 月 DXY 继续走强而 BTC 破 62K，这条自动作废。",
+      tags: ["宏观驱动", "周期判断", "趋势切换"],
+      src: "X 原文 @KillaXBT · 2123098659109929312"
+    },
+    {
+      date: "2026-11-18",
+      title: "承认做多最难受，仍死扛 62.6K 多单，列三条路径",
+      quote: "「I think the most uncomfortable position here is sitting in a long. And almost always the most uncomfortable position is the most profitable... everyone has been completely destroyed... We saw a -29% drop. But I can't help but think that what if we just came down here, to make people capitulate, front run the lows, then begin slowly grinding back upwards after we range a little? ... the market is heavily leaning on the fence of sweeping 57K. I would be lying if I didn't feel the same way, because I infact do... that is exactly the reason why I have chosen to maintain in my 62.6K long which I have been holding for 4 months now. Its uncomfortable... Either we are going to sweep the low, bounce instantly. Deviate significantly below the low before ranging & then pushing up Q1 next year. Or are we about to have the biggest front run of the century... I must say sp500 does not look particularly great, might see abit more capitulation through the lows before pushing back up again.」",
+      read: "改动：这是 11-18 05:11「新低区间＝底部收尾、再忍两个月」之后，<b>第一次把「先破 57K」列为主流假设并承认自己也这么想</b>——从「底部收尾」的笃定退到<b>三选一未定</b>：① 扫低点后立刻反弹；② 显著跌破、震荡后明年 Q1 推升；③ 「世纪级抢跑」，先跌回全部涨幅再启动牛市。核心信息是<b>仓位不动、预期放宽</b>：62.6K 那笔已扛 4 个月，理由不是价位而是「大家都觉得要扫 57K，所以我不动」，把<b>反身性</b>当持仓依据。<b>失效条件</b>：① -29% 的口径对得上（87,395 → 62,062 恰为 -29.0%），但「已超出大多数人预期」属情绪论据，无法证伪；② 第 3 条路径意味着跌回 5 万以下，与他 11-15 的 40–50K 目标重叠，<b>三种结局全部指向最终上涨，没有下跌情景</b>，剧本不可证伪；③ 唯一硬条件是 sp500 might see abit more capitulation——若美股继续走弱、BTC 跟随跌破 62,006，先走的是路径 2，他那笔 4 个月多单将首次进入自己 11-12 划的 62K 失效区（此前已在 65K 提前砍过一次）。",
+      tags: ["仓位建议", "基准剧本", "失效条件"],
+      src: "X 原文 @KillaXBT · 2123068462582923305"
+    },
+    {
+      date: "2026-11-18",
+      title: "12 月定调震荡，称底部逐轮提前、7 月低点是分水岭",
+      quote: "「As we head into December, it's worth remembering that this is a choppy period for $BTC. What I find increasingly interesting is how the bear market low has arrived earlier in each of the last few cycles: January in 2015, December in 2018, and November in 2022. This cycle, BTC's low so far is in July. If that low holds, the pattern of earlier bottoms continues. If it doesn't, we'll be breaking from that pattern. Either way, we are still in for a choppy Christmas period before the next bull market begins.」（进入 12 月要记得，这是 BTC 的震荡期。我觉得越来越有意思的是，最近几轮熊市底部一次比一次来得早：2015 年 1 月、2018 年 12 月、2022 年 11 月。这一轮，BTC 到目前为止的低点在 7 月。如果这个低点守住，逐轮提前的规律就继续；如果守不住，我们就打破了这条规律。无论哪种，在下一轮牛市开始前，我们还要经历一个震荡的圣诞。）",
+      read: "改动：把他 11-16 19:59 划的 <b>57.7K</b> 这个孤立数字，第一次和<b>真实年度低点</b>绑在一起——7 月低点实为 57,800（Binance 月线），所以他口中的 57.7K 不是随手画的线，而是<b>今年最低点</b>，破位＝形态破缺，与「破 57.7K 看 53–52K」严丝合缝。同时首次把 12 月定性为<b>震荡月</b>，把牛市启动推到圣诞之后。<b>失效条件</b>：① 「逐轮提前」只有 3 个样本（2015/2018/2022），提前幅度从 1 月到 11 月并不单调，属<b>三点连线</b>；② 若 11–12 月真跌破 57,800，他自己承认 pattern breaks，这套提前见底论据连同「底部收尾」一起失效，只剩 52–53K 空头剧本；③ 6 月低点 58,115 与 7 月 57,800 仅差 0.5%，「哪个月是底」在统计上属同一区域，用它论证逐轮提前精度不足。",
+      tags: ["周期判断", "失效条件"],
+      src: "X 原文 @KillaXBT · 2123043280577290371"
+    },
     {
       date: "2026-11-18",
       title: "称再忍两个月，新低区间是底部最后阶段",
