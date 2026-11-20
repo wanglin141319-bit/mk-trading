@@ -23,13 +23,69 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-19T15:05:00+08:00",
+  lastScan: "2026-11-20T15:05:00+08:00",
   // 累计收录条数
-  total: 317,
+  total: 324,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-20",
+      title: "推翻必扫清算：可能在清算区上方直接筑底",
+      quote: "「Let's see whether $BTC front runs the liquidations below the lows again. I remember something very similar happening in 2023 around 10K-12K. As BTC hovered near the lows, everyone, including me, was convinced we'd take out the HTF liquidation levels below. We were close, and the idea made perfect sense... And it was all a decoy. Sometimes... just sometimes, the market doesn't have to take certain liuqidity. We're approaching a similar point now. BTC either forms a bottom above the biggest liquidation clusters or sweeps them first. Either way, I'm still heavily in spot and holding my 2x long. This is how I've been positioned for months, and my stance won't change, even if we test the 40Ks-50Ks in the coming weeks. I never try to nail the precise top or bottom. I just scale when I believe the risk appetite fits my system.」（BTC 是否又会抢在下方清算之前启动？他回忆 2023 年 10K–12K 那一段：所有人都认定要打掉下方高周期清算，价格也逼近了，逻辑完全成立——结果全是个诱饵。市场有时候并不需要取走那些流动性。现在到了类似位置：要么在最大清算集群上方筑底，要么先扫掉它们。无论如何他仍重仓现货、持有 2 倍多单，几个月来一直如此，即使未来几周测试 40K–50K 立场也不变；他自称从不精确抄底逃顶，只在风险偏好符合系统时加仓。）配图为 BTC 清算热力图，现价标 62,116，最密集的亮黄色清算带集中在 50K–56K，上方 85K、88–90K、100K 各有集群。",
+      read: "改动：直接<b>推翻他 11-19 04:54 的「先扫下方 57–61K 那 8–9B 多头是磁铁」</b>——同一张清算地图，今天读出的是「集群已经下移到 50–56K，而且<b>可以不被取走</b>」，并用 2023 年 10–12K 的诱饵案例背书。这是本库第一次<b>明确允许「不打清算直接筑底」</b>，等于给 57,800 前低不破提前留了后路。<b>失效条件</b>：① 2023 那次属单例，他自己也只说 sometimes，用一个样本推翻统计规律；② 40–50K 与 50–56K 两个区间混用，且明说即使测试 40–50K 立场不变，说明下方磁铁并未消失，只是被口头豁免；③ 判定线是价格——若 61,290 继续失守并真的走进 50–56K 黄区，诱饵论当场证伪；④ 无触发价、无时间窗，属不可证伪的心理框架，只能事后追认。",
+      tags: ["关键价位", "仓位建议", "失效条件"],
+      src: "X 原文 @KillaXBT · 2123586904750784936"
+    },
+    {
+      date: "2026-11-20",
+      title: "划短期生死线：62K 要快速收回，否则测 60K 下方",
+      quote: "「You want to see $BTC reclaim this wick low fairly quickly otherwise we'll probably start testing below 60K. If this is deviation below the lows, with the Anthropic IPO acting as a distraction, buyers need to step in. We need a few solid closures above 62K for now.」（BTC 需要较快地收回这根插针的低点，否则大概率开始测试 60K 下方。如果这只是跌破前低后的一次偏离，而 Anthropic IPO 正好充当了分散注意力的角色，那买方必须进场。眼下需要几根实体收盘站上 62K。）配图为 15 分钟级别走势，最后一个下影刺破前低水平位（约 61,700），下方画弧线箭头标注偏离，图内注记「Relentless chop - shorts shorted entire move」。",
+      read: "改动：给 11-19 08:54「低 60K 是又一次机会」补上<b>第一个可验证的短期门槛</b>——需要「几根实体收盘站上 62K」，否则就要测 60K 下方。把前一天无条件催促买入，改成<b>有条件确认</b>；同时把 Anthropic IPO 从「分流资金」升级为解释插针的<b>免责变量</b>。<b>失效条件</b>：① 「fairly quickly」和「a few solid closures」都没有量化（几根 K？几小时？），事后可任意解释；② 11-20 盘中低点已到 61,290，若日线收在 62K 下方，他自己设的门槛已经失守，只是没兑现成公开认错；③ 「deviation below the lows」是预设的多头框架，一旦跌破 60K 后不快速收回，这个框架立刻从「偏离」变成接刀理由。",
+      tags: ["关键价位", "仓位建议", "失效条件"],
+      src: "X 原文 @KillaXBT · 2123544690343510223"
+    },
+    {
+      date: "2026-11-20",
+      title: "弃用 DXY 改押 XAU/BTC：BTC 相对黄金已见底",
+      quote: "「I said months ago that $XAU (gold) was macro topped for a while. Take a look at the XAUBTC pair. It looks to me like $BTC has bottomed against gold, and could significantly outperform it over the next few years. Gold's dominance has faded. Stocks are inflated, and so are the AI narratives, while BTC still isn't. Capital will rotate in time, as people realize there are few other compelling narratives to invest in. For now, they're chasing IPO hype and becoming short term exit liquidity while capital gradually rotates into BTC.」（几个月前我就说过黄金已经阶段性宏观见顶。看 XAU/BTC 这个对子，在我看来 BTC 相对黄金已经见底，未来几年可能显著跑赢。黄金的主导地位已经褪色。股票被高估，AI 叙事也被高估，而 BTC 还没有。资金迟早会轮动过来，因为人们会发现没有别的叙事值得投。眼下他们在追 IPO 的热度，变成短期接盘流动性，而资金正在慢慢流向 BTC。）配图为 XAU/BTC 长周期，四段回撤分别标 -86.5%、-83.61%、-76.32%、-70.52%，当前约 11.35，回撤幅度逐轮收窄。",
+      read: "改动：把 11-19 00:59 刚立的<b>美元指数（DXY）长期横盘</b>这个主判据，一天内换成<b>XAU/BTC 相对强弱</b>——宏观抓手从美元换到黄金，旧论据没被否，属叠加而非替换，一套多头逻辑两天内挂了两个不同钩子。而图上真正给出的只是<b>回撤幅度逐轮收窄</b>（-86.5%→-70.52%），这只说明相对黄金跌得越来越少，并不等于见底。<b>失效条件</b>：① XAU/BTC 现价 11.35 仍在下降结构里，图上四段回撤没有一段是 V 型反转，凭幅度收窄断言见底属提前定性；② 「黄金宏观见顶」是他的旧判断，金价再创新高则整条推理的前提断裂；③ 「未来几年跑赢」无时间窗无幅度，不可验证；④ 他用「股票与 AI 被高估、BTC 没被高估」作轮动理由，但 BTC 本轮已从 87,395 跌 29%，估值论与价格现实相反。",
+      tags: ["宏观驱动", "趋势切换", "周期判断"],
+      src: "X 原文 @KillaXBT · 2123521193479205100"
+    },
+    {
+      date: "2026-11-20",
+      title: "亲口宣布 2023 镜像失效，改用 154 天窗口赌低点",
+      quote: "「$BTC mirrored 2023 almost perfectly, right up until now. We saw a 5 wave correction and 2 drives into the lows. The time between the two significant lows was exactly 147 days, forming bottomlike structure over the same timeframe as in 2023. From there, price chopped before breaking higher. The key difference this time is that, after forming that bottom, price reversed the entire move and decoupled from the 2023 pattern. In 2023, we marked a significant high within 154 days. Could we mark a significant low within 154 days this time around? We still have 10 days left.」（BTC 直到现在几乎完美复制了 2023 年：一次 5 浪调整、两次探底，两个重要低点之间正好 147 天，在相同时间跨度里做出类似底部的结构，之后横盘再向上突破。关键区别是这次在形成底部后，价格反转了整段涨幅、与 2023 的形态脱钩。2023 年是在 154 天内打出重要高点——这次能不能在 154 天内打出重要低点？只剩 10 天了。）配图为 2023 与当前两段走势并列，两处均标 147d（两低点间隔）与 154d 箭头，2023 端 154d 处是实心点（重要高点），当前端 154d 处标问号「?」，现价标 61,xxx。",
+      read: "改动：<b>亲手宣布自己用了两个月的「2023 镜像」类比失效</b>——承认本轮在筑底之后反转了整段涨幅、与 2023 脱钩，这是他第一次公开否掉自己的主类比。但随即用<b>同一个 147/154 天计数</b>改换标的：2023 是 154 天内出重要高点，这次改问「能否在 154 天内出重要低点」，只剩 10 天，也就是<b>约 11 月 30 日前</b>。这是他本库给出的<b>最短、最硬的时间刻度</b>。<b>失效条件</b>：① 类比前提已被他自己否定，却继续沿用它的时间参数，属选择性继承；② 「significant low」没有价格定义，61,290 算不算、57,800 算不算，全凭事后认定；③ 11-30 到期若未出现他认可的低点，这条自动作废，这是下轮最好用的验收点；④ 147 天与 154 天的起止点在图上没有标注，可复现性差。",
+      tags: ["周期判断", "关键价位", "存疑"],
+      src: "X 原文 @KillaXBT · 2123504080475836723"
+    },
+    {
+      date: "2026-11-20",
+      title: "称无人问津正是底部特征，注意力被 IPO 与 GTA6 抽走",
+      quote: "「You've got the Anthropic IPO + GTA 6 diverting attention, with the christmas & holiday season around the corner. Meanwhile, $BTC is in no man's land completely dead and ignored while bottoming in the same period as every previous bear cycle.」（Anthropic IPO 和 GTA 6 在分流注意力，圣诞与假期又临近。与此同时 BTC 处在无人区，彻底死寂、被完全无视，而它正在和历次熊市相同的时段里筑底。）本条无配图。",
+      read: "改动：把 11-16 02:36 起「Anthropic IPO 分流资金」这条单一叙事，扩写成<b>注意力竞争</b>框架（IPO + GTA 6 + 假期），并据此判定当前的死寂是<b>筑底</b>而不是<b>还要跌</b>。这是本库第一次把<b>娱乐产品</b>列为宏观变量，也是他第一次用「没人关注」直接推「接近底部」。<b>失效条件</b>：① 「bottoming in the same period as every previous bear cycle」仍是 11-18 就有的周期类比，而同夜 03:50 他自己承认 2023 镜像已经脱钩——两条在一夜之间自相矛盾；② 全文零价位、零指标，「dead and ignored」无法量化（成交量、社媒热度一个都没给）；③ 若 12 月继续下跌，则「死寂即底部」当场反向成立，同一现象可解释任何方向。",
+      tags: ["情绪指标", "宏观驱动", "存疑"],
+      src: "X 原文 @KillaXBT · 2123486212619210920"
+    },
+    {
+      date: "2026-11-20",
+      title: "七连阴周线 1645 天首见，仍劝熬住或等明年 Q1",
+      quote: "「The last time $BTC printed 7 red weekly candles was 1645 days ago. It's exhausting watching this PA, but it is what it is. If you want to catch the big swings, you have to sit through periods like this. As stated, either load spot, build 2x leverage positions or wait till next year Q1 to avoid the chop completely.」（BTC 上一次出现 7 根连续阴线周 K 是 1645 天前。看这种价格行为很折磨人，但就是这样。想抓到大波段，就得熬过这种阶段。如前所述：要么买现货，要么建 2 倍杠杆仓位，要么干脆等到明年 Q1 以完全避开这段震荡。）配图为周线，连续 7 根阴线逐根编号 1–7，作图时现价标 63,776。",
+      read: "改动：把 11-18 03:06 的「等明年建仓 / 现在低杠杆分批」<b>两个选项，正式固化成三条</b>（买现货 / 建 2 倍杠杆 / 等到明年 Q1），并把入场理由从周期类比换成<b>极值统计</b>——7 连阴、1645 天首见。这是本库第一次用单一 K 线形态计数当主要论据。<b>失效条件</b>：① 7 连阴是<b>已经发生</b>的事实，不构成对未来方向的证据，1645 天前那次之后怎么走他一句没提，缺对照；② 图上现价标 63,776，而 11-20 已下探 61,290，说明作图后价格继续破位，形态论没拦住下跌；③ 「等明年 Q1」与他 11-17 的「12–14 个月翻倍」、11-18 的「两个月到 2027-01-18」三个时间刻度并存，至今没有统一；④ 「建 2 倍杠杆」与他自述的 30% 合约 / 70% 现货口径，对普通追随者不构成可执行方案。",
+      tags: ["仓位建议", "周期判断", "情绪指标"],
+      src: "X 原文 @KillaXBT · 2123465613205000620"
+    },
+    {
+      date: "2026-11-19",
+      title: "抛假设：未来几个月可能困在 60–80K 区间",
+      quote: "「What if $BTC's new range is 60K-80K for the next few months? Would be brutal if you ask me.」（如果 BTC 未来几个月的新区间是 60K–80K 呢？要我说，那会非常难熬。）配图为两段周期叠加对比图，两段各标 252d 箭头，右侧当前周期位置约在纵轴 8% 附近并画有阴影区间。",
+      read: "改动：<b>首次给出一个带上下沿的区间假设</b>，且上沿 80K 高于他 11-17 的 74K 目标、下沿 60K 高于 11-16 的 57.7K 破位线——把此前「要么不扫 57K、要么远破」的二元剧本，换成<b>整体上移的箱体</b>。这是偏多表述（60K 兜底），但用 would be brutal 收尾，属<b>先给多头留体面、再打预防针</b>。<b>失效条件</b>：① 这是 what if 假设句而非判断，可随时不认；② 现价 61,290 已贴近并一度击穿假设下沿 60K，箱体提出后第一周就被测试；③ 与他 11-20 09:19「即使测试 40–50K 立场也不变」并存，60K 下沿形同虚设；④ 80K 上沿与他 11-18 21:18「圣诞前还要震荡」、11-17 的 67.2–68.9K 第一关排序混乱。",
+      tags: ["关键价位", "周期判断", "基准剧本"],
+      src: "X 原文 @KillaXBT · 2123319188836225180"
+    },
     {
       date: "2026-11-19",
       title: "嘲观望者：低 60K 是又一次机会，不买就别喊运气差",
