@@ -23,13 +23,69 @@
 
 window.KILLA_FEED = {
   // 最近一次扫描时间（自动化任务每次运行后更新）
-  lastScan: "2026-11-20T15:05:00+08:00",
+  lastScan: "2026-11-21T15:05:00+08:00",
   // 累计收录条数
-  total: 324,
+  total: 331,
   // 数据来源说明，显示在页面底部
   sources: "X 一手原文（直读 @KillaXBT 主页，含推文 ID 与真实时间戳）为主；2026-09-22 及更早的条目仍为中文加密媒体转载",
 
   entries: [
+    {
+      date: "2026-11-21",
+      title: "二选一：三推探底，或 40–52K 长期横盘",
+      quote: "「$BTC Either we form a three drive of the lows or we range between 40K and 52K for a while. Pick your poison.」（BTC：要么走出三推探底，要么在 40K–52K 之间磨一段时间，自己选吧。）引用了自己 01:38 那条「头肩底濒临失效、只剩情景 2 与 3」。配图为 1 日线，价格自 86K 一线连续下挫，最后一根 K 线已跌破此前两个低点连成的上升趋势线，落在 60K 附近。",
+      read: "改动：把 01:38 那条「跌破 57K 进入<b>新的更低区间</b>」从含糊说法直接量化成 <b>40–52K</b>，等于把 11-15 05:00 的 40–50K 老目标重新接回主剧本；同时用「三推探底 or 40–52K 横盘」的二选一，替换掉他 11-18 05:11「新低区间就是底部最后一段、再忍两个月就走新 ATH」的单一路径。<b>失效条件</b>：① 若价格不再破今日低点 55,130，并在 6–8 周内用实体收盘收复 62K，40–52K 区间假设作废；② 「a while」没有时间窗，区间下沿 40K 与上沿 52K 相差 30%，任何中间位置都能事后算命中，可验证性弱；③ 若真进 40–52K 而他仍不平 62.6K 多单与 68K 现货，这条只是把亏损合理化，不构成可执行方案。",
+      tags: ["目标价", "关键价位", "周期判断"],
+      src: "X 原文 @KillaXBT · 2123986837769474444"
+    },
+    {
+      date: "2026-11-21",
+      title: "贴 2021 年 PTSD 图：高位震荡像上轮熊市中继",
+      quote: "「Got alot of PTSD here from 2021... $BTC」（这个位置让我犯 2021 年的 PTSD……BTC）配图为两张长周期图左右并列：左侧当前周期，用白框圈出自 126K 回落后的 60–75K 高位震荡区；右侧 2021 年，同样用白框圈出 ATH 腰斩之后 30K 附近的中继横盘区。",
+      read: "改动：他的类比库第一次从「<b>底部类比</b>」翻到「<b>中继类比</b>」。此前用的是 2018/2022 的底部月份、2023 镜像、6 月 K 连续两阴，全部指向「接近底部」；2021 年那一次的横盘最后是<b>向下解决</b>（一路跌到 15.5K），所以这条实际是隐含偏空，与他 11-18 05:11「底部收尾」的定调相反。<b>失效条件</b>：① 整帖只有一个感叹句加两张图，没有价位也没有结论，属情绪表达，不能当判断使用（标存疑）；② 若 57K 后续不再破、并在 6 周内收复 68–70K，2021 类比不成立；③ 两图时间轴被拉伸对齐、白框区间由他主观划定，可复现性差。",
+      tags: ["周期判断", "情绪指标", "存疑"],
+      src: "X 原文 @KillaXBT · 2123896421875134823"
+    },
+    {
+      date: "2026-11-21",
+      title: "晒 90 天盈亏：从峰值回吐 38.8 万美元",
+      quote: "「All jokes aside, it's painful being a buyer right now. I don't want to remind people every day, but you should already know I'm holding spot and still in my long. For transparency, I've decided to share a snapshot of my current uPnL... It looks like we may have to endure this pain before things improve next year. For now, I'm playing it safe, preserving margin and protecting my positions through these drops. We're not far below my 62K long entry or my 68K spot entry, but rather than adding aggressively in conditions like this, I think it's better to stay level-headed and protect yourself... -$388K from peak uPNL on longs. Real Monies 🌅」（说正经的，现在做买方很痛苦。不想每天提醒，但你们应该知道我还拿着现货、多单也还在。为透明起见，我决定公开当前未实现盈亏截图……看起来得先熬过这段痛，明年才会好转。眼下我打得保守，保住保证金、在下跌里护住仓位。我们离我 62K 的多单成本和 68K 的现货成本都不算远，但在这种行情里与其激进加仓，不如保持冷静先保护自己……多单浮盈自峰值回撤 38.8 万美元。真金白银。）配图为 90 天 Total PnL 曲线：9 月 21 日峰值 +$232,962，最新 −$155,341，自峰值回撤 $388,303。",
+      read: "改动：<b>本库第一次公开真实盈亏数字</b>，把 11-20 09:19「即使测 40–50K 立场也不变」从口头承诺变成有成本的口径；同时明确「不加仓、保保证金、护住仓位」，等于收回 11-19 08:54「低 60K 又给一次机会，不买别怪运气」的催促。<b>失效条件</b>：① 现货 68K 与 2 倍多 62.6K 都没平，「painful」描述的只是浮亏，真转空要看他砍仓；② 「things improve next year」无月份无价位，不可验证；③ 他自称「离成本不算远」，但在今日 55,130 的低点下多单浮亏约 12%、现货约 19%，下次公开盈亏时这句话会立刻自相矛盾。",
+      tags: ["战绩复盘", "仓位建议", "情绪指标"],
+      src: "X 原文 @KillaXBT · 2123868871576744399"
+    },
+    {
+      date: "2026-11-21",
+      title: "6 月 K 打出史上最大实体阴线",
+      quote: "「What in the monstrosity is this 6 month candle.」（这根 6 个月 K 线是个什么怪物。）配图为 BTC 全历史 6 个月周期，最新一根自 106K 开盘直落至 58,145，实体长度超过此前任何一根 K 线。",
+      read: "改动：直接顶掉他 11-16 21:45 那条「<b>6 月 K 连续两阴＝底部</b>」的论据——当时这根还没收线，现在实体已经大到史无前例，「2 red 就到底」的样板变成「第 3 根更大的红」，等于用自己提供的图否掉了自己的判据。<b>失效条件</b>：① 「monstrosity」是感叹不是判断，没有价位也没有对策，只能当情绪读数；② 6 月 K 要到 12 月底才收线，插针与收盘可能完全不同，现在定性为时过早；③ 若收线前拉回 70K 上方、实体大幅缩短，这条情绪读数随即反转。",
+      tags: ["周期判断", "情绪指标", "存疑"],
+      src: "X 原文 @KillaXBT · 2123851379009577443"
+    },
+    {
+      date: "2026-11-21",
+      title: "首次承认 57K 可能守不住，指向 48–52K 扫针",
+      quote: "「Honestly, it's starting to look like $BTC didn't retrace the entire move from 87K just to bounce from 57K again. The 3 drive pattern is still possible, but beyond that, it's hard to look at this chart and expect the same lows to hold again. We might finally get that liquidation wick to 48-52s. Painful to admit as I'm in spot from 68K & I still have my 2x long from 62.6K, but it is what it is.」（说实话，看着不像 BTC 把 87K 以来的整段涨幅回吐完之后，还要再从 57K 弹一次。三推形态仍有可能，但除此之外，很难看着这张图期待同样的低点还能守住。我们可能终于要等到插向 48–52K 的那根清算长针。难受的是我 68K 的现货和 62.6K 的 2 倍多单都还在场内，但就这样吧。）配图一（Kalshi Pro 周线）：标注 Breakout longs rekt.，现价 61,030，两条「Could sweep these lows」分别指向 59,755 与 57,726，「Could sweep here aswell」指向 52,810，「Breakdown shorts rekt?」指向 49,111；配图二为被引用的 Kalshi「今年最低 55K」预测曲线。",
+      read: "改动：<b>推翻他 11-19 04:54 与 11-20 09:19 连续两次的「不一定非要扫清算」</b>——那条 2023 年 10–12K 诱饵论的落点是「可以在清算区上方直接筑底」，这条改口为「看起来不像只到 57K 就反弹」，把 <b>48–52K 扫针列为主情形</b>。这也是他第一次公开承认 57K（年内低点）可能不是本轮低点。<b>失效条件</b>：① 48–52K 的依据只是图上 52,810 与 49,111 两个标注，中间没有逻辑推导，属看图直读；② 若今日 55,130 成为有效低点（不破 52,810）、并在数周内收复 62K 实体收盘，该目标作废；③ 「still have my 2x long」与「but it is what it is」并列，等于提前宣布不设止损，若真到 48K 他大概率继续扛，这条会从判断退化成叙事。",
+      tags: ["关键价位", "趋势切换", "失效条件"],
+      src: "X 原文 @KillaXBT · 2123849425499939091"
+    },
+    {
+      date: "2026-11-21",
+      title: "头肩底濒临失效，情景只剩两条",
+      quote: "「Inverse H&S looks like it's close to being invalidated. Which leaves scenario 2 & 3. Either we form a 3 drive of the lows, or $BTC breaks significantly below 57K and moves into a new lower range. If scenario 2 happens, it would likely mean SP500 falls to about -20%+. If scenario 3 happens, you want to see SP500 hold above 6900s.」（头肩底看起来快要失效了，那就只剩情景 2 和 3：要么做出三推探底，要么 BTC 显著跌破 57K、进入一个新的更低区间。若走情景 2，大概率对应标普 500 跌 20% 以上；若走情景 3，你要看到标普守住 6900 点上方。）引用了自己 11-15 08:11 的三情景图（Scenario 1.1 Inverse H&S／Scenario 3.1 A Much longer range／Scenario 2.1 Three drive of lows）。",
+      read: "改动：<b>正式作废他 11-15 08:11 搭的 Scenario 1</b>——那是三情景里唯一一条「不破前低、右肩守住 62–63K 就直接去 105–108K」的多头路径，也是他 11-17 说「75K 之上才找续涨多」的图形基础。同时第一次把 BTC 情景<b>外挂到标普 500</b>（跌 20%+ / 守住 6900s），宏观判据从 DXY、XAU/BTC 又换回股指。<b>失效条件</b>：① 62–63K 右肩若被重新收回、颈线上破，Scenario 1 复活，这条作废；② SP500 与 BTC 的联动是他自己的经验值，没有给样本区间，属可调参数；③ 「significantly below 57K」没有量化，今日 55,130 算不算「显著」全凭事后认定。",
+      tags: ["趋势切换", "关键价位", "宏观驱动"],
+      src: "X 原文 @KillaXBT · 2123833706565763430"
+    },
+    {
+      date: "2026-11-21",
+      title: "自认月/季线结构假突破，币安被盗 60 亿",
+      quote: "「...we flipped practically every major technical indicator that has historically signalled a market bottom. We reclaimed critical moving averages. We broke market structure. We established higher highs... And despite all of that, Bitcoin has completely reversed its progress, crashing straight back below those same levels and invalidating what appeared to be an increasingly convincing bullish structure... We're now on track for what could become the longest bear market in Bitcoin's history... I cannot recall witnessing a more brutal structural fakeout on the monthly and quarterly timeframes... And the funny part is, it all happened after @binance was hacked for 6 billion.」（我们几乎翻转了所有历史上标志市场底部的技术指标：收复关键均线、突破市场结构、做出更高高点……尽管如此，比特币把进度全部反转，直接跌回这些位置之下，把原本越来越像样的多头结构彻底作废。我们现在走的可能是比特币史上最长的一轮熊市……七年交易里，我没见过月线和季线级别更暴力的结构假突破。可笑的是，这一切发生在币安被盗 60 亿美元之后。）",
+      read: "改动：这是对 <b>11-18 05:11「新低区间是底部最后一段、之后走新 ATH」的自我否决</b>——他承认 50/200 周均线收复、结构突破、周线更高高点这些「牛市确认信号」全部被反向击穿，「技术面已翻多」的底稿作废。同时把币安被盗约 63 亿美元（10 月底，史上最大加密盗窃，FBI 指认朝鲜，币安已用自有资金覆盖 95%，见路透 11-18 报道）当成这轮下跌的解释变量，替换掉 11-20 02:39 那套「Anthropic IPO ＋ GTA6 ＋ 假期分流注意力」。<b>失效条件</b>：① 「史上最长熊市」是时长论断，只要 2027 年 1 月前创新高就被推翻；② 把 60 亿被盗当主因无法证伪——同期 ETF 净流出、利率预期同样能解释跌幅；③ 全帖是愤怒复盘，无价位、无仓位动作，属情绪宣泄多于判断。",
+      tags: ["周期判断", "宏观驱动", "存疑"],
+      src: "X 原文 @KillaXBT · 2123822628162974124"
+    },
     {
       date: "2026-11-20",
       title: "推翻必扫清算：可能在清算区上方直接筑底",
